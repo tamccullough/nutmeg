@@ -1,4 +1,4 @@
-![CANPL](https://upload.wikimedia.org/wikipedia/en/thumb/4/45/Canadian_Premier_League_logo.svg/1200px-Canadian_Premier_League_logo.svg.png){:height="50%" width="50%"}
+![CANPL](https://upload.wikimedia.org/wikipedia/en/thumb/4/45/Canadian_Premier_League_logo.svg/1200px-Canadian_Premier_League_logo.svg.png =250x)
 
 ## canpl-es
 A (WIP) expert system to analyse the satistics and results of the Canadian Premier League
