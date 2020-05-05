@@ -14,7 +14,7 @@ cpl_classifier_model = pickle.load(open(filename, 'rb'))
 
 canples = Flask(__name__)
 
-year = '2020'
+year = '2019'
 def load_main_files(year):
     results = pd.read_csv(f'datasets/{year}/cpl-{year}-results.csv') # get current year results
     if year == '2019':
@@ -131,10 +131,10 @@ def index():
 
 @canples.route('/index2', methods=['POST'])
 def index2():
-    global year
+    '''global year
     global results, schedule, results_old
     global stats, team_ref, current_teams, team_stats, results_brief, colours
-    global rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers
+    global rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers'''
     na = 'NA'
 
     year_switch = request.form['year_switch']
