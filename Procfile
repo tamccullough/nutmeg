@@ -1,1 +1,1 @@
-web: gunicorn canples:__init__
+web: gunicorn canples:app
