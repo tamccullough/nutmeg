@@ -3,6 +3,8 @@
 ## canpl-es
 A (WIP) expert system to analyse the satistics and results of the Canadian Premier League
 
+Using GaussianNB() and RandomForestClassifier() to make the match predictions between teams as games are listed in the schedule.
+
 ### The League
 [canpl.ca](https://canpl.ca/)
 
