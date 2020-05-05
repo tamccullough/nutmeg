@@ -542,7 +542,7 @@ def get_home_away_comparison(stats,game,team):
     db = db['name']
     return db
 
-def get_compare_roster(query,results,stats,team_ref):
+def get_compare_roster(query,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers):
     # going through the rated players to get the best players for each position
     # using game_h,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,results,team_stats
     roster = get_roster(query,stats,team_ref)
@@ -551,24 +551,24 @@ def get_compare_roster(query,results,stats,team_ref):
     midfields = []
     defenders = []
     for name in roster['name']:
-        for f in range(roster.shape[0]): # grab players from each position that played in the game
-            if roster.loc[f]['position'] == 'f':
-                player = roster.loc[f].copy()
+        for f in range(rated_forwards.shape[0]): # grab players from each position that played in the game
+            if rated_forwards.loc[f]['name'] == name:
+                player = rated_forwards.loc[f].copy()
                 player['asc'] = 0
                 forwards.append(player)
-        for f in range(roster.shape[0]):
-            if roster.loc[f]['position'] == 'm':
-                player = roster.loc[f].copy()
+        for f in range(rated_midfielders.shape[0]):
+            if rated_midfielders.loc[f]['name'] == name:
+                player = rated_midfielders.loc[f].copy()
                 player['asc'] = 1
                 midfields.append(player)
-        for f in range(roster.shape[0]):
-            if roster.loc[f]['position'] == 'd':
-                player = roster.loc[f].copy()
+        for f in range(rated_defenders.shape[0]):
+            if rated_defenders.loc[f]['name'] == name:
+                player = rated_defenders.loc[f].copy()
                 player['asc'] = 2
                 defenders.append(player)
-        for f in range(roster.shape[0]):
-            if roster.loc[f]['position'] == 'g':
-                player = roster.loc[f].copy()
+        for f in range(rated_keepers.shape[0]):
+            if rated_keepers.loc[f]['name'] == name:
+                player = rated_keepers.loc[f].copy()
                 player['asc'] = 3
                 keepers.append(player)
     db = pd.DataFrame(keepers)
@@ -585,7 +585,7 @@ def get_compare_roster(query,results,stats,team_ref):
         db = db.sort_values(by=['asc'],ascending=False)
     else:
         db = db.sort_values(by=['asc','overall'],ascending=False)
-
+    db = index_reset(db)
     db.pop('asc')
     return db
 
