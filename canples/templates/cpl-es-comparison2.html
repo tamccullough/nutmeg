@@ -8,7 +8,8 @@
       <img src="{{ url_for('static', filename='images/cpl_logo.png') }}" class="w3-circle w3-margin-right" style="width:46px">
     </div>
     <div class="w3-col s8 w3-bar">
-      <span class="w3-xlarge"><strong>CanPL Stats</strong></span>
+      <button class="w3-button w3-xlarge">{{ year }} Season</button>
+    </div>
     </div>
   </div>
   <hr>
@@ -36,7 +37,7 @@
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-eye"></i> CanPL Comparison</b></h5>
+    <h5><b><i class="fa fa-eye"></i> CPL Versus Comparison</b></h5>
   </header>
 
   <div class="w3-container w3-row-padding w3-margin-bottom">
@@ -44,26 +45,26 @@
     <h5>This Weeks Matches</h5>
     <div class="w3-quarter">
       <div class="w3-grey">
-        <div class="w3-half w3-cyan"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home" name="home" value="{{schedule.iloc[0]['home']}}"/></a></div>
-        <div class="w3-half  w3-padding w3-light-green">{{schedule.iloc[0]['away']}}</div>
+        <div class="w3-half w3-cyan"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home" name="home" value="{{ team1 }}"/></a></div>
+        <div class="w3-half  w3-padding w3-light-green">{{ team2 }}</div>
       </div>
     </div>
     <div class="w3-quarter">
       <div class="w3-grey">
-        <div class="w3-half w3-cyan"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home" name="home" value="{{schedule.iloc[1]['home']}}"/></a></div>
-        <div class="w3-half w3-padding w3-light-green">{{schedule.iloc[1]['away']}}</div>
+        <div class="w3-half w3-cyan"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home" name="home" value="{{ team3 }}"/></a></div>
+        <div class="w3-half w3-padding w3-light-green">{{ team4 }}</div>
       </div>
     </div>
     <div class="w3-quarter">
       <div class="w3-grey">
-        <div class="w3-half w3-cyan"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home" name="home" value="{{schedule.iloc[2]['home']}}"/></a></div>
-        <div class="w3-half w3-padding w3-light-green">{{schedule.iloc[2]['away']}}</div>
+        <div class="w3-half w3-cyan"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home" name="home" value="{{ team5 }}"/></a></div>
+        <div class="w3-half w3-padding w3-light-green">{{ team6 }}</div>
       </div>
     </div>
     <div class="w3-quarter">
       <div class="w3-grey">
-        <div class="w3-half w3-cyan"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home" name="home" value="{{schedule.iloc[3]['home']}}"/></a></div>
-        <div class="w3-half w3-padding w3-light-green">{{schedule.iloc[3]['away']}}</div>
+        <div class="w3-half w3-cyan"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home" name="home" value="{{ team7 }}"/></a></div>
+        <div class="w3-half w3-padding w3-light-green">{{ team8 }}</div>
       </div>
     </div>
     </form>
@@ -79,7 +80,7 @@
         <div class="w3-clear"></div>
         <h4>Home Team</h4>
       </div>
-      <div class="w3-padding {{'w3-green' if home_win*100 > away_win*100 else 'w3-red' if home_win*100 < away_win*100 }} else 'w3-orange}}">
+      <div class="w3-padding {{ 'w3-green' if home_win*100 > away_win*100 else 'w3-red' if home_win*100 < away_win*100 else 'w3-orange'}}">
         <h4>{{home_win*100}}% Win</h4>
       </div>
       <div class="w3-grey">
@@ -107,7 +108,7 @@
         <div class="w3-clear"></div>
         <h4>Away Team</h4>
       </div>
-      <div <div class="w3-padding {{'w3-green' if away_win*100 > home_win*100 else 'w3-red' if away_win*100 < home_win*100 }} else 'w3-orange}}">
+      <div <div class="w3-padding {{ 'w3-green' if away_win*100 > home_win*100 else 'w3-red' if away_win*100 < home_win*100 else 'w3-orange'}}">
         <h4>{{away_win*100}}% Win</h4>
       </div>
       <div class="w3-grey">

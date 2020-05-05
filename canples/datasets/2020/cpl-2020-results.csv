@@ -1,29 +1,9 @@
 game,s,d,m,hs,as,home,hr,away,ar,csh,csa,combined,venue,links
-II1,1,25,5,0,1,Atletico Ottawa,L,Cavalry FC,W,0,0,25-1-2019 1 Atletico Ottawa 5-0 Cavalry FC L,TD Place Stadium,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II2,1,25,5,1,1,Atletico Ottawa,D,FC Edmonton,D,0,0,25-1-2019 1 Atletico Ottawa 5-1 FC Edmonton D,TD Place Stadium,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II3,1,25,5,0,1,Atletico Ottawa,L,Forge FC,W,0,0,25-1-2019 1 Atletico Ottawa 5-0 Forge FC L,TD Place Stadium,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II4,1,25,5,1,1,Atletico Ottawa,D,HFX Wanderers FC,D,0,0,25-1-2019 1 Atletico Ottawa 5-1 HFX Wanderers FC D,TD Place Stadium,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II5,1,25,5,0,1,Atletico Ottawa,L,Pacific FC,W,0,0,25-1-2019 1 Atletico Ottawa 5-0 Pacific FC L,TD Place Stadium,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II6,1,25,5,1,1,Atletico Ottawa,D,Valour FC,D,0,0,25-1-2019 1 Atletico Ottawa 5-1 Valour FC D,TD Place Stadium,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II7,1,25,5,0,1,Atletico Ottawa,L,York9 FC,W,0,0,25-1-2019 1 Atletico Ottawa 5-0 York9 FC L,TD Place Stadium,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II8,1,25,5,1,0,Cavalry FC,W,FC Edmonton,L,0,0,25-1-2019 0 Cavalry FC 5-1 FC Edmonton W,ATCO Field,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II9,1,25,5,0,1,Cavalry FC,L,Forge FC,W,0,0,25-1-2019 1 Cavalry FC 5-0 Forge FC L,ATCO Field,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II10,1,25,5,1,0,Cavalry FC,W,HFX Wanderers FC,L,0,0,25-1-2019 0 Cavalry FC 5-1 HFX Wanderers FC W,ATCO Field,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II11,1,25,5,1,0,Cavalry FC,W,Pacific FC,L,0,0,25-1-2019 0 Cavalry FC 5-1 Pacific FC W,ATCO Field,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II12,1,25,5,1,0,Cavalry FC,W,Valour FC,L,0,0,25-1-2019 0 Cavalry FC 5-1 Valour FC W,ATCO Field,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II13,1,25,5,0,1,York9 FC,L,Cavalry FC,W,0,0,25-1-2019 1 York9 FC 5-0 Cavalry FC L,York Lions Stadium,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II14,1,25,5,0,1,FC Edmonton,L,Forge FC,W,0,0,25-1-2019 1 FC Edmonton 5-0 Forge FC L,Clarke Stadium,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II15,1,25,5,1,0,FC Edmonton,W,HFX Wanderers FC,L,0,0,25-1-2019 0 FC Edmonton 5-1 HFX Wanderers FC W,Clarke Stadium,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II16,1,25,5,1,0,FC Edmonton,W,Pacific FC,L,0,0,25-1-2019 0 FC Edmonton 5-1 Pacific FC W,Clarke Stadium,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II17,1,25,5,0,1,FC Edmonton,L,Valour FC,W,0,0,25-1-2019 1 FC Edmonton 5-0 Valour FC L,Clarke Stadium,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II18,1,25,5,0,1,FC Edmonton,L,York9 FC,W,0,0,25-1-2019 1 FC Edmonton 5-0 York9 FC L,Clarke Stadium,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II19,1,25,5,1,1,Forge FC,D,HFX Wanderers FC,D,0,0,25-1-2019 1 Forge FC 5-1 HFX Wanderers FC D,Tim Hortons Field,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II20,1,25,5,1,0,Forge FC,W,Pacific FC,L,0,0,25-1-2019 0 Forge FC 5-1 Pacific FC W,Tim Hortons Field,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II21,1,25,5,1,0,Forge FC,W,Valour FC,L,0,0,25-1-2019 0 Forge FC 5-1 Valour FC W,Tim Hortons Field,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II22,1,25,5,1,0,Forge FC,W,York9 FC,L,0,0,25-1-2019 0 Forge FC 5-1 York9 FC W,Tim Hortons Field,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II23,1,25,5,0,1,HFX Wanderers FC,L,Pacific FC,W,0,0,25-1-2019 1 HFX Wanderers FC 5-0 Pacific FC L,Wanderers Grounds,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II24,1,25,5,1,1,HFX Wanderers FC,D,Valour FC,D,0,0,25-1-2019 1 HFX Wanderers FC 5-1 Valour FC D,Wanderers Grounds,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II25,1,25,5,1,0,HFX Wanderers FC,W,York9 FC,L,0,0,25-1-2019 0 HFX Wanderers FC 5-1 York9 FC W,Wanderers Grounds,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II26,1,25,5,1,0,Pacific FC,W,Valour FC,L,0,0,25-1-2019 0 Pacific FC 5-1 Valour FC W,Westhills Stadium,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II27,1,25,5,0,1,Pacific FC,L,York9 FC,W,0,0,25-1-2019 1 Pacific FC 5-0 York9 FC L,Westhills Stadium,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
-II28,1,25,5,1,1,Valour FC,D,York9 FC,D,0,0,25-1-2019 1 Valour FC 5-1 York9 FC D,IG Field,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
+II1,1,25,5,0,0,Forge FC,E,Cavalry FC,E,0,0,5-25-2019 Forge FC E 0-0 D Cavalry FC,Tim Hortons Field,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
+II2,1,25,5,0,0,Pacific FC,E,FC Edmonton,E,0,0,5-25-2019 Pacific FC E 0-0 D FC Edmonton,Westhills Stadium,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
+II3,1,25,5,0,0,York9 FC,E,HFX Wanderers FC,E,0,0,5-25-2019 York9 FC E 0-0 D HFX Wanderers FC,York Lions Stadium,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
+II4,1,25,5,0,0,Valour FC,E,Atletico Ottawa,E,0,0,5-25-2019 Valour FC E 0-0 D Atletico Ottawa,IG Field,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
+II5,1,4,6,0,0,FC Edmonton,E,Valour FC,E,0,0,6-4-2019 FC Edmonton E 0-0 D Valour FC,Clarke Stadium,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
+II6,1,4,6,0,0,Atletico Ottawa,E,York9 FC,E,0,0,6-4-2019 Atletico Ottawa E 0-0 D York9 FC,TD Place Stadium,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
+II7,1,4,6,0,0,Cavalry FC,E,Pacific FC,E,0,0,6-4-2019 Cavalry FC E 0-0 D Pacific FC,ATCO Field,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights
+II8,1,4,6,0,0,HFX Wanderers FC,E,Forge FC,E,0,0,6-4-2019 HFX Wanderers FC E 0-0 D Forge FC,Wanderers Grounds,https://canpl.ca/matchcentre/4ilfbdmlp4zuj7k3cene3m5wq/highlights

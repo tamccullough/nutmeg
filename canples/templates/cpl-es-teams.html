@@ -8,7 +8,8 @@
       <img src="{{ url_for('static', filename='images/cpl_logo.png') }}" class="w3-circle w3-margin-right" style="width:46px">
     </div>
     <div class="w3-col s8 w3-bar">
-      <span class="w3-xlarge"><strong>CanPL Stats</strong></span>
+      <button class="w3-button w3-xlarge">{{ year }} Season</button>
+    </div>
     </div>
   </div>
   <hr>
@@ -36,53 +37,26 @@
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-trophy"></i> CanPL 2020 Teams</b></h5>
+    <h5><b><i class="fa fa-trophy"></i> CPL Teams</b></h5>
   </header>
 
   <div class="w3-container">
     <form method="POST" action="/roster">
-    <table class="w3-table w3-bordered w3-border w3-hoverable w3-white">
-      <!-- tr class="w3-vivid-red">
-        <td><a href="{{ url_for('roster') }}"><input class="w3-button" type="submit" id="team" name="team" value="Atletico Ottawa"/></a></td>
-        <td>Ottawa</td>
-        <td>Ontario</td -->
-      </tr>
-      <tr class="w3-2019-fiesta">
-        <td><a href="{{ url_for('roster') }}"><input class="w3-button" type="submit" id="team" name="team" value="Cavalry FC"/></a></td>
-        <td>Calgary</td>
-        <td>Alberta</td>
-      </tr>
-      <tr class="w3-2019-princess-blue">
-        <td><a href="{{ url_for('roster') }}"><input class="w3-button" type="submit" id="team" name="team" value="FC Edmonton"/></a></td>
-        <td>Edmonton</td>
-        <td>Alberta</td>
-      </tr>
-      <tr class="w3-2019-turmeric">
-        <td><a href="{{ url_for('roster') }}"><input class="w3-button" type="submit" id="team" name="team" value="Forge FC"/></a></td>
-        <td>Hamilton</td>
-        <td>Ontario</td>
-      </tr>
-      <tr class="w3-vivid-blue">
-        <td><a href="{{ url_for('roster') }}"><input class="w3-button" type="submit" id="team" name="team" value="HFX Wanderers"/></a></td>
-        <td>Halifax</td>
-        <td>Nova Scotia</td>
-      </tr>
-      <tr class="w3-vivid-reddish-purple">
-        <td><a href="{{ url_for('roster') }}"><input class="w3-button" type="submit" id="team" name="team" value="Pacific FC"/></a></td>
-        <td>Langford</td>
-        <td>British Colombia</td>
-      </tr>
-      <tr class="w3-2019-biking-red">
-        <td><a href="{{ url_for('roster') }}"><input class="w3-button" type="submit" id="team" name="team" value="Valour FC"/></a></td>
-        <td>Winnipeg</td>
-        <td>Manitoba</td>
-      </tr>
-      <tr class="w3-vivid-yellowish-green">
-        <td><a href="{{ url_for('roster') }}"><input class="w3-button" type="submit" id="team" name="team" value="York9 FC"/></a></td>
-        <td>York Region</td>
-        <td>Ontario</td>
-      </tr>
-    </table>
+      <table class="w3-table w3-white">
+        <tr>
+        {%for col in html_table.columns[0:-1]%}
+  					<th>{{ col }}</th>
+  			{%endfor%}
+        </tr>
+        {%for i in range(0,html_table.shape[0])%}
+        <tr class="{{ html_table.iloc[i,3] }}">
+          <td><a href="{{ url_for('roster') }}"><input class="w3-button" type="submit" id="team" name="team" value="{{ html_table.iloc[i,0] }}"/></a></td>
+            {%for r in range(1,html_table.shape[1]-1)%}
+            <td>{{ html_table.iloc[i,r] }}</td>
+            {%endfor%}
+        </tr>
+        {%endfor%}
+      </table>
     </form>
   </div>
   <hr>

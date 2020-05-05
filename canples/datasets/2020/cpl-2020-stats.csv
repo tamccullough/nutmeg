@@ -1,0 +1,153 @@
+game,team,position,number,name,first,last,minutes,touches,passes,pass accuracy,crosses,cross accuracy,assists,chances,goals,shots,shots on target,shots in box,shots outside box,tackles,tackles won,duels,duels won,clearances,interceptions,yellow,red,fouls won,fouls conceded,shots faced,saves,claimed crosses,clean sheets
+II1,Atletico Ottawa,m,0,Ajay Khabra,Ajay,Khabra,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atletico Ottawa,m,0,Antoine Coupland,Antoine,Coupland,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atletico Ottawa,m,0,Ben Fisk,Ben,Fisk,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atletico Ottawa,m,0,Bernardinho,Bernardinho,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atletico Ottawa,d,0,Brandon John,Brandon,John,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atletico Ottawa,m,0,Francisco Acuña,Francisco,Acuña,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atletico Ottawa,f,0,Kunle Dada-Luke,Kunle,Dada-Luke,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atletico Ottawa,m,0,Malyk Hamilton,Malyk,Hamilton,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atletico Ottawa,m,0,Michel Djaozandry,Michel,Djaozandry,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atletico Ottawa,g,0,Nacho Zabal,Nacho,Zabal,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atletico Ottawa,g,0,Ricky Gomes,Ricky,Gomes,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atletico Ottawa,m,0,Tevin Shaw,Tevin,Shaw,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atletico Ottawa,d,0,Vashon Neufville,Vashon,Neufville,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atletico Ottawa,m,0,Viti Martínez,Viti,Martínez,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Cavalry FC,f,24,Aribim Pepple,Aribim,Pepple,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Cavalry FC,m,16,Bruno Zebie,Bruno,Zebie,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Cavalry FC,d,4,Dominick Zator,Dominick,Zator,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Cavalry FC,m,8,Elijah Adekugbe,Elijah,Adekugbe,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Cavalry FC,m,15,Elliot Simmons,Elliot,Simmons,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Cavalry FC,f,19,Jair Córdova,Jair,Córdova,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Cavalry FC,d,14,Jay Wheeldon,Jay,Wheeldon,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Cavalry FC,f,9,Jordan Brown,Jordan,Brown,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Cavalry FC,m,11,José Escalante,José,Escalante,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Cavalry FC,f,20,José Hernández,José,Hernández,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Cavalry FC,g,1,Marco Carducci,Marco,Carducci,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Cavalry FC,d,5,Mason Trafford,Mason,Trafford,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Cavalry FC,d,0,Mohamed Farsi,Mohamed,Farsi,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Cavalry FC,d,3,Nathan Mavila,Nathan,Mavila,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Cavalry FC,f,17,Nico Pasquotti,Nico,Pasquotti,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Cavalry FC,m,6,Nik Ledgerwood,Nik,Ledgerwood,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Cavalry FC,g,22,Niko Giantsopoulos,Niko,Giantsopoulos,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Cavalry FC,f,7,Oliver Minatel,Oliver,Minatel,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Cavalry FC,m,23,Richard Luca,Richard,Luca,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Cavalry FC,d,0,Robert Boskovic,Robert,Boskovic,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Cavalry FC,m,10,Sergio Camargo,Sergio,Camargo,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,d,4,Allan Zebie,Allan,Zebie,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,d,55,Amer Đidić,Amer,Đidić,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,m,0,Anthony Caceres,Anthony,Caceres,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,m,0,Chance Carter,Chance,Carter,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,g,31,Chris Ezoua,Chris,Ezoua,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,g,1,Connor James,Connor,James,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,f,26,David Doe,David,Doe,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,d,0,Duran Lee,Duran,Lee,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,g,13,Dylon Powley,Dylon,Powley,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,f,19,Easton Ongaro,Easton,Ongaro,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,m,6,Edem Mortotsi,Edem,Mortotsi,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,m,0,Erik Zetterberg,Erik,Zetterberg,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,m,0,Hanson Boakai,Hanson,Boakai,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,d,3,Jeannot Esua,Jeannot,Esua,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,d,12,Kareem Moses,Kareem,Moses,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,m,0,Keven Alemán,Keven,Alemán,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,f,17,Marcus Velado-Tsegaye,Marcus,Velado-Tsegaye,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,d,8,Mélé Temguia,Mélé,Temguia,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,f,16,Prince Amanda,Prince,Amanda,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,d,5,Ramόn Soria,Ramόn,Soria,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,m,0,Raúl Tito,Raúl,Tito,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,m,7,Son Yong-chan,Son,Yong-chan,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,f,18,Tomi Ameobi,Tomi,Ameobi,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Forge FC,m,13,Alexander Achinioti-Jönsson,Alexander,Achinioti-Jönsson,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Forge FC,f,11,Chris Nanco,Chris,Nanco,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Forge FC,d,5,Daniel Krutzen,Daniel,Krutzen,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Forge FC,m,7,David Choinière,David,Choinière,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Forge FC,d,30,David Edgar,David,Edgar,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Forge FC,g,0,David Monsalve,David,Monsalve,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Forge FC,d,4,Dominic Samuel,Dominic,Samuel,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Forge FC,m,3,Elimane Cissé,Elimane,Cissé,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Forge FC,m,8,Giuliano Frano,Giuliano,Frano,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Forge FC,d,2,Jonathan Grant,Jonathan,Grant,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Forge FC,f,17,Kadell Thomas,Kadell,Thomas,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Forge FC,d,16,Klaidi Cela,Klaidi,Cela,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Forge FC,d,6,Kwame Awuah,Kwame,Awuah,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Forge FC,m,10,Kyle Bekker,Kyle,Bekker,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Forge FC,f,9,Marcel Zajac,Marcel,Zajac,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Forge FC,d,22,Monti Mohsen,Monti,Mohsen,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Forge FC,g,1,Triston Henry,Triston,Henry,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,HFX Wanderers FC,m,17,Aboubacar Sissoko,Aboubacar,Sissoko,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,HFX Wanderers FC,f,11,Akeem Garcia,Akeem,Garcia,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,HFX Wanderers FC,f,10,Alessandro Riggi,Alessandro,Riggi,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,HFX Wanderers FC,d,24,Alex De Carolis,Alex,DeCarolis,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,HFX Wanderers FC,m,7,Alex Marshall,Alex,Marshall,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,HFX Wanderers FC,m,18,Andre Rampersad,Andre,Rampersad,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,HFX Wanderers FC,d,6,Chrisnovic N'sa,Chrisnovic,N'sa,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,HFX Wanderers FC,g,50,Christian Oxner,Christian,Oxner,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,HFX Wanderers FC,d,13,Daniel Kinumbe,Daniel,Kinumbe,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,HFX Wanderers FC,d,31,Eriks Santos,Eriks,Santos,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,HFX Wanderers FC,f,9,Ibrahima Sanoh,Ibrahima,Sanoh,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,HFX Wanderers FC,g,1,Jason Beaulieu,Jason,Beaulieu,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,HFX Wanderers FC,d,3,Jems Geffrard,Jems,Geffrard,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,HFX Wanderers FC,f,22,João Morelli,João,Morelli,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,HFX Wanderers FC,m,5,Louis Béland-Goyette,Louis,Béland-Goyette,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,HFX Wanderers FC,d,14,Mateo Restrepo,Mateo,Restrepo,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,HFX Wanderers FC,m,8,Omar Kreim,Omar,Kreim,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,HFX Wanderers FC,d,2,Peter Schaale,Peter,Schaale,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,HFX Wanderers FC,m,15,Scott Firth,Scott,Firth,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Pacific FC,d,0,Abdou Samake,Abdou,Samake,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Pacific FC,f,0,Alejandro Díaz,Alejandro,Díaz,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Pacific FC,m,21,Alessandro Hojabrpour,Alessandro,Hojabrpour,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Pacific FC,g,0,Callum Irving,Callum,Irving,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Pacific FC,m,0,Jamar Dixon,Jamar,Dixon,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Pacific FC,d,7,Kadin Chung,Kadin,Chung,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Pacific FC,d,6,Lukas MacNaughton,Lukas,MacNaughton,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Pacific FC,d,17,Marcel de Jong,Marcel,deJong,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Pacific FC,m,0,Marco Bustos,Marco,Bustos,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Pacific FC,m,8,Matthew Baldisimo,Matthew,Baldisimo,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Pacific FC,m,19,Noah Verhoeven,Noah,Verhoeven,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Pacific FC,g,1,Nolan Wirth,Nolan,Wirth,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Pacific FC,f,14,Terran Campbell,Terran,Campbell,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Pacific FC,d,0,Thomas Meilleur-Giguère,Thomas,Meilleur-Giguère,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Pacific FC,m,23,Víctor Blasco,Víctor,Blasco,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Pacific FC,m,16,Zach Verhoven,Zach,Verhoven,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Valour FC,d,0,Amir Soto,Amir,Soto,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Valour FC,d,0,Andrew Jean-Baptiste,Andrew,Jean-Baptiste,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Valour FC,d,0,Arnold Bouka Moutou,Arnold,BoukaMoutou,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Valour FC,m,0,Brett Levis,Brett,Levis,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Valour FC,f,0,Daryl Fordyce,Daryl,Fordyce,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Valour FC,m,8,Diego Gutiérrez,Diego,Gutiérrez,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Valour FC,m,10,Dylan Carreiro,Dylan,Carreiro,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Valour FC,f,77,Federico Peña,Federico,Peña,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Valour FC,m,0,Fraser Aird,Fraser,Aird,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Valour FC,g,0,James Pantemis,James,Pantemis,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Valour FC,m,21,José Galán,José,Galán,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Valour FC,f,0,Masta Kacher,Masta,Kacher,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Valour FC,f,17,Michele Paolucci,Michele,Paolucci,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Valour FC,m,0,Moses Dyer,Moses,Dyer,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Valour FC,m,14,Nicolás Galvis,Nicolás,Galvis,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Valour FC,m,27,Raphael Ohin,Raphael,Ohin,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Valour FC,d,2,Raphaël Garcia,Raphaël,Garcia,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Valour FC,m,0,Solomon Kojo Antwi,Solomon,KojoAntwi,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Valour FC,m,0,Stefan Cebara,Stefan,Cebara,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Valour FC,g,1,Tyson Farago,Tyson,Farago,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Valour FC,d,25,Yohan Le Bourhis,Yohan,LeBourhis,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,York9 FC,f,0,Adrián Ugarriza,Adrián,Ugarriza,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,York9 FC,m,0,Brian López,Brian,López,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,York9 FC,m,0,Chris Mannella,Chris,Mannella,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,York9 FC,g,31,Colm Vance,Colm,Vance,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,York9 FC,d,20,Diyaeddine Abzi,Diyaeddine,Abzi,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,York9 FC,m,11,Emilio Estevez,Emilio,Estevez,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,York9 FC,d,0,Fugo Segawa,Fugo,Segawa,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,York9 FC,f,0,Gabriel Vasconcelos,Gabriel,Vasconcelos,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,York9 FC,f,0,Jacó,Jacó,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,York9 FC,m,8,Joseph Di Chiara,Joseph,DiChiara,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,York9 FC,m,19,Kyle Porter,Kyle,Porter,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,York9 FC,d,13,Luca Gasparotto,Luca,Gasparotto,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,York9 FC,m,10,Manny Aparicio,Manny,Aparicio,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,York9 FC,d,0,Matthew Arnone,Matthew,Arnone,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,York9 FC,m,0,Max Ferrari,Max,Ferrari,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,York9 FC,m,21,Michael Petrasso,Michael,Petrasso,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,York9 FC,d,3,Morey Doner,Morey,Doner,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,York9 FC,g,29,Nathan Ingham,Nathan,Ingham,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,York9 FC,f,0,Nicholas Hamilton,Nicholas,Hamilton,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,York9 FC,d,6,Roger Thompson,Roger,Thompson,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,York9 FC,m,23,Wataru Murofushi,Wataru,Murofushi,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
