@@ -79,8 +79,8 @@ def get_files(stats,game,q1,q2):
     home_win, draw, away_win = cpl_main.get_match_prediction(q1,q2,t1_x,t1_y,t2_x,t2_y)
     home_form = cpl_main.get_five_game_form(results,q1)
     away_form = cpl_main.get_five_game_form(results,q2)
-    home_roster = cpl_main.get_compare_roster(q1,game_h,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,results,team_stats,team_ref)
-    away_roster = cpl_main.get_compare_roster(q2,game_a,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,results,team_stats,team_ref)
+    home_roster = cpl_main.get_compare_roster(q1,results,stats,team_ref)
+    away_roster = cpl_main.get_compare_roster(q2,results,stats,team_ref)
     q1_roster = cpl_main.get_overall_roster(home_roster)
     q2_roster = cpl_main.get_overall_roster(away_roster)
     home_win, away_win, draw = cpl_main.get_final_game_prediction(cpl_classifier_model,q1_roster,q2_roster,home_win,away_win,draw)
@@ -241,9 +241,7 @@ def roster():
     team = request.form['team']
     colour = team_ref[team_ref['team'] == team].copy()
     colour = colour.iloc[0]['colour']
-    roster = cpl_main.get_stats_all(stats,team_ref)
-    roster = roster[roster['team'] == team]
-    roster = roster[['team','name','number','position']]
+    roster = cpl_main.get_roster(team,stats,team_ref)
     return render_template('cpl-es-roster.html',html_table = roster, team_colour = colour, year = year)
 
 @canples.route('/goals')

@@ -210,7 +210,6 @@ def get_weeks_results(data,standings,dc):
         max_home_win = max_away
     big_win = max_home_win[['home','hs','away','as']]
     big_win = index_reset(big_win)
-    print('big_win', big_win)
     big_win = get_short_name(big_win,dc)
     big_win = pd.DataFrame(big_win.loc[0])
     big_win = big_win.T
@@ -276,7 +275,7 @@ def top_goalscorers(data):
         db = pd.DataFrame([('NA',0,0,0,0)],columns=['team','name','number','minutes','goals'])
         return db
     df = data.copy()
-    cols = ['team','name','number','minutes','goals']
+    cols = ['team','name','position','number','minutes','goals']
     db = df[cols]
     db = db.sort_values(by=['goals'],ascending=False)
     db = db.reset_index()
@@ -291,7 +290,7 @@ def top_assists(data):
         db = pd.DataFrame([('NA',0,0,0,0)],columns=['team','name','number','minutes','assists'])
         return db
     df = data.copy()
-    cols = ['team','name','number','minutes','assists']
+    cols = ['team','name','position','number','minutes','assists']
     db = df[cols]
     db = get_evaluation(db,df)
     db = db.sort_values(by=['assists'],ascending=False)
@@ -307,7 +306,7 @@ def top_forwards(data): # get the forwards in the league
         db = pd.DataFrame([('NA',0,0,0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','minutes','goals','chances','assists','shots','shots on target','passes','crosses','duels','tackles'])
         return db
     player_information = data.copy() # load player information
-    cols = ['team','name','number','minutes','goals','chances','assists','shots','shots on target','passes','crosses','duels','tackles']
+    cols = ['team','name','position','number','minutes','goals','chances','assists','shots','shots on target','passes','crosses','duels','tackles']
     df = player_information[player_information['position'] == 'f'] # get the forwards where position = f
     db = df[cols] # select specific columns associated with the evaluation
     db = get_evaluation(db,df)
@@ -316,18 +315,14 @@ def top_forwards(data): # get the forwards in the league
     db = db.set_index('name') # set the index to the name column to make the search possible
     for name in names:
         player = df[df['name'] == name].head(1) # forwards main purpose is to score goals
-        '''if (player.iloc[0]['goals'] <= 2.0 and player.iloc[0]['minutes'] >= 1000.0): # if player scores less than 2 & has minutes greater than 1000
-            db.at[name,'overall'] = db.at[name,'overall'] - 0.2
+        if (player.iloc[0]['goals'] <= 2.0 and player.iloc[0]['minutes'] >= 1000.0): # if player scores less than 2 & has minutes greater than 1000
+            db.at[name,'overall'] = db.at[name,'overall'] - 0.1
         if player.iloc[0]['goals'] >= 8.0: # reward forwards scoring greater than 8 goals
-            db.at[name,'overall'] = db.at[name,'overall'] + 0.1'''
+            db.at[name,'overall'] = db.at[name,'overall'] + 0.15
     db = db.sort_values(by=['overall'],ascending=False)
     db = db.reset_index()
     team = db.pop('team')
     db.insert(0,'team',team)
-    #db = db.fillna(0)
-    # .apply(lambda x: value if condition else new_value)
-    #db['overall'] = db['overall'].apply(lambda x: [ y if y < 1.0 else 0.0 for y in x ])
-    #db[db['overall'] > 1] = 0
     return db
 
 def top_midfielders(data): # get the midfielders in the league
@@ -335,7 +330,7 @@ def top_midfielders(data): # get the midfielders in the league
         db = pd.DataFrame([('NA',0,0,0,0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','minutes','goals','assists','touches','passes','pass accuracy','crosses','cross accuracy','chances','duels','tackles'])
         return db
     player_information = data.copy()
-    cols = ['team','name','number','minutes','goals','assists','touches','passes','pass accuracy','crosses','cross accuracy','chances','duels','tackles']
+    cols = ['team','name','position','number','minutes','goals','assists','touches','passes','pass accuracy','crosses','cross accuracy','chances','duels','tackles']
     df = player_information[player_information['position'] == 'm'] # get the midfields where position = m
     db = df[cols]
     db = get_evaluation(db,df)
@@ -352,8 +347,6 @@ def top_midfielders(data): # get the midfielders in the league
     db = db.reset_index()
     team = db.pop('team')
     db.insert(0,'team',team)
-    #db = db.fillna(0)
-    #db[db['overall'] > 1] = 0
     return db
 
 def top_defenders(data):  # get the defenders in the league
@@ -361,15 +354,13 @@ def top_defenders(data):  # get the defenders in the league
         db = pd.DataFrame([('NA',0,0,0,0,0,0,0,0,0)],columns=['team','name','number','minutes','tackles','tackles won','clearances','interceptions','duels','duels won'])
         return db
     player_information = data.copy()
-    cols = ['team','name','number','minutes','tackles','tackles won','clearances','interceptions','duels','duels won']
+    cols = ['team','name','position','number','minutes','tackles','tackles won','clearances','interceptions','duels','duels won']
     df = player_information[player_information['position'] == 'd'] # get the defenders where position = d
     db = df[cols]
     db = get_evaluation(db,df)
     db = index_reset(db)
     team = db.pop('team')
     db.insert(0,'team',team)
-    #db = db.fillna(0)
-    #db[db['overall'] > 1] = 0
     return db
 
 def top_keepers(data):  # get the keepers in the league
@@ -377,15 +368,13 @@ def top_keepers(data):  # get the keepers in the league
         db = pd.DataFrame([('NA',0,0,0,0,0,0,0)],columns=['team','name','number','minutes','clean sheets','saves','shots faced','claimed crosses'])
         return db
     player_information = data.copy()
-    cols = ['team','name','number','minutes','clean sheets','saves','shots faced','claimed crosses']
+    cols = ['team','name','position','number','minutes','clean sheets','saves','shots faced','claimed crosses']
     df = player_information[player_information['position'] == 'g'] # get the goalkeepers where position = g
     db = df[cols]
     db = get_evaluation(db,df)
     db = index_reset(db)
     team = db.pop('team')
     db.insert(0,'team',team)
-    #db = db.fillna(0)
-    #db[db['overall'] > 1] = 0
     return db
 
 def top_offenders(data):  # get the offences handed out in the league
@@ -393,7 +382,7 @@ def top_offenders(data):  # get the offences handed out in the league
         db = pd.DataFrame([('NA',0,0,0,0,0,0)],columns=['team','name','number','minutes','yellow','red','fouls conceded'])
         return db
     player_information = data.copy()
-    cols = ['team','name','number','minutes','yellow','red','fouls conceded']
+    cols = ['team','name','position','number','minutes','yellow','red','fouls conceded']
     df = player_information
     db = df[cols]
     db = get_evaluation(db,df)
@@ -402,8 +391,6 @@ def top_offenders(data):  # get the offences handed out in the league
     db.pop('index')
     team = db.pop('team')
     db.insert(0,'team',team)
-    #db = db.fillna(0)
-    #db[db['overall'] > 1] = 0
     return db
 
 def get_match_tables(data,query):
@@ -542,9 +529,9 @@ def get_form_results(data,dc):
 def get_roster(query,stats,team_ref): # use team stats to get the player information
     roster = get_stats_all(stats,team_ref)
     roster = roster[roster['team'] == query]
-    roster = roster[['name','number']]
-    roster.insert(2,'overall',0)
-    roster = roster.head(11)
+    roster = roster[['name','number','position']]
+    roster.insert(3,'overall',0)
+    roster = index_reset(roster)
     return roster
 
 def get_home_away_comparison(stats,game,team):
@@ -555,33 +542,51 @@ def get_home_away_comparison(stats,game,team):
     db = db['name']
     return db
 
-def get_compare_roster(query,game,for_,mid_,def_,keep_,results,stats,team_ref):
+def get_compare_roster(query,results,stats,team_ref):
     # going through the rated players to get the best players for each position
     # using game_h,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,results,team_stats
+    roster = get_roster(query,stats,team_ref)
+    keepers = [] # lists for each position
+    forwards = []
+    midfields = []
+    defenders = []
+    for name in roster['name']:
+        for f in range(roster.shape[0]): # grab players from each position that played in the game
+            if roster.loc[f]['position'] == 'f':
+                player = roster.loc[f].copy()
+                player['asc'] = 0
+                forwards.append(player)
+        for f in range(roster.shape[0]):
+            if roster.loc[f]['position'] == 'm':
+                player = roster.loc[f].copy()
+                player['asc'] = 1
+                midfields.append(player)
+        for f in range(roster.shape[0]):
+            if roster.loc[f]['position'] == 'd':
+                player = roster.loc[f].copy()
+                player['asc'] = 2
+                defenders.append(player)
+        for f in range(roster.shape[0]):
+            if roster.loc[f]['position'] == 'g':
+                player = roster.loc[f].copy()
+                player['asc'] = 3
+                keepers.append(player)
+    db = pd.DataFrame(keepers)
+    db = db.sort_values(by=['asc','overall'],ascending=False)
+    dd = pd.DataFrame(defenders)
+    dd = dd.sort_values(by=['asc','overall'],ascending=False)
+    dm = pd.DataFrame(midfields)
+    dm = dm.sort_values(by=['asc','overall'],ascending=False)
+    df = pd.DataFrame(forwards)
+    df = df.sort_values(by=['asc','overall'],ascending=False)
+    db = pd.concat([db[0:1],dd[0:4],dm[0:4],df[0:2]])
+    db = db[['name','number','position','overall','asc']]
     if results.iloc[0]['hr'] == 'E': # check if games haven't been played
-        db = get_roster(query,stats,team_ref)
-        return db
-    a = []
-    for name in game:
-        for f in range(for_.shape[0]):
-            if for_.loc[f]['name'] == name:
-                player = for_.loc[f]
-                a.append(player)
-        for f in range(mid_.shape[0]):
-            if mid_.loc[f]['name'] == name:
-                player = mid_.loc[f]
-                a.append(player)
-        for f in range(def_.shape[0]):
-            if def_.loc[f]['name'] == name:
-                player = def_.loc[f]
-                a.append(player)
-        for f in range(keep_.shape[0]):
-            if keep_.loc[f]['name'] == name:
-                player = keep_.loc[f]
-                a.append(player)
-    db = pd.DataFrame(a)
-    db = db[['name','number','overall']]
-    db = db.sort_values(by=['overall'],ascending=False)
+        db = db.sort_values(by=['asc'],ascending=False)
+    else:
+        db = db.sort_values(by=['asc','overall'],ascending=False)
+
+    db.pop('asc')
     return db
 
 def get_team_history(data,query):
