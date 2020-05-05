@@ -88,10 +88,10 @@ def get_files(stats,game,q1,q2):
 
 @canples.route('/index')
 def index():
-    global year
+    '''global year
     global results, schedule, results_old
     global stats, team_ref, current_teams, team_stats, results_brief, colours
-    global rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers
+    global rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers'''
     na = 'NA'
 
     if year == '2020':
