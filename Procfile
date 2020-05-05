@@ -1,1 +1,1 @@
-web: gunicorn canples:app.py
+web: gunicorn canples:app:canples
