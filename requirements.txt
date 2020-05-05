@@ -1,5 +1,3 @@
-Package         Version
---------------- ------------
 click
 Flask
 itsdangerous
