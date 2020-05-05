@@ -542,7 +542,7 @@ def get_home_away_comparison(stats,game,team):
     db = db['name']
     return db
 
-def get_compare_roster(query,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers):
+def get_compare_roster(query,results,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers):
     # going through the rated players to get the best players for each position
     # using game_h,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,results,team_stats
     roster = get_roster(query,stats,team_ref)
