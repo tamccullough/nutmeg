@@ -39,24 +39,19 @@
     <h5><b><i class="fa fa-trophy"></i> {{ team_name }} - Roster</b></h5>
   </header>
 
-  <div class="w3-container {{ team_colour }}" method="POST">
-    <h5><img src="static/images/flags/{{ crest }}" alt="Crest" style="max-height:50px">Roster</h5>
-    <table class="w3-table w3-striped w3-white">
-      <tr>
-      {%for col in html_table.columns%}
-					<th>{{ col }}</th>
-			{%endfor%}
-      </tr>
-      {%for i in range(0,html_table.shape[0])%}
-      <tr>
-        <td><img src="static/images/players/{{ html_table.iloc[i,0] }}" alt="{{ html_table.iloc[i,0] }}" style="max-height:50px"></td>
-          {%for r in range(1,html_table.shape[1])%}
-          <td>{{ html_table.iloc[i,r] }}</td>
-          {%endfor%}
-      </tr>
-      {%endfor%}
-    </table>
-    <br>
+
+
+    {%for i in range(0,html_table.shape[0])%}
+    <div class="w3-quarter w3-card-4 {{ team_colour }}">
+      <div class="w3-center"><img src="static/images/players/{{ html_table.iloc[i,0] }}" alt="{{ html_table.iloc[i,1] }}" style="max-height:200px"></div>
+      <div class="w3-container w3-striped w3-white">
+      <p>{{ html_table.iloc[i,1] }}</p>
+       <p class="w3-light-grey">Number {{ html_table.iloc[i,2] }}</p>
+       <p class="w3-light-grey">Position {{ html_table.iloc[i,3] }}</p>
+       <p>Overall {{ html_table.iloc[i,4] }}</p>
+      </div>
+    </div>
+    {%endfor%}
   </div>
   <hr>
 

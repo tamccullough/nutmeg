@@ -489,6 +489,7 @@ def get_roster_overall(query,stats,team_ref,rated_forwards,rated_midfielders,rat
     roster.insert(0,'image',b)
     #roster['image'] = b
     roster = index_reset(roster)
+    roster = roster.sort_values('overall',ascending=False)
     return roster
 
 def get_home_away_comparison(stats,game,team):
