@@ -41,7 +41,7 @@
 
   <div class="w3-container w3-row-padding w3-margin-bottom">
     <form method="POST" action="/comparison2">
-    <h5>This Weeks Matches</h5>
+    <h5>{{ headline }}</h5>
     <div class="w3-quarter">
       <div class="w3-grey">
         <div class="w3-half w3-cyan"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home" name="home" value="{{ team1 }}"/></a></div>
@@ -71,10 +71,10 @@
 
   <div class="w3-row-padding w3-margin-bottom" method="POST">
     <div class="w3-half">
-      <div class="w3-container w3-cyan w3-padding-16">
+      <div class="w3-container {{ home_colour }} w3-padding-16">
         <div class="w3-left"><i class="fa fa-home w3-xxxlarge"></i></div>
         <div class="w3-right">
-          <h3>{{home_team}}</h3>
+          <h3>{{ home_team }}</h3>
         </div>
         <div class="w3-clear"></div>
         <h4>Home Team</h4>
@@ -99,10 +99,10 @@
       </table>
     </div>
     <div class="w3-half">
-      <div class="w3-container w3-light-green w3-padding-16">
+      <div class="w3-container {{ away_colour }} w3-padding-16">
         <div class="w3-left"><i class="fa fa-suitcase w3-xxxlarge"></i></div>
         <div class="w3-right">
-          <h3>{{away_team}}</h3>
+          <h3>{{ away_team }}</h3>
         </div>
         <div class="w3-clear"></div>
         <h4>Away Team</h4>

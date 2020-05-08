@@ -28,9 +28,9 @@ def load_main_files(year):
         results_old = results[results['hr'] != 'E'].copy()
     results_diff = pd.concat([results, results_old]).drop_duplicates(keep=False)
     schedule = cpl_main.get_schedule(results_diff) # from results create the schedule dataset
-    team_stats = cpl_main.get_stats_all(stats,team_ref)
+    team_stats = pd.read_csv(f'datasets/{year}/cpl-{year}-stats_combined.csv')
     colours = team_ref['colour']
-    results_brief = cpl_main.get_results_brief(results,team_ref)
+    results_brief = pd.read_csv(f'datasets/{year}/cpl-{year}-results_brief.csv')
 
     return results, stats, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief
 
@@ -38,12 +38,12 @@ results, stats, team_ref, player_info, results_old, results_diff, schedule, stat
 
 def load_player_files(year):
     # get all rated player information based on position and calculate and overall score for the individual player
-    rated_forwards = cpl_main.top_position(team_stats,'f')
-    rated_midfielders = cpl_main.top_position(team_stats,'m')
-    rated_defenders = cpl_main.top_position(team_stats,'d')
+    rated_forwards = pd.read_csv(f'datasets/{year}/cpl-{year}-forwards.csv')
+    rated_midfielders = pd.read_csv(f'datasets/{year}/cpl-{year}-midfielders.csv')
+    rated_defenders = pd.read_csv(f'datasets/{year}/cpl-{year}-defenders.csv')
     rated_goalscorers = cpl_main.top_tracked(team_stats,'goals')
-    rated_keepers = cpl_main.top_position(team_stats,'g')
-    rated_offenders = cpl_main.top_offenders(team_stats)
+    rated_keepers = pd.read_csv(f'datasets/{year}/cpl-{year}-keepers.csv')
+    rated_offenders = pd.read_csv(f'datasets/{year}/cpl-{year}-discipline.csv')
     rated_assists = cpl_main.top_tracked(team_stats,'assists')
     return rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists
 
@@ -77,7 +77,7 @@ def index():
     results, stats, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief = load_main_files(year)
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers,rated_assists = load_player_files(year)
 
-    standings = cpl_main.get_standings(results,1,team_ref)
+    standings = pd.read_csv(f'datasets/{year}/cpl-{year}-standings.csv')
     standings_old = cpl_main.get_standings(results_old,1,team_ref)
     compare_standings = cpl_main.compare_standings(standings,standings_old,team_ref)
 
@@ -140,7 +140,7 @@ def index2():
     else:
         other_year = '2020'
 
-    standings = cpl_main.get_standings(results,1,team_ref)
+    standings = pd.read_csv(f'datasets/{year}/cpl-{year}-standings.csv')
     standings_old = cpl_main.get_standings(results_old,1,team_ref)
     compare_standings = cpl_main.compare_standings(standings,standings_old,team_ref)
 
@@ -171,17 +171,30 @@ def index2():
 
 @canples.route('/standings')
 def standings():
-    standings = cpl_main.get_standings(results,1,team_ref)
+    standings = pd.read_csv(f'datasets/{year}/cpl-{year}-standings.csv')
     return render_template('cpl-es-standings.html',standings_table = standings, year = year)
 
 @canples.route('/comparison1')
 def comparison1():
+    if year == '2019':
+        headline = 'Final Matches of the 2019 Regular Season'
+    else:
+        headline = 'This Weeks Matches'
     # home side
     q1 = schedule.iloc[0]['home']
+    home_team_info = team_ref[team_ref['team'] == q1]
+    home_colour = home_team_info.iloc[0][4]
+    home_crest = home_team_info.iloc[0][5]
+
     game_info = schedule[schedule['home'] == q1]
     game = game_info.iloc[0]['game']
+
     # away side
-    q2 = schedule.iloc[0]['away']
+    q2 = game_info.iloc[0]['away']
+    away_team_info = team_ref[team_ref['team'] == q2]
+    away_colour = away_team_info.iloc[0][4]
+    away_crest = away_team_info.iloc[0][5]
+
     home_win, draw, away_win, home_form, away_form, home_roster, away_roster = get_files(stats,game,q1,q2)
     team1 = cpl_main.get_shortest_name(schedule.iloc[0]['home'],team_ref)
     team2 = cpl_main.get_shortest_name(schedule.iloc[0]['away'],team_ref)
@@ -192,18 +205,33 @@ def comparison1():
     team7 = cpl_main.get_shortest_name(schedule.iloc[3]['home'],team_ref)
     team8 = cpl_main.get_shortest_name(schedule.iloc[3]['away'],team_ref)
     return render_template('cpl-es-comparison.html',home_table = home_roster, away_table = away_roster, home_win = home_win,
-    away_win = away_win, home_form = home_form, away_form = away_form, schedule = schedule, year = year,
+    home_team = q1, away_team = q2, away_win = away_win, home_form = home_form, away_form = away_form, schedule = schedule, year = year,
+    home_crest = home_crest, home_colour = home_colour, away_crest = away_crest, away_colour = away_colour, headline = headline,
     team1 = team1, team2 = team2, team3 = team3, team4 = team4, team5 = team5, team6 = team6, team7 = team7, team8 = team8)
 
 @canples.route('/comparison2', methods=['POST'])
 def comparison2():
+    if year == '2019':
+        headline = 'Final Matches of the 2019 Regular Season'
+    else:
+        headline = 'This Weeks Matches'
     # home side
     home = request.form['home']
+
     q1 = cpl_main.get_long_name(home,team_ref)
+    home_team_info = team_ref[team_ref['team'] == q1]
+    home_colour = home_team_info.iloc[0][4]
+    home_crest = home_team_info.iloc[0][5]
+
     game_info = schedule[schedule['home'] == q1]
     game = game_info.iloc[0]['game']
+
     # away side
     q2 = game_info.iloc[0]['away']
+    away_team_info = team_ref[team_ref['team'] == q2]
+    away_colour = away_team_info.iloc[0][4]
+    away_crest = away_team_info.iloc[0][5]
+
     home_win, draw, away_win, home_form, away_form, home_roster, away_roster = get_files(stats,game,q1,q2)
     team1 = cpl_main.get_shortest_name(schedule.iloc[0]['home'],team_ref)
     team2 = cpl_main.get_shortest_name(schedule.iloc[0]['away'],team_ref)
@@ -215,24 +243,22 @@ def comparison2():
     team8 = cpl_main.get_shortest_name(schedule.iloc[3]['away'],team_ref)
     return render_template('cpl-es-comparison2.html',home_table = home_roster, away_table = away_roster, home_win = home_win,
     home_team = q1, away_team = q2, away_win = away_win, home_form = home_form, away_form = away_form, schedule = schedule, year = year,
+    home_crest = home_crest, home_colour = home_colour, away_crest = away_crest, away_colour = away_colour, headline = headline,
     team1 = team1, team2 = team2, team3 = team3, team4 = team4, team5 = team5, team6 = team6, team7 = team7, team8 = team8)
 
 @canples.route('/teams')
 def teams():
-    current_teams = pd.read_csv('datasets/teams.csv')
-    if year == '2019':
-        current_teams = current_teams.loc[1:]
-    return render_template('cpl-es-teams.html',html_table = current_teams, year = year)
+    return render_template('cpl-es-teams.html',html_table = team_ref, year = year)
 
 @canples.route('/roster', methods=['POST'])
 def roster():
     team = request.form['team']
-    team_info = team_ref[team_ref['team'] == team]
-    colour = team_info.iloc[0][4]
+    roster_team_info = team_ref[team_ref['team'] == team]
+    roster_colour = roster_team_info.iloc[0][4]
     player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
     roster = cpl_main.get_roster_overall(team,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info)
-    crest = team_info.iloc[0][5]
-    return render_template('cpl-es-roster.html',team_name = team, html_table = roster, team_colour = colour, year = year, crest = crest)
+    crest = roster_team_info.iloc[0][5]
+    return render_template('cpl-es-roster.html',team_name = team, html_table = roster, team_colour = roster_colour, year = year, crest = crest)
 
 @canples.route('/goals')
 def goals():
