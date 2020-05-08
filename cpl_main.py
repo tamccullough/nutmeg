@@ -31,18 +31,6 @@ def get_schedule(data):
     db = db.sort_values(by=['game'])
     return db
 
-def get_team_names(data,df,dc):
-    db = data
-    db = np.sort(db,axis=-1)
-    a =[]
-    for team in db:
-        a.append(team)
-    db = pd.DataFrame()
-    db['short'] = pd.Series(df)
-    db['colour'] = pd.Series(dc)
-    db.insert(0,'team',pd.Series(a))
-    return db
-
 def fix_db_na(data):
     db = data.copy()
     if db['team'].isnull().values.any():
@@ -252,130 +240,79 @@ def get_stats_all(data,dc):
     return db
 
 # get associated information for players league wide and calculate an overall score for each position
-def get_evaluation(db,df):
-    names = db.name.unique() # grab the list of names at the specified position
-    eval_ = db.describe().T # get the evalution scores
-    checks = db.columns[3:] # slice away the first three columns (name,number,postion) not needed
-    db['overall'] = 0.0 # create the final column overall
-    db = db.set_index('name') # set the index to the player name to search for a specific player
+def get_evaluation(condensed_player_info,full_player_info):
+    names = condensed_player_info.name.unique() # grab the list of names at the specified position
+    eval_ = condensed_player_info.describe().T # get the evalution scores
+    checks = condensed_player_info.columns[4:] # slice away the first three columns (name,number,postion) not needed
+    condensed_player_info['overall'] = 0.0 # create the final column overall
+    condensed_player_info = condensed_player_info.set_index('name') # set the index to the player name to search for a specific player
     for name in names: # iterate through the names in the lisst
-        player = df[df['name'] == name].head(1) # get the players details
+        player = full_player_info[full_player_info['name'] == name].head(1) # get the players details
         a = [] # create an empty array to store the scores
         for check in checks: # iterate through the columns of remaining data
             result = player.iloc[0][check] / eval_['max'][check] # calculate the score for the value found value/max
             a.append(result) # append the result into the list
             overall = round(sum(a) / len(checks),2) #calculate the final score sum(list) / num of checks
-            db.at[name,'overall'] = overall # assign the value as the overall score
-    db = db.reset_index() # reset the index, making the name column a column again
-    db = db.sort_values(by=['overall'],ascending=False) # sort using overall, descending
-    return db
+            condensed_player_info.at[name,'overall'] = overall # assign the value as the overall score
+    condensed_player_info = condensed_player_info.reset_index() # reset the index, making the name column a column again
+    condensed_player_info = condensed_player_info.sort_values(by=['overall'],ascending=False) # sort using overall, descending
+    return condensed_player_info
 
-def top_goalscorers(data):
-    if data.minutes.sum() == 0:
-        db = pd.DataFrame([('NA',0,0,0,0)],columns=['team','name','number','minutes','goals'])
-        return db
-    df = data.copy()
-    cols = ['team','name','position','number','minutes','goals']
-    db = df[cols]
-    db = db.sort_values(by=['goals'],ascending=False)
-    db = db.reset_index()
-    db.pop('index')
-    team = db.pop('team')
-    db.insert(0,'team',team)
-    db = db[db['goals'] >= 1]
-    return db
+def top_tracked(team_stats,tracked):
+    if team_stats.minutes.sum() == 0:
+        tracked_player_stat = pd.team_statsFrame([('NA',0,0,0,0)],columns=['team','name','number','minutes','goals'])
+        return tracked_player_stat
+    df = team_stats.copy()
+    cols = ['team','name','position','number','minutes',tracked]
+    tracked_player_stat = df[cols]
+    #tracked_player_stat = get_evaluation(tracked_player_stat,df)
+    tracked_player_stat = tracked_player_stat.sort_values(by=[tracked],ascending=False)
+    tracked_player_stat = tracked_player_stat.reset_index()
+    tracked_player_stat.pop('index')
+    team = tracked_player_stat.pop('team')
+    tracked_player_stat.insert(0,'team',team)
+    tracked_player_stat = tracked_player_stat[tracked_player_stat[tracked] >= 1]
+    return tracked_player_stat
 
-def top_assists(data):
-    if data.minutes.sum() == 0:
-        db = pd.DataFrame([('NA',0,0,0,0)],columns=['team','name','number','minutes','assists'])
-        return db
-    df = data.copy()
-    cols = ['team','name','position','number','minutes','assists']
-    db = df[cols]
-    db = get_evaluation(db,df)
-    db = db.sort_values(by=['assists'],ascending=False)
-    db = db.reset_index()
-    db.pop('index')
-    team = db.pop('team')
-    db.insert(0,'team',team)
-    db = db[db['assists'] >= 1]
-    return db
-
-def top_forwards(data): # get the forwards in the league
-    if data.minutes.sum() == 0:
-        db = pd.DataFrame([('NA',0,0,0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','minutes','goals','chances','assists','shots','shots on target','passes','crosses','duels','tackles'])
-        return db
-    player_information = data.copy() # load player information
-    cols = ['team','name','position','number','minutes','goals','chances','assists','shots','shots on target','passes','crosses','duels','tackles']
-    df = player_information[player_information['position'] == 'f'] # get the forwards where position = f
-    db = df[cols] # select specific columns associated with the evaluation
-    db = get_evaluation(db,df)
-    db = index_reset(db)
-    names = db.name.unique() # get the names of the players who fit the criteria
-    db = db.set_index('name') # set the index to the name column to make the search possible
-    for name in names:
-        player = df[df['name'] == name].head(1) # forwards main purpose is to score goals
-        if (player.iloc[0]['goals'] <= 2.0 and player.iloc[0]['minutes'] >= 1000.0): # if player scores less than 2 & has minutes greater than 1000
-            db.at[name,'overall'] = db.at[name,'overall'] - 0.1
-        if player.iloc[0]['goals'] >= 8.0: # reward forwards scoring greater than 8 goals
-            db.at[name,'overall'] = db.at[name,'overall'] + 0.15
-    db = db.sort_values(by=['overall'],ascending=False)
-    db = db.reset_index()
-    team = db.pop('team')
-    db.insert(0,'team',team)
-    return db
-
-def top_midfielders(data): # get the midfielders in the league
-    if data.minutes.sum() == 0:
-        db = pd.DataFrame([('NA',0,0,0,0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','minutes','goals','assists','touches','passes','pass accuracy','crosses','cross accuracy','chances','duels','tackles'])
-        return db
-    player_information = data.copy()
-    cols = ['team','name','position','number','minutes','goals','assists','touches','passes','pass accuracy','crosses','cross accuracy','chances','duels','tackles']
-    df = player_information[player_information['position'] == 'm'] # get the midfields where position = m
-    db = df[cols]
-    db = get_evaluation(db,df)
-    db = index_reset(db)
-    names = db.name.unique()
-    db = db.set_index('name')
-    for name in names:
-        player = df[df['name'] == name].head(1)
-        '''if player.iloc[0]['goals'] <= 2.0:
-            db.at[name,'overall'] = db.at[name,'overall'] - 0.2
-        if player.iloc[0]['goals'] >= 8.0:
-            db.at[name,'overall'] = db.at[name,'overall'] + 0.1'''
-    db = db.sort_values(by=['overall'],ascending=False)
-    db = db.reset_index()
-    team = db.pop('team')
-    db.insert(0,'team',team)
-    return db
-
-def top_defenders(data):  # get the defenders in the league
-    if data.minutes.sum() == 0:
-        db = pd.DataFrame([('NA',0,0,0,0,0,0,0,0,0)],columns=['team','name','number','minutes','tackles','tackles won','clearances','interceptions','duels','duels won'])
-        return db
-    player_information = data.copy()
-    cols = ['team','name','position','number','minutes','tackles','tackles won','clearances','interceptions','duels','duels won']
-    df = player_information[player_information['position'] == 'd'] # get the defenders where position = d
-    db = df[cols]
-    db = get_evaluation(db,df)
-    db = index_reset(db)
-    team = db.pop('team')
-    db.insert(0,'team',team)
-    return db
-
-def top_keepers(data):  # get the keepers in the league
-    if data.minutes.sum() == 0:
-        db = pd.DataFrame([('NA',0,0,0,0,0,0,0)],columns=['team','name','number','minutes','clean sheets','saves','shots faced','claimed crosses'])
-        return db
-    player_information = data.copy()
-    cols = ['team','name','position','number','minutes','clean sheets','saves','shots faced','claimed crosses']
-    df = player_information[player_information['position'] == 'g'] # get the goalkeepers where position = g
-    db = df[cols]
-    db = get_evaluation(db,df)
-    db = index_reset(db)
-    team = db.pop('team')
-    db.insert(0,'team',team)
-    return db
+def top_position(team_stats,position): # get the forwards in the league
+    if team_stats.minutes.sum() == 0:
+        if position == 'f':
+            condensed_player_info = pd.team_statsFrame([('NA',0,0,0,0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','goals','chances','assists','shots','shots on target','passes','crosses','duels','tackles'])
+        if position == 'm':
+            condensed_player_info = pd.team_statsFrame([('NA',0,0,0,0,0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','goals','assists','touches','passes','pass accuracy','crosses','cross accuracy','chances','duels','tackles'])
+        if position == 'd':
+            condensed_player_info = pd.team_statsFrame([('NA',0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','tackles','tackles won','clearances','interceptions','duels','duels won'])
+        if position == 'g':
+            condensed_player_info = pd.team_statsFrame([('NA',0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','clean sheets','saves','shots faced','claimed crosses'])
+        condensed_player_info = pd.team_statsFrame([('NA',0,0,0,0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','goals','chances','assists','shots','shots on target','passes','crosses','duels','tackles'])
+        return condensed_player_info
+    player_information = team_stats.copy() # load player information
+    if position == 'f':
+        cols = ['team','name','number','position','minutes','goals','chances','assists','shots','shots on target','passes','crosses','duels','tackles']
+    if position == 'm':
+        cols = ['team','name','number','position','minutes','goals','assists','touches','passes','pass accuracy','crosses','cross accuracy','chances','duels','tackles']
+    if position == 'd':
+        cols = ['team','name','number','position','minutes','tackles','tackles won','clearances','interceptions','duels','duels won']
+    if position == 'g':
+        cols = ['team','name','number','position','minutes','clean sheets','saves','shots faced','claimed crosses']
+    full_player_info = player_information[player_information['position'] == position] # get the forwards where position = f
+    condensed_player_info = full_player_info[cols] # select specific columns associated with the evaluation
+    condensed_player_info = get_evaluation(condensed_player_info,full_player_info) # condensed Dataframe and full Dataframe being passes
+    condensed_player_info = index_reset(condensed_player_info)
+    names = condensed_player_info.name.unique() # get the names of the players who fit the criteria
+    condensed_player_info = condensed_player_info.set_index('name') # set the index to the name column to make the search possible
+    if position == 'f':
+        for name in names:
+            player = full_player_info[full_player_info['name'] == name].head(1) # forwards main purpose is to score goals
+            if (player.iloc[0]['goals'] <= 2.0 and player.iloc[0]['minutes'] >= 1000.0): # if player scores less than 2 & has minutes greater than 1000
+                condensed_player_info.at[name,'overall'] = condensed_player_info.at[name,'overall'] - 0.1
+            if player.iloc[0]['goals'] >= 8.0: # reward forwards scoring greater than 8 goals
+                condensed_player_info.at[name,'overall'] = condensed_player_info.at[name,'overall'] + 0.15
+    condensed_player_info = condensed_player_info.sort_values(by=['overall'],ascending=False)
+    condensed_player_info = condensed_player_info.reset_index()
+    team = condensed_player_info.pop('team')
+    condensed_player_info.insert(0,'team',team)
+    return condensed_player_info
 
 def top_offenders(data):  # get the offences handed out in the league
     if data.minutes.sum() == 0:
@@ -399,56 +336,35 @@ def get_match_tables(data,query):
     db = db.sort_values(by=['m','d'])
     return db
 
+def likelihood_input(array,a_list):
+    b = a_list[0]
+    c = a_list[1]
+    d = a_list[2]
+    array.append(b)
+    array.append(c)
+    array.append(d)
+    return array
+
 def likelihood_table(data,query):
     df = get_match_tables(data,query)
-    a = []
+    array = []
     cols = data.columns
     for row in range(0,df.shape[0]):
         if df.iloc[row]['home'] == query:
             if df.iloc[row]['hr'] == 'W':
-                b = [1,2,1]
-                c = [1,0,0]
-                d = [1,1,0]
-                a.append(b)
-                a.append(c)
-                a.append(d)
+                array = likelihood_input(array,[[1,2,1],[1,0,0],[1,1,0]])
             if df.iloc[row]['hr'] == 'L':
-                b = [1,2,0]
-                c = [1,0,1]
-                d = [1,1,0]
-                a.append(b)
-                a.append(c)
-                a.append(d)
+                array = likelihood_input(array,[[1,2,0],[1,0,1],[1,1,0]])
             if df.iloc[row]['hr'] == 'D':
-                b = [1,2,0]
-                c = [1,0,0]
-                d = [1,1,1]
-                a.append(b)
-                a.append(c)
-                a.append(d)
+                array = likelihood_input(array,[[1,2,0],[1,0,0],[1,1,1]])
         if df.iloc[row]['away'] == query:
             if df.iloc[row]['ar'] == 'W':
-                b = [2,2,1]
-                c = [2,0,0]
-                d = [2,1,0]
-                a.append(b)
-                a.append(c)
-                a.append(d)
+                array = likelihood_input(array,[[2,2,1],[2,0,0],[2,1,0]])
             if df.iloc[row]['ar'] == 'L':
-                b = [2,2,0]
-                c = [2,0,1]
-                d = [2,1,0]
-                a.append(b)
-                a.append(c)
-                a.append(d)
+                array = likelihood_input(array,[[2,2,0],[2,0,1],[2,1,0]])
             if df.iloc[row]['ar'] == 'D':
-                b = [2,2,0]
-                c = [2,0,0]
-                d = [2,1,1]
-                a.append(b)
-                a.append(c)
-                a.append(d)
-    db= pd.DataFrame(a,columns=['h/a','w/l/d','y/n'])
+                array = likelihood_input(array,[[2,2,1],[2,0,0],[2,1,1]])
+    db= pd.DataFrame(array,columns=['h/a','w/l/d','y/n'])
     return db
 
 def get_team_comparison(data,q1,q2):
@@ -515,8 +431,7 @@ def get_team_form(data,query):
 def get_form_results(data,dc):
     db = pd.DataFrame()
     form = get_results_brief(data[data['s'] <= 1],dc)
-    teams = data.home.unique()
-    teams = np.sort(teams,axis=-1)
+    teams = dc['team']
     for team in teams:
         df = get_team_form(form,team)
         #print(team,'\n',df)
@@ -534,6 +449,46 @@ def get_roster(query,stats,team_ref): # use team stats to get the player informa
     roster = index_reset(roster)
     return roster
 
+def get_roster_overall(query,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info): # use team stats to get the player information
+    def get_score(data,name):
+        db = data[data['name'] == name]
+        db = db['overall'].values
+        db = db[0]
+        return db
+    def get_image(data,name):
+        db = data[data['name'] == name]
+        if db['image'].empty:
+            db = 'empty.jpg'
+        else:
+            db = db['image'].values
+            db = db[0]
+        return db
+    roster = get_stats_all(stats,team_ref)
+    roster = roster[roster['team'] == query].copy()
+    roster = roster[['name','number','position']] # scale the dataframe down to what we need
+    #roster.insert(3,'overall',a)
+    a = []
+    b = []
+    for i in range(0,roster.shape[0]):
+        #print('getting player ',roster.iloc[i]['name'])
+        if roster.iloc[i]['position'] == 'f':
+            a.append(get_score(rated_forwards,roster.iloc[i]['name']))
+            b.append(get_image(player_info,roster.iloc[i]['name']))
+        if roster.iloc[i]['position'] == 'm':
+            a.append(get_score(rated_midfielders,roster.iloc[i]['name']))
+            b.append(get_image(player_info,roster.iloc[i]['name']))
+        if roster.iloc[i]['position'] == 'd':
+            a.append(get_score(rated_defenders,roster.iloc[i]['name']))
+            b.append(get_image(player_info,roster.iloc[i]['name']))
+        if roster.iloc[i]['position'] == 'g':
+            a.append(get_score(rated_keepers,roster.iloc[i]['name']))
+            b.append(get_image(player_info,roster.iloc[i]['name']))
+    roster['overall'] = a
+    roster.insert(0,'image',b)
+    #roster['image'] = b
+    roster = index_reset(roster)
+    return roster
+
 def get_home_away_comparison(stats,game,team):
     db = stats[stats['game'] == game].copy()
     db = db[db['team'] == team]
@@ -542,7 +497,7 @@ def get_home_away_comparison(stats,game,team):
     db = db['name']
     return db
 
-def get_compare_roster(query,results,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers):
+def get_compare_roster(results,query,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers):
     # going through the rated players to get the best players for each position
     # using game_h,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,results,team_stats
     roster = get_roster(query,stats,team_ref)
@@ -551,26 +506,27 @@ def get_compare_roster(query,results,stats,team_ref,rated_forwards,rated_midfiel
     midfields = []
     defenders = []
     for name in roster['name']:
-        for f in range(rated_forwards.shape[0]): # grab players from each position that played in the game
-            if rated_forwards.loc[f]['name'] == name:
-                player = rated_forwards.loc[f].copy()
-                player['asc'] = 0
-                forwards.append(player)
-        for f in range(rated_midfielders.shape[0]):
-            if rated_midfielders.loc[f]['name'] == name:
-                player = rated_midfielders.loc[f].copy()
-                player['asc'] = 1
-                midfields.append(player)
-        for f in range(rated_defenders.shape[0]):
-            if rated_defenders.loc[f]['name'] == name:
-                player = rated_defenders.loc[f].copy()
-                player['asc'] = 2
-                defenders.append(player)
-        for f in range(rated_keepers.shape[0]):
-            if rated_keepers.loc[f]['name'] == name:
-                player = rated_keepers.loc[f].copy()
-                player['asc'] = 3
-                keepers.append(player)
+        player = roster[roster['name'] == name]
+        if player.iloc[0][2] == 'f':
+            player = rated_forwards[rated_forwards['name'] == name]
+            player = player.iloc[0].copy()
+            player['asc'] = 0
+            forwards.append(player)
+        if player.iloc[0][2] == 'm':
+            player = rated_midfielders[rated_midfielders['name'] == name]
+            player = player.iloc[0].copy()
+            player['asc'] = 1
+            midfields.append(player)
+        if player.iloc[0][2] == 'd':
+            player = rated_defenders[rated_defenders['name'] == name]
+            player = player.iloc[0].copy()
+            player['asc'] = 2
+            defenders.append(player)
+        if player.iloc[0][2] == 'g':
+            player = rated_keepers[rated_keepers['name'] == name]
+            player = player.iloc[0].copy()
+            player['asc'] = 3
+            keepers.append(player)
     db = pd.DataFrame(keepers)
     db = db.sort_values(by=['asc','overall'],ascending=False)
     dd = pd.DataFrame(defenders)

@@ -5,7 +5,7 @@
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
-      <img src="{{ url_for('static', filename='images/cpl_logo.png') }}" class="w3-circle w3-margin-right" style="width:46px">
+      <img src="static/images/cpl_logo.png" class="w3-circle w3-margin-right" style="width:46px">
     </div>
     <div class="w3-col s8 w3-bar">
       <span class="w3-xlarge">{{ year }} Season</span><br>
@@ -18,7 +18,7 @@
     <a href="{{ url_for('standings') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-trophy fa-fw"></i>  Standings</a>
     <a href="{{ url_for('comparison1') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Comparison</a>
     <a href="{{ url_for('teams') }}" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Teams</a>
-    <a href="{{ url_for('goals') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-soccer-ball-o fa-fw"></i>  Goals</a>
+    <a href="{{ url_for('goals') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-soccer-ball-o fa-fw"></i>  Goals and Assists</a>
     <a href="{{ url_for('forwards') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-scissors-o fa-fw"></i>  Forwards</a>
     <a href="{{ url_for('midfielders') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-grab-o fa-fw"></i>  Midfielders</a>
     <a href="{{ url_for('defenders') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-stop-o fa-fw"></i>  Defenders</a>
@@ -43,14 +43,14 @@
     <form method="POST" action="/roster">
       <table class="w3-table">
         <tr>
-        {%for col in html_table.columns[0:-1]%}
+        {%for col in html_table.columns[0:-3]%}
   					<th>{{ col }}</th>
   			{%endfor%}
         </tr>
         {%for i in range(0,html_table.shape[0])%}
-        <tr class="{{ html_table.iloc[i,3] }}">
-          <td><a href="{{ url_for('roster') }}"><input class="w3-button" type="submit" id="team" name="team" value="{{ html_table.iloc[i,0] }}"/></a></td>
-            {%for r in range(1,html_table.shape[1]-1)%}
+        <tr class="{{ html_table.iloc[i,4] }}">
+          <td><img src="static/images/flags/{{ html_table.iloc[i,5] }}" alt="Crest" style="max-height:40px"><a href="{{ url_for('roster') }}"><input class="w3-button" type="submit" id="team" name="team" value="{{ html_table.iloc[i,0] }}"/></a></td>
+            {%for r in range(1,html_table.shape[1]-3)%}
             <td>{{ html_table.iloc[i,r] }}</td>
             {%endfor%}
         </tr>

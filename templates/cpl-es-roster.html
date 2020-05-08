@@ -18,7 +18,7 @@
     <a href="{{ url_for('standings') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-trophy fa-fw"></i>  Standings</a>
     <a href="{{ url_for('comparison1') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Comparison</a>
     <a href="{{ url_for('teams') }}" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Teams</a>
-    <a href="{{ url_for('goals') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-soccer-ball-o fa-fw"></i>  Goals</a>
+    <a href="{{ url_for('goals') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-soccer-ball-o fa-fw"></i>  Goals and Assists</a>
     <a href="{{ url_for('forwards') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-scissors-o fa-fw"></i>  Forwards</a>
     <a href="{{ url_for('midfielders') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-grab-o fa-fw"></i>  Midfielders</a>
     <a href="{{ url_for('defenders') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-stop-o fa-fw"></i>  Defenders</a>
@@ -36,11 +36,11 @@
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-trophy"></i> CPL {{ html_table.iloc[0][0] }} Roster</b></h5>
+    <h5><b><i class="fa fa-trophy"></i> {{ team_name }} - Roster</b></h5>
   </header>
 
   <div class="w3-container {{ team_colour }}" method="POST">
-    <h5>Roster</h5>
+    <h5><img src="static/images/flags/{{ crest }}" alt="Crest" style="max-height:50px">Roster</h5>
     <table class="w3-table w3-striped w3-white">
       <tr>
       {%for col in html_table.columns%}
@@ -49,7 +49,8 @@
       </tr>
       {%for i in range(0,html_table.shape[0])%}
       <tr>
-          {%for r in range(html_table.shape[1])%}
+        <td><img src="static/images/players/{{ html_table.iloc[i,0] }}" alt="{{ html_table.iloc[i,0] }}" style="max-height:50px"></td>
+          {%for r in range(1,html_table.shape[1])%}
           <td>{{ html_table.iloc[i,r] }}</td>
           {%endfor%}
       </tr>

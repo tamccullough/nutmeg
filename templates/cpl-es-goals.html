@@ -18,7 +18,7 @@
     <a href="{{ url_for('standings') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-trophy fa-fw"></i>  Standings</a>
     <a href="{{ url_for('comparison1') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Comparison</a>
     <a href="{{ url_for('teams') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Teams</a>
-    <a href="{{ url_for('goals') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-soccer-ball-o fa-fw"></i>  Goals</a>
+    <a href="{{ url_for('goals') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-soccer-ball-o fa-fw"></i>  Goals and Assists</a>
     <a href="{{ url_for('forwards') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-scissors-o fa-fw"></i>  Forwards</a>
     <a href="{{ url_for('midfielders') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-grab-o fa-fw"></i>  Midfielders</a>
     <a href="{{ url_for('defenders') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-stop-o fa-fw"></i>  Defenders</a>
@@ -36,25 +36,46 @@
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-trophy"></i> CPL Goals</b></h5>
+    <h5><b><i class="fa fa-trophy"></i> CPL Goals and Assists</b></h5>
   </header>
 
-  <div class="w3-container">
-    <table class="w3-table w3-striped w3-white">
-      <tr>
-      {%for col in html_table.columns%}
-					<th>{{ col }}</th>
-			{%endfor%}
-      </tr>
-      {%for i in range(0,html_table.shape[0])%}
-      <tr>
-          {%for r in range(html_table.shape[1])%}
-          <td>{{ html_table.iloc[i,r] }}</td>
+    <div class="w3-container">
+      <div class="w3-blue w3-container w3-half">
+        <table class="w3-table w3-striped w3-white">
+          <h6>Goals</h6>
+          <tr>
+          {%for col in html_table.columns%}
+    					<th>{{ col }}</th>
+    			{%endfor%}
+          </tr>
+          {%for i in range(0,html_table.shape[0])%}
+          <tr>
+              {%for r in range(html_table.shape[1])%}
+              <td>{{ html_table.iloc[i,r] }}</td>
+              {%endfor%}
+          </tr>
           {%endfor%}
-      </tr>
-      {%endfor%}
-    </table>
-  </div>
+        </table>
+      </div>
+
+      <div class="w3-light-green w3-container w3-half">
+        <table class="w3-table w3-striped w3-white">
+          <h6>Assists</h6>
+          <tr>
+          {%for col in assists_table.columns%}
+              <th>{{ col }}</th>
+          {%endfor%}
+          </tr>
+          {%for i in range(0,assists_table.shape[0])%}
+          <tr>
+              {%for r in range(assists_table.shape[1])%}
+              <td>{{ assists_table.iloc[i,r] }}</td>
+              {%endfor%}
+          </tr>
+          {%endfor%}
+        </table>
+      </div>
+    </div>
   <hr>
 
   {% endblock %}

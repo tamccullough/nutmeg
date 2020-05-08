@@ -1,9 +1,9 @@
-name,city,province
-Atletico Ottawa,Ottawa,Ontario
-Cavalry FC,Calgary,Alberta
-FC Edmonton,Edmonton,Alberta
-Forge FC,Hamilton,Ontario
-HFX Wanderers FC,Halifax,Nova Scotia
-Pacific FC,Langford,British Columbia
-Valour FC,Winnipeg,Manitoba
-York9 FC,York Region,Ontario
+team,city,province,short,colour,crest
+Atletico Ottawa,Ottawa,Ontario,AO,w3-vivid-red,Atletico_Ottawa_nav.png
+Cavalry FC,Calgary,Alberta,CFC,w3-2019-fiesta,cavalry_fc_nav.png
+FC Edmonton,Edmonton,Alberta,FCE,w3-2019-princess-blue,FC_Edmonton_nav.png
+Forge FC,Hamilton,Ontario,FFC,w3-2019-turmeric,Forge_FC_nav.png
+HFX Wanderers FC,Halifax,Nova Scotia,HFX,w3-vivid-blue,HFX_Wanderers_FC.png
+Pacific FC,Langford,British Columbia,PFC,w3-vivid-reddish-purple,Pacific_FC_nav.png
+Valour FC,Winnipeg,Manitoba,VFC,w3-2019-biking-red,Valour_FC_nav.png
+York9 FC,York Region,Ontario,Y9,w3-vivid-yellowish-green,York_9_FC_nav.png

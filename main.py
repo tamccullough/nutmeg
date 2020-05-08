@@ -16,59 +16,38 @@ canples = Flask(__name__)
 
 year = '2019'
 def load_main_files(year):
-    results = pd.read_csv(f'datasets/{year}/cpl-{year}-results.csv') # get current year results
+    results = pd.read_csv(f'datasets/{year}/cpl-{year}-results.csv')
+    stats = pd.read_csv(f'datasets/{year}/cpl-{year}-stats.csv')
+    team_ref = pd.read_csv('datasets/teams.csv')
+    player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
+    current_teams = team_ref['team']
     if year == '2019':
+        team_ref = team_ref[1:]
         results_old = results[:-7].copy()
     else:
         results_old = results[results['hr'] != 'E'].copy()
     results_diff = pd.concat([results, results_old]).drop_duplicates(keep=False)
     schedule = cpl_main.get_schedule(results_diff) # from results create the schedule dataset
-    return results, schedule, results_old
-
-results, schedule, results_old = load_main_files(year)
-
-def load_secondary_files(year):
-    stats = pd.read_csv(f'datasets/{year}/cpl-{year}-stats.csv') # load player statistics
-    current_teams = pd.read_csv('datasets/teams.csv') # get the current team information
-
-    if year == '2019':
-        current_teams = current_teams[1:] # if previous year, cut out new teams
-        teams_short = ['CFC', 'FCE', 'FFC', 'HFX', 'PFC', 'VFC', 'Y9']
-        colours = ['w3-2019-fiesta', 'w3-2019-princess-blue', 'w3-2019-turmeric', 'w3-vivid-blue', 'w3-vivid-reddish-purple', 'w3-2019-biking-red', 'w3-vivid-yellowish-green']
-    else:
-        teams_short = ['AO','CFC', 'FCE', 'FFC', 'HFX', 'PFC', 'VFC', 'Y9']
-        colours = ['w3-vivid-red','w3-2019-fiesta', 'w3-2019-princess-blue', 'w3-2019-turmeric', 'w3-vivid-blue', 'w3-vivid-reddish-purple', 'w3-2019-biking-red', 'w3-vivid-yellowish-green']
-
-    def get_team_names(data,df,dc): # combine information, long team name, short team name and team web colours
-        db = data
-        db = np.sort(db,axis=-1)
-        a =[]
-        for team in db:
-            a.append(team)
-        db = a
-        db = pd.DataFrame({'team': db, 'short': df,'colour': dc})
-        return db
-
-    team_ref = get_team_names(current_teams['name'],teams_short,colours)
-    current_teams['colour'] = colours # add colour to the current team dataset
-
     team_stats = cpl_main.get_stats_all(stats,team_ref)
+    colours = team_ref['colour']
     results_brief = cpl_main.get_results_brief(results,team_ref)
-    return stats, team_ref, current_teams, team_stats, results_brief, colours
 
-stats, team_ref, current_teams, team_stats, results_brief, colours = load_secondary_files(year)
+    return results, stats, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief
+
+results, stats, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief = load_main_files(year)
 
 def load_player_files(year):
     # get all rated player information based on position and calculate and overall score for the individual player
-    rated_forwards = cpl_main.top_forwards(team_stats)
-    rated_midfielders = cpl_main.top_midfielders(team_stats)
-    rated_defenders = cpl_main.top_defenders(team_stats)
-    rated_goalscorers = cpl_main.top_goalscorers(team_stats)
-    rated_keepers = cpl_main.top_keepers(team_stats)
+    rated_forwards = cpl_main.top_position(team_stats,'f')
+    rated_midfielders = cpl_main.top_position(team_stats,'m')
+    rated_defenders = cpl_main.top_position(team_stats,'d')
+    rated_goalscorers = cpl_main.top_tracked(team_stats,'goals')
+    rated_keepers = cpl_main.top_position(team_stats,'g')
     rated_offenders = cpl_main.top_offenders(team_stats)
-    return rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers
+    rated_assists = cpl_main.top_tracked(team_stats,'assists')
+    return rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists
 
-rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers = load_player_files(year)
+rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
 
 def get_files(stats,game,q1,q2):
     game_h = cpl_main.get_home_away_comparison(stats,game,q1)
@@ -79,8 +58,8 @@ def get_files(stats,game,q1,q2):
     home_win, draw, away_win = cpl_main.get_match_prediction(q1,q2,t1_x,t1_y,t2_x,t2_y)
     home_form = cpl_main.get_five_game_form(results,q1)
     away_form = cpl_main.get_five_game_form(results,q2)
-    home_roster = cpl_main.get_compare_roster(q1,results,team_stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers)
-    away_roster = cpl_main.get_compare_roster(q2,results,team_stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers)
+    home_roster = cpl_main.get_compare_roster(results,q1,team_stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers)
+    away_roster = cpl_main.get_compare_roster(results,q2,team_stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers)
     q1_roster = cpl_main.get_overall_roster(home_roster)
     q2_roster = cpl_main.get_overall_roster(away_roster)
     home_win, away_win, draw = cpl_main.get_final_game_prediction(cpl_classifier_model,q1_roster,q2_roster,home_win,away_win,draw)
@@ -95,39 +74,51 @@ def index():
     else:
         other_year = '2020'
 
-    results, schedule, results_old = load_main_files(year)
-    stats, team_ref, current_teams, team_stats, results_brief, colours = load_secondary_files(year)
-    rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers = load_player_files(year)
+    results, stats, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief = load_main_files(year)
+    rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers,rated_assists = load_player_files(year)
 
     standings = cpl_main.get_standings(results,1,team_ref)
     standings_old = cpl_main.get_standings(results_old,1,team_ref)
     compare_standings = cpl_main.compare_standings(standings,standings_old,team_ref)
 
+    if year == '2019':
+        top_team = 'Forge FC'
+    else:
+        top_team = standings.iloc[0]['team']
+    top_team_info = team_ref[team_ref['team'] == top_team]
+    first_colour = top_team_info.iloc[0][4]
+    first_crest = top_team_info.iloc[0][5]
     top_mover = compare_standings.iloc[0]['team']
+    top_crest = team_ref[team_ref['team'] == top_mover]
+    top_crest = top_crest.iloc[0][5]
     top_dropper = compare_standings.iloc[-1]['team']
-    top_team = standings.iloc[0]['team']
+    bot_crest = team_ref[team_ref['team'] == top_dropper]
+    bot_crest = bot_crest.iloc[0][5]
 
     game_week, goals, big_win, top_result, low_result = cpl_main.get_weeks_results(results[results['s'] <= 1],standings,team_ref)
 
-    assists = cpl_main.top_assists(team_stats)
     top_forward = rated_forwards.loc[0]
     top_midfielder = rated_midfielders.loc[0]
     top_defender = rated_defenders.loc[0]
     top_scorer = rated_goalscorers.loc[0]
-    top_assist = assists.loc[0]
+    top_assist = rated_assists.loc[0]
     top_keeper = rated_keepers.loc[0]
     top_offender = rated_offenders.loc[0]
 
     if results.iloc[0]['hr'] == 'E':
         top_team, top_mover, top_dropper = na, na, na
     if year == '2019':
-        top_team = 'Forge FC 2019 Champs'
+        champs = 'Forge FC 2019 Champions'
+    else:
+        champs = 'Undetermined for ' + year
 
     return render_template('cpl-es-index.html',top_mover = top_mover, top_dropper = top_dropper,
     goals = goals, big_win = big_win, top_result = top_result, low_result = low_result,
     top_team = top_team, top_keeper = top_keeper,top_forward = top_forward,
     top_midfielder = top_midfielder, top_defender = top_defender,
-    top_scorer = top_scorer, top_assist = top_assist, top_offender = top_offender,today = today, year = year, other_year = other_year)
+    top_scorer = top_scorer, top_assist = top_assist, top_offender = top_offender,
+    first_crest = first_crest, first_colour = first_colour, top_crest = top_crest, bot_crest = bot_crest,
+    today = today, year = year, other_year = other_year, champs = champs)
 
 @canples.route('/index2', methods=['POST'])
 def index2():
@@ -141,9 +132,8 @@ def index2():
     if year_switch != year:
         year = year_switch
 
-    results, schedule, results_old = load_main_files(year)
-    stats, team_ref, current_teams, team_stats, results_brief, colours = load_secondary_files(year)
-    rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers = load_player_files(year)
+    results, stats, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief = load_main_files(year)
+    rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers,rated_assists = load_player_files(year)
 
     if year == '2020':
         other_year = '2019'
@@ -160,12 +150,11 @@ def index2():
 
     game_week, goals, big_win, top_result, low_result = cpl_main.get_weeks_results(results[results['s'] <= 1],standings,team_ref)
 
-    assists = cpl_main.top_assists(team_stats)
     top_forward = rated_forwards.loc[0]
     top_midfielder = rated_midfielders.loc[0]
     top_defender = rated_defenders.loc[0]
     top_scorer = rated_goalscorers.loc[0]
-    top_assist = assists.loc[0]
+    top_assist = rated_assists.loc[0]
     top_keeper = rated_keepers.loc[0]
     top_offender = rated_offenders.loc[0]
 
@@ -233,40 +222,42 @@ def teams():
     current_teams = pd.read_csv('datasets/teams.csv')
     if year == '2019':
         current_teams = current_teams.loc[1:]
-    current_teams['colour'] = colours
     return render_template('cpl-es-teams.html',html_table = current_teams, year = year)
 
 @canples.route('/roster', methods=['POST'])
 def roster():
     team = request.form['team']
-    colour = team_ref[team_ref['team'] == team].copy()
-    colour = colour.iloc[0]['colour']
-    roster = cpl_main.get_roster(team,stats,team_ref)
-    return render_template('cpl-es-roster.html',html_table = roster, team_colour = colour, year = year)
+    team_info = team_ref[team_ref['team'] == team]
+    colour = team_info.iloc[0][4]
+    player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
+    roster = cpl_main.get_roster_overall(team,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info)
+    crest = team_info.iloc[0][5]
+    return render_template('cpl-es-roster.html',team_name = team, html_table = roster, team_colour = colour, year = year, crest = crest)
 
 @canples.route('/goals')
 def goals():
-    rated_goalscorers = cpl_main.top_goalscorers(team_stats)
-    return render_template('cpl-es-goals.html',html_table = rated_goalscorers, year = year)
+    rated_goalscorers = cpl_main.top_tracked(team_stats,'goals')
+    rated_assists = cpl_main.top_tracked(team_stats,'assists')
+    return render_template('cpl-es-goals.html',html_table = rated_goalscorers, assists_table = rated_assists, year = year)
 
 @canples.route('/forwards')
 def forwards():
-    rated_forwards = cpl_main.top_forwards(team_stats)
+    rated_forwards = cpl_main.top_position(team_stats,'f')
     return render_template('cpl-es-forwards.html',html_table = rated_forwards, year = year)
 
 @canples.route('/midfielders')
 def midfielders():
-    rated_midfielders = cpl_main.top_midfielders(team_stats)
+    rated_midfielders = cpl_main.top_position(team_stats,'m')
     return render_template('cpl-es-midfielders.html',html_table = rated_midfielders, year = year)
 
 @canples.route('/defenders')
 def defenders():
-    rated_defenders = cpl_main.top_defenders(team_stats)
+    rated_defenders = cpl_main.top_position(team_stats,'d')
     return render_template('cpl-es-defenders.html',html_table = rated_defenders, year = year)
 
 @canples.route('/keepers')
 def keepers():
-    rated_keepers = cpl_main.top_keepers(team_stats)
+    rated_keepers = cpl_main.top_position(team_stats,'g')
     return render_template('cpl-es-keepers.html',html_table = rated_keepers, year = year)
 
 @canples.route('/discipline')
