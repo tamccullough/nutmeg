@@ -272,27 +272,27 @@ def goals():
 
 @canples.route('/forwards')
 def forwards():
-    rated_forwards = cpl_main.top_position(team_stats,'f')
+    rated_forwards = pd.read_csv(f'datasets/{year}/cpl-{year}-forwards.csv')
     return render_template('cpl-es-forwards.html',html_table = rated_forwards, year = year)
 
 @canples.route('/midfielders')
 def midfielders():
-    rated_midfielders = cpl_main.top_position(team_stats,'m')
+    rated_midfielders = pd.read_csv(f'datasets/{year}/cpl-{year}-midfielders.csv')
     return render_template('cpl-es-midfielders.html',html_table = rated_midfielders, year = year)
 
 @canples.route('/defenders')
 def defenders():
-    rated_defenders = cpl_main.top_position(team_stats,'d')
+    rated_defenders = pd.read_csv(f'datasets/{year}/cpl-{year}-defenders.csv')
     return render_template('cpl-es-defenders.html',html_table = rated_defenders, year = year)
 
 @canples.route('/keepers')
 def keepers():
-    rated_keepers = cpl_main.top_position(team_stats,'g')
+    rated_keepers = pd.read_csv(f'datasets/{year}/cpl-{year}-keepers.csv')
     return render_template('cpl-es-keepers.html',html_table = rated_keepers, year = year)
 
 @canples.route('/discipline')
 def discipline():
-    rated_offenders = cpl_main.top_offenders(team_stats)
+    rated_offenders = pd.read_csv(f'datasets/{year}/cpl-{year}-discipline.csv')
     return render_template('cpl-es-discipline.html',html_table = rated_offenders, year = year)
 
 @canples.route('/hell')
