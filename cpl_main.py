@@ -225,8 +225,8 @@ def get_team_stats(data,query):
         db.at[name,'last'] = player.iloc[0]['last']
         db.at[name,'number'] = int(player.iloc[0]['number'])
         db.at[name,'position'] = player.iloc[0]['position']
-        db.at[name,'pass accuracy'] = player.iloc[0]['pass accuracy'].mean()
-        db.at[name,'cross accuracy'] = player.iloc[0]['cross accuracy'].mean()
+        db.at[name,'pass-acc'] = player.iloc[0]['pass-acc'].mean()
+        db.at[name,'cross-acc'] = player.iloc[0]['cross-acc'].mean()
     db = db.reset_index()
     return db
 
@@ -272,29 +272,31 @@ def top_tracked(team_stats,tracked):
     team = tracked_player_stat.pop('team')
     tracked_player_stat.insert(0,'team',team)
     tracked_player_stat = tracked_player_stat[tracked_player_stat[tracked] >= 1]
+    rank = tracked_player_stat.index + 1
+    tracked_player_stat.insert(0,'rank',rank)
     return tracked_player_stat
 
 def top_position(team_stats,position): # get the forwards in the league
     if team_stats.minutes.sum() == 0:
         if position == 'f':
-            condensed_player_info = pd.team_statsFrame([('NA',0,0,0,0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','goals','chances','assists','shots','shots on target','passes','crosses','duels','tackles'])
+            condensed_player_info = pd.team_statsFrame([('NA',0,0,0,0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','goals','chances','assists','shots','s-target','passes','crosses','duels','tackles'])
         if position == 'm':
-            condensed_player_info = pd.team_statsFrame([('NA',0,0,0,0,0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','goals','assists','touches','passes','pass accuracy','crosses','cross accuracy','chances','duels','tackles'])
+            condensed_player_info = pd.team_statsFrame([('NA',0,0,0,0,0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','goals','assists','touches','passes','pass-acc','crosses','cross-acc','chances','duels','tackles'])
         if position == 'd':
-            condensed_player_info = pd.team_statsFrame([('NA',0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','tackles','tackles won','clearances','interceptions','duels','duels won'])
+            condensed_player_info = pd.team_statsFrame([('NA',0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','tackles','t-won','clearances','interceptions','duels','d-won'])
         if position == 'g':
-            condensed_player_info = pd.team_statsFrame([('NA',0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','clean sheets','saves','shots faced','claimed crosses'])
+            condensed_player_info = pd.team_statsFrame([('NA',0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','cs','saves','shots faced','claimed crosses'])
         condensed_player_info = pd.team_statsFrame([('NA',0,0,0,0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','goals','chances','assists','shots','shots on target','passes','crosses','duels','tackles'])
         return condensed_player_info
     player_information = team_stats.copy() # load player information
     if position == 'f':
-        cols = ['team','name','number','position','minutes','goals','chances','assists','shots','shots on target','passes','crosses','duels','tackles']
+        cols = ['team','name','number','position','minutes','goals','chances','assists','shots','s-target','passes','crosses','duels','tackles']
     if position == 'm':
-        cols = ['team','name','number','position','minutes','goals','assists','touches','passes','pass accuracy','crosses','cross accuracy','chances','duels','tackles']
+        cols = ['team','name','number','position','minutes','goals','assists','touches','passes','pass-acc','crosses','cross-acc','chances','duels','tackles']
     if position == 'd':
-        cols = ['team','name','number','position','minutes','tackles','tackles won','clearances','interceptions','duels','duels won']
+        cols = ['team','name','number','position','minutes','tackles','t-won','clearances','interceptions','duels','d-won']
     if position == 'g':
-        cols = ['team','name','number','position','minutes','clean sheets','saves','shots faced','claimed crosses']
+        cols = ['team','name','number','position','minutes','cs','saves','shots faced','claimed crosses']
     full_player_info = player_information[player_information['position'] == position] # get the forwards where position = f
     condensed_player_info = full_player_info[cols] # select specific columns associated with the evaluation
     condensed_player_info = get_evaluation(condensed_player_info,full_player_info) # condensed Dataframe and full Dataframe being passes
@@ -316,10 +318,10 @@ def top_position(team_stats,position): # get the forwards in the league
 
 def top_offenders(data):  # get the offences handed out in the league
     if data.minutes.sum() == 0:
-        db = pd.DataFrame([('NA',0,0,0,0,0,0)],columns=['team','name','number','minutes','yellow','red','fouls conceded'])
+        db = pd.DataFrame([('NA',0,0,0,0,0,0)],columns=['team','name','number','minutes','yellow','red','f-conceded'])
         return db
     player_information = data.copy()
-    cols = ['team','name','position','number','minutes','yellow','red','fouls conceded']
+    cols = ['team','name','position','number','minutes','yellow','red','f-conceded']
     df = player_information
     db = df[cols]
     db = get_evaluation(db,df)

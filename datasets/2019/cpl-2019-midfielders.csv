@@ -1,4 +1,4 @@
-team,name,number,position,minutes,goals,assists,touches,passes,pass accuracy,crosses,cross accuracy,chances,duels,tackles,overall
+team,name,number,position,minutes,goals,assists,touches,passes,pass-acc,crosses,cross-acc,chances,duels,tackles,overall
 Forge FC,Tristan Borges,4,m,1884.0,13.0,5.0,1307.0,680.0,0.74,77.0,0.0,42.0,356.0,59.0,0.71
 York9 FC,Ryan Telfer,18,m,2216.0,8.0,1.0,1533.0,832.0,0.6,164.0,0.0,66.0,372.0,52.0,0.7
 Cavalry FC,Julian Büscher,8,m,1678.0,5.0,4.0,1432.0,971.0,0.8,113.0,0.29,38.0,282.0,57.0,0.68

@@ -1,4 +1,4 @@
-team,name,number,position,minutes,clean sheets,saves,shots faced,claimed crosses,overall
+team,name,number,position,minutes,cs,saves,shots faced,claimed crosses,overall
 York9 FC,Nathan Ingham,1,g,2340.0,6.0,88.0,122.0,17.0,0.93
 Cavalry FC,Marco Carducci,1,g,2160.0,9.0,65.0,81.0,11.0,0.79
 Forge FC,Triston Henry,9,g,1890.0,8.0,53.0,70.0,12.0,0.72

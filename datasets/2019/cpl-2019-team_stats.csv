@@ -1,4 +1,4 @@
-team,name,number,position,first,last,minutes,touches,passes,pass accuracy,crosses,cross accuracy,assists,chances,goals,shots,shots on target,shots in box,shots outside box,tackles,tackles won,duels,duels won,clearances,interceptions,yellow,red,fouls won,fouls conceded,shots faced,saves,claimed crosses,clean sheets
+team,name,number,position,first,last,minutes,touches,passes,pass-acc,crosses,cross-acc,assists,chances,goals,shots,s-target,s-box,s-out-box,tackles,t-won,duels,d-won,clearances,interceptions,yellow,red,f-won,f-conceded,shots faced,saves,claimed crosses,cs
 Cavalry FC,Aribim Pepple,24,f,Aribim,Pepple,60.0,21.0,9.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,12.0,4.0,0.0,0.0,0.0,0.0,1.0,4.0,0.0,0.0,0.0,0.0
 Cavalry FC,Carlos Patiño,20,m,Carlos,Patiño,320.0,238.0,122.0,0.88,23.0,0.0,1.0,5.0,0.0,4.0,2.0,1.0,3.0,9.0,6.0,63.0,32.0,1.0,5.0,0.0,0.0,13.0,12.0,0.0,0.0,0.0,0.0
 Cavalry FC,Dean Northover,12,d,Dean,Northover,609.0,478.0,255.0,0.67,19.0,0.0,0.0,4.0,0.0,1.0,0.0,1.0,0.0,20.0,13.0,91.0,52.0,10.0,15.0,2.0,1.0,14.0,13.0,0.0,0.0,0.0,0.0

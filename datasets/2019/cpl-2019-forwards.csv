@@ -1,4 +1,4 @@
-team,name,number,position,minutes,goals,chances,assists,shots,shots on target,passes,crosses,duels,tackles,overall
+team,name,number,position,minutes,goals,chances,assists,shots,s-target,passes,crosses,duels,tackles,overall
 Pacific FC,Terran Campbell,14,f,2334.0,11.0,31.0,2.0,53.0,23.0,569.0,29.0,324.0,39.0,0.85
 York9 FC,Rodrigo Gattas,22,f,1958.0,9.0,23.0,0.0,77.0,36.0,728.0,38.0,214.0,17.0,0.76
 Cavalry FC,Dominique Malonga,19,f,1871.0,11.0,19.0,1.0,68.0,34.0,489.0,5.0,185.0,2.0,0.7000000000000001

@@ -28,7 +28,7 @@ def load_main_files(year):
         results_old = results[results['hr'] != 'E'].copy()
     results_diff = pd.concat([results, results_old]).drop_duplicates(keep=False)
     schedule = cpl_main.get_schedule(results_diff) # from results create the schedule dataset
-    team_stats = pd.read_csv(f'datasets/{year}/cpl-{year}-stats_combined.csv')
+    team_stats = pd.read_csv(f'datasets/{year}/cpl-{year}-team_stats.csv')
     colours = team_ref['colour']
     results_brief = pd.read_csv(f'datasets/{year}/cpl-{year}-results_brief.csv')
 
@@ -263,8 +263,12 @@ def roster():
 @canples.route('/goals')
 def goals():
     rated_goalscorers = cpl_main.top_tracked(team_stats,'goals')
+    rated_g10 = rated_goalscorers.head(10)
+    rated_g10 = rated_g10[['rank','team','name','position','goals']]
     rated_assists = cpl_main.top_tracked(team_stats,'assists')
-    return render_template('cpl-es-goals.html',html_table = rated_goalscorers, assists_table = rated_assists, year = year)
+    rated_a10 = rated_assists.head(10)
+    rated_a10 = rated_a10[['rank','team','name','position','assists']]
+    return render_template('cpl-es-goals.html',html_table = rated_g10, assists_table = rated_a10, year = year)
 
 @canples.route('/forwards')
 def forwards():

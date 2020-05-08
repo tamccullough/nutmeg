@@ -1,4 +1,4 @@
-game,team,position,number,name,first,last,minutes,touches,passes,pass accuracy,crosses,cross accuracy,assists,chances,goals,shots,shots on target,shots in box,shots outside box,tackles,tackles won,duels,duels won,clearances,interceptions,yellow,red,fouls won,fouls conceded,shots faced,saves,claimed crosses,clean sheets
+game,team,position,number,name,first,last,minutes,touches,passes,pass-acc,crosses,cross-acc,assists,chances,goals,shots,s-target,s-box,s-out-box,tackles,t-won,duels,d-won,clearances,interceptions,yellow,red,f-won,f-conceded,shots faced,saves,claimed crosses,cs
 I1,Forge FC,m,1,Alexander Achinioti-Jönsson,Alexander,Achinioti-Jönsson,77.00,47.00,41.00,0.85,0.00,0.00,0.00,0.00,0.00,1.00,0.00,1.00,0.00,2.00,1.00,6.00,4.00,1.00,1.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 I1,Forge FC,d,16,Bertrand Owundi,Bertrand,Owundi,77.00,69.00,56.00,0.88,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,1.00,0.00,4.00,3.00,5.00,3.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 I1,Forge FC,f,13,Christopher Nanco,Christopher,Nanco,56.00,42.00,27.00,0.67,0.00,0.00,0.00,5.00,0.00,1.00,0.00,1.00,0.00,2.00,2.00,10.00,3.00,0.00,0.00,0.00,0.00,0.00,1.00,0.00,0.00,0.00,0.00
