@@ -467,29 +467,33 @@ def get_roster_overall(query,stats,team_ref,rated_forwards,rated_midfielders,rat
         return db
     roster = get_stats_all(stats,team_ref)
     roster = roster[roster['team'] == query].copy()
-    roster = roster[['name','number','position']] # scale the dataframe down to what we need
+    roster = roster[['name','first','last','number','position']] # scale the dataframe down to what we need
     #roster.insert(3,'overall',a)
     a = []
     b = []
     for i in range(0,roster.shape[0]):
         #print('getting player ',roster.iloc[i]['name'])
         if roster.iloc[i]['position'] == 'f':
-            a.append(get_score(rated_forwards,roster.iloc[i]['name']))
+            score = str(get_score(rated_forwards,roster.iloc[i]['name']))
+            a.append(score[0:4])
             b.append(get_image(player_info,roster.iloc[i]['name']))
         if roster.iloc[i]['position'] == 'm':
-            a.append(get_score(rated_midfielders,roster.iloc[i]['name']))
+            score = str(get_score(rated_midfielders,roster.iloc[i]['name']))
+            a.append(score[0:4])
             b.append(get_image(player_info,roster.iloc[i]['name']))
         if roster.iloc[i]['position'] == 'd':
-            a.append(get_score(rated_defenders,roster.iloc[i]['name']))
+            score = str(get_score(rated_defenders,roster.iloc[i]['name']))
+            a.append(score[0:4])
             b.append(get_image(player_info,roster.iloc[i]['name']))
         if roster.iloc[i]['position'] == 'g':
-            a.append(get_score(rated_keepers,roster.iloc[i]['name']))
+            score = str(get_score(rated_keepers,roster.iloc[i]['name']))
+            a.append(score[0:4])
             b.append(get_image(player_info,roster.iloc[i]['name']))
     roster['overall'] = a
     roster.insert(0,'image',b)
     #roster['image'] = b
     roster = index_reset(roster)
-    roster = roster.sort_values('overall',ascending=False)
+    roster.pop('name')
     return roster
 
 def get_home_away_comparison(stats,game,team):
