@@ -260,7 +260,7 @@ def get_evaluation(condensed_player_info,full_player_info):
 
 def top_tracked(team_stats,tracked):
     if team_stats.minutes.sum() == 0:
-        tracked_player_stat = pd.team_statsFrame([('NA',0,0,0,0)],columns=['team','name','number','minutes','goals'])
+        tracked_player_stat = pd.DataFrame([('NA',0,0,0,0)],columns=['team','name','number','minutes','goals'])
         return tracked_player_stat
     df = team_stats.copy()
     cols = ['team','name','position','number','minutes',tracked]
@@ -279,14 +279,14 @@ def top_tracked(team_stats,tracked):
 def top_position(team_stats,position): # get the forwards in the league
     if team_stats.minutes.sum() == 0:
         if position == 'f':
-            condensed_player_info = pd.team_statsFrame([('NA',0,0,0,0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','goals','chances','assists','shots','s-target','passes','crosses','duels','tackles'])
+            condensed_player_info = pd.DataFrame([('NA',0,0,0,0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','goals','chances','assists','shots','s-target','passes','crosses','duels','tackles'])
         if position == 'm':
-            condensed_player_info = pd.team_statsFrame([('NA',0,0,0,0,0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','goals','assists','touches','passes','pass-acc','crosses','cross-acc','chances','duels','tackles'])
+            condensed_player_info = pd.DataFrame([('NA',0,0,0,0,0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','goals','assists','touches','passes','pass-acc','crosses','cross-acc','chances','duels','tackles'])
         if position == 'd':
-            condensed_player_info = pd.team_statsFrame([('NA',0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','tackles','t-won','clearances','interceptions','duels','d-won'])
+            condensed_player_info = pd.DataFrame([('NA',0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','tackles','t-won','clearances','interceptions','duels','d-won'])
         if position == 'g':
-            condensed_player_info = pd.team_statsFrame([('NA',0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','cs','saves','shots faced','claimed crosses'])
-        condensed_player_info = pd.team_statsFrame([('NA',0,0,0,0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','goals','chances','assists','shots','shots on target','passes','crosses','duels','tackles'])
+            condensed_player_info = pd.DataFrame([('NA',0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','cs','saves','shots faced','claimed crosses'])
+        condensed_player_info = pd.DataFrame([('NA',0,0,0,0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','goals','chances','assists','shots','shots on target','passes','crosses','duels','tackles'])
         return condensed_player_info
     player_information = team_stats.copy() # load player information
     if position == 'f':
@@ -454,8 +454,11 @@ def get_roster(query,stats,team_ref): # use team stats to get the player informa
 def get_roster_overall(query,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info): # use team stats to get the player information
     def get_score(data,name):
         db = data[data['name'] == name]
-        db = db['overall'].values
-        db = db[0]
+        if db.empty:
+            db = 0
+        else:
+            db = db['overall'].values
+            db = db[0]
         return db
     def get_image(data,name):
         db = data[data['name'] == name]
@@ -472,7 +475,6 @@ def get_roster_overall(query,stats,team_ref,rated_forwards,rated_midfielders,rat
     a = []
     b = []
     for i in range(0,roster.shape[0]):
-        #print('getting player ',roster.iloc[i]['name'])
         if roster.iloc[i]['position'] == 'f':
             score = str(get_score(rated_forwards,roster.iloc[i]['name']))
             a.append(score[0:4])
@@ -507,6 +509,15 @@ def get_home_away_comparison(stats,game,team):
 def get_compare_roster(results,query,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers):
     # going through the rated players to get the best players for each position
     # using game_h,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,results,team_stats
+    def get_player_info(data,player,position,num):
+        player_info = data[data['name'] == name]
+        if player_info.empty:
+            player_row = [name,player.iloc[0][1],position,0,num]
+
+        else:
+            player_row = player_info.iloc[0].copy()
+            player_row['asc'] = num
+        return player_row
     roster = get_roster(query,stats,team_ref)
     keepers = [] # lists for each position
     forwards = []
@@ -515,32 +526,24 @@ def get_compare_roster(results,query,stats,team_ref,rated_forwards,rated_midfiel
     for name in roster['name']:
         player = roster[roster['name'] == name]
         if player.iloc[0][2] == 'f':
-            player = rated_forwards[rated_forwards['name'] == name]
-            player = player.iloc[0].copy()
-            player['asc'] = 0
-            forwards.append(player)
+            player_info = get_player_info(rated_forwards,player,'f',0)
+            forwards.append(player_info)
         if player.iloc[0][2] == 'm':
-            player = rated_midfielders[rated_midfielders['name'] == name]
-            player = player.iloc[0].copy()
-            player['asc'] = 1
-            midfields.append(player)
+            player_info = get_player_info(rated_midfielders,player,'m',1)
+            midfields.append(player_info)
         if player.iloc[0][2] == 'd':
-            player = rated_defenders[rated_defenders['name'] == name]
-            player = player.iloc[0].copy()
-            player['asc'] = 2
-            defenders.append(player)
+            player_info = get_player_info(rated_defenders,player,'d',2)
+            defenders.append(player_info)
         if player.iloc[0][2] == 'g':
-            player = rated_keepers[rated_keepers['name'] == name]
-            player = player.iloc[0].copy()
-            player['asc'] = 3
-            keepers.append(player)
-    db = pd.DataFrame(keepers)
+            player_info = get_player_info(rated_keepers,player,'g',3)
+            keepers.append(player_info)
+    db = pd.DataFrame(keepers,columns=['name','number','position','overall','asc'])
     db = db.sort_values(by=['asc','overall'],ascending=False)
-    dd = pd.DataFrame(defenders)
+    dd = pd.DataFrame(defenders,columns=['name','number','position','overall','asc'])
     dd = dd.sort_values(by=['asc','overall'],ascending=False)
-    dm = pd.DataFrame(midfields)
+    dm = pd.DataFrame(midfields,columns=['name','number','position','overall','asc'])
     dm = dm.sort_values(by=['asc','overall'],ascending=False)
-    df = pd.DataFrame(forwards)
+    df = pd.DataFrame(forwards,columns=['name','number','position','overall','asc'])
     df = df.sort_values(by=['asc','overall'],ascending=False)
     db = pd.concat([db[0:1],dd[0:4],dm[0:4],df[0:2]])
     db = db[['name','number','position','overall','asc']]
