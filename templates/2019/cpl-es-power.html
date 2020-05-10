@@ -10,7 +10,7 @@
     <div class="w3-dropdown-hover">
       <button class="w3-button w3-white w3-xlarge">{{ year }} Season</button>
       <div class="w3-dropdown-content w3-bar-block w3-card-4">
-        <a class="w3-button w3-center" href="{{ url_for('index') }}">{{ other_year }}</a><br>
+        <a class="w3-button w3-center" href="{{ url_for('index_19') }}">{{ other_year }}</a><br>
       </div>
     </div>
   </div>
@@ -19,9 +19,9 @@
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
     <a href="{{ url_for('index_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-dashboard fa-fw"></i>  Dashboard</a>
     <a href="{{ url_for('standings_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-trophy fa-fw"></i>  Standings</a>
-    <a href="{{ url_for('power_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-trophy fa-fw"></i>  Power Rankings</a>
+    <a href="{{ url_for('power_19') }}" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-trophy fa-fw"></i>  Power Rankings</a>
     <a href="{{ url_for('comparison1_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Versus</a>
-    <a href="{{ url_for('teams_19') }}" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Teams</a>
+    <a href="{{ url_for('teams_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Teams</a>
     <a href="{{ url_for('goals_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-soccer-ball-o fa-fw"></i>  Goals and Assists</a>
     <a href="{{ url_for('forwards_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-scissors-o fa-fw"></i>  Forwards</a>
     <a href="{{ url_for('midfielders_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-grab-o fa-fw"></i>  Midfielders</a>
@@ -40,31 +40,24 @@
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-trophy"></i> CPL Teams - click team name for roster</b></h5>
+    <h5><b><i class="fa fa-dashboard"></i> Power Rankings</b></h5>
   </header>
 
-  <div class="w3-container">
-    <form method="POST" action="/roster-2019">
-      <table class="w3-table">
-        <tr>
-        {%for col in html_table.columns[0:-5]%}
-  					<th>{{ col }}</th>
-  			{%endfor%}
-        <th>cpl link</th>
-        <th>wiki link</th>
-        </tr>
-        {%for i in range(0,html_table.shape[0])%}
-        <tr class="{{ html_table.iloc[i,4] }}">
-          <td><img src="static/images/flags/{{ html_table.iloc[i,5] }}" alt="{{ html_table.iloc[i,0] }} Crest" style="max-height:40px"><a href="{{ url_for('roster') }}"><input class="w3-button" type="submit" id="team" name="team" value="{{ html_table.iloc[i,0] }}"/></a></td>
-            {%for r in range(1,html_table.shape[1]-5)%}
-            <td>{{ html_table.iloc[i,r] }}</td>
-            {%endfor%}
-            <td><a class="w3-button" href="{{ html_table.iloc[i,6] }}" target="_blank">club site</a></td>
-            <td><a class="w3-button" href="{{ html_table.iloc[i,7] }}" target="_blank">wikipedia link</a></td>
-        </tr>
-        {%endfor%}
-      </table>
-    </form>
+  <div class="w3-container w3-row-padding w3-margin-bottom">
+    {%for i in range(0,html_table.shape[0])%}
+    <div class="w3-quarter">
+      <div class="w3-container {{ html_table.iloc[i,6] }} w3-padding-16">
+        <div class="w3-left"><img src="static/images/flags/{{ html_table.iloc[i,5] }}" alt="{{ html_table.iloc[i,1] }} Crest" style="max-height:60px"></i></div>
+        <div class="w3-right">
+          <h2>{{ html_table.iloc[i,0] }}</h2>
+        </div>
+        <div class="w3-clear"></div>
+        <h5>{{ html_table.iloc[i,1] }}</h5>
+        <h5>Score: {{ html_table.iloc[i,2] }}</h5>
+        <h5>Goals Bonus: {{ html_table.iloc[i,3]}} Win Bonus: {{ html_table.iloc[i,4]}}</h5>
+      </div>
+    </div>
+    {%endfor%}
   </div>
   <hr>
 

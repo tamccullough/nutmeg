@@ -182,7 +182,21 @@ def standings_19():
     year = '2019'
     other_year = '2020'
     standings = pd.read_csv(f'datasets/{year}/cpl-{year}-standings.csv')
-    return render_template('/2019/cpl-es-standings.html',standings_table = standings, year = year, other_year = other_year)
+    return render_template('2019/cpl-es-standings.html',standings_table = standings, year = year, other_year = other_year)
+
+@canples.route('/power-rankings')
+def power():
+    year = '2020'
+    other_year = '2019'
+    power = pd.read_csv(f'datasets/{year}/cpl-{year}-power_rankings.csv')
+    return render_template('cpl-es-power.html',html_table = power, year = year, other_year = other_year)
+
+@canples.route('/power-rankings-2019')
+def power_19():
+    year = '2019'
+    other_year = '2020'
+    power = pd.read_csv(f'datasets/{year}/cpl-{year}-power_rankings.csv')
+    return render_template('2019/cpl-es-power.html',html_table = power, year = year, other_year = other_year)
 
 @canples.route('/versus')
 def comparison1():
