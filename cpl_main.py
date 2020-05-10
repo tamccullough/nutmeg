@@ -468,30 +468,58 @@ def get_roster_overall(query,stats,team_ref,rated_forwards,rated_midfielders,rat
             db = db['image'].values
             db = db[0]
         return db
+    def get_link(data,name):
+        db = data[data['name'] == name]
+        if db['link'].empty:
+            db = 'https://en.wikipedia.org/wiki/Canadian_Premier_League'
+        else:
+            db = db['link'].values
+            db = db[0]
+        return db
+    def get_flag(data,name):
+        db = data[data['name'] == name]
+        if db['flag'].empty:
+            db = 'empty.png'
+        else:
+            db = db['flag'].values
+            db = db[0]
+        return db
     roster = get_stats_all(stats,team_ref)
     roster = roster[roster['team'] == query].copy()
     roster = roster[['name','first','last','number','position']] # scale the dataframe down to what we need
     #roster.insert(3,'overall',a)
     a = []
     b = []
+    c = []
+    d = []
     for i in range(0,roster.shape[0]):
         if roster.iloc[i]['position'] == 'f':
             score = str(get_score(rated_forwards,roster.iloc[i]['name']))
             a.append(score[0:4])
             b.append(get_image(player_info,roster.iloc[i]['name']))
+            c.append(get_flag(player_info,roster.iloc[i]['name']))
+            d.append(get_link(player_info,roster.iloc[i]['name']))
         if roster.iloc[i]['position'] == 'm':
             score = str(get_score(rated_midfielders,roster.iloc[i]['name']))
             a.append(score[0:4])
             b.append(get_image(player_info,roster.iloc[i]['name']))
+            c.append(get_flag(player_info,roster.iloc[i]['name']))
+            d.append(get_link(player_info,roster.iloc[i]['name']))
         if roster.iloc[i]['position'] == 'd':
             score = str(get_score(rated_defenders,roster.iloc[i]['name']))
             a.append(score[0:4])
             b.append(get_image(player_info,roster.iloc[i]['name']))
+            c.append(get_flag(player_info,roster.iloc[i]['name']))
+            d.append(get_link(player_info,roster.iloc[i]['name']))
         if roster.iloc[i]['position'] == 'g':
             score = str(get_score(rated_keepers,roster.iloc[i]['name']))
             a.append(score[0:4])
             b.append(get_image(player_info,roster.iloc[i]['name']))
+            c.append(get_flag(player_info,roster.iloc[i]['name']))
+            d.append(get_link(player_info,roster.iloc[i]['name']))
     roster['overall'] = a
+    roster['flag'] = c
+    roster['link'] = d
     roster.insert(0,'image',b)
     #roster['image'] = b
     roster = index_reset(roster)

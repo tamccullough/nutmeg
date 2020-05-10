@@ -47,13 +47,18 @@
   <div class="w3-row-padding">
     {%for i in range(0,html_table.shape[0])%}
     <div class="w3-quarter w3-card-4 {{ team_colour }}">
-      <div class="w3-center"><img src="static/images/players/{{ html_table.iloc[i,0] }}" alt="{{ html_table.iloc[i,1] }}" style="max-height:200px"></div>
+      <div class="w3-center">
+        <a href="{{ html_table.iloc[i,7] }}" target="_blank">
+          <img src="static/images/players/{{ html_table.iloc[i,0] }}" alt="{{ html_table.iloc[i,1] }}" style="max-height:200px">
+        </a>
+      </div>
       <div class="w3-container w3-striped w3-white">
-      <p>{{ html_table.iloc[i,1] }}</p>
-      <p class="w3-light-grey">{{ html_table.iloc[i,2] }}</p>
-       <p>Number {{ html_table.iloc[i,3] }}</p>
-       <p class="w3-light-grey">Position {{ html_table.iloc[i,4] }}</p>
-       <p>Overall {{ html_table.iloc[i,5] }}</p>
+        <p class="w3-light-grey"><img src="static/images/flags/{{ html_table.iloc[i,6] }}" alt="{{ html_table.iloc[i,6] }}" style="max-height:20px"></p>
+        <p>{{ html_table.iloc[i,1] }}</p>
+        <p class="w3-light-grey">{{ html_table.iloc[i,2] }}</p>
+        <p>Number {{ html_table.iloc[i,3] }}</p>
+        <p class="w3-light-grey">Position {{ html_table.iloc[i,4] }}</p>
+        <p>Overall {{ html_table.iloc[i,5] }}</p>
       </div>
     </div>
     {%endfor%}
