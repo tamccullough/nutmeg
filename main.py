@@ -14,7 +14,10 @@ cpl_classifier_model = pickle.load(open(filename, 'rb'))
 
 canples = Flask(__name__)
 
-#year = '2020'
+def get_string(data):
+    data = str(data*100)
+    data = data[0:4]
+    return data
 
 def load_main_files(year):
     results = pd.read_csv(f'datasets/{year}/cpl-{year}-results.csv')
@@ -224,6 +227,8 @@ def comparison1():
     home_win, draw, away_win, home_form, away_form, home_roster, away_roster = get_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards, rated_midfielders, rated_defenders, rated_keepers)
 
     team1, team2, team3, team4, team5, team6, team7, team8 = get_team_files(schedule,team_ref)
+    home_win = get_string(home_win)
+    away_win = get_string(away_win)
 
     return render_template('cpl-es-comparison.html',home_table = home_roster, away_table = away_roster, home_win = home_win,
     home_team = q1, away_team = q2, away_win = away_win, home_form = home_form, away_form = away_form, schedule = schedule, year = year,
@@ -258,6 +263,8 @@ def comparison2():
     home_win, draw, away_win, home_form, away_form, home_roster, away_roster = get_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards, rated_midfielders, rated_defenders, rated_keepers)
 
     team1, team2, team3, team4, team5, team6, team7, team8 = get_team_files(schedule,team_ref)
+    home_win = get_string(home_win)
+    away_win = get_string(away_win)
 
     return render_template('cpl-es-comparison2.html',home_table = home_roster, away_table = away_roster, home_win = home_win,
     home_team = q1, away_team = q2, away_win = away_win, home_form = home_form, away_form = away_form, schedule = schedule, year = year,
@@ -290,6 +297,8 @@ def comparison1_19():
     home_win, draw, away_win, home_form, away_form, home_roster, away_roster = get_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards, rated_midfielders, rated_defenders, rated_keepers)
 
     team1, team2, team3, team4, team5, team6, team7, team8 = get_team_files(schedule,team_ref)
+    home_win = get_string(home_win)
+    away_win = get_string(away_win)
 
     return render_template('2019/cpl-es-comparison.html',home_table = home_roster, away_table = away_roster, home_win = home_win,
     home_team = q1, away_team = q2, away_win = away_win, home_form = home_form, away_form = away_form, schedule = schedule, year = year,
@@ -324,6 +333,8 @@ def comparison2_19():
     home_win, draw, away_win, home_form, away_form, home_roster, away_roster = get_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards, rated_midfielders, rated_defenders, rated_keepers)
 
     team1, team2, team3, team4, team5, team6, team7, team8 = get_team_files(schedule,team_ref)
+    home_win = get_string(home_win)
+    away_win = get_string(away_win)
 
     return render_template('2019/cpl-es-comparison2.html',home_table = home_roster, away_table = away_roster, home_win = home_win,
     home_team = q1, away_team = q2, away_win = away_win, home_form = home_form, away_form = away_form, schedule = schedule, year = year,

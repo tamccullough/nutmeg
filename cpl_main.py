@@ -171,10 +171,10 @@ def clean_team_game(data,db,check): # Fix this section for teams that haven't pl
 def get_short_name(data,dc):
     for team in data['home']:
         row = dc[dc['team'] == team]
-        data['home'] = row.iloc[0]['short']
+        data.at[0,'home'] = row.iloc[0]['short']
     for team in data['away']:
         row = dc[dc['team'] == team]
-        data['away'] = row.iloc[0]['short']
+        data.at[0,'away'] = row.iloc[0]['short']
     return data
 
 def get_weeks_results(data,standings,dc):
@@ -252,7 +252,8 @@ def get_evaluation(condensed_player_info,full_player_info):
         for check in checks: # iterate through the columns of remaining data
             result = player.iloc[0][check] / eval_['max'][check] # calculate the score for the value found value/max
             a.append(result) # append the result into the list
-            overall = round(sum(a) / len(checks),2) #calculate the final score sum(list) / num of checks
+            overall = str(sum(a) / len(checks)) #calculate the final score sum(list) / num of checks
+            overall = overall[0:4]
             condensed_player_info.at[name,'overall'] = overall # assign the value as the overall score
     condensed_player_info = condensed_player_info.reset_index() # reset the index, making the name column a column again
     condensed_player_info = condensed_player_info.sort_values(by=['overall'],ascending=False) # sort using overall, descending
@@ -407,22 +408,18 @@ def get_gnb_prediction(query,x,y,result):
 
     return pred
 
-def get_match_prediction_home(query,x,y):
-    home_win = round(get_gnb_prediction(query,x,y,[1,2]),2)
-    draw = round(get_gnb_prediction(query,x,y,[1,1]),2)
-    return home_win, draw
-
-def get_match_prediction_away(query,x,y):
-    away_win = get_gnb_prediction(query,x,y,[2,2])
-    return away_win
+def get_match_prediction_result(query,x,y,array):
+    prediction = get_gnb_prediction(query,x,y,array)
+    return prediction
 
 def get_match_prediction(q1,q2,x1,y1,x2,y2):
     if len(x1) == 0:
         x = round(1/3,2)
         home_win, away_win,draw = x,x,x
         return home_win,away_win,draw
-    home_win, draw = get_match_prediction_home(q1,x1,y1)
-    away_win = get_match_prediction_away(q2,x2,y2)
+    home_win = get_match_prediction_result(q1,x1,y1,[1,2])
+    draw = get_match_prediction_result(q1,x1,y1,[1,1])
+    away_win = get_match_prediction_result(q2,x2,y2,[2,2])
     return home_win, draw, away_win
 
 def get_team_form(data,query):

@@ -84,7 +84,7 @@
         <h4>Home Team</h4>
       </div>
       <div class="w3-padding {{ 'w3-green' if home_win*100 > away_win*100 else 'w3-red' if home_win*100 < away_win*100 else 'w3-orange' }}">
-        <h4>{{home_win*100}}% Win</h4>
+        <h4>{{home_win}}% Win</h4>
       </div>
       <div class="w3-grey">
         <div class="w3-third w3-padding w3-green">{{home_form.loc['w'][0]}}</div>
@@ -112,7 +112,7 @@
         <h4>Away Team</h4>
       </div>
       <div class="w3-padding {{ 'w3-green' if away_win*100 > home_win*100 else 'w3-red' if away_win*100 < home_win*100 else 'w3-orange' }}">
-        <h4>{{away_win*100}}% Win</h4>
+        <h4>{{away_win}}% Win</h4>
       </div>
       <div class="w3-grey">
         <div class="w3-third w3-padding w3-green">{{away_form.loc['w'][0]}}</div>
