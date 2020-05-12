@@ -107,8 +107,8 @@
 
         <p>Other Results</p>
         <div class="w3-grey">
-          <div class="w3-half w3-padding {{'w3-green' if low_result.iloc[0]['hs'] > low_result.iloc[0]['as'] else 'w3-red' if low_result.iloc[0]['hs'] < low_result.iloc[0]['as'] else 'w3-orange' }}">{{low_result.iloc[0]['home']}} {{low_result.iloc[0]['hs']}}</div>
-          <div class="w3-half w3-padding {{'w3-green' if low_result.iloc[0]['as'] > low_result.iloc[0]['hs'] else 'w3-red' if low_result.iloc[0]['as'] < low_result.iloc[0]['hs'] else 'w3-orange' }}">{{low_result.iloc[0]['away']}} {{low_result.iloc[0]['as']}}</div>
+          <div class="w3-half w3-padding {{'w3-green' if other_result.iloc[0]['hs'] > other_result.iloc[0]['as'] else 'w3-red' if other_result.iloc[0]['hs'] < other_result.iloc[0]['as'] else 'w3-orange' }}">{{other_result.iloc[0]['home']}} {{other_result.iloc[0]['hs']}}</div>
+          <div class="w3-half w3-padding {{'w3-green' if other_result.iloc[0]['as'] > other_result.iloc[0]['hs'] else 'w3-red' if other_result.iloc[0]['as'] < other_result.iloc[0]['hs'] else 'w3-orange' }}">{{other_result.iloc[0]['away']}} {{other_result.iloc[0]['as']}}</div>
         </div>
 
         <p>Bottom Team Result</p>

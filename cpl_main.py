@@ -168,6 +168,23 @@ def clean_team_game(data,db,check): # Fix this section for teams that haven't pl
         db = db.T
     return db
 
+def get_longest_name(da,db,dc,team_ref):
+    def get_long(data,dd):
+        db = data.copy()
+        for team in db['home']:
+            row = dd[dd['short'] == team]
+            db.at[0,'home'] = row.iloc[0]['team']
+        for team in db['away']:
+            row = dd[dd['short'] == team]
+            db.at[0,'away'] = row.iloc[0]['team']
+        return db
+    da = get_long(da,team_ref)
+    db = get_long(db,team_ref)
+    dc = get_long(dc,team_ref)
+    teams_in = pd.DataFrame([da.iloc[0]['home'],da.iloc[0]['away'],db.iloc[0]['home'],db.iloc[0]['away'],dc.iloc[0]['home'],dc.iloc[0]['away']],columns=['teams'])
+    teams_in = teams_in.teams.unique()
+    return teams_in
+
 def get_short_name(data,dc):
     for team in data['home']:
         row = dc[dc['team'] == team]
@@ -177,12 +194,12 @@ def get_short_name(data,dc):
         data.at[0,'away'] = row.iloc[0]['short']
     return data
 
-def get_weeks_results(data,standings,dc):
+def get_weeks_results(data,standings,team_ref):
     if data.iloc[0]['hr'] == 'E':
         db = pd.DataFrame([('NA',0,'NA',0)],columns=['home','hs','away','as'])
-        big_win, top_team, low_team = db,db,db
+        big_win, top_team, low_team,other_team = db,db,db,db
         goals = 0
-        return db,goals,big_win,top_team,low_team
+        return db,goals,big_win,top_team,low_team,other_team
     df = data
     month = df.iloc[-1]['m']
     week = df.iloc[-1]['d']
@@ -198,14 +215,20 @@ def get_weeks_results(data,standings,dc):
         max_home_win = max_away
     big_win = max_home_win[['home','hs','away','as']]
     big_win = index_reset(big_win)
-    big_win = get_short_name(big_win,dc)
+    big_win = get_short_name(big_win,team_ref)
     big_win = pd.DataFrame(big_win.loc[0])
     big_win = big_win.T
     top_team = clean_team_game(standings,db,0)
-    top_team = get_short_name(top_team,dc)
+    top_team = get_short_name(top_team,team_ref)
     low_team = clean_team_game(standings,db,1)
-    low_team = get_short_name(low_team,dc)
-    return db,goals,big_win,top_team,low_team
+    low_team = get_short_name(low_team,team_ref)
+    teams_in = get_longest_name(big_win,top_team,low_team,team_ref)
+    other_team = db[(~db['home'].isin(teams_in)) | (~db['away'].isin(teams_in))]
+    other_team = index_reset(other_team)
+    other_team = pd.DataFrame(other_team.loc[0][['home','hs','away','as']])
+    other_team = other_team.T
+    other_team = get_short_name(other_team,team_ref)
+    return db,goals,big_win,top_team,low_team,other_team
 
 def get_team_stats(data,query):
     db = data[data['team'] == query]
