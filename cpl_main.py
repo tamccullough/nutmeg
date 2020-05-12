@@ -649,7 +649,7 @@ def get_game_roster_prediction(stats,get_games,rated_forwards,rated_midfielders,
                 result = 1
             game_check = get_home_away_comparison(stats,game,team)# get the roster for the team in the game
             # get the player overall score for each player in the game
-            game_roster = get_compare_roster(team,game_check,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,results,team_stats,team_ref)
+            game_roster = get_compare_roster(results,team,team_stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers)
             game_roster = index_reset(game_roster)
             b = []
             b.append(game) # collecting all the information in the list
