@@ -1,9 +1,9 @@
-index,0,1
-Atletico Ottawa,E A 0 - 0 VFC,E A 0 - 0 Y9
-Cavalry FC,E A 0 - 0 FFC,E A 0 - 0 PFC
-FC Edmonton,E A 0 - 0 PFC,E A 0 - 0 VFC
-Forge FC,E A 0 - 0 CFC,E A 0 - 0 HFX
-HFX Wanderers FC,E A 0 - 0 Y9,E A 0 - 0 FFC
-Pacific FC,E A 0 - 0 FCE,E A 0 - 0 CFC
-Valour FC,E A 0 - 0 AO,E A 0 - 0 FCE
-York9 FC,E A 0 - 0 HFX,E A 0 - 0 AO
+index,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27
+Atletico Ottawa,E A 0 - 0 HFX,E A 0 - 0 PFC,E A 0 - 0 Y9,E A 0 - 0 CFC,E A 0 - 0 Y9,E A 0 - 0 CFC,E A 0 - 0 FFC,E A 0 - 0 VFC,E A 0 - 0 FCE,E A 0 - 0 HFX,E A 0 - 0 FFC,E A 0 - 0 FCE,E A 0 - 0 PFC,E A 0 - 0 VFC,E A 0 - 0 FFC,E A 0 - 0 HFX,E A 0 - 0 VFC,E A 0 - 0 Y9,E A 0 - 0 HFX,E A 0 - 0 FCE,E A 0 - 0 FFC,E A 0 - 0 PFC,E A 0 - 0 VFC,E A 0 - 0 CFC,E A 0 - 0 Y9,E A 0 - 0 FCE,E A 0 - 0 PFC,E A 0 - 0 CFC
+Cavalry FC,E A 0 - 0 Y9,E A 0 - 0 PFC,E A 0 - 0 Y9,E A 0 - 0 VFC,E A 0 - 0 VFC,E A 0 - 0 FFC,E A 0 - 0 FCE,E A 0 - 0 AO,E A 0 - 0 HFX,E A 0 - 0 FFC,E A 0 - 0 PFC,E A 0 - 0 FCE,E A 0 - 0 AO,E A 0 - 0 HFX,E A 0 - 0 FFC,E A 0 - 0 FCE,E A 0 - 0 HFX,E A 0 - 0 PFC,E A 0 - 0 AO,E A 0 - 0 HFX,E A 0 - 0 Y9,E A 0 - 0 FCE,E A 0 - 0 AO,E A 0 - 0 VFC,E A 0 - 0 Y9,E A 0 - 0 VFC,E A 0 - 0 PFC,E A 0 - 0 FFC
+FC Edmonton,E A 0 - 0 CFC,E A 0 - 0 FFC,E A 0 - 0 PFC,E A 0 - 0 AO,E A 0 - 0 VFC,E A 0 - 0 HFX,E A 0 - 0 VFC,E A 0 - 0 CFC,E A 0 - 0 AO,E A 0 - 0 PFC,E A 0 - 0 Y9,E A 0 - 0 FFC,E A 0 - 0 HFX,E A 0 - 0 Y9,E A 0 - 0 PFC,E A 0 - 0 Y9,E A 0 - 0 VFC,E A 0 - 0 Y9,E A 0 - 0 FFC,E A 0 - 0 HFX,E A 0 - 0 CFC,E A 0 - 0 PFC,E A 0 - 0 VFC,E A 0 - 0 AO,E A 0 - 0 CFC,E A 0 - 0 AO,E A 0 - 0 FFC,E A 0 - 0 HFX
+Forge FC,E A 0 - 0 CFC,E A 0 - 0 AO,E A 0 - 0 HFX,E A 0 - 0 VFC,E A 0 - 0 FCE,E A 0 - 0 AO,E A 0 - 0 PFC,E A 0 - 0 Y9,E A 0 - 0 PFC,E A 0 - 0 HFX,E A 0 - 0 Y9,E A 0 - 0 VFC,E A 0 - 0 FCE,E A 0 - 0 CFC,E A 0 - 0 FCE,E A 0 - 0 PFC,E A 0 - 0 HFX,E A 0 - 0 Y9,E A 0 - 0 CFC,E A 0 - 0 VFC,E A 0 - 0 VFC,E A 0 - 0 Y9,E A 0 - 0 AO,E A 0 - 0 CFC,E A 0 - 0 FCE,E A 0 - 0 HFX,E A 0 - 0 AO,E A 0 - 0 PFC
+HFX Wanderers FC,E A 0 - 0 AO,E A 0 - 0 CFC,E A 0 - 0 FFC,E A 0 - 0 AO,E A 0 - 0 FCE,E A 0 - 0 CFC,E A 0 - 0 Y9,E A 0 - 0 PFC,E A 0 - 0 PFC,E A 0 - 0 VFC,E A 0 - 0 FFC,E A 0 - 0 Y9,E A 0 - 0 VFC,E A 0 - 0 FCE,E A 0 - 0 Y9,E A 0 - 0 PFC,E A 0 - 0 FFC,E A 0 - 0 AO,E A 0 - 0 VFC,E A 0 - 0 FCE,E A 0 - 0 VFC,E A 0 - 0 CFC,E A 0 - 0 Y9,E A 0 - 0 PFC,E A 0 - 0 FFC,E A 0 - 0 AO,E A 0 - 0 FCE,E A 0 - 0 CFC
+Pacific FC,E A 0 - 0 FCE,E A 0 - 0 HFX,E A 0 - 0 VFC,E A 0 - 0 FFC,E A 0 - 0 CFC,E A 0 - 0 VFC,E A 0 - 0 AO,E A 0 - 0 FCE,E A 0 - 0 Y9,E A 0 - 0 HFX,E A 0 - 0 AO,E A 0 - 0 CFC,E A 0 - 0 FFC,E A 0 - 0 Y9,E A 0 - 0 CFC,E A 0 - 0 FCE,E A 0 - 0 AO,E A 0 - 0 VFC,E A 0 - 0 Y9,E A 0 - 0 FFC,E A 0 - 0 HFX,E A 0 - 0 FFC,E A 0 - 0 HFX,E A 0 - 0 FCE,E A 0 - 0 CFC,E A 0 - 0 VFC,E A 0 - 0 Y9,E A 0 - 0 AO
+Valour FC,E A 0 - 0 AO,E A 0 - 0 FCE,E A 0 - 0 HFX,E A 0 - 0 PFC,E A 0 - 0 FFC,E A 0 - 0 AO,E A 0 - 0 FFC,E A 0 - 0 HFX,E A 0 - 0 FCE,E A 0 - 0 CFC,E A 0 - 0 Y9,E A 0 - 0 PFC,E A 0 - 0 CFC,E A 0 - 0 Y9,E A 0 - 0 Y9,E A 0 - 0 PFC,E A 0 - 0 FFC,E A 0 - 0 CFC,E A 0 - 0 PFC,E A 0 - 0 CFC,E A 0 - 0 Y9,E A 0 - 0 FCE,E A 0 - 0 FCE,E A 0 - 0 AO,E A 0 - 0 HFX,E A 0 - 0 FFC,E A 0 - 0 HFX,E A 0 - 0 AO
+York9 FC,E A 0 - 0 HFX,E A 0 - 0 VFC,E A 0 - 0 FCE,E A 0 - 0 AO,E A 0 - 0 FCE,E A 0 - 0 FFC,E A 0 - 0 VFC,E A 0 - 0 PFC,E A 0 - 0 CFC,E A 0 - 0 AO,E A 0 - 0 FFC,E A 0 - 0 HFX,E A 0 - 0 CFC,E A 0 - 0 PFC,E A 0 - 0 CFC,E A 0 - 0 CFC,E A 0 - 0 AO,E A 0 - 0 HFX,E A 0 - 0 AO,E A 0 - 0 FFC,E A 0 - 0 PFC,E A 0 - 0 FCE,E A 0 - 0 VFC,E A 0 - 0 FFC,E A 0 - 0 HFX,E A 0 - 0 FCE,E A 0 - 0 VFC,E A 0 - 0 PFC
