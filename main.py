@@ -82,7 +82,7 @@ def get_team_files(schedule,team_ref):
 
 @canples.route('/index')
 def index():
-    na = 'NA'
+    na = 'TBD'
 
     year = '2020'
     other_year = '2019'
@@ -118,7 +118,7 @@ def index():
     if results.iloc[0]['hr'] == 'E':
         top_team, top_mover, top_dropper, first_crest, top_crest, bot_crest, first_colour = na, na, na, 'CPL-Crest-White.png', 'oneSoccer_nav.png', 'canNat_icon.png', 'w3-indigo'
 
-    champs = year + 'Champions Not Crowned'
+    champs = year + ' Champions TBD'
 
     return render_template('cpl-es-index.html',top_mover = top_mover, top_dropper = top_dropper,
     goals = goals, big_win = big_win, top_result = top_result, low_result = low_result, other_result = other_result,
