@@ -303,14 +303,14 @@ def top_tracked(team_stats,tracked):
 def top_position(team_stats,position): # get the forwards in the league
     if team_stats.minutes.sum() == 0:
         if position == 'f':
-            condensed_player_info = pd.DataFrame([('NA',0,0,0,0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','goals','chances','assists','shots','s-target','passes','crosses','duels','tackles'])
+            condensed_player_info = pd.DataFrame([('NA',0,0,0,0,0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','goals','chances','assists','shots','s-target','passes','crosses','duels','tackles','overall'])
         if position == 'm':
-            condensed_player_info = pd.DataFrame([('NA',0,0,0,0,0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','goals','assists','touches','passes','pass-acc','crosses','cross-acc','chances','duels','tackles'])
+            condensed_player_info = pd.DataFrame([('NA',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','goals','assists','touches','passes','pass-acc','crosses','cross-acc','chances','duels','tackles','overall'])
         if position == 'd':
-            condensed_player_info = pd.DataFrame([('NA',0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','tackles','t-won','clearances','interceptions','duels','d-won'])
+            condensed_player_info = pd.DataFrame([('NA',0,0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','tackles','t-won','clearances','interceptions','duels','d-won','overall'])
         if position == 'g':
-            condensed_player_info = pd.DataFrame([('NA',0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','cs','saves','shots faced','claimed crosses'])
-        condensed_player_info = pd.DataFrame([('NA',0,0,0,0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','goals','chances','assists','shots','shots on target','passes','crosses','duels','tackles'])
+            condensed_player_info = pd.DataFrame([('NA',0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','cs','saves','shots faced','claimed crosses','overall'])
+        condensed_player_info = pd.DataFrame([('NA',0,0,0,0,0,0,0,0,0,0,0,0,0,0)],columns=['team','name','number','position','minutes','goals','chances','assists','shots','shots on target','passes','crosses','duels','tackles','overall'])
         return condensed_player_info
     player_information = team_stats.copy() # load player information
     if position == 'f':
@@ -327,13 +327,27 @@ def top_position(team_stats,position): # get the forwards in the league
     condensed_player_info = index_reset(condensed_player_info)
     names = condensed_player_info.name.unique() # get the names of the players who fit the criteria
     condensed_player_info = condensed_player_info.set_index('name') # set the index to the name column to make the search possible
-    if position == 'f':
-        for name in names:
-            player = full_player_info[full_player_info['name'] == name].head(1) # forwards main purpose is to score goals
+
+    for name in names:
+        player = full_player_info[full_player_info['name'] == name].head(1) # forwards main purpose is to score goals
+        if player.iloc[0]['assists'] > 2.0: # reward getting more than 3 assists
+            condensed_player_info.at[name,'overall'] = condensed_player_info.at[name,'overall'] + 0.1
+        if position == 'm':
+            if player.iloc[0]['goals'] >= 5.0: # reward scoring greater than 5 goals
+                condensed_player_info.at[name,'overall'] = condensed_player_info.at[name,'overall'] + 0.1
+            if player.iloc[0]['pass-acc'] >= 0.85: # reward scoring greater than 5 goals
+                condensed_player_info.at[name,'overall'] = condensed_player_info.at[name,'overall'] + 0.1
+        if position == 'f':
             if (player.iloc[0]['goals'] <= 2.0 and player.iloc[0]['minutes'] >= 1000.0): # if player scores less than 2 & has minutes greater than 1000
                 condensed_player_info.at[name,'overall'] = condensed_player_info.at[name,'overall'] - 0.1
-            if player.iloc[0]['goals'] >= 8.0: # reward forwards scoring greater than 8 goals
-                condensed_player_info.at[name,'overall'] = condensed_player_info.at[name,'overall'] + 0.15
+            if player.iloc[0]['goals'] >= 8.0: # reward scoring greater than 8 goals
+                condensed_player_info.at[name,'overall'] = condensed_player_info.at[name,'overall'] + 0.1
+        if position == 'd':
+            if (player.iloc[0]['interceptions'] > 200.0 and player.iloc[0]['minutes'] >= 1000.0): # if player scores less than 2 & has minutes greater than 1000
+                condensed_player_info.at[name,'overall'] = condensed_player_info.at[name,'overall'] + 0.1
+            if player.iloc[0]['d-won'] > 110.0: # reward scoring greater than 8 goals
+                condensed_player_info.at[name,'overall'] = condensed_player_info.at[name,'overall'] + 0.1
+
     condensed_player_info = condensed_player_info.sort_values(by=['overall'],ascending=False)
     condensed_player_info = condensed_player_info.reset_index()
     team = condensed_player_info.pop('team')
@@ -693,3 +707,121 @@ def get_final_game_prediction(model,q1_roster,q2_roster,home_win,away_win,draw):
     a_w = round((q2_p + away_win) / total_, 2)
     g_d = round((q_draw + draw) / total_, 2)
     return h_w, a_w, g_d
+
+def get_power_rankings(db,df,dc):
+    a = []
+    for team in dc['team']:
+        crest = dc[dc['team'] == team]
+        colour = crest['colour'].values
+        colour = colour[0]
+        crest = crest['crest'].values
+        crest = crest[0]
+
+        rank1 = df[df['team'] == team]
+        rank2 = db[db['team'] == team]
+
+        if rank1.iloc[0]['rank'] == 1:
+            bonus = 4
+        elif rank1.iloc[0]['rank'] == 2:
+            bonus = 3
+        elif rank1.iloc[0]['rank'] == 3:
+            bonus = 2
+        else:
+            bonus =0
+
+        if db.iloc[0]['gp'] == 0:
+            bonus = 0
+
+        if rank1.iloc[0]['rank'] == rank2.iloc[0]['rank']:
+            change = 0
+        else:
+            change = (rank1.iloc[0]['rank'] - rank2.iloc[0]['rank']) * - 1
+
+        if rank1.iloc[0]['gd'] == rank2.iloc[0]['gd']:
+            gd_bonus = 0
+        else:
+            gd_bonus = (rank1.iloc[0]['gd'] - rank2.iloc[0]['gd']) * - 1
+
+        if rank1.iloc[0]['ga'] == rank2.iloc[0]['ga']:
+            ga_nerf = 0
+        else:
+            ga_nerf = (rank1.iloc[0]['ga'] - rank2.iloc[0]['ga']) * - 1
+
+        if rank1.iloc[0]['w'] == rank2.iloc[0]['w']:
+            w_bonus = 0
+        else:
+            w_bonus = (rank1.iloc[0]['w'] - rank2.iloc[0]['w']) * - 1
+
+        goal_bonus = gd_bonus - ga_nerf
+        change = change + bonus + goal_bonus + w_bonus
+
+        a.append([team,change,goal_bonus,w_bonus,crest,colour])
+    db = pd.DataFrame(a,columns = ['team','change','goal_bonus','w_bonus','crest','colour'])
+    #db = pd.DataFrame(a)
+    #db = pd.DataFrame({'team': db.iloc[:][0], 'change': db.iloc[:][1]})
+    db = db.sort_values(by=['change'],ascending=False)
+    db = index_reset(db)
+    rank = db.index + 1
+    db.insert(0,'rank',rank)
+    return db
+
+def get_best_eleven(team_stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info):
+    def get_image(data,name):
+        db = data[data['name'] == name]
+        if db['image'].empty:
+            db = 'empty.jpg'
+        else:
+            db = db['image'].values
+            db = db[0]
+        return db
+    def get_link(data,name):
+        db = data[data['name'] == name]
+        if db['link'].empty:
+            db = 'https://en.wikipedia.org/wiki/Canadian_Premier_League'
+        else:
+            db = db['link'].values
+            db = db[0]
+        return db
+    def get_flag(data,name):
+        db = data[data['name'] == name]
+        if db['flag'].empty:
+            db = 'empty.png'
+        else:
+            db = db['flag'].values
+            db = db[0]
+        return db
+
+    roster = team_stats.copy()
+    roster = roster[['name','first','last']]
+
+    top_keeper = rated_keepers.head(1)
+    top_keeper = top_keeper[['name','number','position','overall']]
+    top_defenders = rated_defenders.iloc[0:3][['name','number','position','overall']]
+    top_midfielders = rated_midfielders.iloc[0:5][['name','number','position','overall']]
+    top_forwards = rated_forwards.iloc[0:2][['name','number','position','overall']]
+    best_eleven = pd.DataFrame(columns=['name','number','position','overall'])
+    best_eleven = pd.concat([best_eleven,top_keeper,top_defenders,top_midfielders,top_forwards])
+    a,b,c,d,e = [],[],[],[],[]
+
+
+    names = best_eleven['name'].values
+
+    for i in range(0,best_eleven.shape[0]):
+        player = roster[roster['name'] == best_eleven.iloc[i]['name']]
+        player= index_reset(player)
+        first = player.iloc[0]['first']
+        last = player.iloc[0]['last']
+        a.append(first)
+        b.append(last)
+        c.append(get_image(player_info,best_eleven.iloc[i]['name']))
+        d.append(get_flag(player_info,best_eleven.iloc[i]['name']))
+        e.append(get_link(player_info,best_eleven.iloc[i]['name']))
+
+    best_eleven.insert(0,'image',c)
+    best_eleven.insert(1,'flag',d)
+    best_eleven.insert(2,'first',a)
+    best_eleven.insert(3,'last',b)
+    best_eleven['link'] = e
+    best_eleven.pop('name')
+    best_eleven = index_reset(best_eleven)
+    return best_eleven

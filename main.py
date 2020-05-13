@@ -187,6 +187,20 @@ def standings_19():
     standings = pd.read_csv(f'datasets/{year}/cpl-{year}-standings.csv')
     return render_template('2019/cpl-es-standings.html',standings_table = standings, year = year, other_year = other_year)
 
+@canples.route('/best11')
+def eleven():
+    year = '2020'
+    other_year = '2019'
+    best_eleven = pd.read_csv(f'datasets/{year}/cpl-{year}-best_eleven.csv')
+    return render_template('cpl-es-best_eleven.html',html_table = best_eleven, year = year, other_year = other_year)
+
+@canples.route('/best11-2019')
+def eleven_19():
+    year = '2019'
+    other_year = '2020'
+    best_eleven = pd.read_csv(f'datasets/{year}/cpl-{year}-best_eleven.csv')
+    return render_template('2019/cpl-es-best_eleven.html',html_table = best_eleven, year = year, other_year = other_year)
+
 @canples.route('/power-rankings')
 def power():
     year = '2020'

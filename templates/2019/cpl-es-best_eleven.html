@@ -10,7 +10,7 @@
     <div class="w3-dropdown-hover">
       <button class="w3-button w3-white w3-xlarge">{{ year }} Season</button>
       <div class="w3-dropdown-content w3-bar-block w3-card-4">
-        <a class="w3-button w3-center" href="{{ url_for('index') }}">{{ other_year }}</a><br>
+        <a class="w3-button w3-center" href="{{ url_for('index_19') }}">{{ other_year }}</a><br>
       </div>
     </div>
   </div>
@@ -22,11 +22,11 @@
     <a href="{{ url_for('power_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-trophy fa-fw"></i>  Power Rankings</a>
     <a href="{{ url_for('comparison1_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Match Prediction</a>
     <a href="{{ url_for('teams_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Teams</a>
-    <a href="{{ url_for('eleven_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Best Eleven</a>
+    <a href="{{ url_for('eleven_19') }}" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Best Eleven</a>
     <a href="{{ url_for('goals_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-soccer-ball-o fa-fw"></i>  Goals and Assists</a>
     <a href="{{ url_for('forwards_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-scissors-o fa-fw"></i>  Forwards</a>
     <a href="{{ url_for('midfielders_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-grab-o fa-fw"></i>  Midfielders</a>
-    <a href="{{ url_for('defenders_19') }}" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-hand-stop-o fa-fw"></i>  Defenders</a>
+    <a href="{{ url_for('defenders_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-stop-o fa-fw"></i>  Defenders</a>
     <a href="{{ url_for('keepers_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-child fa-fw"></i>  Goal Keepers</a>
     <a href="{{ url_for('discipline_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-copy fa-fw"></i>  Discipline</a><br><br>
   </div>
@@ -41,28 +41,32 @@
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-trophy"></i> CPL Defenders</b></h5>
+    <h5><b><i class="fa fa-trophy"></i> This Week's Best Eleven</b></h5>
   </header>
 
-  <div class="w3-container">
-    <div class="w3-blue w3-container">
-      <br>
-    <table class="w3-table w3-striped w3-white">
-      <tr>
-      {%for col in html_table.columns%}
-					<th>{{ col }}</th>
-			{%endfor%}
-      </tr>
+
+  <div class="w3-container w3-row-padding">
+    <div>
       {%for i in range(0,html_table.shape[0])%}
-      <tr>
-          {%for r in range(html_table.shape[1])%}
-          <td>{{ html_table.iloc[i,r] }}</td>
-          {%endfor%}
-      </tr>
+      <div class="w3-quarter w3-card-4 w3-grey">
+        <div class="w3-center">
+          <a href="{{ html_table.iloc[i,7] }}" target="_blank">
+            <img src="static/images/players/{{ html_table.iloc[i,0] }}" alt="{{ html_table.iloc[i,1] }}" style="max-height:200px">
+          </a>
+        </div>
+        <div class="w3-container w3-striped w3-white">
+          <p class="w3-light-grey"><img src="static/images/flags/{{ html_table.iloc[i,1] }}" alt="{{ html_table.iloc[i,2] }}" style="max-height:20px"></p>
+          <p>{{ html_table.iloc[i,5] }}</p>
+          <p class="w3-light-grey">{{ html_table.iloc[i,6] }}</p>
+          <p>Number {{ html_table.iloc[i,2] }}</p>
+          <p class="w3-light-grey">Position {{ html_table.iloc[i,3] }}</p>
+          <p>Overall {{ html_table.iloc[i,4] }}</p>
+        </div>
+      </div>
       {%endfor%}
-    </table>
-    <br>
+    </div>
   </div>
-  <hr>
+</div>
+<hr>
 
 {% endblock %}
