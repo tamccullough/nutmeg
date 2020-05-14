@@ -489,7 +489,12 @@ def get_roster_overall(query,stats,team_ref,rated_forwards,rated_midfielders,rat
     def get_score(data,name):
         db = data[data['name'] == name]
         if db.empty:
-            db = 0
+            previous = player_info[player_info['name'] == name]
+            if previous.empty:
+                db = 0
+            else:
+                previous = previous['overall'].values
+                db = previous[0]
         else:
             db = db['overall'].values
             db = db[0]
