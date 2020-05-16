@@ -1,80 +1,80 @@
 rank,team,name,position,number,minutes,assists
-1,Pacific FC,Blake Smith,d,4,2004.0,5.0
-2,Valour FC,Michael Petrasso,m,9,1301.0,5.0
-3,Pacific FC,Ben Fisk,m,21,1662.0,5.0
-4,Forge FC,Tristan Borges,m,4,1884.0,5.0
-5,Forge FC,Kyle Bekker,m,3,2354.0,5.0
-6,Forge FC,Kwame Awuah,d,2,1885.0,5.0
-7,York9 FC,Diyaeddine Abzi,d,20,1814.0,4.0
-8,York9 FC,Morey Doner,d,3,2250.0,4.0
-9,York9 FC,Kyle Porter,m,19,1916.0,4.0
-10,Cavalry FC,Elijah Adekugbe,m,16,1575.0,4.0
-11,Cavalry FC,José Escalante,m,11,1592.0,4.0
-12,Cavalry FC,Julian Büscher,m,8,1678.0,4.0
-13,Pacific FC,Victor Blasco,m,19,1586.0,3.0
-14,FC Edmonton,Amer Didic,d,55,1650.0,3.0
-15,Forge FC,Anthony Novak,f,23,1027.0,3.0
-16,Cavalry FC,Sergio Camargo,m,10,1171.0,3.0
-17,FC Edmonton,Ramón Soria,d,5,2011.0,3.0
-18,Cavalry FC,Nico Pasquotti,f,17,1853.0,3.0
-19,HFX Wanderers FC,Mohamed Kourouma,f,12,1988.0,3.0
-20,Forge FC,Marcel Zajac,f,9,1073.0,3.0
-21,Valour FC,Louis Béland-Goyette,m,5,1772.0,3.0
-22,Valour FC,Marco Bustos,m,22,2249.0,3.0
-23,Valour FC,Dylan Carreiro,m,10,1441.0,2.0
-24,FC Edmonton,Oumar Diouck,f,45,1977.0,2.0
-25,Pacific FC,Zachary Verhoven,m,16,1285.0,2.0
-26,Valour FC,Michele Paolucci,f,17,1139.0,2.0
-27,FC Edmonton,Jeannot Esua,d,3,1799.0,2.0
-28,Forge FC,Emery Welshman,f,14,932.0,2.0
-29,Valour FC,Raphaël Garcia,d,2,943.0,2.0
-30,Forge FC,Christopher Nanco,f,13,1429.0,2.0
-31,Forge FC,Daniel Krutzen,d,10,2381.0,2.0
-32,Valour FC,Ali Musse,m,23,740.0,2.0
-33,Forge FC,David Choinière,m,5,975.0,2.0
-34,Pacific FC,Alexander González,m,28,1746.0,2.0
-35,Forge FC,Alexander Achinioti-Jönsson,m,1,1671.0,2.0
-36,HFX Wanderers FC,Kodai Iida,m,9,1180.0,2.0
-37,Cavalry FC,Joel Waterman,m,15,1719.0,2.0
-38,FC Edmonton,Edem Mortotsi,m,6,881.0,2.0
-39,FC Edmonton,Easton Ongaro,f,19,1167.0,2.0
-40,York9 FC,Steven Furlano,d,77,517.0,2.0
-41,Cavalry FC,Malyk Hamilton,f,21,1275.0,2.0
-42,Cavalry FC,Dominick Zator,d,4,2335.0,2.0
-43,Pacific FC,Terran Campbell,f,14,2334.0,2.0
-44,York9 FC,Manuel Aparicio,m,10,2159.0,2.0
-45,Pacific FC,Kadin Chung,d,7,2032.0,2.0
-46,York9 FC,Simon Karlsson Adjei,f,12,1422.0,2.0
-47,Pacific FC,Jose Hernandez,f,15,652.0,2.0
-48,York9 FC,Emilio Estevez,m,11,627.0,1.0
-49,York9 FC,Ryan Telfer,m,18,2216.0,1.0
-50,Valour FC,Skylar Thomas,d,3,1894.0,1.0
-51,HFX Wanderers FC,Tomasz Skublak,f,17,1389.0,1.0
-52,Cavalry FC,Jordan Brown,f,9,1324.0,1.0
-53,HFX Wanderers FC,Peter Schaale,d,2,1530.0,1.0
-54,York9 FC,Stefan Lamanna,f,21,77.0,1.0
-55,HFX Wanderers FC,Andre Rampersad,m,18,2003.0,1.0
-56,Forge FC,Klaidi Cela,d,16,326.0,1.0
-57,Valour FC,Martín Arguiñarena,d,6,1534.0,1.0
-58,Cavalry FC,Dominique Malonga,f,19,1871.0,1.0
-59,Valour FC,Dylan Sacramento,m,7,1135.0,1.0
-60,HFX Wanderers FC,Elton John,m,5,1435.0,1.0
-61,Cavalry FC,Carlos Patiño,m,20,320.0,1.0
-62,Pacific FC,Noah Verhoeven,m,23,1850.0,1.0
-63,Valour FC,Diego Gutiérrez,m,8,1605.0,1.0
-64,Forge FC,Dominic Samuel,d,22,2044.0,1.0
-65,Cavalry FC,Oliver Minatel,f,7,1450.0,1.0
-66,FC Edmonton,Randy Edwini-Bonsu,f,11,363.0,1.0
-67,York9 FC,Joseph Di Chiara,m,8,1755.0,1.0
-68,FC Edmonton,Yong-Chan Son,m,7,952.0,1.0
-69,FC Edmonton,Ajeej Sarkaria,f,9,566.0,1.0
-70,York9 FC,Austin Ricci,f,7,199.0,1.0
-71,Forge FC,Kadell Thomas,f,30,542.0,1.0
-72,Cavalry FC,Nikolas Ledgerwood,m,6,1227.0,1.0
-73,FC Edmonton,Prince Amanda,f,16,137.0,1.0
-74,Forge FC,Elimane Cissé,m,6,1701.0,1.0
-75,Cavalry FC,Nathan Mavila,d,3,1952.0,1.0
-76,York9 FC,Emmanuel Zambazis,m,14,277.0,1.0
-77,Forge FC,Jonathan Grant,d,8,822.0,1.0
-78,FC Edmonton,Marcus Velado-Tsegaye,f,17,487.0,1.0
-79,HFX Wanderers FC,Luis Alberto Perea,f,10,1014.0,1.0
+1,PFC,Blake Smith,d,4,2004.0,5.0
+2,VFC,Michael Petrasso,m,9,1301.0,5.0
+3,PFC,Ben Fisk,m,21,1662.0,5.0
+4,FFC,Tristan Borges,m,4,1884.0,5.0
+5,FFC,Kyle Bekker,m,3,2354.0,5.0
+6,FFC,Kwame Awuah,d,2,1885.0,5.0
+7,Y9,Diyaeddine Abzi,d,20,1814.0,4.0
+8,Y9,Morey Doner,d,3,2250.0,4.0
+9,Y9,Kyle Porter,m,19,1916.0,4.0
+10,CFC,Elijah Adekugbe,m,16,1575.0,4.0
+11,CFC,José Escalante,m,11,1592.0,4.0
+12,CFC,Julian Büscher,m,8,1678.0,4.0
+13,PFC,Victor Blasco,m,19,1586.0,3.0
+14,FCE,Amer Didic,d,55,1650.0,3.0
+15,FFC,Anthony Novak,f,23,1027.0,3.0
+16,CFC,Sergio Camargo,m,10,1171.0,3.0
+17,FCE,Ramón Soria,d,5,2011.0,3.0
+18,CFC,Nico Pasquotti,f,17,1853.0,3.0
+19,HFX,Mohamed Kourouma,f,12,1988.0,3.0
+20,FFC,Marcel Zajac,f,9,1073.0,3.0
+21,VFC,Louis Béland-Goyette,m,5,1772.0,3.0
+22,VFC,Marco Bustos,m,22,2249.0,3.0
+23,VFC,Dylan Carreiro,m,10,1441.0,2.0
+24,FCE,Oumar Diouck,f,45,1977.0,2.0
+25,PFC,Zachary Verhoven,m,16,1285.0,2.0
+26,VFC,Michele Paolucci,f,17,1139.0,2.0
+27,FCE,Jeannot Esua,d,3,1799.0,2.0
+28,FFC,Emery Welshman,f,14,932.0,2.0
+29,VFC,Raphaël Garcia,d,2,943.0,2.0
+30,FFC,Christopher Nanco,f,13,1429.0,2.0
+31,FFC,Daniel Krutzen,d,10,2381.0,2.0
+32,VFC,Ali Musse,m,23,740.0,2.0
+33,FFC,David Choinière,m,5,975.0,2.0
+34,PFC,Alexander González,m,28,1746.0,2.0
+35,FFC,Alexander Achinioti-Jönsson,m,1,1671.0,2.0
+36,HFX,Kodai Iida,m,9,1180.0,2.0
+37,CFC,Joel Waterman,m,15,1719.0,2.0
+38,FCE,Edem Mortotsi,m,6,881.0,2.0
+39,FCE,Easton Ongaro,f,19,1167.0,2.0
+40,Y9,Steven Furlano,d,77,517.0,2.0
+41,CFC,Malyk Hamilton,f,21,1275.0,2.0
+42,CFC,Dominick Zator,d,4,2335.0,2.0
+43,PFC,Terran Campbell,f,14,2334.0,2.0
+44,Y9,Manuel Aparicio,m,10,2159.0,2.0
+45,PFC,Kadin Chung,d,7,2032.0,2.0
+46,Y9,Simon Karlsson Adjei,f,12,1422.0,2.0
+47,PFC,Jose Hernandez,f,15,652.0,2.0
+48,Y9,Emilio Estevez,m,11,627.0,1.0
+49,Y9,Ryan Telfer,m,18,2216.0,1.0
+50,VFC,Skylar Thomas,d,3,1894.0,1.0
+51,HFX,Tomasz Skublak,f,17,1389.0,1.0
+52,CFC,Jordan Brown,f,9,1324.0,1.0
+53,HFX,Peter Schaale,d,2,1530.0,1.0
+54,Y9,Stefan Lamanna,f,21,77.0,1.0
+55,HFX,Andre Rampersad,m,18,2003.0,1.0
+56,FFC,Klaidi Cela,d,16,326.0,1.0
+57,VFC,Martín Arguiñarena,d,6,1534.0,1.0
+58,CFC,Dominique Malonga,f,19,1871.0,1.0
+59,VFC,Dylan Sacramento,m,7,1135.0,1.0
+60,HFX,Elton John,m,5,1435.0,1.0
+61,CFC,Carlos Patiño,m,20,320.0,1.0
+62,PFC,Noah Verhoeven,m,23,1850.0,1.0
+63,VFC,Diego Gutiérrez,m,8,1605.0,1.0
+64,FFC,Dominic Samuel,d,22,2044.0,1.0
+65,CFC,Oliver Minatel,f,7,1450.0,1.0
+66,FCE,Randy Edwini-Bonsu,f,11,363.0,1.0
+67,Y9,Joseph Di Chiara,m,8,1755.0,1.0
+68,FCE,Yong-Chan Son,m,7,952.0,1.0
+69,FCE,Ajeej Sarkaria,f,9,566.0,1.0
+70,Y9,Austin Ricci,f,7,199.0,1.0
+71,FFC,Kadell Thomas,f,30,542.0,1.0
+72,CFC,Nikolas Ledgerwood,m,6,1227.0,1.0
+73,FCE,Prince Amanda,f,16,137.0,1.0
+74,FFC,Elimane Cissé,m,6,1701.0,1.0
+75,CFC,Nathan Mavila,d,3,1952.0,1.0
+76,Y9,Emmanuel Zambazis,m,14,277.0,1.0
+77,FFC,Jonathan Grant,d,8,822.0,1.0
+78,FCE,Marcus Velado-Tsegaye,f,17,487.0,1.0
+79,HFX,Luis Alberto Perea,f,10,1014.0,1.0

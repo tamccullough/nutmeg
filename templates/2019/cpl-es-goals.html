@@ -44,45 +44,118 @@
     <h5><b><i class="fa fa-soccer-ball-o"></i> CPL Goals and Assists</b></h5>
   </header>
 
-    <div class="w3-container">
-      <div class="w3-blue w3-container w3-half">
-        <table class="w3-table w3-striped w3-white">
-          <h6>Goals</h6>
-          <tr>
-          {%for col in html_table.columns%}
-    					<th>{{ col }}</th>
-    			{%endfor%}
-          </tr>
-          {%for i in range(0,html_table.shape[0])%}
-          <tr>
-              {%for r in range(html_table.shape[1])%}
-              <td>{{ html_table.iloc[i,r] }}</td>
-              {%endfor%}
-          </tr>
-          {%endfor%}
-        </table>
-        <br>
-      </div>
+  <div class="w3-container">
+      <div class="w3-half w3-padding">
+          <!-- table header -->
+          <div class="w3-half">
+            <div class="w3-grey">
+              <table class="w3-table w3-striped w3-blue">
+                <tr>
+                  <td style="max-width: 15px"><b> r </b></td>
+                  <td style="max-width: 30px"><b>{{ columns_g[1] }}</b></td>
+                  <td><b>{{ columns_g[2] }}</b></td>
+                  <td class="w3-right"><b>{{ columns_g[3] }}</b></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+            <div class="w3-half">
+              <div class="w3-grey">
+                <table class="w3-table w3-striped w3-blue">
+                  <tr>
+                    <td><b>{{ columns_g[4] }}</b></td>
+                    <td><b>{{ columns_g[5] }}</b></td>
+                    <td><b>{{ columns_g[6] }}</b></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+      <!-- end of table header -->
+      <!-- table -->
+      {%for i in range(0,html_table.shape[0])%}
+        <div class="w3-half">
+          <div class="w3-grey">
+            <table class="w3-table w3-striped w3-white">
+              <tr>
+                <td style="max-width: 30px">{{ html_table.iloc[i][0] }}</td>
+                <td style="max-width: 50px">{{ html_table.iloc[i][1] }}</td>
+                <td class="w3-table" style="min-width: 200px"><b>{{ html_table.iloc[i][2] }}</b></td>
+                <td class="w3-right" style="max-width: 30px">{{ html_table.iloc[i][3] }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="w3-half">
+          <div class="w3-grey">
+            <table class="w3-table w3-striped w3-light-grey">
+              <tr>
+                <td style="max-width: 50px">{{ html_table.iloc[i][4] }}</td>
+                <td class="w3-center" style="max-width: 75px">{{ html_table.iloc[i][5] }}</td>
+                <td class="w3-right w3-grey w3-text-white" style="max-width: 75px"><b>{{ html_table.iloc[i][6] }}</b></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        {%endfor%}
+        <!-- end of table -->
+        </div>
 
-      <div class="w3-light-green w3-container w3-half">
-        <table class="w3-table w3-striped w3-white">
-          <h6>Assists</h6>
-          <tr>
-          {%for col in assists_table.columns%}
-              <th>{{ col }}</th>
+        <div class="w3-half w3-padding">
+            <!-- table header -->
+            <div class="w3-half">
+              <div class="w3-grey">
+                <table class="w3-table w3-striped w3-green">
+                  <tr>
+                    <td style="max-width: 15px"><b> r </b></td>
+                    <td style="max-width: 30px"><b>{{ columns_a[1] }}</b></td>
+                    <td><b>{{ columns_a[2] }}</b></td>
+                    <td class="w3-right"><b>{{ columns_a[3] }}</b></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+              <div class="w3-half">
+                <div class="w3-grey">
+                  <table class="w3-table w3-striped w3-green">
+                    <tr>
+                      <td><b>{{ columns_a[4] }}</b></td>
+                      <td><b>{{ columns_a[5] }}</b></td>
+                      <td><b>{{ columns_a[6] }}</b></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+        <!-- end of table header -->
+        <!-- table -->
+        {%for i in range(0,assists_table.shape[0])%}
+          <div class="w3-half">
+            <div class="w3-grey">
+              <table class="w3-table w3-striped w3-white">
+                <tr>
+                  <td style="max-width: 30px">{{ assists_table.iloc[i][0] }}</td>
+                  <td style="max-width: 50px">{{ assists_table.iloc[i][1] }}</td>
+                  <td class="w3-table" style="min-width: 200px"><b>{{ assists_table.iloc[i][2] }}</b></td>
+                  <td class="w3-right" style="max-width: 30px">{{ assists_table.iloc[i][3] }}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="w3-half">
+            <div class="w3-grey">
+              <table class="w3-table w3-striped w3-light-grey">
+                <tr>
+                  <td style="max-width: 50px">{{ assists_table.iloc[i][4] }}</td>
+                  <td class="w3-center" style="max-width: 75px">{{ assists_table.iloc[i][5] }}</td>
+                  <td class="w3-right w3-grey w3-text-white" style="max-width: 75px"><b>{{ assists_table.iloc[i][6] }}</b></td>
+                </tr>
+              </table>
+            </div>
+          </div>
           {%endfor%}
-          </tr>
-          {%for i in range(0,assists_table.shape[0])%}
-          <tr>
-              {%for r in range(assists_table.shape[1])%}
-              <td>{{ assists_table.iloc[i,r] }}</td>
-              {%endfor%}
-          </tr>
-          {%endfor%}
-        </table>
-        <br>
-      </div>
-    </div>
+          <!-- end of table -->
+          </div>
+
+  </div>
   <hr>
 
   {% endblock %}

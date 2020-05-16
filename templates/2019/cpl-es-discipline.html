@@ -45,24 +45,66 @@
   </header>
 
   <div class="w3-container">
-    <div class="w3-blue w3-container">
-      <br>
-    <table class="w3-table w3-striped w3-white">
-      <tr>
-      {%for col in html_table.columns%}
-					<th>{{ col }}</th>
-			{%endfor%}
-      </tr>
+    <!-- table header -->
+    <div class="w3-half">
+      <div class="w3-grey">
+        <table class="w3-table w3-striped w3-blue">
+          <tr>
+            <td><b>{{ columns[0] }}</b></td>
+            <td><b>{{ columns[1] }}</b></td>
+            <td class="w3-right"><b>{{ columns[2] }}</b></td>
+            <td class="w3-right"><b>{{ columns[3] }}</b></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+      <div class="w3-half">
+        <div class="w3-grey">
+          <table class="w3-table w3-striped w3-blue">
+            <tr>
+              <td style="min-width: 75px"><b>{{ columns[4] }}</b></td>
+              <td style="min-width: 75px"><b>{{ columns[5] }}</b></td>
+              <td style="min-width: 75px"><b>{{ columns[6] }}</b></td>
+              <td style="min-width: 75px"><b>{{ columns[7] }}</b></td>
+              <td class="w3-right"><b>{{ columns[8] }}</b></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <!-- end of table header -->
+  </div>
+  <div class="w3-container">
+      <!-- table -->
       {%for i in range(0,html_table.shape[0])%}
-      <tr>
-          {%for r in range(html_table.shape[1])%}
-          <td>{{ html_table.iloc[i,r] }}</td>
-          {%endfor%}
-      </tr>
-      {%endfor%}
-    </table>
-    <br>
+        <div class="w3-half">
+          <div class="w3-grey">
+            <table class="w3-table w3-striped w3-white">
+              <tr>
+                <td style="min-width: 50px">{{ html_table.iloc[i][0] }}</td>
+                <td class="w3-table" style="min-width: 200px"><b>{{ html_table.iloc[i][1] }}</b></td>
+                <td style="max-width: 50px">{{ html_table.iloc[i][3] }}</td>
+                <td class="w3-right" style="min-width: 50px">{{ html_table.iloc[i][2] }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="w3-half">
+          <div class="w3-grey">
+            <table class="w3-table w3-striped w3-light-grey">
+              <tr>
+                <td style="min-width: 75px">{{ html_table.iloc[i][4] }}</td>
+                <td style="min-width: 75px">{{ html_table.iloc[i][5] }}</td>
+                <td style="min-width: 75px">{{ html_table.iloc[i][6] }}</td>
+                <td style="min-width: 75px">{{ html_table.iloc[i][7] }}</td>
+                <td class="w3-right w3-grey w3-text-white" style="min-width: 50px"><b>{{ html_table.iloc[i][8] }}</b></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        {%endfor%}
+        <!-- end of table -->
+
   </div>
   <hr>
 
-  {% endblock %}
+{% endblock %}

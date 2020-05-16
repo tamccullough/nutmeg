@@ -409,7 +409,9 @@ def goals():
     rated_g10 = rated_goalscorers.head(10)
     rated_assists = pd.read_csv(f'datasets/{year}/cpl-{year}-rated_assists.csv')
     rated_a10 = rated_assists.head(10)
-    return render_template('cpl-es-goals.html',html_table = rated_g10, assists_table = rated_a10, year = year, other_year = other_year)
+    columns_g = rated_goalscorers.columns
+    columns_a = rated_assists.columns
+    return render_template('cpl-es-goals.html',columns_g = columns_g, columns_a = columns_a,html_table = rated_g10, assists_table = rated_a10, year = year, other_year = other_year)
 
 @canples.route('/goals-2019')
 def goals_19():
@@ -419,77 +421,89 @@ def goals_19():
     rated_g10 = rated_goalscorers.head(10)
     rated_assists = pd.read_csv(f'datasets/{year}/cpl-{year}-rated_assists.csv')
     rated_a10 = rated_assists.head(10)
-    return render_template('2019/cpl-es-goals.html',html_table = rated_g10, assists_table = rated_a10, year = year, other_year = other_year)
+    columns_g = rated_goalscorers.columns
+    columns_a = rated_assists.columns
+    return render_template('2019/cpl-es-goals.html',columns_g = columns_g, columns_a = columns_a,html_table = rated_g10, assists_table = rated_a10, year = year, other_year = other_year)
 
 @canples.route('/forwards')
 def forwards():
     year = '2020'
     other_year = '2019'
     rated_forwards = pd.read_csv(f'datasets/{year}/cpl-{year}-forwards.csv')
-    return render_template('cpl-es-forwards.html',html_table = rated_forwards, year = year, other_year = other_year)
+    columns = rated_forwards.columns
+    return render_template('cpl-es-forwards.html',columns = columns,html_table = rated_forwards, year = year, other_year = other_year)
 
 @canples.route('/forwards-2019')
 def forwards_19():
     year = '2019'
     other_year = '2020'
     rated_forwards = pd.read_csv(f'datasets/{year}/cpl-{year}-forwards.csv')
-    return render_template('2019/cpl-es-forwards.html',html_table = rated_forwards, year = year, other_year = other_year)
+    columns = rated_forwards.columns
+    return render_template('2019/cpl-es-forwards.html',columns = columns,html_table = rated_forwards, year = year, other_year = other_year)
 
 @canples.route('/midfielders')
 def midfielders():
     year = '2020'
     other_year = '2019'
     rated_midfielders = pd.read_csv(f'datasets/{year}/cpl-{year}-midfielders.csv')
-    return render_template('cpl-es-midfielders.html',html_table = rated_midfielders, year = year, other_year = other_year)
+    columns = rated_midfielders.columns
+    return render_template('cpl-es-midfielders.html',columns = columns,html_table = rated_midfielders, year = year, other_year = other_year)
 
 @canples.route('/midfielders-2019')
 def midfielders_19():
     year = '2019'
     other_year = '2020'
     rated_midfielders = pd.read_csv(f'datasets/{year}/cpl-{year}-midfielders.csv')
-    return render_template('2019/cpl-es-midfielders.html',html_table = rated_midfielders, year = year, other_year = other_year)
+    columns = rated_midfielders.columns
+    return render_template('2019/cpl-es-midfielders.html',columns = columns,html_table = rated_midfielders, year = year, other_year = other_year)
 
 @canples.route('/defenders')
 def defenders():
     year = '2020'
     other_year = '2019'
     rated_defenders = pd.read_csv(f'datasets/{year}/cpl-{year}-defenders.csv')
-    return render_template('cpl-es-defenders.html',html_table = rated_defenders, year = year, other_year = other_year)
+    columns = rated_defenders.columns
+    return render_template('cpl-es-defenders.html',columns = columns,html_table = rated_defenders, year = year, other_year = other_year)
 
 @canples.route('/defenders-2019')
 def defenders_19():
     year = '2019'
     other_year = '2020'
     rated_defenders = pd.read_csv(f'datasets/{year}/cpl-{year}-defenders.csv')
-    return render_template('2019/cpl-es-defenders.html',html_table = rated_defenders, year = year, other_year = other_year)
+    columns = rated_defenders.columns
+    return render_template('2019/cpl-es-defenders.html',columns = columns,html_table = rated_defenders, year = year, other_year = other_year)
 
 @canples.route('/keepers')
 def keepers():
     year = '2020'
     other_year = '2019'
     rated_keepers = pd.read_csv(f'datasets/{year}/cpl-{year}-keepers.csv')
-    return render_template('cpl-es-keepers.html',html_table = rated_keepers, year = year, other_year = other_year)
+    columns = rated_keepers.columns
+    return render_template('cpl-es-keepers.html',columns = columns,html_table = rated_keepers, year = year, other_year = other_year)
 
 @canples.route('/keepers-2019')
 def keepers_19():
     year = '2019'
     other_year = '2020'
     rated_keepers = pd.read_csv(f'datasets/{year}/cpl-{year}-keepers.csv')
-    return render_template('2019/cpl-es-keepers.html',html_table = rated_keepers, year = year, other_year = other_year)
+    columns = rated_keepers.columns
+    return render_template('2019/cpl-es-keepers.html',columns = columns,html_table = rated_keepers, year = year, other_year = other_year)
 
 @canples.route('/discipline')
 def discipline():
     year = '2020'
     other_year = '2019'
     rated_offenders = pd.read_csv(f'datasets/{year}/cpl-{year}-discipline.csv')
-    return render_template('cpl-es-discipline.html',html_table = rated_offenders, year = year, other_year = other_year)
+    columns = rated_offenders.columns
+    return render_template('cpl-es-discipline.html',columns = columns,html_table = rated_offenders, year = year, other_year = other_year)
 
 @canples.route('/discipline-2019')
 def discipline_19():
     year = '2019'
     other_year = '2020'
     rated_offenders = pd.read_csv(f'datasets/{year}/cpl-{year}-discipline.csv')
-    return render_template('2019/cpl-es-discipline.html',html_table = rated_offenders, year = year, other_year = other_year)
+    columns = rated_offenders.columns
+    return render_template('2019/cpl-es-discipline.html',columns = columns,html_table = rated_offenders, year = year, other_year = other_year)
 
 @canples.route('/hell')
 def hello():

@@ -1,2 +1,2 @@
-team,name,number,position,minutes,goals,chances,assists,shots,shots on target,passes,crosses,duels,tackles,overall
-NA,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+team,name,number,position,minutes,goals,assists,touches,passes,pass-acc,crosses,cross-acc,chances,duels,tackles,overall
+na,na,0,na,0,0,0,0,0,0,0,0,0,0,0,0
