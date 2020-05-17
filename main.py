@@ -360,7 +360,8 @@ def teams():
     year = '2020'
     other_year = '2019'
     team_ref = pd.read_csv('datasets/teams.csv')
-    return render_template('cpl-es-teams.html',html_table = team_ref, year = year, other_year = other_year)
+    columns = team_ref.columns
+    return render_template('cpl-es-teams.html',columns = columns, html_table = team_ref, year = year, other_year = other_year)
 
 @canples.route('/teams-2019')
 def teams_19():
@@ -368,7 +369,8 @@ def teams_19():
     other_year = '2020'
     team_ref = pd.read_csv('datasets/teams.csv')
     teams_2019 = team_ref[1:]
-    return render_template('2019/cpl-es-teams.html',html_table = teams_2019, year = year, other_year = other_year)
+    columns = team_ref.columns
+    return render_template('2019/cpl-es-teams.html',columns = columns, html_table = teams_2019, year = year, other_year = other_year)
 
 @canples.route('/roster', methods=['POST'])
 def roster():

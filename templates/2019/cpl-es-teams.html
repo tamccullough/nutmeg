@@ -45,28 +45,50 @@
   </header>
 
   <div class="w3-container">
-    <form method="POST" action="/roster-2019">
-      <table class="w3-table">
-        <tr>
-        {%for col in html_table.columns[0:-5]%}
-  					<th>{{ col }}</th>
-  			{%endfor%}
-        <th>cpl link</th>
-        <th>wiki link</th>
-        </tr>
-        {%for i in range(0,html_table.shape[0])%}
-        <tr class="{{ html_table.iloc[i,4] }}">
-          <td><img src="static/images/flags/{{ html_table.iloc[i,5] }}" alt="{{ html_table.iloc[i,0] }} Crest" style="max-height:40px"><a href="{{ url_for('roster') }}"><input class="w3-button" type="submit" id="team" name="team" value="{{ html_table.iloc[i,0] }}"/></a></td>
-            {%for r in range(1,html_table.shape[1]-5)%}
-            <td>{{ html_table.iloc[i,r] }}</td>
-            {%endfor%}
-            <td><a class="w3-button" href="{{ html_table.iloc[i,6] }}" target="_blank">club site</a></td>
-            <td><a class="w3-button" href="{{ html_table.iloc[i,7] }}" target="_blank">wikipedia link</a></td>
-        </tr>
-        {%endfor%}
-      </table>
-    </form>
-  </div>
+        <!-- table header -->
+        <div class="w3-half">
+            <table class="w3-table w3-striped w3-blue">
+              <tr>
+                <td style="max-width: 30px">crest</td>
+                <td style="w3-center min-width: 150px"><b> {{ columns[0] }}</b></td>
+                <td class="w3-right" style="min-width: 100px"><b>{{ columns[1] }}</b></td>
+              </tr>
+            </table>
+        </div>
+          <div class="w3-half">
+              <table class="w3-table w3-striped w3-blue">
+                <tr>
+                  <td style="max-width: 50px"><b>{{ columns[2] }}</b></td>
+                  <td style="max-width: 50px"><b>{{ columns[6] }}</b></td>
+                  <td style="text-align:center; max-width: 50px"><b>{{ columns[7] }}</b></td>
+                </tr>
+              </table>
+          </div>
+    <!-- end of table header -->
+    <!-- table -->
+    {%for i in range(0,html_table.shape[0])%}
+      <div class="w3-half">
+        <form method="POST" action="/roster">
+          <table class="w3-table w3-striped w3-white">
+            <tr class="{{ html_table.iloc[i,4] }}">
+              <td style="max-width: 300px"><img src="static/images/flags/{{ html_table.iloc[i,5] }}" alt="{{ html_table.iloc[i,0] }} Crest" style="max-height:50px"><a href="{{ url_for('roster') }}"><input class="w3-button" type="submit" id="team" name="team" value="{{ html_table.iloc[i,0] }}"/></a></td>
+              <td style="text-align:center; vertical-align:middle; min-width: 100px">{{ html_table.iloc[i][1] }}</td>
+            </tr>
+          </table>
+        </form>
+      </div>
+      <div class="w3-half">
+          <table class="w3-table w3-striped w3-light-grey">
+            <tr class="{{ html_table.iloc[i,4] }}" style="height: 66px">
+              <td style="vertical-align:middle; max-width: 50px">{{ html_table.iloc[i][2] }}</td>
+              <td style="max-width: 50px"><a class="w3-center w3-button" href="{{ html_table.iloc[i,6] }}" target="_blank">club site</a></td>
+              <td style="max-width: 50px"><a class="w3-right w3-button" href="{{ html_table.iloc[i,7] }}" target="_blank">wikipedia</a></td>
+            </tr>
+          </table>
+      </div>
+      {%endfor%}
+      <!-- end of table -->
+    </div>
   <hr>
 
 {% endblock %}
