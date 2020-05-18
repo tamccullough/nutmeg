@@ -48,8 +48,8 @@
       <div class="w3-half w3-padding">
           <!-- table header -->
           <div class="w3-half">
-            <div class="w3-grey">
-              <table class="w3-table w3-striped w3-blue">
+            <div class="w3-blue">
+              <table class="w3-table w3-blue">
                 <tr>
                   <td style="max-width: 15px"><b> r </b></td>
                   <td style="max-width: 30px"><b>{{ columns_g[1] }}</b></td>
@@ -61,7 +61,7 @@
           </div>
             <div class="w3-half">
               <div class="w3-grey">
-                <table class="w3-table w3-striped w3-blue">
+                <table class="w3-table w3-blue">
                   <tr>
                     <td><b>{{ columns_g[4] }}</b></td>
                     <td><b>{{ columns_g[5] }}</b></td>
@@ -74,7 +74,7 @@
       <!-- table -->
       {%for i in range(0,html_table.shape[0])%}
         <div class="w3-half">
-          <div class="w3-grey">
+          <div class="w3-white">
             <table class="w3-table w3-striped w3-white">
               <tr>
                 <td style="max-width: 30px">{{ html_table.iloc[i][0] }}</td>
@@ -91,7 +91,7 @@
               <tr>
                 <td style="max-width: 50px">{{ html_table.iloc[i][4] }}</td>
                 <td class="w3-center" style="max-width: 75px">{{ html_table.iloc[i][5] }}</td>
-                <td class="w3-right w3-grey w3-text-white" style="max-width: 75px"><b>{{ html_table.iloc[i][6] }}</b></td>
+                <td class="w3-right w3-grey w3-text-white" style="min-width: 50px"><b>{{ html_table.iloc[i][6] }}</b></td>
               </tr>
             </table>
           </div>
@@ -103,8 +103,8 @@
         <div class="w3-half w3-padding">
             <!-- table header -->
             <div class="w3-half">
-              <div class="w3-grey">
-                <table class="w3-table w3-striped w3-green">
+              <div class="w3-green">
+                <table class="w3-table w3-green">
                   <tr>
                     <td style="max-width: 15px"><b> r </b></td>
                     <td style="max-width: 30px"><b>{{ columns_a[1] }}</b></td>
@@ -115,8 +115,8 @@
               </div>
             </div>
               <div class="w3-half">
-                <div class="w3-grey">
-                  <table class="w3-table w3-striped w3-green">
+                <div class="w3-green">
+                  <table class="w3-table w3-green">
                     <tr>
                       <td><b>{{ columns_a[4] }}</b></td>
                       <td><b>{{ columns_a[5] }}</b></td>
@@ -129,7 +129,7 @@
         <!-- table -->
         {%for i in range(0,assists_table.shape[0])%}
           <div class="w3-half">
-            <div class="w3-grey">
+            <div class="w3-white">
               <table class="w3-table w3-striped w3-white">
                 <tr>
                   <td style="max-width: 30px">{{ assists_table.iloc[i][0] }}</td>
@@ -146,7 +146,7 @@
                 <tr>
                   <td style="max-width: 50px">{{ assists_table.iloc[i][4] }}</td>
                   <td class="w3-center" style="max-width: 75px">{{ assists_table.iloc[i][5] }}</td>
-                  <td class="w3-right w3-grey w3-text-white" style="max-width: 75px"><b>{{ assists_table.iloc[i][6] }}</b></td>
+                  <td class="w3-right w3-grey w3-text-white" style="min-width: 50px"><b>{{ assists_table.iloc[i][6] }}</b></td>
                 </tr>
               </table>
             </div>

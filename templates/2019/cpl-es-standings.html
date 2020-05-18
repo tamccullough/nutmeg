@@ -41,46 +41,34 @@
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-trophy"></i> CPL Standings</b></h5>
+    <h5><b><i class="fa fa-trophy"></i> CPL STANDINGS</b></h5>
   </header>
 
   <div class="w3-container">
     <!-- table header -->
-    <div class="w3-third">
+    <div class="w3-half">
       <div class="w3-grey">
         <table class="w3-table w3-striped w3-blue">
           <tr>
-            <td><b>{{ columns[0] }}</b></td>
-            <td><b>{{ columns[1] }}</b></td>
-            <td class="w3-right"><b>{{ columns[2] }}</b></td>
+            <td style="text-align:left; width: 20px"><b>{{ columns[0] }}</b></td>
+            <td style="text-align:left; width: 180px"><b>{{ columns[1] }}</b></td>
+            <td style="text-align:center; max-width: 15px"><b>{{ columns[2] }}</b></td>
+            <td style="text-align:center; max-width: 15px"><b>{{ columns[3] }}</b></td>
+            <td style="text-align:center; max-width: 15px"><b>{{ columns[5] }}</b></td>
           </tr>
         </table>
       </div>
     </div>
-      <div class="w3-third">
+      <div class="w3-half">
         <div class="w3-grey">
           <table class="w3-table w3-striped w3-blue">
             <tr>
-              <td><b>{{ columns[4] }}</b></td>
-              <td><b>{{ columns[5] }}</b></td>
-              <td><b>{{ columns[6] }}</b></td>
-              <td><b>{{ columns[7] }}</b></td>
-              <td><b>{{ columns[8] }}</b></td>
-              <td><b>{{ columns[9] }}</b></td>
-            </tr>
-          </table>
-        </div>
-      </div>
-      <div class="w3-third">
-        <div class="w3-grey">
-          <table class="w3-table w3-striped w3-blue">
-            <tr>
-              <td><b>{{ columns[10] }}</b></td>
-              <td><b>{{ columns[11] }}</b></td>
-              <td><b>{{ columns[12] }}</b></td>
-              <td><b>{{ columns[13] }}</b></td>
-              <td><b>{{ columns[14] }}</b></td>
-              <td><b>{{ columns[15] }}</b></td>
+              <td style="text-align:center; max-width: 15px"><b>{{ columns[6] }}</b></td>
+              <td style="text-align:center; max-width: 15px"><b>{{ columns[7] }}</b></td>
+              <td style="text-align:center; max-width: 15px"><b>{{ columns[8] }}</b></td>
+              <td style="text-align:center; max-width: 15px"><b>{{ columns[9] }}</b></td>
+              <td style="text-align:center; max-width: 15px"><b>{{ columns[10] }}</b></td>
+              <td style="text-align:center; max-width: 15px"><b>{{ columns[11] }}</b></td>
             </tr>
           </table>
         </div>
@@ -90,41 +78,29 @@
   <div class="w3-container">
       <!-- table -->
       {%for i in range(0,standings_table.shape[0])%}
-        <div class="w3-third">
+        <div class="w3-half">
           <div class="w3-grey">
-            <table class="w3-table w3-striped w3-white">
+            <table class="w3-table w3-striped w3-sand">
               <tr>
-                <td>{{ standings_table.iloc[i][0] }}</td>
-                <td class="w3-table" style="min-width: 150px"><b>{{ standings_table.iloc[i][1] }}</b></td>
-                <td class="w3-center" style="text-align:center; max-width: 25px">{{ standings_table.iloc[i][2] }}</td>
+                <td style="text-align:center; width: 40px">{{ standings_table.iloc[i][0] }}</td>
+                <td style="text-align:left; width: 180px"><b>{{ standings_table.iloc[i][1] }}</b></td>
+                <td style="text-align:center; max-width: 15px">{{ standings_table.iloc[i][2] }}</td>
+                <td style="text-align:center; max-width: 15px"><b>{{ standings_table.iloc[i][3] }}</b></td>
+                <td style="text-align:center; max-width: 15px">{{ standings_table.iloc[i][5] }}</td>
               </tr>
             </table>
           </div>
         </div>
-        <div class="w3-third">
+        <div class="w3-half">
           <div class="w3-grey">
-            <table class="w3-table w3-striped w3-light-grey">
+            <table class="w3-table w3-striped w3-light-blue">
               <tr>
-                <td>{{ standings_table.iloc[i][4] }}</td>
-                <td>{{ standings_table.iloc[i][5] }}</td>
-                <td>{{ standings_table.iloc[i][6] }}</td>
-                <td>{{ standings_table.iloc[i][7] }}</td>
-                <td>{{ standings_table.iloc[i][8] }}</td>
-                <td>{{ standings_table.iloc[i][9] }}</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div class="w3-third">
-          <div class="w3-grey">
-            <table class="w3-table w3-striped w3-light-grey">
-              <tr>
-                <td>{{ standings_table.iloc[i][10] }}</td>
-                <td>{{ standings_table.iloc[i][11] }}</td>
-                <td>{{ standings_table.iloc[i][12] }}</td>
-                <td>{{ standings_table.iloc[i][13] }}</td>
-                <td>{{ standings_table.iloc[i][14] }}</td>
-                <td>{{ standings_table.iloc[i][15] }}</td>
+                <td class="w3-green" style="text-align:center; max-width: 15px">{{ standings_table.iloc[i][6] }}</td>
+                <td class="w3-red" style="text-align:center; max-width: 15px">{{ standings_table.iloc[i][7] }}</td>
+                <td class="w3-orange" style="text-align:center; max-width: 15px">{{ standings_table.iloc[i][8] }}</td>
+                <td style="text-align:center; max-width: 15px">{{ standings_table.iloc[i][9] }}</td>
+                <td style="text-align:center; max-width: 15px">{{ standings_table.iloc[i][10] }}</td>
+                <td style="text-align:center; max-width: 15px">{{ standings_table.iloc[i][11] }}</td>
               </tr>
             </table>
           </div>

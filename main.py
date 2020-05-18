@@ -187,7 +187,7 @@ def standings_19():
     other_year = '2020'
     standings = pd.read_csv(f'datasets/{year}/cpl-{year}-standings.csv')
     columns = standings.columns
-    return render_template('cpl-es-standings.html',columns = columns, standings_table = standings, year = year, other_year = other_year)
+    return render_template('2019/cpl-es-standings.html',columns = columns, standings_table = standings, year = year, other_year = other_year)
 
 @canples.route('/best11')
 def eleven():

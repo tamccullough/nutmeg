@@ -68,7 +68,7 @@
     <!-- table -->
     {%for i in range(0,html_table.shape[0])%}
       <div class="w3-half">
-        <form method="POST" action="/roster">
+        <form method="POST" action="/roster-2019">
           <table class="w3-table w3-striped w3-white">
             <tr class="{{ html_table.iloc[i,4] }}">
               <td style="max-width: 300px"><img src="static/images/flags/{{ html_table.iloc[i,5] }}" alt="{{ html_table.iloc[i,0] }} Crest" style="max-height:50px"><a href="{{ url_for('roster') }}"><input class="w3-button" type="submit" id="team" name="team" value="{{ html_table.iloc[i,0] }}"/></a></td>

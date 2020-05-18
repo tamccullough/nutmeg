@@ -55,12 +55,12 @@
           </a>
         </div>
         <div class="w3-container w3-striped w3-white">
-          <p class="w3-light-grey"><img src="static/images/flags/{{ html_table.iloc[i,1] }}" alt="{{ html_table.iloc[i,2] }}" style="max-height:20px"></p>
-          <p>{{ html_table.iloc[i,5] }}</p>
-          <p class="w3-light-grey">{{ html_table.iloc[i,6] }}</p>
-          <p>Number {{ html_table.iloc[i,2] }}</p>
-          <p class="w3-light-grey">Position {{ html_table.iloc[i,3] }}</p>
-          <p>Overall {{ html_table.iloc[i,4] }}</p>
+          <p class="w3-light-grey"><img src="static/images/flags/{{ html_table.iloc[i,3] }}" alt="{{ html_table.iloc[i,3] }}" style="max-height:20px"></p>
+          <p>{{ html_table.iloc[i,1] }}</p>
+          <p class="w3-light-grey">{{ html_table.iloc[i,2] }}</p>
+          <p>Number {{ html_table.iloc[i,4] }}</p>
+          <p class="w3-light-grey">Position {{ html_table.iloc[i,5] }}</p>
+          <p>Overall {{ html_table.iloc[i,6] }}</p>
         </div>
       </div>
       {%endfor%}
