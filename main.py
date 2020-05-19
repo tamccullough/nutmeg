@@ -53,7 +53,7 @@ def load_player_files(year):
 
 #rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
 
-def get_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,):
+def get_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info):
     game_h = cpl_main.get_home_away_comparison(stats,game,q1)
     game_a = cpl_main.get_home_away_comparison(stats,game,q2)
     compare = cpl_main.get_team_comparison(results_brief,q1,q2)
@@ -62,8 +62,8 @@ def get_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards,rat
     home_win, draw, away_win = cpl_main.get_match_prediction(q1,q2,t1_x,t1_y,t2_x,t2_y)
     home_form = cpl_main.get_five_game_form(results,q1)
     away_form = cpl_main.get_five_game_form(results,q2)
-    home_roster = cpl_main.get_compare_roster(results,q1,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers)
-    away_roster = cpl_main.get_compare_roster(results,q2,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers)
+    home_roster = cpl_main.get_compare_roster(results,q1,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info)
+    away_roster = cpl_main.get_compare_roster(results,q2,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info)
     q1_roster = cpl_main.get_overall_roster(home_roster)
     q2_roster = cpl_main.get_overall_roster(away_roster)
     home_win, away_win, draw = cpl_main.get_final_game_prediction(cpl_classifier_model,q1_roster,q2_roster,home_win,away_win,draw)
@@ -233,7 +233,7 @@ def comparison1():
     away_colour = away_team_info.iloc[0][4]
     away_crest = away_team_info.iloc[0][5]
 
-    home_win, draw, away_win, home_form, away_form, home_roster, away_roster = get_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards, rated_midfielders, rated_defenders, rated_keepers)
+    home_win, draw, away_win, home_form, away_form, home_roster, away_roster = get_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards, rated_midfielders, rated_defenders, rated_keepers, player_info)
 
     team1, team2, team3, team4, team5, team6, team7, team8 = get_team_files(schedule,team_ref)
     home_win = get_string(home_win)
@@ -269,7 +269,7 @@ def comparison2():
     away_colour = away_team_info.iloc[0][4]
     away_crest = away_team_info.iloc[0][5]
 
-    home_win, draw, away_win, home_form, away_form, home_roster, away_roster = get_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards, rated_midfielders, rated_defenders, rated_keepers)
+    home_win, draw, away_win, home_form, away_form, home_roster, away_roster = get_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards, rated_midfielders, rated_defenders, rated_keepers, player_info)
 
     team1, team2, team3, team4, team5, team6, team7, team8 = get_team_files(schedule,team_ref)
     home_win = get_string(home_win)

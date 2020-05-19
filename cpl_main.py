@@ -573,53 +573,28 @@ def get_home_away_comparison(stats,game,team):
     db = db['name']
     return db
 
-def get_compare_roster(results,query,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers):
-    # going through the rated players to get the best players for each position
-    # using game_h,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,results,team_stats
-    def get_player_info(data,player,position,num):
-        player_info = data[data['name'] == name]
-        if player_info.empty:
-            player_row = [name,player.iloc[0][1],position,0,num]
-
-        else:
-            player_row = player_info.iloc[0].copy()
-            player_row['asc'] = num
-        return player_row
-    roster = get_roster(query,stats,team_ref)
-    keepers = [] # lists for each position
-    forwards = []
-    midfields = []
-    defenders = []
-    for name in roster['name']:
-        player = roster[roster['name'] == name]
-        if player.iloc[0][2] == 'f':
-            player_info = get_player_info(rated_forwards,player,'f',0)
-            forwards.append(player_info)
-        if player.iloc[0][2] == 'm':
-            player_info = get_player_info(rated_midfielders,player,'m',1)
-            midfields.append(player_info)
-        if player.iloc[0][2] == 'd':
-            player_info = get_player_info(rated_defenders,player,'d',2)
-            defenders.append(player_info)
-        if player.iloc[0][2] == 'g':
-            player_info = get_player_info(rated_keepers,player,'g',3)
-            keepers.append(player_info)
-    db = pd.DataFrame(keepers,columns=['name','number','position','overall','asc'])
-    db = db.sort_values(by=['asc','overall'],ascending=False)
-    dd = pd.DataFrame(defenders,columns=['name','number','position','overall','asc'])
-    dd = dd.sort_values(by=['asc','overall'],ascending=False)
-    dm = pd.DataFrame(midfields,columns=['name','number','position','overall','asc'])
-    dm = dm.sort_values(by=['asc','overall'],ascending=False)
-    df = pd.DataFrame(forwards,columns=['name','number','position','overall','asc'])
-    df = df.sort_values(by=['asc','overall'],ascending=False)
-    db = pd.concat([db[0:1],dd[0:4],dm[0:4],df[0:2]])
-    db = db[['name','number','position','overall','asc']]
-    if results.iloc[0]['hr'] == 'E': # check if games haven't been played
-        db = db.sort_values(by=['asc'],ascending=False)
-    else:
-        db = db.sort_values(by=['asc','overall'],ascending=False)
+def get_compare_roster(results,query,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info):
+    roster = get_roster_overall(query,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info)
+    def get_player(data,string):
+        dz = data[data['position'] == string]
+        dz = dz[['first','last','number','position','overall']]
+        dz.insert(0,'name',dz['first'] + ' ' + dz['last'])
+        dz.pop('first')
+        dz.pop('last')
+        return dz
+    dk = get_player(roster,'g')
+    dk = dk.sort_values(by=['overall'],ascending=False)
+    dd = get_player(roster,'d')
+    dd = dd.sort_values(by=['overall'],ascending=False)
+    dm = get_player(roster,'m')
+    dm = dm.sort_values(by=['overall'],ascending=False)
+    df = get_player(roster,'f')
+    df = df.sort_values(by=['overall'],ascending=False)
+    db = pd.concat([dk[0:1],dd[0:4],dm[0:4],df[0:2]])
+    #db = db[['name','number','position','overall','asc']]
+    #db = db.sort_values(by=['asc','overall'],ascending=False)
     db = index_reset(db)
-    db.pop('asc')
+    #db.pop('asc')
     return db
 
 def get_team_history(data,query):
@@ -796,37 +771,44 @@ def get_best_eleven(team_stats,team_ref,rated_forwards,rated_midfielders,rated_d
             db = db[0]
         return db
 
-    roster = team_stats.copy()
-    roster = roster[['name','first','last']]
+    check = team_stats.describe()
+    if check.loc['max']['minutes'] == 0:
+        best_eleven = pd.read_csv('datasets/2019/cpl-2019-best_eleven.csv')
+        #best_eleven = pd.DataFrame([['empty.jpg','empty.png',0,'NA',0,'NA','NA','https://canpl.ca/']],columns=['image','flag','number','position','overall','first','last','link'])
+        #best_eleven = pd.concat([best_eleven]*11)
+        return best_eleven
+    else:
+        roster = team_stats.copy()
+        roster = roster[['name','first','last']]
 
-    top_keeper = rated_keepers.head(1)
-    top_keeper = top_keeper[['name','number','position','overall']]
-    top_defenders = rated_defenders.iloc[0:3][['name','number','position','overall']]
-    top_midfielders = rated_midfielders.iloc[0:5][['name','number','position','overall']]
-    top_forwards = rated_forwards.iloc[0:2][['name','number','position','overall']]
-    best_eleven = pd.DataFrame(columns=['name','number','position','overall'])
-    best_eleven = pd.concat([best_eleven,top_keeper,top_defenders,top_midfielders,top_forwards])
-    a,b,c,d,e = [],[],[],[],[]
+        top_keeper = rated_keepers.head(1)
+        top_keeper = top_keeper[['name','number','position','overall']]
+        top_defenders = rated_defenders.iloc[0:3][['name','number','position','overall']]
+        top_midfielders = rated_midfielders.iloc[0:5][['name','number','position','overall']]
+        top_forwards = rated_forwards.iloc[0:2][['name','number','position','overall']]
+        best_eleven = pd.DataFrame(columns=['name','number','position','overall'])
+        best_eleven = pd.concat([best_eleven,top_keeper,top_defenders,top_midfielders,top_forwards])
+        a,b,c,d,e = [],[],[],[],[]
 
 
-    names = best_eleven['name'].values
+        names = best_eleven['name'].values
 
-    for i in range(0,best_eleven.shape[0]):
-        player = roster[roster['name'] == best_eleven.iloc[i]['name']]
-        player= index_reset(player)
-        first = player.iloc[0]['first']
-        last = player.iloc[0]['last']
-        a.append(first)
-        b.append(last)
-        c.append(get_image(player_info,best_eleven.iloc[i]['name']))
-        d.append(get_flag(player_info,best_eleven.iloc[i]['name']))
-        e.append(get_link(player_info,best_eleven.iloc[i]['name']))
+        for i in range(0,best_eleven.shape[0]):
+            player = roster[roster['name'] == best_eleven.iloc[i]['name']]
+            player= index_reset(player)
+            first = player.iloc[0]['first']
+            last = player.iloc[0]['last']
+            a.append(first)
+            b.append(last)
+            c.append(get_image(player_info,best_eleven.iloc[i]['name']))
+            d.append(get_flag(player_info,best_eleven.iloc[i]['name']))
+            e.append(get_link(player_info,best_eleven.iloc[i]['name']))
 
-    best_eleven.insert(0,'image',c)
-    best_eleven.insert(1,'flag',d)
-    best_eleven.insert(2,'first',a)
-    best_eleven.insert(3,'last',b)
-    best_eleven['link'] = e
-    best_eleven.pop('name')
-    best_eleven = index_reset(best_eleven)
-    return best_eleven
+        best_eleven.insert(0,'image',c)
+        best_eleven.insert(1,'first',a)
+        best_eleven.insert(2,'last',b)
+        best_eleven.insert(3,'flag',d)
+        best_eleven['link'] = e
+        best_eleven.pop('name')
+        best_eleven = index_reset(best_eleven)
+        return best_eleven
