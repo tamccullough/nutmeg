@@ -46,31 +46,29 @@
 
   <div class="w3-container w3-row-padding w3-margin-bottom">
     <form method="POST" action="/versus-">
-    <h5>{{ headline }}</h5>
-    <div class="w3-quarter">
-      <div class="w3-grey">
-        <div class="w3-half w3-cyan"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home" name="home" value="{{ team1 }}"/></a></div>
-        <div class="w3-half  w3-padding w3-light-green">{{ team2 }}</div>
-      </div>
-    </div>
-    <div class="w3-quarter">
-      <div class="w3-grey">
-        <div class="w3-half w3-cyan"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home" name="home" value="{{ team3 }}"/></a></div>
-        <div class="w3-half w3-padding w3-light-green">{{ team4 }}</div>
-      </div>
-    </div>
-    <div class="w3-quarter">
-      <div class="w3-grey">
-        <div class="w3-half w3-cyan"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home" name="home" value="{{ team5 }}"/></a></div>
-        <div class="w3-half w3-padding w3-light-green">{{ team6 }}</div>
-      </div>
-    </div>
-    <div class="w3-quarter">
-      <div class="w3-grey">
-        <div class="w3-half w3-cyan"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home" name="home" value="{{ team7 }}"/></a></div>
-        <div class="w3-half w3-padding w3-light-green">{{ team8 }}</div>
-      </div>
-    </div>
+      <h5>{{ headline }}</h5>
+        <div class="w3-quarter">
+            <div><a style="width:50%" class="w3-left w3-cyan" href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home" name="home" value="{{ team1 }}"/></a>
+            <a style="width:50%" class="w3-right w3-padding w3-light-green">{{ team2 }}</a></div>
+        </div>
+        <div class="w3-quarter">
+          <div class="w3-grey">
+            <div><a style="width:50%" class="w3-left w3-cyan" href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home" name="home" value="{{ team3 }}"/></a>
+            <a style="width:50%" class="w3-right w3-padding w3-light-green">{{ team4 }}</a></div>
+          </div>
+        </div>
+        <div class="w3-quarter">
+          <div class="w3-grey">
+            <div><a style="width:50%" class="w3-left w3-cyan" href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home" name="home" value="{{ team5 }}"/></a>
+            <a style="width:50%" class="w3-right w3-padding w3-light-green">{{ team6 }}</a></div>
+          </div>
+        </div>
+        <div class="w3-quarter">
+          <div class="w3-grey">
+            <div><a style="width:50%" class="w3-left w3-cyan" href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home" name="home" value="{{ team7 }}"/></a>
+            <a style="width:50%" class="w3-right w3-padding w3-light-green">{{ team8 }}</a></div>
+          </div>
+        </div>
     </form>
   </div>
 
