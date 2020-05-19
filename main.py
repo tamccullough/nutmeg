@@ -210,13 +210,6 @@ def power():
     power = pd.read_csv(f'datasets/{year}/cpl-{year}-power_rankings.csv')
     return render_template('cpl-es-power.html',html_table = power, year = year, other_year = other_year)
 
-@canples.route('/power-rankings-2019')
-def power_19():
-    year = '2019'
-    other_year = '2020'
-    power = pd.read_csv(f'datasets/{year}/cpl-{year}-power_rankings.csv')
-    return render_template('2019/cpl-es-power.html',html_table = power, year = year, other_year = other_year)
-
 @canples.route('/versus')
 def comparison1():
     year = '2020'
@@ -283,76 +276,6 @@ def comparison2():
     away_win = get_string(away_win)
 
     return render_template('cpl-es-comparison2.html',home_table = home_roster, away_table = away_roster, home_win = home_win,
-    home_team = q1, away_team = q2, away_win = away_win, home_form = home_form, away_form = away_form, schedule = schedule, year = year,
-    home_crest = home_crest, home_colour = home_colour, away_crest = away_crest, away_colour = away_colour, headline = headline,
-    team1 = team1, team2 = team2, team3 = team3, team4 = team4, team5 = team5, team6 = team6, team7 = team7, team8 = team8, other_year = other_year)
-
-@canples.route('/versus-2019')
-def comparison1_19():
-    year = '2019'
-    other_year = '2020'
-    headline = 'Final Matches of the 2019 Regular Season'
-    results, stats, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief = load_main_files(year)
-    rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
-
-    # home side
-    q1 = schedule.iloc[0]['home']
-    home_team_info = team_ref[team_ref['team'] == q1]
-    home_colour = home_team_info.iloc[0][4]
-    home_crest = home_team_info.iloc[0][5]
-
-    game_info = schedule[schedule['home'] == q1]
-    game = game_info.iloc[0]['game']
-
-    # away side
-    q2 = game_info.iloc[0]['away']
-    away_team_info = team_ref[team_ref['team'] == q2]
-    away_colour = away_team_info.iloc[0][4]
-    away_crest = away_team_info.iloc[0][5]
-
-    home_win, draw, away_win, home_form, away_form, home_roster, away_roster = get_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards, rated_midfielders, rated_defenders, rated_keepers)
-
-    team1, team2, team3, team4, team5, team6, team7, team8 = get_team_files(schedule,team_ref)
-    home_win = get_string(home_win)
-    away_win = get_string(away_win)
-
-    return render_template('2019/cpl-es-comparison.html',home_table = home_roster, away_table = away_roster, home_win = home_win,
-    home_team = q1, away_team = q2, away_win = away_win, home_form = home_form, away_form = away_form, schedule = schedule, year = year,
-    home_crest = home_crest, home_colour = home_colour, away_crest = away_crest, away_colour = away_colour, headline = headline,
-    team1 = team1, team2 = team2, team3 = team3, team4 = team4, team5 = team5, team6 = team6, team7 = team7, team8 = team8, other_year = other_year)
-
-@canples.route('/versus-2019-', methods=['POST'])
-def comparison2_19():
-    year = '2019'
-    other_year = '2020'
-    headline = 'Final Matches of the 2019 Regular Season'
-    results, stats, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief = load_main_files(year)
-    rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
-
-    # home side
-    home = request.form['home']
-
-    q1 = cpl_main.get_long_name(home,team_ref)
-    home_team_info = team_ref[team_ref['team'] == q1]
-    home_colour = home_team_info.iloc[0][4]
-    home_crest = home_team_info.iloc[0][5]
-
-    game_info = schedule[schedule['home'] == q1]
-    game = game_info.iloc[0]['game']
-
-    # away side
-    q2 = game_info.iloc[0]['away']
-    away_team_info = team_ref[team_ref['team'] == q2]
-    away_colour = away_team_info.iloc[0][4]
-    away_crest = away_team_info.iloc[0][5]
-
-    home_win, draw, away_win, home_form, away_form, home_roster, away_roster = get_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards, rated_midfielders, rated_defenders, rated_keepers)
-
-    team1, team2, team3, team4, team5, team6, team7, team8 = get_team_files(schedule,team_ref)
-    home_win = get_string(home_win)
-    away_win = get_string(away_win)
-
-    return render_template('2019/cpl-es-comparison2.html',home_table = home_roster, away_table = away_roster, home_win = home_win,
     home_team = q1, away_team = q2, away_win = away_win, home_form = home_form, away_form = away_form, schedule = schedule, year = year,
     home_crest = home_crest, home_colour = home_colour, away_crest = away_crest, away_colour = away_colour, headline = headline,
     team1 = team1, team2 = team2, team3 = team3, team4 = team4, team5 = team5, team6 = team6, team7 = team7, team8 = team8, other_year = other_year)
