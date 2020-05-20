@@ -626,15 +626,17 @@ def get_five_game_form(data,query):
     db = pd.DataFrame(db.sum())
     return db
 
-def get_game_roster_prediction(stats,get_games,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,results,team_stats,team_ref):
+def get_game_roster_prediction(stats,get_games,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,results,team_stats,team_ref,player_info):
     a = []
     for game in get_games: # cycle through the available games
         row = results[results['game'] == game] # select specific game results
         for team in row.iloc[0][['home','away']]: # cycle through the teams for each result
             if row.iloc[0]['home'] == team:
                 result = row.iloc[0]['hr'] # get the appropriate result for each team
+                score = row.iloc[0]['hs']
             else:
                 result = row.iloc[0]['ar']
+                score = row.iloc[0]['as']
             if result == 'W': # alter the value for the model classifier
                 result = 3
             elif result == 'D':
@@ -643,18 +645,20 @@ def get_game_roster_prediction(stats,get_games,rated_forwards,rated_midfielders,
                 result = 1
             game_check = get_home_away_comparison(stats,game,team)# get the roster for the team in the game
             # get the player overall score for each player in the game
-            game_roster = get_compare_roster(results,team,team_stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers)
+            game_roster = get_compare_roster(results,team,team_stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info)
             game_roster = index_reset(game_roster)
             b = []
             b.append(game) # collecting all the information in the list
             b.append(team)
             for i in range(game_roster.shape[0]):
-                b.append(game_roster.iloc[i]['overall']) # get the player overall score for each player in the game
+                overall = game_roster.iloc[i]['overall']
+                b.append(float(overall)) # get the player overall score for each player in the game
             if len(b) < 16:
                 i = int(16 - len(b))
                 for j in range(0,i):
                     b.append(0)
             b.append(int(result))
+            b.append(int(score))
             a.append(b)
     return a
 
