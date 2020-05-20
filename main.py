@@ -9,8 +9,10 @@ import numpy as np
 import pandas as pd
 
 import pickle
-filename = 'models/cpl_roster_classifier.sav'
-cpl_classifier_model = pickle.load(open(filename, 'rb'))
+classifier = 'models/cpl_roster_classifier.sav'
+cpl_classifier_model = pickle.load(open(classifier, 'rb'))
+regressor = 'models/cpl_score_regressor.sav'
+cpl_score_model = pickle.load(open(regressor, 'rb'))
 
 canples = Flask(__name__)
 
@@ -67,7 +69,8 @@ def get_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards,rat
     q1_roster = cpl_main.get_overall_roster(home_roster)
     q2_roster = cpl_main.get_overall_roster(away_roster)
     home_win, away_win, draw = cpl_main.get_final_game_prediction(cpl_classifier_model,q1_roster,q2_roster,home_win,away_win,draw)
-    return home_win, draw, away_win, home_form, away_form, home_roster, away_roster
+    home_score, away_score = cpl_main.get_final_score_prediction(cpl_score_model,q1_roster,q2_roster,home_win,away_win)
+    return home_win, draw, away_win, home_form, away_form, home_roster, away_roster, home_score, away_score
 
 def get_team_files(schedule,team_ref):
     team1 = cpl_main.get_shortest_name(schedule.iloc[0]['home'],team_ref)
@@ -233,7 +236,7 @@ def comparison1():
     away_colour = away_team_info.iloc[0][4]
     away_crest = away_team_info.iloc[0][5]
 
-    home_win, draw, away_win, home_form, away_form, home_roster, away_roster = get_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards, rated_midfielders, rated_defenders, rated_keepers, player_info)
+    home_win, draw, away_win, home_form, away_form, home_roster, away_roster, home_score, away_score = get_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards, rated_midfielders, rated_defenders, rated_keepers, player_info)
 
     team1, team2, team3, team4, team5, team6, team7, team8 = get_team_files(schedule,team_ref)
     home_win = get_string(home_win)
@@ -241,7 +244,7 @@ def comparison1():
 
     return render_template('cpl-es-comparison.html',home_table = home_roster, away_table = away_roster, home_win = home_win,
     home_team = q1, away_team = q2, away_win = away_win, home_form = home_form, away_form = away_form, schedule = schedule, year = year,
-    home_crest = home_crest, home_colour = home_colour, away_crest = away_crest, away_colour = away_colour, headline = headline,
+    home_crest = home_crest, home_colour = home_colour, away_crest = away_crest, away_colour = away_colour, headline = headline, home_score = home_score, away_score = away_score,
     team1 = team1, team2 = team2, team3 = team3, team4 = team4, team5 = team5, team6 = team6, team7 = team7, team8 = team8, other_year = other_year)
 
 @canples.route('/versus-', methods=['POST'])
@@ -269,7 +272,7 @@ def comparison2():
     away_colour = away_team_info.iloc[0][4]
     away_crest = away_team_info.iloc[0][5]
 
-    home_win, draw, away_win, home_form, away_form, home_roster, away_roster = get_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards, rated_midfielders, rated_defenders, rated_keepers, player_info)
+    home_win, draw, away_win, home_form, away_form, home_roster, away_roster, home_score, away_score = get_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards, rated_midfielders, rated_defenders, rated_keepers, player_info)
 
     team1, team2, team3, team4, team5, team6, team7, team8 = get_team_files(schedule,team_ref)
     home_win = get_string(home_win)
@@ -277,7 +280,7 @@ def comparison2():
 
     return render_template('cpl-es-comparison2.html',home_table = home_roster, away_table = away_roster, home_win = home_win,
     home_team = q1, away_team = q2, away_win = away_win, home_form = home_form, away_form = away_form, schedule = schedule, year = year,
-    home_crest = home_crest, home_colour = home_colour, away_crest = away_crest, away_colour = away_colour, headline = headline,
+    home_crest = home_crest, home_colour = home_colour, away_crest = away_crest, away_colour = away_colour, headline = headline, home_score = home_score, away_score = away_score,
     team1 = team1, team2 = team2, team3 = team3, team4 = team4, team5 = team5, team6 = team6, team7 = team7, team8 = team8, other_year = other_year)
 
 @canples.route('/teams')

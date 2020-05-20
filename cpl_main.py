@@ -591,10 +591,7 @@ def get_compare_roster(results,query,stats,team_ref,rated_forwards,rated_midfiel
     df = get_player(roster,'f')
     df = df.sort_values(by=['overall'],ascending=False)
     db = pd.concat([dk[0:1],dd[0:4],dm[0:4],df[0:2]])
-    #db = db[['name','number','position','overall','asc']]
-    #db = db.sort_values(by=['asc','overall'],ascending=False)
     db = index_reset(db)
-    #db.pop('asc')
     return db
 
 def get_team_history(data,query):
@@ -816,3 +813,29 @@ def get_best_eleven(team_stats,team_ref,rated_forwards,rated_midfielders,rated_d
         best_eleven.pop('name')
         best_eleven = index_reset(best_eleven)
         return best_eleven
+
+def roster_regressor_pred(model,array):
+    prediction = model.predict([array]).flatten()
+    df = pd.DataFrame(prediction)
+    return df
+
+def get_final_score_prediction(model,q1_roster,q2_roster,home_win,away_win):
+
+    def final_score_fix(home_score,away_score,home_win_new,away_win_new):
+        if home_win_new > away_win_new: # fix the score prediction - if the probability of home win > away win
+            home_score = away_score + 1 # change the predicted score to reflect that
+            return home_score,away_score
+        elif home_win_new < away_win_new: # else the probability of home win < away win
+            away_score = home_score + 1 # change the predicted score to reflect that
+            return home_score,away_score
+
+    def score(num): #improve this later for greater predictions
+        new_score = int(round(num,0)) # convert the float value to int and round it
+        return new_score
+
+    q1_pred = roster_regressor_pred(model,q1_roster)
+    q1_s = score(q1_pred.iloc[0][0])
+    q2_pred = roster_regressor_pred(model,q2_roster)
+    q2_s = score(q2_pred.iloc[0][0])
+    home_score, away_score = final_score_fix(q1_s, q2_s,home_win,away_win)
+    return home_score, away_score
