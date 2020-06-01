@@ -828,6 +828,8 @@ def get_final_score_prediction(model,q1_roster,q2_roster,home_win,away_win):
         elif home_win_new < away_win_new: # else the probability of home win < away win
             away_score = home_score + 1 # change the predicted score to reflect that
             return home_score,away_score
+        else:
+            return home_score,away_score
 
     def score(num): #improve this later for greater predictions
         new_score = int(round(num,0)) # convert the float value to int and round it
@@ -835,7 +837,9 @@ def get_final_score_prediction(model,q1_roster,q2_roster,home_win,away_win):
 
     q1_pred = roster_regressor_pred(model,q1_roster)
     q1_s = score(q1_pred.iloc[0][0])
+    print(q1_s)
     q2_pred = roster_regressor_pred(model,q2_roster)
     q2_s = score(q2_pred.iloc[0][0])
+    print(q2_s)
     home_score, away_score = final_score_fix(q1_s, q2_s,home_win,away_win)
     return home_score, away_score
