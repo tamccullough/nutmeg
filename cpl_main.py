@@ -623,7 +623,7 @@ def get_five_game_form(data,query):
     db = pd.DataFrame(db.sum())
     return db
 
-def get_game_roster_prediction(stats,get_games,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,results,team_stats,team_ref,player_info):
+'''def get_game_roster_prediction(stats,get_games,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,results,team_stats,team_ref,player_info):
     a = []
     for game in get_games: # cycle through the available games
         row = results[results['game'] == game] # select specific game results
@@ -657,7 +657,7 @@ def get_game_roster_prediction(stats,get_games,rated_forwards,rated_midfielders,
             b.append(int(result))
             b.append(int(score))
             a.append(b)
-    return a
+    return a'''
 
 def get_overall_roster(game_roster):
     b = []
@@ -843,3 +843,47 @@ def get_final_score_prediction(model,q1_roster,q2_roster,home_win,away_win):
     print(q2_s)
     home_score, away_score = final_score_fix(q1_s, q2_s,home_win,away_win)
     return home_score, away_score
+
+
+def get_game_roster_prediction(get_games,results,stats,team_ref,player_info):
+    def index_reset(data):
+        data = data.reset_index()
+        data.pop('index')
+        return data
+
+    a = []
+    for game in get_games: # cycle through the available games
+        row = results[results['game'] == game] # select specific game results
+        players = stats[stats['game'] == game]
+        for team in row.iloc[0][['home','away']]: # cycle through the teams for each result
+            if row.iloc[0]['home'] == team:
+                result = row.iloc[0]['hr'] # get the appropriate result for each team
+                score = row.iloc[0]['hs']
+            else:
+                result = row.iloc[0]['ar']
+                score = row.iloc[0]['as']
+            if result == 'W': # alter the value for the model classifier
+                result = 3
+            elif result == 'D':
+                result = 2
+            else:
+                result = 1
+            game_roster = players[players['team'] == team]
+            game_roster = index_reset(game_roster)
+            game_roster = game_roster['name']
+            b = []
+            b.append(game) # collecting all the information in the list
+            b.append(team)
+            for i in range(game_roster.shape[0]):
+                name = game_roster.iloc[i]
+                overall = player_info[player_info['name']==name]['overall']
+                overall = overall.values
+                b.append(float(overall[0])) # get the player overall score for each player in the game
+            if len(b) < 16:
+                i = int(16 - len(b))
+                for j in range(0,i):
+                    b.append(0)
+            b.append(int(result))
+            b.append(int(score))
+            a.append(b)
+    return a
