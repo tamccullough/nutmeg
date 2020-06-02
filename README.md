@@ -1,11 +1,11 @@
 ![CANPL](https://pbs.twimg.com/profile_images/1191405045788676097/vk_lsh7F_200x200.jpg)
 
-[CANPLES LINK](https://canples.herokuapp.com/index)
+[CANPLES Heroku App LINK](https://canples.herokuapp.com/index)
 
 ## canpl-es
 A (WIP) expert system to analyse the satistics and results of the Canadian Premier League
 
-Using GaussianNB() and RandomForestClassifier() to make the match predictions between teams as games are listed in the schedule.
+Currently using GaussianNB() and RandomForestClassifier() to make the match predictions between teams as games are listed in the schedule.
 
 ### The League
 [canpl.ca](https://canpl.ca/)
