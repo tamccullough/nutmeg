@@ -7,6 +7,12 @@ A (WIP) expert system to analyse the satistics and results of the Canadian Premi
 
 Currently using GaussianNB() and RandomForestClassifier() to make the match predictions between teams as games are listed in the schedule.
 
+### How Match Prediciton Works
+This app is using the following models for predicitions;
+[GaussianNB()](https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html)
+[VotingClassifier()](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html)
+[VotingRegressor()](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingRegressor.html)
+
 ### The League
 [canpl.ca](https://canpl.ca/)
 
