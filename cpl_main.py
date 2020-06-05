@@ -28,7 +28,7 @@ def get_schedule(data):
     #db = db.tail(4)
     db = db[['game','home','away']]
     db = index_reset(db)
-    db = db.sort_values(by=['game'])
+    #db = db.sort_values(by=['game'])
     return db
 
 def fix_db_na(data):
