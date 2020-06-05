@@ -32,7 +32,7 @@ Although the size contraints did play a role in choosing the final models, the B
 
 | results | voting regressor | decision tree | random forest | keras sequential |
 | --- | --- | --- | --- | --- | --- | --- |
-| count | 10 tests | 10 tests | 10 tests | 10 tests
+| count | 10 tests | 10 tests | 10 tests | 10 tests |
 | mean | 0.334000 | 0.278000 | 0.310000 | 0.25600 |
 | std | 0.088969 | 0.064944 | 0.041366 | 0.04402 |
 | min | 0.180000 | 0.200000 | 0.260000 | 0.18000 |
