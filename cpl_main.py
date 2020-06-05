@@ -827,20 +827,27 @@ def get_final_score_prediction(model,q1_roster,q2_roster,home_win_new,away_win_n
 
     def final_score_fix(home_score,away_score,home_win_new,away_win_new):
         if home_win_new > away_win_new and home_score < away_score: # fix the score prediction - if the probability of home win > away win and score doesn't reflect it
-            home_score = home_score + 1 # change the predicted score to reflect that
-            away_score = away_score - 2
+            print(home_score,away_score)
+            old = home_score
+            home_score = away_score # change the predicted score to reflect that
+            away_score = old
             return home_score,away_score
         elif home_win_new < away_win_new and home_score > away_score: # else the probability of home win < away win
-            away_score = away_score + 1 # change the predicted score to reflect that
-            home_score = home_score - 2
+            print(home_score,away_score)
+            old = away_score
+            home_score = old # change the predicted score to reflect that
+            away_score = home_score
             return home_score,away_score
         elif home_win_new < away_win_new and home_score == away_score:
+            print(home_score,away_score)
             home_score = home_score - 1
             return home_score,away_score
         elif home_win_new > away_win_new and home_score == away_score:
+            print(home_score,away_score)
             away_score = away_score - 1
             return home_score,away_score
         else:
+            print(home_score,away_score)
             return home_score,away_score
 
     def score(num): #improve this later for greater predictions
