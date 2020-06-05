@@ -4,6 +4,7 @@ import re
 import numpy as np
 import pandas as pd
 import cpl_main as cpl
+import random
 
 results = pd.read_csv(f'datasets/soccer-nn-train.csv')
 print(results.head(2))
@@ -221,47 +222,38 @@ print('ks',ks_test[1])
 
 from matplotlib import pyplot as plt
 
-def print_pred_results(result,num):
+def cycle_pred_test(num,model):
     score = check(result,y_test.loc[num])
     return score
 
-def predictionTest(num,model):
-    p = X_test.loc[num].tolist()
-    result = model.predict([p]).flatten().round()
-    prediction = print_pred_results(int(result[0]),num)
-    return prediction
-
-import random
-numbers = X_test.index
-random_nums = random.choices(numbers, k=20)
-
-a,b,c,d = [],[],[],[]
-for i in random_nums:
-    a.append(predictionTest(i,vr))
-    b.append(predictionTest(i,dt))
-    c.append(predictionTest(i,rf))
-    d.append(predictionTest(i,ks))
-print('vr score: ',sum(a) / 20,'\ndt score: ',sum(b) / 20,'\nrf score: ',sum(c) / 20,'\nks score: ',sum(d) / 20)
-
-def cycle_prob_test(num,model):
-    p = X_test.iloc[num].tolist()
-    e = model.predict([p]).flatten()
-    e = e[0]
-    if e < 1:
-        e = 0
-    elif e < 2:
-        e = 1
-    return e
-
 def model_pred_test(model):
-    b = []
-    prob = []
-    random_nums = np.random.randint(low=1, high=58, size=(20))
+    pred = []
+    numbers = X_test.index
+    random_nums = random.choices(numbers, k=50)
     for i in random_nums:
-        prob.append(cycle_prob_test(i,model))
-    df = pd.DataFrame(prob)
-    df = df.values
-    print('scores :\n',df)
+        p = X_test.loc[i].tolist()
+        result = model.predict([p]).flatten().round()
+        prediction = print_pred_results(int(result[0]),i)
+        pred.append(prediction)
+    dz = pd.DataFrame(pred)
+    #df = pd.DataFrame(prob)
+    c = str(float(dz.sum().values / 50))
+    return c
+
+test_results = pd.DataFrame(index=range(10),columns=['vr','dt','rf','ks'])
+test_results = test_results.fillna(0.0)
+
+for i in range(10):
+    v_s = model_pred_test(vr)
+    test_results.at[i,'vr'] = v_s
+    d_s = model_pred_test(dt)
+    test_results.at[i,'dt'] = d_s
+    r_s = model_pred_test(rf)
+    test_results.at[i,'rf'] = r_s
+    k_s = model_pred_test(ks)
+    test_results.at[i,'ks'] = k_s
+
+print(test_results.describe())
 
 import pickle
 filename = 'models/cpl_score_regressor.sav'
