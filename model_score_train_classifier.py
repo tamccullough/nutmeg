@@ -4,6 +4,7 @@ import re
 import numpy as np
 import pandas as pd
 import cpl_main as cpl
+import random
 
 results = pd.read_csv(f'datasets/soccer-nn-train.csv')
 
@@ -64,7 +65,7 @@ df = pump_it_up(results)
 print(df.shape)
 
 db = pump_it_up(df)
-db.shape
+print(db.shape)
 
 db = df.copy()
 
@@ -186,9 +187,6 @@ def predictionTest(num,model1,model2,model3):
     print_pred_results(model2,result2,num)
     print_pred_results(model3,result3,num)
 
-numbers = X_test.index
-random_nums = random.choices(numbers, k=20)
-
 def cycle_prob_test(num,model):
     p = X_test.loc[num].tolist()
     e = model.predict_proba([p]).flatten()
@@ -197,34 +195,41 @@ def cycle_prob_test(num,model):
 def cycle_pred_test(num,model):
     p = X_test.loc[num].tolist()
     e = model.predict([p]).flatten()
-    if e == y_test.loc[num]:
+    if e[0] == y_test.loc[num]:
         a = 1
     else:
         a = 0
     return a
 
 def model_pred_test(model):
-    b = []
+    pred = []
     prob = []
     numbers = X_test.index
-    random_nums = random.choices(numbers, k=100)
+    random_nums = random.choices(numbers, k=50)
     for i in random_nums:
-        b.append(cycle_pred_test(i,model))
-        prob.append(cycle_prob_test(i,model))
-    dz = pd.DataFrame(b)
-    df = pd.DataFrame(prob)
-    c = str(float(dz.sum().values / 100))
+        pred.append(cycle_pred_test(i,model)) # check to see if the values are correct and score it
+        #prob.append(cycle_prob_test(i,model))
+    dz = pd.DataFrame(pred)
+    #df = pd.DataFrame(prob)
+    c = str(float(dz.sum().values / 50))
     print('score :',c)
 
-print(model_pred_test(knn))
+test_results = pd.DataFrame(index=range(10),columns=['knn','ada','bag','rf1','ens'])
+test_results = test_results.fillna(0.0)
 
-print(model_pred_test(ada))
+for i in range(10):
+    k_s = model_pred_test(knn)
+    test_results.at[i,'knn'] = k_s
+    a_s = model_pred_test(ada)
+    test_results.at[i,'ada'] = a_s
+    b_s = model_pred_test(bag)
+    test_results.at[i,'bag'] = b_s
+    r_s = model_pred_test(rf1)
+    test_results.at[i,'rf1'] = r_s
+    e_s = model_pred_test(ens)
+    test_results.at[i,'ens'] = e_s
 
-print(model_pred_test(bag))
-
-print(model_pred_test(rf1))
-
-print(model_pred_test(ens))
+print(test_results.describe())
 
 import pickle
 filename = 'models/cpl_roster_classifier.sav'
