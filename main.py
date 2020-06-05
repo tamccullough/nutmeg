@@ -80,7 +80,9 @@ def get_team_files(schedule,team_ref):
     team5 = cpl_main.get_shortest_name(schedule.iloc[2]['home'],team_ref)
     team6 = cpl_main.get_shortest_name(schedule.iloc[2]['away'],team_ref)
     team7 = cpl_main.get_shortest_name(schedule.iloc[3]['home'],team_ref)
+    print(team7)
     team8 = cpl_main.get_shortest_name(schedule.iloc[3]['away'],team_ref)
+    print(team8)
     return team1, team2, team3, team4, team5, team6, team7, team8
 
 @canples.route('/index')
@@ -242,10 +244,16 @@ def comparison1():
     home_win = get_string(home_win)
     away_win = get_string(away_win)
 
+    group1 = team1 + '-' + team2
+    group2 = team3 + '-' + team4
+    group3 = team5 + '-' + team6
+    group4 = team7 + '-' + team8
+
     return render_template('cpl-es-comparison.html',home_table = home_roster, away_table = away_roster, home_win = home_win,
     home_team = q1, away_team = q2, away_win = away_win, home_form = home_form, away_form = away_form, schedule = schedule, year = year,
     home_crest = home_crest, home_colour = home_colour, away_crest = away_crest, away_colour = away_colour, headline = headline, home_score = home_score, away_score = away_score,
-    team1 = team1, team2 = team2, team3 = team3, team4 = team4, team5 = team5, team6 = team6, team7 = team7, team8 = team8, other_year = other_year)
+    team1 = team1, team2 = team2, team3 = team3, team4 = team4, team5 = team5, team6 = team6, team7 = team7, team8 = team8, other_year = other_year,
+    group1 = group1, group2 = group2, group3 = group3, group4 = group4)
 
 @canples.route('/versus-', methods=['POST'])
 def comparison2():
@@ -257,8 +265,9 @@ def comparison2():
 
     # home side
     home = request.form['home']
+    teams = home.split('-')
 
-    q1 = cpl_main.get_long_name(home,team_ref)
+    q1 = cpl_main.get_long_name(teams[0],team_ref)
     home_team_info = team_ref[team_ref['team'] == q1]
     home_colour = home_team_info.iloc[0][4]
     home_crest = home_team_info.iloc[0][5]
@@ -267,7 +276,7 @@ def comparison2():
     game = game_info.iloc[0]['game']
 
     # away side
-    q2 = game_info.iloc[0]['away']
+    q2 = cpl_main.get_long_name(teams[1],team_ref)
     away_team_info = team_ref[team_ref['team'] == q2]
     away_colour = away_team_info.iloc[0][4]
     away_crest = away_team_info.iloc[0][5]
@@ -278,10 +287,16 @@ def comparison2():
     home_win = get_string(home_win)
     away_win = get_string(away_win)
 
+    group1 = team1 + '-' + team2
+    group2 = team3 + '-' + team4
+    group3 = team5 + '-' + team6
+    group4 = team7 + '-' + team8
+
     return render_template('cpl-es-comparison2.html',home_table = home_roster, away_table = away_roster, home_win = home_win,
     home_team = q1, away_team = q2, away_win = away_win, home_form = home_form, away_form = away_form, schedule = schedule, year = year,
     home_crest = home_crest, home_colour = home_colour, away_crest = away_crest, away_colour = away_colour, headline = headline, home_score = home_score, away_score = away_score,
-    team1 = team1, team2 = team2, team3 = team3, team4 = team4, team5 = team5, team6 = team6, team7 = team7, team8 = team8, other_year = other_year)
+    team1 = team1, team2 = team2, team3 = team3, team4 = team4, team5 = team5, team6 = team6, team7 = team7, team8 = team8, other_year = other_year,
+    group1 = group1, group2 = group2, group3 = group3, group4 = group4)
 
 @canples.route('/teams')
 def teams():

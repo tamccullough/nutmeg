@@ -835,8 +835,8 @@ def get_final_score_prediction(model,q1_roster,q2_roster,home_win_new,away_win_n
         elif home_win_new < away_win_new and home_score > away_score: # else the probability of home win < away win
             print(home_score,away_score)
             old = away_score
-            home_score = old # change the predicted score to reflect that
             away_score = home_score
+            home_score = old # change the predicted score to reflect that
             return home_score,away_score
         elif home_win_new < away_win_new and home_score == away_score:
             print(home_score,away_score)
