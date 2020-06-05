@@ -819,14 +819,26 @@ def roster_regressor_pred(model,array):
     df = pd.DataFrame(prediction)
     return df
 
-def get_final_score_prediction(model,q1_roster,q2_roster,home_win,away_win):
+def get_final_score_prediction(model,q1_roster,q2_roster,home_win_new,away_win_new):
+
+    def roster_pred(model,array):
+        prediction = model.predict([array]).flatten()
+        return prediction
 
     def final_score_fix(home_score,away_score,home_win_new,away_win_new):
-        if home_win_new > away_win_new: # fix the score prediction - if the probability of home win > away win
-            home_score = away_score + 1 # change the predicted score to reflect that
+        if home_win_new > away_win_new and home_score < away_score: # fix the score prediction - if the probability of home win > away win and score doesn't reflect it
+            home_score = home_score + 1 # change the predicted score to reflect that
+            away_score = away_score - 2
             return home_score,away_score
-        elif home_win_new < away_win_new: # else the probability of home win < away win
-            away_score = home_score + 1 # change the predicted score to reflect that
+        elif home_win_new < away_win_new and home_score > away_score: # else the probability of home win < away win
+            away_score = away_score + 1 # change the predicted score to reflect that
+            home_score = home_score - 2
+            return home_score,away_score
+        elif home_win_new < away_win_new and home_score == away_score:
+            home_score = home_score - 1
+            return home_score,away_score
+        elif home_win_new > away_win_new and home_score == away_score:
+            away_score = away_score - 1
             return home_score,away_score
         else:
             return home_score,away_score
@@ -835,13 +847,11 @@ def get_final_score_prediction(model,q1_roster,q2_roster,home_win,away_win):
         new_score = int(round(num,0)) # convert the float value to int and round it
         return new_score
 
-    q1_pred = roster_regressor_pred(model,q1_roster)
-    q1_s = score(q1_pred.iloc[0][0])
-    print(q1_s)
-    q2_pred = roster_regressor_pred(model,q2_roster)
-    q2_s = score(q2_pred.iloc[0][0])
-    print(q2_s)
-    home_score, away_score = final_score_fix(q1_s, q2_s,home_win,away_win)
+    q1_pred = roster_pred(model,q1_roster)
+    q1_s = score(q1_pred[0])
+    q2_pred = roster_pred(model,q2_roster)
+    q2_s = score(q2_pred[0])
+    home_score, away_score = final_score_fix(q1_s, q2_s,home_win_new,away_win_new)
     return home_score, away_score
 
 
