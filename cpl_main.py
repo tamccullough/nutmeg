@@ -846,6 +846,10 @@ def get_final_score_prediction(model,q1_roster,q2_roster,home_win_new,away_win_n
             print(home_score,away_score)
             away_score = away_score - 1
             return home_score,away_score
+        elif home_win_new == away_win_new:
+            away_score = home_score
+            print(home_score,away_score)
+            return home_score,away_score
         else:
             print(home_score,away_score)
             return home_score,away_score
