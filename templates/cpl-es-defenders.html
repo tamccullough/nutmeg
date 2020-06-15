@@ -51,7 +51,7 @@
         <table class="w3-table w3-striped w3-blue">
           <tr>
             <td><b>{{ columns[0] }}</b></td>
-            <td><b>{{ columns[1] }}</b></td>
+            <td class="w3-center"><b>{{ columns[1] }}</b></td>
             <td class="w3-right"><b>{{ columns[2] }}</b></td>
           </tr>
         </table>
@@ -91,7 +91,7 @@
             <table class="w3-table w3-striped w3-white">
               <tr>
                 <td>{{ html_table.iloc[i][0] }}</td>
-                <td class="w3-table" style="min-width: 250px"><b>{{ html_table.iloc[i][1] }}</b></td>
+                <td class="w3-table w3-center" style="min-width: 250px"><b>{{ html_table.iloc[i][1] }}</b></td>
                 <td class="w3-right" style="max-width: 50px">{{ html_table.iloc[i][2] }}</td>
               </tr>
             </table>
