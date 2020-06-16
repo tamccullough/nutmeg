@@ -373,23 +373,37 @@ def top_position(team_stats,position): # get the forwards in the league
     condensed_player_info = condensed_player_info.reset_index()
     team = condensed_player_info.pop('team')
     condensed_player_info.insert(0,'team',team)
+
+    columns = condensed_player_info.select_dtypes(include=['float']).columns
+    for column in columns:
+        if column == 'overall':
+            continue
+        condensed_player_info[column] = condensed_player_info[column].astype(int)
+
     return condensed_player_info
 
 def top_offenders(data):  # get the offences handed out in the league
     if data.minutes.sum() == 0:
-        db = pd.DataFrame([('NA',0,0,0,0,0,0)],columns=['team','name','number','minutes','yellow','red','f-conceded'])
-        return db
+        top_offenders = pd.DataFrame([('NA',0,0,0,0,0,0)],columns=['team','name','number','minutes','yellow','red','f-conceded'])
+        return top_offenders
     player_information = data.copy()
     cols = ['team','name','position','number','minutes','yellow','red','f-conceded']
-    df = player_information
-    db = df[cols]
-    db = get_evaluation(db,df)
-    db = db.sort_values(by=['red','yellow'],ascending=False)
-    db = db.reset_index()
-    db.pop('index')
-    team = db.pop('team')
-    db.insert(0,'team',team)
-    return db
+    #df = player_information
+    top_offenders = player_information[cols]
+    top_offenders = get_evaluation(top_offenders,player_information)
+    top_offenders = top_offenders.sort_values(by=['red','yellow'],ascending=False)
+    top_offenders = top_offenders.reset_index()
+    top_offenders.pop('index')
+    team = top_offenders.pop('team')
+    top_offenders.insert(0,'team',team)
+
+    columns = top_offenders.select_dtypes(include=['float']).columns
+    for column in columns:
+        if column == 'overall':
+            continue
+        top_offenders[column] = top_offenders[column].astype(int)
+
+    return top_offenders
 
 def get_match_tables(data,query):
     db = data[data['home'] == query]
