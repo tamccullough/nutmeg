@@ -51,10 +51,9 @@
             <div class="w3-blue">
               <table class="w3-table w3-blue">
                 <tr>
-                  <td style="max-width: 15px"><b> r </b></td>
-                  <td style="max-width: 30px"><b>{{ columns_g[1] }}</b></td>
-                  <td><b>{{ columns_g[2] }}</b></td>
-                  <td class="w3-right"><b>{{ columns_g[3] }}</b></td>
+                  <td style="min-width: 15px"><b>{{ columns_g[0] }}</b></td>
+                  <td class="w3-center"><b>{{ columns_g[1] }}</b></td>
+                  <td class="w3-right" style="min-width: 200px"><b>{{ columns_g[2] }}</b></td>
                 </tr>
               </table>
             </div>
@@ -63,9 +62,10 @@
               <div class="w3-grey">
                 <table class="w3-table w3-blue">
                   <tr>
-                    <td><b>{{ columns_g[4] }}</b></td>
-                    <td><b>{{ columns_g[5] }}</b></td>
-                    <td><b>{{ columns_g[6] }}</b></td>
+                    <td style="min-width: 30px"><b> pos </b></td>
+                    <td style="min-width: 30px"><b> num </b></td>
+                    <td class="w3-center" style="min-width: 30px"><b> min </b></td>
+                    <td class="w3-right" style="min-width: 30px"><b>{{ columns_g[6] }}</b></td>
                   </tr>
                 </table>
               </div>
@@ -77,10 +77,9 @@
           <div class="w3-white">
             <table class="w3-table w3-striped w3-white">
               <tr>
-                <td style="max-width: 30px">{{ html_table.iloc[i][0] }}</td>
-                <td style="max-width: 50px">{{ html_table.iloc[i][1] }}</td>
-                <td class="w3-table" style="min-width: 200px"><b>{{ html_table.iloc[i][2] }}</b></td>
-                <td class="w3-right" style="max-width: 30px">{{ html_table.iloc[i][3] }}</td>
+                <td style="min-width: 15px">{{ html_table.iloc[i][0] }}</td>
+                <td class="w3-center" style="min-width: 15px">{{ html_table.iloc[i][1] }}</td>
+                <td class="w3-right"  style="min-width: 200px">{{ html_table.iloc[i][2] }}</td>
               </tr>
             </table>
           </div>
@@ -89,9 +88,10 @@
           <div class="w3-grey">
             <table class="w3-table w3-striped w3-light-grey">
               <tr>
-                <td style="max-width: 50px">{{ html_table.iloc[i][4] }}</td>
-                <td class="w3-center" style="max-width: 75px">{{ html_table.iloc[i][5] }}</td>
-                <td class="w3-right w3-grey w3-text-white" style="min-width: 50px"><b>{{ html_table.iloc[i][6] }}</b></td>
+                <td style="min-width: 30px">{{ html_table.iloc[i][3] }}</td>
+                <td style="min-width: 30px">{{ html_table.iloc[i][4] }}</td>
+                <td class="w3-center" style="min-width: 30px">{{ html_table.iloc[i][5] }}</td>
+                <td class="w3-right w3-grey w3-text-white" style="min-width: 30px"><b>{{ html_table.iloc[i][6] }}</b></td>
               </tr>
             </table>
           </div>
@@ -106,10 +106,9 @@
               <div class="w3-green">
                 <table class="w3-table w3-green">
                   <tr>
-                    <td style="max-width: 15px"><b> r </b></td>
-                    <td style="max-width: 30px"><b>{{ columns_a[1] }}</b></td>
-                    <td><b>{{ columns_a[2] }}</b></td>
-                    <td class="w3-right"><b>{{ columns_a[3] }}</b></td>
+                    <td style="min-width: 15px"><b>{{ columns_a[0] }}</b></td>
+                    <td class="w3-center"><b>{{ columns_a[1] }}</b></td>
+                    <td class="w3-right" style="min-width: 200px"><b>{{ columns_a[2] }}</b></td>
                   </tr>
                 </table>
               </div>
@@ -118,9 +117,10 @@
                 <div class="w3-green">
                   <table class="w3-table w3-green">
                     <tr>
-                      <td><b>{{ columns_a[4] }}</b></td>
-                      <td><b>{{ columns_a[5] }}</b></td>
-                      <td><b>{{ columns_a[6] }}</b></td>
+                      <td style="min-width: 30px"><b> pos </b></td>
+                      <td style="min-width: 30px"><b> num </b></td>
+                      <td class="w3-center" style="min-width: 30px"><b> min </b></td>
+                      <td class="w3-right" style="min-width: 30px"><b>{{ columns_a[6] }}</b></td>
                     </tr>
                   </table>
                 </div>
@@ -132,10 +132,9 @@
             <div class="w3-white">
               <table class="w3-table w3-striped w3-white">
                 <tr>
-                  <td style="max-width: 30px">{{ assists_table.iloc[i][0] }}</td>
-                  <td style="max-width: 50px">{{ assists_table.iloc[i][1] }}</td>
-                  <td class="w3-table" style="min-width: 200px"><b>{{ assists_table.iloc[i][2] }}</b></td>
-                  <td class="w3-right" style="max-width: 30px">{{ assists_table.iloc[i][3] }}</td>
+                  <td style="min-width: 15px">{{ assists_table.iloc[i][0] }}</td>
+                  <td class="w3-center" style="min-width: 15px">{{ assists_table.iloc[i][1] }}</td>
+                  <td class="w3-right"  style="min-width: 200px">{{ assists_table.iloc[i][2] }}</td>
                 </tr>
               </table>
             </div>
@@ -144,9 +143,10 @@
             <div class="w3-grey">
               <table class="w3-table w3-striped w3-light-grey">
                 <tr>
-                  <td style="max-width: 50px">{{ assists_table.iloc[i][4] }}</td>
-                  <td class="w3-center" style="max-width: 75px">{{ assists_table.iloc[i][5] }}</td>
-                  <td class="w3-right w3-grey w3-text-white" style="min-width: 50px"><b>{{ assists_table.iloc[i][6] }}</b></td>
+                  <td>{{ assists_table.iloc[i][3] }}</td>
+                  <td>{{ assists_table.iloc[i][4] }}</td>
+                  <td class="w3-center">{{ assists_table.iloc[i][5] }}</td>
+                  <td class="w3-right w3-grey w3-text-white"><b>{{ assists_table.iloc[i][6] }}</b></td>
                 </tr>
               </table>
             </div>

@@ -290,13 +290,14 @@ def get_evaluation(condensed_player_info,full_player_info):
     return condensed_player_info
 
 def top_tracked(team_stats,tracked):
-    if team_stats.minutes.sum() == 0:
-        tracked_player_stat = pd.DataFrame([('NA',0,0,0,0)],columns=['team','name','number','minutes','goals'])
-        return tracked_player_stat
-    df = team_stats.copy()
     cols = ['team','name','position','number','minutes',tracked]
-    tracked_player_stat = df[cols]
-    #tracked_player_stat = get_evaluation(tracked_player_stat,df)
+    if team_stats.minutes.sum() == 0:
+        lst = ['rank']
+        lst.extend(cols)
+        tracked_player_stat = pd.DataFrame([(0,'NA','NA',0,0,0,0)],columns=lst)
+        return tracked_player_stat
+    player_information = team_stats.copy()
+    tracked_player_stat = player_information[cols]
     tracked_player_stat = tracked_player_stat.sort_values(by=[tracked],ascending=False)
     tracked_player_stat = tracked_player_stat.reset_index()
     tracked_player_stat.pop('index')
@@ -305,6 +306,13 @@ def top_tracked(team_stats,tracked):
     tracked_player_stat = tracked_player_stat[tracked_player_stat[tracked] >= 1]
     rank = tracked_player_stat.index + 1
     tracked_player_stat.insert(0,'rank',rank)
+
+    columns = tracked_player_stat.select_dtypes(include=['float']).columns
+    for column in columns:
+        if column == 'overall':
+            continue
+        tracked_player_stat[column] = tracked_player_stat[column].astype(int)
+
     return tracked_player_stat
 
 def top_position(team_stats,position): # get the forwards in the league
@@ -383,12 +391,11 @@ def top_position(team_stats,position): # get the forwards in the league
     return condensed_player_info
 
 def top_offenders(data):  # get the offences handed out in the league
+    cols = ['team','name','position','number','minutes','yellow','red','f-conceded']
     if data.minutes.sum() == 0:
-        top_offenders = pd.DataFrame([('NA',0,0,0,0,0,0)],columns=['team','name','number','minutes','yellow','red','f-conceded'])
+        top_offenders = pd.DataFrame([('NA','NA','NA',0,0,0,0,0)],columns=cols)
         return top_offenders
     player_information = data.copy()
-    cols = ['team','name','position','number','minutes','yellow','red','f-conceded']
-    #df = player_information
     top_offenders = player_information[cols]
     top_offenders = get_evaluation(top_offenders,player_information)
     top_offenders = top_offenders.sort_values(by=['red','yellow'],ascending=False)

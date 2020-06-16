@@ -10,23 +10,25 @@
     <div class="w3-dropdown-hover">
       <button class="w3-button w3-white w3-xlarge">{{ year }} Season</button>
       <div class="w3-dropdown-content w3-bar-block w3-card-4">
-        <a class="w3-button w3-center" href="{{ url_for('index') }}">{{ other_year }}</a><br>
+        <a class="w3-button w3-center" href="{{ url_for('index_19') }}">{{ other_year }}</a><br>
       </div>
     </div>
   </div>
   <hr>
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-    <a href="{{ url_for('index_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-dashboard fa-fw"></i>  Dashboard</a>
-    <a href="{{ url_for('standings_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-trophy fa-fw"></i>  Standings</a>
-    <a href="{{ url_for('teams_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-shield fa-fw"></i>  Teams</a>
-    <a href="{{ url_for('eleven_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Best Eleven</a>
-    <a href="{{ url_for('goals_19') }}" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-soccer-ball-o fa-fw"></i>  Goals and Assists</a>
-    <a href="{{ url_for('forwards_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-scissors-o fa-fw"></i>  Forwards</a>
-    <a href="{{ url_for('midfielders_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-grab-o fa-fw"></i>  Midfielders</a>
-    <a href="{{ url_for('defenders_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-stop-o fa-fw"></i>  Defenders</a>
-    <a href="{{ url_for('keepers_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-child fa-fw"></i>  Goal Keepers</a>
-    <a href="{{ url_for('discipline_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-copy fa-fw"></i>  Discipline</a><br><br>
+    <a href="{{ url_for('index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-dashboard fa-fw"></i>  Dashboard</a>
+    <a href="{{ url_for('standings') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-trophy fa-fw"></i>  Standings</a>
+    <a href="{{ url_for('power') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bolt fa-fw"></i>  Power Rankings</a>
+    <a href="{{ url_for('comparison1') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Match Prediction</a>
+    <a href="{{ url_for('teams') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-shield fa-fw"></i>  Teams</a>
+    <a href="{{ url_for('eleven') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Best Eleven</a>
+    <a href="{{ url_for('goals') }}" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-soccer-ball-o fa-fw"></i>  Goals and Assists</a>
+    <a href="{{ url_for('forwards') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-scissors-o fa-fw"></i>  Forwards</a>
+    <a href="{{ url_for('midfielders') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-grab-o fa-fw"></i>  Midfielders</a>
+    <a href="{{ url_for('defenders') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-stop-o fa-fw"></i>  Defenders</a>
+    <a href="{{ url_for('keepers') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-child fa-fw"></i>  Goal Keepers</a>
+    <a href="{{ url_for('discipline') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-copy fa-fw"></i>  Discipline</a><br><br>
   </div>
 </nav>
 
@@ -49,10 +51,9 @@
             <div class="w3-blue">
               <table class="w3-table w3-blue">
                 <tr>
-                  <td style="max-width: 15px"><b> r </b></td>
-                  <td style="max-width: 30px"><b>{{ columns_g[1] }}</b></td>
-                  <td><b>{{ columns_g[2] }}</b></td>
-                  <td class="w3-right"><b>{{ columns_g[3] }}</b></td>
+                  <td style="min-width: 15px"><b>{{ columns_g[0] }}</b></td>
+                  <td class="w3-center"><b>{{ columns_g[1] }}</b></td>
+                  <td class="w3-right" style="min-width: 200px"><b>{{ columns_g[2] }}</b></td>
                 </tr>
               </table>
             </div>
@@ -61,9 +62,10 @@
               <div class="w3-grey">
                 <table class="w3-table w3-blue">
                   <tr>
-                    <td><b>{{ columns_g[4] }}</b></td>
-                    <td><b>{{ columns_g[5] }}</b></td>
-                    <td><b>{{ columns_g[6] }}</b></td>
+                    <td style="min-width: 30px"><b> pos </b></td>
+                    <td style="min-width: 30px"><b> num </b></td>
+                    <td class="w3-center" style="min-width: 30px"><b> min </b></td>
+                    <td class="w3-right" style="min-width: 30px"><b>{{ columns_g[6] }}</b></td>
                   </tr>
                 </table>
               </div>
@@ -75,10 +77,9 @@
           <div class="w3-white">
             <table class="w3-table w3-striped w3-white">
               <tr>
-                <td style="max-width: 30px">{{ html_table.iloc[i][0] }}</td>
-                <td style="max-width: 50px">{{ html_table.iloc[i][1] }}</td>
-                <td class="w3-table" style="min-width: 200px"><b>{{ html_table.iloc[i][2] }}</b></td>
-                <td class="w3-right" style="max-width: 30px">{{ html_table.iloc[i][3] }}</td>
+                <td style="min-width: 15px">{{ html_table.iloc[i][0] }}</td>
+                <td class="w3-center" style="min-width: 15px">{{ html_table.iloc[i][1] }}</td>
+                <td class="w3-right"  style="min-width: 200px">{{ html_table.iloc[i][2] }}</td>
               </tr>
             </table>
           </div>
@@ -87,9 +88,10 @@
           <div class="w3-grey">
             <table class="w3-table w3-striped w3-light-grey">
               <tr>
-                <td style="max-width: 50px">{{ html_table.iloc[i][4] }}</td>
-                <td class="w3-center" style="max-width: 75px">{{ html_table.iloc[i][5] }}</td>
-                <td class="w3-right w3-grey w3-text-white" style="min-width: 50px"><b>{{ html_table.iloc[i][6] }}</b></td>
+                <td style="min-width: 30px">{{ html_table.iloc[i][3] }}</td>
+                <td style="min-width: 30px">{{ html_table.iloc[i][4] }}</td>
+                <td class="w3-center" style="min-width: 30px">{{ html_table.iloc[i][5] }}</td>
+                <td class="w3-right w3-grey w3-text-white" style="min-width: 30px"><b>{{ html_table.iloc[i][6] }}</b></td>
               </tr>
             </table>
           </div>
@@ -104,10 +106,9 @@
               <div class="w3-green">
                 <table class="w3-table w3-green">
                   <tr>
-                    <td style="max-width: 15px"><b> r </b></td>
-                    <td style="max-width: 30px"><b>{{ columns_a[1] }}</b></td>
-                    <td><b>{{ columns_a[2] }}</b></td>
-                    <td class="w3-right"><b>{{ columns_a[3] }}</b></td>
+                    <td style="min-width: 15px"><b>{{ columns_a[0] }}</b></td>
+                    <td class="w3-center"><b>{{ columns_a[1] }}</b></td>
+                    <td class="w3-right" style="min-width: 200px"><b>{{ columns_a[2] }}</b></td>
                   </tr>
                 </table>
               </div>
@@ -116,9 +117,10 @@
                 <div class="w3-green">
                   <table class="w3-table w3-green">
                     <tr>
-                      <td><b>{{ columns_a[4] }}</b></td>
-                      <td><b>{{ columns_a[5] }}</b></td>
-                      <td><b>{{ columns_a[6] }}</b></td>
+                      <td style="min-width: 30px"><b> pos </b></td>
+                      <td style="min-width: 30px"><b> num </b></td>
+                      <td class="w3-center" style="min-width: 30px"><b> min </b></td>
+                      <td class="w3-right" style="min-width: 30px"><b>{{ columns_a[6] }}</b></td>
                     </tr>
                   </table>
                 </div>
@@ -130,10 +132,9 @@
             <div class="w3-white">
               <table class="w3-table w3-striped w3-white">
                 <tr>
-                  <td style="max-width: 30px">{{ assists_table.iloc[i][0] }}</td>
-                  <td style="max-width: 50px">{{ assists_table.iloc[i][1] }}</td>
-                  <td class="w3-table" style="min-width: 200px"><b>{{ assists_table.iloc[i][2] }}</b></td>
-                  <td class="w3-right" style="max-width: 30px">{{ assists_table.iloc[i][3] }}</td>
+                  <td style="min-width: 15px">{{ assists_table.iloc[i][0] }}</td>
+                  <td class="w3-center" style="min-width: 15px">{{ assists_table.iloc[i][1] }}</td>
+                  <td class="w3-right"  style="min-width: 200px">{{ assists_table.iloc[i][2] }}</td>
                 </tr>
               </table>
             </div>
@@ -142,9 +143,10 @@
             <div class="w3-grey">
               <table class="w3-table w3-striped w3-light-grey">
                 <tr>
-                  <td style="max-width: 50px">{{ assists_table.iloc[i][4] }}</td>
-                  <td class="w3-center" style="max-width: 75px">{{ assists_table.iloc[i][5] }}</td>
-                  <td class="w3-right w3-grey w3-text-white" style="min-width: 50px"><b>{{ assists_table.iloc[i][6] }}</b></td>
+                  <td>{{ assists_table.iloc[i][3] }}</td>
+                  <td>{{ assists_table.iloc[i][4] }}</td>
+                  <td class="w3-center">{{ assists_table.iloc[i][5] }}</td>
+                  <td class="w3-right w3-grey w3-text-white"><b>{{ assists_table.iloc[i][6] }}</b></td>
                 </tr>
               </table>
             </div>
