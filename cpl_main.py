@@ -1,5 +1,6 @@
 # canpl statistics
 # Todd McCullough 2020
+from datetime import date, timedelta
 import pandas as pd
 import numpy as np
 import os
@@ -117,6 +118,7 @@ def get_club_statistics(team_results,query):
     db = db.T
     return db
 
+
 def get_standings(results,season_number,team_ref):
     standings = pd.DataFrame()
     # select the appropriate season, regular/championship
@@ -137,10 +139,17 @@ def get_standings(results,season_number,team_ref):
         standings = pd.concat([standings,team_results])
     standings = standings.sort_values(by=['pts','w','gf'],ascending=False)
     standings = index_reset(standings)
-    standings = standings.reset_index() # reset index to use the index column as the ranking column
-    standings = standings.rename(columns={'index':'rank'}) #rename the index column as rank
-    standings['rank'] = standings['rank'] + 1 # add 1 to the rank column, so that first rank is 1 and not 0
-    standings = standings.fillna(0) # fill any NaN with 0
+    standings = standings.reset_index()
+    standings = standings.rename(columns={'index':'rank'})
+    standings['rank'] = standings['rank'] + 1
+    standings = standings.fillna(0)
+    
+    columns = standings.select_dtypes(include=['float']).columns
+    for column in columns:
+        if column == 'ppg':
+            continue
+        standings[column] = standings[column].astype(int)
+    
     return standings
 
 def compare_standings(standings_current,standings_old,team_ref):
@@ -954,3 +963,52 @@ def get_game_roster_prediction(get_games,results,stats,team_ref,player_info):
             b.append(int(score))
             a.append(b)
     return a
+  
+def get_team_files(schedule,team_ref):
+    team1 = get_shortest_name(schedule.iloc[0]['home'],team_ref)
+    team2 = get_shortest_name(schedule.iloc[0]['away'],team_ref)
+    team3 = get_shortest_name(schedule.iloc[1]['home'],team_ref)
+    team4 = get_shortest_name(schedule.iloc[1]['away'],team_ref)
+    team5 = get_shortest_name(schedule.iloc[2]['home'],team_ref)
+    team6 = get_shortest_name(schedule.iloc[2]['away'],team_ref)
+    team7 = get_shortest_name(schedule.iloc[3]['home'],team_ref)
+    team8 = get_shortest_name(schedule.iloc[3]['away'],team_ref)
+    
+    return team1, team2, team3, team4, team5, team6, team7, team8
+    
+def update_player_info(year,player_info,rated_forwards,rated_midfielders,rated_defenders,rated_keepers):
+    today = date.today() - timedelta(5)
+    day = today.strftime("%d_%m_%Y")
+    print(day)
+    rated_forwards.to_csv(f'datasets/{year}/cpl-{year}-forwards-{day}.csv',index=False)
+    rated_midfielders.to_csv(f'datasets/{year}/cpl-{year}-midfielders-{day}.csv',index=False)
+    rated_defenders.to_csv(f'datasets/{year}/cpl-{year}-defenders-{day}.csv',index=False)
+    rated_keepers.to_csv(f'datasets/{year}/cpl-{year}-keepers-{day}.csv',index=False)
+    
+    def get_player_score(data,name):
+        name = [name]
+        if data[data['name'].isin(name)].empty:
+            pass
+        else:
+            overall = data[data['name'].isin(name)]
+            new_overall = overall['overall'].values
+            return new_overall
+    
+    combine = [rated_forwards,rated_midfielders,rated_defenders,rated_keepers]
+    names = player_info['name'].values
+    a = []
+    for name in names:
+        j = 1
+        for i in range(0,4):
+            score = get_player_score(combine[i],name)
+            if score == None:
+                j += 1
+                pass
+            if score != None:
+                overall = score[0]
+                a.append(overall)
+            if j == 5:
+                overall = 0.0
+                a.append(overall)
+    player_info['overall'] = a
+    return player_info
