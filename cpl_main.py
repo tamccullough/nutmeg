@@ -23,6 +23,32 @@ def get_shortest_name(string,team_ref):
             string = str(row.iloc[0]['short'])
     return string
 
+def get_longest_name(da,db,dc,team_ref):
+    def get_long(data,dd):
+        db = data.copy()
+        for team in db['home']:
+            row = dd[dd['short'] == team]
+            db.at[0,'home'] = row.iloc[0]['team']
+        for team in db['away']:
+            row = dd[dd['short'] == team]
+            db.at[0,'away'] = row.iloc[0]['team']
+        return db
+    da = get_long(da,team_ref)
+    db = get_long(db,team_ref)
+    dc = get_long(dc,team_ref)
+    teams_in = pd.DataFrame([da.iloc[0]['home'],da.iloc[0]['away'],db.iloc[0]['home'],db.iloc[0]['away'],dc.iloc[0]['home'],dc.iloc[0]['away']],columns=['teams'])
+    teams_in = teams_in.teams.unique()
+    return teams_in
+
+def get_short_name(data,dc):
+    for team in data['home']:
+        row = dc[dc['team'] == team]
+        data.at[0,'home'] = row.iloc[0]['short']
+    for team in data['away']:
+        row = dc[dc['team'] == team]
+        data.at[0,'away'] = row.iloc[0]['short']
+    return data
+
 def get_schedule(data):
     db = data.copy()
     db = db[db['s'] <= 1]
@@ -184,32 +210,6 @@ def clean_team_game(data,db,check):
         db = pd.DataFrame(db)
         db = db.T
     return db
-
-def get_longest_name(da,db,dc,team_ref):
-    def get_long(data,dd):
-        db = data.copy()
-        for team in db['home']:
-            row = dd[dd['short'] == team]
-            db.at[0,'home'] = row.iloc[0]['team']
-        for team in db['away']:
-            row = dd[dd['short'] == team]
-            db.at[0,'away'] = row.iloc[0]['team']
-        return db
-    da = get_long(da,team_ref)
-    db = get_long(db,team_ref)
-    dc = get_long(dc,team_ref)
-    teams_in = pd.DataFrame([da.iloc[0]['home'],da.iloc[0]['away'],db.iloc[0]['home'],db.iloc[0]['away'],dc.iloc[0]['home'],dc.iloc[0]['away']],columns=['teams'])
-    teams_in = teams_in.teams.unique()
-    return teams_in
-
-def get_short_name(data,dc):
-    for team in data['home']:
-        row = dc[dc['team'] == team]
-        data.at[0,'home'] = row.iloc[0]['short']
-    for team in data['away']:
-        row = dc[dc['team'] == team]
-        data.at[0,'away'] = row.iloc[0]['short']
-    return data
 
 def get_weeks_results(data,standings,team_ref):
     if data.iloc[0]['hr'] == 'E':
