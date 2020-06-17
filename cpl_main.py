@@ -540,6 +540,7 @@ def get_roster(query,stats,team_ref): # use team stats to get the player informa
     return roster
 
 def get_roster_overall(query,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info): # use team stats to get the player information
+    team = get_shortest_name(query,team_ref)
     def get_score(data,name):
         db = data[data['name'] == name]
         if db.empty:
@@ -578,7 +579,7 @@ def get_roster_overall(query,stats,team_ref,rated_forwards,rated_midfielders,rat
             db = db[0]
         return db
     roster = get_stats_all(stats,team_ref)
-    roster = roster[roster['team'] == query].copy()
+    roster = roster[roster['team'] == team].copy()
     roster = roster[['name','first','last','number','position']] # scale the dataframe down to what we need
     #roster.insert(3,'overall',a)
     a = []
