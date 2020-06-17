@@ -143,13 +143,13 @@ def get_standings(results,season_number,team_ref):
     standings = standings.rename(columns={'index':'rank'})
     standings['rank'] = standings['rank'] + 1
     standings = standings.fillna(0)
-    
+
     columns = standings.select_dtypes(include=['float']).columns
     for column in columns:
         if column == 'ppg':
             continue
         standings[column] = standings[column].astype(int)
-    
+
     return standings
 
 def compare_standings(standings_current,standings_old,team_ref):
@@ -269,14 +269,15 @@ def get_team_stats(data,query):
     team_stats = team_stats.reset_index()
     return team_stats
 
-def get_stats_all(data,dc):
-    db = pd.DataFrame()
-    for team in dc['team']:
-        df = get_team_stats(data,team)
-        df.insert(0,'team',team)
-        db = pd.concat([db,df])
-    db = index_reset(db)
-    return db
+def get_stats_all(stats,team_ref):
+    stats_all = pd.DataFrame()
+    for team in team_ref['team']:
+        df = get_team_stats(stats,team)
+        short_team = get_shortest_name(team,team_ref)
+        df.insert(0,'team',short_team)
+        stats_all = pd.concat([stats_all,df])
+    stats_all = index_reset(stats_all)
+    return stats_all
 
 # get associated information for players league wide and calculate an overall score for each position
 def get_evaluation(condensed_player_info,full_player_info):
@@ -394,6 +395,8 @@ def top_position(team_stats,position): # get the forwards in the league
     columns = condensed_player_info.select_dtypes(include=['float']).columns
     for column in columns:
         if column == 'overall':
+            condensed_player_info[column] = condensed_player_info[column].round(4).astype(str)
+            condensed_player_info[column] = condensed_player_info[column].astype(float)
             continue
         condensed_player_info[column] = condensed_player_info[column].astype(int)
 
@@ -963,7 +966,7 @@ def get_game_roster_prediction(get_games,results,stats,team_ref,player_info):
             b.append(int(score))
             a.append(b)
     return a
-  
+
 def get_team_files(schedule,team_ref):
     team1 = get_shortest_name(schedule.iloc[0]['home'],team_ref)
     team2 = get_shortest_name(schedule.iloc[0]['away'],team_ref)
@@ -973,9 +976,9 @@ def get_team_files(schedule,team_ref):
     team6 = get_shortest_name(schedule.iloc[2]['away'],team_ref)
     team7 = get_shortest_name(schedule.iloc[3]['home'],team_ref)
     team8 = get_shortest_name(schedule.iloc[3]['away'],team_ref)
-    
+
     return team1, team2, team3, team4, team5, team6, team7, team8
-    
+
 def update_player_info(year,player_info,rated_forwards,rated_midfielders,rated_defenders,rated_keepers):
     today = date.today() - timedelta(5)
     day = today.strftime("%d_%m_%Y")
@@ -984,7 +987,7 @@ def update_player_info(year,player_info,rated_forwards,rated_midfielders,rated_d
     rated_midfielders.to_csv(f'datasets/{year}/cpl-{year}-midfielders-{day}.csv',index=False)
     rated_defenders.to_csv(f'datasets/{year}/cpl-{year}-defenders-{day}.csv',index=False)
     rated_keepers.to_csv(f'datasets/{year}/cpl-{year}-keepers-{day}.csv',index=False)
-    
+
     def get_player_score(data,name):
         name = [name]
         if data[data['name'].isin(name)].empty:
@@ -993,7 +996,7 @@ def update_player_info(year,player_info,rated_forwards,rated_midfielders,rated_d
             overall = data[data['name'].isin(name)]
             new_overall = overall['overall'].values
             return new_overall
-    
+
     combine = [rated_forwards,rated_midfielders,rated_defenders,rated_keepers]
     names = player_info['name'].values
     a = []
