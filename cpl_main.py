@@ -178,6 +178,28 @@ def get_standings(results,season_number,team_ref):
 
     return standings
 
+def get_team_graphs(stats):
+    g_cols = ['chances','goals','assists','pass-acc', 'cross-acc','s-out-box','clearances','interceptions', 'yellow','shots faced','saves', 'claimed crosses', 'cs']
+    team_mean = stats.copy()
+    goals = stats[['team','goals']]
+    assists = stats[['team','assists']]
+    team_mean = team_mean.select_dtypes(include=['float'])
+    team_mean.insert(0,'team',stats['team'])
+    team_mean = team_mean.groupby(['team']).mean()
+    team_mean = team_mean[g_cols]
+    team_mean['goals'] = goals.groupby(['team']).sum()
+    team_mean['assists'] = assists.groupby(['team']).sum()
+    
+    for col in team_mean.columns:
+        if team_mean[col].max() > 1.0:
+            team_mean[col] = team_mean[col] / team_mean[col].max()
+        if team_mean[col].max() < 0.2:
+            team_mean[col] = team_mean[col] * 5
+        else:
+            continue
+    
+    return team_mean
+
 def compare_standings(standings_current,standings_old,team_ref):
     # getting the change in team standings between current week and previous week
     a = []
