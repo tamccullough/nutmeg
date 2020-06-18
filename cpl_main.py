@@ -189,7 +189,7 @@ def get_team_graphs(stats):
     team_mean = team_mean[g_cols]
     team_mean['goals'] = goals.groupby(['team']).sum()
     team_mean['assists'] = assists.groupby(['team']).sum()
-    
+
     for col in team_mean.columns:
         if team_mean[col].max() > 1.0:
             team_mean[col] = team_mean[col] / team_mean[col].max()
@@ -197,7 +197,7 @@ def get_team_graphs(stats):
             team_mean[col] = team_mean[col] * 5
         else:
             continue
-    
+    team_mean = team_mean.reset_index()
     return team_mean
 
 def compare_standings(standings_current,standings_old,team_ref):
