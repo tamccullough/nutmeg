@@ -315,6 +315,23 @@ def teams_19():
     columns = team_ref.columns
     return render_template('2019/cpl-es-teams.html',columns = columns, html_table = teams_2019, year = year, other_year = other_year)
 
+@canples.route('/radar')
+def radar():
+    year = '2020'
+    other_year = '2019'
+    team_ref = pd.read_csv('datasets/teams.csv')
+    columns = team_ref.columns
+    return render_template('cpl-es-radar.html',columns = columns, html_table = team_ref, year = year, other_year = other_year)
+
+@canples.route('/radar-2019')
+def radar_19():
+    year = '2019'
+    other_year = '2020'
+    team_ref = pd.read_csv('datasets/teams.csv')
+    teams_2019 = team_ref[1:]
+    columns = team_ref.columns
+    return render_template('2019/cpl-es-radar.html',columns = columns, html_table = teams_2019, year = year, other_year = other_year)
+
 @canples.route('/roster', methods=['POST'])
 def roster():
     year = '2020'

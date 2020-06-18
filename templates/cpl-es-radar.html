@@ -22,7 +22,7 @@
     <a href="{{ url_for('power') }}" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-bolt fa-fw"></i>  Power Rankings</a>
     <a href="{{ url_for('comparison1') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Match Prediction</a>
     <a href="{{ url_for('teams') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-shield fa-fw"></i>  Teams</a>
-    <a href="{{ url_for('radar') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-line-chart fa-fw"></i>  Radar Charts</a>
+    <a href="{{ url_for('radar') }}" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-line-chart fa-fw"></i>  Radar Charts</a>
     <a href="{{ url_for('eleven') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Best Eleven</a>
     <a href="{{ url_for('goals') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-soccer-ball-o fa-fw"></i>  Goals and Assists</a>
     <a href="{{ url_for('forwards') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-scissors-o fa-fw"></i>  Forwards</a>
@@ -42,24 +42,34 @@
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-bolt"></i> Power Rankings</b></h5>
+    <h5><b><i class="fa fa-line-chart"></i> Radar Charts</b></h5>
   </header>
 
-  <div class="w3-container w3-row-padding w3-margin-bottom">
-    {%for i in range(0,html_table.shape[0])%}
-    <div class="w3-quarter">
-      <div class="w3-container {{ html_table.iloc[i,8] }} w3-padding-16">
-        <div class="w3-left"><img src="static/images/flags/{{ html_table.iloc[i,7] }}" alt="{{ html_table.iloc[i,1] }} Crest" style="max-height:60px"></i></div>
-        <div class="w3-right">
-          <h2>{{ html_table.iloc[i,0] }}</h2>
+  <div class="w3-container">
+        <div class="w3-half">
+           <img src="static/images/2020/cpl-2020-Atletico Ottawa-radar.png" alt="Atletico Ottawa Radar" style="max-width:100%">
         </div>
-        <div class="w3-clear"></div>
-        <h5>{{ html_table.iloc[i,1] }}</h5>
-        <h5>Movement: {{ html_table.iloc[i,9] }}</h5>
-        <h5>Form: {{ html_table.iloc[i,2]}}</h5>
-      </div>
-    </div>
-    {%endfor%}
+        <div class="w3-half">
+           <img src="static/images/2020/cpl-2020-Cavalry FC-radar.png" alt="Cavalry FC Radar" style="max-width:100%">
+        </div>
+        <div class="w3-half">
+           <img src="static/images/2020/cpl-2020-FC Edmonton-radar.png" alt="Cavalry FC Radar" style="max-width:100%">
+        </div>
+        <div class="w3-half">
+           <img src="static/images/2020/cpl-2020-Forge FC-radar.png" alt="Cavalry FC Radar" style="max-width:100%">
+        </div>
+        <div class="w3-half">
+           <img src="static/images/2020/cpl-2020-HFX Wanderers FC-radar.png" alt="Cavalry FC Radar" style="max-width:100%">
+        </div>
+        <div class="w3-half">
+           <img src="static/images/2020/cpl-2020-Pacific FC-radar.png" alt="Cavalry FC Radar" style="max-width:100%">
+        </div>
+        <div class="w3-half">
+           <img src="static/images/2020/cpl-2020-Valour FC-radar.png" alt="Cavalry FC Radar" style="max-width:100%">
+        </div>
+        <div class="w3-half">
+           <img src="static/images/2020/cpl-2020-York9 FC-radar.png" alt="Cavalry FC Radar" style="max-width:100%">
+        </div>
   </div>
   <hr>
 
