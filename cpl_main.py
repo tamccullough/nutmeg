@@ -179,13 +179,25 @@ def get_standings(results,season_number,team_ref):
     return standings
 
 def get_team_graphs(stats):
-    g_cols = ['chances','goals','assists','pass-acc', 'cross-acc','shots', 's-target', 's-box','s-out-box','clearances','interceptions', 'yellow','shots faced','claimed crosses', 'cs']
+    g_cols = ['chances','goals','assists','pass-acc','cross-acc','shots','s-target','s-box','s-out-box','clearances','interceptions','yellow','shots faced','claimed crosses','cs']
     team_mean = stats.copy()
     goals = stats[['team','goals']]
     assists = stats[['team','assists']]
     team_mean = team_mean.select_dtypes(include=['float'])
     team_mean.insert(0,'team',stats['team'])
-    team_mean = team_mean.groupby(['team']).mean()
+    try:
+        team_mean = team_mean.groupby(['team']).mean()
+    except:
+        teams = stats.team.unique()
+        team_mean = pd.DataFrame(columns=['team','clean sheets','big chances','attacking plays','combination plays','accuracy','defending','chance creation','finishing'])
+        team_mean['team'] = teams
+        for col in team_mean.columns:
+            if col == 'team':
+                continue
+            else:
+                team_mean[col] = 0.5
+        return team_mean
+
     team_mean = team_mean[g_cols]
     team_mean['claimed crosses'] = team_mean['claimed crosses'] * 15
     team_mean['cs'] = team_mean['cs'] * 30
@@ -211,7 +223,7 @@ def get_team_graphs(stats):
     for col in team_mean.columns:
         team_mean[col] = team_mean[col] - 0.1
 
-    team_mean = team_mean[['clean sheets','big chances', 'attacking plays', 'combination plays', 'accuracy','defending', 'chance creation', 'finishing']]
+    team_mean = team_mean[['clean sheets','big chances','attacking plays','combination plays','accuracy','defending','chance creation','finishing']]
     team_mean = team_mean.reset_index()
     return team_mean
 
