@@ -1,9 +1,9 @@
-team,city,province,short,colour,crest,link,wiki
-Atletico Ottawa,Ottawa,ON,AO,cpl-ao,Atletico_Ottawa_nav.png,https://atleticoottawa.canpl.ca/,https://en.wikipedia.org/wiki/Atlético_Ottawa
-Cavalry FC,Calgary,AB,CFC,cpl-cfc,cavalry_fc_nav.png,https://cavalryfc.canpl.ca/,https://en.wikipedia.org/wiki/Cavalry_FC
-FC Edmonton,Edmonton,AB,FCE,cpl-fce,FC_Edmonton_nav.png,https://fcedmonton.canpl.ca/,https://en.wikipedia.org/wiki/FC_Edmonton
-Forge FC,Hamilton,ON,FFC,cpl-ffc,Forge_FC_nav.png,https://forgefc.canpl.ca/,https://en.wikipedia.org/wiki/Forge_FC
-HFX Wanderers FC,Halifax,NS,HFX,cpl-hfx,HFX_Wanderers_FC.png,https://hfxwanderersfc.canpl.ca/,https://en.wikipedia.org/wiki/HFX_Wanderers_FC
-Pacific FC,Langford,BC,PFC,cpl-pfc,Pacific_FC_nav.png,https://pacificfc.canpl.ca/,https://en.wikipedia.org/wiki/Pacific_FC
-Valour FC,Winnipeg,MB,VFC,cpl-vfc,Valour_FC_nav.png,https://valourfc.canpl.ca/,https://en.wikipedia.org/wiki/Valour_FC
-York9 FC,York Region,ON,Y9,cpl-y9,York_9_FC_nav.png,https://york9fc.canpl.ca/,https://en.wikipedia.org/wiki/York9_FC
+team,city,province,short,colour,crest,link,wiki,colour1,colour2
+Atletico Ottawa,Ottawa,ON,AO,cpl-ao,Atletico_Ottawa_nav.png,https://atleticoottawa.canpl.ca/,https://en.wikipedia.org/wiki/Atlético_Ottawa,red,tomato
+Cavalry FC,Calgary,AB,CFC,cpl-cfc,cavalry_fc_nav.png,https://cavalryfc.canpl.ca/,https://en.wikipedia.org/wiki/Cavalry_FC,maroon,indianred
+FC Edmonton,Edmonton,AB,FCE,cpl-fce,FC_Edmonton_nav.png,https://fcedmonton.canpl.ca/,https://en.wikipedia.org/wiki/FC_Edmonton,navy,royalblue
+Forge FC,Hamilton,ON,FFC,cpl-ffc,Forge_FC_nav.png,https://forgefc.canpl.ca/,https://en.wikipedia.org/wiki/Forge_FC,darkorange,orange
+HFX Wanderers FC,Halifax,NS,HFX,cpl-hfx,HFX_Wanderers_FC.png,https://hfxwanderersfc.canpl.ca/,https://en.wikipedia.org/wiki/HFX_Wanderers_FC,dodgerblue,blue
+Pacific FC,Langford,BC,PFC,cpl-pfc,Pacific_FC_nav.png,https://pacificfc.canpl.ca/,https://en.wikipedia.org/wiki/Pacific_FC,purple,violet
+Valour FC,Winnipeg,MB,VFC,cpl-vfc,Valour_FC_nav.png,https://valourfc.canpl.ca/,https://en.wikipedia.org/wiki/Valour_FC,darkred,brown
+York9 FC,York Region,ON,Y9,cpl-y9,York_9_FC_nav.png,https://york9fc.canpl.ca/,https://en.wikipedia.org/wiki/York9_FC,forestgreen,lime

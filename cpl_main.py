@@ -179,7 +179,7 @@ def get_standings(results,season_number,team_ref):
     return standings
 
 def get_team_graphs(stats):
-    g_cols = ['chances','goals','assists','pass-acc', 'cross-acc','s-out-box','clearances','interceptions', 'yellow','shots faced','saves', 'claimed crosses', 'cs']
+    g_cols = ['chances','goals','assists','pass-acc', 'cross-acc','shots', 's-target', 's-box','s-out-box','clearances','interceptions', 'yellow','shots faced','claimed crosses', 'cs']
     team_mean = stats.copy()
     goals = stats[['team','goals']]
     assists = stats[['team','assists']]
@@ -187,8 +187,18 @@ def get_team_graphs(stats):
     team_mean.insert(0,'team',stats['team'])
     team_mean = team_mean.groupby(['team']).mean()
     team_mean = team_mean[g_cols]
+    team_mean['claimed crosses'] = team_mean['claimed crosses'] * 15
+    team_mean['cs'] = team_mean['cs'] * 30
     team_mean['goals'] = goals.groupby(['team']).sum()
     team_mean['assists'] = assists.groupby(['team']).sum()
+    team_mean['big chances'] = (team_mean['goals'] + 2) / team_mean['chances']
+    team_mean['attacking plays'] = (team_mean['assists'] + 2) / team_mean['chances']
+    team_mean['combination plays'] = team_mean['assists'] / team_mean['goals']
+    team_mean['accuracy'] = team_mean['pass-acc'] + team_mean['cross-acc']
+    team_mean['defending'] = team_mean['clearances'] * team_mean['interceptions']
+    team_mean['chance creation'] = (team_mean['shots'] + team_mean['s-box'] + team_mean['s-out-box']) * team_mean['s-target']
+    team_mean['finishing'] = team_mean['chance creation'] * team_mean['goals']
+    team_mean = team_mean.rename(columns={'cs':'clean sheets'})
 
     for col in team_mean.columns:
         if team_mean[col].max() > 1.0:
@@ -197,8 +207,54 @@ def get_team_graphs(stats):
             team_mean[col] = team_mean[col] * 5
         else:
             continue
+
+    for col in team_mean.columns:
+        team_mean[col] = team_mean[col] - 0.1
+
+    team_mean = team_mean[['clean sheets','big chances', 'attacking plays', 'combination plays', 'accuracy','defending', 'chance creation', 'finishing']]
     team_mean = team_mean.reset_index()
     return team_mean
+
+def make_radar(data,team_ref,year):
+    team = data['team']
+    info = team_ref[team_ref['team'] == team]
+    colour1 = info['colour1'].values
+    colour1 = colour1[0]
+    colour2 = info['colour2'].values
+    colour2 = colour2[0]
+    # number of variable
+    categories=list(team_graphs)[1:]
+    N = len(categories)
+
+    # We are going to plot the first line of the data frame.
+    # But we need to repeat the first value to close the circular graph:
+    values = data.drop('team').values.flatten().tolist()
+    values += values[:1]
+    values
+
+    # What will be the angle of each axis in the plot? (we divide the plot / number of variable)
+    angles = [n / float(N) * 2 * pi for n in range(N)]
+    angles += angles[:1]
+
+    # Initialise the spider plot
+    plt.figure(figsize=(8,8))
+    ax = plt.subplot(111, polar=True)
+
+    # Draw one axe per variable + add labels labels yet
+    plt.xticks(angles[:-1], categories, color='grey', size=14)
+
+    # Draw ylabels
+    ax.set_title(data['team'], color=colour1, size=24)
+    ax.set_rlabel_position(0)
+    plt.yticks([0.25,0.5,0.75], ["0.25","0.50","0.75"], color='silver', size=12)
+    plt.ylim(0,1)
+    # Plot data
+    ax.plot(angles, values, linewidth=8, linestyle='solid', color=colour1)
+
+    # Fill area
+    ax.fill(angles, values, colour2, alpha=0.4)
+    filename = f'static/images/{year}/cpl-{year}-{team}-radar.png'
+    plt.savefig(filename)
 
 def compare_standings(standings_current,standings_old,team_ref):
     # getting the change in team standings between current week and previous week
