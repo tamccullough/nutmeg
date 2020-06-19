@@ -111,7 +111,7 @@ def get_results_brief(data,dc):
 
 def get_club_statistics(team_results,query):
 
-    df = team_results
+    df = team_results.copy()
     a = []
     cols = df.columns # get the columns of the dataframe
 
@@ -137,7 +137,7 @@ def get_club_statistics(team_results,query):
         if df.iloc[row]['away'] == query:
             if df.iloc[row]['ar'] != 'E':
                 points,w,l,d = get_game_results(df.iloc[row]['ar'])
-                vals = [1,points,3,w,l,d,df.iloc[row]['hs'],df.iloc[row]['as'],df.iloc[row]['hs'],df.iloc[row]['as'],0,0]
+                vals = [1,points,3,w,l,d,df.iloc[row]['as'],df.iloc[row]['hs'],0,0,df.iloc[row]['as'],df.iloc[row]['hs']]
                 a.append(vals)
     db= pd.DataFrame(a,columns=['gp','pts','tpp','w','l','d','gf','ga','gfh','gah','gfa','gaa'])
     db = pd.DataFrame(db.sum())
@@ -178,7 +178,25 @@ def get_standings(results,season_number,team_ref):
 
     return standings
 
-def get_team_graphs(stats):
+def get_team_graphs(stats,standings):
+    comparing = standings.sort_values(by=['team'])
+
+    def get_column_overall(lst):
+        data = stats[lst]
+        data = data.groupby(['team']).sum()
+        data['overall'] = data.sum(axis=1) / data.shape[1]
+        data['overall'] = data['overall'] / data['overall'].max()
+        data['overall'] = data['overall'] - 0.1
+        data = data[['overall']]
+        data = data.reset_index()
+        data.pop('team')
+        return data['overall']
+
+    offense = get_column_overall(['team','goals','chances','assists','shots','s-target','passes','crosses','duels','tackles'])
+    central = get_column_overall(['team','goals','assists','touches','passes','pass-acc','crosses','cross-acc','chances','duels','tackles'])
+    defense = get_column_overall(['team','tackles','t-won','clearances','interceptions','duels','d-won'])
+    keeping = get_column_overall(['team','cs','saves','shots faced','claimed crosses'])
+
     g_cols = ['chances','goals','assists','pass-acc','cross-acc','shots','s-target','s-box','s-out-box','clearances','interceptions','yellow','shots faced','claimed crosses','cs']
     team_mean = stats.copy()
     goals = stats[['team','goals']]
@@ -200,15 +218,16 @@ def get_team_graphs(stats):
 
     team_mean = team_mean[g_cols]
     team_mean['claimed crosses'] = team_mean['claimed crosses'] * 15
-    team_mean['cs'] = team_mean['cs'] * 30
+    team_mean['cs'] = team_mean['cs'] * 100
     team_mean['goals'] = goals.groupby(['team']).sum()
     team_mean['assists'] = assists.groupby(['team']).sum()
     team_mean['big chances'] = (team_mean['goals'] + 2) / team_mean['chances']
     team_mean['attacking plays'] = (team_mean['assists'] + 2) / team_mean['chances']
-    team_mean['combination plays'] = team_mean['assists'] / team_mean['goals']
-    team_mean['accuracy'] = team_mean['pass-acc'] + team_mean['cross-acc']
-    team_mean['defending'] = team_mean['clearances'] * team_mean['interceptions']
-    team_mean['chance creation'] = (team_mean['shots'] + team_mean['s-box'] + team_mean['s-out-box']) * team_mean['s-target']
+    team_mean['combination plays'] = team_mean['assists'] / team_mean['goals'] * 100
+    team_mean['offense'] = comparing['gf'].values / offense.values
+    team_mean['midfield'] = comparing['gd'].values * central.values + comparing['gd'].max()
+    team_mean['defending'] = 100 - (comparing['ga'].values * defense.values)
+    team_mean['chance creation'] = (team_mean['shots'] + team_mean['s-box'] + team_mean['s-out-box']) * team_mean['s-target'] * 100
     team_mean['finishing'] = team_mean['chance creation'] * team_mean['goals']
     team_mean = team_mean.rename(columns={'cs':'clean sheets'})
 
@@ -219,11 +238,10 @@ def get_team_graphs(stats):
             team_mean[col] = team_mean[col] * 5
         else:
             continue
-
     for col in team_mean.columns:
         team_mean[col] = team_mean[col] - 0.1
 
-    team_mean = team_mean[['clean sheets','big chances','attacking plays','combination plays','accuracy','defending','chance creation','finishing']]
+    team_mean = team_mean[['clean sheets','big chances','attacking plays','combination plays','offense','midfield','defending','chance creation','finishing']]
     team_mean = team_mean.reset_index()
     return team_mean
 
