@@ -2,14 +2,14 @@
 {% block content %}
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+<nav class="w3-sidebar w3-collapse cpl-eclipse-l w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
-      <img src="static/images/flags/cpl_logo.png" class="w3-circle w3-margin-right" style="width:46px">
+      <img src="static/images/flags/CPL-Crest-White.png" class="w3-circle w3-margin-right" style="width:46px">
     </div>
     <div class="w3-dropdown-hover">
-      <button class="w3-button w3-white w3-xlarge">{{ year }} Season</button>
-      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+      <button class="w3-button w3-xlarge">{{ year }} Season</button>
+      <div class="w3-dropdown-content w3-indigo w3-bar-block w3-card-4">
         <a class="w3-button w3-center" href="{{ url_for('index_19') }}">{{ other_year }}</a><br>
       </div>
     </div>
@@ -89,7 +89,7 @@
       {%for i in range(0,html_table.shape[0])%}
         <div class="w3-third">
           <div class="w3-grey">
-            <table class="w3-table w3-striped w3-white">
+            <table class="w3-table cpl-eclipse-l">
               <tr>
                 <td>{{ html_table.iloc[i][0] }}</td>
                 <td class="w3-table w3-center" style="min-width: 250px"><b>{{ html_table.iloc[i][1] }}</b></td>
@@ -100,7 +100,7 @@
         </div>
         <div class="w3-third">
           <div class="w3-grey">
-            <table class="w3-table w3-striped w3-light-grey">
+            <table class="w3-table cpl-eclipse-m">
               <tr>
                 <td>{{ html_table.iloc[i][4] }}</td>
                 <td>{{ html_table.iloc[i][5] }}</td>
@@ -112,7 +112,7 @@
         </div>
         <div class="w3-third">
           <div class="w3-grey">
-            <table class="w3-table w3-striped w3-light-grey">
+            <table class="w3-table cpl-eclipse-l">
               <tr>
                 <td>{{ html_table.iloc[i][8] }}</td>
                 <td>{{ html_table.iloc[i][9] }}</td>

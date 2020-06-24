@@ -2,14 +2,14 @@
 {% block content %}
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+<nav class="w3-sidebar w3-collapse cpl-eclipse-l w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
-      <img src="static/images/flags/cpl_logo.png" class="w3-circle w3-margin-right" style="width:46px">
+      <img src="static/images/flags/CPL-Crest-White.png" class="w3-circle w3-margin-right" style="width:46px">
     </div>
     <div class="w3-dropdown-hover">
-      <button class="w3-button w3-white w3-xlarge">{{ year }} Season</button>
-      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+      <button class="w3-button w3-xlarge">{{ year }} Season</button>
+      <div class="w3-dropdown-content w3-indigo w3-bar-block w3-card-4">
         <a class="w3-button w3-center" href="{{ url_for('index_19') }}">{{ other_year }}</a><br>
       </div>
     </div>
@@ -55,12 +55,12 @@
             <img src="static/images/players/{{ html_table.iloc[i,0] }}" alt="{{ html_table.iloc[i,1] }}" style="max-height:200px">
           </a>
         </div>
-        <div class="w3-container w3-striped w3-white">
-          <p class="w3-light-grey"><img src="static/images/flags/{{ html_table.iloc[i,3] }}" alt="{{ html_table.iloc[i,3] }}" style="max-height:20px"></p>
+        <div class="w3-container cpl-eclipse-l">
+          <p class="cpl-eclipse-L"><img src="static/images/flags/{{ html_table.iloc[i,3] }}" alt="{{ html_table.iloc[i,3] }}" style="max-height:20px"></p>
           <p>{{ html_table.iloc[i,1] }}</p>
-          <p class="w3-light-grey">{{ html_table.iloc[i,2] }}</p>
+          <p class="cpl-eclipse-m">{{ html_table.iloc[i,2] }}</p>
           <p>Number {{ html_table.iloc[i,4] }}</p>
-          <p class="w3-light-grey">Position {{ html_table.iloc[i,5] }}</p>
+          <p class="cpl-eclipse-m">Position {{ html_table.iloc[i,5] }}</p>
           <p>Overall {{ html_table.iloc[i,6] }}</p>
         </div>
       </div>

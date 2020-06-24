@@ -2,13 +2,13 @@
 {% block content %}
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+<nav class="w3-sidebar w3-collapse cpl-eclipse-l w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
-      <img src="static/images/flags/cpl_logo.png" class="w3-circle w3-margin-right" style="width:46px">
+      <img src="static/images/flags/CPL-Crest-White.png" class="w3-circle w3-margin-right" style="width:46px">
     </div>
     <div class="w3-dropdown-hover">
-      <button class="w3-button w3-blue w3-xlarge">{{ year }} Season</button>
+      <button class="w3-button w3-xlarge">{{ year }} Season</button>
       <div class="w3-dropdown-content w3-indigo w3-bar-block w3-card-4">
         <a class="w3-button w3-center" href="{{ url_for('index_19') }}">{{ other_year }}</a><br>
       </div>
@@ -122,7 +122,7 @@
       <div class="w3-twothird">
         <div class="w3-row-padding" style="margin:0 -8px">
         <h5>Players of the Week</h5>
-        <table class="w3-table w3-striped w3-white">
+        <table class="w3-table cpl-eclipse-l">
           <tr>
             <td><i class="fa fa-soccer-ball-o w3-text-green w3-large"></i></td>
             <td>Top Scorer</td>
@@ -130,7 +130,7 @@
             <td><i>{{top_scorer['overall']}}</i></td>
           </tr>
           <tr>
-            <td><i class="fa fa-soccer-ball-o w3-text-purple w3-large"></i></td>
+            <td><i class="fa fa-soccer-ball-o w3-text-orange w3-large"></i></td>
             <td>Top Assists</td>
             <td>{{top_assist['name']}}</td>
             <td><i>{{top_assist['overall']}}</i></td>
@@ -154,13 +154,13 @@
             <td><i>{{top_defender['overall']}}</i></td>
           </tr>
           <tr>
-            <td><i class="fa fa-child w3-text-deep-purple w3-large"></i></td>
+            <td><i class="fa fa-child w3-text-white w3-large"></i></td>
             <td>Top Goal Keeper</td>
             <td>{{top_keeper['name']}}</td>
             <td><i>{{top_keeper['overall']}}</i></td>
           </tr>
           <tr>
-            <td><i class="fa fa-copy w3-text-red w3-large"></i></td>
+            <td><i class="fa fa-copy w3-text-yellow w3-large"></i></td>
             <td>Worst Offender</td>
             <td>{{top_offender['name']}}</td>
             <td><i>{{top_offender['overall']}}</i></td>
