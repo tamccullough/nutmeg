@@ -1089,13 +1089,6 @@ def get_team_files(schedule,team_ref):
     return team1, team2, team3, team4, team5, team6, team7, team8
 
 def update_player_info(year,player_info,rated_forwards,rated_midfielders,rated_defenders,rated_keepers):
-    today = date.today() - timedelta(5)
-    day = today.strftime("%d_%m_%Y")
-    print(day)
-    rated_forwards.to_csv(f'datasets/{year}/cpl-{year}-forwards-{day}.csv',index=False)
-    rated_midfielders.to_csv(f'datasets/{year}/cpl-{year}-midfielders-{day}.csv',index=False)
-    rated_defenders.to_csv(f'datasets/{year}/cpl-{year}-defenders-{day}.csv',index=False)
-    rated_keepers.to_csv(f'datasets/{year}/cpl-{year}-keepers-{day}.csv',index=False)
 
     def get_player_score(data,name):
         name = [name]
@@ -1106,21 +1099,33 @@ def update_player_info(year,player_info,rated_forwards,rated_midfielders,rated_d
             new_overall = overall['overall'].values
             return new_overall
 
+    today = date.today() - timedelta(5)
+    day = today.strftime("%d_%m_%Y")
+    rated_forwards.to_csv(f'datasets/{year}/cpl-{year}-forwards-{day}.csv',index=False)
+    rated_midfielders.to_csv(f'datasets/{year}/cpl-{year}-midfielders-{day}.csv',index=False)
+    rated_defenders.to_csv(f'datasets/{year}/cpl-{year}-defenders-{day}.csv',index=False)
+    rated_keepers.to_csv(f'datasets/{year}/cpl-{year}-keepers-{day}.csv',index=False)
+    player_info.to_csv(f'datasets/{year}/player-{year}-info-{day}.csv',index=False)
+
     combine = [rated_forwards,rated_midfielders,rated_defenders,rated_keepers]
     names = player_info['name'].values
     a = []
     for name in names:
         j = 1
         for i in range(0,4):
+            # for the start of the season load last season's overall if empty
+            old_overall = player_info[(player_info['name'] == name) | (player_info['display'] == name)]
+            old_o = old_overall['overall'].values
+
             score = get_player_score(combine[i],name)
-            if score == None:
+            if score == None: # if score is none, increase j and move to the next dataset
                 j += 1
                 pass
             if score != None:
                 overall = score[0]
                 a.append(overall)
             if j == 5:
-                overall = 0.0
+                overall = old_o[0] # save the old result if there is not a current overall
                 a.append(overall)
     player_info['overall'] = a
     return player_info
