@@ -663,7 +663,7 @@ def get_roster_overall(query,stats,team_ref,rated_forwards,rated_midfielders,rat
             db = db[0]
         return db
     def get_image(data,name):
-        db = data[data['name'] == name]
+        db = data[data['display'] == name]
         if db['image'].empty:
             db = 'empty.jpg'
         else:
@@ -671,7 +671,7 @@ def get_roster_overall(query,stats,team_ref,rated_forwards,rated_midfielders,rat
             db = db[0]
         return db
     def get_link(data,name):
-        db = data[data['name'] == name]
+        db = data[data['display'] == name]
         if db['link'].empty:
             db = 'https://en.wikipedia.org/wiki/Canadian_Premier_League'
         else:
@@ -679,7 +679,7 @@ def get_roster_overall(query,stats,team_ref,rated_forwards,rated_midfielders,rat
             db = db[0]
         return db
     def get_flag(data,name):
-        db = data[data['name'] == name]
+        db = data[data['display'] == name]
         if db['flag'].empty:
             db = 'empty.png'
         else:
