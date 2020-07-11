@@ -647,6 +647,38 @@ def get_roster(query,stats,team_ref): # use team stats to get the player informa
     roster = index_reset(roster)
     return roster
 
+def get_player_card(name,stats,player_info):
+    player_stats = stats[stats['last'] == name].groupby('name').sum()
+    player_stats = player_stats.reset_index()
+    name = player_stats['name'].values[0]
+    player_information = player_info[player_info['name'] == name]
+    count = stats[stats['name'] == name].groupby('name').count()
+    count = int(count['game'].values[0])
+    for col in player_stats.columns:
+        if col == 'name':
+            pass
+        else:
+            player_stats[col] = player_stats[col].astype('int32')
+    player_stats['pass-acc'] = player_stats['pass-acc'].apply(lambda x: round(x / count,2))
+    player_stats['cross-acc'] = player_stats['cross-acc'].apply(lambda x: round(x / count,2))
+    player_stats['number']= int(player_information['number'].values[0])
+    player_stats.insert(0,'image',player_information['image'].values[0])
+    player_stats.insert(1,'flag',player_information['flag'].values[0])
+    player_stats.insert(2,'overall',player_information['overall'].values[0])
+    player_stats.insert(31,'wiki',player_information['link'].values[0])
+    player_stats.insert(0,'team',player_information['team'].values[0])
+    position = player_information['position'].values[0]
+    if position == 'f':
+        position = 'Forward'
+    elif position == 'm':
+        position = 'Midfield'
+    elif position == 'd':
+        position = 'Defender'
+    else:
+        position = 'Goal Keeper'
+    player_stats.insert(5,'position',position)
+    return player_stats
+
 def get_roster_overall(query,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info): # use team stats to get the player information
     team = get_shortest_name(query,team_ref)
     def get_score(data,name):
@@ -725,7 +757,8 @@ def get_roster_overall(query,stats,team_ref,rated_forwards,rated_midfielders,rat
     roster.insert(0,'image',b)
     #roster['image'] = b
     roster = index_reset(roster)
-    roster.pop('name')
+    name = roster.pop('name')
+    roster.insert(8,'name',name)
     return roster
 
 def get_home_away_comparison(stats,game,team):

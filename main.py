@@ -363,6 +363,23 @@ def roster_19():
     crest = roster_team_info.iloc[0][5]
     return render_template('2019/cpl-es-roster.html',team_name = team, html_table = roster, team_colour = roster_colour, year = year, crest = crest, other_year = other_year)
 
+@canples.route('/player', methods=['POST'])
+def player():
+    year = '2020'
+    other_year = '2019'
+    stats = pd.read_csv(f'datasets/{year}/cpl-{year}-stats.csv')
+    team_ref = pd.read_csv('datasets/teams.csv')
+    player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
+
+    name = request.form['name']
+
+    player = cpl_main.get_player_card(name,stats,player_info)
+    team = player['team'].values[0]
+    roster_team_info = team_ref[team_ref['team'] == team]
+    roster_colour = roster_team_info.iloc[0][4]
+    crest = roster_team_info.iloc[0][5]
+    return render_template('cpl-es-player.html', name = name,team_name = team, html_table = player, team_colour = roster_colour, year = year, crest = crest, other_year = other_year)
+
 @canples.route('/goals')
 def goals():
     year = '2020'
