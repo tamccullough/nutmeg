@@ -52,29 +52,27 @@
 
 
   <div class="w3-container w3-row-padding">
-    <div>
+    <div class="w3-container {{ team_colour }}">
       <div class="w3-third {{ team_colour }}">
         <div class="w3-center">
           <a href="{{ html_table.iloc[0,31] }}" target="_blank">
-            <img src="static/images/players/2020/{{ html_table.iloc[0,1] }}" alt="{{ html_table.iloc[0,5] }}" style="max-height:200px"></a>
+            <img src="static/images/players/2020/{{ html_table.iloc[0,1] }}" alt="{{ html_table.iloc[0,5] }}" style="max-height:214px"></a>
         </div>
-          <p><img src="static/images/flags/{{ html_table.iloc[0,2] }}" alt="{{ html_table.iloc[0,2] }}" style="max-height:30px"></p>
+        <div  class="w3-row-padding">
+          <p><img src="static/images/flags/{{ html_table.iloc[0,2] }}" alt="{{ html_table.iloc[0,2] }}" style="max-height:30px"> --- {{ html_table.iloc[0,2][0:-4] }}</p>
           <p>{{ html_table.iloc[0,0] }}</p>
-          <p>Number: {{ html_table.iloc[0,6] }}</p>
-          <p>Position: {{ html_table.iloc[0,5] }}</p>
+          <p>Number: {{ html_table.iloc[0,6] }} --- Position: {{ html_table.iloc[0,5] }}</p>
           <p>Overall: {{ html_table.iloc[0,3] }}</p>
           <p>Minutes: {{ html_table.iloc[0,7] }}</p>
-          <p>Goals: {{ html_table.iloc[0,15] }}</p>
-          <p>Assists: {{ html_table.iloc[0,13] }}</p>
+          <p>Goals: {{ html_table.iloc[0,15] }} --- Assists: {{ html_table.iloc[0,13] }}</p>
+        </div>
       </div>
       <div class="w3-third {{ team_colour }}">
-        <div>
-          <p> Touches: {{ html_table.iloc[0,8] }}</p>
+        <div class="w3-row-padding">
           <p> Passes: {{ html_table.iloc[0,9] }}</p>
           <p> Pass Accuracy: {{ html_table.iloc[0,10] }}</p>
           <p> Crosses: {{ html_table.iloc[0,11] }}</p>
           <p>Cross Accuracy: {{ html_table.iloc[0,12] }}</p>
-          <p>Chances: {{ html_table.iloc[0,14] }}</p>
           <p>Shots: {{ html_table.iloc[0,16] }}</p>
           <p>Shots on Target: {{ html_table.iloc[0,17] }}</p>
           <p>Shots Inside Box: {{ html_table.iloc[0,18] }}</p>
@@ -82,11 +80,13 @@
           <p>Tackles: {{ html_table.iloc[0,20] }}</p>
           <p>Tackles Won: {{ html_table.iloc[0,21] }}</p>
           <p>Duels: {{ html_table.iloc[0,22] }}</p>
-          <p>Duels Won:{{ html_table.iloc[0,23] }}</p>
+          <p>Duels Won: {{ html_table.iloc[0,23] }}</p>
         </div>
       </div>
       <div class="w3-third {{ team_colour }}">
-        <div>
+        <div class="w3-row-padding">
+          <p> Touches: {{ html_table.iloc[0,8] }}</p>
+          <p>Chances: {{ html_table.iloc[0,14] }}</p>
           <p>Clearances: {{ html_table.iloc[0,24] }}</p>
           <p>Interceptions: {{ html_table.iloc[0,25] }}</p>
           <p>Yellows: {{ html_table.iloc[0,26] }}</p>
@@ -97,9 +97,9 @@
           <p>Saves: {{ html_table.iloc[0,31] }}</p>
           <p>Claimed Crosses: {{ html_table.iloc[0,32] }}</p>
           <p>Clean Sheets: {{ html_table.iloc[0,34] }}</p>
-          <a href="{{ html_table.iloc[0,33] }}" target="_blank"> Wiki Link</a>
         </div>
       </div>
+      <a class="w3-button w3-right" href="{{ html_table.iloc[0,33] }}" target="_blank"><b> Wiki Link</b></a>
     </div>
   </div>
 </div>
