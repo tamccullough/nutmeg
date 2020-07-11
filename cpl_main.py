@@ -4,6 +4,7 @@ from datetime import date, timedelta
 import pandas as pd
 import numpy as np
 import os
+import re
 
 #Import Gaussian Naive Bayes model
 from sklearn.naive_bayes import GaussianNB,BernoulliNB
@@ -684,48 +685,43 @@ def get_roster_overall(query,stats,team_ref,rated_forwards,rated_midfielders,rat
     def get_score(data,name):
         db = data[data['name'] == name]
         if db.empty:
-            previous = player_info[player_info['name'] == name]
-            if previous.empty:
-                db = 0
+            previous = player_info[player_info['name'] == name]['overall'].values[0]
+            if previous is None:
+                db = 0.0
             else:
-                previous = previous['overall'].values
-                db = previous[0]
+                db = previous
         else:
-            db = db['overall'].values
-            db = db[0]
+            db = db['overall'].values[0]
         return db
-    def get_image(data,name):
-        db = data[data['display'] == name]
+    def get_image(player_info,name):
+        db = player_info[player_info['name'] == name]
         if db['image'].empty:
             db = 'empty.jpg'
         else:
-            db = db['image'].values
-            db = db[0]
+            db = db['image'].values[0]
         return db
-    def get_link(data,name):
-        db = data[data['display'] == name]
+    def get_link(player_info,name):
+        db = player_info[player_info['name'] == name]
         if db['link'].empty:
             db = 'https://en.wikipedia.org/wiki/Canadian_Premier_League'
         else:
-            db = db['link'].values
-            db = db[0]
+            db = db['link'].values[0]
         return db
-    def get_flag(data,name):
-        db = data[data['display'] == name]
+    def get_flag(player_info,name):
+        db = player_info[player_info['name'] == name]
         if db['flag'].empty:
             db = 'empty.png'
         else:
-            db = db['flag'].values
-            db = db[0]
+            db = db['flag'].values[0]
+        return db
+    def get_name(player_info,name):
+        db = player_info[player_info['name'] == name]
+        db = db['display'].values[0]
         return db
     roster = get_stats_all(stats,team_ref)
     roster = roster[roster['team'] == team].copy()
     roster = roster[['name','first','last','number','position']] # scale the dataframe down to what we need
-    #roster.insert(3,'overall',a)
-    a = []
-    b = []
-    c = []
-    d = []
+    a, b, c, d, e = [], [], [], [], []
     for i in range(0,roster.shape[0]):
         if roster.iloc[i]['position'] == 'f':
             score = str(get_score(rated_forwards,roster.iloc[i]['name']))
@@ -733,32 +729,36 @@ def get_roster_overall(query,stats,team_ref,rated_forwards,rated_midfielders,rat
             b.append(get_image(player_info,roster.iloc[i]['name']))
             c.append(get_flag(player_info,roster.iloc[i]['name']))
             d.append(get_link(player_info,roster.iloc[i]['name']))
+            e.append(get_name(player_info,roster.iloc[i]['name']))
         if roster.iloc[i]['position'] == 'm':
             score = str(get_score(rated_midfielders,roster.iloc[i]['name']))
             a.append(score[0:4])
             b.append(get_image(player_info,roster.iloc[i]['name']))
             c.append(get_flag(player_info,roster.iloc[i]['name']))
             d.append(get_link(player_info,roster.iloc[i]['name']))
+            e.append(get_name(player_info,roster.iloc[i]['name']))
         if roster.iloc[i]['position'] == 'd':
             score = str(get_score(rated_defenders,roster.iloc[i]['name']))
             a.append(score[0:4])
             b.append(get_image(player_info,roster.iloc[i]['name']))
             c.append(get_flag(player_info,roster.iloc[i]['name']))
             d.append(get_link(player_info,roster.iloc[i]['name']))
+            e.append(get_name(player_info,roster.iloc[i]['name']))
         if roster.iloc[i]['position'] == 'g':
             score = str(get_score(rated_keepers,roster.iloc[i]['name']))
             a.append(score[0:4])
             b.append(get_image(player_info,roster.iloc[i]['name']))
             c.append(get_flag(player_info,roster.iloc[i]['name']))
             d.append(get_link(player_info,roster.iloc[i]['name']))
+            e.append(get_name(player_info,roster.iloc[i]['name']))
     roster['overall'] = a
     roster['flag'] = c
     roster['link'] = d
     roster.insert(0,'image',b)
-    #roster['image'] = b
     roster = index_reset(roster)
-    name = roster.pop('name')
-    roster.insert(8,'name',name)
+    roster.pop('name')
+    roster['name'] = e
+    roster['first'] = roster['name'].apply(lambda x: re.split('\W+',x)[0])
     return roster
 
 def get_home_away_comparison(stats,game,team):
