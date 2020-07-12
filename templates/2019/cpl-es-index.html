@@ -14,7 +14,7 @@
       </div>
     </div>
   </div>
-  <hr>
+
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
     <a href="{{ url_for('index_19') }}" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-dashboard fa-fw"></i>  Dashboard</a>
@@ -95,8 +95,8 @@
         <h5>Top Players of the Season</h5>
         <table class="w3-table cpl-eclipse-l">
           <tr>
-            <td><i class="fa fa-soccer-ball-o w3-text-green w3-large"></i></td>
-            <td>Golden Tuque</td>
+            <td><i class="fa fa-soccer-ball-o w3-text-orange w3-large"></i></td>
+            <td>Golden Boot</td>
             <td>{{top_scorer['name']}}</td>
             <td><i>12</i></td>
           </tr>
@@ -125,13 +125,13 @@
             <td><i>{{top_defender['overall']}}</i></td>
           </tr>
           <tr>
-            <td><i class="fa fa-child w3-text-deep-white w3-large"></i></td>
-            <td>Top Goal Keeper</td>
+            <td><i class="fa fa-child w3-text-orange w3-large"></i></td>
+            <td>Golden Glove</td>
             <td>{{top_keeper['name']}}</td>
             <td><i>{{top_keeper['overall']}}</i></td>
           </tr>
           <tr>
-            <td><i class="fa fa-copy w3-text-yellow w3-large"></i></td>
+            <td><i class="fa fa-copy w3-text-red w3-large"></i></td>
             <td>Worst Offender</td>
             <td>{{top_offender['name']}}</td>
             <td><i>{{top_offender['overall']}}</i></td>
@@ -140,7 +140,7 @@
       </div>
       </div>
   </div>
-  <hr>
-  <hr>
+
+
 
 {% endblock %}

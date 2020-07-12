@@ -10,11 +10,11 @@
     <div class="w3-dropdown-hover">
       <button class="w3-button w3-xlarge">{{ year }} Season</button>
       <div class="w3-dropdown-content w3-indigo w3-bar-block w3-card-4">
-        <a class="w3-button w3-center" href="{{ url_for('index_19') }}">{{ other_year }}</a><br>
+        <a class="w3-button w3-center" href="{{ url_for('index') }}">{{ other_year }}</a><br>
       </div>
     </div>
   </div>
-  <hr>
+
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
     <a href="{{ url_for('index_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-dashboard fa-fw"></i>  Dashboard</a>
@@ -49,57 +49,90 @@
   </header>
 
 
-  <div class="w3-container w3-row-padding">
+  <div class="w3-container">
     <div class="w3-container {{ team_colour }}">
-      <div class="w3-third {{ team_colour }}">
-        <div class="w3-center">
+      <div class="w3-half {{ team_colour }}">
+        <div class="w3-center w3-padding-16">
           <a href="{{ html_table.iloc[0,31] }}" target="_blank">
             <img src="static/images/players/2019/{{ html_table.iloc[0,1] }}" alt="{{ html_table.iloc[0,5] }}" style="max-height:214px"></a>
         </div>
-        <div  class="w3-row-padding">
-          <p><img src="static/images/flags/{{ html_table.iloc[0,2] }}" alt="{{ html_table.iloc[0,2] }}" style="max-height:30px"> --- {{ html_table.iloc[0,2][0:-4] }}</p>
-          <p>{{ html_table.iloc[0,0] }}</p>
-          <p>Number: {{ html_table.iloc[0,6] }} --- Position: {{ html_table.iloc[0,5] }}</p>
-          <p>Overall: {{ html_table.iloc[0,3] }}</p>
-          <p>Minutes: {{ html_table.iloc[0,7] }}</p>
-          <p>Goals: {{ html_table.iloc[0,15] }} --- Assists: {{ html_table.iloc[0,13] }}</p>
+        <div  class="w3-padding">
+          <table style="width: 100%;">
+            <tr>
+              <td><a><img src="static/images/flags/{{ html_table.iloc[0,2] }}" alt="{{ html_table.iloc[0,2] }}" style="max-height:30px"><a></td>
+              <td>{{ html_table.iloc[0,2][0:-4] }}</td>
+            </tr>
+            <tr>
+              <td>Number: {{ html_table.iloc[0,6] }}</td>
+              <td>{{ html_table.iloc[0,5] }}</td>
+            </tr>
+            <tr>
+              <td>Overall: {{ html_table.iloc[0,3] }}</td>
+              <td>Minutes: {{ html_table.iloc[0,7] }}</td>
+            </tr>
+          </table>
         </div>
       </div>
-      <div class="w3-third {{ team_colour }}">
-        <div class="w3-row-padding">
-          <p> Passes: {{ html_table.iloc[0,9] }}</p>
-          <p> Pass Accuracy: {{ html_table.iloc[0,10] }}</p>
-          <p> Crosses: {{ html_table.iloc[0,11] }}</p>
-          <p>Cross Accuracy: {{ html_table.iloc[0,12] }}</p>
-          <p>Shots: {{ html_table.iloc[0,16] }}</p>
-          <p>Shots on Target: {{ html_table.iloc[0,17] }}</p>
-          <p>Shots Inside Box: {{ html_table.iloc[0,18] }}</p>
-          <p>Shots Outside Box: {{ html_table.iloc[0,19] }}</p>
-          <p>Tackles: {{ html_table.iloc[0,20] }}</p>
-          <p>Tackles Won: {{ html_table.iloc[0,21] }}</p>
-          <p>Duels: {{ html_table.iloc[0,22] }}</p>
-          <p>Duels Won: {{ html_table.iloc[0,23] }}</p>
-        </div>
-      </div>
-      <div class="w3-third {{ team_colour }}">
-        <div class="w3-row-padding">
-          <p> Touches: {{ html_table.iloc[0,8] }}</p>
-          <p>Chances: {{ html_table.iloc[0,14] }}</p>
-          <p>Clearances: {{ html_table.iloc[0,24] }}</p>
-          <p>Interceptions: {{ html_table.iloc[0,25] }}</p>
-          <p>Yellows: {{ html_table.iloc[0,26] }}</p>
-          <p>Reds: {{ html_table.iloc[0,27] }}</p>
-          <p>Fouls Won: {{ html_table.iloc[0,28] }}</p>
-          <p>Fouls Conceded: {{ html_table.iloc[0,29] }}</p>
-          <p>Shots Faced: {{ html_table.iloc[0,30] }}</p>
-          <p>Saves: {{ html_table.iloc[0,31] }}</p>
-          <p>Claimed Crosses: {{ html_table.iloc[0,32] }}</p>
-          <p>Clean Sheets: {{ html_table.iloc[0,34] }}</p>
+      <div class="w3-half {{ team_colour }}">
+        <div class="w3-padding">
+          <table style="width: 100%;">
+            <tr>
+              <td>Goals: {{ html_table.iloc[0,15] }}</td>
+              <td>Assists: {{ html_table.iloc[0,13] }}</td>
+            </tr>
+            <tr>
+              <td>Passes: {{ html_table.iloc[0,9] }}</td>
+              <td>Pass Accuracy: {{ html_table.iloc[0,10] }}</td>
+            </tr>
+            <tr>
+              <td>Crosses: {{ html_table.iloc[0,11] }}</td>
+              <td>Cross Accuracy: {{ html_table.iloc[0,12] }}</td>
+            </tr>
+            <tr>
+              <td>Shots: {{ html_table.iloc[0,16] }}</td>
+              <td>Shots on Target: {{ html_table.iloc[0,17] }}</td>
+            </tr>
+            <tr>
+              <td>Shots Inside Box: {{ html_table.iloc[0,18] }}</td>
+              <td>Shots Outside Box: {{ html_table.iloc[0,19] }}</td>
+            </tr>
+            <tr>
+              <td>Tackles: {{ html_table.iloc[0,20] }}</td>
+              <td>Tackles Won: {{ html_table.iloc[0,21] }}</td>
+            </tr>
+            <tr>
+              <td>Duels: {{ html_table.iloc[0,22] }}</td>
+              <td>Duels Won: {{ html_table.iloc[0,23] }}</td>
+            </tr>
+            <tr>
+              <td>Yellows: {{ html_table.iloc[0,26] }}</td>
+              <td>Reds: {{ html_table.iloc[0,27] }}</td>
+            </tr>
+            <tr>
+              <td>Fouls Won: {{ html_table.iloc[0,28] }}</td>
+              <td>Fouls Conceded: {{ html_table.iloc[0,29] }}</td>
+            </tr>
+            <tr>
+              <td>Touches: {{ html_table.iloc[0,8] }}</td>
+              <td>Chances: {{ html_table.iloc[0,14] }}</td>
+            </tr>
+            <tr>
+              <td>Clearances: {{ html_table.iloc[0,24] }}</td>
+              <td>Interceptions: {{ html_table.iloc[0,25] }}</td>
+            </tr>
+            <tr>
+              <td>Shots Faced: {{ html_table.iloc[0,30] }}</td>
+              <td>Claimed Crosses: {{ html_table.iloc[0,32] }}</td>
+            </tr>
+            <tr>
+              <td>Saves: {{ html_table.iloc[0,31] }}</td>
+              <td>Clean Sheets: {{ html_table.iloc[0,34] }}</td>
+            </tr>
+          </table>
         </div>
       </div>
       <a class="w3-button w3-right" href="{{ html_table.iloc[0,33] }}" target="_blank"><b> Wiki Link</b></a>
     </div>
   </div>
-<hr>
 
 {% endblock %}

@@ -152,11 +152,9 @@ def index_19():
     first_colour = top_team_info.iloc[0][4]
     first_crest = top_team_info.iloc[0][5]
     top_mover = compare_standings.iloc[0]['team']
-    top_crest = team_ref[team_ref['team'] == top_mover]
-    top_crest = top_crest.iloc[0][5]
+    top_crest = team_ref[team_ref['team'] == top_mover].iloc[0][5]
     top_dropper = compare_standings.iloc[-1]['team']
-    bot_crest = team_ref[team_ref['team'] == top_dropper]
-    bot_crest = bot_crest.iloc[0][5]
+    bot_crest = team_ref[team_ref['team'] == top_dropper].iloc[0][5]
 
     game_week, goals, big_win, top_result, low_result, other_result = cpl_main.get_weeks_results(results[results['s'] <= 1],standings,team_ref)
 
@@ -165,7 +163,8 @@ def index_19():
     top_defender = rated_defenders.loc[0]
     top_scorer = rated_goalscorers.loc[0]
     top_assist = rated_assists.loc[0]
-    top_keeper = rated_keepers.loc[0]
+    top_keeper = rated_keepers.sort_values(by=['cs'],ascending=False)
+    top_keeper = top_keeper.reset_index().loc[0]
     top_offender = rated_offenders.loc[0]
 
     champs = 'Forge FC 2019 Champions'
