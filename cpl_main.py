@@ -613,7 +613,15 @@ def get_match_prediction_result(query,x,y,array):
     return prediction
 
 def get_match_prediction(q1,q2,x1,y1,x2,y2):
-    if len(x1) == 0:
+    if (len(x1) == 0) or (len(x2) == 0):
+        x = round(1/3,2)
+        home_win, away_win,draw = x,x,x
+        return home_win,away_win,draw
+    if (len(x1) == 0):
+        x = round(1/3,2)
+        home_win, away_win,draw = x,x,x
+        return home_win,away_win,draw
+    if (len(x2) == 0):
         x = round(1/3,2)
         home_win, away_win,draw = x,x,x
         return home_win,away_win,draw
