@@ -69,5 +69,29 @@
       </div>
     </div>
 
+    <div class="w3-container w3-row-padding">
+      <div>
+        <div class="w3-half w3-card-4 {{ team_colour }}">
+          <div class="w3-center">
+              <img src="static/images/players/2019/{{ coach['image'].values[0] }}" alt="{{ coach['coach'].values[0] }}" style="max-height:200px">
+            </a>
+          </div>
+          <div class="w3-container cpl-eclipse-l">
+          <form method="POST" action="/player">
+            <p class="cpl-eclipse-l"><img src="static/images/flags/{{ coach['country'].values[0] }}" alt="{{ coach['country'].values[0][:-4] }}" style="max-height:20px"></p>
+            <p class="cpl-eclipse-m" href="{{ url_for('player') }}"><input class="w3-button" type="submit" id="name" name="name" value="{{ coach['coach'].values[0] }}"></p>
+            <table class="w3-table" style="width: 100%;">
+              <tr>
+                <td><a>Wins {{ coach['w'].values[0]}}</a></td>
+                <td><a>Losses {{ coach['l'].values[0] }}</a></td>
+                <td><a>Draws {{ coach['d'].values[0] }}</a></td>
+              </tr>
+              </table>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
 {% endblock %}

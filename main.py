@@ -25,10 +25,10 @@ def load_main_files(year):
     results = pd.read_csv(f'datasets/{year}/cpl-{year}-results.csv')
     stats = pd.read_csv(f'datasets/{year}/cpl-{year}-stats.csv')
     team_ref = pd.read_csv('datasets/teams.csv')
+    team_ref = team_ref[team_ref['year'] == int(year)]
     player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
     current_teams = team_ref['team']
     if year == '2019':
-        team_ref = team_ref[1:]
         results_old = results[:-7].copy()
     else:
         results_old = results[results['hr'] != 'E'].copy()
@@ -302,6 +302,7 @@ def teams():
     year = '2020'
     other_year = '2019'
     team_ref = pd.read_csv('datasets/teams.csv')
+    team_ref = team_ref[team_ref['year'] == int(year)]
     columns = team_ref.columns
     return render_template('cpl-es-teams.html',columns = columns, html_table = team_ref, year = year, other_year = other_year)
 
@@ -310,15 +311,16 @@ def teams_19():
     year = '2019'
     other_year = '2020'
     team_ref = pd.read_csv('datasets/teams.csv')
-    teams_2019 = team_ref[1:]
+    team_ref = team_ref[team_ref['year'] == int(year)]
     columns = team_ref.columns
-    return render_template('2019/cpl-es-teams.html',columns = columns, html_table = teams_2019, year = year, other_year = other_year)
+    return render_template('2019/cpl-es-teams.html',columns = columns, html_table = team_ref, year = year, other_year = other_year)
 
 @canples.route('/radar')
 def radar():
     year = '2020'
     other_year = '2019'
     team_ref = pd.read_csv('datasets/teams.csv')
+    team_ref = team_ref[team_ref['year'] == int(year)]
     columns = team_ref.columns
     return render_template('cpl-es-radar.html',columns = columns, html_table = team_ref, year = year, other_year = other_year)
 
@@ -327,9 +329,9 @@ def radar_19():
     year = '2019'
     other_year = '2020'
     team_ref = pd.read_csv('datasets/teams.csv')
-    teams_2019 = team_ref[1:]
+    team_ref = team_ref[team_ref['year'] == int(year)]
     columns = team_ref.columns
-    return render_template('2019/cpl-es-radar.html',columns = columns, html_table = teams_2019, year = year, other_year = other_year)
+    return render_template('2019/cpl-es-radar.html',columns = columns, html_table = team_ref, year = year, other_year = other_year)
 
 @canples.route('/roster', methods=['POST'])
 def roster():
@@ -337,6 +339,7 @@ def roster():
     other_year = '2019'
     stats = pd.read_csv(f'datasets/{year}/cpl-{year}-stats.csv')
     team_ref = pd.read_csv('datasets/teams.csv')
+    team_ref = team_ref[team_ref['year'] == int(year)]
     player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
     team = request.form['team']
@@ -344,7 +347,8 @@ def roster():
     roster_colour = roster_team_info.iloc[0][4]
     roster = cpl_main.get_roster_overall(team,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info)
     crest = roster_team_info.iloc[0][5]
-    return render_template('cpl-es-roster.html',team_name = team, html_table = roster, team_colour = roster_colour, year = year, crest = crest, other_year = other_year)
+    coach = roster_team_info[['coach','country','image','w','l','d']]
+    return render_template('cpl-es-roster.html',team_name = team, coach = coach, html_table = roster, team_colour = roster_colour, year = year, crest = crest, other_year = other_year)
 
 @canples.route('/roster-2019', methods=['POST'])
 def roster_19():
@@ -352,15 +356,16 @@ def roster_19():
     other_year = '2020'
     stats = pd.read_csv(f'datasets/{year}/cpl-{year}-stats.csv')
     team_ref = pd.read_csv('datasets/teams.csv')
+    team_ref = team_ref[team_ref['year'] == int(year)]
     player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
     team = request.form['team']
-    teams_2019 = team_ref[1:]
-    roster_team_info = teams_2019[teams_2019['team'] == team]
+    roster_team_info = team_ref[team_ref['team'] == team]
     roster_colour = roster_team_info.iloc[0][4]
-    roster = cpl_main.get_roster_overall(team,stats,teams_2019,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info)
+    roster = cpl_main.get_roster_overall(team,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info)
     crest = roster_team_info.iloc[0][5]
-    return render_template('2019/cpl-es-roster.html',team_name = team, html_table = roster, team_colour = roster_colour, year = year, crest = crest, other_year = other_year)
+    coach = roster_team_info[['coach','country','image','w','l','d']]
+    return render_template('2019/cpl-es-roster.html',team_name = team, coach = coach, html_table = roster, team_colour = roster_colour, year = year, crest = crest, other_year = other_year)
 
 @canples.route('/player', methods=['POST'])
 def player():
@@ -368,6 +373,7 @@ def player():
     other_year = '2019'
     stats = pd.read_csv(f'datasets/{year}/cpl-{year}-stats.csv')
     team_ref = pd.read_csv('datasets/teams.csv')
+    team_ref = team_ref[team_ref['year'] == int(year)]
     player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
 
     name = request.form['name']
@@ -385,6 +391,7 @@ def player_19():
     other_year = '2020'
     stats = pd.read_csv(f'datasets/{year}/cpl-{year}-stats.csv')
     team_ref = pd.read_csv('datasets/teams.csv')
+    team_ref = team_ref[team_ref['year'] == int(year)]
     player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
 
     name = request.form['name']
