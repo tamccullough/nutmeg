@@ -253,8 +253,13 @@ def comparison1():
     #home_win, draw, away_win, home_form, away_form, home_roster, away_roster, home_score, away_score = get_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards, rated_midfielders, rated_defenders, rated_keepers, player_info)
 
     team1, team2, team3, team4, team5, team6, team7, team8 = get_team_files(schedule,team_ref)
+
+    if (home_win and away_win) < draw:
+        home_win, away_win = draw, draw
+
     home_win = get_string(home_win)
     away_win = get_string(away_win)
+    draw = get_string(draw)
 
     group1 = team1 + '-' + team2
     group2 = team3 + '-' + team4
@@ -262,7 +267,7 @@ def comparison1():
     group4 = team7 + '-' + team8
 
     return render_template('cpl-es-comparison.html',home_table = home_roster, away_table = away_roster, home_win = home_win,
-    home_team = q1, away_team = q2, away_win = away_win, home_form = home_form, away_form = away_form, schedule = schedule, year = year,
+    home_team = q1, away_team = q2, away_win = away_win, draw = draw, home_form = home_form, away_form = away_form, schedule = schedule, year = year,
     home_crest = home_crest, home_colour = home_colour, away_crest = away_crest, away_colour = away_colour, headline = headline, home_score = home_score, away_score = away_score,
     team1 = team1, team2 = team2, team3 = team3, team4 = team4, team5 = team5, team6 = team6, team7 = team7, team8 = team8, other_year = other_year,
     group1 = group1, group2 = group2, group3 = group3, group4 = group4)
@@ -302,8 +307,13 @@ def comparison2():
     #home_win, draw, away_win, home_form, away_form, home_roster, away_roster, home_score, away_score = get_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards, rated_midfielders, rated_defenders, rated_keepers, player_info)
 
     team1, team2, team3, team4, team5, team6, team7, team8 = get_team_files(schedule,team_ref)
+
+    if (home_win and away_win) < draw:
+        home_win, away_win = draw, draw
+
     home_win = get_string(home_win)
     away_win = get_string(away_win)
+    draw = get_string(draw)
 
     group1 = team1 + '-' + team2
     group2 = team3 + '-' + team4
@@ -311,7 +321,7 @@ def comparison2():
     group4 = team7 + '-' + team8
 
     return render_template('cpl-es-comparison2.html',home_table = home_roster, away_table = away_roster, home_win = home_win,
-    home_team = q1, away_team = q2, away_win = away_win, home_form = home_form, away_form = away_form, schedule = schedule, year = year,
+    home_team = q1, away_team = q2, away_win = away_win, draw = draw, home_form = home_form, away_form = away_form, schedule = schedule, year = year,
     home_crest = home_crest, home_colour = home_colour, away_crest = away_crest, away_colour = away_colour, headline = headline, home_score = home_score, away_score = away_score,
     team1 = team1, team2 = team2, team3 = team3, team4 = team4, team5 = team5, team6 = team6, team7 = team7, team8 = team8, other_year = other_year,
     group1 = group1, group2 = group2, group3 = group3, group4 = group4)
