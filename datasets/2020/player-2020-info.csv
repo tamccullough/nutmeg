@@ -2,18 +2,18 @@ team,name,position,number,nationality,dob,image,flag,link,overall,display
 Atletico Ottawa,Ajay Khabra,m,0,Canada,1995-06-13,Khabra_Ajay.2.jpg,Canada.png,https://en.wikipedia.org/wiki/Ajay_Khabra,0.36,Ajay Khabra
 Atletico Ottawa,Antoine Coupland,m,0,Canada,2003-12-12,Coupland_Antoine.2.jpg,Canada.png,https://en.wikipedia.org/wiki/Antoine_Coupland,0.00,Antoine Coupland
 Atletico Ottawa,Ben Fisk,m,0,Canada,1993-02-04,Fisk_Ben.2.jpg,Canada.png,https://en.wikipedia.org/wiki/Ben_Fisk,0.49,Ben Fisk
-Atletico Ottawa,Osah Bernardinho Tetteh,m,0,Ghana,1996-07-02,empty.jpg,Ghana.png,https://en.wikipedia.org/wiki/Bernardinho_(footballer),0.00,Bernardinho
+Atletico Ottawa,Osah Tetteh,m,0,Ghana,1996-07-02,empty.jpg,Ghana.png,https://en.wikipedia.org/wiki/Bernardinho_(footballer),0.00,Bernardinho
 Atletico Ottawa,Evan Brandon John,d,0,Canada,1995-01-05,John_Brandon.1.jpg,Canada.png,https://en.wikipedia.org/wiki/Brandon_John,0.00,Brandon John
 Atletico Ottawa,Francisco Javier Acuña Víctor,m,0,Mexico,1988-01-19,Acuña_Francisco.2.jpg,Mexico.png,https://en.wikipedia.org/wiki/Francisco_Acuña,0.00,Francisco Acuña
 Atletico Ottawa,Olakunle Dada-Luke,f,0,Canada,2000-01-12,Dada-Luke_Kunle.1.jpg,Canada.png,https://en.wikipedia.org/wiki/Kunle_Dada-Luke,0.00,Kunle Dada-Luke
 Atletico Ottawa,Malyk Hamilton,m,0,Canada,1999-09-02,Hamilton_Malyk.2.jpg,Canada.png,https://en.wikipedia.org/wiki/Malyk_Hamilton,0.22,Malyk Hamilton
-Atletico Ottawa,Michel Djaozandry,m,0,Canada,NA,Djaozandry_Michel.2.jpg,Canada.png,https://en.wikipedia.org/wiki/Atl%C3%A9tico_Ottawa,0.00,Michel Djaozandry
+Atletico Ottawa,Michel Djaozandry,m,0,Canada,1998-02-17,Djaozandry_Michel.2.jpg,Canada.png,https://en.wikipedia.org/wiki/Atl%C3%A9tico_Ottawa,0.00,Michel Djaozandry
 Atletico Ottawa,Nacho Zabal,g,0,Spain,1987-02-14,empty.jpg,Spain.png,https://en.wikipedia.org/wiki/Nacho_Zabal,0.00,Nacho Zabal
-Atletico Ottawa,Ricky Gomes,g,0,Canada,NA,empty.jpg,Canada.png,https://en.wikipedia.org/wiki/Ricky_Gomes,0.00,Ricky Gomes
+Atletico Ottawa,Ricky Gomes,g,0,Canada,1997-07-19,empty.jpg,Canada.png,https://en.wikipedia.org/wiki/Ricky_Gomes,0.00,Ricky Gomes
 Atletico Ottawa,Tevin Shaw,m,0,Jamaica,1997-02-24,empty.jpg,Jamaica.png,https://en.wikipedia.org/wiki/Tevin_Shaw,0.00,Tevin Shaw
 Atletico Ottawa,Vashon Neufville,d,0,England,1999-07-18,Neufville_Vashon.2.jpg,England.png,https://en.wikipedia.org/wiki/Vashon_Neufville,0.00,Vashon Neufville
 Atletico Ottawa,Víctor Martínez Manrique,m,0,Spain,1997-05-25,Martinez_Victor.2.jpg,Spain.png,https://en.wikipedia.org/wiki/Viti_Martínez,0.00,Viti Martínez
-Atletico Ottawa,Malcolm Shaw,f,0,Canada,NA,Malcolm-Shaw.2.jpg,Canada.png,https://en.wikipedia.org/wiki/Atl%C3%A9tico_Ottawa,0.00,Malcolm Shaw
+Atletico Ottawa,Malcolm Shaw,f,0,Canada,1995-07-27,Malcolm-Shaw.2.jpg,Canada.png,https://en.wikipedia.org/wiki/Atl%C3%A9tico_Ottawa,0.00,Malcolm Shaw
 Atletico Ottawa,Gianfranco Facchineri,d,0,Canada,2002-04-27,empty.jpg,Canada.png,https://en.wikipedia.org/wiki/Atl%C3%A9tico_Ottawa,0.00,Gianfranco Facchineri
 Cavalry FC,Aribim Pepple,f,24,Canada,2002-12-25,empty.jpg,Canada.png,https://en.wikipedia.org/wiki/Aribim_Pepple,0.01,Aribim Pepple
 Cavalry FC,Bruno Zebie,m,16,Canada,1995-08-14,empty.jpg,Canada.png,https://en.wikipedia.org/wiki/Bruno_Zebie,0.32,Bruno Zebie
@@ -40,7 +40,7 @@ FC Edmonton,Allan Zebie,d,4,Canada,1993-05-29,Allan-Zebie.1.png,Canada.png,https
 FC Edmonton,Amer Didic,d,55,Canada,1994-12-28,empty.jpg,Canada.png,https://en.wikipedia.org/wiki/Amer_Didic,0.58,Amer Didic
 FC Edmonton,Anthony Caceres,m,0,Canada,2000-01-31,Antony-Caceres.1.png,Canada.png,https://en.wikipedia.org/wiki/Anthony_Caceres,0.00,Anthony Caceres
 FC Edmonton,Chance Carter,m,0,Canada,2001-09-15,Chance-Carter.1.png,Canada.png,https://en.wikipedia.org/wiki/Chance_Carter,0.00,Chance Carter
-FC Edmonton,Chris Ezoua,g,31,Canada,NA,empty.jpg,Canada.png,https://en.wikipedia.org/wiki/Chris_Ezoua,0.00,Chris Ezoua
+FC Edmonton,Chris Ezoua,g,31,Canada,2000-03-26,empty.jpg,Canada.png,https://en.wikipedia.org/wiki/Chris_Ezoua,0.00,Chris Ezoua
 FC Edmonton,Connor James,g,1,Canada,1996-07-17,Connor-James.1.png,Canada.png,https://en.wikipedia.org/wiki/Connor_James,0.71,Connor James
 FC Edmonton,David Doe,f,26,Canada,2000-11-30,David-Doe.1.png,Canada.png,https://en.wikipedia.org/wiki/David_Doe,0.04,David Doe
 FC Edmonton,Duran Lee,d,0,Canada,1995-05-09,Duran-Lee.1.png,Canada.png,https://en.wikipedia.org/wiki/Duran_Lee,0.29,Duran Lee
@@ -83,7 +83,7 @@ HFX Wanderers FC,Alessandro Riggi,f,10,Canada,1993-11-30,Alessandro-Riggi.1.jpg,
 HFX Wanderers FC,Alex De Carolis,d,24,Canada,1992-09-24,Alex-De-Carolis.1.jpg,Canada.png,https://en.wikipedia.org/wiki/Alex_De_Carolis,0.40,Alex De Carolis
 HFX Wanderers FC,Alex Marshall,m,7,Jamaica,1998-02-24,empty.jpg,Jamaica.png,https://en.wikipedia.org/wiki/Alex_Marshall,0.00,Alex Marshall
 HFX Wanderers FC,Andre Rampersad,m,18,Trinidad and Tobago,1995-02-02,Andre-Rampersad.1.jpg,TrinidadandTobago.png,https://en.wikipedia.org/wiki/Andre_Rampersad,0.48,Andre Rampersad
-HFX Wanderers FC,Chrisnovic N'Sa,d,6,Canada,1999-01-28,Chrisnovic-N_sa.1.jpg,Canada.png,https://en.wikipedia.org/wiki/Chrisnovic_N'sa,0.41,Chrisnovic N'sa
+HFX Wanderers FC,Chrisnovic N'sa,d,6,Canada,1999-01-28,Chrisnovic-N_sa.1.jpg,Canada.png,https://en.wikipedia.org/wiki/Chrisnovic_N'sa,0.41,Chris N'sa
 HFX Wanderers FC,Christian Oxner,g,50,Canada,1996-07-29,Christian-Oxner.1.jpg,Canada.png,https://en.wikipedia.org/wiki/Christian_Oxner,0.54,Christian Oxner
 HFX Wanderers FC,Daniel Kinumbe,d,13,Canada,1999-03-15,Daniel-Kinumbe.1.jpg,Canada.png,https://en.wikipedia.org/wiki/Daniel_Kinumbe,0.00,Daniel Kinumbe
 HFX Wanderers FC,Eriks Santos,d,31,Brazil,1996-02-23,empty.jpg,Brazil.png,https://en.wikipedia.org/wiki/Eriks_Santos,0.00,Eriks Santos
@@ -96,8 +96,8 @@ HFX Wanderers FC,Mateo Restrepo,d,14,Canada,1997-04-29,empty.jpg,Canada.png,http
 HFX Wanderers FC,Omar Kreim,m,8,Morocco,1995-02-10,Omar-Kreim.1.jpg,Morocco.png,https://en.wikipedia.org/wiki/Omar_Kreim,0.00,Omar Kreim
 HFX Wanderers FC,Peter Schaale,d,2,Germany,1996-06-14,Peter-Schaale.1.jpg,Germany.png,https://en.wikipedia.org/wiki/Peter_Schaale,0.63,Peter Schaale
 HFX Wanderers FC,Scott Firth,m,15,Canada,2001-03-02,Scott-Firth.jpg,Canada.png,https://en.wikipedia.org/wiki/Scott_Firth,0.11,Scott Firth
-HFX Wanderers FC,Cory Bent,m,15,England,NA,Cory-Bent.1.jpg,England.png,https://en.wikipedia.org/wiki/Scott_Firth,0.00,Cory Bent
-Pacific FC,Abdoulaye Samake,d,0,Mali,NA,Abdou-Samake.1.png,Mali.png,https://en.wikipedia.org/wiki/Abdou_Samake,0.00,Abdou Samake
+HFX Wanderers FC,Cory Bent,m,15,England,1997-05-14,Cory-Bent.1.jpg,England.png,https://en.wikipedia.org/wiki/Scott_Firth,0.00,Cory Bent
+Pacific FC,Abdoulaye Samake,d,0,Mali,1996-10-07,Abdou-Samake.1.png,Mali.png,https://en.wikipedia.org/wiki/Abdou_Samake,0.00,Abdou Samake
 Pacific FC,Alejandro Díaz,f,0,Mexico,1996-01-27,Alejandro-Diaz.1.png,Mexico.png,https://en.wikipedia.org/wiki/Alejandro_Díaz,0.00,Alejandro Diaz
 Pacific FC,Alessandro Hojabrpour,m,21,Canada,2000-01-10,Alessandro-Hojabrpour.1.png,Canada.png,https://en.wikipedia.org/wiki/Alessandro_Hojabrpour,0.28,Alessandro Hojabrpour
 Pacific FC,Callum Irving,g,0,Canada,1993-03-16,Callum-Irving.1.png,Canada.png,https://en.wikipedia.org/wiki/Callum_Irving,0.00,Callum Irving
@@ -134,15 +134,17 @@ Valour FC,Raphaël Garcia,d,2,Canada,1999-05-06,empty.jpg,Canada.png,https://en.
 Valour FC,Solomon Kojo Antwi,m,0,Ghana,2000-09-25,Soloman-Antwi.1.png,Ghana.png,https://en.wikipedia.org/wiki/Valour_FC,0.00,Solomon Kojo Antwi
 Valour FC,Stefan Cebara,m,0,Canada,1991-04-12,Stefan-Cebara.1.png,Canada.png,https://en.wikipedia.org/wiki/Stefan_Cebara,0.00,Stefan Cebara
 Valour FC,Yohan Le Bourhis,d,25,Canada,2000-03-09,Yohan-Le-Bourhis.1.png,Canada.png,https://en.wikipedia.org/wiki/Yohan_Le_Bourhis,0.21,Yohan Le Bourhis
-Valour FC,Austin Ricci,f,7,Canada,1996-04-08,empty.jpg,Canada.png,https://en.wikipedia.org/wiki/Austin_Ricci,0.09,Austin Ricci
+Valour FC,Austin Ricci,f,7,Canada,1996-04-08,empty.jpg,Canada.png,https://en.wikipedia.org/wiki/Shaan_Hundal,0.09,Austin Ricci
+Valour FC,Shaan Hundal,f,7,Canada,1998-07-00,empty.jpg,Canada.png,https://en.wikipedia.org/wiki/Austin_Ricci,0.00,Shaan Hundal
+Valour FC,Chakib Hocine,d,4,Algeria,1991-08-08,Chakib-Hocine.jpg,Algeria.png,https://en.wikipedia.org/wiki/Chakib_Hocine,0.08,Chakib Hocine
 York9 FC,Isaiah Johnston,m,0,Canada,2001-08-14,empty.jpg,Canada.png,https://en.wikipedia.org/wiki/Adrián_Ugarriza,0.00,Isaiah Johnston
-York9 FC,Brian Isaías López,m,0,Argentina,NA,empty.jpg,Argentina.png,https://en.wikipedia.org/wiki/Brian_López,0.00,Brian López
+York9 FC,Brian Isaías López,m,0,Argentina,1999-06-30,empty.jpg,Argentina.png,https://en.wikipedia.org/wiki/Brian_López,0.00,Brian López
 York9 FC,Chris Mannella,m,0,Canada,1994-06-07,Chris_Mannella_1.jpg,Canada.png,https://en.wikipedia.org/wiki/Chris_Mannella,0.00,Chris Mannella
 York9 FC,Ezequiel Carrasco,g,0,Canada,2002-09-11,empty.jpg,Canada.png,https://en.wikipedia.org/wiki/York9_FC,0.00,Ezequiel Carrasco
 York9 FC,Diyaeddine Abzi,d,20,Canada,1998-11-23,Abzi-Headshot.jpg,Canada.png,https://en.wikipedia.org/wiki/Diyaeddine_Abzi,0.72,Diyaeddine Abzi
 York9 FC,Fugo Segawa,d,0,Japan,1997-08-11,Segawa-Headshot.jpg,Japan.png,https://en.wikipedia.org/wiki/Fugo_Segawa,0.00,Fugo Segawa
 York9 FC,Gabriel Vasconcelos,f,0,Brazil,1996-03-15,Gabriel-Vasconcelos.jpg,Brazil.png,https://en.wikipedia.org/wiki/Gabriel_Vasconcelos,0.00,Gabriel Vasconcelos
-York9 FC,Jacó,f,0,Brazil,1996-02-27,empty.jpg,Brazil.png,https://en.wikipedia.org/wiki/Jacó,0.00,Jacó
+York9 FC,Carlos Filho,f,0,Brazil,1996-02-27,empty.jpg,Brazil.png,https://en.wikipedia.org/wiki/Jacó,0.00,Jacó
 York9 FC,Joseph Di Chiara,m,8,Canada,1992-01-30,Joseph-Di-Chiara.jpg,Canada.png,https://en.wikipedia.org/wiki/Joseph_Di_Chiara,0.47,Joseph Di Chiara
 York9 FC,Kyle Porter,m,19,Canada,1990-01-19,Porter-Headshot.jpg,Canada.png,https://en.wikipedia.org/wiki/Kyle_Porter,0.55,Kyle Porter
 York9 FC,Luca Gasparotto,d,13,Canada,1995-03-09,Gasparotto-Headshot.jpg,Canada.png,https://en.wikipedia.org/wiki/Luca_Gasparotto,0.83,Luca Gasparotto
