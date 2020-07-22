@@ -1,13 +1,14 @@
 # canpl statistics
 # Todd McCullough 2020
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 import pandas as pd
 import numpy as np
 import os
+import random
 import re
 
 #Import Gaussian Naive Bayes model
-from sklearn.naive_bayes import GaussianNB,BernoulliNB
+from sklearn.naive_bayes import GaussianNB, BernoulliNB, MultinomialNB
 import statistics
 
 def get_long_name(string,team_ref):
@@ -356,10 +357,10 @@ def get_weeks_results(data,standings,team_ref):
     other_team = get_short_name(other_team,team_ref)
     return db,goals,big_win,top_team,low_team,other_team
 
-def get_team_stats(data,query):
-    team_stats = data[data['team'] == query]
+def get_team_stats(stats,query):
+    team_stats = stats[stats['team'] == query]
     names = team_stats['name'].unique()
-    information = data.copy()
+    information = stats.copy()
     team_stats.pop('number')
     team_stats = team_stats.groupby(['name']).sum()
     team_stats.insert(0,'last','empty')
@@ -570,6 +571,12 @@ def likelihood_table(data,query):
     db= pd.DataFrame(array,columns=['h/a','w/l/d','y/n'])
     return db
 
+def get_NB_data(data,query):
+    db = likelihood_table(data,query)
+    dy = db.pop('y/n').to_list()
+    dx = [tuple(x) for x in db.values]
+    return dx, dy
+
 def get_team_comparison(data,q1,q2):
     # getting games with q1 in both home or away
     db = data[data['team'] == q1]
@@ -584,51 +591,43 @@ def get_team_comparison(data,q1,q2):
         db = pd.DataFrame([(0,0,0,0,q1,'D',q2,'D','empty',q1)],columns=['d','m','hs','as','home','hr','away','ar','summary','team'])
     return db
 
-def get_NB_data(data,query):
-    db = likelihood_table(data,query)
-    dy = db.pop('y/n').to_list()
-    dx = [tuple(x) for x in db.values]
-    return dx, dy
+def get_nb_match_prediction(q1,q2,x1,y1,x2,y2):
 
-def get_gnb_prediction(query,x,y,result):
+    def get_nb_prediction(query,x,y,result):
+        mnb = MultinomialNB()
+        # Train the model using the training sets
+        mnb.fit(x,y)
+        # use below instead of predicted = model.predict([result]) because we want the probability
+        mnb_pred = np.round(mnb.predict_proba([result])[:, 1],decimals=2)
+        pred = round(mnb_pred[0],2)
+        return pred
 
-    gnb = GaussianNB()
-    bnb = BernoulliNB()
-    # Train the model using the training sets
+    def get_match_prediction_result(query,x,y,array):
+        prediction = get_nb_prediction(query,x,y,array)
+        return prediction
 
-    gnb.fit(x,y)
-    bnb.fit(x,y)
+    def norm_data(x,y,z):
+        total = round(x,2)+round(y,2)+round(z,2)
+        if total > 1.0:
+            diff = round(total - 1.0,2)
+            total = total - diff
+            x = round(x / total - (diff/3),2)
+            return x
+        x = round(x / total,2)
+        return x
 
-    # use below instead of predicted = model.predict([result]) because we want the probability
-    gnb_pred = np.round(gnb.predict_proba([result])[:, 1],decimals=2)
-    bnb_pred = np.round(bnb.predict_proba([result])[:, 1],decimals=2)
-
-    pred = round((gnb_pred[0] + bnb_pred[0]) / 2,2)
-    #print(gnb_pred[0], bnb_pred[0], pred)
-
-    return pred
-
-def get_match_prediction_result(query,x,y,array):
-    prediction = get_gnb_prediction(query,x,y,array)
-    return prediction
-
-def get_match_prediction(q1,q2,x1,y1,x2,y2):
     if (len(x1) == 0) or (len(x2) == 0):
         x = round(1/3,2)
-        home_win, away_win,draw = x,x,x
+        home_win, away_win, draw = x,x,x
         return home_win,away_win,draw
-    if (len(x1) == 0):
-        x = round(1/3,2)
-        home_win, away_win,draw = x,x,x
-        return home_win,away_win,draw
-    if (len(x2) == 0):
-        x = round(1/3,2)
-        home_win, away_win,draw = x,x,x
-        return home_win,away_win,draw
+
     home_win = get_match_prediction_result(q1,x1,y1,[1,2])
     draw = get_match_prediction_result(q1,x1,y1,[1,1])
     away_win = get_match_prediction_result(q2,x2,y2,[2,2])
-    return home_win, draw, away_win
+    home_win_new = norm_data(home_win, draw, away_win)
+    draw_new = norm_data(draw, home_win, away_win)
+    away_win_new = norm_data(away_win, draw, home_win)
+    return home_win_new, draw_new, away_win_new
 
 def get_team_form(data,query):
     db = data[data['team'] == query]
@@ -766,7 +765,7 @@ def get_roster_overall(query,stats,team_ref,rated_forwards,rated_midfielders,rat
     roster = index_reset(roster)
     roster.pop('name')
     roster['name'] = e
-    roster['first'] = roster['name'].apply(lambda x: re.split('\W+',x)[0])
+    #roster['first'] = roster['name'].apply(lambda x: re.split('\W+',x)[0])
     return roster
 
 def get_home_away_comparison(stats,game,team):
@@ -779,6 +778,7 @@ def get_home_away_comparison(stats,game,team):
 
 def get_compare_roster(results,query,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info):
     roster = get_roster_overall(query,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info)
+    roster['position'] = roster['position'].astype('object')
     def get_player(data,string):
         dz = data[data['position'] == string]
         dz = dz[['first','last','number','position','overall']]
@@ -794,7 +794,7 @@ def get_compare_roster(results,query,stats,team_ref,rated_forwards,rated_midfiel
     dm = dm.sort_values(by=['overall'],ascending=False)
     df = get_player(roster,'f')
     df = df.sort_values(by=['overall'],ascending=False)
-    db = pd.concat([dk[0:1],dd[0:4],dm[0:4],df[0:2]])
+    db = pd.concat([dk[0:1],dd[0:4],dm[0:4],df[0:2],dd[4:7],dm[4:7],df[2:5]])
     db = index_reset(db)
     return db
 
@@ -827,71 +827,128 @@ def get_five_game_form(data,query):
     db = pd.DataFrame(db.sum())
     return db
 
-'''def get_game_roster_prediction(stats,get_games,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,results,team_stats,team_ref,player_info):
-    a = []
-    for game in get_games: # cycle through the available games
-        row = results[results['game'] == game] # select specific game results
-        for team in row.iloc[0][['home','away']]: # cycle through the teams for each result
-            if row.iloc[0]['home'] == team:
-                result = row.iloc[0]['hr'] # get the appropriate result for each team
-                score = row.iloc[0]['hs']
-            else:
-                result = row.iloc[0]['ar']
-                score = row.iloc[0]['as']
-            if result == 'W': # alter the value for the model classifier
-                result = 3
-            elif result == 'D':
-                result = 2
-            else:
-                result = 1
-            game_check = get_home_away_comparison(stats,game,team)# get the roster for the team in the game
-            # get the player overall score for each player in the game
-            game_roster = get_compare_roster(results,team,team_stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info)
-            game_roster = index_reset(game_roster)
-            b = []
-            b.append(game) # collecting all the information in the list
-            b.append(team)
-            for i in range(game_roster.shape[0]):
-                overall = game_roster.iloc[i]['overall']
-                b.append(float(overall)) # get the player overall score for each player in the game
-            if len(b) < 16:
-                i = int(16 - len(b))
-                for j in range(0,i):
-                    b.append(0)
-            b.append(int(result))
-            b.append(int(score))
-            a.append(b)
-    return a'''
-
-def get_overall_roster(game_roster):
+def get_overall_roster(game_roster,player_info):
     b = []
     for i in range(game_roster.shape[0]):
-        b.append(game_roster.iloc[i]['overall']) # get the player overall score for each player in the game
+        name = game_roster.iloc[i]['name']
+        try:
+            overall = player_info[player_info['name']==name]['overall'].values[0]
+        except:
+            overall = player_info[player_info['display']==name]['overall'].values[0]
+        try:
+            position = player_info[player_info['name']==name]['position'].values[0]
+        except:
+            position = player_info[player_info['display']==name]['position'].values[0]
+        if position == 'f':
+            overall = round(overall,2) + 4
+        elif position == 'm':
+            overall = round(overall,2) + 3
+        elif position == 'd':
+            overall = round(overall,2) + 2
+        else:
+            overall = round(overall,2) + 1
+        overall = str(overall)
+        b.append(float(overall[0:4])) # get the player overall score for each player in the game
     if len(b) < 16:
         i = int(16 - len(b))
         for j in range(0,i):
             b.append(0)
+    else:
+        if len(b) > 16:
+            k = 16 - len(b)
+            b = b[:k]
     db = pd.DataFrame(b[0:14])
     db = db.T
     return db
 
+def add_features(data,score,team_pred):
+    cols = ['0','1','2','3','4','5','6','7','8','9','10','11','12','13']
+    data = pd.DataFrame(data.values,columns=cols)
+    data = data.astype('float32')
+    data['score'] = score
+    data['pred'] = team_pred
+    data['sum'] = round(data[cols].sum(axis=1),2)
+    data['count'] = (data[data[cols]>0].count(axis=1))-10
+    data['result'] = round(data['sum'] / (data['count']+0.1),2)
+    data['plus'] = data['sum'] + data['score']
+    data['test'] = round(data['sum']  / data['sum'].max() - 0.05,3)
+    if data['count'].values[0] == 0:
+        data['test2'] = 0
+    else:
+        data['test2'] = round(data['count']  / data['count'].max() - 0.05,3)
+    data['diff'] = round(data['score'] * data[cols].max(axis=1)).astype('int64') + 1
+    return data
+
+def get_classification(home_win, away_win ,draw):
+    if home_win > away_win:
+        if home_win > draw:
+            hp, ap = 3, 1
+        else:
+            hp, ap = 2, 2
+    elif away_win > home_win:
+        if away_win > draw:
+            hp, ap = 3, 1
+        else:
+            hp, ap = 2, 2
+    else:
+        hp, ap = 2, 2
+    return hp, ap
+
 def roster_pred(model,array):
-    prediction = model.predict_proba([array]).flatten()
+    prediction = model.predict_proba([array.values[0]]).flatten()
     df = pd.DataFrame(prediction)
-    #print('score :',prediction)
     return df
 
-def get_final_game_prediction(model,q1_roster,q2_roster,home_win,away_win,draw):
-    q1_prediction = roster_pred(model,q1_roster)
-    q1_p = round(q1_prediction.iloc[2][0],2)
-    q2_prediction = roster_pred(model,q2_roster)
-    q2_p = round(q2_prediction.iloc[2][0],2)
-    q_draw = (q1_prediction.iloc[1][0] + q2_prediction.iloc[2][0]) / 2
-    total_ = q1_p + home_win + q2_p + away_win + q_draw + draw
-    h_w = round((q1_p + home_win) / total_, 2)
-    a_w = round((q2_p + away_win) / total_, 2)
-    g_d = round((q_draw + draw) / total_, 2)
-    return h_w, a_w, g_d
+def get_final_game_prediction(model,home_array,home_score,away_score):
+
+    def random_draw(x,y):
+        if x > y:
+            end = x
+        else:
+            end = y
+        x = random.choice(range(end))
+        y = x
+        return x,y
+    # get the model prediction probability of W, L, D
+
+    ###### need to be sure of the order of these probabilities
+
+    def roster_pred(model,array):
+        prediction = model.predict([array.values[0]]).flatten()
+        if prediction == 0:
+            outcome = 'L'
+        elif prediction == 1:
+            outcome = 'D'
+        else:
+            outcome = 'W'
+        return outcome
+
+    def roster_prob(model,array):
+        probability = model.predict_proba([array.values[0]]).flatten()
+        return probability
+
+    def norm(x,y,z):
+        norm = x + y + z
+        x, y, z = round(x / norm,2), round(y / norm,2), round(z / norm,2)
+        return x, y, z
+
+
+    # get the prediction from the classification model
+    prediction = roster_pred(model,home_array)
+    probability = roster_prob(model,home_array)
+    #print(prediction,probability[0],probability[1],probability[2],home_score,away_score,'\n') # for debug leave it
+    p_l, p_d, p_w = probability[0],probability[1],probability[2]#norm(q1_w, q1_l, q1_d)
+
+    #FIX THE SCORE ####
+    # adjust score depending on the outcome from the prediction
+    if prediction == 'W' and (home_score == away_score):
+        away_score = random.choice(range(away_score-1))
+    if prediction == 'L' and (home_score == away_score) or prediction == 'L' and (home_score > away_score):
+        home_score = random.choice(range(away_score-1))
+    if prediction == 'D':
+        home_score, away_score = random_draw(home_score, away_score)
+
+    return p_w, p_l, p_d, home_score, away_score, prediction
 
 def get_power_rankings(standings,standings_old,team_ref,results,previous_rankings):
     a = []
@@ -1030,48 +1087,40 @@ def roster_regressor_pred(model,array):
 def get_final_score_prediction(model,q1_roster,q2_roster,home_win_new,away_win_new):
 
     def roster_pred(model,array):
-        prediction = model.predict([array]).flatten()
-        return prediction
+        prediction = model.predict([array.values[0]]).flatten()
+        return prediction[0]
 
-    def final_score_fix(home_score,away_score,home_win_new,away_win_new):
+    def fix_score(home_score,away_score,home_win_new,away_win_new):
         if home_win_new > away_win_new and home_score < away_score: # fix the score prediction - if the probability of home win > away win and score doesn't reflect it
-            print(home_score,away_score)
-            old = home_score
+            old_home = home_score
             home_score = away_score # change the predicted score to reflect that
-            away_score = old
-            return home_score,away_score
+            away_score = old_home
+            return home_score,away_score,home_win_new,away_win_new
         elif home_win_new < away_win_new and home_score > away_score: # else the probability of home win < away win
-            print(home_score,away_score)
-            old = away_score
-            away_score = home_score
-            home_score = old # change the predicted score to reflect that
-            return home_score,away_score
+            old_away = away_score
+            away_score = home_score # change the predicted score to reflect that
+            home_score = away_score
+            return home_score,away_score,home_win_new,away_win_new
         elif home_win_new < away_win_new and home_score == away_score:
-            print(home_score,away_score)
-            home_score = home_score - 1
-            return home_score,away_score
+            home_win_new = away_win_new
+            return home_score,away_score,home_win_new,away_win_new
         elif home_win_new > away_win_new and home_score == away_score:
-            print(home_score,away_score)
-            away_score = away_score - 1
-            return home_score,away_score
-        elif home_win_new == away_win_new:
-            away_score = home_score
-            print(home_score,away_score)
-            return home_score,away_score
+            home_win_new = away_win_new
+            return home_score,away_score,home_win_new,away_win_new
         else:
-            print(home_score,away_score)
-            return home_score,away_score
+            return home_score,away_score,home_win_new,away_win_new
 
     def score(num): #improve this later for greater predictions
         new_score = int(round(num,0)) # convert the float value to int and round it
         return new_score
 
     q1_pred = roster_pred(model,q1_roster)
-    q1_s = score(q1_pred[0])
+    q1_s = score(q1_pred)
     q2_pred = roster_pred(model,q2_roster)
-    q2_s = score(q2_pred[0])
-    home_score, away_score = final_score_fix(q1_s, q2_s,home_win_new,away_win_new)
-    return home_score, away_score
+    q2_s = score(q2_pred)
+    home_score, away_score = q1_s, q2_s
+    home_score, away_score, home_win_new, away_win_new = fix_score(q1_s, q2_s,home_win_new,away_win_new)
+    return home_score,away_score, home_win_new, away_win_new
 
 
 def get_game_roster_prediction(get_games,results,stats,team_ref,player_info):
@@ -1129,7 +1178,7 @@ def get_team_files(schedule,team_ref):
 
     return team1, team2, team3, team4, team5, team6, team7, team8
 
-def update_player_info(year,player_info,rated_forwards,rated_midfielders,rated_defenders,rated_keepers):
+def update_player_info(year,week,player_info,rated_forwards,rated_midfielders,rated_defenders,rated_keepers):
 
     def get_player_score(data,name):
         name = [name]
@@ -1140,13 +1189,12 @@ def update_player_info(year,player_info,rated_forwards,rated_midfielders,rated_d
             new_overall = overall['overall'].values
             return new_overall
 
-    today = date.today() - timedelta(5)
-    day = today.strftime("%d_%m_%Y")
-    rated_forwards.to_csv(f'datasets/{year}/cpl-{year}-forwards-{day}.csv',index=False)
-    rated_midfielders.to_csv(f'datasets/{year}/cpl-{year}-midfielders-{day}.csv',index=False)
-    rated_defenders.to_csv(f'datasets/{year}/cpl-{year}-defenders-{day}.csv',index=False)
-    rated_keepers.to_csv(f'datasets/{year}/cpl-{year}-keepers-{day}.csv',index=False)
-    player_info.to_csv(f'datasets/{year}/player-{year}-info-{day}.csv',index=False)
+    game_week = 'week' + week
+    rated_forwards.to_csv(f'datasets/{year}/week/cpl-{year}-forwards-{game_week}.csv',index=False)
+    rated_midfielders.to_csv(f'datasets/{year}/week/cpl-{year}-midfielders-{game_week}.csv',index=False)
+    rated_defenders.to_csv(f'datasets/{year}/week/cpl-{year}-defenders-{game_week}.csv',index=False)
+    rated_keepers.to_csv(f'datasets/{year}/week/cpl-{year}-keepers-{game_week}.csv',index=False)
+    player_info.to_csv(f'datasets/{year}/week/player-{year}-info-{game_week}.csv',index=False)
 
     combine = [rated_forwards,rated_midfielders,rated_defenders,rated_keepers]
     names = player_info['name'].values
@@ -1170,3 +1218,72 @@ def update_player_info(year,player_info,rated_forwards,rated_midfielders,rated_d
                 a.append(overall)
     player_info['overall'] = a
     return player_info
+
+## this can be combined
+
+####
+
+def add_regressor_features(data):
+    cols = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14']
+    data = pd.DataFrame(data.values,columns=cols)
+    data = data.astype('float32')
+    # new features
+    data['sum'] = round(data[cols].sum(axis=1),2)
+    data['count'] = (data[data[cols]>0].count(axis=1))-11
+    data['result'] = round(data['sum'] / (data['count']+0.1),2)
+    data['test'] = round(data['sum']  / data['sum'].max() - 0.05,3)
+    if data['count'].values[0] == 0:
+        data['test2'] = 0
+    else:
+        data['test2'] = round(data['count']  / data['count'].max() - 0.05,3)
+    cols2=[]
+    for col in cols:
+        string = 'n' + col
+        cols2.append(string)
+        data[string] = data[col].apply(lambda x: int(x))
+    # get player position from first cols
+    data['sum'] = data['sum'] - data[cols2].sum(axis=1)
+    data['f'] = (data[data[cols2]==4].count(axis=1))
+    data['m'] = (data[data[cols2]==3].count(axis=1))
+    data['d'] = (data[data[cols2]==2].count(axis=1))
+    data['g'] = (data[data[cols2]==1].count(axis=1))
+    # remove cols2 integers from cols - retaining only the overall float value
+    for i in range(len(cols)):
+        data[cols[i]] = data[cols[i]] - data[cols2[i]]
+    return data
+
+def add_classifier_features(data,score,team_pred):
+    cols = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14']
+    data = pd.DataFrame(data.values,columns=cols)
+    data = data.astype('float32')
+    # getting the predicted score and predicted result
+    data['score'] = score
+    data['pred'] = team_pred
+    # new features
+    data['sum'] = round(data[cols].sum(axis=1),2)
+    data['count'] = (data[data[cols]>0].count(axis=1))-11
+    data['result'] = round(data['sum'] / (data['count']+0.1),2)
+    data['plus'] = data['sum'] + data['score']
+    data['test'] = round(data['sum']  / data['sum'].max() - 0.05,3)
+    if data['count'].values[0] == 0:
+        data['test2'] = 0
+    else:
+        data['test2'] = round(data['count']  / data['count'].max() - 0.05,3)
+    data['diff'] = round(data['score'] * data[cols].max(axis=1)).astype('int64') + 1
+    cols2=[]
+    for col in cols:
+        string = 'n' + col
+        cols2.append(string)
+        data[string] = data[col].apply(lambda x: int(x))
+    # get player position from first cols
+    data['sum'] = data['sum'] - data[cols2].sum(axis=1)
+    data['f'] = (data[data[cols2]==4].count(axis=1))
+    data['m'] = (data[data[cols2]==3].count(axis=1))
+    data['d'] = (data[data[cols2]==2].count(axis=1))
+    data['g'] = (data[data[cols2]==1].count(axis=1))
+    # remove cols2 integers from cols - retaining only the overall float value
+    for i in range(len(cols)):
+        data[cols[i]] = data[cols[i]] - data[cols2[i]]
+    return data
+
+######################
