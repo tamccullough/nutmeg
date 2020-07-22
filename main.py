@@ -38,8 +38,9 @@ def load_main_files(year):
     colours = team_ref['colour']
     results_brief = pd.read_csv(f'datasets/{year}/cpl-{year}-results_brief.csv')
     matches_predictions = pd.read_csv(f'datasets/{year}/cpl-{year}-match_predictions.csv')
+    game_form = pd.read_csv(f'datasets/{year}/cpl-{year}-game_form.csv')
 
-    return results, stats, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions
+    return results, stats, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form
 
 
 def load_player_files(year):
@@ -53,44 +54,11 @@ def load_player_files(year):
     rated_assists = pd.read_csv(f'datasets/{year}/cpl-{year}-rated_assists.csv')
     return rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists
 
-#rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
-
-def get_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info):
-    game_h = cpl_main.get_home_away_comparison(stats,game,q1)
-    game_a = cpl_main.get_home_away_comparison(stats,game,q2)
-    compare = cpl_main.get_team_comparison(results_brief,q1,q2)
-    t1_x, t1_y = cpl_main.get_NB_data(compare,q1)
-    t2_x, t2_y = cpl_main.get_NB_data(compare,q2)
-    home_win, draw, away_win = cpl_main.get_match_prediction(q1,q2,t1_x,t1_y,t2_x,t2_y)
-    home_form = cpl_main.get_five_game_form(results,q1)
-    away_form = cpl_main.get_five_game_form(results,q2)
-    home_roster = cpl_main.get_compare_roster(results,q1,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info)
-    away_roster = cpl_main.get_compare_roster(results,q2,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info)
-    q1_roster = cpl_main.get_overall_roster(home_roster)
-    q2_roster = cpl_main.get_overall_roster(away_roster)
-    home_win, away_win, draw = cpl_main.get_final_game_prediction(cpl_classifier_model,q1_roster,q2_roster,home_win,away_win,draw)
-    home_score, away_score = cpl_main.get_final_score_prediction(cpl_score_model,q1_roster,q2_roster,home_win,away_win)
-    return home_win, draw, away_win, home_form, away_form, home_roster, away_roster, home_score, away_score
 
 def get_pred_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info):
-    home_form = cpl_main.get_five_game_form(results,q1)
-    away_form = cpl_main.get_five_game_form(results,q2)
     home_roster = cpl_main.get_compare_roster(results,q1,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info)[0:11]
     away_roster = cpl_main.get_compare_roster(results,q2,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info)[0:11]
-    return home_form, away_form, home_roster, away_roster
-
-def get_team_files(schedule,team_ref):
-    team1 = cpl_main.get_shortest_name(schedule.iloc[0]['home'],team_ref)
-    team2 = cpl_main.get_shortest_name(schedule.iloc[0]['away'],team_ref)
-    team3 = cpl_main.get_shortest_name(schedule.iloc[1]['home'],team_ref)
-    team4 = cpl_main.get_shortest_name(schedule.iloc[1]['away'],team_ref)
-    team5 = cpl_main.get_shortest_name(schedule.iloc[2]['home'],team_ref)
-    team6 = cpl_main.get_shortest_name(schedule.iloc[2]['away'],team_ref)
-    team7 = cpl_main.get_shortest_name(schedule.iloc[3]['home'],team_ref)
-    print(team7)
-    team8 = cpl_main.get_shortest_name(schedule.iloc[3]['away'],team_ref)
-    print(team8)
-    return team1, team2, team3, team4, team5, team6, team7, team8
+    return home_roster, away_roster
 
 @canples.route('/index')
 def index():
@@ -99,7 +67,7 @@ def index():
     year = '2020'
     other_year = '2019'
 
-    results, stats, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions = load_main_files(year)
+    results, stats, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form = load_main_files(year)
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
 
     standings = pd.read_csv(f'datasets/{year}/cpl-{year}-standings.csv')
@@ -226,7 +194,7 @@ def comparison1():
     year = '2020'
     other_year = '2019'
     headline = 'This Weeks Matches'
-    results, stats, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions = load_main_files(year)
+    results, stats, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form = load_main_files(year)
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
 
     # home side
@@ -247,12 +215,14 @@ def comparison1():
     home_win = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['home_p'].values[0]
     draw = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['draw_p'].values[0]
     away_win = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['away_p'].values[0]
-    home_form, away_form, home_roster, away_roster = get_pred_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info)
+    home_form = pd.DataFrame(game_form[q1])
+    away_form = pd.DataFrame(game_form[q2])
+    home_roster, away_roster = get_pred_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info)
     home_score = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['hs'].values[0]
     away_score = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['as'].values[0]
-    #home_win, draw, away_win, home_form, away_form, home_roster, away_roster, home_score, away_score = get_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards, rated_midfielders, rated_defenders, rated_keepers, player_info)
 
-    team1, team2, team3, team4, team5, team6, team7, team8 = get_team_files(schedule,team_ref)
+
+    team1, team2, team3, team4, team5, team6, team7, team8 = cpl_main.get_team_files(schedule,team_ref)
 
     if (home_win and away_win) < draw:
         home_win, away_win = draw, draw
@@ -277,7 +247,7 @@ def comparison2():
     year = '2020'
     other_year = '2019'
     headline = 'This Weeks Matches'
-    results, stats, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions = load_main_files(year)
+    results, stats, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form = load_main_files(year)
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
 
     # home side
@@ -301,12 +271,13 @@ def comparison2():
     home_win = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['home_p'].values[0]
     draw = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['draw_p'].values[0]
     away_win = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['away_p'].values[0]
-    home_form, away_form, home_roster, away_roster = get_pred_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info)
+    home_form = pd.DataFrame(game_form[q1])
+    away_form = pd.DataFrame(game_form[q2])
+    home_roster, away_roster = get_pred_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info)
     home_score = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['hs'].values[0]
     away_score = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['as'].values[0]
-    #home_win, draw, away_win, home_form, away_form, home_roster, away_roster, home_score, away_score = get_files(results,stats,team_ref,results_brief,game,q1,q2,rated_forwards, rated_midfielders, rated_defenders, rated_keepers, player_info)
 
-    team1, team2, team3, team4, team5, team6, team7, team8 = get_team_files(schedule,team_ref)
+    team1, team2, team3, team4, team5, team6, team7, team8 = cpl_main.get_team_files(schedule,team_ref)
 
     if (home_win and away_win) < draw:
         home_win, away_win = draw, draw
