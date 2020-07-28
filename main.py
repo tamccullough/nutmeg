@@ -28,10 +28,7 @@ def load_main_files(year):
     team_ref = team_ref[team_ref['year'] == int(year)]
     player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
     current_teams = team_ref['team']
-    if year == '2019':
-        results_old = results[:-7].copy()
-    else:
-        results_old = results[results['hr'] != 'E'].copy()
+    results_old = results[results['hr'] != 'E'].copy()
     results_diff = pd.concat([results, results_old]).drop_duplicates(keep=False)
     schedule = cpl_main.get_schedule(results_diff) # from results create the schedule dataset
     team_stats = pd.read_csv(f'datasets/{year}/cpl-{year}-team_stats.csv')
@@ -42,6 +39,22 @@ def load_main_files(year):
     team_rosters = pd.read_csv(f'datasets/{year}/cpl-{year}-team_rosters.csv')
 
     return results, stats, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters
+
+def load_main_files_old(year):
+    results = pd.read_csv(f'datasets/{year}/cpl-{year}-results.csv')
+    stats = pd.read_csv(f'datasets/{year}/cpl-{year}-stats.csv')
+    team_ref = pd.read_csv('datasets/teams.csv')
+    team_ref = team_ref[team_ref['year'] == int(year)]
+    player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
+    current_teams = team_ref['team']
+    results_old = results[:-7].copy()
+    results_diff = pd.concat([results, results_old]).drop_duplicates(keep=False)
+    schedule = cpl_main.get_schedule(results_diff) # from results create the schedule dataset
+    team_stats = pd.read_csv(f'datasets/{year}/cpl-{year}-team_stats.csv')
+    colours = team_ref['colour']
+    results_brief = pd.read_csv(f'datasets/{year}/cpl-{year}-results_brief.csv')
+
+    return results, stats, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief
 
 
 def load_player_files(year):
@@ -111,7 +124,7 @@ def index_19():
     year = '2019'
     other_year = '2020'
 
-    results, stats, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters = load_main_files(year)
+    results, stats, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief = load_main_files_old(year)
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers,rated_assists = load_player_files(year)
 
     standings = pd.read_csv(f'datasets/{year}/cpl-{year}-standings.csv')

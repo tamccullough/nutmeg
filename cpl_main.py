@@ -3,6 +3,8 @@
 from datetime import date, datetime, timedelta
 import pandas as pd
 import numpy as np
+from math import pi
+#import matplotlib.pyplot as plt
 import os
 import random
 import re
@@ -255,7 +257,7 @@ def make_radar(data,team_ref,year):
     colour2 = info['colour2'].values
     colour2 = colour2[0]
     # number of variable
-    categories=list(team_graphs)[1:]
+    categories=list(data)[1:]
     N = len(categories)
 
     # We are going to plot the first line of the data frame.
