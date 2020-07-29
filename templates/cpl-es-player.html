@@ -55,9 +55,22 @@
 
   <div class="w3-container">
     <div class="w3-container cpl-eclipse-l">
+      <div class="w3-container w3-center w3-padding-16">
+        <img src="static/images/2019/player_graphs/player-graph.png" alt="player performance" style="max-width:95%">
+        <table style="width: 100%;">
+          <tr>
+            <td>Overall: {{ html_table.iloc[0,3] }}</td>
+            <td>Minutes: {{ html_table.iloc[0,7] }}</td>
+            <td>rolling xG: {{ html_table.iloc[0,35] }}</td>
+            <td>Rolling xA: {{ html_table.iloc[0,36] }}</td>
+            <td>Yellows: {{ html_table.iloc[0,26] }}</td>
+            <td>Reds: {{ html_table.iloc[0,27] }}</td>
+          </tr>
+        </table>
+      </div>
       <div class="w3-half">
         <div class="w3-center w3-padding-16  {{ team_colour }}">
-          <a href="{{ html_table.iloc[0,33] }}" target="_blank">
+          <a href="{{ html_table.iloc[0,31] }}" target="_blank">
             <img src="static/images/players/2020/{{ html_table.iloc[0,1] }}" alt="{{ html_table.iloc[0,5] }}" style="max-height:214px"></a>
         </div>
         <div  class="w3-padding">
@@ -69,10 +82,6 @@
             <tr>
               <td>Number: {{ html_table.iloc[0,6] }}</td>
               <td>{{ html_table.iloc[0,5] }}</td>
-            </tr>
-            <tr>
-              <td>Overall: {{ html_table.iloc[0,3] }}</td>
-              <td>Minutes: {{ html_table.iloc[0,7] }}</td>
             </tr>
           </table>
         </div>
@@ -86,11 +95,11 @@
             </tr>
             <tr>
               <td>Passes: {{ html_table.iloc[0,9] }}</td>
-              <td>Pass Accuracy: {{ html_table.iloc[0,10] }}</td>
+              <td>Accuracy: {{ html_table.iloc[0,10] }}</td>
             </tr>
             <tr>
               <td>Crosses: {{ html_table.iloc[0,11] }}</td>
-              <td>Cross Accuracy: {{ html_table.iloc[0,12] }}</td>
+              <td>Accuracy: {{ html_table.iloc[0,12] }}</td>
             </tr>
             <tr>
               <td>Shots: {{ html_table.iloc[0,16] }}</td>
@@ -107,10 +116,6 @@
             <tr>
               <td>Duels: {{ html_table.iloc[0,22] }}</td>
               <td>Duels Won: {{ html_table.iloc[0,23] }}</td>
-            </tr>
-            <tr>
-              <td>Yellows: {{ html_table.iloc[0,26] }}</td>
-              <td>Reds: {{ html_table.iloc[0,27] }}</td>
             </tr>
             <tr>
               <td>Fouls Won: {{ html_table.iloc[0,28] }}</td>

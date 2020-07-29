@@ -677,6 +677,9 @@ def get_player_card(name,stats,player_info):
     player_stats.insert(2,'overall',player_information['overall'].values[0])
     player_stats.insert(31,'wiki',player_information['link'].values[0])
     player_stats.insert(0,'team',player_information['team'].values[0])
+    minutes = player_stats['minutes'].values[0]
+    player_stats['xG'] = player_stats['goals'].apply(lambda x: round(x / (minutes/90),2))
+    player_stats['xA'] = player_stats['assists'].apply(lambda x: round(x / (minutes/90),2))
     position = player_information['position'].values[0]
     if position == 'f':
         position = 'Forward'
