@@ -40,7 +40,7 @@
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-      <div class="w3-half"><h5><b><i class="fa fa-users"></i> {{ team_name }} - Player Information</b></h5></div>
+      <div class="w3-half"><h5><b><i class="fa fa-users"></i> Player Information - {{ name }}</b></h5></div>
     <div class="w3-half" style="text-align: right">
       <form method="POST" action="/roster-2019">
         <a class="w3-button" href="{{ url_for('roster_19') }}"><input class="w3-button" type="submit" id="team" name="team" value="{{ html_table.iloc[0,0] }}"/></a>
