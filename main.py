@@ -388,15 +388,24 @@ def player():
     player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
 
     name = request.form['name']
-    print('VIEWING \n',name,'\n')
 
     player = cpl_main.get_player_card(name,stats,player_info)
-    print('VIEWING \n',player,'\n')
     team = player['team'].values[0]
     roster_team_info = team_ref[team_ref['team'] == team]
     roster_colour = roster_team_info.iloc[0][4]
     crest = roster_team_info.iloc[0][5]
-    return render_template('cpl-es-player.html', name = player['name'].values[0], team_name = team, html_table = player, team_colour = roster_colour, year = year, crest = crest, other_year = other_year)
+
+    try:
+        player_name = player_info[player_info['display'] == player['name'].values[0]]['display'].values[0]
+    except:
+        player_name = player_info[player_info['name'] == player['name'].values[0]]['display'].values[0]
+
+    print('VIEWING \n',player_name,'\n')
+    graph_image = player_info[player_info['display'] == player_name]['graph'].values[0]
+
+
+    return render_template('cpl-es-player.html', name = player_name, graph = graph_image,
+    team_name = team, html_table = player, team_colour = roster_colour, year = year, crest = crest, other_year = other_year)
 
 @canples.route('/player-2019', methods=['POST'])
 def player_19():

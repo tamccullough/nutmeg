@@ -1191,7 +1191,10 @@ def update_player_info(year,week,player_info,rated_forwards,rated_midfielders,ra
             pass
         else:
             overall = data[data['name'].isin(name)]
-            new_overall = overall['overall'].values
+            try:
+                new_overall = overall['overall'].values[0]
+            except:
+                new_overall = 0.0
             return new_overall
 
     game_week = 'week' + week
@@ -1203,13 +1206,15 @@ def update_player_info(year,week,player_info,rated_forwards,rated_midfielders,ra
 
     combine = [rated_forwards,rated_midfielders,rated_defenders,rated_keepers]
     names = player_info['name'].values
-    a = []
+    a,b = [],[]
     for name in names:
         j = 1
         for i in range(0,4):
             # for the start of the season load last season's overall if empty
             old_overall = player_info[(player_info['name'] == name) | (player_info['display'] == name)]
-            old_o = old_overall['overall'].values
+            old_o = old_overall['overall'].values[0]
+            if j == 1:
+                b.append(old_o)
 
             score = get_player_score(combine[i],name)
             if score == None: # if score is none, increase j and move to the next dataset
@@ -1219,9 +1224,10 @@ def update_player_info(year,week,player_info,rated_forwards,rated_midfielders,ra
                 overall = score[0]
                 a.append(overall)
             if j == 5:
-                overall = old_o[0] # save the old result if there is not a current overall
+                overall = old_o # save the old result if there is not a current overall
                 a.append(overall)
     player_info['overall'] = a
+    player_info[f'g-{week}-o'] = b
     return player_info
 
 ## this can be combined
