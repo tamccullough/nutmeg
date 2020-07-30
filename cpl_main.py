@@ -1292,3 +1292,116 @@ def add_classifier_features(data,score,team_pred):
     return data
 
 ######################
+
+### make the player_graphs
+
+def get_team_graphs(stats,standings):
+    comparing = standings.sort_values(by=['team'])
+
+    def get_column_overall(lst):
+        data = stats[lst]
+        data = data.groupby(['team']).sum()
+        data['overall'] = data.sum(axis=1) / data.shape[1]
+        data['overall'] = data['overall'] / data['overall'].max()
+        data['overall'] = data['overall'] - 0.1
+        data = data[['overall']]
+        data = data.reset_index()
+        data.pop('team')
+        return data['overall']
+
+    offense = get_column_overall(['team','goals','chances','assists','shots','s-target','passes','crosses','duels','tackles'])
+    central = get_column_overall(['team','goals','assists','touches','passes','pass-acc','crosses','cross-acc','chances','duels','tackles'])
+    defense = get_column_overall(['team','tackles','t-won','clearances','interceptions','duels','d-won'])
+    keeping = get_column_overall(['team','cs','saves','shots faced','claimed crosses'])
+
+    g_cols = ['chances','goals','assists','pass-acc','cross-acc','shots','s-target','s-box','s-out-box','clearances','interceptions','yellow','shots faced','claimed crosses','cs']
+    team_mean = stats.copy()
+    goals = stats[['team','goals']]
+    assists = stats[['team','assists']]
+    team_mean = team_mean.select_dtypes(include=['float'])
+    team_mean.insert(0,'team',stats['team'])
+    try:
+        team_mean = team_mean.groupby(['team']).mean()
+    except:
+        teams = stats.team.unique()
+        team_mean = pd.DataFrame(columns=['team','clean sheets','big chances','attacking plays','combination plays','accuracy','defending','chance creation','finishing'])
+        team_mean['team'] = teams
+        for col in team_mean.columns:
+            if col == 'team':
+                continue
+            else:
+                team_mean[col] = 0.5
+        return team_mean
+
+    team_mean = team_mean[g_cols]
+    team_mean['claimed crosses'] = team_mean['claimed crosses'] * 15
+    team_mean['cs'] = team_mean['cs'] * 100
+    team_mean['goals'] = goals.groupby(['team']).sum()
+    team_mean['assists'] = assists.groupby(['team']).sum()
+    team_mean['big chances'] = (team_mean['goals'] + 2) / team_mean['chances']
+    team_mean['attacking plays'] = (team_mean['assists'] + 2) / team_mean['chances']
+    team_mean['combination plays'] = team_mean['assists'] / team_mean['goals'] * 100
+    team_mean['offense'] = comparing['gf'].values / offense.values
+    team_mean['midfield'] = comparing['gd'].values * central.values + comparing['gd'].max()
+    team_mean['defending'] = 100 - (comparing['ga'].values * defense.values)
+    team_mean['chance creation'] = (team_mean['shots'] + team_mean['s-box'] + team_mean['s-out-box']) * team_mean['s-target'] * 100
+    team_mean['finishing'] = team_mean['chance creation'] * team_mean['goals']
+    team_mean = team_mean.rename(columns={'cs':'clean sheets'})
+
+    for col in team_mean.columns:
+        if team_mean[col].max() > 1.0:
+            team_mean[col] = team_mean[col] / team_mean[col].max()
+        if team_mean[col].max() < 0.2:
+            team_mean[col] = team_mean[col] * 5
+        else:
+            continue
+    for col in team_mean.columns:
+        team_mean[col] = team_mean[col] - 0.1
+
+    team_mean = team_mean[['clean sheets','big chances','attacking plays','combination plays','offense','midfield','defending','chance creation','finishing']]
+    team_mean = team_mean.reset_index()
+    return team_mean
+
+def make_radar(data,team_ref,year):
+    team = data['team']
+    info = team_ref[team_ref['team'] == team]
+    colour1 = info['colour1'].values
+    colour1 = colour1[0]
+    colour2 = info['colour2'].values
+    colour2 = colour2[0]
+    # number of variable
+    categories=list(team_graphs)[1:]
+    N = len(categories)
+
+    # We are going to plot the first line of the data frame.
+    # But we need to repeat the first value to close the circular graph:
+    values = data.drop('team').values.flatten().tolist()
+    values += values[:1]
+    values
+
+    # What will be the angle of each axis in the plot? (we divide the plot / number of variable)
+    angles = [n / float(N) * 2 * pi for n in range(N)]
+    angles += angles[:1]
+
+    # Initialise the spider plot
+    #plt.figure(figsize=(8,8))
+    plt.figure(figsize=(8,8), dpi=80, facecolor=FACE,edgecolor=EDGE)
+    ax = plt.subplot(111, polar=True)
+    ax.set_facecolor(FACE)
+
+    # Draw one axe per variable + add labels labels yet
+    plt.xticks(angles[:-1], categories, color='white', size=14)
+
+    # Draw ylabels
+    #ax.set_title(data['team'], color=colour2, size=24)
+    ax.set_rlabel_position(0)
+    plt.yticks([0.25,0.5,0.75], ["0.25","0.50","0.75"], color='white', size=12)
+    plt.ylim(0,1)
+    # Plot data
+    ax.plot(angles, values, linewidth=8, linestyle='solid', color=colour2)
+
+    # Fill area
+    ax.fill(angles, values, colour2, alpha=0.5)
+
+    filename = f'static/images/{year}/cpl-{year}-{team}-radar.png'
+    plt.savefig(filename, facecolor= FACE,edgecolor=EDGE)
