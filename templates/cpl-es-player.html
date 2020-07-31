@@ -56,16 +56,24 @@
   <div class="w3-container">
     <div class="w3-container cpl-eclipse-l">
       <div class="w3-container w3-center w3-padding-16">
+        <div class="w3-half">
         <table style="width: 100%;">
           <tr>
             <td>Overall: {{ html_table.iloc[0,3] }}</td>
             <td>Minutes: {{ html_table.iloc[0,7] }}</td>
             <td>rolling xG: {{ html_table.iloc[0,35] }}</td>
+          </tr>
+        </table>
+        </div>
+        <div class="w3-half">
+        <table style="width: 100%;">
+          <tr>
             <td>Rolling xA: {{ html_table.iloc[0,36] }}</td>
             <td>Yellows: {{ html_table.iloc[0,26] }}</td>
             <td>Reds: {{ html_table.iloc[0,27] }}</td>
           </tr>
         </table>
+        </div>
       </div>
       <div class="w3-half">
         <div class="w3-center w3-padding-16  {{ team_colour }}">
@@ -76,7 +84,7 @@
           <table style="width: 100%;">
             <tr>
               <td><a><img src="static/images/flags/{{ html_table.iloc[0,2] }}" alt="{{ html_table.iloc[0,2] }}" style="max-height:30px"><a></td>
-              <td>{{ html_table.iloc[0,2][0:-4] }}</td>
+              <td>{{ nationality }}</td>
             </tr>
             <tr>
               <td>Number: {{ html_table.iloc[0,6] }}</td>
@@ -141,6 +149,7 @@
       </div>
       <a class="w3-button w3-right" href="{{ html_table.iloc[0,33] }}" target="_blank"><b> Wiki Link</b></a>
       <div class="w3-container w3-center w3-padding-16">
+      <h4>player performance</h4>
         <img src="static/images/2020/player_graphs/{{ graph }}" alt="player performance" style="max-width:95%">
       </div>
     </div>

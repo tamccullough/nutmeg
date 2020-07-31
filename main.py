@@ -399,12 +399,16 @@ def player():
         player_name = player_info[player_info['display'] == player['name'].values[0]]['display'].values[0]
     except:
         player_name = player_info[player_info['name'] == player['name'].values[0]]['display'].values[0]
+    try:
+        nationality = player_info[player_info['display'] == player['name'].values[0]]['nationality'].values[0]
+    except:
+        nationality = player_info[player_info['name'] == player['name'].values[0]]['nationality'].values[0]
 
-    print('VIEWING \n',player_name,'\n')
+    print('VIEWING \n',player.columns,'\n')
     graph_image = player_info[player_info['display'] == player_name]['graph'].values[0]
 
 
-    return render_template('cpl-es-player.html', name = player_name, graph = graph_image,
+    return render_template('cpl-es-player.html', name = player_name, graph = graph_image, nationality = nationality,
     team_name = team, html_table = player, team_colour = roster_colour, year = year, crest = crest, other_year = other_year)
 
 @canples.route('/player-2019', methods=['POST'])
