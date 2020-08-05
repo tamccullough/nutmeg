@@ -7,16 +7,14 @@
     <div class="w3-col s4">
       <img src="static/images/flags/CPL-Crest-White.png" class="w3-circle w3-margin-right" style="width:46px">
     </div>
-    <div class="w3-dropdown-hover">
-      <button class="w3-button w3-xlarge">{{ year }} Season</button>
-      <div class="w3-dropdown-content w3-indigo w3-bar-block w3-card-4">
-        <a class="w3-button w3-center" href="{{ url_for('index_19') }}">{{ other_year }}</a><br>
+      <div>
+        <h3>{{ year }} Season</h3>
       </div>
     </div>
-  </div>
 
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+    <a href="{{ url_for('index_19') }}" class="w3-bar-item w3-button w3-padding">  Go to 2019 Season</a>
     <a href="{{ url_for('index') }}" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-dashboard fa-fw"></i>  Dashboard</a>
     <a href="{{ url_for('standings') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-trophy fa-fw"></i>  Standings</a>
     <a href="{{ url_for('power') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bolt fa-fw"></i>  Power Rankings</a>

@@ -7,16 +7,14 @@
     <div class="w3-col s4">
       <img src="static/images/flags/CPL-Crest-White.png" class="w3-circle w3-margin-right" style="width:46px">
     </div>
-    <div class="w3-dropdown-hover">
-      <button class="w3-button w3-xlarge">{{ year }} Season</button>
-      <div class="w3-dropdown-content w3-indigo w3-bar-block w3-card-4">
-        <a class="w3-button w3-center" href="{{ url_for('index') }}">{{ other_year }}</a><br>
+      <div>
+        <h3>{{ year }} Season</h3>
       </div>
     </div>
-  </div>
 
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+    <a href="{{ url_for('index') }}" class="w3-bar-item w3-button w3-padding">  Go to {{ other_year }} Season</a>
     <a href="{{ url_for('index_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-dashboard fa-fw"></i>  Dashboard</a>
     <a href="{{ url_for('standings_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-trophy fa-fw"></i>  Standings</a>
     <a href="{{ url_for('teams_19') }}" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-shield fa-fw"></i>  Teams</a>
@@ -31,6 +29,30 @@
   </div>
 </nav>
 
+<style>
+    table {
+      border-collapse: collapse;
+      letter-spacing: 1px;
+      margin: 0px auto;
+    }
+
+    tr {
+      line-height: 1px;
+      white-space: nowrap;
+    }
+
+    td, th {
+      padding: 10px 20px;
+    }
+
+    td {
+      text-align: left;
+    }
+
+    caption {
+      padding: 10px;
+    }
+    </style>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -52,16 +74,24 @@
   <div class="w3-container">
     <div class="w3-container cpl-eclipse-l">
       <div class="w3-container w3-center w3-padding-16">
-        <table style="width: 100%;">
+        <div class="w3-half">
+        <table>
           <tr>
-            <td>Overall: {{ html_table.iloc[0,3] }}</td>
+            <td>Overall: {{ html_table.iloc[0,3] }}**</td>
             <td>Minutes: {{ html_table.iloc[0,7] }}</td>
-            <td>rolling xG: {{ html_table.iloc[0,35] }}</td>
-            <td>Rolling xA: {{ html_table.iloc[0,36] }}</td>
+            <td>xG: {{ html_table.iloc[0,35] }}**</td>
+          </tr>
+        </table>
+        </div>
+        <div class="w3-half">
+        <table>
+          <tr>
+            <td>xA: {{ html_table.iloc[0,36] }}**</td>
             <td>Yellows: {{ html_table.iloc[0,26] }}</td>
             <td>Reds: {{ html_table.iloc[0,27] }}</td>
           </tr>
         </table>
+        </div>
       </div>
       <div class="w3-half">
         <div class="w3-center w3-padding-16  {{ team_colour }}">
@@ -69,10 +99,10 @@
             <img src="static/images/players/2019/{{ html_table.iloc[0,1] }}" alt="{{ html_table.iloc[0,5] }}" style="max-height:214px"></a>
         </div>
         <div  class="w3-padding">
-          <table style="width: 100%;">
+          <table>
             <tr>
               <td><a><img src="static/images/flags/{{ html_table.iloc[0,2] }}" alt="{{ html_table.iloc[0,2] }}" style="max-height:30px"><a></td>
-              <td>{{ html_table.iloc[0,2][0:-4] }}</td>
+              <td>{{ nationality }}</td>
             </tr>
             <tr>
               <td>Number: {{ html_table.iloc[0,6] }}</td>
@@ -137,8 +167,10 @@
       </div>
       <a class="w3-button w3-right" href="{{ html_table.iloc[0,33] }}" target="_blank"><b> Wiki Link</b></a>
       <div class="w3-container w3-center w3-padding-16">
-        <img src="static/images/2019/player_graphs/player-graph.png" alt="player performance" style="max-width:95%">
+      <h4>player performance</h4>
+        <img src="static/images/2019/player_graphs/{{ graph }}" alt="player performance" style="max-width:95%">
       </div>
+      <a>**NOTE: Overall, xG & xA are rolling results. Altered after each match played.</a>
     </div>
   </div>
 
