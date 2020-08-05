@@ -31,6 +31,34 @@
   </div>
 </nav>
 
+<style>
+    table {
+      border-collapse: collapse;
+      table-layout:fixed;
+      /*border: 2px solid rgb(200,200,200);*/
+      /*letter-spacing: 4px;*/
+      margin: 0px auto;
+      width:100%;
+    }
+
+    tr {
+      line-height: 1px;
+      white-space: nowrap;
+    }
+
+    td, th {
+      /*border: 1px solid rgb(190,190,190);*/
+      padding: 10px 20px;
+    }
+
+    td {
+      text-align: center;
+    }
+
+    caption {
+      padding: 10px;
+    }
+</style>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -46,19 +74,19 @@
   <div class="w3-container">
     <!-- table header -->
     <div class="w3-third">
-      <div class="w3-grey">
-        <table class="w3-table w3-striped w3-blue">
+      <div>
+        <table class="w3-blue">
           <tr>
             <td><b>{{ columns[0] }}</b></td>
-            <td class="w3-center"><b>{{ columns[1] }}</b></td>
-            <td class="w3-right"><b>{{ columns[2] }}</b></td>
+            <td><b>{{ columns[1] }}</b></td>
+            <td><b>{{ columns[2] }}</b></td>
           </tr>
         </table>
       </div>
     </div>
       <div class="w3-third">
-        <div class="w3-grey">
-          <table class="w3-table w3-striped w3-blue">
+        <div>
+          <table class="w3-blue">
             <tr>
               <td><b>{{ columns[4] }}</b></td>
               <td><b>{{ columns[5] }}</b></td>
@@ -69,13 +97,13 @@
         </div>
       </div>
       <div class="w3-third">
-        <div class="w3-grey">
-          <table class="w3-table w3-striped w3-blue">
+        <div>
+          <table class="w3-blue">
             <tr>
               <td><b>{{ columns[8] }}</b></td>
               <td><b>{{ columns[9] }}</b></td>
               <td><b>{{ columns[10] }}</b></td>
-              <td class="w3-right"><b>{{ columns[11] }}</b></td>
+              <td><b>{{ columns[11] }}</b></td>
             </tr>
           </table>
         </div>
@@ -86,19 +114,19 @@
       <!-- table -->
       {%for i in range(0,html_table.shape[0])%}
         <div class="w3-third">
-          <div class="w3-grey">
-            <table class="w3-table cpl-eclipse-l">
+          <div>
+            <table class="cpl-eclipse-l">
               <tr>
                 <td>{{ html_table.iloc[i][0] }}</td>
-                <td class="w3-table w3-center" style="min-width: 250px"><b>{{ html_table.iloc[i][1] }}</b></td>
-                <td class="w3-right" style="max-width: 50px">{{ html_table.iloc[i][2] }}</td>
+                <td><b>{{ html_table.iloc[i][1] }}</b></td>
+                <td>{{ html_table.iloc[i][2] }}</td>
               </tr>
             </table>
           </div>
         </div>
         <div class="w3-third">
-          <div class="w3-grey">
-            <table class="w3-table cpl-eclipse-m">
+          <div>
+            <table class="cpl-eclipse-m">
               <tr>
                 <td>{{ html_table.iloc[i][4] }}</td>
                 <td>{{ html_table.iloc[i][5] }}</td>
@@ -109,13 +137,13 @@
           </div>
         </div>
         <div class="w3-third">
-          <div class="w3-grey">
-            <table class="w3-table cpl-eclipse-l">
+          <div>
+            <table class="cpl-eclipse-m">
               <tr>
                 <td>{{ html_table.iloc[i][8] }}</td>
                 <td>{{ html_table.iloc[i][9] }}</td>
                 <td>{{ html_table.iloc[i][10] }}</td>
-                <td class="w3-right w3-grey w3-text-white" style="min-width: 50px"><b>{{ html_table.iloc[i][11] }}</b></td>
+                <td class="w3-grey w3-text-white"><b>{{ html_table.iloc[i][11] }}</b></td>
               </tr>
             </table>
           </div>
