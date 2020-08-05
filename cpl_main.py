@@ -486,7 +486,7 @@ def top_position(team_stats,position): # get the forwards in the league
         if position == 'm':
             if player.iloc[0]['goals'] >= 5.0: # reward scoring greater than 5 goals
                 condensed_player_info.at[name,'overall'] = condensed_player_info.at[name,'overall'] + 0.1
-            if player.iloc[0]['pass-acc'] >= 0.85: # reward scoring greater than 5 goals
+            if player.iloc[0]['pass-acc'] >= 0.85: # reward high passing rate
                 condensed_player_info.at[name,'overall'] = condensed_player_info.at[name,'overall'] + 0.1
         if position == 'f':
             if (player.iloc[0]['goals'] <= 2.0 and player.iloc[0]['minutes'] >= 1000.0): # if player scores less than 2 & has minutes greater than 1000
@@ -507,6 +507,14 @@ def top_position(team_stats,position): # get the forwards in the league
     columns = condensed_player_info.select_dtypes(include=['float']).columns
     for column in columns:
         if column == 'overall':
+            condensed_player_info[column] = condensed_player_info[column].round(4).astype(str)
+            condensed_player_info[column] = condensed_player_info[column].astype(float)
+            continue
+        if column == 'pass-acc':
+            condensed_player_info[column] = condensed_player_info[column].round(4).astype(str)
+            condensed_player_info[column] = condensed_player_info[column].astype(float)
+            continue
+        if column == 'cross-acc':
             condensed_player_info[column] = condensed_player_info[column].round(4).astype(str)
             condensed_player_info[column] = condensed_player_info[column].astype(float)
             continue
