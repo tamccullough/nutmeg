@@ -46,11 +46,11 @@
 
     td, th {
       /*border: 1px solid rgb(190,190,190);*/
-      padding: 10px 20px;
+      padding: 10px 5px;
     }
 
     td {
-      text-align: center;
+      text-align: left;
     }
 
     caption {
@@ -77,9 +77,8 @@
             <div>
               <table class="w3-blue">
                 <tr>
-                  <td><b>{{ columns_g[0] }}</b></td>
-                  <td><b>{{ columns_g[1] }}</b></td>
-                  <td><b>{{ columns_g[2] }}</b></td>
+                  <td><b>rank / team</b></td>
+                  <td><b>name</b></td>
                 </tr>
               </table>
             </div>
@@ -88,10 +87,10 @@
               <div>
                 <table class="w3-blue">
                   <tr>
-                    <td><b> pos </b></td>
-                    <td><b> num </b></td>
-                    <td><b> min </b></td>
-                    <td><b>{{ columns_g[6] }}</b></td>
+                    <td><b>Pos</b></td>
+                    <td><b>#</b></td>
+                    <td><b>MIN</b></td>
+                    <td><b>G</b></td>
                   </tr>
                 </table>
               </div>
@@ -103,9 +102,8 @@
           <div>
             <table class="cpl-eclipse-l">
               <tr>
-                <td>{{ html_table.iloc[i][0] }}</td>
-                <td>{{ html_table.iloc[i][1] }}</td>
-                <td>{{ html_table.iloc[i][2] }}</td>
+                <td>{{ html_table.iloc[i][0] }} / {{ html_table.iloc[i][1] }}</td>
+                <td style="width:75%;">{{ html_table.iloc[i][2] }}</td>
               </tr>
             </table>
           </div>
@@ -133,9 +131,8 @@
               <div>
                 <table class="w3-green">
                   <tr>
-                    <td><b>{{ columns_a[0] }}</b></td>
-                    <td><b>{{ columns_a[1] }}</b></td>
-                    <td><b>{{ columns_a[2] }}</b></td>
+                    <td><b>rank / team</b></td>
+                    <td><b>name</b></td>
                   </tr>
                 </table>
               </div>
@@ -144,10 +141,10 @@
                 <div>
                   <table class="w3-green">
                     <tr>
-                      <td><b> pos </b></td>
-                      <td><b> num </b></td>
-                      <td><b> min </b></td>
-                      <td><b>{{ columns_a[6] }}</b></td>
+                      <td><b>Pos</b></td>
+                      <td><b>#</b></td>
+                      <td><b>MIN</b></td>
+                      <td><b>A</b></td>
                     </tr>
                   </table>
                 </div>
@@ -159,9 +156,9 @@
             <div>
               <table class="cpl-eclipse-l">
                 <tr>
-                  <td style="min-width: 15px">{{ assists_table.iloc[i][0] }}</td>
-                  <td>{{ assists_table.iloc[i][1] }}</td>
-                  <td>{{ assists_table.iloc[i][2] }}</td>
+                  <td>{{ assists_table.iloc[i][0] }} / {{ assists_table.iloc[i][1] }}</td>
+                  <td></td>
+                  <td style="width:75%;">{{ assists_table.iloc[i][2] }}</td>
                 </tr>
               </table>
             </div>

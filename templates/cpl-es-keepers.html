@@ -48,11 +48,11 @@
 
     td, th {
       /*border: 1px solid rgb(190,190,190);*/
-      padding: 10px 20px;
+      padding: 10px 5px;
     }
 
     td {
-      text-align: center;
+      text-align: left;
     }
 
     caption {
@@ -77,9 +77,8 @@
       <div>
         <table class="w3-blue">
           <tr>
-            <td><b>{{ columns[0] }}</b></td>
-            <td><b>{{ columns[1] }}</b></td>
-            <td><b>{{ columns[2] }}</b></td>
+            <td><b>team / #</b></td>
+            <td style="width:75%;"><b>{{ columns[1] }}</b></td>
           </tr>
         </table>
       </div>
@@ -88,12 +87,12 @@
         <div>
           <table class="w3-blue">
             <tr>
-              <td><b>{{ columns[4] }}</b></td>
+              <td><b>MIN</b></td>
               <td><b>CS</b></td>
-              <td><b>{{ columns[6] }}</b></td>
+              <td><b>Sv</b></td>
               <td><b>SF</b></td>
               <td><b>CX</b></td>
-              <td><b>{{ columns[9] }}</b></td>
+              <td><b>O</b></td>
             </tr>
           </table>
         </div>
@@ -107,9 +106,8 @@
           <div>
             <table class="cpl-eclipse-l">
               <tr>
-                <td>{{ html_table.iloc[i][0] }}</td>
-                <td><b>{{ html_table.iloc[i][1] }}</b></td>
-                <td>{{ html_table.iloc[i][2] }}</td>
+                <td>{{ html_table.iloc[i][0] }} / {{ html_table.iloc[i][2] }}</td>
+                <td style="width:75%;"><b>{{ html_table.iloc[i][1] }}</b></td>
               </tr>
             </table>
           </div>

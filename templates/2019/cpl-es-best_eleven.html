@@ -29,6 +29,34 @@
   </div>
 </nav>
 
+<style>
+    table {
+      border-collapse: collapse;
+      table-layout:fixed;
+      /*border: 2px solid rgb(200,200,200);*/
+      /*letter-spacing: 4px;*/
+      margin: 0px auto;
+      width:100%;
+    }
+
+    tr {
+      line-height: 1px;
+      white-space: nowrap;
+    }
+
+    td, th {
+      /*border: 1px solid rgb(190,190,190);*/
+      padding: 5px 5px;
+    }
+
+    td {
+      text-align: left;
+    }
+
+    caption {
+      padding: 10px;
+    }
+</style>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -52,12 +80,27 @@
           </a>
         </div>
         <div class="w3-container cpl-eclipse-l">
-          <p class="cpl-eclipse-L"><img src="static/images/flags/{{ html_table.iloc[i,3] }}" alt="{{ html_table.iloc[i,3] }}" style="max-height:20px"></p>
-          <p>{{ html_table.iloc[i,1] }}</p>
-          <p class="cpl-eclipse-m">{{ html_table.iloc[i,2] }}</p>
-          <p>Number {{ html_table.iloc[i,4] }}</p>
-          <p class="cpl-eclipse-m">Position {{ html_table.iloc[i,5] }}</p>
-          <p>Overall {{ html_table.iloc[i,6] }}</p>
+          <table>
+            <tr>
+              <td><p><img src="static/images/flags/{{ html_table.iloc[i,3] }}" alt="{{ html_table.iloc[i,3] }}" style="max-height:20px"></p></td>
+              <td><h4>{{ html_table.iloc[i,4] }}</h4></td>
+            </tr>
+            <tr>
+              <td colspan="2"><h5>{{ html_table.iloc[i,1] }} {{ html_table.iloc[i,2] }}</h5></td>
+            </tr>
+            <tr style="min-width:120px">
+              {% if html_table.iloc[i,5] == 'f' %}
+                  <td><p>Attacker</p></td>
+              {% elif html_table.iloc[i,5] == 'm' %}
+                  <td><p>Midfielder</p></td>
+              {% elif html_table.iloc[i,5] == 'd' %}
+                  <td><p>Defender</p></td>
+              {% else %}
+                  <td><p>Goalkeeper</p></td>
+              {% endif %}
+              <td><p>Overall {{ html_table.iloc[i,6] }}</p></td>
+            </tr>
+          </table>
         </div>
       </div>
       {%endfor%}

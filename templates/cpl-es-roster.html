@@ -31,32 +31,34 @@
   </div>
 </nav>
 
-
 <style>
     table {
       border-collapse: collapse;
-      letter-spacing: 1px;
+      table-layout:fixed;
+      /*border: 2px solid rgb(200,200,200);*/
+      /*letter-spacing: 4px;*/
       margin: 0px auto;
+      width:100%;
     }
 
     tr {
       line-height: 1px;
-
       white-space: nowrap;
     }
 
     td, th {
-      padding: 10px 20px;
+      /*border: 1px solid rgb(190,190,190);*/
+      padding: 5px 5px;
     }
 
     td {
-      text-align: center;
+      text-align: left;
     }
 
     caption {
       padding: 10px;
     }
-    </style>
+</style>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -66,7 +68,7 @@
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-      <div class="w3-half"><h5><b><i class="fa fa-users"></i> {{ team_name }} - Roster</b></h5></div>
+      <div class="w3-half"><h5><b><i class="fa fa-users"></i> {{ team_name }} - Roster (click last name to view)</b></h5></div>
     <div class="w3-half" style="text-align: right"><a href="{{ url_for('teams') }}"><b><input class="w3-button" value="Return to Teams"/></b></a></div>
   </header>
 
