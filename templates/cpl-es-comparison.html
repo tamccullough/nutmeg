@@ -69,12 +69,11 @@
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-eye"></i> CPL Match Prediction</b></h5>
+    <h5><b><i class="fa fa-eye"></i> CPL Match Prediction - {{ headline }}</b></h5>
   </header>
 
   <div class="w3-container w3-row-padding w3-margin-bottom">
     <form method="POST" action="/versus-">
-      <h5>{{ headline }}</h5>
         <div>
           <a class="w3-quarter w3-cyan" style="text-align:center" href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home1" name="home" value="{{ group1 }}"/></a>
         </div>
