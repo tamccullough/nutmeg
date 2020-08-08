@@ -228,10 +228,10 @@ def comparison1():
     home_win = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['home_p'].values[0]
     draw = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['draw_p'].values[0]
     away_win = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['away_p'].values[0]
-    home_form = pd.DataFrame(game_form[q1])
-    away_form = pd.DataFrame(game_form[q2])
-    #home_roster = team_rosters[team_rosters['team'] == q1][['name','number','position','overall']][0:11]
-    #away_roster = team_rosters[team_rosters['team'] == q2][['name','number','position','overall']][0:11]
+    home_form = game_form[q1]
+    away_form = game_form[q2]
+    #home_form = cpl_main.get_five_game_form(results_old,q1)
+    #away_form = cpl_main.get_five_game_form(results_old,q2)
 
     home_roster = cpl_main.best_roster(q1,results,results_old,stats,stats_old,stats_seed,player_info,rated_forwards)
     away_roster = cpl_main.best_roster(q2,results,results_old,stats,stats_old,stats_seed,player_info,rated_forwards)
@@ -294,8 +294,8 @@ def comparison2():
     home_win = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['home_p'].values[0]
     draw = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['draw_p'].values[0]
     away_win = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['away_p'].values[0]
-    home_form = pd.DataFrame(game_form[q1])
-    away_form = pd.DataFrame(game_form[q2])
+    home_form = game_form[q1]
+    away_form = game_form[q2]
     home_roster = team_rosters[team_rosters['team'] == q1][['name','number','position','overall']][0:11]
     away_roster = team_rosters[team_rosters['team'] == q2][['name','number','position','overall']][0:11]
     home_score = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['hs'].values[0]

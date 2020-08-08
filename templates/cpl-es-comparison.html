@@ -31,6 +31,35 @@
   </div>
 </nav>
 
+<style>
+    table {
+      border-collapse: collapse;
+      table-layout:fixed;
+      /*border: 2px solid rgb(200,200,200);*/
+      /*letter-spacing: 4px;*/
+      margin: 0px auto;
+      width:100%;
+    }
+
+    tr {
+      line-height: 1px;
+      white-space: nowrap;
+    }
+
+    td, th {
+      /*border: 1px solid rgb(190,190,190);*/
+      padding: 15px 5px;
+    }
+
+    td {
+      text-align: left;
+    }
+
+    caption {
+      padding: 10px;
+    }
+</style>
+
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -64,68 +93,118 @@
   <div class="w3-row-padding w3-margin-bottom">
     <div class="w3-half">
       <div class="w3-container {{ home_colour }} w3-padding-16">
-        <div class="w3-center w3-left" style="width: 35%"><img src="static/images/flags/{{ home_crest }}" alt="{{ home_team }} Crest" style="max-height:60px"></i></div>
-        <div class="w3-right" style="width: 65%; text-align:left">
-          <h3>{{ home_team }}</h3>
-        </div>
-        <div class="w3-clear"></div>
-        <h4 style="text-align:center">Home Team</h4>
+        <table>
+          <tr>
+            <td style="text-align: center;" rowspan="2"><img src="static/images/flags/{{ home_crest }}" alt="{{ home_team }} Crest" style="max-height:100px"></td>
+            <td><h3>{{ home_team }}</h3></td>
+          </tr>
+          <tr>
+            <td><h4>Home Team</h4></td>
+          </tr>
+        </table>
       </div>
       <div class="w3-container w3-padding {{ 'w3-green' if home_win*100 > away_win*100 else 'w3-red' if home_win*100 < away_win*100 else 'w3-orange' }}">
         <h4 style="width:50%" class="w3-left">{{home_win}}% Win</h4>
         <h4 style="text-align:right; width:50%" class="w3-right">Score: {{home_score}}</h4>
       </div>
-      <div class="w3-grey">
-        <div class="w3-third w3-padding w3-green">{{home_form.loc[0][0]}}</div>
-        <div class="w3-third w3-padding w3-red">{{home_form.loc[1][0]}}</div>
-        <div class="w3-third w3-padding w3-text-white w3-orange">{{home_form.loc[2][0]}}</div>
+      <div>
+        <div class="{{ home_colour }}"><a> Current Form</a></div>
+        <table style="width:100%;">
+          <tr>
+            <td class="w3-green"> {{ home_form.loc[0] }}</td>
+            <td class="w3-red"> {{ home_form.loc[1] }}</td>
+            <td class="w3-text-white w3-orange"> {{ home_form.loc[2] }}</td>
+          </tr>
+        </table>
       </div>
+      <div class="{{ home_colour }}">
+        <div>
+          <a> Previous Matches against {{ away_team }}</a>
+        </div>
+        <table>
+          <tr>
+            <td class="w3-green"> {{ home_form.loc[0] }}</td>
+            <td class="w3-red"> {{ home_form.loc[1] }}</td>
+            <td class="w3-text-white w3-orange"> {{ home_form.loc[2] }}</td>
+          </tr>
+        </table>
       <h5>Recommended Starting 11</h5>
-      <table class="w3-table cpl-eclipse-l">
-        {%for i in range(0,home_table.shape[0])%}
-        <tr>
-            {%for r in range(home_table.shape[1])%}
-            <td>{{ home_table.iloc[i,r] }}</td>
-            {%endfor%}
-        </tr>
-        {%endfor%}
-      </table>
+        <table class="cpl-eclipse-l">
+          {%for i in range(0,home_table.shape[0])%}
+          <tr>
+              {%for r in range(home_table.shape[1])%}
+              {% if r == 0 %}
+                <td style="width:60%;">{{ home_table.iloc[i,r] }}</td>
+              {% else %}
+                <td>{{ home_table.iloc[i,r] }}</td>
+              {% endif%}
+              {%endfor%}
+          </tr>
+          {%endfor%}
+        </table>
+        </div>
       <div class="w3-container w3-center {{ home_colour }} w3-padding-16">
         <img src="static/images/2020/cpl-2020-{{ home_team }}-radar.png" alt="{{ home_team }} Radar" style="max-width:95%">
       </div>
     </div>
+
     <div class="w3-half">
       <div class="w3-container {{ away_colour }} w3-padding-16">
-        <div class="w3-center w3-left" style="width: 35%"><img src="static/images/flags/{{ away_crest }}" alt="{{ away_team }} Crest" style="max-height:60px"></i></div>
-        <div class="w3-right" style="width: 65%; text-align:left">
-          <h3>{{ away_team }}</h3>
-        </div>
-        <div class="w3-clear"></div>
-        <h4 style="text-align:center">Away Team</h4>
+        <table>
+          <tr>
+            <td style="text-align: center;" rowspan="2"><img src="static/images/flags/{{ away_crest }}" alt="{{ away_team }} Crest" style="max-height:100px"></td>
+            <td><h3>{{ away_team }}</h3></td>
+          </tr>
+          <tr>
+            <td><h4>Away Team</h4></td>
+          </tr>
+        </table>
       </div>
       <div class="w3-container w3-padding {{ 'w3-green' if away_win*100 > home_win*100 else 'w3-red' if away_win*100 < home_win*100 else 'w3-orange' }}">
         <h4 style="width:50%" class="w3-left">{{away_win}}% Win</h4>
         <h4 style="text-align:right; width:50%" class="w3-right">Score: {{away_score}}</h4>
       </div>
-      <div class="w3-grey">
-        <div class="w3-third w3-padding w3-green">{{away_form.loc[0][0]}}</div>
-        <div class="w3-third w3-padding w3-red">{{away_form.loc[1][0]}}</div>
-        <div class="w3-third w3-padding w3-text-white w3-orange">{{away_form.loc[1][0]}}</div>
+      <div>
+        <div class="{{ away_colour }}"><a> Current Form</a></div>
+        <table style="width:100%;">
+          <tr>
+            <td class="w3-green"> {{ away_form.loc[0] }}</td>
+            <td class="w3-red"> {{ away_form.loc[1] }}</td>
+            <td class="w3-text-white w3-orange"> {{ away_form.loc[2] }}</td>
+          </tr>
+        </table>
       </div>
-      <h5>Recommended Starting 11</h5>
-      <table class="w3-table cpl-eclipse-l">
-        {%for i in range(0,away_table.shape[0])%}
-        <tr>
-            {%for r in range(away_table.shape[1])%}
-            <td>{{ away_table.iloc[i,r] }}</td>
-            {%endfor%}
-        </tr>
-        {%endfor%}
-      </table>
+      <div class="{{ away_colour }}">
+        <div>
+          <a> Previous Matches against {{ home_team }}</a>
+        </div>
+        <table>
+          <tr>
+            <td class="w3-green"> {{ away_form.loc[0] }}</td>
+            <td class="w3-red"> {{ away_form.loc[1] }}</td>
+            <td class="w3-text-white w3-orange"> {{ away_form.loc[2] }}</td>
+          </tr>
+        </table>
+        <h5>Recommended Starting 11</h5>
+        <table class="cpl-eclipse-l">
+          {%for i in range(0,away_table.shape[0])%}
+          <tr>
+              {%for r in range(away_table.shape[1])%}
+                {% if r == 0 %}
+                  <td style="width:60%;">{{ away_table.iloc[i,r] }}</td>
+                {% else %}
+                  <td>{{ away_table.iloc[i,r] }}</td>
+                {% endif%}
+              {%endfor%}
+          </tr>
+          {%endfor%}
+        </table>
+      </div>
       <div class="w3-container w3-center {{ away_colour }} w3-padding-16">
         <img src="static/images/2020/cpl-2020-{{ away_team }}-radar.png" alt="{{ away_team }} Radar" style="max-width:95%">
       </div>
     </div>
+
   </div>
 
 
