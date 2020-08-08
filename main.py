@@ -24,6 +24,7 @@ def get_string(data):
 def load_main_files(year):
     results = pd.read_csv(f'datasets/{year}/cpl-{year}-results.csv')
     stats = pd.read_csv(f'datasets/{year}/cpl-{year}-stats.csv')
+    stats_seed = pd.read_csv(f'datasets/{year}/cpl-{year}-stats-seed.csv')
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
     player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
@@ -38,7 +39,7 @@ def load_main_files(year):
     game_form = pd.read_csv(f'datasets/{year}/cpl-{year}-game_form.csv')
     team_rosters = pd.read_csv(f'datasets/{year}/cpl-{year}-team_rosters.csv')
 
-    return results, stats, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters
+    return results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters
 
 def load_main_files_old(year):
     results = pd.read_csv(f'datasets/{year}/cpl-{year}-results.csv')
@@ -76,7 +77,7 @@ def index():
     year = '2020'
     other_year = '2019'
 
-    results, stats, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters = load_main_files(year)
+    results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters = load_main_files(year)
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
 
     standings = pd.read_csv(f'datasets/{year}/cpl-{year}-standings.csv')
@@ -203,8 +204,11 @@ def comparison1():
     year = '2020'
     other_year = '2019'
     headline = 'This Weeks Matches'
-    results, stats, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters  = load_main_files(year)
+    results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters  = load_main_files(year)
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
+
+    results_old = pd.read_csv(f'datasets/{year}/cpl-{year}-results_old.csv')
+    stats_old = pd.read_csv(f'datasets/{year}/cpl-{year}-stats_old.csv')
 
     # home side
     q1 = matches_predictions.iloc[0]['home']
@@ -226,8 +230,14 @@ def comparison1():
     away_win = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['away_p'].values[0]
     home_form = pd.DataFrame(game_form[q1])
     away_form = pd.DataFrame(game_form[q2])
-    home_roster = team_rosters[team_rosters['team'] == q1][['name','number','position','overall']][0:11]
-    away_roster = team_rosters[team_rosters['team'] == q2][['name','number','position','overall']][0:11]
+    #home_roster = team_rosters[team_rosters['team'] == q1][['name','number','position','overall']][0:11]
+    #away_roster = team_rosters[team_rosters['team'] == q2][['name','number','position','overall']][0:11]
+
+    home_roster = cpl_main.best_roster(q1,results,results_old,stats,stats_old,stats_seed,player_info,rated_forwards)
+    away_roster = cpl_main.best_roster(q2,results,results_old,stats,stats_old,stats_seed,player_info,rated_forwards)
+    print(q1,home_roster)
+    print(q2,away_roster)
+
     home_score = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['hs'].values[0]
     away_score = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['as'].values[0]
 
@@ -246,7 +256,7 @@ def comparison1():
     group3 = team5 + '-' + team6
     group4 = team7 + '-' + team8
 
-    return render_template('cpl-es-comparison.html',home_table = home_roster, away_table = away_roster, home_win = home_win,
+    return render_template('cpl-es-comparison.html',home_table = home_roster.head(11), away_table = away_roster.head(11), home_win = home_win,
     home_team = q1, away_team = q2, away_win = away_win, draw = draw, home_form = home_form, away_form = away_form, schedule = schedule, year = year,
     home_crest = home_crest, home_colour = home_colour, away_crest = away_crest, away_colour = away_colour, headline = headline, home_score = home_score, away_score = away_score,
     team1 = team1, team2 = team2, team3 = team3, team4 = team4, team5 = team5, team6 = team6, team7 = team7, team8 = team8, other_year = other_year,
@@ -257,8 +267,11 @@ def comparison2():
     year = '2020'
     other_year = '2019'
     headline = 'This Weeks Matches'
-    results, stats, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters = load_main_files(year)
+    results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters = load_main_files(year)
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
+
+    results_old = pd.read_csv(f'datasets/{year}/cpl-{year}-results_old.csv')
+    stats_old = pd.read_csv(f'datasets/{year}/cpl-{year}-stats_old.csv')
 
     # home side
     home = request.form['home']
@@ -302,7 +315,7 @@ def comparison2():
     group3 = team5 + '-' + team6
     group4 = team7 + '-' + team8
 
-    return render_template('cpl-es-comparison2.html',home_table = home_roster, away_table = away_roster, home_win = home_win,
+    return render_template('cpl-es-comparison2.html',home_table = home_roster.head(11), away_table = away_roster.head(11), home_win = home_win,
     home_team = q1, away_team = q2, away_win = away_win, draw = draw, home_form = home_form, away_form = away_form, schedule = schedule, year = year,
     home_crest = home_crest, home_colour = home_colour, away_crest = away_crest, away_colour = away_colour, headline = headline, home_score = home_score, away_score = away_score,
     team1 = team1, team2 = team2, team3 = team3, team4 = team4, team5 = team5, team6 = team6, team7 = team7, team8 = team8, other_year = other_year,
