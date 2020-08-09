@@ -1,5 +1,5 @@
 hs,as,home,hr,away,ar,home_p,away_p,draw_p
-3,2,Forge FC,W,Cavalry FC,L,0.4,0.35,0.25
-0,0,Pacific FC,D,FC Edmonton,D,0.2,0.3,0.5
-0,2,York9 FC,L,HFX Wanderers FC,W,0.1,0.55,0.35
-0,2,York9 FC,L,Valour FC,W,0.1,0.5,0.4
+2,0,Forge FC,W,Cavalry FC,L,0.45,0.35,0.2
+0,3,Pacific FC,L,FC Edmonton,W,0.2,0.4,0.4
+0,2,York9 FC,L,HFX Wanderers FC,W,0.25,0.4,0.35
+2,3,York9 FC,L,Valour FC,W,0.2,0.45,0.35
