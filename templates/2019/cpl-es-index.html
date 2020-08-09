@@ -29,6 +29,34 @@
   </div>
 </nav>
 
+<style>
+    table {
+      border-collapse: collapse;
+      table-layout:fixed;
+      /*border: 2px solid rgb(200,200,200);*/
+      /*letter-spacing: 4px;*/
+      margin: 0px auto;
+      width:100%;
+    }
+
+    tr {
+      line-height: 1px;
+      white-space: nowrap;
+    }
+
+    td, th {
+      /*border: 1px solid rgb(190,190,190);*/
+      padding: 15px 5px;
+    }
+
+    td {
+      text-align: left;
+    }
+
+    caption {
+      padding: 10px;
+    }
+</style>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -44,45 +72,57 @@
   <div class="w3-container w3-row-padding w3-margin-bottom">
     <div class="w3-quarter">
       <div class="w3-container {{ first_colour }} w3-padding-16">
-        <div class="w3-left"><img src="static/images/flags/{{ first_crest }}" alt="{{ top_team }} Crest" style="max-height:60px"></i></div>
-        <div class="w3-right">
-          <h3>Top</h3>
-        </div>
-        <div class="w3-clear"></div>
-        <h4>{{ top_team }}</h4>
+        <table>
+          <tr style="width:35%;">
+            <td style="text-align: center;" rowspan="2"><img src="static/images/flags/{{ first_crest }}" alt="{{ top_team }} Crest" style="max-height:80px"></td>
+            <td><h3>Top</h3></td>
+          </tr>
+          <tr>
+            <td><h4>{{ top_team }}</h4></td>
+          </tr>
+        </table>
       </div>
     </div>
 
     <div class="w3-quarter">
       <div class="w3-container w3-green w3-text-white w3-padding-16">
-        <div class="w3-left"><img src="static/images/flags/{{ top_crest }}" alt="{{ top_mover }} Crest" style="max-height:60px"></i></div>
-        <div class="w3-right">
-          <h3>Up</h3>
-        </div>
-        <div class="w3-clear"></div>
-        <h4>{{ top_mover }}</h4>
+        <table>
+          <tr style="width:35%;">
+            <td style="text-align: center;" rowspan="2"><img src="static/images/flags/{{ top_crest }}" alt="{{ top_mover }} Crest" style="max-height:80px"></td>
+            <td><h3>Up</h3></td>
+          </tr>
+          <tr>
+            <td><h4>{{ top_mover }}</h4></td>
+          </tr>
+        </table>
       </div>
     </div>
 
     <div class="w3-quarter">
       <div class="w3-container w3-red w3-padding-16">
-        <div class="w3-left"><img src="static/images/flags/{{ bot_crest }}" alt="{{ top_dropper }} Crest" style="max-height:60px"></i></div>
-        <div class="w3-right">
-          <h3>Down</h3>
-        </div>
-        <div class="w3-clear"></div>
-        <h4>{{ top_dropper }}</h4>
+        <table>
+          <tr style="width:35%;">
+            <td style="text-align: center;" rowspan="2"><img src="static/images/flags/{{ bot_crest }}" alt="{{ top_dropper }} Crest" style="max-height:80px"></td>
+            <td><h3>Down</h3></td>
+          </tr>
+          <tr>
+            <td><h4>{{ top_dropper }}</h4></td>
+          </tr>
+        </table>
       </div>
     </div>
 
     <div class="w3-quarter">
       <div class="w3-container w3-indigo w3-padding-16">
-        <div class="w3-left"><i class="fa fa-soccer-ball-o w3-xxxlarge"></i></div>
-        <div class="w3-right">
-          <h3>{{ goals }}</h3>
-        </div>
-        <div class="w3-clear"></div>
-        <h4>Goals - Week</h4>
+        <table>
+          <tr style="width:35%;">
+            <td style="text-align: center;" rowspan="2"><img src="static/images/flags/CPL-Crest-White.png" alt="{{ top_dropper }} Crest" style="max-height:80px"></td>
+            <td><h3>{{ goals }} Goals</h3></td>
+          </tr>
+          <tr>
+            <td><h4>This Week</h4></td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>
