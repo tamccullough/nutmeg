@@ -31,6 +31,43 @@
   </div>
 </nav>
 
+<style>
+    table {
+      border-collapse: collapse;
+      table-layout:fixed;
+      /*border: 2px solid rgb(200,200,200);*/
+      /*letter-spacing: 4px;*/
+      margin: 0px auto;
+      width:100%;
+    }
+
+    tr {
+      line-height: 1px;
+      white-space: nowrap;
+    }
+
+    td, th {
+      /*border: 1px solid rgb(190,190,190);*/
+      padding: 10px 5px;
+    }
+
+    td {
+      text-align: center;
+    }
+
+    .button {
+      border:none;
+      padding:8px 0px;
+      text-decoration:none;
+      color:inherit;
+      background-color:inherit;
+      cursor:pointer;
+    }
+
+    caption {
+      padding: 10px;
+    }
+</style>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -46,29 +83,29 @@
   <div class="w3-container">
         <!-- table header -->
         <div class="w3-third w3-blue">
-            <table class="w3-table">
+            <table>
               <tr>
-                <td class="w3-center" style="text-indent: 10px; min-width: 50px"><b>crest</b></td>
-                <td class="w3-left" style="text-indent: 20px; min-width: 150px"><b> {{ columns[0] }}</b></td>
-                <td class="w3-right" style="min-width: 100px"><b>{{ columns[1] }}</b></td>
+                <td><b>crest</b></td>
+                <td><b> {{ columns[0] }}</b></td>
+                <td><b>{{ columns[1] }}</b></td>
               </tr>
             </table>
         </div>
         <div class="w3-third w3-blue">
-            <table class="w3-table">
+            <table>
               <tr>
-                <td class="w3-center" style="max-width: 50px"><b>wins</b></td>
-                <td class="w3-center" style="max-width: 50px"><b>loses</b></td>
-                <td class="w3-center" style="max-width: 50px"><b>draws</b></td>
+                <td><b>wins</b></td>
+                <td><b>loses</b></td>
+                <td><b>draws</b></td>
               </tr>
             </table>
         </div>
           <div class="w3-third w3-blue">
-              <table class="w3-table">
+              <table>
                 <tr>
-                  <td class="w3-center" style="max-width: 50px"><b>{{ columns[2] }}</b></td>
-                  <td class="w3-center" style="max-width: 50px"><b>{{ columns[6] }}</b></td>
-                  <td class="w3-center" style="max-width: 50px"><b>{{ columns[7] }}</b></td>
+                  <td><b>{{ columns[2] }}</b></td>
+                  <td><b>{{ columns[6] }}</b></td>
+                  <td><b>{{ columns[7] }}</b></td>
                 </tr>
               </table>
           </div>
@@ -77,30 +114,50 @@
     {%for i in range(0,html_table.shape[0])%}
       <div class="w3-third {{ html_table.iloc[i,4] }}">
         <form method="POST" action="/roster">
-          <table class="w3-table {{ html_table.iloc[i,4] }}"">
+          <table {{ html_table.iloc[i,4] }}"">
             <tr>
-              <td class="w3-center" style="width: 100px"><img src="static/images/flags/{{ html_table.iloc[i,5] }}" alt="{{ html_table.iloc[i,0] }} Crest" style="max-height:50px"></td>
-              <td style="vertical-align:middle; min-width: 75px"><a href="{{ url_for('roster') }}"><input class="w3-button" type="submit" id="team" name="team" value="{{ html_table.iloc[i,0] }}"/></a></td>
-              <td style="vertical-align:middle; width: 100px">{{ html_table.iloc[i][1] }}</td>
+              <td><img src="static/images/flags/{{ html_table.iloc[i,5] }}" alt="{{ html_table.iloc[i,0] }} Crest" style="max-height:41px"></td>
+              <td><a href="{{ url_for('roster') }}"><input class="button" type="submit" id="team" name="team" value="{{ html_table.iloc[i,0] }}"/></a></td>
+              <td>{{ html_table.iloc[i][1] }}</td>
             </tr>
           </table>
         </form>
       </div>
       <div class="w3-third {{ html_table.iloc[i,4] }}">
-          <table class="w3-table">
-            <tr style="height: 66px">
-              <td class="w3-center" style="vertical-align:middle; max-width: 50px">{{ html_table.iloc[i][10] }}</td>
-              <td class="w3-center" style="vertical-align:middle; max-width: 50px">{{ html_table.iloc[i][11] }}</a></td>
-              <td class="w3-center" style="vertical-align:middle; max-width: 50px">{{ html_table.iloc[i][12] }}</a></td>
+          <table>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>{{ html_table.iloc[i][10] }}</td>
+              <td>{{ html_table.iloc[i][11] }}</td>
+              <td>{{ html_table.iloc[i][12] }}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
             </tr>
           </table>
       </div>
       <div class="w3-third {{ html_table.iloc[i,4] }}">
-          <table class="w3-table">
-            <tr style="height: 66px">
-              <td class="w3-center" style="vertical-align:middle; max-width: 50px">{{ html_table.iloc[i][2] }}</td>
-              <td class="w3-center" style="max-width: 50px"><a class="w3-button" href="{{ html_table.iloc[i,6] }}" target="_blank">club site</a></td>
-              <td class="w3-center" style="max-width: 50px"><a class="w3-button" href="{{ html_table.iloc[i,7] }}" target="_blank">wikipedia</a></td>
+          <table>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>{{ html_table.iloc[i][2] }}</td>
+              <td><a class="button" href="{{ html_table.iloc[i,6] }}" target="_blank">club site</a></td>
+              <td><a class="button" href="{{ html_table.iloc[i,7] }}" target="_blank">wikipedia</a></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
             </tr>
           </table>
       </div>
