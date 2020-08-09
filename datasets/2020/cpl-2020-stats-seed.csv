@@ -28,16 +28,16 @@ II1,Cavalry FC,m,11,José Escalante,José,Escalante,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 II1,Cavalry FC,f,20,José Hernández,José,Hernández,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Cavalry FC,g,1,Marco Carducci,Marco,Carducci,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Cavalry FC,d,5,Mason Trafford,Mason,Trafford,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Cavalry FC,d,0,Mohamed Farsi,Mohamed,Farsi,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Cavalry FC,d,21,Mohamed Farsi,Mohamed,Farsi,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Cavalry FC,d,3,Nathan Mavila,Nathan,Mavila,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Cavalry FC,f,17,Nico Pasquotti,Nico,Pasquotti,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Cavalry FC,m,6,Nikolas Ledgerwood,Nikolas,Ledgerwood,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Cavalry FC,g,22,Nikolas Giantsopoulos,Nikolas,Giantsopoulos,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Cavalry FC,f,7,Oliver Minatel,Oliver,Minatel,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Cavalry FC,m,23,Richard Luca,Richard,Luca,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Cavalry FC,d,0,Robert Boskovic,Robert,Boskovic,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Cavalry FC,d,25,Robert Boskovic,Robert,Boskovic,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Cavalry FC,m,10,Sergio Camargo,Sergio,Camargo,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Cavalry FC,f,0,Marcus Haber,Marcus,Haber,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Cavalry FC,f,29,Marcus Haber,Marcus,Haber,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Cavalry FC,d,12,Dean Northover,Dean,Northover,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,FC Edmonton,d,4,Allan Zebie,Allan,Zebie,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,FC Edmonton,d,55,Amer Didic,Amer,Didic,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -83,9 +83,9 @@ II1,Forge FC,f,23,Anthony Novak,Anthony,Novak,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 II1,Forge FC,d,15,Maxim Tissot,Maxim,Tissot,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Forge FC,f,20,Gabriel Balbinotti,Gabriel,Balbinotti,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Forge FC,d,21,Jordan Dunstan,Jordan,Dunstan,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Forge FC,g,0,Baj Maan,Baj,Maan,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Forge FC,g,31,Baj Maan,Baj,Maan,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Forge FC,m,24,Paolo Sabak,Paolo,Sabak,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Forge FC,f,0,Molham Babouli,Molham,Babouli,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Forge FC,f,19,Molham Babouli,Molham,Babouli,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,HFX Wanderers FC,m,17,Aboubacar Sissoko,Aboubacar,Sissoko,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,HFX Wanderers FC,f,11,Akeem Garcia,Akeem,Garcia,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,HFX Wanderers FC,f,10,Alessandro Riggi,Alessandro,Riggi,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -130,7 +130,7 @@ II1,Pacific FC,m,20,Sean Young,Sean,Young,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 II1,Pacific FC,m,11,Josh Heard,Josh,Heard,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Valour FC,d,0,Amir Soto,Amir,Soto,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Valour FC,d,35,Andrew Jean-Baptiste,Andrew,Jean-Baptiste,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Valour FC,d,0,Arnold Bouka Moutou,Arnold,Bouka Moutou,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Valour FC,d,29,Arnold Bouka Moutou,Arnold,Bouka Moutou,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Valour FC,m,17,Brett Levis,Brett,Levis,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Valour FC,f,16,Daryl Fordyce,Daryl,Fordyce,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Valour FC,m,8,Diego Gutiérrez,Diego,Gutiérrez,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
