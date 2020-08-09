@@ -577,7 +577,7 @@ def likelihood_table(data,query):
             if df.iloc[row]['ar'] == 'L':
                 array = likelihood_input(array,[[2,2,0],[2,0,1],[2,1,0]])
             if df.iloc[row]['ar'] == 'D':
-                array = likelihood_input(array,[[2,2,1],[2,0,0],[2,1,1]])
+                array = likelihood_input(array,[[2,2,0],[2,0,0],[2,1,1]])
     db= pd.DataFrame(array,columns=['h/a','w/l/d','y/n'])
     return db
 
@@ -600,6 +600,18 @@ def get_team_comparison(data,q1,q2):
     if db.empty == True:
         db = pd.DataFrame([(0,0,0,0,q1,'D',q2,'D','empty',q1)],columns=['d','m','hs','as','home','hr','away','ar','summary','team'])
     return db
+
+def get_match_history(compare,query):
+    db = likelihood_table(compare,query)#get_NB_data(compare,q1)
+    db = db[db['y/n'] == 1]
+    w_count = [1 for x in db[db['w/l/d'] == 2].values]
+    l_count = [1 for x in db[db['w/l/d'] == 0].values]
+    d_count = [1 for x in db[db['w/l/d'] == 1].values]
+    df = pd.DataFrame(columns=['w','l','d'])
+    df.at[0,'w'] = sum(w_count)
+    df['l'] = sum(l_count)
+    df['d'] = sum(d_count)
+    return df
 
 def get_nb_match_prediction(q1,q2,x1,y1,x2,y2):
 

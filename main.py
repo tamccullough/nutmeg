@@ -230,16 +230,18 @@ def comparison1():
     away_win = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['away_p'].values[0]
     home_form = game_form[q1]
     away_form = game_form[q2]
-    #home_form = cpl_main.get_five_game_form(results_old,q1)
-    #away_form = cpl_main.get_five_game_form(results_old,q2)
 
     home_roster = cpl_main.best_roster(q1,results,results_old,stats,stats_old,stats_seed,player_info,rated_forwards)
     away_roster = cpl_main.best_roster(q2,results,results_old,stats,stats_old,stats_seed,player_info,rated_forwards)
-    print(q1,home_roster)
-    print(q2,away_roster)
-
     home_score = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['hs'].values[0]
     away_score = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['as'].values[0]
+
+    results_brief = cpl_main.get_results_brief(results,team_ref)
+    results_brief_old = cpl_main.get_results_brief(results_old,team_ref)
+    results_brief = pd.concat([results_brief,results_brief_old])
+    compare = cpl_main.get_team_comparison(results_brief,q1,q2)
+    q1_r = cpl_main.get_match_history(compare,q1)
+    q2_r = cpl_main.get_match_history(compare,q2)
 
 
     team1, team2, team3, team4, team5, team6, team7, team8 = cpl_main.get_team_files(schedule,team_ref)
@@ -257,6 +259,7 @@ def comparison1():
     group4 = team7 + '-' + team8
 
     return render_template('cpl-es-comparison.html',home_table = home_roster.head(11), away_table = away_roster.head(11), home_win = home_win,
+    home_history = q1_r, away_history = q2_r,
     home_team = q1, away_team = q2, away_win = away_win, draw = draw, home_form = home_form, away_form = away_form, schedule = schedule, year = year,
     home_crest = home_crest, home_colour = home_colour, away_crest = away_crest, away_colour = away_colour, headline = headline, home_score = home_score, away_score = away_score,
     team1 = team1, team2 = team2, team3 = team3, team4 = team4, team5 = team5, team6 = team6, team7 = team7, team8 = team8, other_year = other_year,
@@ -296,10 +299,18 @@ def comparison2():
     away_win = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['away_p'].values[0]
     home_form = game_form[q1]
     away_form = game_form[q2]
-    home_roster = team_rosters[team_rosters['team'] == q1][['name','number','position','overall']][0:11]
-    away_roster = team_rosters[team_rosters['team'] == q2][['name','number','position','overall']][0:11]
+
+    home_roster = cpl_main.best_roster(q1,results,results_old,stats,stats_old,stats_seed,player_info,rated_forwards)
+    away_roster = cpl_main.best_roster(q2,results,results_old,stats,stats_old,stats_seed,player_info,rated_forwards)
     home_score = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['hs'].values[0]
     away_score = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['as'].values[0]
+
+    results_brief = cpl_main.get_results_brief(results,team_ref)
+    results_brief_old = cpl_main.get_results_brief(results_old,team_ref)
+    results_brief = pd.concat([results_brief,results_brief_old])
+    compare = cpl_main.get_team_comparison(results_brief,q1,q2)
+    q1_r = cpl_main.get_match_history(compare,q1)
+    q2_r = cpl_main.get_match_history(compare,q2)
 
     team1, team2, team3, team4, team5, team6, team7, team8 = cpl_main.get_team_files(schedule,team_ref)
 
@@ -316,6 +327,7 @@ def comparison2():
     group4 = team7 + '-' + team8
 
     return render_template('cpl-es-comparison2.html',home_table = home_roster.head(11), away_table = away_roster.head(11), home_win = home_win,
+    home_history = q1_r, away_history = q2_r,
     home_team = q1, away_team = q2, away_win = away_win, draw = draw, home_form = home_form, away_form = away_form, schedule = schedule, year = year,
     home_crest = home_crest, home_colour = home_colour, away_crest = away_crest, away_colour = away_colour, headline = headline, home_score = home_score, away_score = away_score,
     team1 = team1, team2 = team2, team3 = team3, team4 = team4, team5 = team5, team6 = team6, team7 = team7, team8 = team8, other_year = other_year,
