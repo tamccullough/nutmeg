@@ -136,9 +136,9 @@ def index_19():
     top_team_info = team_ref[team_ref['team'] == top_team]
     first_colour = top_team_info.iloc[0][4]
     first_crest = top_team_info.iloc[0][5]
-    top_mover = compare_standings.iloc[0]['team']
+    top_mover = 'Cavalry FC'
     top_crest = team_ref[team_ref['team'] == top_mover].iloc[0][5]
-    top_dropper = compare_standings.iloc[-1]['team']
+    top_dropper = 'HFX Wanderers FC'
     bot_crest = team_ref[team_ref['team'] == top_dropper].iloc[0][5]
 
     game_week, goals, big_win, top_result, low_result, other_result = cpl_main.get_weeks_results(results[results['s'] <= 1],standings,team_ref)
@@ -203,7 +203,7 @@ def power():
 def comparison1():
     year = '2020'
     other_year = '2019'
-    headline = 'This Weeks Matches'
+    headline = 'Next 4 Matches'
     results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters  = load_main_files(year)
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
 
@@ -269,7 +269,7 @@ def comparison1():
 def comparison2():
     year = '2020'
     other_year = '2019'
-    headline = 'This Weeks Matches'
+    headline = 'Next 4 Matches'
     results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters = load_main_files(year)
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
 
@@ -429,7 +429,6 @@ def player():
     except:
         nationality = player_info[player_info['name'] == player['name'].values[0]]['nationality'].values[0]
 
-    print('VIEWING \n',player.columns,'\n')
     graph_image = player_info[player_info['display'] == player_name]['graph'].values[0]
 
 
@@ -452,7 +451,18 @@ def player_19():
     roster_team_info = team_ref[team_ref['team'] == team]
     roster_colour = roster_team_info.iloc[0][4]
     crest = roster_team_info.iloc[0][5]
-    return render_template('2019/cpl-es-player.html', name = player['name'].values[0],team_name = team, html_table = player, team_colour = roster_colour, year = year, crest = crest, other_year = other_year)
+
+    try:
+        player_name = player_info[player_info['display'] == player['name'].values[0]]['display'].values[0]
+    except:
+        player_name = player_info[player_info['name'] == player['name'].values[0]]['display'].values[0]
+    try:
+        nationality = player_info[player_info['display'] == player['name'].values[0]]['nationality'].values[0]
+    except:
+        nationality = player_info[player_info['name'] == player['name'].values[0]]['nationality'].values[0]
+
+    return render_template('2019/cpl-es-player.html',  name = player_name, nationality = nationality,
+    team_name = team, html_table = player, team_colour = roster_colour, year = year, crest = crest, other_year = other_year)
 
 @canples.route('/goals')
 def goals():

@@ -29,32 +29,43 @@
   </div>
 </nav>
 
-
 <style>
     table {
       border-collapse: collapse;
-      letter-spacing: 1px;
+      table-layout:fixed;
+      /*border: 2px solid rgb(200,200,200);*/
+      /*letter-spacing: 4px;*/
       margin: 0px auto;
+      width:100%;
     }
 
     tr {
       line-height: 1px;
-
       white-space: nowrap;
     }
 
     td, th {
-      padding: 10px 20px;
+      /*border: 1px solid rgb(190,190,190);*/
+      padding: 5px 5px;
     }
 
     td {
-      text-align: center;
+      text-align: left;
+    }
+
+    .button {
+      border:none;
+      padding:8px 0px;
+      text-decoration:none;
+      color:inherit;
+      background-color:inherit;
+      cursor:pointer;
     }
 
     caption {
       padding: 10px;
     }
-    </style>
+</style>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -64,29 +75,26 @@
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-      <div class="w3-half"><h5><b><i class="fa fa-users"></i> {{ team_name }} - Roster</b></h5></div>
+      <div class="w3-half"><h5><b><i class="fa fa-users"></i> {{ team_name }} - Roster (click last name to view)</b></h5></div>
     <div class="w3-half" style="text-align: right"><a href="{{ url_for('teams_19') }}"><b><input class="w3-button" value="Return to Teams"/></b></a></div>
   </header>
 
   <div class="w3-container w3-row-padding">
     <div>
       {%for i in range(0,html_table.shape[0])%}
-      <div class="w3-quarter w3-card-4 {{ team_colour }}">
-        <div class="w3-center">
-          <!--a href="{{ html_table.iloc[i,7] }}" target="_blank"-->
-            <img src="static/images/players/2019/{{ html_table.iloc[i,0] }}" alt="{{ html_table.iloc[i,1] }}" style="max-height:200px">
-          </a>
-        </div>
+      <div class="w3-quarter w3-card-4 ">
         <div class="w3-container w3-center cpl-eclipse-l">
         <form method="POST" action="/player-2019">
+          <div class="w3-center {{ team_colour }}">
+            <img src="static/images/players/2019/{{ html_table.iloc[i,0] }}" alt="{{ html_table.iloc[i,1] }}" style="max-height:200px">
+          </div>
           <table>
             <tr>
               <td><p><img src="static/images/flags/{{ html_table.iloc[i,6] }}" alt="{{ html_table.iloc[i,6] }}" style="max-height:20px"></p></td>
               <td><h4>{{ html_table.iloc[i,3] }}</h4></td>
             </tr>
             <tr>
-              <td><p>{{ html_table.iloc[i,1] }}</p></td>
-              <td><p href="{{ url_for('player_19') }}"><input class="w3-button" type="submit" id="name" name="name" value="{{ html_table.iloc[i,2] }}"></p></td>
+              <td colspan="2"><h5 href="{{ url_for('player_19') }}">{{ html_table.iloc[i,1] }} <input class="button" type="submit" id="name" name="name" value="{{ html_table.iloc[i,2] }}"></h5></td>
             </tr>
             <tr style="min-width:120px">
               {% if html_table.iloc[i,4] == 'f' %}

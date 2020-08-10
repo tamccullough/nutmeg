@@ -111,11 +111,11 @@
     <!-- table -->
     {%for i in range(0,html_table.shape[0])%}
       <div class="w3-third {{ html_table.iloc[i,4] }}">
-        <form method="POST" action="/roster">
+        <form method="POST" action="/roster-2019">
           <table {{ html_table.iloc[i,4] }}"">
             <tr>
               <td><img src="static/images/flags/{{ html_table.iloc[i,5] }}" alt="{{ html_table.iloc[i,0] }} Crest" style="max-height:41px"></td>
-              <td><a href="{{ url_for('roster') }}"><input class="button" type="submit" id="team" name="team" value="{{ html_table.iloc[i,0] }}"/></a></td>
+              <td><a href="{{ url_for('roster_19') }}"><input class="button" type="submit" id="team" name="team" value="{{ html_table.iloc[i,0] }}"/></a></td>
               <td>{{ html_table.iloc[i][1] }}</td>
             </tr>
           </table>
