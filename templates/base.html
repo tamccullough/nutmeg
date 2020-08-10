@@ -20,6 +20,44 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 .cpl-eclipse-m
 {color:#fff;background-color:#7b75a1}
 
+}
+
+table {
+  border-collapse: collapse;
+  table-layout:fixed;
+  /*border: 2px solid rgb(200,200,200);*/
+  /*letter-spacing: 4px;*/
+  margin: 0px auto;
+  width:100%;
+}
+
+tr {
+  line-height: 1px;
+  white-space: nowrap;
+}
+
+td, th {
+  /*border: 1px solid rgb(190,190,190);*/
+  padding: 10px 5px;
+}
+
+td {
+  text-align: left;
+}
+
+.button {
+  border:none;
+  padding:8px 0px;
+  text-decoration:none;
+  color:inherit;
+  background-color:inherit;
+  cursor:pointer;
+}
+
+caption {
+  padding: 10px;
+}
+
 </style>
 
 <body class="w3-2019-eclipse">
@@ -34,37 +72,38 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 {% block content %}{% endblock %}
 
 <!-- league information container -->
+
   <br>
   <div class="w3-container w3-2019-eclipse w3-padding-32">
     <div class="w3-row">
       <div class="w3-container w3-third">
         <h5 class="w3-bottombar w3-border-blue">Canadian Premier League</h5>
-        <a href="https://canpl.ca/" target="_blank" class="w3-button">official site</a><br>
+        <a href="https://canpl.ca/" target="_blank" class="button">official site</a><br>
         <a>Toronto, Canada</a>
       </div>
       <div class="w3-container w3-third">
         <h5 class="w3-bottombar w3-border-pink">One Soccer</h5>
-        <a href="https://onesoccer.ca/" target="_blank" class="w3-button">official tv partner</a><br>
+        <a href="https://onesoccer.ca/" target="_blank" class="button">official tv partner</a><br>
         <a>Toronto, Canada</a>
       </div>
       <div class="w3-container w3-third">
         <h5 class="w3-bottombar w3-border-orange">Team Links</h5>
         <table>
           <tr>
-            <td><a href="https://atleticoottawa.canpl.ca/" target="_blank"  class="w3-button">Atletico Ottawa</a></td>
-            <td><a href="https://cavalryfc.canpl.ca/" target="_blank" class="w3-button">Cavalry FC</a></td>
+            <td><a href="https://atleticoottawa.canpl.ca/" target="_blank"  class="button">Atletico Ottawa</a></td>
+            <td><a href="https://cavalryfc.canpl.ca/" target="_blank" class="button">Cavalry FC</a></td>
           </tr>
           <tr>
-            <td><a href="https://fcedmonton.canpl.ca/" target="_blank" class="w3-button">FC Edmonton</a></td>
-            <td><a href="https://forgefc.canpl.ca/" target="_blank" class="w3-button">Forge FC</a></td>
+            <td><a href="https://fcedmonton.canpl.ca/" target="_blank" class="button">FC Edmonton</a></td>
+            <td><a href="https://forgefc.canpl.ca/" target="_blank" class="button">Forge FC</a></td>
           </tr>
           <tr>
-            <td><a href="https://hfxwanderersfc.canpl.ca/" target="_blank" class="w3-button">HFX Wanderers Fc</a></td>
-            <td><a href="https://pacificfc.canpl.ca/" target="_blank" class="w3-button">Pacific FC</a></td>
+            <td><a href="https://hfxwanderersfc.canpl.ca/" target="_blank" class="button">HFX Wanderers Fc</a></td>
+            <td><a href="https://pacificfc.canpl.ca/" target="_blank" class="button">Pacific FC</a></td>
           </tr>
           <tr>
-            <td><a href="https://valourfc.canpl.ca/" target="_blank" class="w3-button">Valour FC</a></td>
-            <td><a href="https://york9fc.canpl.ca/" target="_blank" class="w3-button">York9 FC</a></td>
+            <td><a href="https://valourfc.canpl.ca/" target="_blank" class="button">Valour FC</a></td>
+            <td><a href="https://york9fc.canpl.ca/" target="_blank" class="button">York9 FC</a></td>
           </tr>
       </table>
       </div>

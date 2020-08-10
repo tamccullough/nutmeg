@@ -48,7 +48,6 @@
 
     td, th {
       /*border: 1px solid rgb(190,190,190);*/
-      padding: 5px 5px;
     }
 
     td {
@@ -84,23 +83,23 @@
         <div class="w3-container cpl-eclipse-l">
           <table>
             <tr>
-              <td><p><img src="static/images/flags/{{ html_table.iloc[i,3] }}" alt="{{ html_table.iloc[i,3] }}" style="max-height:20px"></p></td>
-              <td><h4>{{ html_table.iloc[i,4] }}</h4></td>
+              <td style="padding: 5px 5px;"><p><img src="static/images/flags/{{ html_table.iloc[i,3] }}" alt="{{ html_table.iloc[i,3] }}" style="max-height:20px"></p></td>
+              <td style="padding: 5px 5px;"><h4>{{ html_table.iloc[i,4] }}</h4></td>
             </tr>
             <tr>
               <td colspan="2"><h5>{{ html_table.iloc[i,1] }} {{ html_table.iloc[i,2] }}</h5></td>
             </tr>
             <tr style="min-width:120px">
               {% if html_table.iloc[i,5] == 'f' %}
-                  <td><p>Attacker</p></td>
+                  <td style="padding: 5px 5px;"><p>Attacker</p></td>
               {% elif html_table.iloc[i,5] == 'm' %}
-                  <td><p>Midfielder</p></td>
+                  <td style="padding: 5px 5px;"><p>Midfielder</p></td>
               {% elif html_table.iloc[i,5] == 'd' %}
-                  <td><p>Defender</p></td>
+                  <td style="padding: 5px 5px;"><p>Defender</p></td>
               {% else %}
-                  <td><p>Goalkeeper</p></td>
+                  <td style="padding: 5px 5px;"><p>Goalkeeper</p></td>
               {% endif %}
-              <td><p>Overall {{ html_table.iloc[i,6] }}</p></td>
+              <td style="padding: 5px 5px;"><p>Overall {{ html_table.iloc[i,6] }}</p></td>
             </tr>
           </table>
         </div>

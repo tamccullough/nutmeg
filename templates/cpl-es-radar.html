@@ -17,7 +17,7 @@
     <a href="{{ url_for('index_19') }}" class="w3-bar-item w3-button w3-padding">  Go to 2019 Season</a>
     <a href="{{ url_for('index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-dashboard fa-fw"></i>  Dashboard</a>
     <a href="{{ url_for('standings') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-trophy fa-fw"></i>  Standings</a>
-    <a href="{{ url_for('power') }}" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-bolt fa-fw"></i>  Power Rankings</a>
+    <a href="{{ url_for('power') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bolt fa-fw"></i>  Power Rankings</a>
     <a href="{{ url_for('comparison1') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Match Prediction</a>
     <a href="{{ url_for('teams') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-shield fa-fw"></i>  Teams</a>
     <a href="{{ url_for('radar') }}" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-line-chart fa-fw"></i>  Radar Charts</a>
@@ -31,6 +31,34 @@
   </div>
 </nav>
 
+<style>
+    table {
+      border-collapse: collapse;
+      table-layout:fixed;
+      /*border: 2px solid rgb(200,200,200);*/
+      /*letter-spacing: 4px;*/
+      margin: 0px auto;
+      width:100%;
+    }
+
+    tr {
+      line-height: 1px;
+      white-space: nowrap;
+    }
+
+    td, th {
+      /*border: 1px solid rgb(190,190,190);*/
+      padding: 10px 5px;
+    }
+
+    td {
+      text-align: left;
+    }
+
+    caption {
+      padding: 10px;
+    }
+</style>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -48,80 +76,80 @@
           <h3>Atletico Ottawa</h3>
            <img src="static/images/2020/cpl-2020-Atletico Ottawa-radar.png" alt="Atletico Ottawa Radar" style="max-width:90%">
            <div class="w3-container w3-center w3-padding-16">
-             <img src="static/images/2020/cpl-2020-Atletico Ottawa-overall-graph.png" alt="player performance" style="max-width:95%">
+             <img src="static/images/2020/cpl-2020-Atletico Ottawa-overall-graph.png" alt="goals" style="max-width:98%">
            </div>
            <div class="w3-container w3-center w3-padding-16">
-             <img src="static/images/2020/cpl-2020-Atletico Ottawa-overall-graph.png" alt="player performance" style="max-width:95%">
+             <img src="static/images/2020/cpl-2020-Atletico Ottawa-overall-graph.png" alt="team performance" style="max-width:98%">
            </div>
         </div>
         <div class="w3-center w3-half">
           <h3>Cavalry FC</h3>
            <img src="static/images/2020/cpl-2020-Cavalry FC-radar.png" alt="Cavalry FC Radar" style="max-width:90%">
            <div class="w3-container w3-center w3-padding-16">
-             <img src="static/images/2020/cpl-2020-Cavalry FC-overall-graph.png" alt="player performance" style="max-width:95%">
+             <img src="static/images/2020/cpl-2020-Cavalry FC-overall-graph.png" alt="goals"style="max-width:98%">
            </div>
            <div class="w3-container w3-center w3-padding-16">
-             <img src="static/images/2020/cpl-2020-Cavalry FC-overall-graph.png" alt="player performance" style="max-width:95%">
+             <img src="static/images/2020/cpl-2020-Cavalry FC-overall-graph.png" alt="team performance" style="max-width:98%">
            </div>
         </div>
         <div class="w3-center w3-half">
           <h3>FC Edmonton</h3>
            <img src="static/images/2020/cpl-2020-FC Edmonton-radar.png" alt="Cavalry FC Radar" style="max-width:90%">
            <div class="w3-container w3-center w3-padding-16">
-             <img src="static/images/2020/cpl-2020-FC Edmonton-overall-graph.png" alt="player performance" style="max-width:95%">
+             <img src="static/images/2020/cpl-2020-FC Edmonton-overall-graph.png" alt="goals"style="max-width:98%">
            </div>
            <div class="w3-container w3-center w3-padding-16">
-             <img src="static/images/2020/cpl-2020-FC Edmonton-overall-graph.png" alt="player performance" style="max-width:95%">
+             <img src="static/images/2020/cpl-2020-FC Edmonton-overall-graph.png" alt="team performance" style="max-width:98%">
            </div>
         </div>
         <div class="w3-center w3-half">
           <h3>Forge FC</h3>
            <img src="static/images/2020/cpl-2020-Forge FC-radar.png" alt="Cavalry FC Radar" style="max-width:90%">
            <div class="w3-container w3-center w3-padding-16">
-             <img src="static/images/2020/cpl-2020-Forge FC-overall-graph.png" alt="player performance" style="max-width:95%">
+             <img src="static/images/2020/cpl-2020-Forge FC-overall-graph.png" alt="goals"style="max-width:98%">
            </div>
            <div class="w3-container w3-center w3-padding-16">
-             <img src="static/images/2020/cpl-2020-Forge FC-overall-graph.png" alt="player performance" style="max-width:95%">
+             <img src="static/images/2020/cpl-2020-Forge FC-overall-graph.png" alt="team performance" style="max-width:98%">
            </div>
         </div>
         <div class="w3-center w3-half">
           <h3>HFX Wanderers FC</h3>
            <img src="static/images/2020/cpl-2020-HFX Wanderers FC-radar.png" alt="Cavalry FC Radar" style="max-width:90%">
            <div class="w3-container w3-center w3-padding-16">
-             <img src="static/images/2020/cpl-2020-HFX Wanderers FC-overall-graph.png" alt="player performance" style="max-width:95%">
+             <img src="static/images/2020/cpl-2020-HFX Wanderers FC-overall-graph.png" alt="goals"style="max-width:98%">
            </div>
            <div class="w3-container w3-center w3-padding-16">
-             <img src="static/images/2020/cpl-2020-HFX Wanderers FC-overall-graph.png" alt="player performance" style="max-width:95%">
+             <img src="static/images/2020/cpl-2020-HFX Wanderers FC-overall-graph.png" alt="team performance" style="max-width:98%">
            </div>
         </div>
         <div class="w3-center w3-half">
           <h3>Pacific FC</h3>
            <img src="static/images/2020/cpl-2020-Pacific FC-radar.png" alt="Cavalry FC Radar" style="max-width:90%">
            <div class="w3-container w3-center w3-padding-16">
-             <img src="static/images/2020/cpl-2020-Pacific FC-overall-graph.png" alt="player performance" style="max-width:95%">
+             <img src="static/images/2020/cpl-2020-Pacific FC-overall-graph.png" alt="goals"style="max-width:98%">
            </div>
            <div class="w3-container w3-center w3-padding-16">
-             <img src="static/images/2020/cpl-2020-Pacific FC-overall-graph.png" alt="player performance" style="max-width:95%">
+             <img src="static/images/2020/cpl-2020-Pacific FC-overall-graph.png" alt="team performance" style="max-width:98%">
            </div>
         </div>
         <div class="w3-center w3-half">
           <h3>Valour FC</h3>
            <img src="static/images/2020/cpl-2020-Valour FC-radar.png" alt="Cavalry FC Radar" style="max-width:90%">
            <div class="w3-container w3-center w3-padding-16">
-             <img src="static/images/2020/cpl-2020-Valour FC-overall-graph.png" alt="player performance" style="max-width:95%">
+             <img src="static/images/2020/cpl-2020-Valour FC-overall-graph.png" alt="goals"style="max-width:98%">
            </div>
            <div class="w3-container w3-center w3-padding-16">
-             <img src="static/images/2020/cpl-2020-Valour FC-overall-graph.png" alt="player performance" style="max-width:95%">
+             <img src="static/images/2020/cpl-2020-Valour FC-overall-graph.png" alt="team performance" style="max-width:98%">
            </div>
         </div>
         <div class="w3-center w3-half">
           <h3>York9 FC</h3>
            <img src="static/images/2020/cpl-2020-York9 FC-radar.png" alt="Cavalry FC Radar" style="max-width:90%">
            <div class="w3-container w3-center w3-padding-16">
-             <img src="static/images/2020/cpl-2020-York9 FC-overall-graph.png" alt="player performance" style="max-width:95%">
+             <img src="static/images/2020/cpl-2020-York9 FC-overall-graph.png" alt="goals"style="max-width:98%">
            </div>
            <div class="w3-container w3-center w3-padding-16">
-             <img src="static/images/2020/cpl-2020-York9 FC-overall-graph.png" alt="player performance" style="max-width:95%">
+             <img src="static/images/2020/cpl-2020-York9 FC-overall-graph.png" alt="team performance" style="max-width:98%">
            </div>
         </div>
   </div>

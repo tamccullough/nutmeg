@@ -48,7 +48,6 @@
 
     td, th {
       /*border: 1px solid rgb(190,190,190);*/
-      padding: 5px 5px;
     }
 
     td {
@@ -93,23 +92,23 @@
           </div>
           <table>
             <tr>
-              <td><p><img src="static/images/flags/{{ html_table.iloc[i,6] }}" alt="{{ html_table.iloc[i,6] }}" style="max-height:20px"></p></td>
-              <td><h4>{{ html_table.iloc[i,3] }}</h4></td>
+              <td style="padding: 5px 5px;"><p><img src="static/images/flags/{{ html_table.iloc[i,6] }}" alt="{{ html_table.iloc[i,6] }}" style="max-height:20px"></p></td>
+              <td style="padding: 5px 5px;"><h4>{{ html_table.iloc[i,3] }}</h4></td>
             </tr>
             <tr>
               <td colspan="2"><h5 href="{{ url_for('player') }}">{{ html_table.iloc[i,1] }} <input class="button" type="submit" id="name" name="name" value="{{ html_table.iloc[i,2] }}"></h5></td>
             </tr>
             <tr style="min-width:120px">
               {% if html_table.iloc[i,4] == 'f' %}
-                  <td><p>Attacker</p></td>
+                  <td style="padding: 5px 5px;"><p>Attacker</p></td>
               {% elif html_table.iloc[i,4] == 'm' %}
-                  <td><p>Midfielder</p></td>
+                  <td style="padding: 5px 5px;"><p>Midfielder</p></td>
               {% elif html_table.iloc[i,4] == 'd' %}
-                  <td><p>Defender</p></td>
+                  <td style="padding: 5px 5px;"><p>Defender</p></td>
               {% else %}
-                  <td><p>Goalkeeper</p></td>
+                  <td style="padding: 5px 5px;"><p>Goalkeeper</p></td>
               {% endif %}
-              <td><p>Overall {{ html_table.iloc[i,5] }}</p></td>
+              <td style="padding: 5px 5px;"><p>Overall {{ html_table.iloc[i,5] }}</p></td>
             </tr>
           </table>
         </form>
@@ -130,15 +129,15 @@
         <form method="POST" action="/player">
           <table>
             <tr>
-              <td><p><img src="static/images/flags/{{ coach['country'].values[0] }}" alt="{{ coach['country'].values[0][:-4] }}" style="max-height:20px"></p></td>
-              <td><p>{{ coach['coach'].values[0] }}</p></td>
+              <td style="padding: 5px 5px;"><p><img src="static/images/flags/{{ coach['country'].values[0] }}" alt="{{ coach['country'].values[0][:-4] }}" style="max-height:20px"></p></td>
+              <td style="padding: 5px 5px;"><p>{{ coach['coach'].values[0] }}</p></td>
             </tr>
           </table>
           <table>
             <tr>
-              <td><a>Wins {{ coach['w'].values[0]}}</a></td>
-              <td><a>Losses {{ coach['l'].values[0] }}</a></td>
-              <td><a>Draws {{ coach['d'].values[0] }}</a></td>
+              <td style="padding: 5px 5px;"><a>Wins {{ coach['w'].values[0]}}</a></td>
+              <td style="padding: 5px 5px;"><a>Losses {{ coach['l'].values[0] }}</a></td>
+              <td style="padding: 5px 5px;"><a>Draws {{ coach['d'].values[0] }}</a></td>
             </tr>
           </table>
             <br>

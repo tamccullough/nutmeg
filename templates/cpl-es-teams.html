@@ -51,10 +51,6 @@
       padding: 10px 5px;
     }
 
-    td {
-      text-align: center;
-    }
-
     .button {
       border:none;
       padding:8px 0px;
@@ -85,27 +81,27 @@
         <div class="w3-third w3-blue">
             <table>
               <tr>
-                <td><b>crest</b></td>
-                <td><b> {{ columns[0] }}</b></td>
-                <td><b>{{ columns[1] }}</b></td>
+                <td style="text-align: center;"><b>crest</b></td>
+                <td style="text-align: center;"><b> {{ columns[0] }}</b></td>
+                <td style="text-align: center;"><b>{{ columns[1] }}</b></td>
               </tr>
             </table>
         </div>
         <div class="w3-third w3-blue">
             <table>
               <tr>
-                <td><b>wins</b></td>
-                <td><b>loses</b></td>
-                <td><b>draws</b></td>
+                <td style="text-align: center;"><b>wins</b></td>
+                <td style="text-align: center;"><b>loses</b></td>
+                <td style="text-align: center;"><b>draws</b></td>
               </tr>
             </table>
         </div>
           <div class="w3-third w3-blue">
               <table>
                 <tr>
-                  <td><b>{{ columns[2] }}</b></td>
-                  <td><b>{{ columns[6] }}</b></td>
-                  <td><b>{{ columns[7] }}</b></td>
+                  <td style="text-align: center;"><b>{{ columns[2] }}</b></td>
+                  <td style="text-align: center;"><b>{{ columns[6] }}</b></td>
+                  <td style="text-align: center;"><b>{{ columns[7] }}</b></td>
                 </tr>
               </table>
           </div>
@@ -116,9 +112,9 @@
         <form method="POST" action="/roster">
           <table {{ html_table.iloc[i,4] }}"">
             <tr>
-              <td><img src="static/images/flags/{{ html_table.iloc[i,5] }}" alt="{{ html_table.iloc[i,0] }} Crest" style="max-height:41px"></td>
-              <td><a href="{{ url_for('roster') }}"><input class="button" type="submit" id="team" name="team" value="{{ html_table.iloc[i,0] }}"/></a></td>
-              <td>{{ html_table.iloc[i][1] }}</td>
+              <td style="text-align: center;"><img src="static/images/flags/{{ html_table.iloc[i,5] }}" alt="{{ html_table.iloc[i,0] }} Crest" style="max-height:41px"></td>
+              <td style="text-align: center;"><a href="{{ url_for('roster') }}"><input class="button" type="submit" id="team" name="team" value="{{ html_table.iloc[i,0] }}"/></a></td>
+              <td style="text-align: center;">{{ html_table.iloc[i][1] }}</td>
             </tr>
           </table>
         </form>
@@ -126,38 +122,38 @@
       <div class="w3-third {{ html_table.iloc[i,4] }}">
           <table>
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td style="text-align: center;"></td>
+              <td style="text-align: center;"></td>
+              <td style="text-align: center;"></td>
             </tr>
             <tr>
-              <td>{{ html_table.iloc[i][10] }}</td>
-              <td>{{ html_table.iloc[i][11] }}</td>
-              <td>{{ html_table.iloc[i][12] }}</td>
+              <td style="text-align: center;">{{ html_table.iloc[i][10] }}</td>
+              <td style="text-align: center;">{{ html_table.iloc[i][11] }}</td>
+              <td style="text-align: center;">{{ html_table.iloc[i][12] }}</td>
             </tr>
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td style="text-align: center;"></td>
+              <td style="text-align: center;"></td>
+              <td style="text-align: center;"></td>
             </tr>
           </table>
       </div>
       <div class="w3-third {{ html_table.iloc[i,4] }}">
           <table>
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td style="text-align: center;"></td>
+              <td style="text-align: center;"></td>
+              <td style="text-align: center;"></td>
             </tr>
             <tr>
-              <td>{{ html_table.iloc[i][2] }}</td>
-              <td><a class="button" href="{{ html_table.iloc[i,6] }}" target="_blank">club site</a></td>
-              <td><a class="button" href="{{ html_table.iloc[i,7] }}" target="_blank">wikipedia</a></td>
+              <td style="text-align: center;">{{ html_table.iloc[i][2] }}</td>
+              <td style="text-align: center;"><a class="button" href="{{ html_table.iloc[i,6] }}" target="_blank">club site</a></td>
+              <td style="text-align: center;"><a class="button" href="{{ html_table.iloc[i,7] }}" target="_blank">wikipedia</a></td>
             </tr>
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td style="text-align: center;"></td>
+              <td style="text-align: center;"></td>
+              <td style="text-align: center;"></td>
             </tr>
           </table>
       </div>

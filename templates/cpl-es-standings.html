@@ -48,7 +48,6 @@
 
     td, th {
       /*border: 1px solid rgb(190,190,190);*/
-      padding: 15px 5px;
     }
 
     td {
@@ -78,9 +77,9 @@
         <table class="w3-blue">
           <tr>
             <td style="width:60%;"><b>rank / team </b></td>
-            <td>MP</b></td>
-            <td>Pts</b></td>
-            <td>PPG</b></td>
+            <td style="padding: 15px 5px;">MP</b></td>
+            <td style="padding: 15px 5px;">Pts</b></td>
+            <td style="padding: 15px 5px;">PPG</b></td>
           </tr>
         </table>
       </div>
@@ -89,12 +88,12 @@
         <div>
           <table class="w3-blue">
             <tr>
-              <td>W</b></td>
-              <td>L</b></td>
-              <td>D</b></td>
-              <td>GD</b></td>
-              <td>GF</b></td>
-              <td>GA</b></td>
+              <td style="padding: 15px 5px;">W</b></td>
+              <td style="padding: 15px 5px;">L</b></td>
+              <td style="padding: 15px 5px;">D</b></td>
+              <td style="padding: 15px 5px;">GD</b></td>
+              <td style="padding: 15px 5px;">GF</b></td>
+              <td style="padding: 15px 5px;">GA</b></td>
             </tr>
           </table>
         </div>
@@ -109,9 +108,9 @@
             <table class="cpl-eclipse-l">
               <tr>
                 <td style="width:60%;">{{ standings_table.iloc[i][0] }} - {{ standings_table.iloc[i][1] }}</b></td>
-                <td>{{ standings_table.iloc[i][2] }}</td>
-                <td><b>{{ standings_table.iloc[i][3] }}</b></td>
-                <td>{{ standings_table.iloc[i][5] }}</td>
+                <td style="padding: 15px 5px;">{{ standings_table.iloc[i][2] }}</td>
+                <td style="padding: 15px 5px;"><b>{{ standings_table.iloc[i][3] }}</b></td>
+                <td style="padding: 15px 5px;">{{ standings_table.iloc[i][5] }}</td>
               </tr>
             </table>
           </div>
@@ -123,9 +122,9 @@
                 <td class="w3-green">{{ standings_table.iloc[i][6] }}</td>
                 <td class="w3-red">{{ standings_table.iloc[i][7] }}</td>
                 <td class="w3-orange">{{ standings_table.iloc[i][8] }}</td>
-                <td>{{ standings_table.iloc[i][9] }}</td>
-                <td>{{ standings_table.iloc[i][10] }}</td>
-                <td>{{ standings_table.iloc[i][11] }}</td>
+                <td style="padding: 15px 5px;">{{ standings_table.iloc[i][9] }}</td>
+                <td style="padding: 15px 5px;">{{ standings_table.iloc[i][10] }}</td>
+                <td style="padding: 15px 5px;">{{ standings_table.iloc[i][11] }}</td>
               </tr>
             </table>
           </div>
