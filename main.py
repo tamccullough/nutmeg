@@ -260,6 +260,10 @@ def comparison1():
     group3 = team5 + '-' + team6
     group4 = team7 + '-' + team8
 
+    home_sum = home_roster['overall'].sum()
+    away_sum = away_roster['overall'].sum()
+    #print(home_sum,away_sum)
+
     return render_template('cpl-es-comparison.html',home_table = home_roster.head(11), away_table = away_roster.head(11), home_win = home_win,
     home_history = q1_r, away_history = q2_r,
     home_team = q1, away_team = q2, away_win = away_win, draw = draw, home_form = home_form, away_form = away_form, schedule = schedule, year = year,
@@ -327,6 +331,10 @@ def comparison2():
     group2 = team3 + '-' + team4
     group3 = team5 + '-' + team6
     group4 = team7 + '-' + team8
+
+    home_sum = home_roster['overall'].sum()
+    away_sum = away_roster['overall'].sum()
+    #print(home_sum,away_sum)
 
     return render_template('cpl-es-comparison2.html',home_table = home_roster.head(11), away_table = away_roster.head(11), home_win = home_win,
     home_history = q1_r, away_history = q2_r,
