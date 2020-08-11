@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 
 import pickle
-classifier = 'models/cpl_roster_classifier.sav'
+classifier = 'models/cpl_match_classifier.sav'
 cpl_classifier_model = pickle.load(open(classifier, 'rb'))
 regressor = 'models/cpl_score_regressor.sav'
 cpl_score_model = pickle.load(open(regressor, 'rb'))
@@ -203,7 +203,7 @@ def power():
 def comparison1():
     year = '2020'
     other_year = '2019'
-    headline = 'Next 4 Matches'
+    headline = 'First 4 Matches'
     results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters  = load_main_files(year)
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
 
@@ -269,7 +269,7 @@ def comparison1():
 def comparison2():
     year = '2020'
     other_year = '2019'
-    headline = 'Next 4 Matches'
+    headline = 'First 4 Matches'
     results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters = load_main_files(year)
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
 
