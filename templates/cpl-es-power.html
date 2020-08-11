@@ -32,6 +32,12 @@
 </nav>
 
 <style>
+    img {
+      max-width: 100%;
+      height: auto;
+      width: auto\9; /* ie8 */
+    }
+
     table {
       border-collapse: collapse;
       table-layout:fixed;
@@ -86,10 +92,10 @@
             <td><h5>{{ html_table.iloc[i,1] }}</h5></td>
           </tr>
           <tr>
-            <td><h5>Movement: {{ html_table.iloc[i,9] }}</h5></td>
+            <td><h5>Move: {{ html_table.iloc[i,9] }}</h5></td>
           </tr>
           <tr>
-            <td><h5>Form: {{ html_table.iloc[i,2]}}</h5></td>
+            <td><h5>F: {{ html_table.iloc[i,2]}}</h5></td>
           </tr>
           </table>
         </div>
