@@ -323,12 +323,12 @@ def clean_team_game(data,db,check):
         db = db.T
     return db
 
-def get_weeks_results(data,standings,team_ref):
+def get_weeks_results(data,standings,stats,team_ref):
     if data.iloc[0]['hr'] == 'E':
         db = pd.DataFrame([('NA',0,'NA',0)],columns=['home','hs','away','as'])
         big_win, top_team, low_team,other_team = db,db,db,db
-        goals = 0
-        return db,goals,big_win,top_team,low_team,other_team
+        goals, assists, yellows, reds = 0,0,0,0
+        return db,goals,big_win,top_team,low_team,other_team, assists, yellows, reds
     df = data
     month = df.iloc[-1]['m']
     week = df.iloc[-1]['d']
@@ -357,7 +357,12 @@ def get_weeks_results(data,standings,team_ref):
     other_team = pd.DataFrame(other_team.loc[0][['home','hs','away','as']])
     other_team = other_team.T
     other_team = get_short_name(other_team,team_ref)
-    return db,goals,big_win,top_team,low_team,other_team
+
+    assists = stats['assists'].sum()
+    yellows = stats['yellow'].sum()
+    reds = stats['red'].sum()
+
+    return db, goals, big_win, top_team, low_team, other_team, assists, yellows, reds
 
 def get_team_stats(stats,query):
     team_stats = stats[stats['team'] == query]

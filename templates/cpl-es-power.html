@@ -79,7 +79,7 @@
 
   <div class="w3-container w3-row-padding w3-margin-bottom">
     {%for i in range(0,html_table.shape[0])%}
-    <div class="w3-quarter">
+    <div class="w3-half">
       <div class="w3-container {{ html_table.iloc[i,8] }} w3-padding-16">
         <table style="width:100%">
           <tr>
@@ -92,10 +92,10 @@
             <td><h5>{{ html_table.iloc[i,1] }}</h5></td>
           </tr>
           <tr>
-            <td><h5>Move: {{ html_table.iloc[i,9] }}</h5></td>
+            <td><h5>Movement: {{ html_table.iloc[i,9] }}</h5></td>
           </tr>
           <tr>
-            <td><h5>F: {{ html_table.iloc[i,2]}}</h5></td>
+            <td><h5>Form: {{ html_table.iloc[i,2]}}</h5></td>
           </tr>
           </table>
         </div>

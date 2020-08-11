@@ -95,7 +95,7 @@ def index():
     bot_crest = team_ref[team_ref['team'] == top_dropper]
     bot_crest = bot_crest.iloc[0][5]
 
-    game_week, goals, big_win, top_result, low_result, other_result = cpl_main.get_weeks_results(results[results['s'] <= 1],standings,team_ref)
+    game_week, goals, big_win, top_result, low_result, other_result, assists, yellows, reds = cpl_main.get_weeks_results(results[results['s'] <= 1],standings,stats,team_ref)
 
     top_forward = rated_forwards.loc[0]
     top_midfielder = rated_midfielders.loc[0]
@@ -111,7 +111,8 @@ def index():
     champs = year + ' Champions TBD'
 
     return render_template('cpl-es-index.html',top_mover = top_mover, top_dropper = top_dropper,
-    goals = goals, big_win = big_win, top_result = top_result, low_result = low_result, other_result = other_result,
+    goals = goals,  assists = assists, yellows = yellows, reds = reds,
+    big_win = big_win, top_result = top_result, low_result = low_result, other_result = other_result,
     top_team = top_team, top_keeper = top_keeper,top_forward = top_forward,
     top_midfielder = top_midfielder, top_defender = top_defender,
     top_scorer = top_scorer, top_assist = top_assist, top_offender = top_offender,
@@ -141,7 +142,7 @@ def index_19():
     top_dropper = 'HFX Wanderers FC'
     bot_crest = team_ref[team_ref['team'] == top_dropper].iloc[0][5]
 
-    game_week, goals, big_win, top_result, low_result, other_result = cpl_main.get_weeks_results(results[results['s'] <= 1],standings,team_ref)
+    game_week, goals, big_win, top_result, low_result, other_result, assists, yellows, reds = cpl_main.get_weeks_results(results[results['s'] <= 1],standings,stats,team_ref)
 
     top_forward = rated_forwards.loc[0]
     top_midfielder = rated_midfielders.loc[0]
@@ -155,7 +156,8 @@ def index_19():
     champs = 'Forge FC 2019 Champions'
 
     return render_template('/2019/cpl-es-index.html',top_mover = top_mover, top_dropper = top_dropper,
-    goals = goals, big_win = big_win, top_result = top_result, low_result = low_result, other_result = other_result,
+    goals = goals,  assists = assists, yellows = yellows, reds = reds,
+    big_win = big_win, top_result = top_result, low_result = low_result, other_result = other_result,
     top_team = top_team, top_keeper = top_keeper,top_forward = top_forward,
     top_midfielder = top_midfielder, top_defender = top_defender,
     top_scorer = top_scorer, top_assist = top_assist, top_offender = top_offender,
