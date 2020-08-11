@@ -248,7 +248,7 @@ def comparison1():
 
     team1, team2, team3, team4, team5, team6, team7, team8 = cpl_main.get_team_files(schedule,team_ref)
 
-    if (home_win and away_win) < draw:
+    if (home_win < draw) and (away_win < draw):
         home_win, away_win = draw, draw
 
     home_win = get_string(home_win)
@@ -316,7 +316,7 @@ def comparison2():
 
     team1, team2, team3, team4, team5, team6, team7, team8 = cpl_main.get_team_files(schedule,team_ref)
 
-    if (home_win and away_win) < draw:
+    if (home_win < draw) and (away_win < draw):
         home_win, away_win = draw, draw
 
     home_win = get_string(home_win)

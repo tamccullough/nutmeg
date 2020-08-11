@@ -98,9 +98,9 @@
       </div>
       <div class="w3-container w3-padding {{ 'w3-green' if home_win*100 > away_win*100 else 'w3-red' if home_win*100 < away_win*100 else 'w3-orange' }}">
         {% if home_win == away_win %}
-        <h4 style="width:50%" class="w3-left">{{home_win}}% Draw</h4>
+        <h4 style="width:50%" class="w3-left">{{ draw }}% Draw</h4>
         {% else %}
-        <h4 style="width:50%" class="w3-left">{{home_win}}% Win</h4>
+        <h4 style="width:50%" class="w3-left">{{ home_win }}% Win</h4>
         {% endif%}
         <h4 style="text-align:right; width:50%" class="w3-right">Score: {{home_score}}</h4>
       </div>
@@ -159,9 +159,9 @@
       </div>
       <div class="w3-container w3-padding {{ 'w3-green' if away_win*100 > home_win*100 else 'w3-red' if away_win*100 < home_win*100 else 'w3-orange' }}">
         {% if home_win == away_win %}
-        <h4 style="width:50%" class="w3-left">{{away_win}}% Draw</h4>
+        <h4 style="width:50%" class="w3-left">{{ draw }}% Draw</h4>
         {% else %}
-        <h4 style="width:50%" class="w3-left">{{away_win}}% Win</h4>
+        <h4 style="width:50%" class="w3-left">{{ away_win }}% Win</h4>
         {% endif%}
         <h4 style="text-align:right; width:50%" class="w3-right">Score: {{away_score}}</h4>
       </div>

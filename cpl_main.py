@@ -67,7 +67,6 @@ def fix_db_na(data):
     if db['team'].isnull().values.any():
         for row in range(db.shape[0]):
             if pd.isna(db.iloc[row]['team']) == True:
-                print(True)
                 db.iloc[row]['team'] = get_long_name(db.iloc[row]['team'],data)
     return db
 
@@ -667,7 +666,6 @@ def get_form_results(data,dc):
     teams = dc['team']
     for team in teams:
         df = get_team_form(form,team)
-        #print(team,'\n',df)
         db[team] = pd.Series(df['summary'].values)
     db = db.T
     db = db.reset_index()
@@ -675,7 +673,6 @@ def get_form_results(data,dc):
     return db
 
 def best_roster(query,results,results_old,stats,stats_old,stats_seed,player_info,rated_forwards):
-    #print('\n',query)
     # some players or clubs may have yet to play a match
     # insert missing values for this situation
     def sort_players(data,players,indx,position):
@@ -702,7 +699,6 @@ def best_roster(query,results,results_old,stats,stats_old,stats_seed,player_info
     all_results = pd.concat([results,results_old])
     all_results = all_results[['game','d', 'm', 'hs', 'as', 'home', 'hr', 'away', 'ar']]
     winning_games = all_results[(((all_results['home'] == query) & (all_results['hr'] == 'W')) | ((all_results['away'] == query) & (all_results['ar'] == 'W')))]['game'].values
-    #print(winning_games)
 
     # find players who have played in those winning games
     all_stats = pd.concat([stats,stats_old])
@@ -712,7 +708,6 @@ def best_roster(query,results,results_old,stats,stats_old,stats_seed,player_info
     # get the current players on the team
     players = stats_seed[stats_seed['team'] == query][['name','position','number']]
     names = players['name'].values
-    #print(names)
 
     # create a list of players based on winning games that they have played in
     roster_list = [[name,check[check['name']==name]['position'].values[0],check.name.str.count(name).sum()] for name in check.name.unique()]
@@ -721,7 +716,6 @@ def best_roster(query,results,results_old,stats,stats_old,stats_seed,player_info
     for i in range(len(roster_list)):
         if roster_list[i][0] in names:
             top_players.append(roster_list[i])
-    #print(top_players)
 
     db = pd.DataFrame(top_players,columns=['name','position','count'])
     db = db.sort_values(by=['position','count'],ascending=False)
@@ -748,7 +742,6 @@ def best_roster(query,results,results_old,stats,stats_old,stats_seed,player_info
     else:
         formation = [3,4,3]
 
-    #print(formation)
     game_roster = db[db['position'] == 'g'].head(1)
     if db[db['position'] == 'g'].head(1).empty:
         keeper = sort_players(db,players,1,'g')
@@ -786,7 +779,6 @@ def best_roster(query,results,results_old,stats,stats_old,stats_seed,player_info
         forward = forward[['name','position','overall']].values[0]
         game_roster.at[10] = forward
 
-    #print('\nPRE GAME ROSTER\n',game_roster)
 
     # for prediction
     subs = db[~db['name'].isin(game_roster.name.unique())]
@@ -800,12 +792,12 @@ def best_roster(query,results,results_old,stats,stats_old,stats_seed,player_info
         rest_of_roster['count'] = 0
         rest_of_roster= rest_of_roster[rest_of_roster['position'] != 'g']
         subs = pd.concat([subs,rest_of_roster])
-    #print('SUBS\n',subs)
+
     if np.isnan(subs['count'].mean()):
         subs_count_min = 0
     else:
         subs_count_min = subs['count'].min()
-    #print('\nMEAN:',subs['count'].mean(),'MIN:',subs['count'].min(),'MAX:',subs['count'].max(),'\n')
+
     subs = subs[subs['count'] >= subs_count_min]
     game_roster = pd.concat([game_roster,subs.head(5)])
 
@@ -1134,13 +1126,13 @@ def get_final_game_prediction(model,home_array,home_score,away_score):
     # get the prediction from the classification model
     prediction = roster_pred(model,home_array)
     probability = roster_prob(model,home_array)
-    #print(prediction,probability[0],probability[1],probability[2],home_score,away_score,'\n') # for debug leave it
+
     p_l, p_d, p_w = probability[0],probability[1],probability[2]#norm(q1_w, q1_l, q1_d)
 
     #FIX THE SCORE ####
     # adjust score depending on the outcome from the prediction
-    if prediction == 'W' and (home_score == away_score):
-        away_score = random.choice(range(away_score-1))
+    if prediction == 'W' and (home_score == away_score) or prediction == 'W' and (home_score < away_score):
+        away_score = random.choice(range(home_score-1))
     if prediction == 'L' and (home_score == away_score) or prediction == 'L' and (home_score > away_score):
         home_score = random.choice(range(away_score-1))
     if prediction == 'D':
