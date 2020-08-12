@@ -1096,9 +1096,12 @@ def get_final_game_prediction(model,home_array,home_score,away_score):
             end = x
         else:
             end = y
-        x = random.choice(range(end))
-        y = x
-        return x,y
+        if end == 0:
+            return x,y
+        else:
+            x = random.choice(range(end))
+            y = x
+            return x,y
     # get the model prediction probability of W, L, D
 
     ###### need to be sure of the order of these probabilities
@@ -1131,10 +1134,17 @@ def get_final_game_prediction(model,home_array,home_score,away_score):
 
     #FIX THE SCORE ####
     # adjust score depending on the outcome from the prediction
+    print('\n CHECK\n',prediction, home_score, away_score)
     if prediction == 'W' and (home_score == away_score) or prediction == 'W' and (home_score < away_score):
-        away_score = random.choice(range(home_score-1))
+        if home_score > 1:
+            away_score = random.choice(range(home_score-1))
+        else:
+            away_score = 0
     if prediction == 'L' and (home_score == away_score) or prediction == 'L' and (home_score > away_score):
-        home_score = random.choice(range(away_score-1))
+        if away_score > 1:
+            home_score = random.choice(range(away_score-1))
+        else:
+            home_score = 0
     if prediction == 'D':
         home_score, away_score = random_draw(home_score, away_score)
 
@@ -1282,14 +1292,10 @@ def get_final_score_prediction(model,q1_roster,q2_roster,home_win_new,away_win_n
 
     def fix_score(home_score,away_score,home_win_new,away_win_new):
         if home_win_new > away_win_new and home_score < away_score: # fix the score prediction - if the probability of home win > away win and score doesn't reflect it
-            old_home = home_score
-            home_score = away_score # change the predicted score to reflect that
-            away_score = old_home
+            home_score, away_score = away_score, home_score # change the predicted score to reflect that
             return home_score,away_score,home_win_new,away_win_new
         elif home_win_new < away_win_new and home_score > away_score: # else the probability of home win < away win
-            old_away = away_score
-            away_score = home_score # change the predicted score to reflect that
-            home_score = away_score
+            home_score, away_score =  away_score, home_score # change the predicted score to reflect that
             return home_score,away_score,home_win_new,away_win_new
         elif home_win_new < away_win_new and home_score == away_score:
             home_win_new = away_win_new
@@ -1308,8 +1314,10 @@ def get_final_score_prediction(model,q1_roster,q2_roster,home_win_new,away_win_n
     q1_s = score(q1_pred)
     q2_pred = roster_pred(model,q2_roster)
     q2_s = score(q2_pred)
+    print('CHECK SCORE',q1_s, q2_s,home_win_new,away_win_new)
     home_score, away_score = q1_s, q2_s
     home_score, away_score, home_win_new, away_win_new = fix_score(q1_s, q2_s,home_win_new,away_win_new)
+    print('CHECK SCORE again',q1_s, q2_s,home_win_new,away_win_new)
     return home_score,away_score, home_win_new, away_win_new
 
 
