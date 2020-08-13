@@ -1135,7 +1135,7 @@ def get_final_game_prediction(model,home_array,home_score,away_score):
 
     #FIX THE SCORE ####
     # adjust score depending on the outcome from the prediction
-    print('\n CHECK\n',prediction, home_score, away_score)
+    #print('\n CHECK\n',prediction, home_score, away_score)
     if prediction == 'W' and (home_score == away_score) or prediction == 'W' and (home_score < away_score):
         if home_score > 1:
             away_score = random.choice(range(home_score-1))
@@ -1148,6 +1148,8 @@ def get_final_game_prediction(model,home_array,home_score,away_score):
             home_score = 0
     if prediction == 'D':
         home_score, away_score = random_draw(home_score, away_score)
+
+    print(prediction,home_score,away_score,'\n')
 
     return p_w, p_l, p_d, home_score, away_score, prediction
 

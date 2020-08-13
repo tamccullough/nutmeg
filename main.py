@@ -507,6 +507,14 @@ def forwards():
     columns = rated_forwards.columns
     return render_template('cpl-es-forwards.html',columns = columns,html_table = rated_forwards, year = year, other_year = other_year)
 
+@canples.route('/forwardsP90')
+def forwards_90():
+    year = '2020'
+    other_year = '2019'
+    rated_forwards = pd.read_csv(f'datasets/{year}/cpl-{year}-forwards-p90.csv')
+    columns = rated_forwards.columns
+    return render_template('cpl-es-forwards.html',columns = columns,html_table = rated_forwards, year = year, other_year = other_year)
+
 @canples.route('/forwards-2019')
 def forwards_19():
     year = '2019'
@@ -514,6 +522,14 @@ def forwards_19():
     rated_forwards = pd.read_csv(f'datasets/{year}/cpl-{year}-forwards.csv')
     columns = rated_forwards.columns
     return render_template('2019/cpl-es-forwards.html',columns = columns,html_table = rated_forwards, year = year, other_year = other_year)
+
+@canples.route('/forwards-2019-P90')
+def forwards_19_90():
+    year = '2019'
+    other_year = '2020'
+    rated_forwards = pd.read_csv(f'datasets/{year}/cpl-{year}-forwards-p90.csv')
+    columns = rated_forwards.columns
+    return render_template('2019/cpl-es-forwards-p90.html',columns = columns,html_table = rated_forwards, year = year, other_year = other_year)
 
 @canples.route('/midfielders')
 def midfielders():
@@ -523,6 +539,14 @@ def midfielders():
     columns = rated_midfielders.columns
     return render_template('cpl-es-midfielders.html',columns = columns,html_table = rated_midfielders, year = year, other_year = other_year)
 
+@canples.route('/midfieldersP90')
+def midfielders_90():
+    year = '2020'
+    other_year = '2019'
+    rated_midfielders = pd.read_csv(f'datasets/{year}/cpl-{year}-midfielders-p90.csv')
+    columns = rated_midfielders.columns
+    return render_template('cpl-es-midfielders-p90.html',columns = columns,html_table = rated_midfielders, year = year, other_year = other_year)
+
 @canples.route('/midfielders-2019')
 def midfielders_19():
     year = '2019'
@@ -530,6 +554,14 @@ def midfielders_19():
     rated_midfielders = pd.read_csv(f'datasets/{year}/cpl-{year}-midfielders.csv')
     columns = rated_midfielders.columns
     return render_template('2019/cpl-es-midfielders.html',columns = columns,html_table = rated_midfielders, year = year, other_year = other_year)
+
+@canples.route('/midfielders-2019-P90')
+def midfielders_19_90():
+    year = '2019'
+    other_year = '2020'
+    rated_midfielders = pd.read_csv(f'datasets/{year}/cpl-{year}-midfielders-p90.csv')
+    columns = rated_midfielders.columns
+    return render_template('2019/cpl-es-midfielders-p90.html',columns = columns,html_table = rated_midfielders, year = year, other_year = other_year)
 
 @canples.route('/defenders')
 def defenders():
@@ -539,6 +571,14 @@ def defenders():
     columns = rated_defenders.columns
     return render_template('cpl-es-defenders.html',columns = columns,html_table = rated_defenders, year = year, other_year = other_year)
 
+@canples.route('/defendersP90')
+def defenders_90():
+    year = '2020'
+    other_year = '2019'
+    rated_defenders = pd.read_csv(f'datasets/{year}/cpl-{year}-defenders-p90.csv')
+    columns = rated_defenders.columns
+    return render_template('cpl-es-defenders-p90.html',columns = columns,html_table = rated_defenders, year = year, other_year = other_year)
+
 @canples.route('/defenders-2019')
 def defenders_19():
     year = '2019'
@@ -546,6 +586,14 @@ def defenders_19():
     rated_defenders = pd.read_csv(f'datasets/{year}/cpl-{year}-defenders.csv')
     columns = rated_defenders.columns
     return render_template('2019/cpl-es-defenders.html',columns = columns,html_table = rated_defenders, year = year, other_year = other_year)
+
+@canples.route('/defenders-2019-P90')
+def defenders_19_90():
+    year = '2019'
+    other_year = '2020'
+    rated_defenders = pd.read_csv(f'datasets/{year}/cpl-{year}-defenders-p90.csv')
+    columns = rated_defenders.columns
+    return render_template('2019/cpl-es-defenders-p90.html',columns = columns,html_table = rated_defenders, year = year, other_year = other_year)
 
 @canples.route('/keepers')
 def keepers():
@@ -555,6 +603,14 @@ def keepers():
     columns = rated_keepers.columns
     return render_template('cpl-es-keepers.html',columns = columns,html_table = rated_keepers, year = year, other_year = other_year)
 
+@canples.route('/keepersP90')
+def keepers_90():
+    year = '2020'
+    other_year = '2019'
+    rated_keepers = pd.read_csv(f'datasets/{year}/cpl-{year}-keepers-p90.csv')
+    columns = rated_keepers.columns
+    return render_template('cpl-es-keepers-p90.html',columns = columns,html_table = rated_keepers, year = year, other_year = other_year)
+
 @canples.route('/keepers-2019')
 def keepers_19():
     year = '2019'
@@ -562,6 +618,14 @@ def keepers_19():
     rated_keepers = pd.read_csv(f'datasets/{year}/cpl-{year}-keepers.csv')
     columns = rated_keepers.columns
     return render_template('2019/cpl-es-keepers.html',columns = columns,html_table = rated_keepers, year = year, other_year = other_year)
+
+@canples.route('/keepers-2019-P90')
+def keepers_19_90():
+    year = '2019'
+    other_year = '2020'
+    rated_keepers = pd.read_csv(f'datasets/{year}/cpl-{year}-keepers-p90.csv')
+    columns = rated_keepers.columns
+    return render_template('2019/cpl-es-keepers-p90.html',columns = columns,html_table = rated_keepers, year = year, other_year = other_year)
 
 @canples.route('/discipline')
 def discipline():

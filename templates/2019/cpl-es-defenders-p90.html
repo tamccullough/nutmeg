@@ -21,12 +21,12 @@
     <a href="{{ url_for('radar_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-line-chart fa-fw"></i>  Radar Charts</a>
     <a href="{{ url_for('eleven_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Best Eleven</a>
     <a href="{{ url_for('goals_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-soccer-ball-o fa-fw"></i>  Goals and Assists</a>
-    <a href="{{ url_for('forwards_19') }}" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-hand-scissors-o fa-fw"></i>  Forwards</a>
+    <a href="{{ url_for('forwards_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-scissors-o fa-fw"></i>  Forwards</a>
     <a href="{{ url_for('forwards_19_90') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-scissors-o fa-fw"></i>  Forwards Per 90</a>
     <a href="{{ url_for('midfielders_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-grab-o fa-fw"></i>  Midfielders</a>
     <a href="{{ url_for('midfielders_19_90') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-grab-o fa-fw"></i>  Midfielders Per 90</a>
     <a href="{{ url_for('defenders_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-stop-o fa-fw"></i>  Defenders</a>
-    <a href="{{ url_for('defenders_19_90') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-stop-o fa-fw"></i>  Defenders Per 90</a>
+    <a href="{{ url_for('defenders_19_90') }}" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-hand-stop-o fa-fw"></i>  Defenders Per 90</a>
     <a href="{{ url_for('keepers_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-child fa-fw"></i>  Goal Keepers</a>
     <a href="{{ url_for('keepers_19_90') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-child fa-fw"></i>  Goal Keepers Per 90</a>
     <a href="{{ url_for('discipline_19') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-copy fa-fw"></i>  Discipline</a><br><br>
@@ -70,7 +70,7 @@
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-hand-scissors-o"></i> CPL Forwards</b></h5>
+    <h5><b><i class="fa fa-hand-stop-o"></i> CPL Defenders Per 90</b></h5>
   </header>
 
   <div class="w3-container">
@@ -80,7 +80,7 @@
         <table class="w3-blue">
           <tr>
             <td><b>team / #</b></td>
-            <td style="width:75%;"><b>name</b></td>
+            <td style="width:75%;"><b>{{ columns[1] }}</b></td>
           </tr>
         </table>
       </div>
@@ -90,11 +90,9 @@
           <table class="w3-blue">
             <tr>
               <td><b>MIN</b></td>
-              <td><b>G</b></td>
-              <td><b>A</b></td>
-              <td><b>Ch</b></td>
-              <td><b>S</b></td>
-              <td><b>SOT</b></td>
+              <td><b>Tkl</b></td>
+              <td><b>TklW</b></td>
+              <td><b>Clr</b></td>
             </tr>
           </table>
         </div>
@@ -103,10 +101,9 @@
         <div>
           <table class="w3-blue">
             <tr>
-              <td><b>P</b></td>
-              <td><b>X</b></td>
+              <td><b>Intr</b></td>
               <td><b>Dls</b></td>
-              <td><b>Tkl</b></td>
+              <td><b>DlsW</b></td>
               <td><b>O</b></td>
             </tr>
           </table>
@@ -132,11 +129,9 @@
           <table class="cpl-eclipse-m">
             <tr>
               <td>{{ html_table.at[i,'minutes'] }}</td>
-              <td>{{ html_table.at[i,'goals'] }}</td>
-              <td>{{ html_table.at[i,'assists'] }}</td>
-              <td>{{ html_table.at[i,'chances'] }}</td>
-              <td>{{ html_table.at[i,'shots'] }}</td>
-              <td>{{ html_table.at[i,'s-target'] }}</td>
+              <td>{{ html_table.at[i,'tackles'] }}</td>
+              <td>{{ html_table.at[i,'t-won'] }}</td>
+              <td>{{ html_table.at[i,'clearances'] }}</td>
             </tr>
           </table>
         </div>
@@ -145,11 +140,10 @@
         <div>
           <table class="cpl-eclipse-m">
             <tr>
-              <td>{{ html_table.at[i,'passes'] }}</td>
-              <td>{{ html_table.at[i,'crosses'] }}</td>
+              <td>{{ html_table.at[i,'interceptions'] }}</td>
               <td>{{ html_table.at[i,'duels'] }}</td>
-              <td>{{ html_table.at[i,'tackles'] }}</td>
-              <td class="w3-grey w3-text-white"><b>{{ html_table.at[i,'overall'] }}</b></td>
+              <td>{{ html_table.at[i,'d-won'] }}</td>
+              <td class="w3-grey w3-text-white"><b>{{ html_table.at[i,'new_overall'] }}</b></td>
             </tr>
           </table>
         </div>
