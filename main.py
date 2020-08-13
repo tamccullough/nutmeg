@@ -440,9 +440,10 @@ def player():
         nationality = player_info[player_info['name'] == player['name'].values[0]]['nationality'].values[0]
 
     graph_image = player_info[player_info['display'] == player_name]['graph'].values[0]
+    radar_image = player_info[player_info['display'] == player_name]['radar'].values[0]
 
 
-    return render_template('cpl-es-player.html', name = player_name, graph = graph_image, nationality = nationality,
+    return render_template('cpl-es-player.html', name = player_name, graph = graph_image, radar = radar_image, nationality = nationality,
     team_name = team, html_table = player, team_colour = roster_colour, year = year, crest = crest, other_year = other_year)
 
 @canples.route('/player-2019', methods=['POST'])
