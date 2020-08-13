@@ -11,7 +11,7 @@ import pandas as pd
 import pickle
 classifier = 'models/cpl_match_classifier.sav'
 cpl_classifier_model = pickle.load(open(classifier, 'rb'))
-regressor = 'models/cpl_score_regressor.sav'
+regressor = 'models/cpl_score_regressor-08-13-vr.sav'
 cpl_score_model = pickle.load(open(regressor, 'rb'))
 
 canples = Flask(__name__)
