@@ -875,6 +875,7 @@ def get_player_card(name,stats,player_info):
     else:
         position = 'Goal Keeper'
     player_stats.insert(5,'position',position)
+    player_stats= player_stats.fillna(0)
     return player_stats
 
 def get_roster_overall(query,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info): # use team stats to get the player information
