@@ -1,2 +1,10 @@
 team,name,number,position,minutes,goals,assists,touches,passes,pass-acc,crosses,cross-acc,chances,duels,tackles,overall
-team,name,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+CFC,Nikolas Ledgerwood,6,m,85,0,1,41,25,68.0,3,66.7,2,15,3,0.88
+CFC,Elijah Adekugbe,8,m,79,0,0,56,41,90.2,2,50.0,2,7,1,0.71
+FFC,David Choinière,7,m,45,0,1,24,12,100.0,1,100.0,1,7,1,0.63
+FFC,Kyle Bekker,10,m,90,1,0,47,36,80.6,2,0.0,0,10,0,0.63
+FFC,Paolo Sabak,24,m,80,0,0,45,32,84.4,1,0.0,2,10,0,0.58
+CFC,Sergio Camargo,10,m,80,0,0,37,22,72.7,3,0.0,0,6,1,0.51
+FFC,Alexander Achinioti-Jönsson,13,m,90,0,0,48,38,78.9,0,0.0,0,6,0,0.46
+CFC,Elliot Simmons,15,m,11,0,0,12,10,60.0,1,0.0,0,5,0,0.26
+CFC,Bruno Zebie,16,m,5,0,0,8,5,80.0,0,0.0,0,1,0,0.2

@@ -1,2 +1,11 @@
 team,name,number,position,minutes,goals,chances,assists,shots,s-target,passes,crosses,duels,tackles,overall,new_overall
-team,name,0,f,90,0,0,0,0,0,0,0,0,0,0,0
+CFC,Marcus Haber,29,f,90,0.0,0.0,0.0,3.3,3.3,36.7,3.3,20.0,0.0,0.32,0.9
+FFC,Kadell Thomas,17,f,90,0.0,3.3,0.0,3.3,0.0,23.3,3.3,26.7,3.3,0.3,0.85
+CFC,Aribim Pepple,24,f,90,0.0,10.0,0.0,0.0,0.0,30.0,0.0,20.0,0.0,0.06,0.8
+CFC,Nico Pasquotti,17,f,90,0.0,0.0,0.0,1.0,1.0,29.0,5.0,15.0,2.0,0.7,0.70
+CFC,Oliver Minatel,7,f,90,0.0,3.3,0.0,1.1,0.0,28.9,0.0,10.0,0.0,0.43,0.55
+FFC,Molham Babouli,19,f,90,0.0,0.0,0.0,0.0,0.0,20.0,0.0,13.3,3.3,0.12,0.45
+FFC,Anthony Novak,23,f,90,1.4,0.0,0.0,1.4,1.4,20.0,0.0,10.0,0.0,0.46,0.41
+FFC,Marcel Zajac,9,f,90,0.0,0.0,0.0,2.0,0.0,14.0,2.0,12.0,0.0,0.23,0.35
+FFC,Christopher Nanco,11,f,90,0.0,0.0,0.0,1.4,1.4,4.3,0.0,14.3,0.0,0.35,0.22
+CFC,Jordan Brown,9,f,90,0.0,1.4,0.0,1.4,0.0,14.3,0.0,1.4,0.0,0.24,0.18

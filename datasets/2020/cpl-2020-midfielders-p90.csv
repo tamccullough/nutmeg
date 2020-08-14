@@ -1,2 +1,10 @@
 team,name,number,position,minutes,goals,assists,touches,passes,pass-acc,crosses,cross-acc,chances,duels,tackles,overall,new_overall
-team,name,0,m,90,0,0,0,0,0,0,0,0,0,0,0,0
+CFC,Bruno Zebie,16,m,90,0.0,0.0,80.0,50.0,800.0,0.0,0.0,0.0,10.0,0.0,0.2,0.9
+CFC,Elliot Simmons,15,m,90,0.0,0.0,120.0,100.0,600.0,10.0,0.0,0.0,50.0,0.0,0.26,0.84
+FFC,David Choinière,7,m,90,0.0,2.0,48.0,24.0,200.0,2.0,200.0,2.0,14.0,2.0,0.63,0.43
+CFC,Elijah Adekugbe,8,m,90,0.0,0.0,62.2,45.6,100.2,2.2,55.6,2.2,7.8,1.1,0.71,0.18
+CFC,Nikolas Ledgerwood,6,m,90,0.0,1.1,45.6,27.8,75.6,3.3,74.1,2.2,16.7,3.3,0.88,0.17
+FFC,Paolo Sabak,24,m,90,0.0,0.0,50.0,35.6,93.8,1.1,0.0,2.2,11.1,0.0,0.58,0.10
+FFC,Kyle Bekker,10,m,90,1.0,0.0,47.0,36.0,80.6,2.0,0.0,0.0,10.0,0.0,0.63,0.09
+CFC,Sergio Camargo,10,m,90,0.0,0.0,41.1,24.4,80.8,3.3,0.0,0.0,6.7,1.1,0.51,0.07
+FFC,Alexander Achinioti-Jönsson,13,m,90,0.0,0.0,48.0,38.0,78.9,0.0,0.0,0.0,6.0,0.0,0.46,0.07

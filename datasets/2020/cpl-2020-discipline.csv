@@ -1,2 +1,33 @@
-team,name,position,number,minutes,yellow,red,f-conceded
-team,name,NA,0,0,0,0,0
+team,name,position,number,minutes,yellow,red,f-conceded,overall
+FFC,Jonathan Grant,d,2,78,1,0,4,0.71
+FFC,Daniel Krutzen,d,5,90,1,0,3,0.68
+CFC,Elijah Adekugbe,m,8,79,1,0,3,0.65
+FFC,Marcel Zajac,f,9,45,1,0,1,0.43
+FFC,Dominic Samuel,d,4,12,1,0,1,0.34
+CFC,Nathan Mavila,d,3,90,0,0,4,0.5
+CFC,Nikolas Ledgerwood,m,6,85,0,0,3,0.42
+CFC,Nico Pasquotti,f,17,90,0,0,2,0.37
+FFC,Kwame Awuah,d,6,90,0,0,2,0.37
+CFC,Jonathan Wheeldon,d,14,90,0,0,2,0.37
+CFC,Oliver Minatel,f,7,80,0,0,2,0.34
+CFC,Dominick Zator,d,4,90,0,0,1,0.31
+FFC,Christopher Nanco,f,11,66,0,0,2,0.3
+FFC,Paolo Sabak,m,24,80,0,0,1,0.28
+FFC,Kyle Bekker,m,10,90,0,0,0,0.25
+FFC,David Edgar,d,30,90,0,0,0,0.25
+FFC,Alexander Achinioti-Jönsson,m,13,90,0,0,0,0.25
+FFC,Triston Henry,g,1,90,0,0,0,0.25
+CFC,Mason Trafford,d,5,90,0,0,0,0.25
+CFC,Marco Carducci,g,1,90,0,0,0,0.25
+FFC,Anthony Novak,f,23,66,0,0,1,0.24
+CFC,Sergio Camargo,m,10,80,0,0,0,0.22
+FFC,David Choinière,m,7,45,0,0,1,0.18
+CFC,Jordan Brown,f,9,66,0,0,0,0.18
+FFC,Kadell Thomas,f,17,24,0,0,1,0.12
+CFC,Elliot Simmons,m,15,11,0,0,1,0.09
+CFC,Marcus Haber,f,29,24,0,0,0,0.06
+FFC,Molham Babouli,f,19,24,0,0,0,0.06
+CFC,Mohamed Farsi,d,21,10,0,0,0,0.02
+FFC,Maxim Tissot,d,15,10,0,0,0,0.02
+CFC,Aribim Pepple,f,24,10,0,0,0,0.02
+CFC,Bruno Zebie,m,16,5,0,0,0,0.01
