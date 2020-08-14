@@ -133,10 +133,10 @@
     </div>
   </div>
 
-  <div class="w3-panel">
-    <div class="w3-row-padding" style="margin:0 -8px">
+    <div class="w3-container w3-row-padding">
 
-      <div class="w3-half  cpl-eclipse-l" style="height: 380px;">
+      <div class="w3-half  cpl-eclipse-l">
+        <div style="height: 370px;">
         <h6>Teams of the Week</h6>
         <p>Biggest Win</p>
         <div>
@@ -161,6 +161,7 @@
           <div class="w3-half w3-padding {{'w3-green' if low_result.iloc[0]['hs'] > low_result.iloc[0]['as'] else 'w3-red' if low_result.iloc[0]['hs'] < low_result.iloc[0]['as'] else 'w3-cyan' }}">{{low_result.iloc[0]['home']}} {{low_result.iloc[0]['hs']}}</div>
           <div class="w3-half w3-padding {{'w3-green' if low_result.iloc[0]['as'] > low_result.iloc[0]['hs'] else 'w3-red' if low_result.iloc[0]['as'] < low_result.iloc[0]['hs'] else 'w3-light-green' }}">{{low_result.iloc[0]['away']}} {{low_result.iloc[0]['as']}}</div>
         </div>
+        </div>
       </div>
 
       <div class="w3-half cpl-eclipse-l" style="height: 380px;">
@@ -168,49 +169,49 @@
         <h5>Players of the Week</h5>
         <table>
           <tr>
-            <td><i class="fa fa-soccer-ball-o w3-text-green w3-large"></i></td>
+            <td style="width:30px"><i class="fa fa-soccer-ball-o w3-text-green w3-large"></i></td>
             <td>Top Scorer</td>
             <td>{{top_scorer['name']}}</td>
-            <td><i>{{top_scorer['overall']}}</i></td>
+            <td style="width:30px"><i>{{top_scorer['overall']}}</i></td>
           </tr>
           <tr>
-            <td><i class="fa fa-soccer-ball-o w3-text-orange w3-large"></i></td>
+            <td style="width:30px"><i class="fa fa-soccer-ball-o w3-text-orange w3-large"></i></td>
             <td>Top Assists</td>
             <td>{{top_assist['name']}}</td>
-            <td><i>{{top_assist['overall']}}</i></td>
+            <td style="width:30px"><i>{{top_assist['overall']}}</i></td>
           </tr>
           <tr>
-            <td><i class="fa fa-hand-scissors-o w3-text-blue w3-large"></i></td>
+            <td style="width:30px"><i class="fa fa-hand-scissors-o w3-text-blue w3-large"></i></td>
             <td>Top Forward</td>
             <td>{{top_forward['name']}}</td>
-            <td><i>{{top_forward['overall']}}</i></td>
+            <td style="width:30px"><i>{{top_forward['overall']}}</i></td>
           </tr>
           <tr>
-            <td><i class="fa fa-hand-grab-o w3-text-blue w3-large"></i></td>
+            <td style="width:30px"><i class="fa fa-hand-grab-o w3-text-blue w3-large"></i></td>
             <td>Top Midfielder</td>
             <td>{{top_midfielder['name']}}</td>
-            <td><i>{{top_midfielder['overall']}}</i></td>
+            <td style="width:30px"><i>{{top_midfielder['overall']}}</i></td>
           </tr>
           <tr>
-            <td><i class="fa fa-hand-stop-o w3-text-blue w3-large"></i></td>
+            <td style="width:30px"><i class="fa fa-hand-stop-o w3-text-blue w3-large"></i></td>
             <td>Top Defender</td>
             <td>{{top_defender['name']}}</td>
-            <td><i>{{top_defender['overall']}}</i></td>
+            <td style="width:30px"><i>{{top_defender['overall']}}</i></td>
           </tr>
           <tr>
-            <td><i class="fa fa-child w3-text-white w3-large"></i></td>
+            <td style="width:30px"><i class="fa fa-child w3-text-white w3-large"></i></td>
             <td>Top Goal Keeper</td>
             <td>{{top_keeper['name']}}</td>
-            <td><i>{{top_keeper['overall']}}</i></td>
+            <td style="width:30px"><i>{{top_keeper['overall']}}</i></td>
           </tr>
           <tr>
-            <td><i class="fa fa-copy w3-text-yellow w3-large"></i></td>
+            <td style="width:30px"><i class="fa fa-copy w3-text-yellow w3-large"></i></td>
             <td>Worst Offender</td>
             <td>{{top_offender['name']}}</td>
-            <td><i>{{top_offender['overall']}}</i></td>
+            <td style="width:30px"><i>{{top_offender['overall']}}</i></td>
           </tr>
           <tr>
-            <td><i class="fa fa-copy w3-text-black w3-large"></i></td>
+            <td style="width:30px"><i class="fa fa-copy w3-text-black w3-large"></i></td>
             <td>Suspended</td>
             <td>-</td>
             <td><i>-</i></td>
@@ -220,8 +221,6 @@
       </div>
 
     </div>
-  </div>
-
 
 
 {% endblock %}
