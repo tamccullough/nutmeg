@@ -407,6 +407,7 @@ def get_evaluation(condensed_player_info,full_player_info):
         a = [] # create an empty array to store the scores
         for check in checks: # iterate through the columns of remaining data
             result = player.iloc[0][check] / eval_['max'][check] # calculate the score for the value found value/max
+            result = np.nan_to_num(result)
             a.append(result) # append the result into the list
             overall = str(sum(a) / len(checks)) #calculate the final score sum(list) / num of checks
             overall = overall[0:4]
@@ -1417,7 +1418,7 @@ def update_player_info(year,week,player_info,rated_forwards,rated_midfielders,ra
                 j += 1
                 pass
             if score != None:
-                overall = score[0]
+                overall = score
                 a.append(overall)
             if j == 5:
                 overall = old_o # save the old result if there is not a current overall
