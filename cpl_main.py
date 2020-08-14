@@ -324,17 +324,29 @@ def clean_team_game(data,db,check):
 
 def get_weeks_results(data,standings,stats,team_ref):
     if data.iloc[0]['hr'] == 'E':
-        db = pd.DataFrame([('NA',0,'NA',0)],columns=['home','hs','away','as'])
+        db = pd.DataFrame([('tbd',0,'tbd',0)],columns=['home','hs','away','as'])
         big_win, top_team, low_team,other_team = db,db,db,db
         goals, assists, yellows, reds = 0,0,0,0
         return db,goals,big_win,top_team,low_team,other_team, assists, yellows, reds
-    df = data
-    month = df.iloc[-1]['m']
-    week = df.iloc[-1]['d']
+
+    played_games = data[data['hr'] != 'E']
+    played_games = played_games.tail(1)
+    played_games = played_games.sort_values(by=['m','d'], ascending=False)
+    played_games = index_reset(played_games)
+    month = played_games.iloc[0]['m']
+    day = played_games.iloc[0]['d']
+    print(month,day)
+
+    # perform a check to check the amount of games played are enough to analyze
+    check = data[data['hr'] != 'E'].shape[0]
+    if check < 3:
+        df = data.head(6)
+    else:
+        df = data[data['hr'] != 'E'].head(6)
+
     db = df[df['m'] == month]
-    db = db[db['d'] >= week - 6]
-    db = db.sort_values(by=['game'],ascending=False)
-    goals = db['hs'].sum() + db['as'].sum()
+    db = db[db['d'] <= day + 4]
+    goals = stats['goals'].sum()
     max_home = db[db['hs'] == db['hs'].max()]
     max_away = db[db['as'] == db['as'].max()]
     if max_home.iloc[0]['hs'] > max_away.iloc[0]['as']:
@@ -346,10 +358,13 @@ def get_weeks_results(data,standings,stats,team_ref):
     big_win = get_short_name(big_win,team_ref)
     big_win = pd.DataFrame(big_win.loc[0])
     big_win = big_win.T
-    top_team = clean_team_game(standings,db,0)
+    # top team
+    top_team = clean_team_game(standings,db,0) # finding top team
     top_team = get_short_name(top_team,team_ref)
-    low_team = clean_team_game(standings,db,1)
+    # low team
+    low_team = clean_team_game(standings,db,1) # finding bottom team
     low_team = get_short_name(low_team,team_ref)
+    # other results
     teams_in = get_longest_name(big_win,top_team,low_team,team_ref)
     other_team = db[(~db['home'].isin(teams_in)) | (~db['away'].isin(teams_in))]
     other_team = index_reset(other_team)
@@ -360,6 +375,16 @@ def get_weeks_results(data,standings,stats,team_ref):
     assists = stats['assists'].sum()
     yellows = stats['yellow'].sum()
     reds = stats['red'].sum()
+
+    if low_team['home'].values[0] == low_team['away'].values[0]:
+        low_team = pd.DataFrame([('TBD',0,'TBD',0)],columns=['home','hs','away','as'])
+
+    # check if other teams have played
+    other_home = other_team['home'].values[0]
+    other_home = get_long_name(other_home,team_ref)
+    other_played = standings[standings['team'] == other_home]['gp'].values[0]
+    if other_played == 0:
+        other_team = pd.DataFrame([('TBD',0,'TBD',0)],columns=['home','hs','away','as'])
 
     return db, goals, big_win, top_team, low_team, other_team, assists, yellows, reds
 

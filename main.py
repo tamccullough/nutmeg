@@ -80,8 +80,8 @@ def index():
     results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters = load_main_files(year)
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
 
-    standings = pd.read_csv(f'datasets/{year}/cpl-{year}-standings.csv')
-    standings_old = cpl_main.get_standings(results_old,1,team_ref)
+    standings = cpl_main.get_standings(results,1,team_ref)
+    standings_old =pd.read_csv(f'datasets/{year}/cpl-{year}-standings.csv')
     compare_standings = cpl_main.compare_standings(standings,standings_old,team_ref)
 
     top_team = standings.iloc[0]['team']
@@ -168,7 +168,7 @@ def index_19():
 def standings():
     year = '2020'
     other_year = '2019'
-    standings = pd.read_csv(f'datasets/{year}/cpl-{year}-standings.csv')
+    standings = pd.read_csv(f'datasets/{year}/cpl-{year}-standings_current.csv')
     columns = standings.columns
     return render_template('cpl-es-standings.html',columns = columns, standings_table = standings, year = year, other_year = other_year)
 
