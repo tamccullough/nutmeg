@@ -868,12 +868,16 @@ def get_roster(query,stats,team_ref): # use team stats to get the player informa
     roster = index_reset(roster)
     return roster
 
-def get_player_card(name,stats,player_info):
+def get_player_card(name,stats,stats_seed,player_info):
     player_stats = stats[stats['last'] == name].groupby('name').sum()
+    if player_stats.empty:
+        player_stats = stats_seed[stats_seed['last'] == name].groupby('name').sum()
     player_stats = player_stats.reset_index()
     name = player_stats['name'].values[0]
     player_information = player_info[player_info['name'] == name]
     count = stats[stats['name'] == name].groupby('name').count()
+    if count.empty:
+        count = stats_seed[stats_seed['name'] == name].groupby('name').count()
     count = int(count['game'].values[0])
     for col in player_stats.columns:
         if col == 'name':

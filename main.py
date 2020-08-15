@@ -384,6 +384,7 @@ def roster():
     year = '2020'
     other_year = '2019'
     stats = pd.read_csv(f'datasets/{year}/cpl-{year}-stats.csv')
+    stats_seed = pd.read_csv(f'datasets/{year}/cpl-{year}-stats-seed.csv')
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
     player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
@@ -394,6 +395,15 @@ def roster():
     roster = cpl_main.get_roster_overall(team,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info)
     crest = roster_team_info.iloc[0][5]
     coach = roster_team_info[['coach','country','image','w','l','d']]
+    if roster.empty:
+        roster = player_info[player_info['team'] == team]
+        roster = roster[['image','name','number','position','overall','flag']]
+        first = [stats_seed[stats_seed['name'] == name]['first'].values[0] for name in roster['name']]
+        last = [stats_seed[stats_seed['name'] == name]['last'].values[0] for name in roster['name']]
+        roster.pop('name')
+        roster.insert(1,'first',first)
+        roster.insert(2,'last',last)
+
     return render_template('cpl-es-roster.html',team_name = team, coach = coach, html_table = roster, team_colour = roster_colour, year = year, crest = crest, other_year = other_year)
 
 @canples.route('/roster-2019', methods=['POST'])
@@ -418,13 +428,14 @@ def player():
     year = '2020'
     other_year = '2019'
     stats = pd.read_csv(f'datasets/{year}/cpl-{year}-stats.csv')
+    stats_seed = pd.read_csv(f'datasets/{year}/cpl-{year}-stats-seed.csv')
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
     player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
 
     name = request.form['name']
 
-    player = cpl_main.get_player_card(name,stats,player_info)
+    player = cpl_main.get_player_card(name,stats,stats_seed,player_info)
     team = player['team'].values[0]
     roster_team_info = team_ref[team_ref['team'] == team]
     roster_colour = roster_team_info.iloc[0][4]
