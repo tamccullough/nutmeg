@@ -79,6 +79,7 @@
     <div>
       {%for i in range(0,html_table.shape[0])%}
       <div class="w3-quarter w3-card-4 w3-grey">
+        <form method="POST" action="/player">
         <div class="w3-center">
           <a href="{{ html_table.iloc[i,7] }}" target="_blank">
             <img src="static/images/players/2020/{{ html_table.iloc[i,0] }}" alt="{{ html_table.iloc[i,1] }}" style="max-height:200px">
@@ -91,7 +92,7 @@
               <td style="padding: 5px 5px;"><h4>{{ html_table.iloc[i,4] }}</h4></td>
             </tr>
             <tr>
-              <td colspan="2"><h5>{{ html_table.iloc[i,1] }} {{ html_table.iloc[i,2] }}</h5></td>
+              <td colspan="2"><h5 href="{{ url_for('player') }}">{{ html_table.iloc[i,1] }} <input class="button" type="submit" id="name" name="name" value="{{ html_table.iloc[i,2] }}"></h5></td>
             </tr>
             <tr style="min-width:120px">
               {% if html_table.iloc[i,5] == 'f' %}
@@ -107,6 +108,7 @@
             </tr>
           </table>
         </div>
+        </form>
       </div>
       {%endfor%}
     </div>
