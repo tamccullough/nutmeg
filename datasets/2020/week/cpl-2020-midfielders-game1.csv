@@ -1,0 +1,28 @@
+team,name,number,position,minutes,goals,assists,touches,passes,pass-acc,crosses,cross-acc,chances,duels,tackles,overall
+Y9,Joseph Di Chiara,8,m,90,1,0,58,41,78.0,4,50.0,2,14,2,0.74
+PFC,Marco Bustos,10,m,83,1,1,59,40,87.5,5,20.0,1,11,0,0.73
+CFC,Nikolas Ledgerwood,6,m,85,0,1,41,25,68.0,3,66.7,2,15,3,0.71
+HFX,Cory Bent,23,m,90,0,0,57,30,60.0,10,30.0,2,22,3,0.7
+Y9,Ryan Telfer,18,m,90,0,0,52,21,71.4,8,37.5,2,15,4,0.67
+PFC,Matthew Baldisimo,8,m,90,0,0,76,59,72.9,0,0.0,1,16,6,0.64
+Y9,Kyle Porter,19,m,90,0,0,57,34,97.1,9,33.3,2,5,1,0.63
+PFC,Zachary Verhoven,16,m,26,1,1,18,11,63.6,1,100.0,2,5,1,0.63
+PFC,Victor Blasco,23,m,72,0,0,54,28,67.9,3,33.3,2,18,2,0.59
+CFC,Elijah Adekugbe,8,m,79,0,0,56,41,90.2,2,50.0,2,7,1,0.59
+FFC,David Choinière,7,m,45,0,1,24,12,100.0,1,100.0,1,7,1,0.56
+HFX,Louis Béland-Goyette,5,m,81,0,0,50,31,83.9,1,0.0,1,16,3,0.53
+FFC,Kyle Bekker,10,m,90,1,0,47,36,80.6,2,0.0,0,10,0,0.52
+HFX,Aboubacar Sissoko,17,m,90,0,0,56,38,76.3,1,0.0,0,20,3,0.52
+FFC,Paolo Sabak,24,m,80,0,0,45,32,84.4,1,0.0,2,10,0,0.5
+HFX,Andre Rampersad,18,m,90,0,0,44,27,77.8,0,0.0,1,9,1,0.45
+FFC,Alexander Achinioti-Jönsson,13,m,90,0,0,48,38,78.9,0,0.0,0,6,0,0.4
+CFC,Sergio Camargo,10,m,80,0,0,37,22,72.7,3,0.0,0,6,1,0.39
+Y9,Max Ferrari,16,m,36,0,0,20,14,71.4,4,50.0,1,2,0,0.38
+PFC,Alessandro Hojabrpour,21,m,64,0,0,28,24,79.2,0,0.0,0,7,2,0.36
+PFC,Noah Verhoeven,19,m,64,0,0,30,27,81.5,1,0.0,0,2,0,0.33
+Y9,Wataru Murofushi,23,m,37,0,0,27,23,100.0,0,0.0,0,2,0,0.3
+PFC,Josh Heard,11,m,18,0,0,10,5,100.0,0,0.0,0,4,0,0.24
+HFX,Alex Marshall,7,m,18,0,0,12,6,66.7,1,0.0,0,5,1,0.24
+PFC,Jamar Dixon,22,m,26,0,0,7,4,75.0,0,0.0,0,3,1,0.23
+CFC,Elliot Simmons,15,m,11,0,0,12,10,60.0,1,0.0,0,5,0,0.22
+CFC,Bruno Zebie,16,m,5,0,0,8,5,80.0,0,0.0,0,1,0,0.19

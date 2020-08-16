@@ -1,12 +1,28 @@
-team,name,number,position,minutes,tackles,t-won,clearances,interceptions,duels,d-won,overall,new_overall
-FFC,Dominic Samuel,4,d,90,10.0,0.0,0.0,0.0,20.0,20.0,0.1,0.9
-CFC,Dominick Zator,4,d,90,2.0,1.0,1.0,0.0,15.0,12.0,0.61,0.52
-FFC,Daniel Krutzen,5,d,90,2.0,2.0,4.0,3.0,13.0,6.0,0.79,0.5
-FFC,Maxim Tissot,15,d,90,0.0,0.0,10.0,0.0,20.0,0.0,0.05,0.5
-FFC,Kwame Awuah,6,d,90,2.0,1.0,5.0,2.0,10.0,5.0,0.64,0.4
-CFC,Nathan Mavila,3,d,90,1.0,1.0,0.0,1.0,13.0,7.0,0.51,0.36
-FFC,David Edgar,30,d,90,3.0,2.0,5.0,3.0,5.0,4.0,0.75,0.33
-CFC,Jonathan Wheeldon,14,d,90,0.0,0.0,8.0,0.0,9.0,4.0,0.41,0.31
-FFC,Jonathan Grant,2,d,90,0.0,0.0,5.6,0.0,11.1,2.2,0.33,0.28
-CFC,Mason Trafford,5,d,90,0.0,0.0,0.0,1.0,5.0,4.0,0.28,0.1
-CFC,Mohamed Farsi,21,d,90,0.0,0.0,0.0,0.0,0.0,0.0,0.01,-0.1
+team,name,number,position,minutes,goals,tackles,t-won,clearances,interceptions,duels,d-won,overall,new_overall
+Y9,Ijah Halley,14,d,90,0.0,0.0,0.0,0.0,0.0,50.0,20.0,0.06,0.9
+FFC,Dominic Samuel,4,d,90,0.0,10.0,0.0,0.0,0.0,20.0,20.0,0.08,0.61
+PFC,Kadin Chung,7,d,90,0.0,3.0,2.0,3.0,1.0,17.0,13.0,0.66,0.46
+CFC,Dominick Zator,4,d,90,1.0,2.0,1.0,1.0,0.0,15.0,12.0,0.61,0.36
+FFC,Daniel Krutzen,5,d,90,0.0,2.0,2.0,4.0,3.0,13.0,6.0,0.6,0.32
+FFC,Maxim Tissot,15,d,90,0.0,0.0,0.0,10.0,0.0,20.0,0.0,0.04,0.32
+PFC,Marcel de Jong,17,d,90,0.0,0.0,0.0,10.0,0.0,20.0,0.0,0.04,0.32
+PFC,Jordan Haynes,3,d,90,0.0,4.0,2.0,1.0,3.0,13.0,7.0,0.62,0.32
+Y9,Luca Gasparotto,13,d,90,0.0,1.0,0.0,3.0,3.0,11.0,10.0,0.45,0.30
+Y9,Diyaeddine Abzi,20,d,90,0.0,2.2,2.2,1.1,2.2,11.1,6.7,0.5,0.26
+FFC,Kwame Awuah,6,d,90,0.0,2.0,1.0,5.0,2.0,10.0,5.0,0.49,0.26
+CFC,Nathan Mavila,3,d,90,1.0,1.0,1.0,0.0,1.0,13.0,7.0,0.53,0.24
+FFC,David Edgar,30,d,90,0.0,3.0,2.0,5.0,3.0,5.0,4.0,0.57,0.21
+HFX,Peter Schaale,2,d,90,0.0,3.0,2.0,5.0,2.0,6.0,4.0,0.55,0.21
+HFX,Jake Ruby,20,d,90,0.0,2.0,2.0,2.0,0.0,12.0,4.0,0.47,0.21
+CFC,Jonathan Wheeldon,14,d,90,0.0,0.0,0.0,8.0,0.0,9.0,4.0,0.35,0.19
+Y9,Roger Thompson,6,d,90,0.0,2.0,2.0,2.0,3.0,7.0,5.0,0.51,0.19
+FFC,Jonathan Grant,2,d,90,0.0,0.0,0.0,5.6,0.0,11.1,2.2,0.27,0.17
+Y9,Matthew Arnone,17,d,90,0.0,1.7,1.7,1.7,3.3,5.0,3.3,0.27,0.13
+HFX,Alex De Carolis,24,d,90,0.0,1.1,1.1,0.0,1.1,5.6,5.6,0.31,0.10
+PFC,Lukas MacNaughton,6,d,90,0.0,0.0,0.0,2.0,0.0,7.0,4.0,0.24,0.09
+HFX,Jems Geffrard,3,d,90,0.0,1.0,1.0,4.0,2.0,3.0,2.0,0.37,0.09
+Y9,Morey Doner,3,d,90,0.0,0.0,0.0,0.0,5.0,4.0,3.0,0.3,0.07
+PFC,Thomas Meilleur-Giguère,26,d,90,0.0,0.0,0.0,4.0,2.0,3.0,1.0,0.26,0.04
+CFC,Mason Trafford,5,d,90,0.0,0.0,0.0,0.0,1.0,5.0,4.0,0.22,0.04
+CFC,Mohamed Farsi,21,d,90,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.01,-0.1
+HFX,Mateo Restrepo,14,d,90,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.01,-0.1
