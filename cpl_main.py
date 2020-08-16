@@ -181,6 +181,31 @@ def get_standings(results,season_number,team_ref):
 
     return standings
 
+# graphing related functions
+
+
+def get_90(dataframe):
+    data = dataframe.copy()
+    data['minutes'] = round(data['minutes'] /90,1)
+    cols = data.columns.tolist()
+    r = ['team','minutes','name','number','position','overall']
+    for x in r:
+        cols.remove(x)
+    for col in cols:
+        data[col] = round(data[col] / data['minutes'],1)
+        if data[col].max() == 0:
+            max_col = 1
+        else:
+            max_col = data[col].max()
+        data[col] = round(data[col] / max_col,1)
+    data['new_overall'] = 0.0
+    for i in range(data.shape[0]):
+        summed = data.iloc[i][cols].sum()
+        data.at[i,'new_overall'] = summed
+    data['new_overall'] = round(data['new_overall'] / data['new_overall'].max(),2) - .1
+    data = data.sort_values(by='new_overall',ascending = False)
+    return data
+
 def get_team_graphs(stats,standings):
     comparing = standings.sort_values(by=['team'])
 
@@ -750,6 +775,7 @@ def best_roster(query,results,results_old,stats,stats_old,stats_seed,player_info
 
     # generate a score for positions that have had the most impact on a winning game
     form_check = [round(db[db['position'] == p].mean().values[0],2) for p in ['d','f','m']]
+    form_check = pd.Series(form_check).fillna(0).tolist()
 
     # assess which formation is best suited to the team's results
     if ((form_check[0] > form_check[1]) & (form_check[0] > form_check[2])): # strong defense
@@ -776,25 +802,39 @@ def best_roster(query,results,results_old,stats,stats_old,stats_seed,player_info
         game_roster = pd.concat([game_roster,keeper])
     else:
         game_roster = db[db['position'] == 'g'].head(1)
-
+    #getting defenders
     if db[db['position'] == 'd'].head(formation[0]).shape[0] < formation[0]:
-        defender_diff = sort_players(db,players,formation[0],'d')
-        game_roster = pd.concat([game_roster,db[db['position'] == 'd'].head(formation[0])])
-        game_roster = pd.concat([game_roster,defender_diff])
+        check_position = db[db['position'] == 'd'].head(formation[0])
+        if check_position.empty:
+            game_roster = pd.concat([game_roster,db[db['position'] == 'd'].head(formation[0])])
+        else:
+            defender_diff = sort_players(db,players,formation[0],'d')
+            game_roster = pd.concat([game_roster,db[db['position'] == 'd'].head(formation[0])])
+            game_roster = pd.concat([game_roster,defender_diff])
     else:
         game_roster = pd.concat([game_roster,db[db['position'] == 'd'].head(formation[0])])
 
+    # getting midfielders
     if db[db['position'] == 'm'].head(formation[1]).shape[0] < formation[1]:
-        midfielder_diff = sort_players(db,players,formation[1],'m')
-        game_roster = pd.concat([game_roster,db[db['position'] == 'm'].head(formation[1])])
-        game_roster = pd.concat([game_roster,midfielder_diff])
+        check_position = db[db['position'] == 'm'].head(formation[1])
+        if check_position.empty:
+            game_roster = pd.concat([game_roster,db[db['position'] == 'm'].head(formation[1])])
+        else:
+            midfielder_diff = sort_players(db,players,formation[1],'m')
+            game_roster = pd.concat([game_roster,db[db['position'] == 'm'].head(formation[1])])
+            game_roster = pd.concat([game_roster,midfielder_diff])
     else:
         game_roster = pd.concat([game_roster,db[db['position'] == 'm'].head(formation[1])])
 
+    # getting attackers
     if db[db['position'] == 'f'].head(formation[2]).shape[0] < formation[2]:
-        attacker_diff = sort_players(db,players,formation[2],'f')
-        game_roster = pd.concat([game_roster,db[db['position'] == 'f'].head(formation[2])])
-        game_roster = pd.concat([game_roster,attacker_diff])
+        check_position = db[db['position'] == 'f'].head(formation[2])
+        if check_position.empty:
+            game_roster = pd.concat([game_roster,db[db['position'] == 'f'].head(formation[2])])
+        else:
+            attacker_diff = sort_players(db,players,formation[2],'f')
+            game_roster = pd.concat([game_roster,db[db['position'] == 'f'].head(formation[2])])
+            game_roster = pd.concat([game_roster,attacker_diff])
     else:
         game_roster = pd.concat([game_roster,db[db['position'] == 'f'].head(formation[2])])
 

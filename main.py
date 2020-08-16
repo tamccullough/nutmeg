@@ -468,7 +468,7 @@ def player_19():
 
     name = request.form['name']
 
-    player = cpl_main.get_player_card(name,stats,player_info)
+    player = cpl_main.get_player_card_previous(name,stats,player_info)
     team = player['team'].values[0]
     roster_team_info = team_ref[team_ref['team'] == team]
     roster_colour = roster_team_info.iloc[0][4]
