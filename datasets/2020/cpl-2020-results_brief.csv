@@ -1,225 +1,57 @@
 d,m,hs,as,home,hr,away,ar,summary,team
-7,1,0,0,Atletico Ottawa,E,HFX Wanderers FC,E,E H 0 - 0 HFX,Atletico Ottawa
-7,1,0,0,Atletico Ottawa,E,Pacific FC,E,E H 0 - 0 PFC,Atletico Ottawa
-7,1,0,0,Atletico Ottawa,E,York9 FC,E,E H 0 - 0 Y9,Atletico Ottawa
-7,1,0,0,Atletico Ottawa,E,Cavalry FC,E,E H 0 - 0 CFC,Atletico Ottawa
-7,1,0,0,Atletico Ottawa,E,York9 FC,E,E H 0 - 0 Y9,Atletico Ottawa
-7,1,0,0,Atletico Ottawa,E,Cavalry FC,E,E H 0 - 0 CFC,Atletico Ottawa
-7,1,0,0,Atletico Ottawa,E,Forge FC,E,E H 0 - 0 FFC,Atletico Ottawa
-7,1,0,0,Atletico Ottawa,E,Valour FC,E,E H 0 - 0 VFC,Atletico Ottawa
-7,1,0,0,Atletico Ottawa,E,FC Edmonton,E,E H 0 - 0 FCE,Atletico Ottawa
-7,1,0,0,Atletico Ottawa,E,HFX Wanderers FC,E,E H 0 - 0 HFX,Atletico Ottawa
-7,1,0,0,Atletico Ottawa,E,Forge FC,E,E H 0 - 0 FFC,Atletico Ottawa
-7,1,0,0,Atletico Ottawa,E,FC Edmonton,E,E H 0 - 0 FCE,Atletico Ottawa
-7,1,0,0,Atletico Ottawa,E,Pacific FC,E,E H 0 - 0 PFC,Atletico Ottawa
-7,1,0,0,Atletico Ottawa,E,Valour FC,E,E H 0 - 0 VFC,Atletico Ottawa
-7,1,0,0,Forge FC,E,Atletico Ottawa,E,E A 0 - 0 FFC,Atletico Ottawa
-7,1,0,0,HFX Wanderers FC,E,Atletico Ottawa,E,E A 0 - 0 HFX,Atletico Ottawa
-7,1,0,0,Valour FC,E,Atletico Ottawa,E,E A 0 - 0 VFC,Atletico Ottawa
-7,1,0,0,York9 FC,E,Atletico Ottawa,E,E A 0 - 0 Y9,Atletico Ottawa
-7,1,0,0,HFX Wanderers FC,E,Atletico Ottawa,E,E A 0 - 0 HFX,Atletico Ottawa
-7,1,0,0,FC Edmonton,E,Atletico Ottawa,E,E A 0 - 0 FCE,Atletico Ottawa
-7,1,0,0,Forge FC,E,Atletico Ottawa,E,E A 0 - 0 FFC,Atletico Ottawa
-7,1,0,0,Pacific FC,E,Atletico Ottawa,E,E A 0 - 0 PFC,Atletico Ottawa
-7,1,0,0,Valour FC,E,Atletico Ottawa,E,E A 0 - 0 VFC,Atletico Ottawa
-7,1,0,0,Cavalry FC,E,Atletico Ottawa,E,E A 0 - 0 CFC,Atletico Ottawa
-7,1,0,0,York9 FC,E,Atletico Ottawa,E,E A 0 - 0 Y9,Atletico Ottawa
-7,1,0,0,FC Edmonton,E,Atletico Ottawa,E,E A 0 - 0 FCE,Atletico Ottawa
-7,1,0,0,Pacific FC,E,Atletico Ottawa,E,E A 0 - 0 PFC,Atletico Ottawa
-7,1,0,0,Cavalry FC,E,Atletico Ottawa,E,E A 0 - 0 CFC,Atletico Ottawa
-7,1,0,0,Cavalry FC,E,York9 FC,E,E H 0 - 0 Y9,Cavalry FC
-7,1,0,0,Cavalry FC,E,Pacific FC,E,E H 0 - 0 PFC,Cavalry FC
-7,1,0,0,Cavalry FC,E,York9 FC,E,E H 0 - 0 Y9,Cavalry FC
-7,1,0,0,Cavalry FC,E,Valour FC,E,E H 0 - 0 VFC,Cavalry FC
-7,1,0,0,Cavalry FC,E,Valour FC,E,E H 0 - 0 VFC,Cavalry FC
-7,1,0,0,Cavalry FC,E,Forge FC,E,E H 0 - 0 FFC,Cavalry FC
-7,1,0,0,Cavalry FC,E,FC Edmonton,E,E H 0 - 0 FCE,Cavalry FC
-7,1,0,0,Cavalry FC,E,Atletico Ottawa,E,E H 0 - 0 AO,Cavalry FC
-7,1,0,0,Cavalry FC,E,HFX Wanderers FC,E,E H 0 - 0 HFX,Cavalry FC
-7,1,0,0,Cavalry FC,E,Forge FC,E,E H 0 - 0 FFC,Cavalry FC
-7,1,0,0,Cavalry FC,E,Pacific FC,E,E H 0 - 0 PFC,Cavalry FC
-7,1,0,0,Cavalry FC,E,FC Edmonton,E,E H 0 - 0 FCE,Cavalry FC
-7,1,0,0,Cavalry FC,E,Atletico Ottawa,E,E H 0 - 0 AO,Cavalry FC
-7,1,0,0,Cavalry FC,E,HFX Wanderers FC,E,E H 0 - 0 HFX,Cavalry FC
-7,1,0,0,Forge FC,E,Cavalry FC,E,E A 0 - 0 FFC,Cavalry FC
-7,1,0,0,FC Edmonton,E,Cavalry FC,E,E A 0 - 0 FCE,Cavalry FC
-7,1,0,0,HFX Wanderers FC,E,Cavalry FC,E,E A 0 - 0 HFX,Cavalry FC
-7,1,0,0,Pacific FC,E,Cavalry FC,E,E A 0 - 0 PFC,Cavalry FC
-7,1,0,0,Atletico Ottawa,E,Cavalry FC,E,E A 0 - 0 AO,Cavalry FC
-7,1,0,0,HFX Wanderers FC,E,Cavalry FC,E,E A 0 - 0 HFX,Cavalry FC
-7,1,0,0,York9 FC,E,Cavalry FC,E,E A 0 - 0 Y9,Cavalry FC
-7,1,0,0,FC Edmonton,E,Cavalry FC,E,E A 0 - 0 FCE,Cavalry FC
-7,1,0,0,Atletico Ottawa,E,Cavalry FC,E,E A 0 - 0 AO,Cavalry FC
-7,1,0,0,Valour FC,E,Cavalry FC,E,E A 0 - 0 VFC,Cavalry FC
-7,1,0,0,York9 FC,E,Cavalry FC,E,E A 0 - 0 Y9,Cavalry FC
-7,1,0,0,Valour FC,E,Cavalry FC,E,E A 0 - 0 VFC,Cavalry FC
-7,1,0,0,Pacific FC,E,Cavalry FC,E,E A 0 - 0 PFC,Cavalry FC
-7,1,0,0,Forge FC,E,Cavalry FC,E,E A 0 - 0 FFC,Cavalry FC
-7,1,0,0,FC Edmonton,E,Cavalry FC,E,E H 0 - 0 CFC,FC Edmonton
-7,1,0,0,FC Edmonton,E,Forge FC,E,E H 0 - 0 FFC,FC Edmonton
-7,1,0,0,FC Edmonton,E,Pacific FC,E,E H 0 - 0 PFC,FC Edmonton
-7,1,0,0,FC Edmonton,E,Atletico Ottawa,E,E H 0 - 0 AO,FC Edmonton
-7,1,0,0,FC Edmonton,E,Valour FC,E,E H 0 - 0 VFC,FC Edmonton
-7,1,0,0,FC Edmonton,E,HFX Wanderers FC,E,E H 0 - 0 HFX,FC Edmonton
-7,1,0,0,FC Edmonton,E,Valour FC,E,E H 0 - 0 VFC,FC Edmonton
-7,1,0,0,FC Edmonton,E,Cavalry FC,E,E H 0 - 0 CFC,FC Edmonton
-7,1,0,0,FC Edmonton,E,Atletico Ottawa,E,E H 0 - 0 AO,FC Edmonton
-7,1,0,0,FC Edmonton,E,Pacific FC,E,E H 0 - 0 PFC,FC Edmonton
-7,1,0,0,FC Edmonton,E,York9 FC,E,E H 0 - 0 Y9,FC Edmonton
-7,1,0,0,FC Edmonton,E,Forge FC,E,E H 0 - 0 FFC,FC Edmonton
-7,1,0,0,FC Edmonton,E,HFX Wanderers FC,E,E H 0 - 0 HFX,FC Edmonton
-7,1,0,0,FC Edmonton,E,York9 FC,E,E H 0 - 0 Y9,FC Edmonton
-7,1,0,0,Pacific FC,E,FC Edmonton,E,E A 0 - 0 PFC,FC Edmonton
-7,1,0,0,York9 FC,E,FC Edmonton,E,E A 0 - 0 Y9,FC Edmonton
-7,1,0,0,Valour FC,E,FC Edmonton,E,E A 0 - 0 VFC,FC Edmonton
-7,1,0,0,York9 FC,E,FC Edmonton,E,E A 0 - 0 Y9,FC Edmonton
-7,1,0,0,Forge FC,E,FC Edmonton,E,E A 0 - 0 FFC,FC Edmonton
-7,1,0,0,HFX Wanderers FC,E,FC Edmonton,E,E A 0 - 0 HFX,FC Edmonton
-7,1,0,0,Cavalry FC,E,FC Edmonton,E,E A 0 - 0 CFC,FC Edmonton
-7,1,0,0,Pacific FC,E,FC Edmonton,E,E A 0 - 0 PFC,FC Edmonton
-7,1,0,0,Valour FC,E,FC Edmonton,E,E A 0 - 0 VFC,FC Edmonton
-7,1,0,0,Atletico Ottawa,E,FC Edmonton,E,E A 0 - 0 AO,FC Edmonton
-7,1,0,0,Cavalry FC,E,FC Edmonton,E,E A 0 - 0 CFC,FC Edmonton
-7,1,0,0,Atletico Ottawa,E,FC Edmonton,E,E A 0 - 0 AO,FC Edmonton
-7,1,0,0,Forge FC,E,FC Edmonton,E,E A 0 - 0 FFC,FC Edmonton
-7,1,0,0,HFX Wanderers FC,E,FC Edmonton,E,E A 0 - 0 HFX,FC Edmonton
-7,1,0,0,Forge FC,E,Cavalry FC,E,E H 0 - 0 CFC,Forge FC
-7,1,0,0,Forge FC,E,Atletico Ottawa,E,E H 0 - 0 AO,Forge FC
-7,1,0,0,Forge FC,E,HFX Wanderers FC,E,E H 0 - 0 HFX,Forge FC
-7,1,0,0,Forge FC,E,Valour FC,E,E H 0 - 0 VFC,Forge FC
-7,1,0,0,Forge FC,E,FC Edmonton,E,E H 0 - 0 FCE,Forge FC
-7,1,0,0,Forge FC,E,Atletico Ottawa,E,E H 0 - 0 AO,Forge FC
-7,1,0,0,Forge FC,E,Pacific FC,E,E H 0 - 0 PFC,Forge FC
-7,1,0,0,Forge FC,E,York9 FC,E,E H 0 - 0 Y9,Forge FC
-7,1,0,0,Forge FC,E,Pacific FC,E,E H 0 - 0 PFC,Forge FC
-7,1,0,0,Forge FC,E,HFX Wanderers FC,E,E H 0 - 0 HFX,Forge FC
-7,1,0,0,Forge FC,E,York9 FC,E,E H 0 - 0 Y9,Forge FC
-7,1,0,0,Forge FC,E,Valour FC,E,E H 0 - 0 VFC,Forge FC
-7,1,0,0,Forge FC,E,FC Edmonton,E,E H 0 - 0 FCE,Forge FC
-7,1,0,0,Forge FC,E,Cavalry FC,E,E H 0 - 0 CFC,Forge FC
-7,1,0,0,FC Edmonton,E,Forge FC,E,E A 0 - 0 FCE,Forge FC
-7,1,0,0,Pacific FC,E,Forge FC,E,E A 0 - 0 PFC,Forge FC
-7,1,0,0,HFX Wanderers FC,E,Forge FC,E,E A 0 - 0 HFX,Forge FC
-7,1,0,0,York9 FC,E,Forge FC,E,E A 0 - 0 Y9,Forge FC
-7,1,0,0,Cavalry FC,E,Forge FC,E,E A 0 - 0 CFC,Forge FC
-7,1,0,0,Valour FC,E,Forge FC,E,E A 0 - 0 VFC,Forge FC
-7,1,0,0,Valour FC,E,Forge FC,E,E A 0 - 0 VFC,Forge FC
-7,1,0,0,York9 FC,E,Forge FC,E,E A 0 - 0 Y9,Forge FC
-7,1,0,0,Atletico Ottawa,E,Forge FC,E,E A 0 - 0 AO,Forge FC
-7,1,0,0,Cavalry FC,E,Forge FC,E,E A 0 - 0 CFC,Forge FC
-7,1,0,0,FC Edmonton,E,Forge FC,E,E A 0 - 0 FCE,Forge FC
-7,1,0,0,HFX Wanderers FC,E,Forge FC,E,E A 0 - 0 HFX,Forge FC
-7,1,0,0,Atletico Ottawa,E,Forge FC,E,E A 0 - 0 AO,Forge FC
-7,1,0,0,Pacific FC,E,Forge FC,E,E A 0 - 0 PFC,Forge FC
-7,1,0,0,HFX Wanderers FC,E,Atletico Ottawa,E,E H 0 - 0 AO,HFX Wanderers FC
-7,1,0,0,HFX Wanderers FC,E,Cavalry FC,E,E H 0 - 0 CFC,HFX Wanderers FC
-7,1,0,0,HFX Wanderers FC,E,Forge FC,E,E H 0 - 0 FFC,HFX Wanderers FC
-7,1,0,0,HFX Wanderers FC,E,Atletico Ottawa,E,E H 0 - 0 AO,HFX Wanderers FC
-7,1,0,0,HFX Wanderers FC,E,FC Edmonton,E,E H 0 - 0 FCE,HFX Wanderers FC
-7,1,0,0,HFX Wanderers FC,E,Cavalry FC,E,E H 0 - 0 CFC,HFX Wanderers FC
-7,1,0,0,HFX Wanderers FC,E,York9 FC,E,E H 0 - 0 Y9,HFX Wanderers FC
-7,1,0,0,HFX Wanderers FC,E,Pacific FC,E,E H 0 - 0 PFC,HFX Wanderers FC
-7,1,0,0,HFX Wanderers FC,E,Pacific FC,E,E H 0 - 0 PFC,HFX Wanderers FC
-7,1,0,0,HFX Wanderers FC,E,Valour FC,E,E H 0 - 0 VFC,HFX Wanderers FC
-7,1,0,0,HFX Wanderers FC,E,Forge FC,E,E H 0 - 0 FFC,HFX Wanderers FC
-7,1,0,0,HFX Wanderers FC,E,York9 FC,E,E H 0 - 0 Y9,HFX Wanderers FC
-7,1,0,0,HFX Wanderers FC,E,Valour FC,E,E H 0 - 0 VFC,HFX Wanderers FC
-7,1,0,0,HFX Wanderers FC,E,FC Edmonton,E,E H 0 - 0 FCE,HFX Wanderers FC
-7,1,0,0,York9 FC,E,HFX Wanderers FC,E,E A 0 - 0 Y9,HFX Wanderers FC
-7,1,0,0,Pacific FC,E,HFX Wanderers FC,E,E A 0 - 0 PFC,HFX Wanderers FC
-7,1,0,0,Forge FC,E,HFX Wanderers FC,E,E A 0 - 0 FFC,HFX Wanderers FC
-7,1,0,0,Atletico Ottawa,E,HFX Wanderers FC,E,E A 0 - 0 AO,HFX Wanderers FC
-7,1,0,0,Valour FC,E,HFX Wanderers FC,E,E A 0 - 0 VFC,HFX Wanderers FC
-7,1,0,0,FC Edmonton,E,HFX Wanderers FC,E,E A 0 - 0 FCE,HFX Wanderers FC
-7,1,0,0,Valour FC,E,HFX Wanderers FC,E,E A 0 - 0 VFC,HFX Wanderers FC
-7,1,0,0,Cavalry FC,E,HFX Wanderers FC,E,E A 0 - 0 CFC,HFX Wanderers FC
-7,1,0,0,York9 FC,E,HFX Wanderers FC,E,E A 0 - 0 Y9,HFX Wanderers FC
-7,1,0,0,Pacific FC,E,HFX Wanderers FC,E,E A 0 - 0 PFC,HFX Wanderers FC
-7,1,0,0,Forge FC,E,HFX Wanderers FC,E,E A 0 - 0 FFC,HFX Wanderers FC
-7,1,0,0,Atletico Ottawa,E,HFX Wanderers FC,E,E A 0 - 0 AO,HFX Wanderers FC
-7,1,0,0,FC Edmonton,E,HFX Wanderers FC,E,E A 0 - 0 FCE,HFX Wanderers FC
-7,1,0,0,Cavalry FC,E,HFX Wanderers FC,E,E A 0 - 0 CFC,HFX Wanderers FC
-7,1,0,0,Pacific FC,E,FC Edmonton,E,E H 0 - 0 FCE,Pacific FC
-7,1,0,0,Pacific FC,E,HFX Wanderers FC,E,E H 0 - 0 HFX,Pacific FC
-7,1,0,0,Pacific FC,E,Valour FC,E,E H 0 - 0 VFC,Pacific FC
-7,1,0,0,Pacific FC,E,Forge FC,E,E H 0 - 0 FFC,Pacific FC
-7,1,0,0,Pacific FC,E,Cavalry FC,E,E H 0 - 0 CFC,Pacific FC
-7,1,0,0,Pacific FC,E,Valour FC,E,E H 0 - 0 VFC,Pacific FC
-7,1,0,0,Pacific FC,E,Atletico Ottawa,E,E H 0 - 0 AO,Pacific FC
-7,1,0,0,Pacific FC,E,FC Edmonton,E,E H 0 - 0 FCE,Pacific FC
-7,1,0,0,Pacific FC,E,York9 FC,E,E H 0 - 0 Y9,Pacific FC
-7,1,0,0,Pacific FC,E,HFX Wanderers FC,E,E H 0 - 0 HFX,Pacific FC
-7,1,0,0,Pacific FC,E,Atletico Ottawa,E,E H 0 - 0 AO,Pacific FC
-7,1,0,0,Pacific FC,E,Cavalry FC,E,E H 0 - 0 CFC,Pacific FC
-7,1,0,0,Pacific FC,E,Forge FC,E,E H 0 - 0 FFC,Pacific FC
-7,1,0,0,Pacific FC,E,York9 FC,E,E H 0 - 0 Y9,Pacific FC
-7,1,0,0,Cavalry FC,E,Pacific FC,E,E A 0 - 0 CFC,Pacific FC
-7,1,0,0,FC Edmonton,E,Pacific FC,E,E A 0 - 0 FCE,Pacific FC
-7,1,0,0,Atletico Ottawa,E,Pacific FC,E,E A 0 - 0 AO,Pacific FC
-7,1,0,0,Valour FC,E,Pacific FC,E,E A 0 - 0 VFC,Pacific FC
-7,1,0,0,York9 FC,E,Pacific FC,E,E A 0 - 0 Y9,Pacific FC
-7,1,0,0,Forge FC,E,Pacific FC,E,E A 0 - 0 FFC,Pacific FC
-7,1,0,0,HFX Wanderers FC,E,Pacific FC,E,E A 0 - 0 HFX,Pacific FC
-7,1,0,0,Forge FC,E,Pacific FC,E,E A 0 - 0 FFC,Pacific FC
-7,1,0,0,HFX Wanderers FC,E,Pacific FC,E,E A 0 - 0 HFX,Pacific FC
-7,1,0,0,FC Edmonton,E,Pacific FC,E,E A 0 - 0 FCE,Pacific FC
-7,1,0,0,Cavalry FC,E,Pacific FC,E,E A 0 - 0 CFC,Pacific FC
-7,1,0,0,Valour FC,E,Pacific FC,E,E A 0 - 0 VFC,Pacific FC
-7,1,0,0,York9 FC,E,Pacific FC,E,E A 0 - 0 Y9,Pacific FC
-7,1,0,0,Atletico Ottawa,E,Pacific FC,E,E A 0 - 0 AO,Pacific FC
-7,1,0,0,Valour FC,E,Atletico Ottawa,E,E H 0 - 0 AO,Valour FC
-7,1,0,0,Valour FC,E,FC Edmonton,E,E H 0 - 0 FCE,Valour FC
-7,1,0,0,Valour FC,E,HFX Wanderers FC,E,E H 0 - 0 HFX,Valour FC
-7,1,0,0,Valour FC,E,Pacific FC,E,E H 0 - 0 PFC,Valour FC
-7,1,0,0,Valour FC,E,Forge FC,E,E H 0 - 0 FFC,Valour FC
-7,1,0,0,Valour FC,E,Atletico Ottawa,E,E H 0 - 0 AO,Valour FC
-7,1,0,0,Valour FC,E,Forge FC,E,E H 0 - 0 FFC,Valour FC
-7,1,0,0,Valour FC,E,HFX Wanderers FC,E,E H 0 - 0 HFX,Valour FC
-7,1,0,0,Valour FC,E,FC Edmonton,E,E H 0 - 0 FCE,Valour FC
-7,1,0,0,Valour FC,E,Cavalry FC,E,E H 0 - 0 CFC,Valour FC
-7,1,0,0,Valour FC,E,York9 FC,E,E H 0 - 0 Y9,Valour FC
-7,1,0,0,Valour FC,E,Pacific FC,E,E H 0 - 0 PFC,Valour FC
-7,1,0,0,Valour FC,E,Cavalry FC,E,E H 0 - 0 CFC,Valour FC
-7,1,0,0,Valour FC,E,York9 FC,E,E H 0 - 0 Y9,Valour FC
-7,1,0,0,York9 FC,E,Valour FC,E,E A 0 - 0 Y9,Valour FC
-7,1,0,0,Pacific FC,E,Valour FC,E,E A 0 - 0 PFC,Valour FC
-7,1,0,0,Forge FC,E,Valour FC,E,E A 0 - 0 FFC,Valour FC
-7,1,0,0,Cavalry FC,E,Valour FC,E,E A 0 - 0 CFC,Valour FC
-7,1,0,0,Pacific FC,E,Valour FC,E,E A 0 - 0 PFC,Valour FC
-7,1,0,0,Cavalry FC,E,Valour FC,E,E A 0 - 0 CFC,Valour FC
-7,1,0,0,York9 FC,E,Valour FC,E,E A 0 - 0 Y9,Valour FC
-7,1,0,0,FC Edmonton,E,Valour FC,E,E A 0 - 0 FCE,Valour FC
-7,1,0,0,FC Edmonton,E,Valour FC,E,E A 0 - 0 FCE,Valour FC
-7,1,0,0,Atletico Ottawa,E,Valour FC,E,E A 0 - 0 AO,Valour FC
-7,1,0,0,HFX Wanderers FC,E,Valour FC,E,E A 0 - 0 HFX,Valour FC
-7,1,0,0,Forge FC,E,Valour FC,E,E A 0 - 0 FFC,Valour FC
-7,1,0,0,HFX Wanderers FC,E,Valour FC,E,E A 0 - 0 HFX,Valour FC
-7,1,0,0,Atletico Ottawa,E,Valour FC,E,E A 0 - 0 AO,Valour FC
-7,1,0,0,York9 FC,E,HFX Wanderers FC,E,E H 0 - 0 HFX,York9 FC
-7,1,0,0,York9 FC,E,Valour FC,E,E H 0 - 0 VFC,York9 FC
-7,1,0,0,York9 FC,E,FC Edmonton,E,E H 0 - 0 FCE,York9 FC
-7,1,0,0,York9 FC,E,Atletico Ottawa,E,E H 0 - 0 AO,York9 FC
-7,1,0,0,York9 FC,E,FC Edmonton,E,E H 0 - 0 FCE,York9 FC
-7,1,0,0,York9 FC,E,Forge FC,E,E H 0 - 0 FFC,York9 FC
-7,1,0,0,York9 FC,E,Valour FC,E,E H 0 - 0 VFC,York9 FC
-7,1,0,0,York9 FC,E,Pacific FC,E,E H 0 - 0 PFC,York9 FC
-7,1,0,0,York9 FC,E,Cavalry FC,E,E H 0 - 0 CFC,York9 FC
-7,1,0,0,York9 FC,E,Atletico Ottawa,E,E H 0 - 0 AO,York9 FC
-7,1,0,0,York9 FC,E,Forge FC,E,E H 0 - 0 FFC,York9 FC
-7,1,0,0,York9 FC,E,HFX Wanderers FC,E,E H 0 - 0 HFX,York9 FC
-7,1,0,0,York9 FC,E,Cavalry FC,E,E H 0 - 0 CFC,York9 FC
-7,1,0,0,York9 FC,E,Pacific FC,E,E H 0 - 0 PFC,York9 FC
-7,1,0,0,Cavalry FC,E,York9 FC,E,E A 0 - 0 CFC,York9 FC
-7,1,0,0,Cavalry FC,E,York9 FC,E,E A 0 - 0 CFC,York9 FC
-7,1,0,0,Atletico Ottawa,E,York9 FC,E,E A 0 - 0 AO,York9 FC
-7,1,0,0,HFX Wanderers FC,E,York9 FC,E,E A 0 - 0 HFX,York9 FC
-7,1,0,0,Atletico Ottawa,E,York9 FC,E,E A 0 - 0 AO,York9 FC
-7,1,0,0,Forge FC,E,York9 FC,E,E A 0 - 0 FFC,York9 FC
-7,1,0,0,Pacific FC,E,York9 FC,E,E A 0 - 0 PFC,York9 FC
-7,1,0,0,FC Edmonton,E,York9 FC,E,E A 0 - 0 FCE,York9 FC
-7,1,0,0,Valour FC,E,York9 FC,E,E A 0 - 0 VFC,York9 FC
-7,1,0,0,Forge FC,E,York9 FC,E,E A 0 - 0 FFC,York9 FC
-7,1,0,0,HFX Wanderers FC,E,York9 FC,E,E A 0 - 0 HFX,York9 FC
-7,1,0,0,FC Edmonton,E,York9 FC,E,E A 0 - 0 FCE,York9 FC
-7,1,0,0,Valour FC,E,York9 FC,E,E A 0 - 0 VFC,York9 FC
-7,1,0,0,Pacific FC,E,York9 FC,E,E A 0 - 0 PFC,York9 FC
+15,8,2,2,York9 FC,D,Atletico Ottawa,D,D A 2 - 2 Y9,Atletico Ottawa
+19,8,0,0,Atletico Ottawa,E,Valour FC,E,E H 0 - 0 VFC,Atletico Ottawa
+23,8,0,0,Atletico Ottawa,E,FC Edmonton,E,E H 0 - 0 FCE,Atletico Ottawa
+27,8,0,0,Atletico Ottawa,E,Cavalry FC,E,E H 0 - 0 CFC,Atletico Ottawa
+30,8,0,0,Atletico Ottawa,E,Forge FC,E,E H 0 - 0 FFC,Atletico Ottawa
+2,9,0,0,Pacific FC,E,Atletico Ottawa,E,E A 0 - 0 PFC,Atletico Ottawa
+6,9,0,0,HFX Wanderers FC,E,Atletico Ottawa,E,E A 0 - 0 HFX,Atletico Ottawa
+13,8,2,2,Forge FC,D,Cavalry FC,D,D A 2 - 2 FFC,Cavalry FC
+16,8,0,0,Valour FC,E,Cavalry FC,E,E A 0 - 0 VFC,Cavalry FC
+20,8,0,0,FC Edmonton,E,Cavalry FC,E,E A 0 - 0 FCE,Cavalry FC
+23,8,0,0,Cavalry FC,E,HFX Wanderers FC,E,E H 0 - 0 HFX,Cavalry FC
+27,8,0,0,Atletico Ottawa,E,Cavalry FC,E,E A 0 - 0 AO,Cavalry FC
+30,8,0,0,Cavalry FC,E,Pacific FC,E,E H 0 - 0 PFC,Cavalry FC
+5,9,0,0,Cavalry FC,E,York9 FC,E,E H 0 - 0 Y9,Cavalry FC
+16,8,0,0,Forge FC,E,FC Edmonton,E,E A 0 - 0 FFC,FC Edmonton
+20,8,0,0,FC Edmonton,E,Cavalry FC,E,E H 0 - 0 CFC,FC Edmonton
+23,8,0,0,Atletico Ottawa,E,FC Edmonton,E,E A 0 - 0 AO,FC Edmonton
+26,8,0,0,FC Edmonton,E,HFX Wanderers FC,E,E H 0 - 0 HFX,FC Edmonton
+29,8,0,0,Valour FC,E,FC Edmonton,E,E A 0 - 0 VFC,FC Edmonton
+1,9,0,0,FC Edmonton,E,York9 FC,E,E H 0 - 0 Y9,FC Edmonton
+6,9,0,0,Pacific FC,E,FC Edmonton,E,E A 0 - 0 PFC,FC Edmonton
+13,8,2,2,Forge FC,D,Cavalry FC,D,D H 2 - 2 CFC,Forge FC
+16,8,0,0,Forge FC,E,FC Edmonton,E,E H 0 - 0 FCE,Forge FC
+19,8,0,0,HFX Wanderers FC,E,Forge FC,E,E A 0 - 0 HFX,Forge FC
+22,8,0,0,Forge FC,E,Pacific FC,E,E H 0 - 0 PFC,Forge FC
+26,8,0,0,York9 FC,E,Forge FC,E,E A 0 - 0 Y9,Forge FC
+30,8,0,0,Atletico Ottawa,E,Forge FC,E,E A 0 - 0 AO,Forge FC
+5,9,0,0,Forge FC,E,Valour FC,E,E H 0 - 0 VFC,Forge FC
+15,8,2,2,HFX Wanderers FC,D,Pacific FC,D,D H 2 - 2 PFC,HFX Wanderers FC
+19,8,0,0,HFX Wanderers FC,E,Forge FC,E,E H 0 - 0 FFC,HFX Wanderers FC
+23,8,0,0,Cavalry FC,E,HFX Wanderers FC,E,E A 0 - 0 CFC,HFX Wanderers FC
+26,8,0,0,FC Edmonton,E,HFX Wanderers FC,E,E A 0 - 0 FCE,HFX Wanderers FC
+29,8,0,0,HFX Wanderers FC,E,York9 FC,E,E H 0 - 0 Y9,HFX Wanderers FC
+2,9,0,0,Valour FC,E,HFX Wanderers FC,E,E A 0 - 0 VFC,HFX Wanderers FC
+6,9,0,0,HFX Wanderers FC,E,Atletico Ottawa,E,E H 0 - 0 AO,HFX Wanderers FC
+15,8,2,2,HFX Wanderers FC,D,Pacific FC,D,D A 2 - 2 HFX,Pacific FC
+18,8,0,0,Pacific FC,E,York9 FC,E,E H 0 - 0 Y9,Pacific FC
+22,8,0,0,Forge FC,E,Pacific FC,E,E A 0 - 0 FFC,Pacific FC
+25,8,0,0,Pacific FC,E,Valour FC,E,E H 0 - 0 VFC,Pacific FC
+30,8,0,0,Cavalry FC,E,Pacific FC,E,E A 0 - 0 CFC,Pacific FC
+2,9,0,0,Pacific FC,E,Atletico Ottawa,E,E H 0 - 0 AO,Pacific FC
+6,9,0,0,Pacific FC,E,FC Edmonton,E,E H 0 - 0 FCE,Pacific FC
+16,8,0,0,Valour FC,E,Cavalry FC,E,E H 0 - 0 CFC,Valour FC
+19,8,0,0,Atletico Ottawa,E,Valour FC,E,E A 0 - 0 AO,Valour FC
+22,8,0,0,York9 FC,E,Valour FC,E,E A 0 - 0 Y9,Valour FC
+25,8,0,0,Pacific FC,E,Valour FC,E,E A 0 - 0 PFC,Valour FC
+29,8,0,0,Valour FC,E,FC Edmonton,E,E H 0 - 0 FCE,Valour FC
+2,9,0,0,Valour FC,E,HFX Wanderers FC,E,E H 0 - 0 HFX,Valour FC
+5,9,0,0,Forge FC,E,Valour FC,E,E A 0 - 0 FFC,Valour FC
+15,8,2,2,York9 FC,D,Atletico Ottawa,D,D H 2 - 2 AO,York9 FC
+18,8,0,0,Pacific FC,E,York9 FC,E,E A 0 - 0 PFC,York9 FC
+22,8,0,0,York9 FC,E,Valour FC,E,E H 0 - 0 VFC,York9 FC
+26,8,0,0,York9 FC,E,Forge FC,E,E H 0 - 0 FFC,York9 FC
+29,8,0,0,HFX Wanderers FC,E,York9 FC,E,E A 0 - 0 HFX,York9 FC
+1,9,0,0,FC Edmonton,E,York9 FC,E,E A 0 - 0 FCE,York9 FC
+5,9,0,0,Cavalry FC,E,York9 FC,E,E A 0 - 0 CFC,York9 FC

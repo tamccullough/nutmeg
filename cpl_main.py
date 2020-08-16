@@ -104,10 +104,10 @@ def get_team_brief(results_db,query,df):
     team_brief['team'] = query # create team column holding the team's name in all rows
     return team_brief # return the dataframe
 
-def get_results_brief(data,dc):
+def get_results_brief(results,team_ref):
     db = pd.DataFrame()
-    for team in dc['team']:
-        df = get_team_brief(data,team,dc)
+    for team in team_ref['team']:
+        df = get_team_brief(results,team,team_ref)
         db = pd.concat([db,df])
     db = index_reset(db)
     return db
@@ -296,6 +296,7 @@ def compare_standings(standings_current,standings_old,team_ref):
         rank1 = standings_old[standings_old['team'] == team] # get team's previous rank
         rank2 = standings_current[standings_current['team'] == team] # get teams current rank
         # calculate the change in team's ranking
+        #print(team,rank1['rank'].values[0],rank2['rank'].values[0])
         if rank1.iloc[0]['rank'] == rank2.iloc[0]['rank']:
             change = 0
         else:
@@ -307,12 +308,12 @@ def compare_standings(standings_current,standings_old,team_ref):
     current_rankings = index_reset(current_rankings)
     return current_rankings
 
-def clean_team_game(data,db,check):
+def clean_team_game(standings,db,check):
     if check == 0:
-        df = data.iloc[0]['team'] # Getting the name of the top team
+        df = standings.iloc[0]['team'] # Getting the name of the top team
     else:
-        df = data.iloc[-1]['team'] # Getting the name of the bottom placed team
-    if data.iloc[-1]['gp'] == 0 and check == 1:
+        df = standings.iloc[-1]['team'] # Getting the name of the bottom placed team
+    if standings.iloc[-1]['gp'] == 0 and check == 1:
         db = pd.DataFrame([(df,0,df,0)],columns=['home','hs','away','as']) # make an empty set if the game is empty
     else:
         df = db[(db['home'] == df) | (db['away'] == df)] # get appropirate game results for specified team
@@ -322,14 +323,14 @@ def clean_team_game(data,db,check):
         db = db.T
     return db
 
-def get_weeks_results(data,standings,stats,team_ref):
-    if data.iloc[0]['hr'] == 'E':
+def get_weeks_results(results,standings,stats,team_ref):
+    if results.iloc[0]['hr'] == 'E':
         db = pd.DataFrame([('tbd',0,'tbd',0)],columns=['home','hs','away','as'])
         big_win, top_team, low_team,other_team = db,db,db,db
         goals, assists, yellows, reds = 0,0,0,0
         return db,goals,big_win,top_team,low_team,other_team, assists, yellows, reds
 
-    played_games = data[data['hr'] != 'E']
+    played_games = results[results['hr'] != 'E']
     played_games = played_games.tail(1)
     played_games = played_games.sort_values(by=['m','d'], ascending=False)
     played_games = index_reset(played_games)
@@ -338,11 +339,11 @@ def get_weeks_results(data,standings,stats,team_ref):
     print(month,day)
 
     # perform a check to check the amount of games played are enough to analyze
-    check = data[data['hr'] != 'E'].shape[0]
+    check = results[results['hr'] != 'E'].shape[0]
     if check < 3:
-        df = data.head(6)
+        df = results.head(6)
     else:
-        df = data[data['hr'] != 'E'].head(6)
+        df = results[results['hr'] != 'E'].head(6)
 
     db = df[df['m'] == month]
     db = db[db['d'] <= day + 4]
@@ -376,6 +377,7 @@ def get_weeks_results(data,standings,stats,team_ref):
     yellows = stats['yellow'].sum()
     reds = stats['red'].sum()
 
+    # verify low team has played
     if low_team['home'].values[0] == low_team['away'].values[0]:
         low_team = pd.DataFrame([('TBD',0,'TBD',0)],columns=['home','hs','away','as'])
 
@@ -470,7 +472,7 @@ def top_tracked(team_stats,tracked):
 def top_position(team_stats,position): # get the forwards in the league
     colf = ['team','name','number','position','minutes','goals','chances','assists','shots','s-target','passes','crosses','duels','tackles']
     colm = ['team','name','number','position','minutes','goals','assists','touches','passes','pass-acc','crosses','cross-acc','chances','duels','tackles']
-    cold = ['team','name','number','position','minutes','tackles','t-won','clearances','interceptions','duels','d-won']
+    cold = ['team','name','number','position','minutes','goals','tackles','t-won','clearances','interceptions','duels','d-won']
     colg = ['team','name','number','position','minutes','cs','saves','shots faced','claimed crosses']
 
     def create_blank_frame(columns):
@@ -908,6 +910,46 @@ def get_player_card(name,stats,stats_seed,player_info):
     player_stats= player_stats.fillna(0)
     return player_stats
 
+def get_player_card_previous(name,stats,player_info):
+    player_stats = stats[stats['last'] == name].groupby('name').sum()
+    if player_stats.empty:
+        player_stats = stats_seed[stats_seed['last'] == name].groupby('name').sum()
+    player_stats = player_stats.reset_index()
+    name = player_stats['name'].values[0]
+    player_information = player_info[player_info['name'] == name]
+    count = stats[stats['name'] == name].groupby('name').count()
+    if count.empty:
+        count = stats_seed[stats_seed['name'] == name].groupby('name').count()
+    count = int(count['game'].values[0])
+    for col in player_stats.columns:
+        if col == 'name':
+            pass
+        else:
+            player_stats[col] = player_stats[col].astype('int32')
+    player_stats['pass-acc'] = player_stats['pass-acc'].apply(lambda x: round(x / count,2))
+    player_stats['cross-acc'] = player_stats['cross-acc'].apply(lambda x: round(x / count,2))
+    player_stats['number']= int(player_information['number'].values[0])
+    player_stats.insert(0,'image',player_information['image'].values[0])
+    player_stats.insert(1,'flag',player_information['flag'].values[0])
+    player_stats.insert(2,'overall',player_information['overall'].values[0])
+    player_stats.insert(31,'wiki',player_information['link'].values[0])
+    player_stats.insert(0,'team',player_information['team'].values[0])
+    minutes = player_stats['minutes'].values[0]
+    player_stats['xG'] = player_stats['goals'].apply(lambda x: round(x / (minutes/90),2))
+    player_stats['xA'] = player_stats['assists'].apply(lambda x: round(x / (minutes/90),2))
+    position = player_information['position'].values[0]
+    if position == 'f':
+        position = 'Forward'
+    elif position == 'm':
+        position = 'Midfield'
+    elif position == 'd':
+        position = 'Defender'
+    else:
+        position = 'Goal Keeper'
+    player_stats.insert(5,'position',position)
+    player_stats= player_stats.fillna(0)
+    return player_stats
+
 def get_roster_overall(query,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info): # use team stats to get the player information
     team = get_shortest_name(query,team_ref)
     def get_score(data,name):
@@ -1019,22 +1061,22 @@ def get_compare_roster(results,query,stats,team_ref,rated_forwards,rated_midfiel
     db = index_reset(db)
     return db
 
-def get_team_history(data,query):
-    df = data[data['away'] == query].copy()
-    df = df[['d','m','as','hs','away','ar','home','hr']]
-    df = df.rename(columns={'as':'hs','hs':'as','away':'home','ar':'hr','home':'away','hr':'ar'})
-    db = data[data['home'] == query].copy()
-    db = db[['d','m','hs','as','home','hr','away','ar']]
-    db = pd.concat([db,df])
-    db = db.tail(5)
-    db = db.sort_values(by=['m','d'],ascending=False)
-    return db
+def get_team_history(results,query):
+    away = results[results['away'] == query].copy()
+    away = away[['d','m','as','hs','away','ar','home','hr']]
+    away = away.rename(columns={'as':'hs','hs':'as','away':'home','ar':'hr','home':'away','hr':'ar'})
+    home = results[results['home'] == query].copy()
+    home = home[['d','m','hs','as','home','hr','away','ar']]
+    home = pd.concat([home,away])
+    home = home#.tail(5)
+    home = home.sort_values(by=['m','d'],ascending=False)
+    return home
 
-def get_five_game_form(data,query):
-    db = get_team_history(data,query)
-    db = db.pop('hr')
+def get_five_game_form(results,query):
+    team_form = get_team_history(results,query)
+    team_form = team_form.pop('hr')
     a = []
-    for i in db:
+    for i in team_form:
         if i == 'W':
             j = [1,0,0]
             a.append(j)
@@ -1044,9 +1086,10 @@ def get_five_game_form(data,query):
         if i == 'D':
             j = [0,0,1]
             a.append(j)
-    db = pd.DataFrame(a,columns=['w','l','d'])
-    db = pd.DataFrame(db.sum())
-    return db
+    form = pd.DataFrame(a,columns=['w','l','d'])
+    form = pd.DataFrame(form.sum())
+    form = form.astype('int')
+    return form
 
 def get_overall_roster(game_roster,player_info):
     b = []
