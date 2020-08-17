@@ -202,7 +202,7 @@ def get_90(dataframe):
     for i in range(data.shape[0]):
         summed = data.iloc[i][cols].sum()
         data.at[i,'new_overall'] = summed
-    data['new_overall'] = round(data['new_overall'] / data['new_overall'].max(),2) - .1
+    data['new_overall'] = round((data['new_overall'] / data['new_overall'].max()) - 0.1,2)
     data = data.sort_values(by='new_overall',ascending = False)
     return data
 
@@ -1298,7 +1298,7 @@ def get_power_rankings(standings,standings_old,team_ref,results,previous_ranking
         if rank1.iloc[0]['rank'] == rank2.iloc[0]['rank']:
             change = 0
         else:
-            change = (rank1.iloc[0]['rank'] - rank2.iloc[0]['rank']) * - 1
+            change = (rank1.iloc[0]['rank'] - rank2.iloc[0]['rank']) #* - 1
 
         if rank1.iloc[0]['gd'] == rank2.iloc[0]['gd']:
             gd_bonus = 0
@@ -1308,7 +1308,7 @@ def get_power_rankings(standings,standings_old,team_ref,results,previous_ranking
         if rank1.iloc[0]['ga'] == rank2.iloc[0]['ga']:
             ga_nerf = 0
         else:
-            ga_nerf = (rank1.iloc[0]['ga'] - rank2.iloc[0]['ga']) * - 1
+            ga_nerf = (rank1.iloc[0]['ga'] - rank2.iloc[0]['ga']) #* - 1
 
         if rank1.iloc[0]['w'] == rank2.iloc[0]['w']:
             w_bonus = 0

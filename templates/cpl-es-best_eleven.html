@@ -77,8 +77,9 @@
 
   <div class="w3-container w3-row-padding">
     <div>
-      {%for i in range(0,html_table.shape[0])%}
-      <div class="w3-quarter w3-card-4 w3-grey">
+      <!-- FORWARDS -->
+      {%for i in range(9,11)%}
+      <div class="w3-half w3-card-4 w3-grey">
         <form method="POST" action="/player">
         <div class="w3-center">
           <a href="{{ html_table.iloc[i,7] }}" target="_blank">
@@ -90,27 +91,133 @@
             <tr>
               <td style="padding: 5px 5px;"><p><img src="static/images/flags/{{ html_table.iloc[i,3] }}" alt="{{ html_table.iloc[i,3] }}" style="max-height:20px"></p></td>
               <td style="padding: 5px 5px;"><h4>{{ html_table.iloc[i,4] }}</h4></td>
+              <td style="padding: 5px 5px;"><p>Overall {{ html_table.iloc[i,6] }}</p></td>
             </tr>
             <tr>
-              <td colspan="2"><h5 href="{{ url_for('player') }}">{{ html_table.iloc[i,1] }} <input class="button" type="submit" id="name" name="name" value="{{ html_table.iloc[i,2] }}"></h5></td>
+              <td colspan="3"><h5 href="{{ url_for('player') }}">{{ html_table.iloc[i,1] }} <input class="button" type="submit" id="name" name="name" value="{{ html_table.iloc[i,2] }}"></h5></td>
             </tr>
             <tr style="min-width:120px">
-              {% if html_table.iloc[i,5] == 'f' %}
-                  <td style="padding: 5px 5px;"><p>Attacker</p></td>
-              {% elif html_table.iloc[i,5] == 'm' %}
-                  <td style="padding: 5px 5px;"><p>Midfielder</p></td>
-              {% elif html_table.iloc[i,5] == 'd' %}
-                  <td style="padding: 5px 5px;"><p>Defender</p></td>
-              {% else %}
-                  <td style="padding: 5px 5px;"><p>Goalkeeper</p></td>
-              {% endif %}
-              <td style="padding: 5px 5px;"><p>Overall {{ html_table.iloc[i,6] }}</p></td>
+                  <td colspan="3" style="padding: 5px 5px;"><p>Attacker</p></td>
             </tr>
           </table>
         </div>
         </form>
       </div>
       {%endfor%}
+
+
+
+      <!-- MIDFILED 3 -->
+      {%for i in range(6,9)%}
+      <div class="w3-third w3-card-4 w3-grey">
+        <form method="POST" action="/player">
+        <div class="w3-center">
+          <a href="{{ html_table.iloc[i,7] }}" target="_blank">
+            <img src="static/images/players/2020/{{ html_table.iloc[i,0] }}" alt="{{ html_table.iloc[i,1] }}" style="max-height:200px">
+          </a>
+        </div>
+        <div class="w3-container cpl-eclipse-l">
+          <table>
+            <tr>
+              <td style="padding: 5px 5px;"><p><img src="static/images/flags/{{ html_table.iloc[i,3] }}" alt="{{ html_table.iloc[i,3] }}" style="max-height:20px"></p></td>
+              <td style="padding: 5px 5px;"><h4>{{ html_table.iloc[i,4] }}</h4></td>
+              <td style="padding: 5px 5px;"><p>Overall {{ html_table.iloc[i,6] }}</p></td>
+            </tr>
+            <tr>
+              <td colspan="3"><h5 href="{{ url_for('player') }}">{{ html_table.iloc[i,1] }} <input class="button" type="submit" id="name" name="name" value="{{ html_table.iloc[i,2] }}"></h5></td>
+            </tr>
+            <tr style="min-width:120px">
+                  <td colspan="3" style="padding: 5px 5px;"><p>Midfielder</p></td>
+            </tr>
+          </table>
+        </div>
+        </form>
+      </div>
+      {%endfor%}
+
+      <!-- MIDFILED 2-->
+      {%for i in range(4,6)%}
+      <div class="w3-half w3-card-4 w3-grey">
+        <form method="POST" action="/player">
+        <div class="w3-center">
+          <a href="{{ html_table.iloc[i,7] }}" target="_blank">
+            <img src="static/images/players/2020/{{ html_table.iloc[i,0] }}" alt="{{ html_table.iloc[i,1] }}" style="max-height:200px">
+          </a>
+        </div>
+        <div class="w3-container cpl-eclipse-l">
+          <table>
+            <tr>
+              <td style="padding: 5px 5px;"><p><img src="static/images/flags/{{ html_table.iloc[i,3] }}" alt="{{ html_table.iloc[i,3] }}" style="max-height:20px"></p></td>
+              <td style="padding: 5px 5px;"><h4>{{ html_table.iloc[i,4] }}</h4></td>
+              <td style="padding: 5px 5px;"><p>Overall {{ html_table.iloc[i,6] }}</p></td>
+            </tr>
+            <tr>
+              <td colspan="3"><h5 href="{{ url_for('player') }}">{{ html_table.iloc[i,1] }} <input class="button" type="submit" id="name" name="name" value="{{ html_table.iloc[i,2] }}"></h5></td>
+            </tr>
+            <tr style="min-width:120px">
+                <td colspan="3" style="padding: 5px 5px;"><p>Midfielder</p></td>
+            </tr>
+          </table>
+        </div>
+        </form>
+      </div>
+      {%endfor%}
+
+      <!-- DEFENSE -->
+      {%for i in range(1,4)%}
+      <div class="w3-third w3-card-4 w3-grey">
+        <form method="POST" action="/player">
+        <div class="w3-center">
+          <a href="{{ html_table.iloc[i,7] }}" target="_blank">
+            <img src="static/images/players/2020/{{ html_table.iloc[i,0] }}" alt="{{ html_table.iloc[i,1] }}" style="max-height:200px">
+          </a>
+        </div>
+        <div class="w3-container cpl-eclipse-l">
+          <table>
+            <tr>
+              <td style="padding: 5px 5px;"><p><img src="static/images/flags/{{ html_table.iloc[i,3] }}" alt="{{ html_table.iloc[i,3] }}" style="max-height:20px"></p></td>
+              <td style="padding: 5px 5px;"><h4>{{ html_table.iloc[i,4] }}</h4></td>
+              <td style="padding: 5px 5px;"><p>Overall {{ html_table.iloc[i,6] }}</p></td>
+            </tr>
+            <tr>
+              <td colspan="3"><h5 href="{{ url_for('player') }}">{{ html_table.iloc[i,1] }} <input class="button" type="submit" id="name" name="name" value="{{ html_table.iloc[i,2] }}"></h5></td>
+            </tr>
+            <tr style="min-width:120px">
+                  <td colspan="3" style="padding: 5px 5px;"><p>Defender</p></td>
+
+            </tr>
+          </table>
+        </div>
+        </form>
+      </div>
+      {%endfor%}
+
+      <!-- GOALKEEPER -->
+      <div class="w3-card-4 w3-grey">
+        <form method="POST" action="/player">
+        <div class="w3-center">
+          <a href="{{ html_table.iloc[0,7] }}" target="_blank">
+            <img src="static/images/players/2020/{{ html_table.iloc[0,0] }}" alt="{{ html_table.iloc[0,1] }}" style="max-height:200px">
+          </a>
+        </div>
+        <div class="w3-container cpl-eclipse-l">
+          <table>
+            <tr>
+              <td style="padding: 5px 5px;"><p><img src="static/images/flags/{{ html_table.iloc[0,3] }}" alt="{{ html_table.iloc[0,3] }}" style="max-height:20px"></p></td>
+              <td style="padding: 5px 5px;"><h4>{{ html_table.iloc[0,4] }}</h4></td>
+              <td style="padding: 5px 5px;"><p>Overall {{ html_table.iloc[0,6] }}</p></td>
+            </tr>
+            <tr>
+              <td colspan="3"><h5 href="{{ url_for('player') }}">{{ html_table.iloc[0,1] }} <input class="button" type="submit" id="name" name="name" value="{{ html_table.iloc[0,2] }}"></h5></td>
+            </tr>
+            <tr style="min-width:120px">
+                  <td colspan="3" style="padding: 5px 5px;"><p>Goalkeeper</p></td>
+            </tr>
+          </table>
+        </div>
+        </form>
+      </div>
+
     </div>
   </div>
 

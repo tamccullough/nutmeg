@@ -1,24 +1,24 @@
 game,team,position,number,name,first,last,minutes,touches,passes,pass-acc,crosses,cross-acc,assists,chances,goals,shots,s-target,s-box,s-out-box,tackles,t-won,duels,d-won,clearances,interceptions,yellow,red,f-won,f-conceded,shots faced,saves,claimed crosses,cs
-II1,Atletico Ottawa,m,23,Ajay Khabra,Ajay,Khabra,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Atletico Ottawa,m,11,Antoine Coupland,Antoine,Coupland,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Atletico Ottawa,m,10,Ben Fisk,Ben,Fisk,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Atletico Ottawa,d,4,Evan Brandon John,Brandon,John,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Atletico Ottawa,m,8,Francisco Javier Acuña Víctor,Francisco,Acuña,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Atletico Ottawa,m,2,Malyk Hamilton,Malyk,Hamilton,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Atletico Ottawa,m,12,Michel Djaozandry,Michel,Djaozandry,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Atletico Ottawa,g,1,Ignacio Zabal Almazán,Nacho,Zabal,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Atletico Ottawa,g,25,Ricky Gomes,Ricky,Gomes,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Atletico Ottawa,d,44,Vashon Neufville,Vashon,Neufville,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Atletico Ottawa,m,5,Víctor Martínez Manrique,Víctor,Martínez,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Atletico Ottawa,f,19,Malcolm Isaiah Shaw,Malcolm,Shaw,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Atletico Ottawa,d,6,Gianfranco Facchineri,Gianfranco,Facchineri,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Atletico Ottawa,m,42,Matteo de Brienne,Matteo,de Brienne,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Atletico Ottawa,f,9,Mohamed Kourouma,Mohamed,Kourouma,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Atletico Ottawa,g,30,Horace Sobze Zemo,Horace,Sobze,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Atletico Ottawa,d,3,Milovan Kapor,Milovan,Kapor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Atletico Ottawa,m,22,Ben McKendry,Ben,McKendry,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Atletico Ottawa,d,14,Jarred Phillips,Jarred,Phillips,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Atletico Ottawa,f,21,Maksym Kowal,Maksym,Kowal,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atlético Ottawa,m,23,Ajay Khabra,Ajay,Khabra,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atlético Ottawa,m,11,Antoine Coupland,Antoine,Coupland,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atlético Ottawa,m,10,Ben Fisk,Ben,Fisk,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atlético Ottawa,d,4,Evan Brandon John,Brandon,John,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atlético Ottawa,m,8,Francisco Javier Acuña Víctor,Francisco,Acuña,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atlético Ottawa,m,2,Malyk Hamilton,Malyk,Hamilton,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atlético Ottawa,m,12,Michel Djaozandry,Michel,Djaozandry,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atlético Ottawa,g,1,Ignacio Zabal Almazán,Nacho,Zabal,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atlético Ottawa,g,25,Ricky Gomes,Ricky,Gomes,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atlético Ottawa,d,44,Vashon Neufville,Vashon,Neufville,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atlético Ottawa,m,5,Víctor Martínez Manrique,Víctor,Martínez,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atlético Ottawa,f,19,Malcolm Isaiah Shaw,Malcolm,Shaw,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atlético Ottawa,d,6,Gianfranco Facchineri,Gianfranco,Facchineri,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atlético Ottawa,m,42,Matteo de Brienne,Matteo,de Brienne,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atlético Ottawa,f,9,Mohamed Kourouma,Mohamed,Kourouma,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atlético Ottawa,g,30,Horace Sobze Zemo,Horace,Sobze,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atlético Ottawa,d,3,Milovan Kapor,Milovan,Kapor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atlético Ottawa,m,22,Ben McKendry,Ben,McKendry,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atlético Ottawa,d,14,Jarred Phillips,Jarred,Phillips,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Atlético Ottawa,f,21,Maksym Kowal,Maksym,Kowal,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Cavalry FC,f,24,Aribim Pepple,Aribim,Pepple,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Cavalry FC,m,16,Bruno Zebie,Bruno,Zebie,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Cavalry FC,d,4,Dominick Zator,Dominick,Zator,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -42,7 +42,7 @@ II1,Cavalry FC,f,29,Marcus Haber,Marcus,Haber,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 II1,Cavalry FC,d,12,Dean Northover,Dean,Northover,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,FC Edmonton,d,4,Allan Zebie,Allan,Zebie,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,FC Edmonton,d,55,Amer Didic,Amer,Didic,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,FC Edmonton,m,20,Anthony Caceres,Anthony,Caceres,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,m,20,Antony Caceres,Antony,Caceres,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,FC Edmonton,m,14,Chance Carter,Chance,Carter,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,FC Edmonton,g,1,Connor James,Connor,James,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,FC Edmonton,f,26,David Doe,David,Doe,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -54,11 +54,11 @@ II1,FC Edmonton,m,21,Erik Zetterberg,Erik,Zetterberg,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,FC Edmonton,m,10,Hanson Boakai,Hanson,Boakai,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,FC Edmonton,d,3,Jeannot Esua,Jeannot,Esua,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,FC Edmonton,d,12,Kareem Moses,Kareem,Moses,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,FC Edmonton,m,11,Keven Alemán,Keven,Alemán,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,m,11,Keven Steven Alemán Bustos,Keven,Alemán,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,FC Edmonton,f,17,Marcus Velado-Tsegaye,Marcus,Velado-Tsegaye,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,FC Edmonton,d,8,Mélé Temguia,Mélé,Temguia,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,FC Edmonton,f,16,Prince Amanda,Prince,Amanda,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,FC Edmonton,d,5,Ramón Soria,Ramón,Soria,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,FC Edmonton,d,5,Ramon Soria,Ramon,Soria,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,FC Edmonton,m,7,Yong-Chan Son,Yong-Chan,Son,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,FC Edmonton,f,18,Tomi Ameobi,Tomi,Ameobi,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,FC Edmonton,d,33,Sam Gardner,Sam,Gardner,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -132,7 +132,7 @@ II1,Valour FC,f,16,Daryl Fordyce,Daryl,Fordyce,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Valour FC,m,8,Diego Gutiérrez,Diego,Gutiérrez,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Valour FC,m,10,Dylan Carreiro,Dylan,Carreiro,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Valour FC,f,77,Federico Peña,Federico,Peña,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Valour FC,m, ,Fraser Aird,Fraser,Aird,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Valour FC,m,33,Fraser Aird,Fraser,Aird,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Valour FC,g,1,James Pantemis,James,Pantemis,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Valour FC,m,21,José Galán,José,Galán,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Valour FC,f,7,Mastanabal Kacher,Mastanabal,Kacher,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -146,7 +146,7 @@ II1,Valour FC,d,4,Yohan Le Bourhis,Yohan,Le Bourhis,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 II1,Valour FC,f,9,Austin Ricci,Austin,Ricci,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Valour FC,f,11,Shaan Hundal,Shaan,Hundal,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Valour FC,d,4,Chakib Hocine,Chakib,Hocine,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II1,Valour FC,d,5,Julian Dunn,Julian,Dunn,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II1,Valour FC,d,5,Julian Dunn-Johnson,Julian,Dunn,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Valour FC,m,48,Dante Campbell,Dante,Campbell,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,York9 FC,m,44,Isaiah Johnston,Isaiah,Johnston,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,York9 FC,m,5,Chris Mannella,Chris,Mannella,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
