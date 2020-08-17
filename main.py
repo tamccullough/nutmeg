@@ -393,6 +393,17 @@ def roster():
     roster_team_info = team_ref[team_ref['team'] == team]
     roster_colour = roster_team_info.iloc[0][4]
     roster = cpl_main.get_roster_overall(team,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info)
+    roster2 = player_info[player_info['team'] == team]
+    if roster.shape[0] < roster2.shape[0]:
+        missing_players = roster2[~roster2['display'].isin(roster.name.unique())][['image','number','position','overall','flag','link','display']]
+        a = [x.partition(' ')[0] for x in missing_players['display']]
+        b = [x.partition(' ')[1:][1] for x in missing_players['display']]
+        missing_players.insert(1,'first',b)
+        missing_players.insert(1,'last',a)
+        missing_players['name'] = missing_players['display']
+        missing_players.pop('display')
+        roster = pd.concat([roster,missing_players])
+
     crest = roster_team_info.iloc[0][5]
     coach = roster_team_info[['coach','country','image','w','l','d']]
     if roster.empty:
