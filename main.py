@@ -535,7 +535,7 @@ def forwards_90():
     other_year = '2019'
     rated_forwards = pd.read_csv(f'datasets/{year}/cpl-{year}-forwards-p90.csv')
     columns = rated_forwards.columns
-    return render_template('cpl-es-forwards.html',columns = columns,html_table = rated_forwards, year = year, other_year = other_year)
+    return render_template('cpl-es-forwards-p90.html',columns = columns,html_table = rated_forwards, year = year, other_year = other_year)
 
 @canples.route('/forwards-2019')
 def forwards_19():
