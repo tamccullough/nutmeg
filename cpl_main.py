@@ -915,7 +915,7 @@ def get_roster(query,stats,team_ref): # use team stats to get the player informa
 def get_player_card(name,stats,stats_seed,player_info):
     player_stats = stats[stats['last'] == name].groupby('name').sum()
     if player_stats.empty:
-        player_stats = stats_seed[stats_seed['last'] == name].groupby('name').sum()
+        player_stats = stats_seed[stats_seed['name'] == name].groupby('name').sum()
     player_stats = player_stats.reset_index()
     name = player_stats['name'].values[0]
     player_information = player_info[player_info['name'] == name]

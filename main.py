@@ -398,8 +398,8 @@ def roster():
         missing_players = roster2[~roster2['display'].isin(roster.name.unique())][['image','number','position','overall','flag','link','display']]
         a = [x.partition(' ')[0] for x in missing_players['display']]
         b = [x.partition(' ')[1:][1] for x in missing_players['display']]
-        missing_players.insert(1,'first',b)
-        missing_players.insert(1,'last',a)
+        missing_players.insert(1,'first',a)
+        missing_players.insert(2,'last',b)
         missing_players['name'] = missing_players['display']
         missing_players.pop('display')
         roster = pd.concat([roster,missing_players])
@@ -414,6 +414,7 @@ def roster():
         roster.pop('name')
         roster.insert(1,'first',first)
         roster.insert(2,'last',last)
+    print(roster.columns)
 
     return render_template('cpl-es-roster.html',team_name = team, coach = coach, html_table = roster, team_colour = roster_colour, year = year, crest = crest, other_year = other_year)
 
