@@ -204,6 +204,8 @@ def get_90(dataframe):
         data.at[i,'new_overall'] = summed
     data['new_overall'] = round((data['new_overall'] / data['new_overall'].max()) - 0.1,2)
     data = data.sort_values(by='new_overall',ascending = False)
+    data['new_overall'] =[ 0.0 if x <= 0.0 else x for x in data['new_overall']]
+    data = data.fillna(0.0)
     return data
 
 def get_team_graphs(stats,standings):
