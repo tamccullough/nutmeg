@@ -375,8 +375,8 @@ def get_weeks_results(results,standings,stats,team_ref):
     db = df[df['m'] == month]
     db = db[db['d'] <= day + 4]
     goals = stats['goals'].sum()
-    max_home = db[db['hs'] == db['hs'].max()]
-    max_away = db[db['as'] == db['as'].max()]
+    max_home = db[(db['hs'] == db['hs'].max()) & (db['hr'] == "W")]
+    max_away = db[(db['as'] == db['as'].max()) & (db['ar'] == "W")]
     if max_home.iloc[0]['hs'] > max_away.iloc[0]['as']:
         max_home_win = max_home
     else:

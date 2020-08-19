@@ -123,34 +123,66 @@ II4,Cavalry FC,Nikolas Ledgerwood,m,6,Nik,Ledgerwood,6,9,6,66.7,1,100.0,0,1,0,0,
 II4,Cavalry FC,Oliver Minatel,f,7,Oliver,Minatel,45,9,6,83.3,0,0.0,0,0,0,0,0,0,0,0,0,5,2,0,0,0,0,1,0,0,0,0,0
 II4,Cavalry FC,Robert Boskovic,d,25,Robert,Boskovic,90,70,57,73.7,0,0.0,0,0,0,0,0,0,0,2,1,7,6,2,2,1,0,3,1,0,0,0,0
 II4,Cavalry FC,Sergio Camargo,m,10,Sergio,Camargo,50,27,17,82.4,1,0.0,0,1,1,2,1,2,0,2,0,6,3,0,0,1,0,0,1,0,0,0,0
-II5,Pacific FC,Alejandro Díaz Liceága,f,9,Alejandro,Diaz,22,7,6,100.0,0,0.0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
-II5,Pacific FC,Alessandro Hojabrpour,m,21,Alessandro,Hojabrpour,90,31,22,90.9,0,0.0,0,1,0,2,0,1,1,2,1,6,3,0,0,0,0,0,2,0,0,0,0
-II5,Pacific FC,Jamar Dixon,m,22,Jamar,Dixon,72,29,20,80.0,0,0.0,0,1,0,0,0,0,0,2,1,6,3,2,0,0,0,1,2,0,0,0,0
-II5,Pacific FC,Jordan Haynes,d,3,Jordan,Haynes,19,26,18,88.9,1,0.0,0,0,0,0,0,0,0,1,0,1,1,1,1,0,0,0,0,0,0,0,0
-II5,Pacific FC,Kadin Chung,d,7,Kadin,Chung,90,69,37,75.7,6,0.0,0,0,0,0,0,0,0,3,2,10,7,1,0,0,0,1,1,0,0,0,0
-II5,Pacific FC,Lukas MacNaughton,d,6,Lukas,MacNaughton,90,57,41,82.9,1,0.0,0,1,1,4,1,4,0,1,0,8,4,3,1,0,0,0,1,0,0,0,0
-II5,Pacific FC,Marcel de Jong,d,17,Marcel,de Jong,71,60,36,80.6,9,22.2,0,2,0,0,0,0,0,0,0,2,0,2,2,0,0,0,0,0,0,0,0
-II5,Pacific FC,Marco Bustos,m,10,Marco,Bustos,90,42,23,87.0,4,50.0,0,1,0,2,1,2,0,0,0,7,5,0,0,1,0,3,1,0,0,0,0
-II5,Pacific FC,Matthew Baldisimo,m,8,Matthew,Baldisimo,80,31,27,74.1,0,0.0,0,0,0,0,0,0,0,4,3,9,4,0,0,0,0,0,3,0,0,0,0
-II5,Pacific FC,Nolan Wirth,g,1,Nolan,Wirth,90,34,26,84.6,0,0.0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,2,1,0,0
-II5,Pacific FC,Sean Young,m,20,Sean,Young,10,8,3,66.7,0,0.0,0,0,0,2,1,2,0,1,0,3,3,0,0,0,0,1,0,0,0,0,0
-II5,Pacific FC,Terran Campbell,f,14,Terran,Campbell,68,23,13,69.2,2,0.0,0,0,0,1,0,0,1,4,3,8,4,0,0,0,0,0,2,0,0,0,0
-II5,Pacific FC,Thomas Meilleur-Giguère,d,26,Thomas,Meilleur-Giguère,90,48,40,95.0,0,0.0,0,0,0,1,1,1,0,0,0,3,1,1,3,0,0,0,0,0,0,0,0
-II5,Pacific FC,Victor Blasco,m,23,Victor,Blasco,90,61,37,78.4,9,44.4,1,3,0,1,0,1,0,1,1,11,5,1,1,1,0,2,4,0,0,0,0
-II5,Pacific FC,Zachary Verhoven,m,16,Zach,Verhoven,18,19,6,83.3,3,0.0,0,0,0,0,0,0,0,0,0,6,4,0,0,0,0,1,0,0,0,0,0
-II5,York9 FC,Diyaeddine Abzi,d,20,Diyaeddine,Abzi,90,63,27,70.4,1,0.0,0,0,0,0,0,0,0,3,1,10,6,5,4,0,0,2,1,0,0,0,0
-II5,York9 FC,Isaiah Johnston,m,44,Isaiah,Johnston,9,3,1,0.0,0,0.0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0
-II5,York9 FC,Joseph Di Chiara,m,8,Joseph,Di Chiara,90,46,26,84.6,1,0.0,0,0,0,2,1,0,2,1,1,13,4,2,4,1,0,1,2,0,0,0,0
-II5,York9 FC,Kyle Porter,m,19,Kyle,Porter,61,21,12,66.7,1,0.0,0,1,0,1,0,1,0,0,0,3,1,2,1,0,0,0,0,0,0,0,0
-II5,York9 FC,Lowell Wright,f,80,Lowell,Wright,55,11,5,80.0,0,0.0,0,0,0,1,0,1,0,1,1,5,2,1,0,0,0,0,0,0,0,0,0
-II5,York9 FC,Luca Gasparotto,d,13,Luca,Gasparotto,90,73,57,82.5,0,0.0,0,0,0,1,0,1,0,1,1,3,2,9,3,0,0,0,1,0,0,0,0
-II5,York9 FC,Manuel Aparicio,m,10,Manny,Aparicio,81,42,27,66.7,2,0.0,0,1,0,1,0,1,0,0,0,8,3,0,0,0,0,3,3,0,0,0,0
-II5,York9 FC,Matthew Arnone,d,17,Matthew,Arnone,9,2,1,100.0,0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-II5,York9 FC,Max Ferrari,m,16,Max,Ferrari,10,7,4,75.0,0,0.0,0,0,0,0,0,0,0,1,0,4,1,0,0,0,0,0,0,0,0,0,0
-II5,York9 FC,Michael Petrasso,m,21,Michael,Petrasso,29,11,3,33.3,1,0.0,0,0,0,1,0,0,1,0,0,3,1,1,0,0,0,1,1,0,0,0,0
-II5,York9 FC,Morey Doner,d,3,Morey,Doner,90,49,25,80.0,2,0.0,0,0,0,0,0,0,0,0,0,4,2,2,2,0,0,1,1,0,0,0,0
-II5,York9 FC,Nathan Ingham,g,29,Nathan,Ingham,90,30,24,70.8,0,0.0,0,0,0,0,0,0,0,0,0,2,1,2,0,0,0,0,0,5,4,0,0
-II5,York9 FC,Roger Thompson,d,6,Roger,Thompson,90,84,65,81.5,0,0.0,0,0,0,1,0,1,0,1,0,7,4,8,3,0,0,1,1,0,0,0,0
-II5,York9 FC,Ryan Telfer,m,18,Ryan,Telfer,80,22,11,72.7,2,50.0,0,2,0,0,0,0,0,0,0,6,2,0,2,0,0,0,0,0,0,0,0
-II5,York9 FC,Wataru Murofushi,m,23,Wataru,Murofushi,81,53,45,93.3,0,0.0,0,0,0,0,0,0,0,0,0,7,6,1,0,0,0,6,0,0,0,0,0
-II5,York9 FC,Álvaro Rivero Sánchez,f,7,Álvaro,Rivero,35,13,5,100.0,0,0.0,0,1,1,1,1,1,0,0,0,5,1,0,0,0,0,1,0,0,0,0,0
+II5,Forge FC,Alexander Achinioti-Jönsson,m,13,Alexander,Achinioti-Jönsson,89,94,79,88.6,1,0.0,0,2,0,0,0,0,0,2,1,11,9,3,0,0,0,3,0,0,0,0,0
+II5,Forge FC,Anthony Novak,f,23,Anthony,Novak,22,16,13,84.6,0,0.0,0,1,0,0,0,0,0,0,0,7,3,0,0,0,0,2,0,0,0,0,0
+II5,Forge FC,Christopher Nanco,f,11,Chris,Nanco,45,25,19,78.9,1,0.0,0,0,0,1,0,0,1,0,0,3,0,0,0,0,0,0,0,0,0,0,0
+II5,Forge FC,Daniel Krutzen,d,5,Daniel,Krutzen,90,91,86,89.5,0,0.0,0,0,0,0,0,0,0,1,1,10,6,0,1,0,0,0,0,0,0,0,0
+II5,Forge FC,David Choinière,m,7,David,Choinière,68,40,23,87.0,3,33.3,0,1,0,0,0,0,0,3,3,15,7,1,0,0,0,2,1,0,0,0,0
+II5,Forge FC,David Edgar,d,30,David,Edgar,90,102,91,95.6,0,0.0,0,0,0,0,0,0,0,1,0,5,3,7,0,0,0,0,1,0,0,0,0
+II5,Forge FC,Dominic Samuel,d,4,Dominic,Samuel,90,73,53,83.0,2,50.0,0,0,0,0,0,0,0,1,0,9,6,0,2,1,0,2,1,0,0,0,0
+II5,Forge FC,Elimane Cissé,m,3,Elimane,Cissé,11,16,11,81.8,0,0.0,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,1,0,0,0,0,0
+II5,Forge FC,Kadell Thomas,f,17,Kadell,Thomas,22,11,5,100.0,2,0.0,0,0,0,0,0,0,0,1,0,6,2,0,0,0,0,0,2,0,0,0,0
+II5,Forge FC,Klaidi Cela,d,16,Klaidi,Cela,1,0,0,0.0,0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II5,Forge FC,Kwame Awuah,d,6,Kwame,Awuah,90,86,65,87.7,2,0.0,0,0,1,1,1,0,1,3,1,8,7,1,0,0,0,1,0,0,0,0,0
+II5,Forge FC,Kyle Bekker,m,10,Kyle,Bekker,90,51,38,89.5,7,0.0,0,0,0,2,0,0,2,0,0,4,0,1,0,0,0,0,1,0,0,0,0
+II5,Forge FC,Maxim Tissot,d,15,Maxim,Tissot,45,28,18,83.3,4,25.0,0,1,0,1,1,1,0,2,1,4,2,0,0,0,0,0,0,0,0,0,0
+II5,Forge FC,Molham Babouli,f,19,Mo,Babouli,68,22,14,42.9,0,0.0,0,0,0,1,1,1,0,1,1,6,1,0,1,0,0,0,1,0,0,0,0
+II5,Forge FC,Paolo Sabak,m,24,Paolo,Sabak,79,59,47,87.2,1,0.0,0,0,0,1,0,1,0,0,0,12,5,1,1,0,0,2,2,0,0,0,0
+II5,Forge FC,Triston Henry,g,1,Triston,Henry,90,43,33,90.9,0,0.0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,2,2,1,1
+II5,FC Edmonton,Allan Zebie,d,4,Allan,Zebie,87,38,28,92.9,0,0.0,0,0,0,1,0,1,0,1,1,6,4,0,0,0,0,0,0,0,0,0,0
+II5,FC Edmonton,Amer Didic,d,55,Amer,Didic,61,37,31,96.8,0,0.0,0,0,0,2,0,1,1,0,0,3,2,2,0,0,0,0,1,0,0,0,0
+II5,FC Edmonton,Antony Caceres,m,20,Anthony,Caceres,13,9,6,83.3,0,0.0,0,0,0,0,0,0,0,1,1,3,3,0,0,0,0,2,0,0,0,0,0
+II5,FC Edmonton,Chance Carter,m,14,Chance,Carter,3,1,1,100.0,0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II5,FC Edmonton,Connor James,g,1,Connor,James,90,29,24,79.2,0,0.0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,4,2,0,0
+II5,FC Edmonton,Easton Ongaro,f,19,Easton,Ongaro,61,12,5,100.0,0,0.0,0,0,0,1,0,0,1,0,0,9,2,0,0,0,0,0,0,0,0,0,0
+II5,FC Edmonton,Erik Zetterberg,m,21,Erik,Zetterberg,90,60,45,84.4,1,100.0,0,3,0,1,0,0,1,1,1,9,4,0,2,0,0,0,2,0,0,0,0
+II5,FC Edmonton,Hanson Boakai,m,10,Hanson,Boakai,77,46,27,92.6,4,25.0,0,0,0,1,1,1,0,3,3,13,5,0,0,0,0,0,1,0,0,0,0
+II5,FC Edmonton,Jeannot Esua,d,3,Jeannot,Esua,90,67,44,77.3,3,0.0,0,1,0,0,0,0,0,0,0,7,3,6,2,0,0,2,1,0,0,0,0
+II5,FC Edmonton,Kareem Moses,d,12,Kareem,Moses,29,22,14,85.7,0,0.0,0,0,0,1,0,1,0,2,1,6,2,3,0,0,0,0,3,0,0,0,0
+II5,FC Edmonton,Keven Steven Alemán Bustos,m,11,Keven,Alemán,90,45,23,69.6,4,0.0,0,2,0,4,0,2,2,1,0,12,7,0,0,0,0,2,0,0,0,0,0
+II5,FC Edmonton,Mélé Temguia,d,8,Mélé,Temguia,90,58,45,80.0,0,0.0,0,0,0,2,1,2,0,3,2,10,5,1,3,0,0,0,2,0,0,0,0
+II5,FC Edmonton,Ramon Soria,d,5,Ramon,Soria,90,52,41,85.4,2,0.0,0,1,0,0,0,0,0,2,1,8,5,5,1,0,0,0,1,0,0,0,0
+II5,FC Edmonton,Terique Mohammed,d,57,Terique,Mohammed,29,10,3,66.7,0,0.0,0,0,0,0,0,0,0,1,0,5,3,1,0,0,0,1,1,0,0,0,0
+II5,FC Edmonton,Tomi Ameobi,f,18,Tomi,Ameobi,29,9,8,75.0,0,0.0,0,1,0,0,0,0,0,0,0,5,3,0,0,0,0,1,0,0,0,0,0
+II5,FC Edmonton,Yong-Chan Son,m,7,Yong-Chan,Son,61,27,12,83.3,1,0.0,0,1,0,0,0,0,0,0,0,6,1,1,0,0,0,1,1,0,0,0,0
+II6,Pacific FC,Alejandro Díaz Liceága,f,9,Alejandro,Diaz,22,7,6,100.0,0,0.0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+II6,Pacific FC,Alessandro Hojabrpour,m,21,Alessandro,Hojabrpour,90,31,22,90.9,0,0.0,0,1,0,2,0,1,1,2,1,6,3,0,0,0,0,0,2,0,0,0,0
+II6,Pacific FC,Jamar Dixon,m,22,Jamar,Dixon,72,29,20,80.0,0,0.0,0,1,0,0,0,0,0,2,1,6,3,2,0,0,0,1,2,0,0,0,0
+II6,Pacific FC,Jordan Haynes,d,3,Jordan,Haynes,19,26,18,88.9,1,0.0,0,0,0,0,0,0,0,1,0,1,1,1,1,0,0,0,0,0,0,0,0
+II6,Pacific FC,Kadin Chung,d,7,Kadin,Chung,90,69,37,75.7,6,0.0,0,0,0,0,0,0,0,3,2,10,7,1,0,0,0,1,1,0,0,0,0
+II6,Pacific FC,Lukas MacNaughton,d,6,Lukas,MacNaughton,90,57,41,82.9,1,0.0,0,1,1,4,1,4,0,1,0,8,4,3,1,0,0,0,1,0,0,0,0
+II6,Pacific FC,Marcel de Jong,d,17,Marcel,de Jong,71,60,36,80.6,9,22.2,0,2,0,0,0,0,0,0,0,2,0,2,2,0,0,0,0,0,0,0,0
+II6,Pacific FC,Marco Bustos,m,10,Marco,Bustos,90,42,23,87.0,4,50.0,0,1,0,2,1,2,0,0,0,7,5,0,0,1,0,3,1,0,0,0,0
+II6,Pacific FC,Matthew Baldisimo,m,8,Matthew,Baldisimo,80,31,27,74.1,0,0.0,0,0,0,0,0,0,0,4,3,9,4,0,0,0,0,0,3,0,0,0,0
+II6,Pacific FC,Nolan Wirth,g,1,Nolan,Wirth,90,34,26,84.6,0,0.0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,2,1,0,0
+II6,Pacific FC,Sean Young,m,20,Sean,Young,10,8,3,66.7,0,0.0,0,0,0,2,1,2,0,1,0,3,3,0,0,0,0,1,0,0,0,0,0
+II6,Pacific FC,Terran Campbell,f,14,Terran,Campbell,68,23,13,69.2,2,0.0,0,0,0,1,0,0,1,4,3,8,4,0,0,0,0,0,2,0,0,0,0
+II6,Pacific FC,Thomas Meilleur-Giguère,d,26,Thomas,Meilleur-Giguère,90,48,40,95.0,0,0.0,0,0,0,1,1,1,0,0,0,3,1,1,3,0,0,0,0,0,0,0,0
+II6,Pacific FC,Victor Blasco,m,23,Victor,Blasco,90,61,37,78.4,9,44.4,1,3,0,1,0,1,0,1,1,11,5,1,1,1,0,2,4,0,0,0,0
+II6,Pacific FC,Zachary Verhoven,m,16,Zach,Verhoven,18,19,6,83.3,3,0.0,0,0,0,0,0,0,0,0,0,6,4,0,0,0,0,1,0,0,0,0,0
+II6,York9 FC,Diyaeddine Abzi,d,20,Diyaeddine,Abzi,90,63,27,70.4,1,0.0,0,0,0,0,0,0,0,3,1,10,6,5,4,0,0,2,1,0,0,0,0
+II6,York9 FC,Isaiah Johnston,m,44,Isaiah,Johnston,9,3,1,0.0,0,0.0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0
+II6,York9 FC,Joseph Di Chiara,m,8,Joseph,Di Chiara,90,46,26,84.6,1,0.0,0,0,0,2,1,0,2,1,1,13,4,2,4,1,0,1,2,0,0,0,0
+II6,York9 FC,Kyle Porter,m,19,Kyle,Porter,61,21,12,66.7,1,0.0,0,1,0,1,0,1,0,0,0,3,1,2,1,0,0,0,0,0,0,0,0
+II6,York9 FC,Lowell Wright,f,80,Lowell,Wright,55,11,5,80.0,0,0.0,0,0,0,1,0,1,0,1,1,5,2,1,0,0,0,0,0,0,0,0,0
+II6,York9 FC,Luca Gasparotto,d,13,Luca,Gasparotto,90,73,57,82.5,0,0.0,0,0,0,1,0,1,0,1,1,3,2,9,3,0,0,0,1,0,0,0,0
+II6,York9 FC,Manuel Aparicio,m,10,Manny,Aparicio,81,42,27,66.7,2,0.0,0,1,0,1,0,1,0,0,0,8,3,0,0,0,0,3,3,0,0,0,0
+II6,York9 FC,Matthew Arnone,d,17,Matthew,Arnone,9,2,1,100.0,0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II6,York9 FC,Max Ferrari,m,16,Max,Ferrari,10,7,4,75.0,0,0.0,0,0,0,0,0,0,0,1,0,4,1,0,0,0,0,0,0,0,0,0,0
+II6,York9 FC,Michael Petrasso,m,21,Michael,Petrasso,29,11,3,33.3,1,0.0,0,0,0,1,0,0,1,0,0,3,1,1,0,0,0,1,1,0,0,0,0
+II6,York9 FC,Morey Doner,d,3,Morey,Doner,90,49,25,80.0,2,0.0,0,0,0,0,0,0,0,0,0,4,2,2,2,0,0,1,1,0,0,0,0
+II6,York9 FC,Nathan Ingham,g,29,Nathan,Ingham,90,30,24,70.8,0,0.0,0,0,0,0,0,0,0,0,0,2,1,2,0,0,0,0,0,5,4,0,0
+II6,York9 FC,Roger Thompson,d,6,Roger,Thompson,90,84,65,81.5,0,0.0,0,0,0,1,0,1,0,1,0,7,4,8,3,0,0,1,1,0,0,0,0
+II6,York9 FC,Ryan Telfer,m,18,Ryan,Telfer,80,22,11,72.7,2,50.0,0,2,0,0,0,0,0,0,0,6,2,0,2,0,0,0,0,0,0,0,0
+II6,York9 FC,Wataru Murofushi,m,23,Wataru,Murofushi,81,53,45,93.3,0,0.0,0,0,0,0,0,0,0,0,0,7,6,1,0,0,0,6,0,0,0,0,0
+II6,York9 FC,Álvaro Rivero Sánchez,f,7,Álvaro,Rivero,35,13,5,100.0,0,0.0,0,1,1,1,1,1,0,0,0,5,1,0,0,0,0,1,0,0,0,0,0
