@@ -403,6 +403,13 @@ def roster():
         missing_players['name'] = missing_players['display']
         missing_players.pop('display')
         roster = pd.concat([roster,missing_players])
+    names = []
+    for i in range(roster.shape[0]):
+        name = roster.iloc[i]['name']
+        replace = player_info[player_info['display'] == name]['name'].values[0]
+        names.append(replace)
+    roster['name'] = names
+
 
     crest = roster_team_info.iloc[0][5]
     coach = roster_team_info[['coach','country','image','w','l','d']]
