@@ -462,15 +462,24 @@ def player():
 
     try:
         player_name = player_info[player_info['display'] == player['name'].values[0]]['display'].values[0]
+        print('NAME FIRST')
     except:
         player_name = player_info[player_info['name'] == player['name'].values[0]]['display'].values[0]
     try:
         nationality = player_info[player_info['display'] == player['name'].values[0]]['nationality'].values[0]
+        print('NATIONALITY FIRST')
     except:
         nationality = player_info[player_info['name'] == player['name'].values[0]]['nationality'].values[0]
-
-    graph_image = player_info[player_info['display'] == player_name]['graph'].values[0]
-    radar_image = player_info[player_info['display'] == player_name]['radar'].values[0]
+    try:
+        graph_image = player_info[player_info['display'] == player_name]['graph'].values[0]
+        print('GRAPH FIRST')
+    except:
+        graph_image = player_info[player_info['name'] == player_name]['graph'].values[0]
+    try:
+        radar_image = player_info[player_info['display'] == player_name]['radar'].values[0]
+        print('RADAR FIRST')
+    except:
+        radar_image = player_info[player_info['name'] == player_name]['radar'].values[0]
 
 
     return render_template('cpl-es-player.html', name = player_name, graph = graph_image, radar = radar_image, nationality = nationality,
