@@ -1,18 +1,20 @@
 team,name,number,position,first,last,minutes,touches,passes,pass-acc,crosses,cross-acc,assists,chances,goals,shots,s-target,s-box,s-out-box,tackles,t-won,duels,d-won,clearances,interceptions,yellow,red,f-won,f-conceded,shots faced,saves,claimed crosses,cs
-ATO,Ajay Khabra,23,m,Ajay,Khabra,63,29,25,92.0,0,0.0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,2,0,0,0,0
-ATO,Ben Fisk,10,m,Ben,Fisk,90,34,26,73.1,2,0.0,0,1,0,0,0,0,0,0,0,4,1,1,0,0,0,1,1,0,0,0,0
-ATO,Ben McKendry,22,m,Ben,McKendry,27,24,17,58.8,0,0.0,0,0,0,0,0,0,0,3,2,4,4,1,1,0,0,0,0,0,0,0,0
-ATO,Evan Brandon John,4,d,Brandon,John,90,42,38,84.2,0,0.0,0,0,0,0,0,0,0,1,0,2,2,2,0,0,0,0,0,0,0,0,0
-ATO,Francisco Javier Acuña Víctor,8,m,Francisco,Acuña,54,50,40,85.0,1,0.0,1,1,0,0,0,0,0,1,1,8,4,0,0,0,0,1,0,0,0,0,0
-ATO,Ignacio Zabal Almazán,1,g,Nacho,Zabal,90,54,43,60.5,0,0.0,0,0,0,0,0,0,0,0,0,1,1,2,0,0,0,1,0,6,4,0,0
+ATO,Ajay Khabra,23,m,Ajay,Khabra,90,38,31,92.0,0,0.0,0,0,0,1,0,1,0,0,0,7,0,1,0,0,0,0,3,0,0,0,0
+ATO,Antoine Coupland,11,m,Antoine,Coupland,45,10,6,100.0,0,0.0,0,0,0,0,0,0,0,0,0,4,2,0,0,0,0,1,0,0,0,0,0
+ATO,Ben Fisk,10,m,Ben,Fisk,153,68,45,73.1,4,0.0,0,2,0,1,0,0,1,2,1,12,3,1,0,0,0,1,1,0,0,0,0
+ATO,Ben McKendry,22,m,Ben,McKendry,117,76,54,58.8,0,0.0,0,1,0,0,0,0,0,9,7,12,10,2,3,0,0,0,1,0,0,0,0
+ATO,Evan Brandon John,4,d,Brandon,John,180,88,77,84.2,0,0.0,0,1,0,0,0,0,0,2,1,8,6,3,0,0,0,3,2,0,0,0,0
+ATO,Francisco Javier Acuña Víctor,8,m,Francisco,Acuña,99,63,48,85.0,1,0.0,1,1,0,0,0,0,0,2,2,14,5,0,0,0,0,1,2,0,0,0,0
+ATO,Gianfranco Facchineri,6,d,Gianfranco,Facchineri,90,48,24,87.5,0,0.0,0,0,0,1,0,1,0,8,7,14,9,3,1,0,0,1,2,0,0,0,0
+ATO,Ignacio Zabal Almazán,1,g,Nacho,Zabal,180,99,75,60.5,0,0.0,0,0,0,0,0,0,0,0,0,1,1,2,0,0,0,1,0,17,11,0,0
 ATO,Jarred Phillips,14,d,Jarred,Phillips,36,12,6,50.0,0,0.0,0,0,0,0,0,0,0,1,1,4,1,1,0,0,0,0,1,0,0,0,0
 ATO,Maksym Kowal,21,f,Maksym,Kowal,34,17,10,60.0,0,0.0,0,0,0,0,0,0,0,0,0,8,3,0,2,0,0,1,1,0,0,0,0
-ATO,Malcolm Isaiah Shaw,19,f,Malcolm,Shaw,56,17,13,76.9,0,0.0,0,0,1,1,1,1,0,0,0,11,1,0,0,0,0,1,2,0,0,0,0
-ATO,Malyk Hamilton,2,m,Malyk,Hamilton,90,68,44,93.2,2,0.0,0,0,0,0,0,0,0,3,1,9,3,1,3,0,0,0,2,0,0,0,0
-ATO,Milovan Kapor,3,d,Milovan,Kapor,90,61,42,88.1,0,0.0,0,0,0,0,0,0,0,2,2,10,4,7,6,0,0,1,2,0,0,0,0
-ATO,Mohamed Kourouma,9,f,Mohamed,Kourouma,90,54,38,78.9,2,0.0,0,0,1,3,1,1,2,1,1,10,5,0,0,0,0,3,3,0,0,0,0
+ATO,Malcolm Isaiah Shaw,19,f,Malcolm,Shaw,146,53,32,76.9,1,0.0,0,1,1,3,2,3,0,1,1,17,4,1,0,0,0,2,3,0,0,0,0
+ATO,Malyk Hamilton,2,m,Malyk,Hamilton,180,130,76,93.2,10,0.0,0,1,0,0,0,0,0,4,2,14,5,3,4,0,0,0,4,0,0,0,0
+ATO,Milovan Kapor,3,d,Milovan,Kapor,154,92,63,88.1,0,0.0,0,0,0,0,0,0,0,3,3,16,7,12,8,0,1,2,4,0,0,0,0
+ATO,Mohamed Kourouma,9,f,Mohamed,Kourouma,180,101,74,78.9,4,0.0,0,1,1,7,3,3,4,3,3,20,7,0,0,0,0,3,5,0,0,0,0
 ATO,Vashon Neufville,44,d,Vashon,Neufville,50,48,32,65.6,5,0.0,1,1,0,0,0,0,0,0,0,6,1,0,0,0,1,0,3,0,0,0,0
-ATO,Víctor Martínez Manrique,5,m,Viti,Martínez,90,38,29,72.4,1,0.0,0,0,0,0,0,0,0,0,0,5,3,0,4,0,0,1,2,0,0,0,0
+ATO,Víctor Martínez Manrique,5,m,Viti,Martínez,180,84,63,72.4,1,0.0,0,0,0,1,0,0,1,0,0,13,7,1,4,1,0,3,2,0,0,0,0
 CFC,Aribim Pepple,24,f,Aribim,Pepple,35,19,7,33.3,0,0.0,0,1,0,1,1,1,0,1,0,9,2,0,0,0,0,0,2,0,0,0,0
 CFC,Bruno Zebie,16,m,Bruno,Zebie,89,62,45,80.0,1,0.0,0,0,0,0,0,0,0,3,1,10,7,0,2,0,0,3,1,0,0,0,0
 CFC,Dean Northover,12,d,Dean,Northover,90,56,34,58.8,0,0.0,0,0,0,1,0,0,1,0,0,8,6,1,2,0,0,3,1,0,0,0,0
@@ -97,22 +99,25 @@ PFC,Terran Campbell,14,f,Terran,Campbell,140,44,20,85.7,3,0.0,0,1,0,3,0,2,1,5,4,
 PFC,Thomas Meilleur-Giguère,26,d,Thomas,Meilleur-Giguère,180,117,99,93.2,0,0.0,0,0,0,2,1,2,0,0,0,6,2,5,5,0,0,0,0,0,0,0,0
 PFC,Victor Blasco,23,m,Victor,Blasco,162,115,65,67.9,12,33.3,1,5,0,3,0,2,1,3,2,29,15,1,1,1,0,4,4,0,0,0,0
 PFC,Zachary Verhoven,16,m,Zach,Verhoven,44,37,17,63.6,4,100.0,1,2,1,2,1,1,1,1,1,11,7,0,0,0,0,1,0,0,0,0,0
-VFC,Andrew Jean-Baptiste,35,d,Andrew,Jean-Baptiste,90,47,35,82.9,0,0.0,0,0,0,0,0,0,0,0,0,10,4,5,2,0,0,2,5,0,0,0,0
+VFC,Andrew Jean-Baptiste,35,d,Andrew,Jean-Baptiste,180,104,83,82.9,0,0.0,0,0,1,1,1,1,0,0,0,12,5,8,4,0,0,3,6,0,0,0,0
 VFC,Arnold Bouka Moutou,29,d,Arnold,Bouka Moutou,65,33,17,52.9,2,0.0,0,0,0,0,0,0,0,2,1,10,5,0,1,0,0,2,1,0,0,0,0
-VFC,Brett Levis,17,m,Brett,Levis,90,44,30,76.7,1,100.0,0,1,0,0,0,0,0,2,1,7,2,0,3,0,0,0,1,0,0,0,0
+VFC,Austin Ricci,9,f,Austin,Ricci,78,22,9,77.8,0,0.0,0,0,0,4,3,4,0,0,0,7,2,0,0,1,0,2,2,0,0,0,0
+VFC,Brett Levis,17,m,Brett,Levis,180,119,77,76.7,3,100.0,1,2,0,1,1,1,0,3,2,20,10,1,5,0,0,2,2,0,0,0,0
 VFC,Dante Campbell,48,m,Dante,Campbell,72,28,21,71.4,0,0.0,0,0,0,0,0,0,0,2,2,9,2,1,0,1,0,0,4,0,0,0,0
 VFC,Daryl Fordyce,16,f,Daryl,Fordyce,45,19,13,61.5,1,0.0,0,0,0,2,0,1,1,0,0,2,2,1,0,0,0,1,0,0,0,0,0
-VFC,Diego Gutiérrez,8,m,Diego,Gutiérrez,18,22,16,81.3,0,0.0,0,0,0,0,0,0,0,0,0,6,3,0,0,0,0,2,1,0,0,0,0
-VFC,Dylan Carreiro,10,m,Dylan,Carreiro,64,15,11,81.8,0,0.0,0,0,0,0,0,0,0,1,0,4,2,0,0,0,0,1,0,0,0,0,0
-VFC,Fraser Aird,33,m,Fraser,Aird,90,37,25,68.0,2,0.0,0,1,0,0,0,0,0,1,1,7,1,0,0,1,0,0,4,0,0,0,0
-VFC,James Pantemis,1,g,James,Pantemis,90,34,25,76.0,0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,0,0
-VFC,Julian Dunn-Johnson,5,d,Julian,Dunn,90,59,45,80.0,0,0.0,0,0,0,0,0,0,0,1,0,9,6,4,0,0,0,1,0,0,0,0,0
-VFC,Mastanabal Kacher,7,f,Masta,Kacher,26,6,3,66.7,1,0.0,0,0,0,0,0,0,0,0,0,2,1,0,0,0,0,1,0,0,0,0,0
-VFC,Moses Dyer,6,m,Moses,Dyer,18,1,1,0.0,0,0.0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0
-VFC,Raphael Ohin,27,m,Raphael,Ohin,45,31,19,84.2,0,0.0,0,0,0,2,0,1,1,1,1,5,4,0,1,0,0,2,1,0,0,0,0
-VFC,Shaan Hundal,11,f,Shaan,Hundal,72,15,11,72.7,0,0.0,0,1,0,0,0,0,0,0,0,6,0,0,0,0,0,0,2,0,0,0,0
-VFC,Solomon Kojo Antwi,25,m,Solomon,Kojo Antwi,25,14,8,75.0,0,0.0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,1,0,0,0,0
-VFC,Stefan Cebara,14,m,Stefan,Cebara,90,61,41,80.5,1,0.0,0,0,0,0,0,0,0,1,0,7,4,0,1,0,0,0,2,0,0,0,0
+VFC,Diego Gutiérrez,8,m,Diego,Gutiérrez,108,90,72,81.3,3,0.0,0,2,0,1,0,0,1,2,1,12,7,1,2,0,0,3,1,0,0,0,0
+VFC,Dylan Carreiro,10,m,Dylan,Carreiro,87,30,20,81.8,1,0.0,0,1,1,4,2,1,3,1,0,5,2,0,0,0,0,1,0,0,0,0,0
+VFC,Federico Peña,77,f,Federico,Peña,24,20,12,91.7,1,0.0,0,0,0,0,0,0,0,1,1,3,1,0,0,0,0,0,0,0,0,0,0
+VFC,Fraser Aird,33,m,Fraser,Aird,157,98,65,68.0,7,0.0,0,4,1,3,2,1,2,1,1,13,3,1,0,2,0,2,5,0,0,0,0
+VFC,James Pantemis,1,g,James,Pantemis,180,67,49,76.0,0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,4,0,1
+VFC,José Antonio Galán Pedrosa,21,m,José,Galán,23,26,23,91.3,0,0.0,0,1,1,1,1,1,0,1,1,3,1,0,0,0,0,0,2,0,0,0,0
+VFC,Julian Dunn-Johnson,5,d,Julian,Dunn,180,113,94,80.0,0,0.0,0,0,0,0,0,0,0,4,1,13,9,4,0,0,0,1,0,0,0,0,0
+VFC,Mastanabal Kacher,7,f,Masta,Kacher,112,48,27,66.7,5,0.0,0,2,0,2,0,2,0,0,0,10,5,0,0,1,0,3,1,0,0,0,0
+VFC,Moses Dyer,6,m,Moses,Dyer,85,34,16,0.0,0,0.0,0,0,0,3,0,3,0,1,1,13,7,0,1,0,0,2,2,0,0,0,0
+VFC,Raphael Ohin,27,m,Raphael,Ohin,135,88,71,84.2,0,0.0,0,0,0,2,0,1,1,3,2,10,8,0,2,0,0,3,1,0,0,0,0
+VFC,Shaan Hundal,11,f,Shaan,Hundal,84,24,15,72.7,1,0.0,2,3,0,1,1,1,0,0,0,8,2,0,0,0,0,0,2,0,0,0,0
+VFC,Solomon Kojo Antwi,25,m,Solomon,Kojo Antwi,29,22,9,75.0,0,0.0,0,0,0,0,0,0,0,3,2,8,3,0,1,0,0,0,1,0,0,0,0
+VFC,Stefan Cebara,14,m,Stefan,Cebara,156,122,85,80.5,1,0.0,0,1,0,0,0,0,0,2,1,14,8,2,2,0,0,2,2,0,0,0,0
 Y9,Diyaeddine Abzi,20,d,Diyaeddine,Abzi,174,118,61,79.4,2,0.0,0,1,0,2,1,2,0,5,3,20,12,6,6,0,0,4,2,0,0,0,0
 Y9,Gabriel Monteiro Vasconcelos,99,f,Gabriel,Vasconcelos,54,13,8,75.0,0,0.0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
 Y9,Ijah Halley,14,d,Ijah,Halley,6,13,5,60.0,0,0.0,0,1,0,0,0,0,0,0,0,5,2,0,0,0,0,2,1,0,0,0,0

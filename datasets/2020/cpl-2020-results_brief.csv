@@ -1,6 +1,6 @@
 d,m,hs,as,home,hr,away,ar,summary,team
 15,8,2.0,2.0,York9 FC,D,Atlético Ottawa,D,D A 2.0 - 2.0 Y9,Atlético Ottawa
-19,8,,,Atlético Ottawa,E,Valour FC,E,E H nan - nan VFC,Atlético Ottawa
+19,8,0.0,4.0,Atlético Ottawa,L,Valour FC,W,L H 0.0 - 4.0 VFC,Atlético Ottawa
 23,8,,,Atlético Ottawa,E,FC Edmonton,E,E H nan - nan FCE,Atlético Ottawa
 27,8,,,Atlético Ottawa,E,Cavalry FC,E,E H nan - nan CFC,Atlético Ottawa
 30,8,,,Atlético Ottawa,E,Forge FC,E,E H nan - nan FFC,Atlético Ottawa
@@ -42,7 +42,7 @@ d,m,hs,as,home,hr,away,ar,summary,team
 2,9,,,Pacific FC,E,Atlético Ottawa,E,E H nan - nan ATO,Pacific FC
 6,9,,,Pacific FC,E,FC Edmonton,E,E H nan - nan FCE,Pacific FC
 16,8,0.0,2.0,Valour FC,L,Cavalry FC,W,L H 0.0 - 2.0 CFC,Valour FC
-19,8,,,Atlético Ottawa,E,Valour FC,E,E A nan - nan ATO,Valour FC
+19,8,0.0,4.0,Atlético Ottawa,L,Valour FC,W,W A 0.0 - 4.0 ATO,Valour FC
 22,8,,,York9 FC,E,Valour FC,E,E A nan - nan Y9,Valour FC
 25,8,,,Pacific FC,E,Valour FC,E,E A nan - nan PFC,Valour FC
 29,8,,,Valour FC,E,FC Edmonton,E,E H nan - nan FCE,Valour FC
