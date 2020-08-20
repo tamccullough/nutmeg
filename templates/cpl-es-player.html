@@ -92,61 +92,67 @@
   </header>
 
 
-  <div class="w3-container">
-    <div class="w3-container cpl-eclipse-l">
-      <div class="w3-container w3-center w3-padding-16">
-        <div class="w3-half">
-        <table>
-          <tr>
-            <td>O: {{ html_table.at[0,'overall'] }}**</td>
-            <td>MIN: {{ html_table.at[0,'minutes'] }}</td>
-            <td>xG: {{ html_table.at[0,'xG'] }}**</td>
-          </tr>
-        </table>
-        </div>
-        <div class="w3-half">
-        <table>
-          <tr>
-            <td>xA: {{ html_table.at[0,'xA'] }}**</td>
-            <td>Y: {{ html_table.at[0,'yellow'] }}</td>
-            <td>R: {{ html_table.at[0,'red'] }}</td>
-          </tr>
-        </table>
-        </div>
-      </div>
-
-      <div class="w3-third" style="height: 350px;">
-        <div class="w3-center w3-padding-16  {{ team_colour }}">
+  <div class="w3-container cpl-eclipse-l">
+    <div>
+      <div class="w3-half {{ team_colour }}" style="height: 250px;">
+        <div class="w3-center">
           <!-- a href="{{ html_table.iloc[0,31] }}" target="_blank" -->
             <img src="static/images/players/2020/{{ html_table.at[0,'image'] }}" alt="{{ html_table.iloc[0,5] }}" style="max-height:214px"></a>
         </div>
-        <div  class="w3-padding">
-          <table>
-            <tr>
-              <td><a><img src="static/images/flags/{{ html_table.at[0,'flag'] }}" alt="{{ html_table.iloc[0,2] }}" style="max-height:30px"><a></td>
-              <td>{{ nationality }}</td>
-            </tr>
-            <tr>
-              <td>Number: {{ html_table.at[0,'number'] }}</td>
-              <td>{{ html_table.at[0,'position'] }}</td>
-            </tr>
-          </table>
+      </div>
+      <div class="w3-half {{ team_colour }}" style="height: 250px;">
+        <table>
+          <tr>
+            <td style="width:40px"></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="width:40px"></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="width:40px"></td>
+            <td>O: {{ html_table.at[0,'overall'] }}**</td>
+            <td>MIN: {{ html_table.at[0,'minutes'] }}</td>
+          </tr>
+          <tr>
+            <td style="width:40px"></td>
+            <td>xG: {{ html_table.at[0,'xG'] }}**</td>
+            <td>xA: {{ html_table.at[0,'xA'] }}**</td>
+          </tr>
+          <tr>
+            <td style="width:40px"></td>
+            <td>Y: {{ html_table.at[0,'yellow'] }}</td>
+            <td>R: {{ html_table.at[0,'red'] }}</td>
+          </tr>
+          <tr>
+            <td style="width:40px"></td>
+            <td><a><img src="static/images/flags/{{ html_table.at[0,'flag'] }}" alt="{{ html_table.iloc[0,2] }}" style="max-height:30px"><a></td>
+            <td>{{ nationality }}</td>
+          </tr>
+          <tr>
+            <td style="width:40px"></td>
+            <td>Number: {{ html_table.at[0,'number'] }}</td>
+            <td>{{ html_table.at[0,'position'] }}</td>
+          </tr>
+        </table>
         </div>
       </div>
 
-      <div class="w3-third w3-center w3-padding-16" style="height: 350px;">
+      <div class="w3-half w3-center" style="height: 330px;">
         <div><a>player radar</a></div>
         <img src="static/images/2020/player_graphs/{{ radar }}" alt="player radar" style="max-width:300px">
       </div>
 
-      <div class="w3-third w3-center w3-padding-16" style="height: 350px;">
+      <div class="w3-half w3-center" style="height: 330px;">
         <div><a>player performance</a></div>
         <img src="static/images/2020/player_graphs/{{ graph }}" alt="player performance" style="max-width:300px">
       </div>
 
-      <div class="w3-container  cpl-eclipse-lw3-padding" style="height: 350px;">
+      <div style="height: 350px;">
         <h5>{{ year }} Rolling Statistics</h5>
-
             <div class="w3-half">
               <table style="width: 100%;">
                   <tr>
@@ -175,7 +181,6 @@
                   </tr>
                 </table>
               </div>
-
               <div class="w3-half">
                 <table style="width: 100%;">
                     <tr>
@@ -204,7 +209,7 @@
                     </tr>
                   </table>
                 </div>
-        </div>
+         </div>
         <div>
           <a class="w3-button w3-right" href="{{ html_table.iloc[0,33] }}" target="_blank"><b> Wiki Link</b></a>
         </div>

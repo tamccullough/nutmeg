@@ -22,13 +22,13 @@ d,m,hs,as,home,hr,away,ar,summary,team
 6,9,,,Pacific FC,E,FC Edmonton,E,E A nan - nan PFC,FC Edmonton
 13,8,2.0,2.0,Forge FC,D,Cavalry FC,D,D H 2.0 - 2.0 CFC,Forge FC
 16,8,2.0,0.0,Forge FC,W,FC Edmonton,L,W H 2.0 - 0.0 FCE,Forge FC
-19,8,,,HFX Wanderers FC,E,Forge FC,E,E A nan - nan HFX,Forge FC
+19,8,1.0,1.0,HFX Wanderers FC,D,Forge FC,D,D A 1.0 - 1.0 HFX,Forge FC
 22,8,,,Forge FC,E,Pacific FC,E,E H nan - nan PFC,Forge FC
 26,8,,,York9 FC,E,Forge FC,E,E A nan - nan Y9,Forge FC
 30,8,,,Atlético Ottawa,E,Forge FC,E,E A nan - nan ATO,Forge FC
 5,9,,,Forge FC,E,Valour FC,E,E H nan - nan VFC,Forge FC
 15,8,2.0,2.0,HFX Wanderers FC,D,Pacific FC,D,D H 2.0 - 2.0 PFC,HFX Wanderers FC
-19,8,,,HFX Wanderers FC,E,Forge FC,E,E H nan - nan FFC,HFX Wanderers FC
+19,8,1.0,1.0,HFX Wanderers FC,D,Forge FC,D,D H 1.0 - 1.0 FFC,HFX Wanderers FC
 23,8,,,Cavalry FC,E,HFX Wanderers FC,E,E A nan - nan CFC,HFX Wanderers FC
 26,8,,,FC Edmonton,E,HFX Wanderers FC,E,E A nan - nan FCE,HFX Wanderers FC
 29,8,,,HFX Wanderers FC,E,York9 FC,E,E H nan - nan Y9,HFX Wanderers FC

@@ -1,46 +1,48 @@
 team,name,number,position,minutes,goals,tackles,t-won,clearances,interceptions,duels,d-won,overall
-FFC,Kwame Awuah,6,d,180,1,5,2,6,2,18,12,0.61
-PFC,Kadin Chung,7,d,180,0,6,4,4,1,27,20,0.59
-ATO,Milovan Kapor,3,d,154,0,3,3,12,8,16,7,0.57
-Y9,Diyaeddine Abzi,20,d,174,0,5,3,6,6,20,12,0.57
-Y9,Luca Gasparotto,13,d,180,0,2,1,12,6,14,12,0.53
-Y9,Roger Thompson,6,d,180,0,3,2,10,6,14,9,0.52
-FFC,Daniel Krutzen,5,d,180,0,3,3,4,4,23,12,0.51
-CFC,Dominick Zator,4,d,180,1,2,1,3,0,17,14,0.49
-ATO,Gianfranco Facchineri,6,d,90,0,8,7,3,1,14,9,0.48
-FFC,David Edgar,30,d,180,0,4,2,12,3,10,7,0.48
-VFC,Andrew Jean-Baptiste,35,d,180,1,0,0,8,4,12,5,0.48
-PFC,Lukas MacNaughton,6,d,180,1,1,0,5,1,15,8,0.45
-PFC,Jordan Haynes,3,d,109,0,5,2,2,4,14,8,0.38
-VFC,Julian Dunn-Johnson,5,d,180,0,4,1,4,0,13,9,0.36
-CFC,Nathan Mavila,3,d,90,1,1,1,0,1,13,7,0.34
-Y9,Morey Doner,3,d,180,0,0,0,2,7,8,5,0.32
-PFC,Thomas Meilleur-Giguère,26,d,180,0,0,0,5,5,6,2,0.29
-HFX,Peter Schaale,2,d,90,0,3,2,5,2,6,4,0.28
-ATO,Evan Brandon John,4,d,180,0,2,1,3,0,8,6,0.27
-FCE,Mélé Temguia,8,d,90,0,3,2,1,3,10,5,0.27
-CFC,Mason Trafford,5,d,180,0,0,0,4,2,5,4,0.24
-FCE,Ramon Soria,5,d,90,0,2,1,5,1,8,5,0.24
-CFC,Robert Boskovic,25,d,90,0,2,1,2,2,7,6,0.23
-FFC,Dominic Samuel,4,d,102,0,2,0,0,2,11,8,0.23
-HFX,Jake Ruby,20,d,90,0,2,2,2,0,12,4,0.23
-CFC,Mohamed Farsi,21,d,100,0,1,1,2,2,7,4,0.21
-CFC,Jonathan Wheeldon,14,d,90,0,0,0,8,0,9,4,0.21
-FCE,Jeannot Esua,3,d,90,0,0,0,6,2,7,3,0.2
-HFX,Jems Geffrard,3,d,90,0,1,1,4,2,3,2,0.19
-VFC,Arnold Bouka Moutou,29,d,65,0,2,1,0,1,10,5,0.18
-CFC,Dean Northover,12,d,90,0,0,0,1,2,8,6,0.17
-FFC,Jonathan Grant,2,d,78,0,0,0,5,0,10,2,0.16
-HFX,Alex De Carolis,24,d,81,0,1,1,0,1,5,5,0.15
-FCE,Kareem Moses,12,d,29,0,2,1,3,0,6,2,0.14
-FCE,Allan Zebie,4,d,87,0,1,1,0,0,6,4,0.14
-Y9,Matthew Arnone,17,d,62,0,1,1,1,2,3,2,0.14
-PFC,Marcel de Jong,17,d,78,0,0,0,3,2,4,0,0.13
-FFC,Maxim Tissot,15,d,55,0,2,1,1,0,6,2,0.13
-ATO,Jarred Phillips,14,d,36,0,1,1,1,0,4,1,0.09
-FCE,Amer Didic,55,d,61,0,0,0,2,0,3,2,0.08
-FCE,Terique Mohammed,57,d,29,0,1,0,1,0,5,3,0.08
-ATO,Vashon Neufville,44,d,50,0,0,0,0,0,6,1,0.06
+FFC,Kwame Awuah,6,d,270,1,6,2,7,4,25,16,0.69
+FFC,Daniel Krutzen,5,d,270,0,4,3,8,6,32,18,0.63
+PFC,Kadin Chung,7,d,180,0,6,4,4,1,27,20,0.52
+FFC,David Edgar,30,d,270,0,4,2,15,5,12,9,0.52
+ATO,Milovan Kapor,3,d,154,0,3,3,12,8,16,7,0.5
+Y9,Diyaeddine Abzi,20,d,174,0,5,3,6,6,20,12,0.5
+HFX,Peter Schaale,2,d,180,0,5,4,10,4,11,6,0.45
+Y9,Roger Thompson,6,d,180,0,3,2,10,6,14,9,0.45
+Y9,Luca Gasparotto,13,d,180,0,2,1,12,6,14,12,0.45
+ATO,Gianfranco Facchineri,6,d,90,0,8,7,3,1,14,9,0.44
+HFX,Mateo Restrepo,14,d,99,0,7,5,4,4,12,8,0.43
+CFC,Dominick Zator,4,d,180,1,2,1,3,0,17,14,0.43
+VFC,Andrew Jean-Baptiste,35,d,180,1,0,0,8,4,12,5,0.41
+PFC,Lukas MacNaughton,6,d,180,1,1,0,5,1,15,8,0.38
+HFX,Chrisnovic N'Sa,6,d,90,0,5,5,3,3,10,8,0.37
+PFC,Jordan Haynes,3,d,109,0,5,2,2,4,14,8,0.34
+FFC,Dominic Samuel,4,d,190,0,3,0,2,3,19,12,0.34
+CFC,Nathan Mavila,3,d,90,1,1,1,0,1,13,7,0.31
+VFC,Julian Dunn-Johnson,5,d,180,0,4,1,4,0,13,9,0.3
+HFX,Jems Geffrard,3,d,180,0,2,2,7,3,5,4,0.3
+Y9,Morey Doner,3,d,180,0,0,0,2,7,8,5,0.27
+HFX,Jake Ruby,20,d,94,0,3,3,3,0,14,6,0.26
+FCE,Mélé Temguia,8,d,90,0,3,2,1,3,10,5,0.24
+PFC,Thomas Meilleur-Giguère,26,d,180,0,0,0,5,5,6,2,0.23
+ATO,Evan Brandon John,4,d,180,0,2,1,3,0,8,6,0.22
+FCE,Ramon Soria,5,d,90,0,2,1,5,1,8,5,0.21
+CFC,Robert Boskovic,25,d,90,0,2,1,2,2,7,6,0.2
+CFC,Mason Trafford,5,d,180,0,0,0,4,2,5,4,0.19
+CFC,Mohamed Farsi,21,d,100,0,1,1,2,2,7,4,0.18
+CFC,Jonathan Wheeldon,14,d,90,0,0,0,8,0,9,4,0.16
+FCE,Jeannot Esua,3,d,90,0,0,0,6,2,7,3,0.16
+VFC,Arnold Bouka Moutou,29,d,65,0,2,1,0,1,10,5,0.16
+CFC,Dean Northover,12,d,90,0,0,0,1,2,8,6,0.15
+FFC,Maxim Tissot,15,d,68,0,2,1,1,0,12,2,0.14
+HFX,Alex De Carolis,24,d,81,0,1,1,0,1,5,5,0.13
+FCE,Kareem Moses,12,d,29,0,2,1,3,0,6,2,0.12
+FCE,Allan Zebie,4,d,87,0,1,1,0,0,6,4,0.12
+FFC,Jonathan Grant,2,d,78,0,0,0,5,0,10,2,0.12
+Y9,Matthew Arnone,17,d,62,0,1,1,1,2,3,2,0.12
+HFX,Daniel Kinumbe,13,d,45,0,1,1,0,1,6,4,0.11
+PFC,Marcel de Jong,17,d,78,0,0,0,3,2,4,0,0.1
+ATO,Jarred Phillips,14,d,36,0,1,1,1,0,4,1,0.08
+FCE,Terique Mohammed,57,d,29,0,1,0,1,0,5,3,0.07
+FCE,Amer Didic,55,d,61,0,0,0,2,0,3,2,0.06
+ATO,Vashon Neufville,44,d,50,0,0,0,0,0,6,1,0.05
 Y9,Ijah Halley,14,d,6,0,0,0,0,0,5,2,0.03
-HFX,Mateo Restrepo,14,d,9,0,0,0,0,0,0,0,0.0
-FFC,Klaidi Cela,16,d,1,0,0,0,0,0,0,0,0.0
+FFC,Klaidi Cela,16,d,2,0,0,0,0,0,2,0,0.0

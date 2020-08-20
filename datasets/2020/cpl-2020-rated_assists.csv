@@ -1,11 +1,12 @@
 rank,team,name,position,number,minutes,assists
 1,VFC,Shaan Hundal,f,11,84,2
-2,FFC,David Choinière,m,7,113,1
-3,CFC,Nikolas Ledgerwood,m,6,91,1
-4,PFC,Marco Bustos,m,10,173,1
-5,ATO,Vashon Neufville,d,44,50,1
-6,CFC,Mohamed Farsi,d,21,100,1
-7,VFC,Brett Levis,m,17,180,1
-8,PFC,Victor Blasco,m,23,162,1
-9,ATO,Francisco Javier Acuña Víctor,m,8,99,1
-10,PFC,Zachary Verhoven,m,16,44,1
+2,HFX,Alex Marshall,m,7,63,1
+3,ATO,Vashon Neufville,d,44,50,1
+4,PFC,Zachary Verhoven,m,16,44,1
+5,PFC,Victor Blasco,m,23,162,1
+6,CFC,Nikolas Ledgerwood,m,6,91,1
+7,CFC,Mohamed Farsi,d,21,100,1
+8,PFC,Marco Bustos,m,10,173,1
+9,FFC,David Choinière,m,7,140,1
+10,VFC,Brett Levis,m,17,180,1
+11,ATO,Francisco Javier Acuña Víctor,m,8,99,1
