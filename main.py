@@ -365,10 +365,22 @@ def teams_19():
 def radar():
     year = '2020'
     other_year = '2019'
+    team_standings = pd.read_csv(f'datasets/{year}/cpl-{year}-standings_current.csv')
+    team_standings = team_standings.sort_values(by='team')
+    team_standings['xg'] = round((team_standings['gf'] / team_standings['gp'])*7,2)
+    team_standings['xp'] = round(team_standings['pts'] / team_standings['gp'],2)
+    team_standings['xt'] = team_standings['xp'] * 7
+    team_standings['xg'] = team_standings['xg'].astype('int')
+    team_standings['xt'] = team_standings['xt'].astype('int')
+    team_standings = team_standings.reset_index()
+    team_standings.pop('index')
+    print(team_standings)
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
     columns = team_ref.columns
-    return render_template('cpl-es-radar.html',columns = columns, html_table = team_ref, year = year, other_year = other_year)
+    return render_template('cpl-es-radar.html',columns = columns, html_table = team_ref,
+    stats = team_standings,
+    year = year, other_year = other_year)
 
 @canples.route('/radar-2019')
 def radar_19():
