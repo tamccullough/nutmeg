@@ -352,7 +352,7 @@ def clean_team_game(standings,db,check):
 
 def get_weeks_results(results,standings,stats,team_ref):
     if results.iloc[0]['hr'] == 'E':
-        db = pd.DataFrame([('tbd',0,'tbd',0)],columns=['home','hs','away','as'])
+        db = pd.DataFrame([('TBD',0,'TBD',0)],columns=['home','hs','away','as'])
         big_win, top_team, low_team,other_team = db,db,db,db
         goals, assists, yellows, reds = 0,0,0,0
         return db,goals,big_win,top_team,low_team,other_team, assists, yellows, reds
@@ -363,20 +363,30 @@ def get_weeks_results(results,standings,stats,team_ref):
     played_games = index_reset(played_games)
     month = played_games.iloc[0]['m']
     day = played_games.iloc[0]['d']
-    print(month,day)
+    print('month ',month,'day ',day)
 
     # perform a check to check the amount of games played are enough to analyze
     check = results[results['hr'] != 'E'].shape[0]
-    if check < 3:
-        df = results.head(6)
-    else:
-        df = results[results['hr'] != 'E'].head(6)
 
-    db = df[df['m'] == month]
-    db = db[db['d'] <= day + 4]
+    if check <= 5:
+        df = results.tail(check)
+    else:
+        df = results[results['hr'] != 'E'].tail(6)
+
+    if day > 7:
+        db = df[df['m'] == month]
+        db = db.sort_values(by='d',ascending=False).head(5)
+        db = db.sort_values(by='d')
+    else:
+        db = df[df['m'] == month]
+        db = db[db['d'] <= day]
+    db['hs'] = db['hs'].astype('int')
+    db['as'] = db['as'].astype('int')
+    print(db[['home','hs','away','as']])
     goals = stats['goals'].sum()
     max_home = db[(db['hs'] == db['hs'].max()) & (db['hr'] == "W")]
     max_away = db[(db['as'] == db['as'].max()) & (db['ar'] == "W")]
+    print('max home win',max_home.iloc[0]['hs'],'max away win',max_away.iloc[0]['as'])
     if max_home.iloc[0]['hs'] > max_away.iloc[0]['as']:
         max_home_win = max_home
     else:

@@ -76,6 +76,7 @@
   </header>
 
   <div class="w3-container">
+    <div style="color:#7b75a1">top 10</div>
     <!-- table header -->
     <div class="w3-third">
       <div>
@@ -116,7 +117,47 @@
   </div>
   <div class="w3-container">
     <!-- table -->
-    {%for i in range(0,html_table.shape[0])%}
+    {%for i in range(0,10)%}
+      <div class="w3-third">
+        <div>
+          <table class="cpl-eclipse-l">
+            <tr>
+              <td>{{ html_table.at[i, 'team'] }} / {{ html_table.at[i,'number'] }}</td>
+              <td style="width:75%;"><b>{{ html_table.at[i,'name'] }}</b></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="w3-third">
+        <div>
+          <table class="cpl-eclipse-m">
+            <tr>
+              <td>{{ html_table.at[i,'minutes'] }}</td>
+              <td>{{ html_table.at[i,'goals'] }}</td>
+              <td>{{ html_table.at[i,'tackles'] }}</td>
+              <td>{{ html_table.at[i,'t-won'] }}</td>
+              <td>{{ html_table.at[i,'clearances'] }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="w3-third">
+        <div>
+          <table class="cpl-eclipse-m">
+            <tr>
+              <td>{{ html_table.at[i,'interceptions'] }}</td>
+              <td>{{ html_table.at[i,'duels'] }}</td>
+              <td>{{ html_table.at[i,'d-won'] }}</td>
+              <td class="w3-grey w3-text-white"><b>{{ html_table.at[i,'overall'] }}</b></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      {%endfor%}
+      <!-- end of table -->
+      <div style="color:#7b75a1">bottom table</div>
+    <!-- table -->
+    {%for i in range(10,html_table.shape[0])%}
       <div class="w3-third">
         <div>
           <table class="cpl-eclipse-l">
