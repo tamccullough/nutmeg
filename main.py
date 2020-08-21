@@ -9,9 +9,9 @@ import numpy as np
 import pandas as pd
 
 import pickle
-classifier = 'models/cpl_MATCH_classifier-08-19-.sav'
+classifier = 'models/cpl_MATCH_classifier-08-21-rf1-2.sav' # BEST so far (25.0, 39.29, 35.71)
 cpl_classifier_model = pickle.load(open(classifier, 'rb'))
-regressor = 'models/cpl_score_regressor-08-19-dt.sav'
+regressor = 'models/cpl_score_regressor-07-20-vr---34.sav' # good results somewhat HIGH
 cpl_score_model = pickle.load(open(regressor, 'rb'))
 
 canples = Flask(__name__)
