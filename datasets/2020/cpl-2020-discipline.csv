@@ -1,141 +1,142 @@
 team,name,position,number,minutes,yellow,red,f-conceded,overall
 ATO,Milovan Kapor,d,3,154,0,1,4,0.51
+FCE,Terique Mohammed,d,57,78,0,1,4,0.44
 ATO,Vashon Neufville,d,44,50,0,1,3,0.39
 HFX,Louis Béland-Goyette,m,5,153,2,0,8,0.64
 Y9,Joseph Di Chiara,m,8,180,2,0,6,0.6
 VFC,Fraser Aird,m,33,157,2,0,5,0.55
+CFC,Elijah Adekugbe,m,8,170,2,0,4,0.53
 FFC,Dominic Samuel,d,4,190,2,0,3,0.51
-CFC,Elijah Adekugbe,m,8,144,2,0,4,0.5
 FFC,Marcel Zajac,f,9,109,2,0,2,0.41
 FFC,Daniel Krutzen,d,5,270,1,0,6,0.56
 PFC,Matthew Baldisimo,m,8,170,1,0,5,0.43
 PFC,Victor Blasco,m,23,162,1,0,4,0.4
 PFC,Marco Bustos,m,10,173,1,0,3,0.37
 HFX,Jason Beaulieu,g,1,180,1,0,2,0.35
+CFC,Robert Boskovic,d,25,180,1,0,2,0.35
 ATO,Víctor Martínez Manrique,m,5,180,1,0,2,0.35
 HFX,Peter Schaale,d,2,180,1,0,1,0.32
 FFC,Jonathan Grant,d,2,78,1,0,4,0.32
 VFC,Dante Campbell,m,48,72,1,0,4,0.31
+FCE,Tomi Ameobi,f,18,92,1,0,3,0.3
 PFC,Jordan Haynes,d,3,109,1,0,2,0.28
 CFC,Sergio Camargo,m,10,130,1,0,1,0.27
 VFC,Austin Ricci,f,9,78,1,0,2,0.25
 VFC,Mastanabal Kacher,f,7,112,1,0,1,0.25
-CFC,Robert Boskovic,d,25,90,1,0,1,0.23
 FFC,Klaidi Cela,d,16,2,1,0,1,0.15
+CFC,Nikolas Ledgerwood,m,6,180,0,0,7,0.38
 VFC,Andrew Jean-Baptiste,d,35,180,0,0,6,0.35
 FFC,Kwame Awuah,d,6,270,0,0,3,0.34
-FFC,Alexander Achinioti-Jönsson,m,13,269,0,0,3,0.34
+CFC,Dominick Zator,d,4,270,0,0,3,0.34
 FFC,Kyle Bekker,m,10,270,0,0,3,0.34
+FFC,Alexander Achinioti-Jönsson,m,13,269,0,0,3,0.34
+CFC,Nathan Mavila,d,3,180,0,0,5,0.32
 ATO,Mohamed Kourouma,f,9,180,0,0,5,0.32
 FFC,Paolo Sabak,m,24,236,0,0,3,0.31
+CFC,Oliver Minatel,f,7,189,0,0,4,0.3
+CFC,Nico Pasquotti,f,17,225,0,0,3,0.3
+CFC,Marcus Haber,f,29,115,0,0,6,0.29
+FCE,Mélé Temguia,d,8,180,0,0,4,0.29
 ATO,Malyk Hamilton,m,2,180,0,0,4,0.29
-FFC,David Edgar,d,30,270,0,0,1,0.28
+CFC,Mason Trafford,d,5,270,0,0,1,0.28
 HFX,Cory Bent,m,23,176,0,0,4,0.28
+FFC,David Edgar,d,30,270,0,0,1,0.28
+FCE,Jeannot Esua,d,3,180,0,0,3,0.26
+FCE,Erik Zetterberg,m,21,180,0,0,3,0.26
 PFC,Alessandro Hojabrpour,m,21,154,0,0,4,0.26
 Y9,Roger Thompson,d,6,180,0,0,3,0.26
-HFX,Aboubacar Sissoko,m,17,170,0,0,3,0.25
 FFC,Kadell Thomas,f,17,109,0,0,5,0.25
+CFC,Marco Carducci,g,1,270,0,0,0,0.25
 FFC,Triston Henry,g,1,270,0,0,0,0.25
-PFC,Terran Campbell,f,14,140,0,0,3,0.22
+HFX,Aboubacar Sissoko,m,17,170,0,0,3,0.25
+CFC,Jordan Brown,f,9,196,0,0,2,0.24
 FFC,David Choinière,m,7,140,0,0,3,0.22
+PFC,Terran Campbell,f,14,140,0,0,3,0.22
 PFC,Lukas MacNaughton,d,6,180,0,0,2,0.22
 ATO,Evan Brandon John,d,4,180,0,0,2,0.22
+Y9,Diyaeddine Abzi,d,20,174,0,0,2,0.22
+FCE,Ramon Soria,d,5,180,0,0,2,0.22
 VFC,Brett Levis,m,17,180,0,0,2,0.22
 ATO,Malcolm Isaiah Shaw,f,19,146,0,0,3,0.22
-Y9,Diyaeddine Abzi,d,20,174,0,0,2,0.22
-CFC,Nico Pasquotti,f,17,135,0,0,3,0.21
+FCE,Keven Steven Alemán Bustos,m,11,168,0,0,2,0.21
 HFX,Akeem Garcia,f,11,120,0,0,3,0.2
-CFC,Nikolas Ledgerwood,m,6,91,0,0,4,0.2
 VFC,Stefan Cebara,m,14,156,0,0,2,0.2
-CFC,Nathan Mavila,d,3,90,0,0,4,0.2
-CFC,Dominick Zator,d,4,180,0,0,1,0.19
-PFC,Kadin Chung,d,7,180,0,0,1,0.19
+FCE,Kareem Moses,d,12,119,0,0,3,0.2
 Y9,Morey Doner,d,3,180,0,0,1,0.19
-HFX,Andre Rampersad,m,18,180,0,0,1,0.19
-HFX,Jems Geffrard,d,3,180,0,0,1,0.19
 Y9,Luca Gasparotto,d,13,180,0,0,1,0.19
+HFX,Jems Geffrard,d,3,180,0,0,1,0.19
+HFX,Andre Rampersad,m,18,180,0,0,1,0.19
 PFC,Nolan Wirth,g,1,180,0,0,1,0.19
+PFC,Kadin Chung,d,7,180,0,0,1,0.19
+CFC,Mohamed Farsi,d,21,164,0,0,1,0.18
 PFC,Jamar Dixon,m,22,98,0,0,3,0.18
-ATO,Ben Fisk,m,10,153,0,0,1,0.17
-CFC,Marcus Haber,f,29,89,0,0,3,0.17
-FFC,Anthony Novak,f,23,152,0,0,1,0.17
-CFC,Oliver Minatel,f,7,125,0,0,2,0.17
-FFC,Molham Babouli,f,19,118,0,0,2,0.17
 ATO,Ajay Khabra,m,23,90,0,0,3,0.17
-VFC,James Pantemis,g,1,180,0,0,0,0.16
+CFC,Elliot Simmons,m,15,126,0,0,2,0.17
+FCE,Hanson Boakai,m,10,122,0,0,2,0.17
+FFC,Molham Babouli,f,19,118,0,0,2,0.17
+ATO,Ben Fisk,m,10,153,0,0,1,0.17
+FFC,Anthony Novak,f,23,152,0,0,1,0.17
 PFC,Thomas Meilleur-Giguère,d,26,180,0,0,0,0.16
+FCE,Connor James,g,1,180,0,0,0,0.16
 VFC,Julian Dunn-Johnson,d,5,180,0,0,0,0.16
-FFC,Christopher Nanco,f,11,111,0,0,2,0.16
-CFC,Marco Carducci,g,1,180,0,0,0,0.16
-ATO,Ignacio Zabal Almazán,g,1,180,0,0,0,0.16
 Y9,Manuel Aparicio,m,10,81,0,0,3,0.16
+FFC,Christopher Nanco,f,11,111,0,0,2,0.16
+ATO,Ignacio Zabal Almazán,g,1,180,0,0,0,0.16
+VFC,James Pantemis,g,1,180,0,0,0,0.16
 Y9,Nathan Ingham,g,29,180,0,0,0,0.16
-CFC,Mason Trafford,d,5,180,0,0,0,0.16
-HFX,Mateo Restrepo,d,14,99,0,0,2,0.15
-Y9,Ryan Telfer,m,18,170,0,0,0,0.15
 ATO,Francisco Javier Acuña Víctor,m,8,99,0,0,2,0.15
-HFX,Alex Marshall,m,7,63,0,0,3,0.15
+Y9,Ryan Telfer,m,18,170,0,0,0,0.15
 VFC,Raphael Ohin,m,27,135,0,0,1,0.15
-VFC,Moses Dyer,m,6,85,0,0,2,0.14
-FCE,Mélé Temguia,d,8,90,0,0,2,0.14
-ATO,Gianfranco Facchineri,d,6,90,0,0,2,0.14
-HFX,Jake Ruby,d,20,94,0,0,2,0.14
-FCE,Erik Zetterberg,m,21,90,0,0,2,0.14
-VFC,Shaan Hundal,f,11,84,0,0,2,0.14
+HFX,Alex Marshall,m,7,63,0,0,3,0.15
+HFX,Mateo Restrepo,d,14,99,0,0,2,0.15
 CFC,Jonathan Wheeldon,d,14,90,0,0,2,0.14
+VFC,Shaan Hundal,f,11,84,0,0,2,0.14
+HFX,Jake Ruby,d,20,94,0,0,2,0.14
 Y9,Wataru Murofushi,m,23,118,0,0,1,0.14
+VFC,Moses Dyer,m,6,85,0,0,2,0.14
+ATO,Gianfranco Facchineri,d,6,90,0,0,2,0.14
+FCE,Allan Zebie,d,4,150,0,0,0,0.13
 VFC,Diego Gutiérrez,m,8,108,0,0,1,0.13
-ATO,Ben McKendry,m,22,117,0,0,1,0.13
 Y9,Kyle Porter,m,19,151,0,0,0,0.13
-FCE,Kareem Moses,d,12,29,0,0,3,0.12
+ATO,Ben McKendry,m,22,117,0,0,1,0.13
+FCE,Easton Ongaro,f,19,106,0,0,1,0.12
 CFC,Dean Northover,d,12,90,0,0,1,0.11
-FCE,Jeannot Esua,d,3,90,0,0,1,0.11
-FCE,Ramon Soria,d,5,90,0,0,1,0.11
-CFC,Bruno Zebie,m,16,89,0,0,1,0.11
+CFC,Bruno Zebie,m,16,90,0,0,1,0.11
 HFX,João Morelli Neto,f,22,76,0,0,1,0.1
-FCE,Hanson Boakai,m,10,77,0,0,1,0.1
-CFC,Aribim Pepple,f,24,35,0,0,2,0.09
-FFC,Maxim Tissot,d,15,68,0,0,1,0.09
 VFC,Arnold Bouka Moutou,d,29,65,0,0,1,0.09
-CFC,Elliot Simmons,m,15,36,0,0,2,0.09
-CFC,Jordan Brown,f,9,106,0,0,0,0.09
-CFC,Mohamed Farsi,d,21,100,0,0,0,0.09
+FFC,Maxim Tissot,d,15,68,0,0,1,0.09
+CFC,Aribim Pepple,f,24,35,0,0,2,0.09
 VFC,Dylan Carreiro,m,10,87,0,0,0,0.08
+Y9,Matthew Arnone,d,17,62,0,0,1,0.08
 VFC,José Antonio Galán Pedrosa,m,21,23,0,0,2,0.08
 Y9,Lowell Wright,f,80,91,0,0,0,0.08
-Y9,Matthew Arnone,d,17,62,0,0,1,0.08
 HFX,Alessandro Riggi,f,10,56,0,0,1,0.08
 Y9,Álvaro Rivero Sánchez,f,7,89,0,0,0,0.08
-FCE,Yong-Chan Son,m,7,61,0,0,1,0.08
-FCE,Allan Zebie,d,4,87,0,0,0,0.08
 FCE,Amer Didic,d,55,61,0,0,1,0.08
-FCE,Connor James,g,1,90,0,0,0,0.08
+FCE,Yong-Chan Son,m,7,61,0,0,1,0.08
 HFX,Chrisnovic N'Sa,d,6,90,0,0,0,0.08
-FCE,Keven Steven Alemán Bustos,m,11,90,0,0,0,0.08
-PFC,Marcel de Jong,d,17,78,0,0,0,0.07
 HFX,Alex De Carolis,d,24,81,0,0,0,0.07
+PFC,Marcel de Jong,d,17,78,0,0,0,0.07
 ATO,Jarred Phillips,d,14,36,0,0,1,0.06
-ATO,Maksym Kowal,f,21,34,0,0,1,0.06
 PFC,Alejandro Díaz Liceága,f,9,40,0,0,1,0.06
-Y9,Michael Petrasso,m,21,29,0,0,1,0.05
-FCE,Easton Ongaro,f,19,61,0,0,0,0.05
-FCE,Terique Mohammed,d,57,29,0,0,1,0.05
+ATO,Maksym Kowal,f,21,34,0,0,1,0.06
 Y9,Gabriel Monteiro Vasconcelos,f,99,54,0,0,0,0.05
-PFC,Noah Verhoeven,m,19,64,0,0,0,0.05
+FCE,Chance Carter,m,14,30,0,0,1,0.05
 VFC,Solomon Kojo Antwi,m,25,29,0,0,1,0.05
-PFC,Zachary Verhoven,m,16,44,0,0,0,0.04
-Y9,Max Ferrari,m,16,46,0,0,0,0.04
+PFC,Noah Verhoeven,m,19,64,0,0,0,0.05
+Y9,Michael Petrasso,m,21,29,0,0,1,0.05
 VFC,Daryl Fordyce,f,16,45,0,0,0,0.04
+HFX,Daniel Kinumbe,d,13,45,0,0,0,0.04
 PFC,Josh Heard,m,11,18,0,0,1,0.04
 ATO,Antoine Coupland,m,11,45,0,0,0,0.04
-HFX,Daniel Kinumbe,d,13,45,0,0,0,0.04
+PFC,Zachary Verhoven,m,16,44,0,0,0,0.04
+Y9,Max Ferrari,m,16,46,0,0,0,0.04
 FFC,Elimane Cissé,m,3,37,0,0,0,0.03
 Y9,Ijah Halley,d,14,6,0,0,1,0.03
 HFX,Ibrahima Sanoh,f,9,27,0,0,0,0.02
-FCE,Tomi Ameobi,f,18,29,0,0,0,0.02
 VFC,Federico Peña,f,77,24,0,0,0,0.02
-FCE,Antony Caceres,m,20,13,0,0,0,0.01
-PFC,Sean Young,m,20,10,0,0,0,0.0
+FCE,David Doe,f,26,27,0,0,0,0.02
+FCE,Antony Caceres,m,20,25,0,0,0,0.02
 HFX,Omar Kreim,m,8,10,0,0,0,0.0
+PFC,Sean Young,m,20,10,0,0,0,0.0
 Y9,Isaiah Johnston,m,44,9,0,0,0,0.0
-FCE,Chance Carter,m,14,3,0,0,0,0.0

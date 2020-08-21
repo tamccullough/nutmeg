@@ -1,24 +1,25 @@
 rank,team,name,position,number,minutes,goals
-1,Y9,Álvaro Rivero Sánchez,f,7,89,1
-2,CFC,Dominick Zator,d,4,180,1
-3,CFC,Nathan Mavila,d,3,90,1
-4,VFC,José Antonio Galán Pedrosa,m,21,23,1
-5,CFC,Sergio Camargo,m,10,130,1
-6,VFC,Fraser Aird,m,33,157,1
-7,VFC,Dylan Carreiro,m,10,87,1
-8,VFC,Andrew Jean-Baptiste,d,35,180,1
-9,PFC,Zachary Verhoven,m,16,44,1
-10,FFC,Anthony Novak,f,23,152,1
-11,PFC,Marco Bustos,m,10,173,1
-12,PFC,Lukas MacNaughton,d,6,180,1
-13,FFC,Kwame Awuah,d,6,270,1
-14,FFC,Kyle Bekker,m,10,270,1
-15,FFC,Paolo Sabak,m,24,236,1
-16,HFX,Akeem Garcia,f,11,120,1
-17,HFX,João Morelli Neto,f,22,76,1
-18,CFC,Marcus Haber,f,29,89,1
-19,HFX,Ibrahima Sanoh,f,9,27,1
-20,ATO,Mohamed Kourouma,f,9,180,1
-21,ATO,Malcolm Isaiah Shaw,f,19,146,1
-22,Y9,Joseph Di Chiara,m,8,180,1
-23,Y9,Lowell Wright,f,80,91,1
+1,CFC,Jordan Brown,f,9,196,2
+2,HFX,Akeem Garcia,f,11,120,1
+3,CFC,Nathan Mavila,d,3,180,1
+4,CFC,Sergio Camargo,m,10,130,1
+5,FFC,Anthony Novak,f,23,152,1
+6,FFC,Kwame Awuah,d,6,270,1
+7,FFC,Kyle Bekker,m,10,270,1
+8,FFC,Paolo Sabak,m,24,236,1
+9,HFX,Ibrahima Sanoh,f,9,27,1
+10,HFX,João Morelli Neto,f,22,76,1
+11,PFC,Lukas MacNaughton,d,6,180,1
+12,PFC,Marco Bustos,m,10,173,1
+13,PFC,Zachary Verhoven,m,16,44,1
+14,VFC,Andrew Jean-Baptiste,d,35,180,1
+15,VFC,Dylan Carreiro,m,10,87,1
+16,VFC,Fraser Aird,m,33,157,1
+17,VFC,José Antonio Galán Pedrosa,m,21,23,1
+18,Y9,Joseph Di Chiara,m,8,180,1
+19,Y9,Lowell Wright,f,80,91,1
+20,CFC,Marcus Haber,f,29,115,1
+21,Y9,Álvaro Rivero Sánchez,f,7,89,1
+22,ATO,Mohamed Kourouma,f,9,180,1
+23,CFC,Dominick Zator,d,4,270,1
+24,ATO,Malcolm Isaiah Shaw,f,19,146,1

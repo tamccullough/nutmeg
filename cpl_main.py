@@ -336,18 +336,22 @@ def compare_standings(standings_current,standings_old,team_ref):
     return current_rankings
 
 def clean_team_game(standings,db,check):
+    db_tail = db.copy()
+    shape = db_tail.shape[0]
+    db_tail = db_tail.tail(shape)
     if check == 0:
-        df = standings.iloc[0]['team'] # Getting the name of the top team
+        team = standings.iloc[0]['team'] # Getting the name of the top team
     else:
-        df = standings.iloc[-1]['team'] # Getting the name of the bottom placed team
+        team = standings.iloc[-1]['team'] # Getting the name of the bottom placed team
     if standings.iloc[-1]['gp'] == 0 and check == 1:
-        db = pd.DataFrame([(df,0,df,0)],columns=['home','hs','away','as']) # make an empty set if the game is empty
+        db = pd.DataFrame([('TBD',0,'TBD',0)],columns=['home','hs','away','as']) # make an empty set if the game is empty
     else:
-        df = db[(db['home'] == df) | (db['away'] == df)] # get appropirate game results for specified team
+        df = db_tail[(db_tail['home'] == team) | (db_tail['away'] == team)].tail(1) # get appropirate game results for specified team
         db = index_reset(df)
         db = db.iloc[0][['home','hs','away','as']]
         db = pd.DataFrame(db)
         db = db.T
+        print(db)
     return db
 
 def get_weeks_results(results,standings,stats,team_ref):
@@ -375,22 +379,32 @@ def get_weeks_results(results,standings,stats,team_ref):
 
     if day > 7:
         db = df[df['m'] == month]
-        db = db.sort_values(by='d',ascending=False).head(5)
+        db = db.sort_values(by='d',ascending=False)
         db = db.sort_values(by='d')
     else:
         db = df[df['m'] == month]
         db = db[db['d'] <= day]
     db['hs'] = db['hs'].astype('int')
     db['as'] = db['as'].astype('int')
-    print(db[['home','hs','away','as']])
     goals = stats['goals'].sum()
+
     max_home = db[(db['hs'] == db['hs'].max()) & (db['hr'] == "W")]
+    max_home = index_reset(max_home)
+
+    if max_home.empty:
+        max_home = pd.DataFrame([('TBD',0,'TBD',0)],columns=['home','hs','away','as'])
+
     max_away = db[(db['as'] == db['as'].max()) & (db['ar'] == "W")]
-    print('max home win',max_home.iloc[0]['hs'],'max away win',max_away.iloc[0]['as'])
+    max_away = index_reset(max_away)
+
+    if max_away.empty:
+        max_away = pd.DataFrame([('TBD',0,'TBD',0)],columns=['home','hs','away','as'])
+
     if max_home.iloc[0]['hs'] > max_away.iloc[0]['as']:
         max_home_win = max_home
     else:
         max_home_win = max_away
+
     big_win = max_home_win[['home','hs','away','as']]
     big_win = index_reset(big_win)
     big_win = get_short_name(big_win,team_ref)
@@ -1327,8 +1341,13 @@ def get_power_rankings(standings,standings_old,team_ref,results,previous_ranking
         else:
             w_bonus = (rank1.iloc[0]['w'] - rank2.iloc[0]['w']) * - 1
 
+        if rank1.iloc[0]['l'] == rank2.iloc[0]['l']:
+            l_nerf = 0
+        else:
+            l_nerf -= (rank1.iloc[0]['l'] - rank2.iloc[0]['l'])
+
         goal_bonus = gd_bonus - ga_nerf
-        change = change + bonus + goal_bonus + w_bonus
+        change = change + bonus + goal_bonus + w_bonus - l_nerf
 
         a.append([team,form,old_rank,change,goal_bonus,w_bonus,crest,colour])
     power_rankings = pd.DataFrame(a,columns = ['team','form','old_rank','change','goal_bonus','w_bonus','crest','colour'])

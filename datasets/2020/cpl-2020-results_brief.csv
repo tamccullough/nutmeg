@@ -8,13 +8,13 @@ d,m,hs,as,home,hr,away,ar,summary,team
 6,9,,,HFX Wanderers FC,E,Atlético Ottawa,E,E A nan - nan HFX,Atlético Ottawa
 13,8,2.0,2.0,Forge FC,D,Cavalry FC,D,D A 2.0 - 2.0 FFC,Cavalry FC
 16,8,0.0,2.0,Valour FC,L,Cavalry FC,W,W A 0.0 - 2.0 VFC,Cavalry FC
-20,8,,,FC Edmonton,E,Cavalry FC,E,E A nan - nan FCE,Cavalry FC
+20,8,0.0,2.0,FC Edmonton,L,Cavalry FC,W,W A 0.0 - 2.0 FCE,Cavalry FC
 23,8,,,Cavalry FC,E,HFX Wanderers FC,E,E H nan - nan HFX,Cavalry FC
 27,8,,,Atlético Ottawa,E,Cavalry FC,E,E A nan - nan ATO,Cavalry FC
 30,8,,,Cavalry FC,E,Pacific FC,E,E H nan - nan PFC,Cavalry FC
 5,9,,,Cavalry FC,E,York9 FC,E,E H nan - nan Y9,Cavalry FC
 16,8,2.0,0.0,Forge FC,W,FC Edmonton,L,L A 2.0 - 0.0 FFC,FC Edmonton
-20,8,,,FC Edmonton,E,Cavalry FC,E,E H nan - nan CFC,FC Edmonton
+20,8,0.0,2.0,FC Edmonton,L,Cavalry FC,W,L H 0.0 - 2.0 CFC,FC Edmonton
 23,8,,,Atlético Ottawa,E,FC Edmonton,E,E A nan - nan ATO,FC Edmonton
 26,8,,,FC Edmonton,E,HFX Wanderers FC,E,E H nan - nan HFX,FC Edmonton
 29,8,,,Valour FC,E,FC Edmonton,E,E A nan - nan VFC,FC Edmonton
