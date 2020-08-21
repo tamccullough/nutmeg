@@ -407,22 +407,22 @@ def get_weeks_results(results,standings,stats,team_ref):
 
     big_win = max_home_win[['home','hs','away','as']]
     big_win = index_reset(big_win)
-    #big_win = get_short_name(big_win,team_ref)
+    big_win = get_short_name(big_win,team_ref)
     big_win = pd.DataFrame(big_win.loc[0])
     big_win = big_win.T
     # top team
     top_team = clean_team_game(standings,db,0) # finding top team
-    #top_team = get_short_name(top_team,team_ref)
+    top_team = get_short_name(top_team,team_ref)
     # low team
     low_team = clean_team_game(standings,db,1) # finding bottom team
-    #low_team = get_short_name(low_team,team_ref)
+    low_team = get_short_name(low_team,team_ref)
     # other results
     teams_in = get_longest_name(big_win,top_team,low_team,team_ref)
     other_team = db[(~db['home'].isin(teams_in)) | (~db['away'].isin(teams_in))]
     other_team = index_reset(other_team)
     other_team = pd.DataFrame(other_team.loc[0][['home','hs','away','as']])
     other_team = other_team.T
-    #other_team = get_short_name(other_team,team_ref)
+    other_team = get_short_name(other_team,team_ref)
 
     assists = stats['assists'].sum()
     yellows = stats['yellow'].sum()
