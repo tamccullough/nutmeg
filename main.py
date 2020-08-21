@@ -251,9 +251,9 @@ def comparison1():
     if (home_win < draw) and (away_win < draw):
         home_win, away_win = draw, draw
 
-    home_win = get_string(home_win)
+    '''home_win = get_string(home_win)
     away_win = get_string(away_win)
-    draw = get_string(draw)
+    draw = get_string(draw)'''
 
     group1 = team1 + '-' + team2
     group2 = team3 + '-' + team4
