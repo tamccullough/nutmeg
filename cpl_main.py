@@ -386,7 +386,7 @@ def get_weeks_results(results,standings,stats,team_ref):
         db = db[db['d'] <= day]
     db['hs'] = db['hs'].astype('int')
     db['as'] = db['as'].astype('int')
-    goals = stats['goals'].sum()
+
 
     max_home = db[(db['hs'] == db['hs'].max()) & (db['hr'] == "W")]
     max_home = index_reset(max_home)
@@ -425,6 +425,7 @@ def get_weeks_results(results,standings,stats,team_ref):
     other_team = other_team.T
     #other_team = get_short_name(other_team,team_ref)
 
+    goals = standings['gf'].sum()
     assists = stats['assists'].sum()
     yellows = stats['yellow'].sum()
     reds = stats['red'].sum()
