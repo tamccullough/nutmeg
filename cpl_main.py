@@ -186,18 +186,17 @@ def get_standings(results,season_number,team_ref):
 
 def get_90(dataframe):
     data = dataframe.copy()
-    data['minutes'] = round(data['minutes'] /90,1)
     cols = data.columns.tolist()
     r = ['team','minutes','name','number','position','overall']
     for x in r:
         cols.remove(x)
     for col in cols:
-        data[col] = round(data[col] / data['minutes'],1)
-        if data[col].max() == 0:
-            max_col = 1
+        if (col == 'pass-acc') or (col == 'cross-acc'):
+            pass
         else:
-            max_col = data[col].max()
-        data[col] = round(data[col] / max_col,1)
+            col_max = data[col].max()
+            data[col] = [round(x/(y/90)) if (x > 0) & (y > 0) else 0 for x,y in zip(data[col],data['minutes'])]
+            data[col] = [ int(x) for x in data[col]]
     data['new_overall'] = 0.0
     for i in range(data.shape[0]):
         summed = data.iloc[i][cols].sum()
@@ -206,6 +205,7 @@ def get_90(dataframe):
     data = data.sort_values(by='new_overall',ascending = False)
     data['new_overall'] =[ 0.0 if x <= 0.0 else x for x in data['new_overall']]
     data = data.fillna(0.0)
+    data['minutes'] = 90
     return data
 
 def get_team_graphs(stats,standings):
@@ -1431,7 +1431,7 @@ def get_best_eleven(team_stats,team_ref,rated_forwards,rated_midfielders,rated_d
                 team = player_info[player_info['name'] == best_eleven.iloc[i]['name']]['team'].values[0]
             except:
                 team = player_info[player_info['display'] == best_eleven.iloc[i]['name']]['team'].values[0]
-            player= cpl.index_reset(player)
+            player= index_reset(player)
             first = player.at[0,'first']
             last = player.at[0,'last']
             a.append(first)
@@ -1448,7 +1448,7 @@ def get_best_eleven(team_stats,team_ref,rated_forwards,rated_midfielders,rated_d
         best_eleven['link'] = e
         best_eleven['colour'] = f
         best_eleven.pop('name')
-        best_eleven = cpl.index_reset(best_eleven)
+        best_eleven = index_reset(best_eleven)
         return best_eleven
 
 def roster_regressor_pred(model,array):
