@@ -1,27 +1,30 @@
 rank,team,name,position,number,minutes,goals
-1,CFC,Jordan Brown,f,9,196,2
+1,ATO,Francisco Javier Acuña Víctor,m,8,173,2
 2,FFC,Kyle Bekker,m,10,270,2
-3,HFX,Akeem Garcia,f,11,120,1
-4,CFC,Nathan Mavila,d,3,180,1
-5,CFC,Sergio Camargo,m,10,130,1
-6,FFC,Anthony Novak,f,23,152,1
-7,FFC,Christopher Nanco,f,11,111,1
-8,FFC,Kwame Awuah,d,6,270,1
-9,FFC,Paolo Sabak,m,24,236,1
+3,CFC,Jordan Brown,f,9,196,2
+4,Y9,Álvaro Rivero Sánchez,f,7,151,1
+5,PFC,Zachary Verhoven,m,16,44,1
+6,CFC,Nathan Mavila,d,3,180,1
+7,CFC,Sergio Camargo,m,10,130,1
+8,VFC,José Antonio Galán Pedrosa,m,21,23,1
+9,VFC,Fraser Aird,m,33,215,1
 10,HFX,Ibrahima Sanoh,f,9,27,1
-11,HFX,João Morelli Neto,f,22,76,1
-12,PFC,Jamar Dixon,m,22,98,1
-13,PFC,Lukas MacNaughton,d,6,180,1
-14,PFC,Marco Bustos,m,10,173,1
-15,PFC,Zachary Verhoven,m,16,44,1
-16,VFC,Andrew Jean-Baptiste,d,35,270,1
-17,VFC,Dylan Carreiro,m,10,119,1
-18,VFC,Fraser Aird,m,33,215,1
-19,VFC,José Antonio Galán Pedrosa,m,21,23,1
-20,Y9,Joseph Di Chiara,m,8,270,1
-21,Y9,Lowell Wright,f,80,95,1
-22,CFC,Marcus Haber,f,29,115,1
-23,Y9,Álvaro Rivero Sánchez,f,7,151,1
-24,ATO,Mohamed Kourouma,f,9,180,1
-25,ATO,Malcolm Isaiah Shaw,f,19,146,1
-26,CFC,Dominick Zator,d,4,270,1
+11,VFC,Dylan Carreiro,m,10,119,1
+12,FCE,Keven Steven Alemán Bustos,m,11,258,1
+13,VFC,Andrew Jean-Baptiste,d,35,270,1
+14,FFC,Christopher Nanco,f,11,111,1
+15,FFC,Anthony Novak,f,23,152,1
+16,PFC,Marco Bustos,m,10,173,1
+17,PFC,Lukas MacNaughton,d,6,180,1
+18,FFC,Kwame Awuah,d,6,270,1
+19,PFC,Jamar Dixon,m,22,98,1
+20,FFC,Paolo Sabak,m,24,236,1
+21,HFX,Akeem Garcia,f,11,120,1
+22,HFX,João Morelli Neto,f,22,76,1
+23,CFC,Marcus Haber,f,29,115,1
+24,FCE,Easton Ongaro,f,19,196,1
+25,Y9,Joseph Di Chiara,m,8,270,1
+26,ATO,Mohamed Kourouma,f,9,270,1
+27,ATO,Malcolm Isaiah Shaw,f,19,236,1
+28,Y9,Lowell Wright,f,80,95,1
+29,CFC,Dominick Zator,d,4,270,1
