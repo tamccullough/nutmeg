@@ -1395,6 +1395,13 @@ def get_best_eleven(team_stats,team_ref,rated_forwards,rated_midfielders,rated_d
             db = db['flag'].values
             db = db[0]
         return db
+    def get_colour(data,team):
+        colour = data[data['team'] == team]['colour'].values[0]
+        if not colour:
+            colour = 'cpl-eclipse-l'
+        else:
+            pass
+        return colour
 
     check = team_stats.describe()
     if check.loc['max']['minutes'] == 0:
@@ -1413,29 +1420,35 @@ def get_best_eleven(team_stats,team_ref,rated_forwards,rated_midfielders,rated_d
         top_forwards = rated_forwards.iloc[0:2][['name','number','position','overall']]
         best_eleven = pd.DataFrame(columns=['name','number','position','overall'])
         best_eleven = pd.concat([best_eleven,top_keeper,top_defenders,top_midfielders,top_forwards])
-        a,b,c,d,e = [],[],[],[],[]
+        a,b,c,d,e,f = [],[],[],[],[],[]
 
 
         names = best_eleven['name'].values
 
         for i in range(0,best_eleven.shape[0]):
             player = roster[roster['name'] == best_eleven.iloc[i]['name']]
-            player= index_reset(player)
-            first = player.iloc[0]['first']
-            last = player.iloc[0]['last']
+            try:
+                team = player_info[player_info['name'] == best_eleven.iloc[i]['name']]['team'].values[0]
+            except:
+                team = player_info[player_info['display'] == best_eleven.iloc[i]['name']]['team'].values[0]
+            player= cpl.index_reset(player)
+            first = player.at[0,'first']
+            last = player.at[0,'last']
             a.append(first)
             b.append(last)
             c.append(get_image(player_info,best_eleven.iloc[i]['name']))
             d.append(get_flag(player_info,best_eleven.iloc[i]['name']))
             e.append(get_link(player_info,best_eleven.iloc[i]['name']))
+            f.append(get_colour(team_ref,team))
 
         best_eleven.insert(0,'image',c)
         best_eleven.insert(1,'first',a)
         best_eleven.insert(2,'last',b)
         best_eleven.insert(3,'flag',d)
         best_eleven['link'] = e
+        best_eleven['colour'] = f
         best_eleven.pop('name')
-        best_eleven = index_reset(best_eleven)
+        best_eleven = cpl.index_reset(best_eleven)
         return best_eleven
 
 def roster_regressor_pred(model,array):
