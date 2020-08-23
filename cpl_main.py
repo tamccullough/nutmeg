@@ -1348,13 +1348,18 @@ def get_power_rankings(standings,standings_old,team_ref,results,previous_ranking
         else:
             l_nerf -= (rank1.iloc[0]['l'] - rank2.iloc[0]['l'])
 
+        if (rank1.iloc[0]['l'] == 0) & (rank1.iloc[0]['gp'] >= 2):
+            lossless = 1
+        else:
+            lossless = 0
+
         if (rank1.iloc[0]['pts'] == 0) & (rank1.iloc[0]['gp'] >= 2):
             scoreless = -5
         else:
             scoreless = 0
 
         goal_bonus = gd_bonus - ga_nerf
-        change = change + bonus + goal_bonus + w_bonus - l_nerf + scoreless
+        change = change + bonus + goal_bonus + w_bonus - l_nerf + scoreless + lossless
 
         a.append([team,form,old_rank,change,goal_bonus,w_bonus,crest,colour])
     power_rankings = pd.DataFrame(a,columns = ['team','form','old_rank','change','goal_bonus','w_bonus','crest','colour'])
