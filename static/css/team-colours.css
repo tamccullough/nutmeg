@@ -1,16 +1,31 @@
-﻿.cpl-ao
-{color:#fff;background-color:#E4002B}
-.cpl-cfc
-{color:#fff;background-color:#DA291C}
-.cpl-fce
-{color:#fff;background-color:#004C97}
-.cpl-ffc
-{color:#fff;background-color:#DE4405}
-.cpl-hfx
-{color:#302117;background-color:#41B6E6}
-.cpl-pfc
-{color:#fff;background-color:#582C83}
-.cpl-vfc
-{color:#fff;background-color:#7C2529}
-.cpl-y9
-{color:#302117;background-color:#78BE20}
+﻿.cpl-ao {
+  background-color:#E4002B;
+  color:#fff;
+}
+.cpl-cfc {
+  background-color:#DA291C;
+  color:#fff;
+}
+.cpl-fce {
+  background-color:#004C97;
+}
+.cpl-ffc {
+  background-color:#DE4405;
+  color:#fff;
+}
+.cpl-hfx {
+  background-color:#41B6E6;
+  color:#302117;
+}
+.cpl-pfc {
+  background-color:#582C83;
+  color:#fff;
+}
+.cpl-vfc {
+  background-color:#7C2529;
+  color:#fff;
+}
+.cpl-y9 {
+  background-color:#78BE20;
+  color:#302117;
+}
