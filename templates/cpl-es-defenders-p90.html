@@ -2,7 +2,7 @@
 {% block content %}
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse cpl-eclipse-l w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+<nav class="w3-sidebar w3-collapse grey-blue-m w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
       <img src="static/images/flags/CPL-Crest-White.png" class="w3-circle w3-margin-right" style="width:46px">
@@ -28,41 +28,12 @@
     <a href="{{ url_for('midfielders') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-grab-o fa-fw"></i>  Midfielders</a>
     <a href="{{ url_for('midfielders_90') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-grab-o fa-fw"></i>  Midfielders Per 90</a>
     <a href="{{ url_for('defenders') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-stop-o fa-fw"></i>  Defenders</a>
-    <a href="{{ url_for('defenders_90') }}" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-hand-stop-o fa-fw"></i>  Defenders Per 90</a>
+    <a href="{{ url_for('defenders_90') }}" class="w3-bar-item w3-button w3-padding blue-l"><i class="fa fa-hand-stop-o fa-fw"></i>  Defenders Per 90</a>
     <a href="{{ url_for('keepers') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-child fa-fw"></i>  Goal Keepers</a>
     <a href="{{ url_for('keepers_90') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-child fa-fw"></i>  Goal Keepers Per 90</a>
     <a href="{{ url_for('discipline') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-copy fa-fw"></i>  Discipline</a><br><br>
   </div>
 </nav>
-
-<style>
-    table {
-      border-collapse: collapse;
-      table-layout:fixed;
-      /*border: 2px solid rgb(200,200,200);*/
-      /*letter-spacing: 4px;*/
-      margin: 0px auto;
-      width:100%;
-    }
-
-    tr {
-      line-height: 1px;
-      white-space: nowrap;
-    }
-
-    td, th {
-      /*border: 1px solid rgb(190,190,190);*/
-      padding: 10px 5px;
-    }
-
-    td {
-      text-align: left;
-    }
-
-    caption {
-      padding: 10px;
-    }
-</style>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -79,7 +50,7 @@
     <!-- table header -->
     <div class="w3-third">
       <div>
-        <table class="w3-blue">
+        <table class="blue-l">
           <tr>
             <td><b>team / #</b></td>
             <td style="width:75%;"><b>name </b></td>
@@ -89,7 +60,7 @@
     </div>
       <div class="w3-third">
         <div>
-          <table class="w3-blue">
+          <table class="blue-l">
             <tr>
               <td><b>MIN</b></td>
               <td><b>G</b></td>
@@ -102,7 +73,7 @@
       </div>
       <div class="w3-third">
         <div>
-          <table class="w3-blue">
+          <table class="blue-l">
             <tr>
               <td><b>Intr</b></td>
               <td><b>Dls</b></td>
@@ -119,7 +90,7 @@
       {%for i in range(0,html_table.shape[0])%}
         <div class="w3-third">
           <div>
-            <table class="cpl-eclipse-l">
+            <table class="grey-blue-m">
               <tr>
                 <td>{{ html_table.at[i, 'team'] }} / {{ html_table.at[i,'number'] }}</td>
                 <td style="width:75%;"><b>{{ html_table.at[i,'name'] }}</b></td>
@@ -129,7 +100,7 @@
         </div>
         <div class="w3-third">
           <div>
-            <table class="cpl-eclipse-m">
+            <table class="grey-blue-l">
               <tr>
                 <td>90</td>
                 <td>{{ html_table.at[i,'goals'] }}</td>
@@ -142,7 +113,7 @@
         </div>
         <div class="w3-third">
           <div>
-            <table class="cpl-eclipse-m">
+            <table class="grey-blue-l">
               <tr>
                 <td>{{ html_table.at[i,'interceptions'] }}</td>
                 <td>{{ html_table.at[i,'duels'] }}</td>

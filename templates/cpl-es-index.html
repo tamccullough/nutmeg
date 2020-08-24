@@ -2,7 +2,7 @@
 {% block content %}
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse cpl-eclipse-l w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+<nav class="w3-sidebar w3-collapse grey-blue-m w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
       <img src="static/images/flags/CPL-Crest-White.png" class="w3-circle w3-margin-right" style="width:46px">
@@ -15,7 +15,7 @@
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
     <a href="{{ url_for('index_19') }}" class="w3-bar-item w3-button w3-padding">  Go to 2019 Season</a>
-    <a href="{{ url_for('index') }}" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-dashboard fa-fw"></i>  Dashboard</a>
+    <a href="{{ url_for('index') }}" class="w3-bar-item w3-button w3-padding blue-l"><i class="fa fa-dashboard fa-fw"></i>  Dashboard</a>
     <a href="{{ url_for('standings') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-trophy fa-fw"></i>  Standings</a>
     <a href="{{ url_for('power') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bolt fa-fw"></i>  Power Rankings</a>
     <a href="{{ url_for('comparison1') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Match Prediction</a>
@@ -34,35 +34,6 @@
     <a href="{{ url_for('discipline') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-copy fa-fw"></i>  Discipline</a><br><br>
   </div>
 </nav>
-
-<style>
-    table {
-      border-collapse: collapse;
-      table-layout:fixed;
-      /*border: 2px solid rgb(200,200,200);*/
-      /*letter-spacing: 4px;*/
-      margin: 0px auto;
-      width:100%;
-    }
-
-    tr {
-      line-height: 1px;
-      white-space: nowrap;
-    }
-
-    td, th {
-      /*border: 1px solid rgb(190,190,190);*/
-      padding: 10px 5px;
-    }
-
-    td {
-      text-align: left;
-    }
-
-    caption {
-      padding: 10px;
-    }
-</style>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -91,7 +62,7 @@
     </div>
 
     <div class="w3-half">
-      <div class="w3-container w3-green w3-text-white w3-padding-16">
+      <div class="w3-container green w3-padding-16">
         <table>
           <tr>
             <td style="width:32%; text-align:center;" rowspan="2"><img src="static/images/flags/{{ top_crest }}" alt="{{ top_mover }} Crest" style="max-height:80px"></td>
@@ -105,7 +76,7 @@
     </div>
 
     <div class="w3-half">
-      <div class="w3-container w3-red w3-padding-16">
+      <div class="w3-container red w3-padding-16">
         <table>
           <tr>
             <td style="width:32%; text-align:center;" rowspan="2"><img src="static/images/flags/{{ bot_crest }}" alt="{{ top_dropper }} Crest" style="max-height:80px"></td>
@@ -119,7 +90,7 @@
     </div>
 
     <div class="w3-half">
-      <div class="w3-container w3-indigo w3-padding-16">
+      <div class="w3-container blue w3-padding-16">
         <table>
           <tr>
             <td style="width:32%; text-align:center;" rowspan="2"><img src="static/images/flags/CPL-Crest-White.png" alt="{{ top_dropper }} Crest" style="max-height:80px"></td>
@@ -135,36 +106,36 @@
 
     <div class="w3-container w3-row-padding">
 
-      <div class="w3-half  cpl-eclipse-l">
+      <div class="w3-half  grey-blue-m">
         <div style="height: 370px;">
         <h6>Teams of the Week</h6>
         <p>Biggest Win</p>
         <div>
-          <div class="w3-half w3-padding {{'w3-green' if big_win.iloc[0]['hs'] > big_win.iloc[0]['as'] else 'w3-red' if big_win.iloc[0]['hs'] < big_win.iloc[0]['as'] else 'w3-orange' }}">{{big_win.iloc[0]['home']}} {{big_win.iloc[0]['hs']}}</div>
-          <div class="w3-half w3-padding {{'w3-green' if big_win.iloc[0]['as'] > big_win.iloc[0]['hs'] else 'w3-red' if big_win.iloc[0]['as'] < big_win.iloc[0]['hs'] else 'w3-orange' }}">{{big_win.iloc[0]['away']}} {{big_win.iloc[0]['as']}}</div>
+          <div class="w3-half w3-padding {{'green' if big_win.iloc[0]['hs'] > big_win.iloc[0]['as'] else 'red' if big_win.iloc[0]['hs'] < big_win.iloc[0]['as'] else 'orange' }}">{{big_win.iloc[0]['home']}} {{big_win.iloc[0]['hs']}}</div>
+          <div class="w3-half w3-padding {{'green' if big_win.iloc[0]['as'] > big_win.iloc[0]['hs'] else 'red' if big_win.iloc[0]['as'] < big_win.iloc[0]['hs'] else 'orange' }}">{{big_win.iloc[0]['away']}} {{big_win.iloc[0]['as']}}</div>
         </div>
 
         <p>Top Team Result</p>
         <div>
-          <div class="w3-half w3-padding {{'w3-green' if top_result.iloc[0]['hs'] > top_result.iloc[0]['as'] else 'w3-red' if top_result.iloc[0]['hs'] < top_result.iloc[0]['as'] else 'w3-orange' }}">{{top_result.iloc[0]['home']}} {{top_result.iloc[0]['hs']}}</div>
-          <div class="w3-half w3-padding {{'w3-green' if top_result.iloc[0]['as'] > top_result.iloc[0]['hs'] else 'w3-red' if top_result.iloc[0]['as'] < top_result.iloc[0]['hs'] else 'w3-orange' }}">{{top_result.iloc[0]['away']}} {{top_result.iloc[0]['as']}}</div>
+          <div class="w3-half w3-padding {{'green' if top_result.iloc[0]['hs'] > top_result.iloc[0]['as'] else 'red' if top_result.iloc[0]['hs'] < top_result.iloc[0]['as'] else 'orange' }}">{{top_result.iloc[0]['home']}} {{top_result.iloc[0]['hs']}}</div>
+          <div class="w3-half w3-padding {{'green' if top_result.iloc[0]['as'] > top_result.iloc[0]['hs'] else 'red' if top_result.iloc[0]['as'] < top_result.iloc[0]['hs'] else 'orange' }}">{{top_result.iloc[0]['away']}} {{top_result.iloc[0]['as']}}</div>
         </div>
 
         <p>Other Results</p>
         <div>
-          <div class="w3-half w3-padding {{'w3-green' if other_result.iloc[0]['hs'] > other_result.iloc[0]['as'] else 'w3-red' if other_result.iloc[0]['hs'] < other_result.iloc[0]['as'] else 'w3-orange' }}">{{other_result.iloc[0]['home']}} {{other_result.iloc[0]['hs']}}</div>
-          <div class="w3-half w3-padding {{'w3-green' if other_result.iloc[0]['as'] > other_result.iloc[0]['hs'] else 'w3-red' if other_result.iloc[0]['as'] < other_result.iloc[0]['hs'] else 'w3-orange' }}">{{other_result.iloc[0]['away']}} {{other_result.iloc[0]['as']}}</div>
+          <div class="w3-half w3-padding {{'green' if other_result.iloc[0]['hs'] > other_result.iloc[0]['as'] else 'red' if other_result.iloc[0]['hs'] < other_result.iloc[0]['as'] else 'orange' }}">{{other_result.iloc[0]['home']}} {{other_result.iloc[0]['hs']}}</div>
+          <div class="w3-half w3-padding {{'green' if other_result.iloc[0]['as'] > other_result.iloc[0]['hs'] else 'red' if other_result.iloc[0]['as'] < other_result.iloc[0]['hs'] else 'orange' }}">{{other_result.iloc[0]['away']}} {{other_result.iloc[0]['as']}}</div>
         </div>
 
         <p>Bottom Team Result</p>
         <div>
-          <div class="w3-half w3-padding {{'w3-green' if low_result.iloc[0]['hs'] > low_result.iloc[0]['as'] else 'w3-red' if low_result.iloc[0]['hs'] < low_result.iloc[0]['as'] else 'w3-orange' }}">{{low_result.iloc[0]['home']}} {{low_result.iloc[0]['hs']}}</div>
-          <div class="w3-half w3-padding {{'w3-green' if low_result.iloc[0]['as'] > low_result.iloc[0]['hs'] else 'w3-red' if low_result.iloc[0]['as'] < low_result.iloc[0]['hs'] else 'w3-orange' }}">{{low_result.iloc[0]['away']}} {{low_result.iloc[0]['as']}}</div>
+          <div class="w3-half w3-padding {{'green' if low_result.iloc[0]['hs'] > low_result.iloc[0]['as'] else 'red' if low_result.iloc[0]['hs'] < low_result.iloc[0]['as'] else 'orange' }}">{{low_result.iloc[0]['home']}} {{low_result.iloc[0]['hs']}}</div>
+          <div class="w3-half w3-padding {{'green' if low_result.iloc[0]['as'] > low_result.iloc[0]['hs'] else 'red' if low_result.iloc[0]['as'] < low_result.iloc[0]['hs'] else 'orange' }}">{{low_result.iloc[0]['away']}} {{low_result.iloc[0]['as']}}</div>
         </div>
         </div>
       </div>
 
-      <div class="w3-half cpl-eclipse-l" style="height: 380px;">
+      <div class="w3-half grey-blue-m" style="height: 380px;">
         <div>
         <h5>Players of the Week</h5>
         <table>
@@ -181,19 +152,19 @@
             <td style="width:30px"><i>{{top_assist['overall']}}</i></td>
           </tr>
           <tr>
-            <td style="width:30px"><i class="fa fa-hand-scissors-o w3-text-blue w3-large"></i></td>
+            <td style="width:30px"><i class="fa fa-hand-scissors-o w3-text-blue-l w3-large"></i></td>
             <td>Top Forward</td>
             <td>{{top_forward['name']}}</td>
             <td style="width:30px"><i>{{top_forward['overall']}}</i></td>
           </tr>
           <tr>
-            <td style="width:30px"><i class="fa fa-hand-grab-o w3-text-blue w3-large"></i></td>
+            <td style="width:30px"><i class="fa fa-hand-grab-o w3-text-blue-l w3-large"></i></td>
             <td>Top Midfielder</td>
             <td>{{top_midfielder['name']}}</td>
             <td style="width:30px"><i>{{top_midfielder['overall']}}</i></td>
           </tr>
           <tr>
-            <td style="width:30px"><i class="fa fa-hand-stop-o w3-text-blue w3-large"></i></td>
+            <td style="width:30px"><i class="fa fa-hand-stop-o w3-text-blue-l w3-large"></i></td>
             <td>Top Defender</td>
             <td>{{top_defender['name']}}</td>
             <td style="width:30px"><i>{{top_defender['overall']}}</i></td>
@@ -213,7 +184,7 @@
           <tr>
             <td style="width:30px"><i class="fa fa-copy w3-text-black w3-large"></i></td>
             <td>Suspended</td>
-            <td>M. Kapor, T. Mohammed </td>
+            <td>{{ suspended }} </td>
             <td><i>-</i></td>
           </tr>
         </table>

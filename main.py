@@ -109,13 +109,14 @@ def index():
         top_team, top_mover, top_dropper, first_crest, top_crest, bot_crest, first_colour = na, na, na, 'CPL-Crest-White.png', 'oneSoccer_nav.png', 'canNat_icon.png', 'w3-indigo'
 
     champs = year + ' Champions TBD'
+    suspended = 'None'
 
     return render_template('cpl-es-index.html',top_mover = top_mover, top_dropper = top_dropper,
     goals = goals,  assists = assists, yellows = yellows, reds = reds,
     big_win = big_win, top_result = top_result, low_result = low_result, other_result = other_result,
     top_team = top_team, top_keeper = top_keeper,top_forward = top_forward,
     top_midfielder = top_midfielder, top_defender = top_defender,
-    top_scorer = top_scorer, top_assist = top_assist, top_offender = top_offender,
+    top_scorer = top_scorer, top_assist = top_assist, top_offender = top_offender, suspended = suspended,
     first_crest = first_crest, first_colour = first_colour, top_crest = top_crest, bot_crest = bot_crest,
     today = today, year = year, other_year = other_year, champs = champs)
 
