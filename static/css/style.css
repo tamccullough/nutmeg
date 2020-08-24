@@ -1,3 +1,36 @@
+
+Skip to content
+Pull requests
+Issues
+Marketplace
+Explore
+@tamccullough
+tamccullough /
+canpl-es
+
+1
+0
+
+    0
+
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+
+    Settings
+
+canpl-es/static/css/style.css
+@tamccullough
+tamccullough rewriting css
+Latest commit 46b8f8d 2 hours ago
+History
+1 contributor
+403 lines (331 sloc) 6.01 KB
 :root {
   --coral: hsl(23, 83%, 82%);
   --coral--b: hsl(23, 99%, 75%);
@@ -401,3 +434,17 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background-color: var(--blue);
 }
+
+    © 2020 GitHub, Inc.
+    Terms
+    Privacy
+    Security
+    Status
+    Help
+
+    Contact GitHub
+    Pricing
+    API
+    Training
+    Blog
+    About
