@@ -3,7 +3,7 @@
 
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-collapse grey-blue-m w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
-  <div class="w3-container w3-row">
+  <div class="base-container w3-row">
     <div class="w3-col s4">
       <img src="static/images/flags/CPL-Crest-White.png" class="w3-circle w3-margin-right" style="width:46px">
     </div>
@@ -42,11 +42,11 @@
 <div class="w3-main" style="margin-left:300px;margin-top:43px;">
 
   <!-- Header -->
-  <header class="w3-container" style="padding-top:22px">
+  <header class="base-container" style="padding-top:22px">
     <h5><b><i class="fa fa-shield"></i> CPL Teams - click team name for roster</b></h5>
   </header>
 
-  <div class="w3-container">
+  <div class="base-container">
         <!-- table header -->
         <div class="w3-third blue-l">
             <table>
@@ -97,8 +97,8 @@
               <td style="text-align: center;"></td>
             </tr>
             <tr>
-              <td style="text-align: center;">{{ html_table.iloc[i][10] }}</td>
-              <td style="text-align: center;">{{ html_table.iloc[i][11] }}</td>
+              <td style="text-align: center;">w-{{ html_table.iloc[i][10] }}</td>
+              <td style="text-align: center;">l-{{ html_table.iloc[i][11] }}</td>
               <td style="text-align: center;">{{ html_table.iloc[i][12] }}</td>
             </tr>
             <tr>
