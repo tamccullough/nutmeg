@@ -388,13 +388,13 @@ def get_weeks_results(results,standings,stats,team_ref):
     db['as'] = db['as'].astype('int')
 
 
-    max_home = db[(db['hs'] == db['hs'].max()) & (db['hr'] == "W")]
+    max_home = results[(results['hs'] == results['hs'].max()) & (results['hr'] == "W")]
     max_home = index_reset(max_home)
 
     if max_home.empty:
         max_home = pd.DataFrame([('TBD',0,'TBD',0)],columns=['home','hs','away','as'])
 
-    max_away = db[(db['as'] == db['as'].max()) & (db['ar'] == "W")]
+    max_away = results[(results['as'] == results['as'].max()) & (results['ar'] == "W")]
     max_away = index_reset(max_away)
 
     if max_away.empty:
@@ -407,6 +407,7 @@ def get_weeks_results(results,standings,stats,team_ref):
 
     big_win = max_home_win[['home','hs','away','as']]
     big_win = index_reset(big_win)
+    big_win
     #big_win = get_short_name(big_win,team_ref)
     print(big_win)
     big_win = pd.DataFrame(big_win.loc[0])
@@ -748,9 +749,12 @@ def get_form_results(data,dc):
     for team in teams:
         df = get_team_form(form,team)
         db[team] = pd.Series(df['summary'].values)
+    for col in db.columns:
+        for i in range(db.shape[0]):
+            if 'nan' in db.at[i,col]:
+                db.at[i,col] = 'E'
     db = db.T
     db = db.reset_index()
-    db = db.fillna('E')
     return db
 
 def best_roster(query,results,results_old,stats,stats_old,stats_seed,player_info,rated_forwards):
@@ -1310,6 +1314,7 @@ def get_power_rankings(standings,standings_old,team_ref,results,previous_ranking
 
         rank1 = standings_old[standings_old['team'] == team]
         rank2 = standings[standings['team'] == team]
+        print(team,rank1.iloc[0]['rank'],rank2.iloc[0]['rank'])
 
         if rank1.iloc[0]['rank'] == 1:
             bonus = 4
@@ -1325,6 +1330,10 @@ def get_power_rankings(standings,standings_old,team_ref,results,previous_ranking
 
         if rank1.iloc[0]['rank'] == rank2.iloc[0]['rank']:
             change = 0
+            if rank1.iloc[0]['rank'] >= 7:
+                change = -2
+            if rank1.iloc[0]['rank'] <= 2:
+                change = 2
         else:
             change = (rank1.iloc[0]['rank'] - rank2.iloc[0]['rank']) #* - 1
 
@@ -1357,9 +1366,10 @@ def get_power_rankings(standings,standings_old,team_ref,results,previous_ranking
             scoreless = -5
         else:
             scoreless = 0
-
+        print(team,change,bonus,gd_bonus,ga_nerf,w_bonus,l_nerf,scoreless,lossless)
         goal_bonus = gd_bonus - ga_nerf
         change = change + bonus + goal_bonus + w_bonus - l_nerf + scoreless + lossless
+        print(team,change,goal_bonus)
 
         a.append([team,form,old_rank,change,goal_bonus,w_bonus,crest,colour])
     power_rankings = pd.DataFrame(a,columns = ['team','form','old_rank','change','goal_bonus','w_bonus','crest','colour'])

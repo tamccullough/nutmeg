@@ -4,27 +4,29 @@ rank,team,name,position,number,minutes,goals
 3,HFX,Akeem Garcia,f,11,165,2
 4,ATO,Francisco Javier Acuña Víctor,m,8,173,2
 5,FFC,Kyle Bekker,m,10,270,2
-6,Y9,Álvaro Rivero Sánchez,f,7,151,1
-7,VFC,Andrew Jean-Baptiste,d,35,270,1
-8,CFC,Sergio Camargo,m,10,130,1
-9,VFC,José Antonio Galán Pedrosa,m,21,23,1
-10,VFC,Fraser Aird,m,33,215,1
-11,VFC,Dylan Carreiro,m,10,119,1
-12,FCE,Easton Ongaro,f,19,196,1
-13,FCE,Keven Steven Alemán Bustos,m,11,258,1
-14,FFC,Christopher Nanco,f,11,111,1
-15,PFC,Zachary Verhoven,m,16,44,1
+6,PFC,Victor Blasco,m,23,252,1
+7,CFC,Sergio Camargo,m,10,130,1
+8,VFC,José Antonio Galán Pedrosa,m,21,47,1
+9,VFC,Fraser Aird,m,33,301,1
+10,VFC,Dylan Carreiro,m,10,209,1
+11,FCE,Easton Ongaro,f,19,196,1
+12,FCE,Keven Steven Alemán Bustos,m,11,258,1
+13,VFC,Andrew Jean-Baptiste,d,35,360,1
+14,PFC,Zachary Verhoven,m,16,45,1
+15,Y9,Álvaro Rivero Sánchez,f,7,151,1
 16,FFC,Anthony Novak,f,23,152,1
-17,PFC,Marco Bustos,m,10,173,1
-18,PFC,Lukas MacNaughton,d,6,180,1
-19,PFC,Jamar Dixon,m,22,98,1
-20,FFC,Kwame Awuah,d,6,270,1
-21,FFC,Paolo Sabak,m,24,236,1
-22,HFX,João Morelli Neto,f,22,139,1
-23,CFC,Marcus Haber,f,29,197,1
-24,HFX,Ibrahima Sanoh,f,9,72,1
-25,Y9,Joseph Di Chiara,m,8,270,1
-26,ATO,Mohamed Kourouma,f,9,270,1
-27,ATO,Malcolm Isaiah Shaw,f,19,236,1
-28,Y9,Lowell Wright,f,80,95,1
-29,CFC,Dominick Zator,d,4,360,1
+17,CFC,Marcus Haber,f,29,197,1
+18,PFC,Marco Bustos,m,10,262,1
+19,PFC,Lukas MacNaughton,d,6,270,1
+20,PFC,Jamar Dixon,m,22,159,1
+21,FFC,Kwame Awuah,d,6,270,1
+22,PFC,Alejandro Díaz Liceága,f,9,101,1
+23,FFC,Paolo Sabak,m,24,236,1
+24,HFX,João Morelli Neto,f,22,139,1
+25,FFC,Christopher Nanco,f,11,111,1
+26,HFX,Ibrahima Sanoh,f,9,72,1
+27,Y9,Lowell Wright,f,80,95,1
+28,ATO,Malcolm Isaiah Shaw,f,19,236,1
+29,Y9,Joseph Di Chiara,m,8,270,1
+30,CFC,Dominick Zator,d,4,360,1
+31,ATO,Mohamed Kourouma,f,9,270,1

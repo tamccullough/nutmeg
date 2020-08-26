@@ -16,10 +16,9 @@ cpl_score_model = pickle.load(open(regressor, 'rb'))
 
 canples = Flask(__name__)
 
-def get_string(data):
-    data = str(data*100)
-    data = data[0:4]
-    return data
+def convert_num_str(num):
+    num = str(num*100)
+    return num[0:4]
 
 def load_main_files(year):
     results = pd.read_csv(f'datasets/{year}/cpl-{year}-results.csv')
@@ -81,7 +80,7 @@ def index():
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
 
     standings = cpl_main.get_standings(results,1,team_ref)
-    standings_old =pd.read_csv(f'datasets/{year}/cpl-{year}-standings.csv')
+    standings_old =pd.read_csv(f'datasets/{year}/cpl-{year}-standings_previous.csv')
     compare_standings = cpl_main.compare_standings(standings,standings_old,team_ref)
 
     top_team = standings.iloc[0]['team']
@@ -170,8 +169,11 @@ def standings():
     year = '2020'
     other_year = '2019'
     standings = pd.read_csv(f'datasets/{year}/cpl-{year}-standings_current.csv')
+    team_form_results = pd.read_csv(f'datasets/{year}/cpl-{year}-team_form.csv')
     columns = standings.columns
-    return render_template('cpl-es-standings.html',columns = columns, standings_table = standings, year = year, other_year = other_year)
+    return render_template('cpl-es-standings.html',columns = columns,
+    standings_table = standings, form_table = team_form_results,
+    year = year, other_year = other_year)
 
 @canples.route('/standings-2019')
 def standings_19():
@@ -252,13 +254,9 @@ def comparison1():
     if (home_win < draw) and (away_win < draw):
         home_win, away_win = draw, draw
 
-    home_win = round(home_win,3)
-    away_win = round(away_win,3)
-    draw = round(draw, 3)
-
-    #home_win = get_string(home_win)
-    #away_win = get_string(away_win)
-    #draw = get_string(draw)
+    home_win = round(round(home_win,3)*100,3)
+    away_win = round(round(away_win,3)*100,3)
+    draw = round(round(draw,3)*100,3)
 
     group1 = team1 + '-' + team2
     group2 = team3 + '-' + team4
@@ -329,12 +327,9 @@ def comparison2():
     if (home_win < draw) and (away_win < draw):
         home_win, away_win = draw, draw
 
-    home_win = round(home_win,3)
-    away_win = round(away_win,3)
-    draw = round(draw, 3)
-    #home_win = get_string(home_win)
-    #away_win = get_string(away_win)
-    #draw = get_string(draw)
+    home_win = round(round(home_win,3)*100,3)
+    away_win = round(round(away_win,3)*100,3)
+    draw = round(round(draw,3)*100,3)
 
     group1 = team1 + '-' + team2
     group2 = team3 + '-' + team4

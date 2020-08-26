@@ -111,8 +111,8 @@
         <h6>Teams of the Week</h6>
         <p>Biggest Win</p>
         <div>
-          <div class="w3-half w3-padding {{'green' if big_win.iloc[0]['hs'] > big_win.iloc[0]['as'] else 'red' if big_win.iloc[0]['hs'] < big_win.iloc[0]['as'] else 'orange' }}">{{big_win.iloc[0]['home']}} {{big_win.iloc[0]['hs']}}</div>
-          <div class="w3-half w3-padding {{'green' if big_win.iloc[0]['as'] > big_win.iloc[0]['hs'] else 'red' if big_win.iloc[0]['as'] < big_win.iloc[0]['hs'] else 'orange' }}">{{big_win.iloc[0]['away']}} {{big_win.iloc[0]['as']}}</div>
+          <div class="w3-half w3-padding {{'green' if big_win.iloc[0]['hs'] > big_win.iloc[0]['as'] else 'red' if big_win.iloc[0]['hs'] < big_win.iloc[0]['as'] else 'orange' }}">{{big_win.iloc[0]['home']}} {{big_win.iloc[0]['hs'].astype('int') }}</div>
+          <div class="w3-half w3-padding {{'green' if big_win.iloc[0]['as'] > big_win.iloc[0]['hs'] else 'red' if big_win.iloc[0]['as'] < big_win.iloc[0]['hs'] else 'orange' }}">{{big_win.iloc[0]['away']}} {{big_win.iloc[0]['as'].astype('int') }}</div>
         </div>
 
         <p>Top Team Result</p>

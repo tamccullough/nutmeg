@@ -37,14 +37,14 @@ d,m,hs,as,home,hr,away,ar,summary,team
 15,8,2.0,2.0,HFX Wanderers FC,D,Pacific FC,D,D A 2.0 - 2.0 HFX,Pacific FC
 18,8,1.0,1.0,Pacific FC,D,York9 FC,D,D H 1.0 - 1.0 Y9,Pacific FC
 22,8,2.0,1.0,Forge FC,W,Pacific FC,L,L A 2.0 - 1.0 FFC,Pacific FC
-25,8,,,Pacific FC,E,Valour FC,E,E H nan - nan VFC,Pacific FC
+25,8,2.0,0.0,Pacific FC,W,Valour FC,L,W H 2.0 - 0.0 VFC,Pacific FC
 30,8,,,Cavalry FC,E,Pacific FC,E,E A nan - nan CFC,Pacific FC
 2,9,,,Pacific FC,E,Atlético Ottawa,E,E H nan - nan ATO,Pacific FC
 6,9,,,Pacific FC,E,FC Edmonton,E,E H nan - nan FCE,Pacific FC
 16,8,0.0,2.0,Valour FC,L,Cavalry FC,W,L H 0.0 - 2.0 CFC,Valour FC
 19,8,0.0,4.0,Atlético Ottawa,L,Valour FC,W,W A 0.0 - 4.0 ATO,Valour FC
 22,8,0.0,0.0,York9 FC,D,Valour FC,D,D A 0.0 - 0.0 Y9,Valour FC
-25,8,,,Pacific FC,E,Valour FC,E,E A nan - nan PFC,Valour FC
+25,8,2.0,0.0,Pacific FC,W,Valour FC,L,L A 2.0 - 0.0 PFC,Valour FC
 29,8,,,Valour FC,E,FC Edmonton,E,E H nan - nan FCE,Valour FC
 2,9,,,Valour FC,E,HFX Wanderers FC,E,E H nan - nan HFX,Valour FC
 5,9,,,Forge FC,E,Valour FC,E,E A nan - nan FFC,Valour FC
