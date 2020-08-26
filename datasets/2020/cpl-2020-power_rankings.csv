@@ -1,9 +1,9 @@
 rank,team,form,old_rank,change,goal_bonus,w_bonus,crest,colour,previous
 1,Cavalry FC,3-0-1,1,7,0,0,cavalry_fc_nav.png,cpl-cfc,0
-2,Pacific FC,1-1-2,8,7,2,1,Pacific_FC_nav.png,cpl-pfc,6
-3,Forge FC,2-0-2,2,6,0,0,Forge_FC_nav.png,cpl-ffc,-1
-4,Valour FC,1-2-1,4,0,0,0,Valour_FC_nav.png,cpl-vfc,0
-5,York9 FC,0-0-3,5,0,0,0,York_9_FC_nav.png,cpl-y9,0
-6,Atlético Ottawa,0-1-2,6,-1,0,0,Atletico_Ottawa_nav.png,cpl-ao,0
-7,HFX Wanderers FC,0-1-2,3,-1,0,0,HFX_Wanderers_FC.png,cpl-hfx,-4
-8,FC Edmonton,0-2-1,7,-2,0,0,FC_Edmonton_nav.png,cpl-fce,-1
+2,Forge FC,2-1-2,2,7,2,0,Forge_FC_nav.png,cpl-ffc,0
+3,York9 FC,1-0-3,4,7,3,1,York_9_FC_nav.png,cpl-y9,1
+4,Pacific FC,1-1-2,3,1,0,0,Pacific_FC_nav.png,cpl-pfc,-1
+5,Atlético Ottawa,0-1-2,5,0,0,0,Atletico_Ottawa_nav.png,cpl-ao,0
+6,Valour FC,1-2-1,6,-1,0,0,Valour_FC_nav.png,cpl-vfc,0
+7,FC Edmonton,0-2-1,7,-2,0,0,FC_Edmonton_nav.png,cpl-fce,0
+8,HFX Wanderers FC,0-1-2,8,-2,0,0,HFX_Wanderers_FC.png,cpl-hfx,0

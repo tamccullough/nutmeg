@@ -1,7 +1,7 @@
 game,team,name,position,number,first,last,minutes,touches,passes,pass-acc,crosses,cross-acc,assists,chances,goals,shots,s-target,s-box,s-out-box,tackles,t-won,duels,d-won,clearances,interceptions,yellow,red,f-won,f-conceded,shots faced,saves,claimed crosses,cs
 II1,Forge FC,Alexander Achinioti-Jönsson,m,13.0,Alexander,Achinioti-Jönsson,90,48,38,78.9,0,0.0,0,0,0,0,0,0,0,0,0,6,5,3,0,0,0,2,0,0,0,0,0
 II1,Forge FC,Anthony Novak,f,23.0,Anthony,Novak,66,24,14,57.1,0,0.0,0,0,1,1,1,1,0,0,0,7,3,0,0,0,0,1,1,0,0,0,0
-II1,Forge FC,Christopher Nanco,f,11.0,Chris,Nanco,66,9,3,33.3,0,0.0,0,0,0,1,1,0,1,0,0,10,1,0,0,0,0,0,2,0,0,0,1
+II1,Forge FC,Christopher Nanco,f,11.0,Chris,Nanco,66,9,3,33.3,0,0.0,0,0,0,1,1,0,1,0,0,10,1,0,0,0,0,0,2,0,0,0,0
 II1,Forge FC,Daniel Krutzen,d,5.0,Daniel,Krutzen,90,70,56,60.7,1,0.0,0,1,0,0,0,0,0,2,2,13,6,4,3,1,0,2,3,0,0,0,0
 II1,Forge FC,David Choinière,m,7.0,David,Choinière,45,24,12,100.0,1,100.0,1,1,0,1,0,1,0,1,0,7,3,0,0,0,0,2,1,0,0,0,0
 II1,Forge FC,David Edgar,d,30.0,David,Edgar,90,68,53,77.4,0,0.0,0,0,0,0,0,0,0,3,2,5,4,5,3,0,0,0,0,0,0,0,0
@@ -430,3 +430,34 @@ II14,Valour FC,Raphael Ohin,m,27.0,Raphael,Ohin,86,55,40,85.0,0,0.0,0,1,0,3,2,0,
 II14,Valour FC,Shaan Hundal,f,11.0,Shaan,Hundal,90,20,8,75.0,1,0.0,0,1,0,1,1,1,0,1,1,9,2,0,0,0,0,0,1,0,0,0,0
 II14,Valour FC,Solomon Kojo Antwi,m,25.0,Solomon,Kojo Antwi,4,1,0,0.0,0,0.0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,1,0,0,0,0
 II14,Valour FC,Stefan Cebara,m,14.0,Stefan,Cebara,90,69,35,80.0,1,0.0,0,0,0,0,0,0,0,3,3,11,6,1,6,0,0,1,0,0,0,0,0
+II15,York9 FC,Fugo Segawa,d,26.0,Fugo,Segawa,90,54,30,80.0,2,50.0,0,1,0,1,0,1,0,1,1,7,3,0,1,0,0,2,1,0,0,0,0
+II15,York9 FC,Ijah Halley,d,14.0,Ijah,Halley,58,19,9,77.8,2,50.0,0,1,0,1,1,1,0,1,1,7,3,0,0,0,0,0,1,0,0,0,0
+II15,York9 FC,Isaiah Johnston,m,44.0,Isaiah,Johnston,1,1,1,100.0,0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+II15,York9 FC,Joseph Di Chiara,m,8.0,Joseph,Di Chiara,90,61,39,94.9,0,0.0,0,0,2,4,3,3,1,6,2,16,10,2,1,0,0,3,2,0,0,0,0
+II15,York9 FC,Kyle Porter,m,19.0,Kyle,Porter,79,37,21,90.5,7,28.6,1,1,1,1,1,1,0,1,0,9,2,0,0,0,0,1,1,0,0,0,0
+II15,York9 FC,Lowell Wright,f,80.0,Lowell,Wright,32,12,5,40.0,0,0.0,0,0,0,0,0,0,0,1,1,4,1,1,0,0,0,0,1,0,0,0,0
+II15,York9 FC,Luca Gasparotto,d,13.0,Luca,Gasparotto,90,38,28,78.6,0,0.0,0,0,0,1,0,1,0,4,2,8,5,3,0,0,0,0,1,0,0,0,0
+II15,York9 FC,Manuel Aparicio,m,10.0,Manny,Aparicio,89,54,37,86.5,1,0.0,0,2,0,3,0,0,3,3,2,16,9,0,2,1,0,2,3,0,0,0,0
+II15,York9 FC,Max Ferrari,m,16.0,Max,Ferrari,32,18,11,90.9,1,0.0,0,0,0,0,0,0,0,0,0,7,3,0,0,0,0,1,0,0,0,0,0
+II15,York9 FC,Morey Doner,d,3.0,Morey,Doner,90,53,32,81.3,0,0.0,0,0,0,0,0,0,0,0,0,7,2,2,2,0,0,0,1,0,0,0,0
+II15,York9 FC,Nathan Ingham,g,29.0,Nathan,Ingham,90,26,14,71.4,0,0.0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,5,3,0,0
+II15,York9 FC,Roger Thompson,d,6.0,Roger,Thompson,90,47,34,50.0,0,0.0,0,0,0,0,0,0,0,3,2,10,6,5,3,0,0,0,1,0,0,0,0
+II15,York9 FC,Ryan Telfer,m,18.0,Ryan,Telfer,90,49,18,88.9,10,20.0,0,1,0,1,0,0,1,2,2,18,11,0,1,0,0,7,2,0,0,0,0
+II15,York9 FC,Wataru Murofushi,m,23.0,Wataru,Murofushi,11,10,7,71.4,0,0.0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,1,0,0,0,0
+II15,York9 FC,Álvaro Rivero Sánchez,f,7.0,Álvaro,Rivero,58,17,11,100.0,0,0.0,0,0,0,1,0,0,1,0,0,5,0,0,0,0,0,0,3,0,0,0,0
+II15,Forge FC,Alexander Achinioti-Jönsson,m,13.0,Alexander,Achinioti-Jönsson,68,37,30,86.7,0,0.0,0,0,1,2,1,2,0,3,1,7,6,0,0,0,0,2,1,0,0,0,0
+II15,Forge FC,Anthony Novak,f,23.0,Anthony,Novak,45,21,9,100.0,0,0.0,0,0,0,1,1,1,0,3,3,11,6,0,0,0,0,3,2,0,0,0,0
+II15,Forge FC,Christopher Nanco,f,11.0,Chris,Nanco,45,16,7,71.4,2,0.0,0,0,1,1,1,1,0,2,1,7,3,0,0,0,0,0,1,0,0,0,0
+II15,Forge FC,Daniel Krutzen,d,5.0,Daniel,Krutzen,90,77,66,84.8,2,0.0,0,0,0,1,1,0,1,1,0,4,2,3,0,0,0,1,2,0,0,0,0
+II15,Forge FC,David Choinière,m,7.0,David,Choinière,68,32,15,80.0,4,50.0,0,1,0,0,0,0,0,1,1,10,3,0,0,0,0,2,2,0,0,0,0
+II15,Forge FC,David Edgar,d,30.0,David,Edgar,90,53,42,81.0,0,0.0,0,0,0,2,1,2,0,1,1,5,3,4,0,1,0,1,2,0,0,0,0
+II15,Forge FC,Dominic Samuel,d,4.0,Dominic,Samuel,90,62,33,75.8,1,0.0,0,0,0,1,0,1,0,4,2,15,8,2,0,0,0,0,3,0,0,0,0
+II15,Forge FC,Elimane Cissé,m,3.0,Elimane,Cissé,90,51,31,77.4,2,50.0,0,0,0,0,0,0,0,2,1,14,7,0,2,0,0,1,1,0,0,0,0
+II15,Forge FC,Gabriel Wiethaeuper-Balbinotti,f,20.0,Gabriel,Balbinotti,45,11,8,87.5,0,0.0,0,0,0,2,0,2,0,0,0,5,1,0,0,0,0,0,0,0,0,0,0
+II15,Forge FC,Kwame Awuah,d,6.0,Kwame,Awuah,22,22,12,41.7,1,0.0,0,0,0,0,0,0,0,3,3,7,4,1,1,1,0,0,1,0,0,0,0
+II15,Forge FC,Kyle Bekker,m,10.0,Kyle,Bekker,45,33,27,81.5,1,0.0,0,0,0,0,0,0,0,1,1,5,3,0,1,0,0,0,0,0,0,0,0
+II15,Forge FC,Maxim Tissot,d,15.0,Maxim,Tissot,45,36,22,86.4,4,50.0,0,2,0,1,0,0,1,0,0,3,2,0,0,1,0,1,1,0,0,0,0
+II15,Forge FC,Molham Babouli,f,19.0,Mo,Babouli,22,8,4,50.0,1,0.0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0
+II15,Forge FC,Monti Mohsen,d,22.0,Monti,Mohsen,45,35,18,77.8,4,50.0,0,2,0,0,0,0,0,2,2,8,5,2,0,0,0,3,0,0,0,0,0
+II15,Forge FC,Paolo Sabak,m,24.0,Paolo,Sabak,90,44,35,71.4,0,0.0,1,2,0,0,0,0,0,0,0,11,6,0,0,0,0,3,1,0,0,0,0
+II15,Forge FC,Triston Henry,g,1.0,Triston,Henry,90,28,17,100.0,0,0.0,0,0,0,0,0,0,0,0,0,2,2,1,0,0,0,1,0,5,2,1,0

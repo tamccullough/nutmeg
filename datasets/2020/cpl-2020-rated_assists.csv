@@ -1,19 +1,21 @@
 rank,team,name,position,number,minutes,assists
 1,VFC,Shaan Hundal,f,11,206,2
-2,VFC,Brett Levis,m,17,229,1
-3,ATO,Malyk Hamilton,m,2,270,1
-4,PFC,Marco Bustos,m,10,262,1
-5,CFC,Nikolas Ledgerwood,m,6,199,1
-6,CFC,Elijah Adekugbe,m,8,260,1
-7,CFC,Oliver Minatel,f,7,260,1
+2,FFC,Molham Babouli,f,19,140,1
+3,FFC,David Choinière,m,7,208,1
+4,CFC,Nikolas Ledgerwood,m,6,199,1
+5,CFC,Oliver Minatel,f,7,260,1
+6,PFC,Marco Bustos,m,10,262,1
+7,CFC,Elijah Adekugbe,m,8,260,1
 8,PFC,Matthew Baldisimo,m,8,260,1
-9,ATO,Vashon Neufville,d,44,140,1
-10,FFC,David Choinière,m,7,140,1
-11,FFC,Molham Babouli,f,19,118,1
-12,FCE,Antony Caceres,m,20,38,1
-13,ATO,Malcolm Isaiah Shaw,f,19,236,1
-14,PFC,Victor Blasco,m,23,252,1
-15,PFC,Zachary Verhoven,m,16,45,1
-16,ATO,Francisco Javier Acuña Víctor,m,8,173,1
-17,HFX,Alex Marshall,m,7,90,1
-18,CFC,Mohamed Farsi,d,21,165,1
+9,Y9,Kyle Porter,m,19,235,1
+10,FCE,Antony Caceres,m,20,38,1
+11,CFC,Mohamed Farsi,d,21,165,1
+12,ATO,Vashon Neufville,d,44,140,1
+13,ATO,Malyk Hamilton,m,2,270,1
+14,ATO,Malcolm Isaiah Shaw,f,19,236,1
+15,FFC,Paolo Sabak,m,24,326,1
+16,PFC,Victor Blasco,m,23,252,1
+17,ATO,Francisco Javier Acuña Víctor,m,8,173,1
+18,PFC,Zachary Verhoven,m,16,45,1
+19,VFC,Brett Levis,m,17,229,1
+20,HFX,Alex Marshall,m,7,90,1
