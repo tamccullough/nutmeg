@@ -2,7 +2,7 @@
 {% block content %}
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse cpl-eclipse-l w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+<nav class="w3-sidebar w3-collapse grey-blue-l w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
       <img src="static/images/flags/CPL-Crest-White.png" class="w3-circle w3-margin-right" style="width:46px">
@@ -33,43 +33,6 @@
   </div>
 </nav>
 
-<style>
-    table {
-      border-collapse: collapse;
-      table-layout:fixed;
-      /*border: 2px solid rgb(200,200,200);*/
-      /*letter-spacing: 4px;*/
-      margin: 0px auto;
-      width:100%;
-    }
-
-    tr {
-      line-height: 1px;
-      white-space: nowrap;
-    }
-
-    td, th {
-      /*border: 1px solid rgb(190,190,190);*/
-    }
-
-    td {
-      text-align: left;
-    }
-
-    .button {
-      border:none;
-      padding:8px 0px;
-      text-decoration:none;
-      color:inherit;
-      background-color:inherit;
-      cursor:pointer;
-    }
-
-    caption {
-      padding: 10px;
-    }
-</style>
-
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
@@ -86,7 +49,7 @@
     <div>
       {%for i in range(0,html_table.shape[0])%}
       <div class="w3-quarter w3-card-4 ">
-        <div class="w3-container w3-center cpl-eclipse-l">
+        <div class="w3-container w3-center grey-blue-l">
         <form method="POST" action="/player-2019">
           <div class="w3-center {{ team_colour }}">
             <img src="static/images/players/2019/{{ html_table.iloc[i,0] }}" alt="{{ html_table.iloc[i,1] }}" style="max-height:200px">
@@ -126,7 +89,7 @@
             <img src="static/images/players/2019/{{ coach['image'].values[0] }}" alt="{{ coach['coach'].values[0] }}" style="max-height:200px">
           </a>
         </div>
-        <div class="w3-container cpl-eclipse-l">
+        <div class="w3-container grey-blue-l">
         <form method="POST" action="/player">
           <table>
             <tr>

@@ -2,8 +2,8 @@
 {% block content %}
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse cpl-eclipse-l w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
-  <div class="w3-container w3-row">
+<nav class="w3-sidebar w3-collapse grey-blue-l w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+  <div class="base-container w3-row">
     <div class="w3-col s4">
       <img src="static/images/flags/CPL-Crest-White.png" class="w3-circle w3-margin-right" style="width:46px">
     </div>
@@ -33,40 +33,6 @@
   </div>
 </nav>
 
-<style>
-    table {
-      border-collapse: collapse;
-      table-layout:fixed;
-      /*border: 2px solid rgb(200,200,200);*/
-      /*letter-spacing: 4px;*/
-      margin: 0px auto;
-      width:100%;
-    }
-
-    tr {
-      line-height: 1px;
-      white-space: nowrap;
-    }
-
-    td, th {
-      /*border: 1px solid rgb(190,190,190);*/
-      padding: 10px 5px;
-    }
-
-    .button {
-      border:none;
-      padding:8px 0px;
-      text-decoration:none;
-      color:inherit;
-      background-color:inherit;
-      cursor:pointer;
-    }
-
-    caption {
-      padding: 10px;
-    }
-</style>
-
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
@@ -74,11 +40,11 @@
 <div class="w3-main" style="margin-left:300px;margin-top:43px;">
 
   <!-- Header -->
-  <header class="w3-container" style="padding-top:22px">
+  <header class="base-container" style="padding-top:22px">
     <h5><b><i class="fa fa-shield"></i> CPL Teams 2019 - click team name for roster</b></h5>
   </header>
 
-  <div class="w3-container">
+  <div class="base-container">
         <!-- table header -->
         <div class="w3-third w3-blue">
             <table>
@@ -129,9 +95,9 @@
               <td style="text-align: center;"></td>
             </tr>
             <tr>
-              <td style="text-align: center;">{{ html_table.iloc[i][10] }}</td>
-              <td style="text-align: center;">{{ html_table.iloc[i][11] }}</td>
-              <td style="text-align: center;">{{ html_table.iloc[i][12] }}</td>
+              <td style="text-align: center;">w-{{ html_table.iloc[i][10] }}</td>
+              <td style="text-align: center;">l-{{ html_table.iloc[i][11] }}</td>
+              <td style="text-align: center;">d-{{ html_table.iloc[i][12] }}</td>
             </tr>
             <tr>
               <td style="text-align: center;"></td>

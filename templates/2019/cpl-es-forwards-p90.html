@@ -2,7 +2,7 @@
 {% block content %}
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse cpl-eclipse-l w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+<nav class="w3-sidebar w3-collapse grey-blue-m w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
       <img src="static/images/flags/CPL-Crest-White.png" class="w3-circle w3-margin-right" style="width:46px">
@@ -119,7 +119,7 @@
     {%for i in range(0,html_table.shape[0])%}
       <div class="w3-third">
         <div>
-          <table class="cpl-eclipse-l">
+          <table class="grey-blue-m">
             <tr>
               <td>{{ html_table.at[i, 'team'] }} / {{ html_table.at[i,'number'] }}</td>
               <td style="width:75%;"><b>{{ html_table.at[i,'name'] }}</b></td>
@@ -129,7 +129,7 @@
       </div>
       <div class="w3-third">
         <div>
-          <table class="cpl-eclipse-m">
+          <table class="grey-blue-l">
             <tr>
               <td>{{ html_table.at[i,'minutes'] }}</td>
               <td>{{ html_table.at[i,'goals'] }}</td>
@@ -143,7 +143,7 @@
       </div>
       <div class="w3-third">
         <div>
-          <table class="cpl-eclipse-m">
+          <table class="grey-blue-l">
             <tr>
               <td>{{ html_table.at[i,'passes'] }}</td>
               <td>{{ html_table.at[i,'crosses'] }}</td>

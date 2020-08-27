@@ -203,6 +203,13 @@ def eleven_19():
     year = '2019'
     other_year = '2020'
     best_eleven = pd.read_csv(f'datasets/{year}/cpl-{year}-best_eleven.csv')
+    player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
+    names=[]
+    for i in range(best_eleven.shape[0]):
+        name = best_eleven.iloc[i]['first']+' '+best_eleven.iloc[i]['last']
+        replace = player_info[player_info['display'] == name]['name'].values[0]
+        names.append(replace)
+    best_eleven['full_name'] = names
     return render_template('2019/cpl-es-best_eleven.html',html_table = best_eleven, year = year, other_year = other_year)
 
 @canples.route('/power-rankings')
