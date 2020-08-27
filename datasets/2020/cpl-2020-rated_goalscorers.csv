@@ -1,13 +1,13 @@
 rank,team,name,position,number,minutes,goals
 1,HFX,João Morelli Neto,f,22,217,3
 2,HFX,Akeem Garcia,f,11,253,3
-3,CFC,Jordan Brown,f,9,215,3
+3,CFC,Jordan Brown,f,9,305,3
 4,Y9,Joseph Di Chiara,m,8,360,3
-5,ATO,Francisco Javier Acuña Víctor,m,8,173,2
-6,FFC,Kyle Bekker,m,10,315,2
-7,FFC,Christopher Nanco,f,11,156,2
-8,CFC,Nathan Mavila,d,3,270,2
-9,Y9,Álvaro Rivero Sánchez,f,7,209,1
+5,FFC,Christopher Nanco,f,11,156,2
+6,ATO,Francisco Javier Acuña Víctor,m,8,263,2
+7,FFC,Kyle Bekker,m,10,315,2
+8,ATO,Malcolm Isaiah Shaw,f,19,326,2
+9,CFC,Nathan Mavila,d,3,360,2
 10,PFC,Zachary Verhoven,m,16,45,1
 11,VFC,José Antonio Galán Pedrosa,m,21,47,1
 12,VFC,Fraser Aird,m,33,301,1
@@ -15,21 +15,22 @@ rank,team,name,position,number,minutes,goals
 14,FCE,Keven Steven Alemán Bustos,m,11,336,1
 15,FCE,Marcus Velado-Tsegaye,f,17,29,1
 16,VFC,Andrew Jean-Baptiste,d,35,360,1
-17,FFC,Anthony Novak,f,23,197,1
+17,Y9,Álvaro Rivero Sánchez,f,7,209,1
 18,PFC,Victor Blasco,m,23,252,1
 19,FFC,Alexander Achinioti-Jönsson,m,13,337,1
-20,PFC,Marco Bustos,m,10,262,1
-21,PFC,Lukas MacNaughton,d,6,270,1
-22,PFC,Jamar Dixon,m,22,159,1
-23,FFC,Kwame Awuah,d,6,292,1
-24,PFC,Alejandro Díaz Liceága,f,9,101,1
-25,FFC,Paolo Sabak,m,24,326,1
-26,CFC,Sergio Camargo,m,10,130,1
-27,FCE,Easton Ongaro,f,19,225,1
-28,HFX,Ibrahima Sanoh,f,9,72,1
-29,CFC,Dominick Zator,d,4,360,1
-30,ATO,Malcolm Isaiah Shaw,f,19,236,1
+20,FFC,Anthony Novak,f,23,197,1
+21,PFC,Marco Bustos,m,10,262,1
+22,PFC,Lukas MacNaughton,d,6,270,1
+23,PFC,Jamar Dixon,m,22,159,1
+24,FFC,Kwame Awuah,d,6,292,1
+25,PFC,Alejandro Díaz Liceága,f,9,101,1
+26,FFC,Paolo Sabak,m,24,326,1
+27,CFC,Sergio Camargo,m,10,130,1
+28,FCE,Easton Ongaro,f,19,225,1
+29,HFX,Ibrahima Sanoh,f,9,72,1
+30,CFC,Marcus Haber,f,29,216,1
 31,Y9,Lowell Wright,f,80,127,1
 32,Y9,Kyle Porter,m,19,235,1
-33,ATO,Mohamed Kourouma,f,9,270,1
-34,CFC,Marcus Haber,f,29,197,1
+33,CFC,Dominick Zator,d,4,450,1
+34,ATO,Mohamed Kourouma,f,9,360,1
+35,ATO,Ben Fisk,m,10,333,1
