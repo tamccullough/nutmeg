@@ -1,35 +1,36 @@
 team,name,number,position,minutes,goals,chances,assists,shots,s-target,passes,crosses,duels,tackles,overall,new_overall
-FCE,Prince Amanda,16,f,90,0,0,0,0,0,69,21,35,0,0.04,0.9
-CFC,José Hernández,20,f,90,0,0,0,0,0,56,0,34,22,0.03,0.8
-PFC,Alejandro Díaz Liceága,9,f,90,1,3,0,5,4,45,1,14,1,0.37,0.49
-FFC,Gabriel Wiethaeuper-Balbinotti,20,f,90,0,0,0,6,0,40,0,26,0,0.08,0.48
-ATO,Mohamed Kourouma,9,f,90,0,1,0,4,1,39,3,11,1,0.66,0.38
-FFC,Kadell Thomas,17,f,90,0,1,0,2,1,21,3,26,3,0.26,0.36
-CFC,Aribim Pepple,24,f,90,0,3,0,3,3,18,0,23,3,0.1,0.32
-HFX,João Morelli Neto,22,f,90,1,0,0,2,1,29,2,15,1,0.27,0.31
-CFC,Marcus Haber,29,f,90,0,0,0,3,2,23,2,19,0,0.44,0.29
-FFC,Christopher Nanco,11,f,90,1,0,0,2,2,21,3,18,2,0.4,0.29
-FFC,Marcel Zajac,9,f,90,0,0,0,2,1,26,2,16,2,0.2,0.29
-FFC,Molham Babouli,19,f,90,0,1,1,1,1,29,1,14,1,0.3,0.29
-CFC,Nico Pasquotti,17,f,90,0,0,0,2,1,26,3,14,1,0.55,0.28
-VFC,Daryl Fordyce,16,f,90,0,0,0,4,0,29,1,10,0,0.08,0.25
-FFC,Anthony Novak,23,f,90,0,0,0,2,1,25,0,15,1,0.37,0.25
-ATO,Maksym Kowal,21,f,90,0,0,0,0,0,22,0,20,0,0.04,0.24
-PFC,Terran Campbell,14,f,90,0,1,0,3,1,18,2,15,3,0.33,0.24
-CFC,Oliver Minatel,7,f,90,0,1,0,1,0,28,0,11,1,0.43,0.24
-Y9,Jace Kotsopoulos,12,f,90,0,0,0,0,0,22,0,13,6,0.04,0.23
-VFC,Federico Peña,77,f,90,0,0,0,1,0,22,1,11,5,0.23,0.22
-VFC,Mastanabal Kacher,7,f,90,0,1,0,1,0,28,3,7,0,0.38,0.22
-HFX,Ibrahima Sanoh,9,f,90,1,1,0,2,1,16,1,15,0,0.16,0.2
-ATO,Malcolm Isaiah Shaw,19,f,90,0,1,0,2,1,19,0,14,1,0.44,0.2
-FCE,Tomi Ameobi,18,f,90,0,1,0,1,0,20,0,12,0,0.15,0.17
-FCE,Easton Ongaro,19,f,90,0,0,0,2,0,13,2,15,0,0.3,0.16
-VFC,Austin Ricci,9,f,90,0,1,0,2,2,15,1,9,1,0.28,0.15
-HFX,Akeem Garcia,11,f,90,1,1,0,3,2,14,0,7,1,0.35,0.13
-HFX,Alessandro Riggi,10,f,90,0,0,0,0,0,11,2,14,2,0.06,0.13
-VFC,Shaan Hundal,11,f,90,0,2,1,1,1,13,1,10,0,0.46,0.13
-Y9,Lowell Wright,80,f,90,1,0,0,2,1,11,0,9,1,0.18,0.1
-CFC,Jordan Brown,9,f,90,1,0,0,2,1,14,1,6,0,0.4,0.1
-Y9,Álvaro Rivero Sánchez,7,f,90,0,0,0,2,1,12,0,7,0,0.26,0.08
-FCE,David Doe,26,f,90,0,0,0,0,0,10,0,7,0,0.01,0.04
-Y9,Gabriel Monteiro Vasconcelos,99,f,90,0,0,0,0,0,13,0,2,0,0.02,0.02
+CFC,José Hernández,20,f,90,0,0,0,0,0,56,0,34,22,0.03,0.9
+FCE,Prince Amanda,16,f,90,0,0,0,0,0,50,22,22,0,0.08,0.74
+PFC,Alejandro Díaz Liceága,9,f,90,1,3,0,5,4,45,1,14,1,0.35,0.56
+FFC,Gabriel Wiethaeuper-Balbinotti,20,f,90,0,0,0,6,0,40,0,26,0,0.08,0.54
+FCE,Marcus Velado-Tsegaye,17,f,90,3,0,0,9,6,34,0,9,0,0.12,0.44
+ATO,Mohamed Kourouma,9,f,90,0,1,0,4,1,39,3,11,1,0.64,0.44
+FFC,Kadell Thomas,17,f,90,0,1,0,2,1,21,3,26,3,0.26,0.41
+HFX,João Morelli Neto,22,f,90,1,1,0,3,2,32,2,14,2,0.6,0.41
+CFC,Aribim Pepple,24,f,90,0,3,0,3,3,18,0,23,3,0.09,0.37
+CFC,Marcus Haber,29,f,90,0,0,0,3,2,23,2,19,0,0.42,0.34
+FFC,Marcel Zajac,9,f,90,0,0,0,2,1,26,2,16,2,0.2,0.34
+FFC,Molham Babouli,19,f,90,0,1,1,1,1,29,1,14,1,0.29,0.34
+FFC,Christopher Nanco,11,f,90,1,0,0,2,2,21,3,18,2,0.38,0.34
+HFX,Alessandro Riggi,10,f,90,0,1,1,1,0,23,1,15,5,0.32,0.32
+CFC,Nico Pasquotti,17,f,90,0,0,0,2,1,26,3,14,1,0.54,0.32
+FFC,Anthony Novak,23,f,90,0,0,0,2,1,25,0,15,1,0.36,0.29
+VFC,Daryl Fordyce,16,f,90,0,0,0,4,0,29,1,10,0,0.08,0.29
+PFC,Terran Campbell,14,f,90,0,1,0,3,1,18,2,15,3,0.33,0.28
+ATO,Maksym Kowal,21,f,90,0,0,0,0,0,22,0,20,0,0.04,0.28
+CFC,Oliver Minatel,7,f,90,0,1,0,1,0,28,0,11,1,0.43,0.28
+Y9,Jace Kotsopoulos,12,f,90,0,0,0,0,0,22,0,13,6,0.04,0.27
+VFC,Mastanabal Kacher,7,f,90,0,1,0,1,0,28,3,7,0,0.38,0.26
+VFC,Federico Peña,77,f,90,0,0,0,1,0,22,1,11,5,0.23,0.26
+ATO,Malcolm Isaiah Shaw,19,f,90,0,1,0,2,1,19,0,14,1,0.43,0.24
+HFX,Ibrahima Sanoh,9,f,90,1,1,0,2,1,16,1,15,0,0.15,0.23
+FCE,Easton Ongaro,19,f,90,0,1,0,2,0,14,2,15,0,0.35,0.2
+FCE,Tomi Ameobi,18,f,90,0,0,0,1,0,19,0,13,0,0.25,0.19
+VFC,Austin Ricci,9,f,90,0,1,0,2,2,15,1,9,1,0.27,0.18
+HFX,Akeem Garcia,11,f,90,1,0,0,2,2,15,0,9,1,0.48,0.17
+VFC,Shaan Hundal,11,f,90,0,2,1,1,1,13,1,10,0,0.45,0.16
+Y9,Lowell Wright,80,f,90,1,0,0,2,1,11,0,9,1,0.18,0.12
+CFC,Jordan Brown,9,f,90,1,0,0,2,1,14,1,6,0,0.39,0.12
+Y9,Álvaro Rivero Sánchez,7,f,90,0,0,0,2,1,12,0,7,0,0.25,0.1
+FCE,David Doe,26,f,90,0,0,0,0,0,10,0,7,0,0.01,0.05
+Y9,Gabriel Monteiro Vasconcelos,99,f,90,0,0,0,0,0,13,0,2,0,0.02,0.03

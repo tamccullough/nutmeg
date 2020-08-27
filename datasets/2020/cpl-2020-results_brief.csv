@@ -16,7 +16,7 @@ d,m,hs,as,home,hr,away,ar,summary,team
 16,8,2.0,0.0,Forge FC,W,FC Edmonton,L,L A 2.0 - 0.0 FFC,FC Edmonton
 20,8,0.0,2.0,FC Edmonton,L,Cavalry FC,W,L H 0.0 - 2.0 CFC,FC Edmonton
 23,8,2.0,2.0,Atlético Ottawa,D,FC Edmonton,D,D A 2.0 - 2.0 ATO,FC Edmonton
-26,8,,,FC Edmonton,E,HFX Wanderers FC,E,E H nan - nan HFX,FC Edmonton
+26,8,1.0,3.0,FC Edmonton,L,HFX Wanderers FC,W,L H 1.0 - 3.0 HFX,FC Edmonton
 29,8,,,Valour FC,E,FC Edmonton,E,E A nan - nan VFC,FC Edmonton
 1,9,,,FC Edmonton,E,York9 FC,E,E H nan - nan Y9,FC Edmonton
 6,9,,,Pacific FC,E,FC Edmonton,E,E A nan - nan PFC,FC Edmonton
@@ -30,7 +30,7 @@ d,m,hs,as,home,hr,away,ar,summary,team
 15,8,2.0,2.0,HFX Wanderers FC,D,Pacific FC,D,D H 2.0 - 2.0 PFC,HFX Wanderers FC
 19,8,1.0,1.0,HFX Wanderers FC,D,Forge FC,D,D H 1.0 - 1.0 FFC,HFX Wanderers FC
 23,8,2.0,1.0,Cavalry FC,W,HFX Wanderers FC,L,L A 2.0 - 1.0 CFC,HFX Wanderers FC
-26,8,,,FC Edmonton,E,HFX Wanderers FC,E,E A nan - nan FCE,HFX Wanderers FC
+26,8,1.0,3.0,FC Edmonton,L,HFX Wanderers FC,W,W A 1.0 - 3.0 FCE,HFX Wanderers FC
 29,8,,,HFX Wanderers FC,E,York9 FC,E,E H nan - nan Y9,HFX Wanderers FC
 2,9,,,Valour FC,E,HFX Wanderers FC,E,E A nan - nan VFC,HFX Wanderers FC
 6,9,,,HFX Wanderers FC,E,Atlético Ottawa,E,E H nan - nan ATO,HFX Wanderers FC
