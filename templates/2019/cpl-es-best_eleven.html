@@ -50,7 +50,7 @@
       <!-- FORWARDS -->
       {%for i in range(9,11)%}
       <div class="w3-half w3-card-4 {{ html_table.iloc[i,8] }}">
-        <form method="POST" action="/player">
+        <form method="POST" action="/player-2019">
         <div class="{{ html_table.iloc[i,8] }}">
           <table>
             <tr>
@@ -65,7 +65,7 @@
               <td style="padding: 5px 5px;"><p>{{ html_table.iloc[i,6] }}</p></td>
             </tr>
             <tr>
-              <td colspan="2"><h5 href="{{ url_for('player') }}"><input class="button" type="submit" id="name" name="name" value="{{ html_table.iloc[i,9] }}"></h5></td>
+              <td colspan="2"><h5 href="{{ url_for('player_19') }}"><input class="button" type="submit" id="name" name="name" value="{{ html_table.iloc[i,9] }}"></h5></td>
             </tr>
             <tr style="min-width:120px">
                   <td colspan="3" style="padding: 5px 5px;"><p>Attacker</p></td>
@@ -81,7 +81,7 @@
       <!-- MIDFILED 3 -->
       {%for i in range(6,9)%}
       <div class="w3-third w3-card-4 {{ html_table.iloc[i,8] }}">
-        <form method="POST" action="/player">
+        <form method="POST" action="/player-2019">
         <div class="{{ html_table.iloc[i,8] }}">
           <table>
             <tr>
@@ -96,7 +96,7 @@
               <td style="padding: 5px 5px;"><p>{{ html_table.iloc[i,6] }}</p></td>
             </tr>
             <tr>
-                <td colspan="2"><h5 href="{{ url_for('player') }}"><input class="button" type="submit" id="name" name="name" value="{{ html_table.iloc[i,9] }}"></h5></td>
+                <td colspan="2"><h5 href="{{ url_for('player_19') }}"><input class="button" type="submit" id="name" name="name" value="{{ html_table.iloc[i,9] }}"></h5></td>
             </tr>
             <tr style="min-width:120px">
                   <td colspan="3" style="padding: 5px 5px;"><p>Midfielder</p></td>
@@ -110,7 +110,7 @@
       <!-- MIDFILED 2-->
       {%for i in range(4,6)%}
       <div class="w3-half w3-card-4 {{ html_table.iloc[i,8] }}">
-        <form method="POST" action="/player">
+        <form method="POST" action="/player-2019">
         <div class="{{ html_table.iloc[i,8] }}">
           <table>
             <tr>
@@ -125,7 +125,7 @@
               <td style="padding: 5px 5px;"><p>{{ html_table.iloc[i,6] }}</p></td>
             </tr>
             <tr>
-                <td colspan="2"><h5 href="{{ url_for('player') }}"><input class="button" type="submit" id="name" name="name" value="{{ html_table.iloc[i,9] }}"></h5></td>
+                <td colspan="2"><h5 href="{{ url_for('player_19') }}"><input class="button" type="submit" id="name" name="name" value="{{ html_table.iloc[i,9] }}"></h5></td>
             </tr>
             <tr style="min-width:120px">
                   <td colspan="3" style="padding: 5px 5px;"><p>Midfielder</p></td>
@@ -139,7 +139,7 @@
       <!-- DEFENSE -->
       {%for i in range(1,4)%}
       <div class="w3-third w3-card-4 {{ html_table.iloc[i,8] }}">
-        <form method="POST" action="/player">
+        <form method="POST" action="/player-2019">
         <div class="{{ html_table.iloc[i,8] }}">
           <table>
             <tr>
@@ -154,7 +154,7 @@
               <td style="padding: 5px 5px;"><p>{{ html_table.iloc[i,6] }}</p></td>
             </tr>
             <tr>
-                <td colspan="2"><h5 href="{{ url_for('player') }}"><input class="button" type="submit" id="name" name="name" value="{{ html_table.iloc[i,9] }}"></h5></td>
+                <td colspan="2"><h5 href="{{ url_for('player_19') }}"><input class="button" type="submit" id="name" name="name" value="{{ html_table.iloc[i,9] }}"></h5></td>
             </tr>
             <tr style="min-width:120px">
                   <td colspan="3" style="padding: 5px 5px;"><p>Defender</p></td>
@@ -170,7 +170,7 @@
       <div class="w3-third {{ html_table.iloc[0,8] }}">
         </div>
       <div class="w3-twothird w3-card-4 {{ html_table.iloc[0,8] }}">
-        <form method="POST" action="/player">
+        <form method="POST" action="/player-2019">
         <div class="{{ html_table.iloc[0,8] }}">
           <table>
             <tr>
@@ -185,7 +185,7 @@
               <td style="padding: 5px 5px;"><p>{{ html_table.iloc[0,6] }}</p></td>
             </tr>
             <tr>
-                <td colspan="2"><h5 href="{{ url_for('player') }}"><input class="button" type="submit" id="name" name="name" value="{{ html_table.iloc[0,9] }}"></h5></td>
+                <td colspan="2"><h5 href="{{ url_for('player_19') }}"><input class="button" type="submit" id="name" name="name" value="{{ html_table.iloc[0,9] }}"></h5></td>
             </tr>
             <tr style="min-width:120px">
                   <td colspan="3" style="padding: 5px 5px;"><p>Goalkeeper</p></td>

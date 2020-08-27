@@ -947,6 +947,7 @@ def get_player_card(name,stats,stats_seed,player_info):
     if player_stats.empty:
         player_stats = stats_seed[stats_seed['name'] == name].groupby('name').sum()
     player_stats = player_stats.reset_index()
+    print(player_stats)
     name = player_stats['name'].values[0]
     player_information = player_info[player_info['name'] == name]
     count = stats[stats['name'] == name].groupby('name').count()

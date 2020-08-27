@@ -493,22 +493,18 @@ def player():
 
     try:
         player_name = player_info[player_info['display'] == player['name'].values[0]]['display'].values[0]
-        print('NAME FIRST')
     except:
         player_name = player_info[player_info['name'] == player['name'].values[0]]['display'].values[0]
     try:
         nationality = player_info[player_info['display'] == player['name'].values[0]]['nationality'].values[0]
-        print('NATIONALITY FIRST')
     except:
         nationality = player_info[player_info['name'] == player['name'].values[0]]['nationality'].values[0]
     try:
         graph_image = player_info[player_info['display'] == player_name]['graph'].values[0]
-        print('GRAPH FIRST')
     except:
         graph_image = player_info[player_info['name'] == player_name]['graph'].values[0]
     try:
         radar_image = player_info[player_info['display'] == player_name]['radar'].values[0]
-        print('RADAR FIRST')
     except:
         radar_image = player_info[player_info['name'] == player_name]['radar'].values[0]
 
@@ -521,13 +517,18 @@ def player_19():
     year = '2019'
     other_year = '2020'
     stats = pd.read_csv(f'datasets/{year}/cpl-{year}-stats.csv')
+    stats_seed = pd.read_csv(f'datasets/{year}/cpl-{year}-stats-seed.csv')
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
     player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
 
     name = request.form['name']
-
-    player = cpl_main.get_player_card_previous(name,stats,player_info)
+    try:
+        name = player_info[player_info['display'] == name]['name'].values[0]
+    except:
+        name = player_info[player_info['name'] == name]['name'].values[0]
+    print(name)
+    player = cpl_main.get_player_card(name,stats,stats_seed,player_info)
     team = player['team'].values[0]
     roster_team_info = team_ref[team_ref['team'] == team]
     roster_colour = roster_team_info.iloc[0][4]
