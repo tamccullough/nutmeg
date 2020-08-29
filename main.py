@@ -108,7 +108,7 @@ def index():
         top_team, top_mover, top_dropper, first_crest, top_crest, bot_crest, first_colour = na, na, na, 'CPL-Crest-White.png', 'oneSoccer_nav.png', 'canNat_icon.png', 'w3-indigo'
 
     champs = year + ' Champions TBD'
-    suspended = 'None'
+    suspended = 'João Morelli Neto'
 
     return render_template('cpl-es-index.html',top_mover = top_mover, top_dropper = top_dropper,
     goals = goals,  assists = assists, yellows = yellows, reds = reds,
