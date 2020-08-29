@@ -1,23 +1,24 @@
 rank,team,name,position,number,minutes,assists
-1,HFX,Andre Rampersad,m,18,352,2
-2,VFC,Shaan Hundal,f,11,206,2
+1,VFC,Shaan Hundal,f,11,220,2
+2,HFX,Andre Rampersad,m,18,442,2
 3,ATO,Francisco Javier Acuña Víctor,m,8,263,2
-4,PFC,Victor Blasco,m,23,252,1
-5,ATO,Vashon Neufville,d,44,171,1
+4,ATO,Vashon Neufville,d,44,171,1
+5,CFC,Nikolas Ledgerwood,m,6,276,1
 6,CFC,Mohamed Farsi,d,21,236,1
 7,CFC,Oliver Minatel,f,7,350,1
 8,FFC,David Choinière,m,7,208,1
-9,PFC,Zachary Verhoven,m,16,45,1
-10,FCE,Antony Caceres,m,20,99,1
-11,CFC,Elijah Adekugbe,m,8,323,1
-12,PFC,Marco Bustos,m,10,262,1
-13,PFC,Matthew Baldisimo,m,8,260,1
-14,Y9,Kyle Porter,m,19,235,1
-15,FFC,Molham Babouli,f,19,140,1
+9,PFC,Marco Bustos,m,10,262,1
+10,FCE,Antony Caceres,m,20,171,1
+11,PFC,Matthew Baldisimo,m,8,260,1
+12,CFC,Elijah Adekugbe,m,8,323,1
+13,Y9,Kyle Porter,m,19,290,1
+14,FFC,Molham Babouli,f,19,140,1
+15,PFC,Zachary Verhoven,m,16,45,1
 16,FFC,Paolo Sabak,m,24,326,1
-17,ATO,Malyk Hamilton,m,2,360,1
-18,ATO,Malcolm Isaiah Shaw,f,19,326,1
-19,VFC,Brett Levis,m,17,229,1
-20,HFX,Alessandro Riggi,f,10,134,1
-21,HFX,Alex Marshall,m,7,169,1
-22,CFC,Nikolas Ledgerwood,m,6,276,1
+17,FCE,Terique Mohammed,d,57,123,1
+18,ATO,Malyk Hamilton,m,2,360,1
+19,ATO,Malcolm Isaiah Shaw,f,19,326,1
+20,HFX,Alessandro Riggi,f,10,193,1
+21,VFC,Brett Levis,m,17,229,1
+22,HFX,Alex Marshall,m,7,248,1
+23,PFC,Victor Blasco,m,23,252,1
