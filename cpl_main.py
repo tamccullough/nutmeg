@@ -1356,7 +1356,7 @@ def get_power_rankings(standings,standings_old,team_ref,results,previous_ranking
         if rank1.iloc[0]['l'] == rank2.iloc[0]['l']:
             l_nerf = 0
         else:
-            l_nerf -= (rank1.iloc[0]['l'] - rank2.iloc[0]['l'])
+            l_nerf = rank1.iloc[0]['l'] - rank2.iloc[0]['l']
 
         if (rank1.iloc[0]['l'] == 0) & (rank1.iloc[0]['gp'] >= 2):
             lossless = 1
