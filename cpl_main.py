@@ -351,7 +351,6 @@ def clean_team_game(standings,db,check):
         db = db.iloc[0][['home','hs','away','as']]
         db = pd.DataFrame(db)
         db = db.T
-        print(db)
     return db
 
 def get_weeks_results(results,standings,stats,team_ref):
@@ -384,6 +383,10 @@ def get_weeks_results(results,standings,stats,team_ref):
     else:
         db = df[df['m'] == month]
         db = db[db['d'] <= day]
+        if db.shape[0] < 4:
+            dz = df[df['m'] == month - 1]
+            dz = dz.sort_values(by='d',ascending=False).tail(6-db.shape[0])
+            db = pd.concat([db,dz])
     db['hs'] = db['hs'].astype('int')
     db['as'] = db['as'].astype('int')
 
@@ -407,9 +410,7 @@ def get_weeks_results(results,standings,stats,team_ref):
 
     big_win = max_home_win[['home','hs','away','as']]
     big_win = index_reset(big_win)
-    big_win
     #big_win = get_short_name(big_win,team_ref)
-    print(big_win)
     big_win = pd.DataFrame(big_win.loc[0])
     big_win = big_win.T
     # top team
