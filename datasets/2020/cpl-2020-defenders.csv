@@ -1,55 +1,57 @@
 team,name,number,position,minutes,goals,tackles,t-won,clearances,interceptions,duels,d-won,overall
-HFX,Chrisnovic N'Sa,6,d,427,0,19,17,10,8,62,35,0.7
-FCE,Mélé Temguia,8,d,450,0,15,12,11,11,56,32,0.65
-Y9,Luca Gasparotto,13,d,540,0,8,5,37,13,38,26,0.63
-HFX,Peter Schaale,2,d,540,0,10,6,37,8,49,29,0.63
-FFC,Daniel Krutzen,5,d,450,1,7,5,18,13,50,30,0.61
-Y9,Roger Thompson,6,d,540,0,9,4,24,13,41,27,0.59
-PFC,Lukas MacNaughton,6,d,450,1,7,4,22,8,51,35,0.59
-VFC,Julian Dunn-Johnson,5,d,540,0,11,5,18,7,59,31,0.58
-FCE,Jeannot Esua,3,d,527,0,4,3,20,11,58,33,0.57
-PFC,Kadin Chung,7,d,315,0,16,13,7,5,50,36,0.57
-CFC,Dominick Zator,4,d,540,1,9,7,8,5,51,33,0.56
-FCE,Ramon Soria,5,d,540,0,10,7,17,6,43,26,0.53
-CFC,Nathan Mavila,3,d,418,3,4,3,3,5,57,24,0.52
-FFC,Kwame Awuah,6,d,302,1,12,8,8,6,41,28,0.51
-VFC,Andrew Jean-Baptiste,35,d,462,1,5,5,18,11,32,19,0.51
-HFX,Mateo Restrepo,14,d,283,0,15,12,6,10,28,19,0.49
-ATO,Evan Brandon John,4,d,528,0,4,3,18,7,39,26,0.46
-FFC,David Edgar,30,d,450,0,6,4,31,5,30,20,0.45
-HFX,Jems Geffrard,3,d,540,0,4,3,20,11,25,16,0.45
-FCE,Allan Zebie,4,d,412,0,11,9,0,7,36,22,0.45
-PFC,Thomas Meilleur-Giguère,26,d,450,0,2,2,25,13,24,10,0.42
-ATO,Milovan Kapor,3,d,424,0,4,4,21,10,27,12,0.41
-FFC,Dominic Samuel,4,d,280,0,10,2,7,4,50,31,0.41
-Y9,Diyaeddine Abzi,20,d,348,0,8,6,6,7,38,17,0.4
-Y9,Morey Doner,3,d,540,0,2,2,8,12,29,10,0.38
-CFC,Mohamed Farsi,21,d,268,0,7,6,6,5,30,21,0.35
-CFC,Mason Trafford,5,d,450,0,5,4,12,3,29,18,0.35
-CFC,Robert Boskovic,25,d,315,0,8,4,4,6,28,16,0.33
-PFC,Jordan Haynes,3,d,257,0,7,4,6,4,30,19,0.32
-HFX,Alex De Carolis,24,d,261,1,6,5,4,4,22,15,0.32
-CFC,Dean Northover,12,d,270,0,6,2,3,6,33,19,0.31
-FCE,Terique Mohammed,57,d,213,0,9,6,7,1,35,18,0.31
-ATO,Gianfranco Facchineri,6,d,206,0,9,8,10,2,20,12,0.3
-Y9,Fugo Segawa,26,d,275,0,5,5,5,4,27,15,0.29
-PFC,Marcel de Jong,17,d,200,0,3,3,11,8,17,10,0.27
-ATO,Jarred Phillips,14,d,244,0,5,4,4,5,25,10,0.26
-CFC,Jonathan Wheeldon,14,d,270,0,1,0,16,5,21,11,0.25
-FCE,Duran Lee,23,d,123,0,6,4,5,1,24,15,0.22
-FFC,Maxim Tissot,15,d,171,0,4,3,3,2,27,9,0.2
-ATO,Vashon Neufville,44,d,196,0,2,1,1,4,22,8,0.17
-FFC,Monti Mohsen,22,d,135,0,3,3,3,1,17,13,0.17
-HFX,Jake Ruby,20,d,125,0,4,3,6,0,19,10,0.17
-FCE,Amer Didic,55,d,151,0,3,3,6,1,12,10,0.16
-Y9,Ijah Halley,14,d,157,0,1,1,1,0,32,13,0.16
-FCE,Samuel Gardner,33,d,82,0,4,3,2,3,14,7,0.15
-FCE,Kareem Moses,12,d,139,0,3,1,10,1,12,5,0.14
-FFC,Jordan Dunstan,21,d,90,0,3,2,3,3,9,6,0.13
-VFC,Arnold Bouka Moutou,29,d,65,0,2,1,0,1,10,5,0.08
+VFC,Julian Dunn-Johnson,5,d,630,0,14,7,22,10,69,35,0.66
+HFX,Chrisnovic N'Sa,6,d,427,0,19,17,10,8,62,35,0.65
+FFC,Daniel Krutzen,5,d,511,1,7,5,21,15,54,32,0.62
+FCE,Mélé Temguia,8,d,450,0,15,12,11,11,56,32,0.6
+HFX,Peter Schaale,2,d,540,0,10,6,37,8,49,29,0.59
+FFC,Kwame Awuah,6,d,392,1,15,11,9,7,51,35,0.59
+Y9,Luca Gasparotto,13,d,540,0,8,5,37,13,38,26,0.58
+PFC,Lukas MacNaughton,6,d,450,1,7,4,22,8,51,35,0.55
+Y9,Roger Thompson,6,d,540,0,9,4,24,13,41,27,0.54
+PFC,Kadin Chung,7,d,315,0,16,13,7,5,50,36,0.53
+CFC,Dominick Zator,4,d,540,1,9,7,8,5,51,33,0.52
+FCE,Jeannot Esua,3,d,527,0,4,3,20,11,58,33,0.52
+FCE,Ramon Soria,5,d,540,0,10,7,17,6,43,26,0.49
+FFC,Dominic Samuel,4,d,370,0,11,3,10,7,63,39,0.49
+CFC,Nathan Mavila,3,d,418,3,4,3,3,5,57,24,0.48
+VFC,Andrew Jean-Baptiste,35,d,462,1,5,5,18,11,32,19,0.47
+HFX,Mateo Restrepo,14,d,283,0,15,12,6,10,28,19,0.45
+FFC,David Edgar,30,d,450,0,6,4,31,5,30,20,0.42
+ATO,Evan Brandon John,4,d,528,0,4,3,18,7,39,26,0.42
+HFX,Jems Geffrard,3,d,540,0,4,3,20,11,25,16,0.41
+FCE,Allan Zebie,4,d,412,0,11,9,0,7,36,22,0.41
+PFC,Thomas Meilleur-Giguère,26,d,450,0,2,2,25,13,24,10,0.38
+ATO,Milovan Kapor,3,d,424,0,4,4,21,10,27,12,0.38
+Y9,Diyaeddine Abzi,20,d,348,0,8,6,6,7,38,17,0.36
+Y9,Morey Doner,3,d,540,0,2,2,8,12,29,10,0.34
+CFC,Mason Trafford,5,d,450,0,5,4,12,3,29,18,0.32
+CFC,Mohamed Farsi,21,d,268,0,7,6,6,5,30,21,0.32
+CFC,Robert Boskovic,25,d,315,0,8,4,4,6,28,16,0.31
+HFX,Alex De Carolis,24,d,261,1,6,5,4,4,22,15,0.3
+PFC,Jordan Haynes,3,d,257,0,7,4,6,4,30,19,0.29
+FCE,Terique Mohammed,57,d,213,0,9,6,7,1,35,18,0.29
+CFC,Dean Northover,12,d,270,0,6,2,3,6,33,19,0.28
+ATO,Gianfranco Facchineri,6,d,206,0,9,8,10,2,20,12,0.28
+Y9,Fugo Segawa,26,d,275,0,5,5,5,4,27,15,0.27
+FFC,Jordan Dunstan,21,d,180,0,4,3,7,5,24,15,0.24
+ATO,Jarred Phillips,14,d,244,0,5,4,4,5,25,10,0.24
+PFC,Marcel de Jong,17,d,200,0,3,3,11,8,17,10,0.24
+CFC,Jonathan Wheeldon,14,d,270,0,1,0,16,5,21,11,0.22
+FCE,Duran Lee,23,d,123,0,6,4,5,1,24,15,0.21
+FFC,Monti Mohsen,22,d,208,0,3,3,3,1,25,16,0.19
+FFC,Maxim Tissot,15,d,200,0,4,3,3,2,28,10,0.19
+ATO,Vashon Neufville,44,d,196,0,2,1,1,4,22,8,0.16
+FCE,Amer Didic,55,d,151,0,3,3,6,1,12,10,0.15
+HFX,Jake Ruby,20,d,125,0,4,3,6,0,19,10,0.15
+Y9,Ijah Halley,14,d,157,0,1,1,1,0,32,13,0.14
+FCE,Samuel Gardner,33,d,82,0,4,3,2,3,14,7,0.14
+FCE,Kareem Moses,12,d,139,0,3,1,10,1,12,5,0.13
+VFC,Yohan Le Bourhis,4,d,90,1,0,0,1,0,7,5,0.09
+VFC,Arnold Bouka Moutou,29,d,70,0,2,1,0,1,11,5,0.07
 VFC,Chakib Hocine,4,d,66,0,1,1,2,0,8,4,0.06
-Y9,Matthew Arnone,17,d,62,0,1,1,1,2,3,2,0.06
-FFC,Jonathan Grant,2,d,78,0,0,0,5,0,10,2,0.06
 HFX,Daniel Kinumbe,13,d,45,0,1,1,0,1,6,4,0.05
-PFC,Abdoulaye Samake,5,d,1,0,0,0,0,0,0,0,0.0
+FFC,Jonathan Grant,2,d,78,0,0,0,5,0,10,2,0.05
+Y9,Matthew Arnone,17,d,62,0,1,1,1,2,3,2,0.05
+VFC,Raphaël Garcia,2,d,26,0,1,0,1,1,4,2,0.03
 FFC,Klaidi Cela,16,d,2,0,0,0,0,0,2,0,0.0
+PFC,Abdoulaye Samake,5,d,1,0,0,0,0,0,0,0,0.0

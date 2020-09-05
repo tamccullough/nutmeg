@@ -26,7 +26,7 @@ d,m,hs,as,home,hr,away,ar,summary,team
 22,8,2.0,1.0,Forge FC,W,Pacific FC,L,W H 2.0 - 1.0 PFC,Forge FC
 26,8,3.0,2.0,York9 FC,W,Forge FC,L,L A 3.0 - 2.0 Y9,Forge FC
 30,8,0.0,2.0,Atlético Ottawa,L,Forge FC,W,W A 0.0 - 2.0 ATO,Forge FC
-5,9,,,Forge FC,E,Valour FC,E,E H nan - nan VFC,Forge FC
+5,9,2.0,2.0,Forge FC,D,Valour FC,D,D H 2.0 - 2.0 VFC,Forge FC
 15,8,2.0,2.0,HFX Wanderers FC,D,Pacific FC,D,D H 2.0 - 2.0 PFC,HFX Wanderers FC
 19,8,1.0,1.0,HFX Wanderers FC,D,Forge FC,D,D H 1.0 - 1.0 FFC,HFX Wanderers FC
 23,8,2.0,1.0,Cavalry FC,W,HFX Wanderers FC,L,L A 2.0 - 1.0 CFC,HFX Wanderers FC
@@ -47,7 +47,7 @@ d,m,hs,as,home,hr,away,ar,summary,team
 25,8,2.0,0.0,Pacific FC,W,Valour FC,L,L A 2.0 - 0.0 PFC,Valour FC
 29,8,2.0,1.0,Valour FC,W,FC Edmonton,L,W H 2.0 - 1.0 FCE,Valour FC
 2,9,0.0,2.0,Valour FC,L,HFX Wanderers FC,W,L H 0.0 - 2.0 HFX,Valour FC
-5,9,,,Forge FC,E,Valour FC,E,E A nan - nan FFC,Valour FC
+5,9,2.0,2.0,Forge FC,D,Valour FC,D,D A 2.0 - 2.0 FFC,Valour FC
 15,8,2.0,2.0,York9 FC,D,Atlético Ottawa,D,D H 2.0 - 2.0 ATO,York9 FC
 18,8,1.0,1.0,Pacific FC,D,York9 FC,D,D A 1.0 - 1.0 PFC,York9 FC
 22,8,0.0,0.0,York9 FC,D,Valour FC,D,D H 0.0 - 0.0 VFC,York9 FC
