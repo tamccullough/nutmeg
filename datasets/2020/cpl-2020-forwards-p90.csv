@@ -2,36 +2,36 @@ team,name,number,position,minutes,goals,chances,assists,shots,s-target,passes,cr
 CFC,José Hernández,20,f,90,0,0,0,0,0,56,0,34,22,0.02,0.9
 FFC,Gabriel Wiethaeuper-Balbinotti,20,f,90,0,0,0,4,0,36,0,28,0,0.06,0.51
 FCE,Prince Amanda,16,f,90,0,0,0,1,0,34,7,16,3,0.09,0.44
-HFX,João Morelli Neto,22,f,90,1,1,0,3,2,32,2,15,2,0.44,0.42
-ATO,Mohamed Kourouma,9,f,90,0,1,0,2,1,34,4,10,2,0.71,0.38
-PFC,Alejandro Díaz Liceága,9,f,90,1,2,0,4,2,33,1,10,1,0.48,0.38
+HFX,João Morelli Neto,22,f,90,1,1,0,3,2,32,2,15,2,0.43,0.42
+ATO,Mohamed Kourouma,9,f,90,0,1,0,2,1,34,4,10,2,0.7,0.38
+PFC,Alejandro Díaz Liceága,9,f,90,1,2,0,4,2,33,1,10,1,0.47,0.38
+CFC,Aribim Pepple,24,f,90,0,2,0,2,2,18,0,26,2,0.06,0.36
+FCE,Marcus Velado-Tsegaye,17,f,90,1,0,0,4,1,31,2,11,1,0.19,0.36
 FFC,Christopher Nanco,11,f,90,1,1,0,2,2,22,3,18,2,0.28,0.36
-CFC,Aribim Pepple,24,f,90,0,2,0,2,2,18,0,26,2,0.07,0.36
-FCE,Marcus Velado-Tsegaye,17,f,90,1,0,0,4,1,31,2,11,1,0.2,0.36
 FFC,Kadell Thomas,17,f,90,0,0,0,1,0,19,3,22,5,0.26,0.35
-CFC,Nico Pasquotti,17,f,90,0,0,0,2,0,28,3,14,1,0.42,0.33
+CFC,Nico Pasquotti,17,f,90,0,1,0,2,0,28,3,14,1,0.54,0.34
 CFC,Jair Ayrton Córdova Carpio,19,f,90,0,6,0,0,0,18,0,24,0,0.02,0.33
 FFC,Molham Babouli,19,f,90,0,1,0,1,0,25,1,17,2,0.31,0.32
+CFC,Marcus Haber,29,f,90,1,1,0,2,2,21,2,18,0,0.5,0.32
 HFX,Alessandro Riggi,10,f,90,0,2,0,1,1,25,2,12,3,0.36,0.31
 FFC,Marcel Zajac,9,f,90,0,0,0,2,1,22,2,15,3,0.17,0.3
+VFC,Mastanabal Kacher,7,f,90,0,2,0,2,0,31,2,6,0,0.39,0.28
 ATO,Maksym Kowal,21,f,90,0,0,0,0,0,21,0,21,0,0.02,0.28
-PFC,Terran Campbell,14,f,90,0,1,0,2,0,19,1,17,2,0.25,0.28
-CFC,Oliver Minatel,7,f,90,0,1,0,1,0,27,1,11,1,0.48,0.28
-VFC,Mastanabal Kacher,7,f,90,0,2,0,2,0,31,2,6,0,0.4,0.28
 VFC,Federico Peña,77,f,90,0,1,0,1,0,24,2,10,4,0.33,0.28
-CFC,Marcus Haber,29,f,90,0,1,0,2,1,21,2,16,0,0.36,0.28
-FCE,Tomi Ameobi,18,f,90,0,1,0,1,1,22,0,15,1,0.24,0.27
+PFC,Terran Campbell,14,f,90,0,1,0,2,0,19,1,17,2,0.24,0.28
 Y9,Jace Kotsopoulos,12,f,90,0,0,0,0,0,22,0,13,6,0.02,0.27
-ATO,Malcolm Isaiah Shaw,19,f,90,0,1,0,2,1,18,0,17,1,0.59,0.26
+FCE,Tomi Ameobi,18,f,90,0,1,0,1,1,22,0,15,1,0.24,0.27
+CFC,Oliver Minatel,7,f,90,0,1,0,1,0,26,1,11,1,0.5,0.27
+ATO,Malcolm Isaiah Shaw,19,f,90,0,1,0,2,1,18,0,17,1,0.58,0.26
+VFC,Daryl Fordyce,16,f,90,1,0,0,3,2,22,1,9,1,0.19,0.25
 FFC,Anthony Novak,23,f,90,0,0,0,2,1,22,0,13,1,0.29,0.25
-VFC,Daryl Fordyce,16,f,90,1,0,0,3,2,22,1,9,1,0.2,0.25
 HFX,Ibrahima Sanoh,9,f,90,1,1,0,2,1,16,1,15,0,0.11,0.23
-VFC,Shaan Hundal,11,f,90,0,2,1,2,2,14,1,12,0,0.37,0.2
 FCE,Easton Ongaro,19,f,90,0,1,0,2,0,16,1,14,0,0.44,0.2
+VFC,Shaan Hundal,11,f,90,0,2,1,2,2,14,1,12,0,0.37,0.2
 HFX,Akeem Garcia,11,f,90,1,1,0,2,1,16,0,10,1,0.53,0.19
 VFC,Austin Ricci,9,f,90,0,1,0,2,1,13,1,12,1,0.39,0.18
-CFC,Jordan Brown,9,f,90,1,1,0,2,1,13,1,8,0,0.4,0.14
+CFC,Jordan Brown,9,f,90,1,0,0,3,1,14,1,9,0,0.49,0.16
 Y9,Lowell Wright,80,f,90,1,0,0,2,1,11,0,9,1,0.12,0.12
-Y9,Álvaro Rivero Sánchez,7,f,90,0,0,0,2,1,14,0,8,0,0.25,0.12
+Y9,Álvaro Rivero Sánchez,7,f,90,0,0,0,2,0,14,0,8,0,0.25,0.11
 Y9,Gabriel Monteiro Vasconcelos,99,f,90,0,0,0,1,0,18,0,3,0,0.03,0.1
 FCE,David Doe,26,f,90,0,0,0,0,0,10,0,7,0,0.0,0.05

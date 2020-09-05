@@ -5,7 +5,7 @@ II1,Forge FC,Christopher Nanco,f,11.0,Chris,Nanco,66,9,3,33.3,0,0.0,0,0,0,1,1,0,
 II1,Forge FC,Daniel Krutzen,d,5.0,Daniel,Krutzen,90,70,56,60.7,1,0.0,0,1,0,0,0,0,0,2,2,13,6,4,3,1,0,2,3,0,0,0,0
 II1,Forge FC,David Choinière,m,7.0,David,Choinière,45,24,12,100.0,1,100.0,1,1,0,1,0,1,0,1,0,7,3,0,0,0,0,2,1,0,0,0,0
 II1,Forge FC,David Edgar,d,30.0,David,Edgar,90,68,53,77.4,0,0.0,0,0,0,0,0,0,0,3,2,5,4,5,3,0,0,0,0,0,0,0,0
-II1,Forge FC,Dominic Samuel,d,4.0,Dominic,Samuel,12,7,3,100.0,0,0.0,0,0,0,0,0,0,0,1,0,2,2,0,0,1,0,1,1,0,0,0,0
+II1,Forge FC,Dominic Samuel,d,4.0,Dominic,Samuel,12,7,3,100.0,0,0.0,0,0,0,0,0,0,0,1,0,2,2,0,0,1,0,1,1,0,0,0,1
 II1,Forge FC,Jonathan Grant,d,2.0,Jonathan,Grant,78,47,25,76.0,1,0.0,0,1,0,0,0,0,0,0,0,10,2,5,0,1,0,1,4,0,0,0,0
 II1,Forge FC,Kadell Thomas,f,17.0,Kadell,Thomas,24,17,7,85.7,1,0.0,0,1,0,1,0,1,0,1,0,8,3,0,0,0,0,0,1,0,0,0,0
 II1,Forge FC,Kwame Awuah,d,6.0,Kwame,Awuah,90,55,32,62.5,0,0.0,0,0,0,0,0,0,0,2,1,10,5,5,2,0,0,0,2,0,0,0,0
@@ -763,3 +763,31 @@ II25,Valour FC,Moses Dyer,m,6.0,Moses,Dyer,90,44,20,85.0,0,0.0,0,2,1,4,2,2,2,1,0
 II25,Valour FC,Raphael Ohin,m,27.0,Raphael,Ohin,42,18,15,80.0,0,0.0,0,0,0,0,0,0,0,0,0,4,0,1,0,0,0,0,2,0,0,0,0
 II25,Valour FC,Raphaël Garcia,d,2.0,Raphaël,Garcia,26,14,6,100.0,0,0.0,0,0,0,1,1,1,0,1,0,4,2,1,1,0,0,1,0,0,0,0,0
 II25,Valour FC,Yohan Le Bourhis,d,4.0,Yohan,Le Bourhis,90,45,38,76.3,0,0.0,0,0,1,2,2,2,0,0,0,7,5,1,0,0,0,0,2,0,0,0,0
+II26,Cavalry FC,Bruno Zebie,m,16.0,Bruno,Zebie,17,7,2,50.0,0,0.0,0,1,0,0,0,0,0,1,1,5,1,0,1,0,0,0,1,0,0,0,0
+II26,Cavalry FC,Dean Northover,d,12.0,Dean,Northover,2,4,2,0.0,0,0.0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0
+II26,Cavalry FC,Dominick Zator,d,4.0,Dominick,Zator,90,75,65,76.9,0,0.0,0,0,0,1,0,0,1,1,1,3,2,4,0,0,0,0,0,0,0,0,0
+II26,Cavalry FC,Elliot Simmons,m,15.0,Elliot,Simmons,90,58,47,83.0,0,0.0,0,0,0,0,0,0,0,2,2,9,4,0,2,0,0,0,1,0,0,0,0
+II26,Cavalry FC,Jonathan Wheeldon,d,14.0,Jay,Wheeldon,88,73,63,84.1,0,0.0,0,0,0,0,0,0,0,1,1,5,4,5,2,0,0,0,0,0,0,0,0
+II26,Cavalry FC,Jordan Brown,f,9.0,Jordan,Brown,90,33,16,93.8,0,0.0,0,0,0,5,1,3,2,1,0,13,3,1,0,0,0,0,5,0,0,0,0
+II26,Cavalry FC,Marco Carducci,g,1.0,Marco,Carducci,90,37,24,70.8,0,0.0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,4,4,0,1
+II26,Cavalry FC,Marcus Haber,f,29.0,Marcus,Haber,70,27,15,66.7,3,0.0,0,1,1,2,2,2,0,0,0,18,9,1,0,0,0,2,3,0,0,0,0
+II26,Cavalry FC,Mason Trafford,d,5.0,Mason,Trafford,90,66,54,88.9,1,100.0,0,1,0,0,0,0,0,1,1,4,2,4,5,0,0,0,0,0,0,0,0
+II26,Cavalry FC,Mohamed Farsi,d,21.0,Mohamed,Farsi,73,54,27,70.4,6,0.0,0,0,0,0,0,0,0,2,0,4,3,1,3,0,0,1,0,0,0,0,0
+II26,Cavalry FC,Nathan Mavila,d,3.0,Nathan,Mavila,90,58,29,65.5,5,40.0,0,1,0,1,1,0,1,2,1,11,6,2,2,0,0,1,3,0,0,0,0
+II26,Cavalry FC,Nico Pasquotti,f,17.0,Nico,Pasquotti,90,54,26,73.1,2,0.0,0,3,0,1,0,0,1,1,1,16,6,0,0,0,0,1,0,0,0,0,0
+II26,Cavalry FC,Nikolas Ledgerwood,m,6.0,Nik,Ledgerwood,90,50,28,60.7,7,14.3,0,0,0,1,0,1,0,1,0,14,7,0,2,1,0,4,3,0,0,0,0
+II26,Cavalry FC,Oliver Minatel,f,7.0,Oliver,Minatel,20,8,4,100.0,0,0.0,0,0,0,1,0,0,1,1,0,3,1,0,0,0,0,0,1,0,0,0,0
+II26,York9 FC,Chris Mannella,m,5.0,Chris,Mannella,78,56,39,71.8,0,0.0,0,0,0,0,0,0,0,5,2,15,10,0,1,0,0,5,1,0,0,0,0
+II26,York9 FC,Diyaeddine Abzi,d,20.0,Diyaeddine,Abzi,90,56,31,54.8,4,0.0,0,3,0,4,1,4,0,0,0,10,5,1,0,0,0,0,1,0,0,0,0
+II26,York9 FC,Fugo Segawa,d,26.0,Fugo,Segawa,78,58,30,63.3,2,0.0,0,0,0,0,0,0,0,3,2,8,3,1,3,0,0,0,2,0,0,0,0
+II26,York9 FC,Joseph Di Chiara,m,8.0,Joseph,Di Chiara,90,52,41,78.0,2,100.0,0,1,0,0,0,0,0,0,0,11,6,1,0,1,0,3,2,0,0,0,0
+II26,York9 FC,Luca Gasparotto,d,13.0,Luca,Gasparotto,90,42,32,75.0,1,0.0,0,0,0,0,0,0,0,2,1,11,8,6,0,1,0,0,1,0,0,0,0
+II26,York9 FC,Manuel Aparicio,m,10.0,Manny,Aparicio,90,60,45,75.6,3,33.3,0,1,0,2,1,1,1,1,0,10,3,0,1,0,0,0,0,0,0,0,0
+II26,York9 FC,Max Ferrari,m,16.0,Max,Ferrari,12,3,1,0.0,0,0.0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,0,0,0,0,0
+II26,York9 FC,Michael Petrasso,m,21.0,Michael,Petrasso,64,17,8,87.5,1,0.0,0,0,0,3,1,3,0,0,0,3,0,1,0,0,0,0,0,0,0,0,0
+II26,York9 FC,Morey Doner,d,3.0,Morey,Doner,90,83,42,71.4,3,33.3,0,3,0,0,0,0,0,3,2,8,8,3,1,0,0,3,0,0,0,0,0
+II26,York9 FC,Nathan Ingham,g,29.0,Nathan,Ingham,90,51,38,73.7,0,0.0,0,0,0,0,0,0,0,0,0,1,1,2,0,0,0,0,0,4,3,2,0
+II26,York9 FC,Roger Thompson,d,6.0,Roger,Thompson,90,63,56,75.0,0,0.0,0,0,0,0,0,0,0,1,1,8,4,4,2,0,0,0,0,0,0,0,0
+II26,York9 FC,Ryan Telfer,m,18.0,Ryan,Telfer,90,38,20,55.0,3,0.0,0,0,0,2,1,2,0,1,1,16,7,0,1,1,0,3,2,0,0,0,0
+II26,York9 FC,Wataru Murofushi,m,23.0,Wataru,Murofushi,12,13,12,66.7,1,0.0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+II26,York9 FC,Álvaro Rivero Sánchez,f,7.0,Álvaro,Rivero,26,4,2,50.0,0,0.0,0,0,0,0,0,0,0,0,0,3,1,0,0,0,0,1,0,0,0,0,0

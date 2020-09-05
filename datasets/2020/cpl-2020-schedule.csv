@@ -27,13 +27,13 @@ II25,Forge FC,Valour FC
 II26,Cavalry FC,York9 FC
 II27,HFX Wanderers FC,Atlético Ottawa
 II28,Pacific FC,FC Edmonton
-II29,1,4
-II30,2,3
-II31,3,4
-II32,1,2
-II33,1,3
-II34,2,4
-II35,f,f
+II29,Cavalry FC,HFX Wanderers FC
+II30,Forge FC,York9 FC
+II31,York9 FC,HFX Wanderers FC
+II32,Cavalry FC,Forge FC
+II33,Cavalry FC,York9 FC
+II34,Forge FC,HFX Wanderers FC
+II35,Cavalry FC,Forge FC
 I1,Forge FC,York9 FC
 I2,Pacific FC,HFX Wanderers FC
 I3,Pacific FC,Valour FC
