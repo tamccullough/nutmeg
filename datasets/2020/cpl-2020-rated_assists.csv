@@ -1,27 +1,28 @@
 rank,team,name,position,number,minutes,assists
-1,VFC,Shaan Hundal,f,11,232,2
-2,VFC,Brett Levis,m,17,383,2
-3,HFX,Andre Rampersad,m,18,474,2
-4,ATO,Francisco Javier Acuña Víctor,m,8,442,2
-5,PFC,Victor Blasco,m,23,431,2
-6,FFC,Maxim Tissot,d,15,200,2
-7,FFC,Paolo Sabak,m,24,445,2
-8,CFC,Nikolas Ledgerwood,m,6,366,1
-9,FCE,Antony Caceres,m,20,203,1
-10,PFC,Alejandro Díaz Liceága,f,9,232,1
+1,VFC,Brett Levis,m,17,383,2
+2,VFC,Shaan Hundal,f,11,232,2
+3,HFX,Andre Rampersad,m,18,564,2
+4,ATO,Francisco Javier Acuña Víctor,m,8,532,2
+5,HFX,Alex Marshall,m,7,425,2
+6,PFC,Victor Blasco,m,23,488,2
+7,FFC,Maxim Tissot,d,15,200,2
+8,FFC,Paolo Sabak,m,24,445,2
+9,Y9,Kyle Porter,m,19,372,1
+10,FCE,Antony Caceres,m,20,248,1
 11,VFC,José Antonio Galán Pedrosa,m,21,310,1
-12,CFC,Elijah Adekugbe,m,8,413,1
-13,FFC,David Choinière,m,7,247,1
-14,FFC,Molham Babouli,f,19,245,1
-15,Y9,Kyle Porter,m,19,372,1
-16,CFC,Mohamed Farsi,d,21,341,1
-17,ATO,Vashon Neufville,d,44,196,1
-18,PFC,Marco Bustos,m,10,433,1
-19,FCE,Terique Mohammed,d,57,213,1
-20,ATO,Malyk Hamilton,m,2,540,1
-21,ATO,Malcolm Isaiah Shaw,f,19,505,1
-22,CFC,Oliver Minatel,f,7,454,1
-23,HFX,Alessandro Riggi,f,10,225,1
-24,HFX,Alex Marshall,m,7,338,1
-25,PFC,Zachary Verhoven,m,16,180,1
-26,PFC,Matthew Baldisimo,m,8,440,1
+12,PFC,Alejandro Díaz Liceága,f,9,265,1
+13,CFC,Mohamed Farsi,d,21,341,1
+14,PFC,Matthew Baldisimo,m,8,530,1
+15,PFC,Marco Bustos,m,10,523,1
+16,FFC,David Choinière,m,7,247,1
+17,PFC,Kadin Chung,d,7,405,1
+18,CFC,Elijah Adekugbe,m,8,413,1
+19,CFC,Oliver Minatel,f,7,454,1
+20,FFC,Molham Babouli,f,19,245,1
+21,CFC,Nikolas Ledgerwood,m,6,366,1
+22,ATO,Vashon Neufville,d,44,241,1
+23,FCE,Terique Mohammed,d,57,303,1
+24,ATO,Malyk Hamilton,m,2,630,1
+25,ATO,Malcolm Isaiah Shaw,f,19,595,1
+26,HFX,Alessandro Riggi,f,10,312,1
+27,PFC,Zachary Verhoven,m,16,198,1
