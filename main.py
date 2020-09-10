@@ -168,12 +168,19 @@ def index_19():
 def standings():
     year = '2020'
     other_year = '2019'
+    championship = pd.read_csv(f'datasets/{year}/cpl-{year}-championship.csv')
     standings = pd.read_csv(f'datasets/{year}/cpl-{year}-standings_current.csv')
     team_form_results = pd.read_csv(f'datasets/{year}/cpl-{year}-team_form.csv')
     columns = standings.columns
-    return render_template('cpl-es-standings.html',columns = columns,
-    standings_table = standings, form_table = team_form_results,
-    year = year, other_year = other_year)
+    if championship.at[0,'gp'] == 0:
+        return render_template('cpl-es-standings.html',columns = columns,
+        standings_table = standings, form_table = team_form_results,
+        year = year, other_year = other_year)
+    else:
+        return render_template('cpl-es-playoffs.html',columns = columns,
+        championship_table = championship,
+        standings_table = standings, form_table = team_form_results,
+        year = year, other_year = other_year)
 
 @canples.route('/standings-2019')
 def standings_19():

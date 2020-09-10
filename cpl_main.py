@@ -55,7 +55,7 @@ def get_short_name(data,dc):
 
 def get_schedule(data):
     db = data.copy()
-    db = db[db['s'] <= 1]
+    #db = db[db['s'] <= 1]
     #db = db.tail(4)
     db = db[['game','home','away']]
     db = index_reset(db)
