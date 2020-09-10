@@ -1,15 +1,15 @@
 team,name,number,position,minutes,cs,saves,shots faced,claimed crosses,overall,new_overall
 FFC,Baj Maan,31,g,90,0,6,8,1,0.18,0.9
-PFC,Callum Irving,13,g,90,0,5,6,1,0.66,0.7
+PFC,Callum Irving,13,g,90,0,4,6,1,0.74,0.63
 PFC,Nolan Wirth,1,g,90,0,4,6,0,0.18,0.57
 ATO,Ignacio Zabal Almazán,1,g,90,0,3,5,0,0.86,0.43
-FFC,Triston Henry,1,g,90,0,3,4,1,0.69,0.43
-HFX,Christian Oxner,50,g,90,0,4,4,0,0.51,0.43
 VFC,James Pantemis,1,g,90,0,3,4,0,0.78,0.37
+HFX,Christian Oxner,50,g,90,0,3,4,0,0.59,0.37
 HFX,Jason Beaulieu,1,g,90,0,3,4,0,0.22,0.37
 FCE,Dylon Powley,13,g,90,0,3,4,0,0.07,0.37
+FFC,Triston Henry,1,g,90,0,2,4,0,0.75,0.3
 FCE,Connor James,1,g,90,0,2,4,0,0.52,0.3
 CFC,Nikolas Giantsopoulos,22,g,90,0,2,3,1,0.12,0.3
 Y9,Nathan Ingham,29,g,90,0,2,3,0,0.65,0.23
-CFC,Marco Carducci,1,g,90,0,1,2,0,0.5,0.1
+CFC,Marco Carducci,1,g,90,0,1,2,0,0.55,0.1
 Y9,Ezequiel Carrasco,37,g,90,0,1,2,0,0.04,0.1
