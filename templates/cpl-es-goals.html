@@ -2,7 +2,7 @@
 {% block content %}
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse grey-blue-m w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+<nav class="w3-sidebar w3-collapse {{ theme }}-m w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
       <img src="static/images/flags/CPL-Crest-White.png" class="w3-circle w3-margin-right" style="width:46px">
@@ -22,7 +22,7 @@
     <a href="{{ url_for('teams') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-shield fa-fw"></i>  Teams</a>
     <a href="{{ url_for('radar') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-line-chart fa-fw"></i>  Radar Charts</a>
     <a href="{{ url_for('eleven') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Best Eleven</a>
-    <a href="{{ url_for('goals') }}" class="w3-bar-item w3-button w3-padding blue-l"><i class="fa fa-soccer-ball-o fa-fw"></i>  Goals and Assists</a>
+    <a href="{{ url_for('goals') }}" class="w3-bar-item w3-button w3-padding {{ theme }}-blue-l"><i class="fa fa-soccer-ball-o fa-fw"></i>  Goals and Assists</a>
     <a href="{{ url_for('forwards') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-scissors-o fa-fw"></i>  Forwards</a>
     <a href="{{ url_for('forwards_90') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-scissors-o fa-fw"></i>  Forwards Per 90</a>
     <a href="{{ url_for('midfielders') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-grab-o fa-fw"></i>  Midfielders</a>
@@ -52,7 +52,7 @@
           <!-- table header -->
           <div class="w3-half">
             <div>
-              <table class="blue-l">
+              <table class="{{ theme }}-blue-l">
                 <tr>
                   <td><b>rank / team</b></td>
                   <td><b>name</b></td>
@@ -62,7 +62,7 @@
           </div>
             <div class="w3-half">
               <div>
-                <table class="blue-l">
+                <table class="{{ theme }}-blue-l">
                   <tr>
                     <td><b>Pos</b></td>
                     <td><b>#</b></td>
@@ -77,7 +77,7 @@
       {%for i in range(0,html_table.shape[0])%}
         <div class="w3-half">
           <div>
-            <table class="grey-blue-m">
+            <table class="{{ theme }}-m">
               <tr>
                 <td>{{ html_table.iloc[i][0] }} / {{ html_table.iloc[i][1] }}</td>
                 <td style="width:75%;">{{ html_table.iloc[i][2] }}</td>
@@ -87,12 +87,12 @@
         </div>
         <div class="w3-half">
           <div>
-            <table class="grey-blue-l">
+            <table class="{{ theme }}-l">
               <tr>
                 <td>{{ html_table.iloc[i][3] }}</td>
                 <td>{{ html_table.iloc[i][4] }}</td>
                 <td>{{ html_table.iloc[i][5] }}</td>
-                <td class="w3-grey w3-text-white"><b>{{ html_table.iloc[i][6] }}</b></td>
+                <td class="{{ theme }}-grey"><b>{{ html_table.iloc[i][6] }}</b></td>
               </tr>
             </table>
           </div>
@@ -106,7 +106,7 @@
             <!-- table header -->
             <div class="w3-half">
               <div>
-                <table class="w3-green">
+                <table class="{{ theme }}-green">
                   <tr>
                     <td><b>rank / team</b></td>
                     <td><b>name</b></td>
@@ -116,7 +116,7 @@
             </div>
               <div class="w3-half">
                 <div>
-                  <table class="w3-green">
+                  <table class="{{ theme }}-green">
                     <tr>
                       <td><b>Pos</b></td>
                       <td><b>#</b></td>
@@ -131,7 +131,7 @@
         {%for i in range(0,assists_table.shape[0])%}
           <div class="w3-half">
             <div>
-              <table class="grey-blue-m">
+              <table class="{{ theme }}-m">
                 <tr>
                   <td>{{ assists_table.iloc[i][0] }} / {{ assists_table.iloc[i][1] }}</td>
                   <td></td>
@@ -142,12 +142,12 @@
           </div>
           <div class="w3-half">
             <div>
-              <table class="grey-blue-l">
+              <table class="{{ theme }}-l">
                 <tr>
                   <td>{{ assists_table.iloc[i][3] }}</td>
                   <td>{{ assists_table.iloc[i][4] }}</td>
                   <td >{{ assists_table.iloc[i][5] }}</td>
-                  <td class="w3-grey w3-text-white"><b>{{ assists_table.iloc[i][6] }}</b></td>
+                  <td class="{{ theme }}-grey"><b>{{ assists_table.iloc[i][6] }}</b></td>
                 </tr>
               </table>
             </div>

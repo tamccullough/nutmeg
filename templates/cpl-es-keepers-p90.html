@@ -2,7 +2,7 @@
 {% block content %}
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse grey-blue-m w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+<nav class="w3-sidebar w3-collapse {{ theme }}-m w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
       <img src="static/images/flags/CPL-Crest-White.png" class="w3-circle w3-margin-right" style="width:46px">
@@ -30,7 +30,7 @@
     <a href="{{ url_for('defenders') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-stop-o fa-fw"></i>  Defenders</a>
     <a href="{{ url_for('defenders_90') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-stop-o fa-fw"></i>  Defenders Per 90</a>
     <a href="{{ url_for('keepers') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-child fa-fw"></i>  Goal Keepers</a>
-    <a href="{{ url_for('keepers_90') }}" class="w3-bar-item w3-button w3-padding blue-l"><i class="fa fa-child fa-fw"></i>  Goal Keepers Per 90</a>
+    <a href="{{ url_for('keepers_90') }}" class="w3-bar-item w3-button w3-padding {{ theme }}-blue-l"><i class="fa fa-child fa-fw"></i>  Goal Keepers Per 90</a>
     <a href="{{ url_for('discipline') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-copy fa-fw"></i>  Discipline</a><br><br>
   </div>
 </nav>
@@ -50,7 +50,7 @@
     <!-- table header -->
     <div class="w3-half">
       <div>
-        <table class="blue-l">
+        <table class="{{ theme }}-blue-l">
           <tr>
             <td><b>team / #</b></td>
             <td style="width:75%;"><b>{{ columns[1] }}</b></td>
@@ -60,7 +60,7 @@
     </div>
       <div class="w3-half">
         <div>
-          <table class="blue-l">
+          <table class="{{ theme }}-blue-l">
             <tr>
               <td><b>MIN</b></td>
               <td><b>CS</b></td>
@@ -79,7 +79,7 @@
     {%for i in range(0,html_table.shape[0])%}
       <div class="w3-half">
         <div>
-          <table class="grey-blue-m">
+          <table class="{{ theme }}-m">
             <tr>
               <td>{{ html_table.at[i, 'team'] }} / {{ html_table.at[i,'number'] }}</td>
               <td style="width:75%;"><b>{{ html_table.at[i,'name'] }}</b></td>
@@ -89,14 +89,14 @@
       </div>
       <div class="w3-half">
         <div>
-          <table class="grey-blue-l">
+          <table class="{{ theme }}-l">
             <tr>
               <td>90</td>
               <td>{{ html_table.at[i, 'cs'] }}</td>
               <td>{{ html_table.at[i, 'saves'] }}</td>
               <td>{{ html_table.at[i, 'shots faced'] }}</td>
               <td>{{ html_table.at[i, 'claimed crosses'] }}</td>
-              <td class="w3-grey w3-text-white"><b>{{ html_table.at[i, 'new_overall'] }}</b></td>
+              <td class="{{ theme }}-grey"><b>{{ html_table.at[i, 'new_overall'] }}</b></td>
             </tr>
           </table>
         </div>

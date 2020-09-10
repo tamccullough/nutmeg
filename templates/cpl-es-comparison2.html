@@ -2,7 +2,7 @@
 {% block content %}
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse grey-blue-m w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+<nav class="w3-sidebar w3-collapse {{ theme }}-m w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
       <img src="static/images/flags/CPL-Crest-White.png" class="w3-circle w3-margin-right" style="width:46px">
@@ -18,11 +18,12 @@
     <a href="{{ url_for('index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-dashboard fa-fw"></i>  Dashboard</a>
     <a href="{{ url_for('standings') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-trophy fa-fw"></i>  Standings</a>
     <a href="{{ url_for('power') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bolt fa-fw"></i>  Power Rankings</a>
-    <a href="{{ url_for('comparison1') }}" class="w3-bar-item w3-button w3-padding blue-l"><i class="fa fa-eye fa-fw"></i>  Match Prediction</a>
+    <a href="{{ url_for('comparison1') }}" class="w3-bar-item w3-button w3-padding {{ theme }}-blue-l"><i class="fa fa-eye fa-fw"></i>  Match Prediction</a>
     <a href="{{ url_for('teams') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-shield fa-fw"></i>  Teams</a>
     <a href="{{ url_for('radar') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-line-chart fa-fw"></i>  Radar Charts</a>
     <a href="{{ url_for('eleven') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Best Eleven</a>
     <a href="{{ url_for('goals') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-soccer-ball-o fa-fw"></i>  Goals and Assists</a>
+    <a href="{{ url_for('forwards') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-scissors-o fa-fw"></i>  Forwards</a>
     <a href="{{ url_for('forwards_90') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-scissors-o fa-fw"></i>  Forwards Per 90</a>
     <a href="{{ url_for('midfielders') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-grab-o fa-fw"></i>  Midfielders</a>
     <a href="{{ url_for('midfielders_90') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-grab-o fa-fw"></i>  Midfielders Per 90</a>
@@ -31,6 +32,7 @@
     <a href="{{ url_for('keepers') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-child fa-fw"></i>  Goal Keepers</a>
     <a href="{{ url_for('keepers_90') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-child fa-fw"></i>  Goal Keepers Per 90</a>
     <a href="{{ url_for('discipline') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-copy fa-fw"></i>  Discipline</a><br><br>
+  </div>
 </nav>
 
 <!-- Overlay effect when opening sidebar on small screens -->
@@ -48,10 +50,10 @@
     <form method="POST" action="/versus-">
       <table style="width:100%;">
         <tr>
-          <td class="w3-cyan" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home1" name="home" value="{{ group1 }}"/></a></td>
-          <td class="w3-light-green" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home1" name="home" value="{{ group2 }}"/></a></td>
-          <td class="w3-cyan" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home1" name="home" value="{{ group3 }}"/></a></td>
-          <td class="w3-light-green" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home1" name="home" value="{{ group4 }}"/></a></td>
+          <td class="{{ theme }}-blue-l" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home1" name="home" value="{{ group1 }}"/></a></td>
+          <td class="{{ theme }}-green" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home1" name="home" value="{{ group2 }}"/></a></td>
+          <td class="{{ theme }}-blue-l" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home1" name="home" value="{{ group3 }}"/></a></td>
+          <td class="{{ theme }}-green" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home1" name="home" value="{{ group4 }}"/></a></td>
         </tr>
       </table>
     </form>
@@ -71,13 +73,13 @@
         </table>
       </div>
       {% if home_win > away_win %}
-      <div class="w3-container w3-padding w3-green">
+      <div class="w3-container w3-padding {{ theme }}-green">
         <h4 style="width:50%" class="w3-left">{{ home_win }}% Win</h4>
       {% elif home_win == away_win %}
-      <div class="w3-container w3-padding w3-orange">
+      <div class="w3-container w3-padding {{ theme }}-orange">
         <h4 style="width:50%" class="w3-left">{{ draw }}% Draw</h4>
       {% else %}
-      <div class="w3-container w3-padding w3-red">
+      <div class="w3-container w3-padding {{ theme }}-red">
         <h4 style="width:50%" class="w3-left">{{ home_win }}% Loss</h4>
       {% endif %}
         <h4 style="text-align:right; width:50%" class="w3-right">Score: {{home_score}}</h4>
@@ -86,9 +88,9 @@
         <div class="{{ home_colour }}"><a> Current Form</a></div>
         <table style="width:100%;">
           <tr>
-            <td style="padding: 15px 5px;" class="w3-green"> {{ home_form.loc[0] }}</td>
-            <td style="padding: 15px 5px;" class="w3-red"> {{ home_form.loc[1] }}</td>
-            <td style="padding: 15px 5px;" class="w3-text-white w3-orange"> {{ home_form.loc[2] }}</td>
+            <td style="padding: 15px 5px;" class="{{ theme }}-green"> {{ home_form.loc[0] }}</td>
+            <td style="padding: 15px 5px;" class="{{ theme }}-red"> {{ home_form.loc[1] }}</td>
+            <td style="padding: 15px 5px;" class="{{ theme }}-orange"> {{ home_form.loc[2] }}</td>
           </tr>
         </table>
       </div>
@@ -98,13 +100,13 @@
         </div>
         <table>
           <tr>
-            <td style="padding: 15px 5px;" class="w3-green"> {{ home_history['w'].values[0] }}</td>
-            <td style="padding: 15px 5px;" class="w3-red"> {{ home_history['l'].values[0] }}</td>
-            <td style="padding: 15px 5px;" class="w3-text-white w3-orange"> {{ home_history['d'].values[0] }}</td>
+            <td style="padding: 15px 5px;" class="{{ theme }}-green"> {{ home_history['w'].values[0] }}</td>
+            <td style="padding: 15px 5px;" class="{{ theme }}-red"> {{ home_history['l'].values[0] }}</td>
+            <td style="padding: 15px 5px;" class="{{ theme }}-text-white {{ theme }}-orange"> {{ home_history['d'].values[0] }}</td>
           </tr>
         </table>
       <h5>Recommended Starting 11</h5>
-        <table class="grey-blue-m">
+        <table class="{{ theme }}-m">
           {%for i in range(0,home_table.shape[0])%}
           <tr>
               {%for r in range(home_table.shape[1])%}
@@ -136,13 +138,13 @@
         </table>
       </div>
       {% if home_win > away_win %}
-      <div class="w3-container w3-padding w3-red">
+      <div class="w3-container w3-padding {{ theme }}-red">
         <h4 style="width:50%" class="w3-left">{{ away_win }}% Loss</h4>
       {% elif home_win == away_win %}
-      <div class="w3-container w3-padding w3-orange">
+      <div class="w3-container w3-padding {{ theme }}-orange">
         <h4 style="width:50%" class="w3-left">{{ draw }}% Draw</h4>
       {% else %}
-      <div class="w3-container w3-padding w3-green">
+      <div class="w3-container w3-padding {{ theme }}-green">
         <h4 style="width:50%" class="w3-left">{{ away_win }}% Win</h4>
       {% endif %}
         <h4 style="text-align:right; width:50%" class="w3-right">Score: {{away_score}}</h4>
@@ -151,9 +153,9 @@
         <div class="{{ away_colour }}"><a> Current Form</a></div>
         <table style="width:100%;">
           <tr>
-            <td style="padding: 15px 5px;" class="w3-green"> {{ away_form.loc[0] }}</td>
-            <td style="padding: 15px 5px;" class="w3-red"> {{ away_form.loc[1] }}</td>
-            <td style="padding: 15px 5px;" class="w3-text-white w3-orange"> {{ away_form.loc[2] }}</td>
+            <td style="padding: 15px 5px;" class="{{ theme }}-green"> {{ away_form.loc[0] }}</td>
+            <td style="padding: 15px 5px;" class="{{ theme }}-red"> {{ away_form.loc[1] }}</td>
+            <td style="padding: 15px 5px;" class="{{ theme }}-orange"> {{ away_form.loc[2] }}</td>
           </tr>
         </table>
       </div>
@@ -163,13 +165,13 @@
         </div>
         <table>
           <tr>
-            <td style="padding: 15px 5px;" class="w3-green"> {{ away_history['w'].values[0] }}</td>
-            <td style="padding: 15px 5px;" class="w3-red"> {{ away_history['l'].values[0] }}</td>
-            <td style="padding: 15px 5px;" class="w3-text-white w3-orange"> {{ away_history['d'].values[0] }}</td>
+            <td style="padding: 15px 5px;" class="{{ theme }}-green"> {{ away_history['w'].values[0] }}</td>
+            <td style="padding: 15px 5px;" class="{{ theme }}-red"> {{ away_history['l'].values[0] }}</td>
+            <td style="padding: 15px 5px;" class="{{ theme }}-orange"> {{ away_history['d'].values[0] }}</td>
           </tr>
         </table>
         <h5>Recommended Starting 11</h5>
-        <table class="grey-blue-m">
+        <table class="{{ theme }}-m">
           {%for i in range(0,away_table.shape[0])%}
           <tr>
               {%for r in range(away_table.shape[1])%}
