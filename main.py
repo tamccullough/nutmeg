@@ -110,7 +110,7 @@ def index():
         top_team, top_mover, top_dropper, first_crest, top_crest, bot_crest, first_colour = na, na, na, 'CPL-Crest-White.png', 'oneSoccer_nav.png', 'canNat_icon.png', 'w3-indigo'
 
     champs = year + ' Champions TBD'
-    suspended = 'João Morelli Neto'
+    suspended = 'Jay Wheeldon'
 
     return render_template('cpl-es-index.html',top_mover = top_mover, top_dropper = top_dropper,
     goals = goals,  assists = assists, yellows = yellows, reds = reds,
@@ -282,6 +282,7 @@ def comparison1():
 
 
     team1, team2, team3, team4, team5, team6, team7, team8 = cpl_main.get_team_files(schedule,team_ref)
+    print(team1, team2, team3, team4, team5, team6, team7, team8)
 
     if (home_win < draw) and (away_win < draw):
         home_win, away_win = draw, draw
@@ -291,9 +292,18 @@ def comparison1():
     draw = round(round(draw,3)*100,3)
 
     group1 = team1 + '-' + team2
-    group2 = team3 + '-' + team4
-    group3 = team5 + '-' + team6
-    group4 = team7 + '-' + team8
+    if team3 == 1:
+        group2 = 1
+        group3 = 1
+        group4 = 1
+    else:
+        group2 = team3 + '-' + team4
+        if team5 == 1:
+            group3 = 1
+            group4 = 1
+        else:
+            group3 = team5 + '-' + team6
+            group4 = team7 + '-' + team8
 
     home_sum = home_roster['overall'].sum()
     away_sum = away_roster['overall'].sum()
@@ -365,9 +375,18 @@ def comparison2():
     draw = round(round(draw,3)*100,3)
 
     group1 = team1 + '-' + team2
-    group2 = team3 + '-' + team4
-    group3 = team5 + '-' + team6
-    group4 = team7 + '-' + team8
+    if team3 == 1:
+        group2 = 1
+        group3 = 1
+        group4 = 1
+    else:
+        group2 = team3 + '-' + team4
+        if team5 == 1:
+            group3 = 1
+            group4 = 1
+        else:
+            group3 = team5 + '-' + team6
+            group4 = team7 + '-' + team8
 
     home_sum = home_roster['overall'].sum()
     away_sum = away_roster['overall'].sum()

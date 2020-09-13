@@ -1551,12 +1551,22 @@ def get_game_roster_prediction(get_games,results,stats,team_ref,player_info):
 def get_team_files(schedule,team_ref):
     team1 = get_shortest_name(schedule.iloc[0]['home'],team_ref)
     team2 = get_shortest_name(schedule.iloc[0]['away'],team_ref)
-    team3 = get_shortest_name(schedule.iloc[1]['home'],team_ref)
-    team4 = get_shortest_name(schedule.iloc[1]['away'],team_ref)
-    team5 = get_shortest_name(schedule.iloc[2]['home'],team_ref)
-    team6 = get_shortest_name(schedule.iloc[2]['away'],team_ref)
-    team7 = get_shortest_name(schedule.iloc[3]['home'],team_ref)
-    team8 = get_shortest_name(schedule.iloc[3]['away'],team_ref)
+    try:
+        team3 = get_shortest_name(schedule.iloc[1]['home'],team_ref)
+        team4 = get_shortest_name(schedule.iloc[1]['away'],team_ref)
+    except:
+        team3 = 1
+        team4 = 1
+    try:
+        team5 = get_shortest_name(schedule.iloc[2]['home'],team_ref)
+        team6 = get_shortest_name(schedule.iloc[2]['away'],team_ref)
+        team7 = get_shortest_name(schedule.iloc[3]['home'],team_ref)
+        team8 = get_shortest_name(schedule.iloc[3]['away'],team_ref)
+    except:
+        team5 = 1
+        team6 = 1
+        team7 = 1
+        team8 = 1
 
     return team1, team2, team3, team4, team5, team6, team7, team8
 

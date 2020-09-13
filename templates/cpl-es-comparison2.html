@@ -49,12 +49,23 @@
   <div class="w3-container w3-row-padding w3-margin-bottom">
     <form method="POST" action="/versus-">
       <table style="width:100%;">
+        {% if group2 == 1 %}
+        <tr>
+          <td class="{{ theme }}-blue-l" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home1" name="home" value="{{ group1 }}"/></a></td>
+        </tr>
+        {% elif group3 == 1 %}
+        <tr>
+          <td class="{{ theme }}-blue-l" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home1" name="home" value="{{ group1 }}"/></a></td>
+          <td class="{{ theme }}-green" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home1" name="home" value="{{ group2 }}"/></a></td>
+        </tr>
+        {% else %}
         <tr>
           <td class="{{ theme }}-blue-l" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home1" name="home" value="{{ group1 }}"/></a></td>
           <td class="{{ theme }}-green" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home1" name="home" value="{{ group2 }}"/></a></td>
           <td class="{{ theme }}-blue-l" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home1" name="home" value="{{ group3 }}"/></a></td>
           <td class="{{ theme }}-green" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="w3-button" type="submit" id="home1" name="home" value="{{ group4 }}"/></a></td>
         </tr>
+        {% endif %}
       </table>
     </form>
   </div>
