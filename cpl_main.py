@@ -488,7 +488,7 @@ def get_evaluation(condensed_player_info,full_player_info):
         player = full_player_info[full_player_info['name'] == name].head(1) # get the players details
         a = [] # create an empty array to store the scores
         for check in checks: # iterate through the columns of remaining data
-            result = player.iloc[0][check] / eval_['max'][check] # calculate the score for the value found value/max
+            result = player.iloc[0][check] / (eval_['max'][check]+(eval_['max'][check]*0.15)) # calculate the score for the value found value/max
             result = np.nan_to_num(result)
             a.append(result) # append the result into the list
             overall = str(sum(a) / len(checks)) #calculate the final score sum(list) / num of checks

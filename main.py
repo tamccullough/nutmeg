@@ -109,8 +109,8 @@ def index():
     if results.iloc[0]['hr'] == 'E':
         top_team, top_mover, top_dropper, first_crest, top_crest, bot_crest, first_colour = na, na, na, 'CPL-Crest-White.png', 'oneSoccer_nav.png', 'canNat_icon.png', 'w3-indigo'
 
-    champs = year + ' Champions TBD'
-    suspended = 'Jay Wheeldon'
+    champs = year + ' Finals - Forge VS Wanderers'
+    suspended = 'none'
 
     return render_template('cpl-es-index.html',top_mover = top_mover, top_dropper = top_dropper,
     goals = goals,  assists = assists, yellows = yellows, reds = reds,
@@ -240,7 +240,7 @@ def power():
 def comparison1():
     year = '2020'
     other_year = '2019'
-    headline = 'Last 3 Matches - 1st Potential Match of Second Round'
+    headline = 'Finals - Forge VS Wanderers'
     results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters  = load_main_files(year)
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
 

@@ -1,53 +1,55 @@
 rank,team,name,position,number,minutes,goals
 1,HFX,Akeem Garcia,f,11,667,6
-2,HFX,João Morelli Neto,f,22,391,4
-3,FCE,Easton Ongaro,f,19,480,3
-4,CFC,Nathan Mavila,d,3,621,3
-5,CFC,Jordan Brown,f,9,583,3
-6,FFC,Kyle Bekker,m,10,609,3
-7,PFC,Marco Bustos,m,10,694,3
-8,Y9,Joseph Di Chiara,m,8,540,3
-9,FFC,Daniel Krutzen,d,5,691,2
-10,FFC,Paolo Sabak,m,24,565,2
+2,PFC,Marco Bustos,m,10,784,5
+3,HFX,João Morelli Neto,f,22,481,4
+4,CFC,Jordan Brown,f,9,657,3
+5,PFC,Alejandro Díaz Liceága,f,9,519,3
+6,FCE,Easton Ongaro,f,19,480,3
+7,Y9,Joseph Di Chiara,m,8,540,3
+8,FFC,Kyle Bekker,m,10,699,3
+9,CFC,Nathan Mavila,d,3,709,3
+10,FFC,Alexander Achinioti-Jönsson,m,13,684,2
 11,FFC,Christopher Nanco,f,11,168,2
-12,CFC,Marcus Haber,f,29,417,2
-13,FFC,Alexander Achinioti-Jönsson,m,13,594,2
-14,PFC,Alejandro Díaz Liceága,f,9,445,2
-15,ATO,Francisco Javier Acuña Víctor,m,8,532,2
-16,Y9,Manuel Aparicio,m,10,530,2
-17,ATO,Malcolm Isaiah Shaw,f,19,595,2
-18,FFC,Anthony Novak,f,23,351,2
-19,VFC,Dylan Carreiro,m,10,334,1
-20,VFC,Andrew Jean-Baptiste,d,35,462,1
-21,FCE,Keven Steven Alemán Bustos,m,11,537,1
-22,FCE,Marcus Velado-Tsegaye,f,17,230,1
-23,HFX,Ibrahima Sanoh,f,9,79,1
-24,VFC,Daryl Fordyce,f,16,162,1
-25,HFX,Omar Kreim,m,8,272,1
-26,VFC,José Antonio Galán Pedrosa,m,21,310,1
-27,HFX,Alex De Carolis,d,24,326,1
-28,HFX,Cory Bent,m,23,436,1
-29,HFX,Alessandro Riggi,f,10,401,1
-30,FFC,David Choinière,m,7,415,1
-31,PFC,Zachary Verhoven,m,16,227,1
-32,PFC,Victor Blasco,m,23,603,1
-33,VFC,Moses Dyer,m,6,271,1
-34,FFC,Kwame Awuah,d,6,572,1
-35,PFC,Lukas MacNaughton,d,6,540,1
-36,PFC,Josh Heard,m,11,144,1
+12,CFC,Marcus Haber,f,29,507,2
+13,PFC,Victor Blasco,m,23,619,2
+14,FFC,Anthony Novak,f,23,351,2
+15,Y9,Manuel Aparicio,m,10,530,2
+16,FFC,Paolo Sabak,m,24,638,2
+17,FFC,Daniel Krutzen,d,5,781,2
+18,ATO,Malcolm Isaiah Shaw,f,19,595,2
+19,ATO,Francisco Javier Acuña Víctor,m,8,532,2
+20,VFC,Daryl Fordyce,f,16,162,1
+21,FCE,Marcus Velado-Tsegaye,f,17,230,1
+22,FCE,Keven Steven Alemán Bustos,m,11,537,1
+23,VFC,Andrew Jean-Baptiste,d,35,462,1
+24,VFC,Dylan Carreiro,m,10,334,1
+25,VFC,José Antonio Galán Pedrosa,m,21,310,1
+26,Y9,Álvaro Rivero Sánchez,f,7,360,1
+27,FFC,Kwame Awuah,d,6,662,1
+28,FFC,David Choinière,m,7,438,1
+29,PFC,Zachary Verhoven,m,16,227,1
+30,PFC,Terran Campbell,f,14,454,1
+31,VFC,Moses Dyer,m,6,271,1
+32,FFC,Molham Babouli,f,19,342,1
+33,PFC,Lukas MacNaughton,d,6,630,1
+34,PFC,Josh Heard,m,11,218,1
+35,HFX,Alessandro Riggi,f,10,401,1
+36,HFX,Alex De Carolis,d,24,371,1
 37,PFC,Jamar Dixon,m,22,526,1
-38,VFC,Mastanabal Kacher,f,7,360,1
-39,Y9,Álvaro Rivero Sánchez,f,7,360,1
-40,CFC,Dominick Zator,d,4,810,1
-41,CFC,Nikolas Ledgerwood,m,6,411,1
-42,ATO,Ben Fisk,m,10,601,1
-43,ATO,Mohamed Kourouma,f,9,617,1
-44,ATO,Víctor Martínez Manrique,m,5,540,1
-45,Y9,Lowell Wright,f,80,127,1
-46,Y9,Kyle Porter,m,19,372,1
-47,CFC,Elijah Adekugbe,m,8,548,1
-48,CFC,Jair Ayrton Córdova Carpio,f,19,55,1
-49,CFC,Mohamed Farsi,d,21,521,1
-50,VFC,Fraser Aird,m,33,455,1
-51,CFC,Sergio Camargo,m,10,130,1
-52,VFC,Yohan Le Bourhis,d,4,90,1
+38,HFX,Cory Bent,m,23,481,1
+39,HFX,Ibrahima Sanoh,f,9,124,1
+40,VFC,Mastanabal Kacher,f,7,360,1
+41,VFC,Fraser Aird,m,33,455,1
+42,CFC,Elijah Adekugbe,m,8,638,1
+43,CFC,Nikolas Ledgerwood,m,6,411,1
+44,ATO,Ben Fisk,m,10,601,1
+45,ATO,Mohamed Kourouma,f,9,617,1
+46,ATO,Víctor Martínez Manrique,m,5,540,1
+47,Y9,Lowell Wright,f,80,127,1
+48,Y9,Kyle Porter,m,19,372,1
+49,CFC,Dominick Zator,d,4,900,1
+50,CFC,Jair Ayrton Córdova Carpio,f,19,71,1
+51,CFC,Mohamed Farsi,d,21,611,1
+52,HFX,Omar Kreim,m,8,362,1
+53,VFC,Yohan Le Bourhis,d,4,90,1
+54,CFC,Sergio Camargo,m,10,130,1
