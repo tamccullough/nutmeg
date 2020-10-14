@@ -85,14 +85,14 @@ def index():
     standings_old =pd.read_csv(f'datasets/{year}/cpl-{year}-standings_previous.csv')
     compare_standings = cpl_main.compare_standings(standings,standings_old,team_ref)
 
-    top_team = standings.iloc[0]['team']
+    top_team = 'Forge FC'#standings.iloc[0]['team']
     top_team_info = team_ref[team_ref['team'] == top_team]
     first_colour = top_team_info.iloc[0][4]
     first_crest = top_team_info.iloc[0][5]
-    top_mover = compare_standings.iloc[0]['team']
+    top_mover = 'Cavalry FC'#compare_standings.iloc[0]['team']
     top_crest = team_ref[team_ref['team'] == top_mover]
     top_crest = top_crest.iloc[0][5]
-    top_dropper = compare_standings.iloc[-1]['team']
+    top_dropper = 'FC Edmonton'#compare_standings.iloc[-1]['team']
     bot_crest = team_ref[team_ref['team'] == top_dropper]
     bot_crest = bot_crest.iloc[0][5]
 
@@ -109,7 +109,7 @@ def index():
     if results.iloc[0]['hr'] == 'E':
         top_team, top_mover, top_dropper, first_crest, top_crest, bot_crest, first_colour = na, na, na, 'CPL-Crest-White.png', 'oneSoccer_nav.png', 'canNat_icon.png', 'w3-indigo'
 
-    champs = year + ' Finals - Forge VS Wanderers'
+    champs = year + ' Forge FC 2020 Champions'
     suspended = 'none'
 
     return render_template('cpl-es-index.html',top_mover = top_mover, top_dropper = top_dropper,
@@ -124,7 +124,7 @@ def index():
 
 @canples.route('/dashboard')
 def index_19():
-    na = 'NA'
+    na = 'TBD'
 
     year = '2019'
     other_year = '2020'
