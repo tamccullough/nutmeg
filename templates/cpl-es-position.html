@@ -1,17 +1,18 @@
-{% extends 'base.html' %}
+{% extends 'base-new.html' %}
 {% block content %}
 
 <!-- page content -->
 
   <!-- header -->
   <div class="titlediv">
-    <span><h3><b>Rated {{ position }}</b></h3></span>
-    <span><h4><b>Top 10</b></h4></span>
+    <h3><b>CPL Playoff and Regular Season Standings</b></h3>
   </div>
 
   <!-- body -->
 
   <!-- top position table -->
+  <span><h3><b>Rated {{ position }}</b></h3></span>
+  <span><h4><b>Top 10</b></h4></span>
     <div class="parent {{ theme }}-theme-dark">
 
         <div class="boxtable {{ theme }}-theme-dark">
@@ -29,18 +30,17 @@
                 <td><b>MIN</b></td>
                 <td><b>G</b></td>
                 <td><b>A</b></td>
-                <td><b>Tch</b></td>
-                <td><b>P</b></td>
-                <td><b>P%</b></td>
+                <td><b>Ch</b></td>
+                <td><b>S</b></td>
+                <td><b>SOT</b></td>
               </tr>
             </table>
         </div>
         <div class="boxtable {{ theme }}-theme-dark">
             <table>
               <tr>
-                <td><b>C</b></td>
-                <td><b>C%</b></td>
-                <td><b>Ch</b></td>
+                <td><b>P</b></td>
+                <td><b>X</b></td>
                 <td><b>Dls</b></td>
                 <td><b>Tkl</b></td>
                 <td><b>O</b></td>
@@ -64,21 +64,20 @@
                     <td>{{ html_table.at[i,'minutes'] }}</td>
                     <td>{{ html_table.at[i,'goals'] }}</td>
                     <td>{{ html_table.at[i,'assists'] }}</td>
-                    <td>{{ html_table.at[i,'touches'] }}</td>
-                    <td>{{ html_table.at[i,'passes'] }}</td>
-                    <td>{{ html_table.at[i,'pass-acc'] }}</td>
+                    <td>{{ html_table.at[i,'chances'] }}</td>
+                    <td>{{ html_table.at[i,'shots'] }}</td>
+                    <td>{{ html_table.at[i,'s-target'] }}</td>
                   </tr>
                 </table>
             </div>
             <div class="boxtable {{ theme }}-theme-light">
                 <table>
                   <tr>
+                    <td>{{ html_table.at[i,'passes'] }}</td>
                     <td>{{ html_table.at[i,'crosses'] }}</td>
-                    <td>{{ html_table.at[i,'cross-acc'] }}</td>
-                    <td>{{ html_table.at[i,'chances'] }}</td>
                     <td>{{ html_table.at[i,'duels'] }}</td>
                     <td>{{ html_table.at[i,'tackles'] }}</td>
-                    <td class="{{ theme }}-text-blue"><b>{{ html_table.at[i,'overall'] }}</b></td>
+                    <td class="{{ theme }}-grey"><b>{{ html_table.at[i,'overall'] }}</b></td>
                   </tr>
                 </table>
             </div>
@@ -104,18 +103,17 @@
                   <td><b>MIN</b></td>
                   <td><b>G</b></td>
                   <td><b>A</b></td>
-                  <td><b>Tch</b></td>
-                  <td><b>P</b></td>
-                  <td><b>P%</b></td>
+                  <td><b>Ch</b></td>
+                  <td><b>S</b></td>
+                  <td><b>SOT</b></td>
                 </tr>
               </table>
           </div>
           <div class="boxtable {{ theme }}-theme-dark">
               <table>
                 <tr>
-                  <td><b>C</b></td>
-                  <td><b>C%</b></td>
-                  <td><b>Ch</b></td>
+                  <td><b>P</b></td>
+                  <td><b>X</b></td>
                   <td><b>Dls</b></td>
                   <td><b>Tkl</b></td>
                   <td><b>O</b></td>
@@ -139,21 +137,20 @@
                       <td>{{ html_table.at[i,'minutes'] }}</td>
                       <td>{{ html_table.at[i,'goals'] }}</td>
                       <td>{{ html_table.at[i,'assists'] }}</td>
-                      <td>{{ html_table.at[i,'touches'] }}</td>
-                      <td>{{ html_table.at[i,'passes'] }}</td>
-                      <td>{{ html_table.at[i,'pass-acc'] }}</td>
+                      <td>{{ html_table.at[i,'chances'] }}</td>
+                      <td>{{ html_table.at[i,'shots'] }}</td>
+                      <td>{{ html_table.at[i,'s-target'] }}</td>
                     </tr>
                   </table>
               </div>
               <div class="boxtable {{ theme }}-theme-light">
                   <table>
                     <tr>
+                      <td>{{ html_table.at[i,'passes'] }}</td>
                       <td>{{ html_table.at[i,'crosses'] }}</td>
-                      <td>{{ html_table.at[i,'cross-acc'] }}</td>
-                      <td>{{ html_table.at[i,'chances'] }}</td>
                       <td>{{ html_table.at[i,'duels'] }}</td>
                       <td>{{ html_table.at[i,'tackles'] }}</td>
-                      <td class="{{ theme }}-text-blue"><b>{{ html_table.at[i,'overall'] }}</b></td>
+                      <td class="{{ theme }}-grey"><b>{{ html_table.at[i,'overall'] }}</b></td>
                     </tr>
                   </table>
               </div>

@@ -1,0 +1,111 @@
+/* themes Todd McCullough*/
+
+table {
+  border-collapse: collapse;
+  table-layout:fixed;
+  /*border: 2px solid rgb(200,200,200);*/
+  /*letter-spacing: 4px;*/
+  margin: 0px auto;
+  width:100%;
+}
+
+tr {
+  line-height: 1px;
+  white-space: nowrap;
+}
+
+td, th {
+  /*border: 1px solid rgb(190,190,190);*/
+  padding: 15px 10px;
+}
+
+td {
+  text-align: left;
+}
+
+.headerdiv {
+  min-width: 400px;
+  max-width: 85%;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.maindiv {
+  min-width: 400px;
+  max-width: 850px;
+  height: 90%;
+  min-height: 500px;
+  margin: 0 auto;
+}
+.chatdiv {
+  min-width: 400px;
+  max-width: 85%;
+  min-height:500px;
+  height: 90%;
+  margin: 0 auto;
+}
+
+.titlediv {
+  min-width: 400px;
+  max-width: 85%;
+  height: 50px;
+  margin: 0 auto;
+}
+
+.textdiv {
+  width: 95%;
+  min-height: 100px;
+  margin: 0 auto;
+}
+
+.textcenter{
+  text-align: center;
+}
+
+.inputdiv {
+  min-width: 400px;
+  max-width: 85%;
+  height: 50px;
+  margin: 0 auto;
+}
+
+.inputbox {
+  height: 40px;
+  border: none;
+}
+
+.spacer {
+  height: 10px;
+  border: none;
+  background-color:inherit;
+}
+
+.spacerL {
+  height: 100px;
+  border: none;
+  background-color:inherit;
+}
+
+
+.button {
+  height: 40px;
+  border:none;
+  text-decoration:none;
+  background-color:inherit;
+  cursor:pointer;
+}
+
+.center {
+  margin: auto;
+  display: block;
+}
+
+.xfont{
+  font-size:5em;
+  line-height:0px;
+  height:0px
+}
+
+caption {
+  padding: 10px;
+}

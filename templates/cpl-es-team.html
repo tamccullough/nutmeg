@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- page content -->
+
+  <!-- header -->
+  <div class="titlediv">
+    <h3><b>{{ team }} Charts / Statistics & Information</b></h3>
+  </div>
+
+  <!-- body -->
+
+  <div class="parent {{ html_table.iloc[0,4] }}">
+            <div>
+                  <!-- table header -->
+                  <div class="boxtable {{ theme }}-theme-dark">
+                      <table>
+                        <tr>
+                          <td><b>crest</b></td>
+                          <td><b> team</b></td>
+                          <td><b> city/prov</b></td>
+                        </tr>
+                      </table>
+                  </div>
+                  <div class="boxtable {{ theme }}-theme-dark">
+                      <table>
+                        <tr>
+                          <td><b>wins</b></td>
+                          <td><b>draws</b></td>
+                          <td><b>loses</b></td>
+                        </tr>
+                      </table>
+                  </div>
+                    <div class="boxtable {{ theme }}-theme-dark">
+                        <table>
+                          <tr>
+                            <td><b>Roster</b></td>
+                            <td><b>Club Site</b></td>
+                            <td><b>Wiki Link</b></td>
+                          </tr>
+                        </table>
+                    </div>
+              <!-- end of table header -->
+              <!-- table -->
+                <div class="boxtable {{ html_table.iloc[i,4] }}">
+                  <form method="POST" action="/roster">
+                    <table {{ html_table.iloc[i,4] }}"">
+                      <tr>
+                        <td><img src="static/images/flags/{{ html_table.iloc[0,5] }}" alt="{{ html_table.iloc[0,0] }} Crest" style="max-height:41px"></td>
+                        <td><a href="{{ url_for('roster') }}"><input class="button" type="submit" id="team" name="team" value="{{ html_table.iloc[0,0] }}"/></a></td>
+                        <td>{{ html_table.iloc[0][1] }} {{ html_table.iloc[0][2] }}</td>
+                      </tr>
+                    </table>
+                  </form>
+                </div>
+                <div class="boxtable {{ html_table.iloc[i,4] }}">
+                    <table>
+                      <tr>
+                        <td style="height: 61px; overflow:hidden; text-align: center;">w-{{ html_table.iloc[0][10] }}</td>
+                        <td>d-{{ html_table.iloc[0][12] }}</td>
+                        <td>l-{{ html_table.iloc[0][11] }}</td>
+                      </tr>
+                    </table>
+                </div>
+                <div class="boxtable {{ html_table.iloc[i,4] }}">
+                  <form method="POST" action="/roster">
+                    <table>
+                      <tr>
+                        <td style="height: 61px; overflow:hidden; text-align: center;"><a href="{{ url_for('roster') }}"><input class="button" type="submit" id="team" name="team" value="{{ html_table.iloc[0,0] }}"/></a></td>
+                        <td><a class="button" href="{{ html_table.iloc[0,6] }}" target="_blank">club site</a></td>
+                        <td><a class="button" href="{{ html_table.iloc[0,7] }}" target="_blank">wikipedia</a></td>
+                      </tr>
+                    </table>
+                  </form>
+                </div>
+                <!-- end of table -->
+              </div>
+
+            <div class="box">
+              <img src="static/images/2020/cpl-2020-{{ team }}-radar.png" alt="{{ team }} Radar" style="max-width:300px">
+            </div>
+
+            <div class="box">
+                <table>
+                  <tr>
+                    <td colspan="3"><h5>Rolling Expected</h5></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align:right;"><h5> xG: </h5></td><td><h5> {{ stats.at[0,'xg'] }}</h5></td>
+                    <td style="text-align:right;"><h5> xPPG: </h5></td><td><h5> {{ stats.at[0,'xp'] }}</h5></td>
+                    <td style="text-align:right;"><h5> xPTS: </h5></td><td><h5> {{ stats.at[0,'xt'] }}</h5></td>
+                  </tr>
+                </table>
+
+             <div>
+               <img src="static/images/2020/cpl-2020-Atlético Ottawa-overall-graph.png" alt="team performance" style="max-width:98%">
+             </div>
+            </div>
+
+         </div>
+         <div class="{{ html_table.iloc[0,4] }}" style="height:20px">
+         </div>
+
+
+
+{% endblock %}

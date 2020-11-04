@@ -1,177 +1,125 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse {{ theme }}-m w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
-  <div class="w3-container w3-row">
-    <div class="w3-col s4">
-      <img src="static/images/flags/CPL-Crest-White.png" class="w3-circle w3-margin-right" style="width:46px">
-    </div>
-      <div>
-        <h3>{{ year }} Season</h3>
-      </div>
-    </div>
+<!-- page content -->
 
-  <div class="w3-bar-block">
-    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-    <a href="{{ url_for('index_19') }}" class="w3-bar-item w3-button w3-padding">  Go to 2019 Season</a>
-    <a href="{{ url_for('index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-dashboard fa-fw"></i>  Dashboard</a>
-    <a href="{{ url_for('standings') }}" class="w3-bar-item w3-button w3-padding {{ theme }}-blue-l"><i class="fa fa-trophy fa-fw"></i>  Standings</a>
-    <a href="{{ url_for('power') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bolt fa-fw"></i>  Power Rankings</a>
-    <a href="{{ url_for('comparison1') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Match Prediction</a>
-    <a href="{{ url_for('teams') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-shield fa-fw"></i>  Teams</a>
-    <a href="{{ url_for('radar') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-line-chart fa-fw"></i>  Radar Charts</a>
-    <a href="{{ url_for('eleven') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Best Eleven</a>
-    <a href="{{ url_for('goals') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-soccer-ball-o fa-fw"></i>  Goals and Assists</a>
-    <a href="{{ url_for('forwards') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-scissors-o fa-fw"></i>  Forwards</a>
-    <a href="{{ url_for('forwards_90') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-scissors-o fa-fw"></i>  Forwards Per 90</a>
-    <a href="{{ url_for('midfielders') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-grab-o fa-fw"></i>  Midfielders</a>
-    <a href="{{ url_for('midfielders_90') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-grab-o fa-fw"></i>  Midfielders Per 90</a>
-    <a href="{{ url_for('defenders') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-stop-o fa-fw"></i>  Defenders</a>
-    <a href="{{ url_for('defenders_90') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-stop-o fa-fw"></i>  Defenders Per 90</a>
-    <a href="{{ url_for('keepers') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-child fa-fw"></i>  Goal Keepers</a>
-    <a href="{{ url_for('keepers_90') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-child fa-fw"></i>  Goal Keepers Per 90</a>
-    <a href="{{ url_for('discipline') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-copy fa-fw"></i>  Discipline</a><br><br>
+  <!-- header -->
+  <div class="titlediv">
+    <h3><b>CPL Playoff and Regular Season Standings</b></h3>
   </div>
-</nav>
 
-<!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+  <!-- body -->
 
-<!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+  <!-- regular season -->
+  <span><h3><b>Regular Season</b></h3></span>
+    <div class="parent {{ theme }}-theme-dark">
 
-  <!-- Header -->
-  <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-trophy"></i> CPL Playoff and Regular Season Standings</b></h5>
-  </header>
-
-  <!-- REGULAR SEASON -->
-  <div class="w3-container"><h5> Regular Season</h5></div>
-    <div class="w3-container">
-      <!-- table header -->
-      <div class="w3-half">
-        <div>
-          <table class="{{ theme }}-blue-l">
-            <tr>
-              <td style="width:50%;"><b>rank / team </b></td>
-              <td style="padding: 15px 5px;">MP</b></td>
-              <td style="padding: 15px 5px;">Pts</b></td>
-              <td style="padding: 15px 5px;">PPG</b></td>
-            </tr>
-          </table>
-        </div>
-      </div>
-        <div class="w3-half">
-          <div>
-            <table class="{{ theme }}-blue-l">
+        <div class="boxtableshort {{ theme }}-theme-dark">
+            <table>
               <tr>
-                <td style="padding: 15px 5px;">W</b></td>
-                <td style="padding: 15px 5px;">D</b></td>
-                <td style="padding: 15px 5px;">L</b></td>
-                <td style="padding: 15px 5px;">GD</b></td>
-                <td style="padding: 15px 5px;">GF</b></td>
-                <td style="padding: 15px 5px;">GA</b></td>
+                <td style="width:50%;"><b>rank / team </b></td>
+                <td><b>MP</b></td>
+                <td><b>Pts</b></td>
+                <td><b>PPG</b></td>
               </tr>
             </table>
-          </div>
         </div>
-        <!-- end of table header -->
-    </div>
-    <div class="w3-container">
-        <!-- table -->
-        {%for i in range(0,standings_table.shape[0])%}
-          <div class="w3-half">
-            <div>
-              <table class="{{ theme }}-m">
-                <tr>
-                  <td style="width:50%;">{{ standings_table.iloc[i][0] }} - {{ standings_table.iloc[i][1] }}</b></td>
-                  <td style="padding: 15px 5px;">{{ standings_table.iloc[i][2] }}</td>
-                  <td style="padding: 15px 5px;"><b>{{ standings_table.iloc[i][3] }}</b></td>
-                  <td style="padding: 15px 5px;">{{ standings_table.iloc[i][5] }}</td>
-                </tr>
-              </table>
-            </div>
-          </div>
-          <div class="w3-half">
-            <div>
-              <table class="{{ theme }}-blue">
-                <tr>
-                  <td class="{{ theme }}-green">{{ standings_table.iloc[i][6] }}</td>
-                  <td class="{{ theme }}-orange">{{ standings_table.iloc[i][8] }}</td>
-                  <td class="{{ theme }}-red">{{ standings_table.iloc[i][7] }}</td>
-                  <td style="padding: 15px 5px;">{{ standings_table.iloc[i][9] }}</td>
-                  <td style="padding: 15px 5px;">{{ standings_table.iloc[i][10] }}</td>
-                  <td style="padding: 15px 5px;">{{ standings_table.iloc[i][11] }}</td>
-                </tr>
-              </table>
-            </div>
-          </div>
-          {%endfor%}
-          <!-- end of table -->
-    </div>
 
-  <!-- FORM -->
-  <div class="w3-container"><h5> Form</h5></div>
-    <div class="w3-container">
-      <!-- table header -->
-      <div class="w3-half">
-        <div>
-          <table class="{{ theme }}-blue-l">
-            <tr>
-              <td style="width:60%;"><b>team </b></td>
-              {% for i in range(1,3) %}
-              <td style="padding: 15px 5px;">game {{ i }}</td>
-              {%endfor%}
-            </tr>
-          </table>
+        <div class="boxtableshort {{ theme }}-theme-dark">
+            <table>
+              <tr>
+                <td><b>W</b></td>
+                <td><b>D</b></td>
+                <td><b>L</b></td>
+                <td><b>GD</b></td>
+                <td><b>GF</b></td>
+                <td><b>GA</b></td>
+              </tr>
+            </table>
         </div>
+    </div>
+    <div class="parent {{ theme }}-theme-light">
+            {%for i in range(0,standings_table.shape[0])%}
+            <div class="boxtableshort {{ theme }}-theme-light">
+                <table>
+                  <tr>
+                    <td style="width:50%;">{{ standings_table.iloc[i][0] }} - {{ standings_table.iloc[i][1] }}</td>
+                    <td>{{ standings_table.iloc[i][2] }}</td>
+                    <td>{{ standings_table.iloc[i][3] }}</td>
+                    <td>{{ standings_table.iloc[i][5] }}</td>
+                  </tr>
+                </table>
+            </div>
+
+            <div class="boxtableshort {{ theme }}-theme-light">
+                <table>
+                  <tr>
+                    <td class="{{ theme }}-green">{{ standings_table.iloc[i][6] }}</td>
+                    <td class="{{ theme }}-orange">{{ standings_table.iloc[i][8] }}</td>
+                    <td class="{{ theme }}-red">{{ standings_table.iloc[i][7] }}</td>
+                    <td class="{{ theme }}-text-blue">{{ standings_table.iloc[i][9] }}</td>
+                    <td class="{{ theme }}-text-blue">{{ standings_table.iloc[i][10] }}</td>
+                    <td class="{{ theme }}-text-blue">{{ standings_table.iloc[i][11] }}</td>
+                  </tr>
+                </table>
+            </div>
+            {%endfor%}
       </div>
-        <div class="w3-half">
-          <div>
-            <table class="{{ theme }}-blue-l">
+    <!-- end of regular season-->
+    <!-- form -->
+    <span><h3><b>Form</b></h3></span>
+      <div class="parent {{ theme }}-theme-dark">
+
+          <div class="boxtableshort {{ theme }}-theme-dark">
+              <table>
+                <tr>
+                  <td style="width:60%;"><b>team </b></td>
+                  {% for i in range(1,3) %}
+                  <td>game {{ i }}</td>
+                  {%endfor%}
+                </tr>
+              </table>
+          </div>
+
+          <div class="boxtableshort {{ theme }}-theme-dark">
+            <table>
               <tr>
                 {% for i in range(3,8) %}
-                <td style="padding: 15px 5px;">game {{ i }}</td>
+                <td>game {{ i }}</td>
                 {%endfor%}
               </tr>
             </table>
           </div>
+      </div>
+      <div class="parent {{ theme }}-theme-light">
+              {%for i in range(0,standings_table.shape[0])%}
+              <div class="boxtableshort {{ theme }}-theme-light">
+                <table>
+                  <tr>
+                    <td class="{{ theme }}-text-blue" style="width:60%;">{{ form_table.iloc[i][0] }}</td>
+                    <td class="{{ theme }}-{{'green' if form_table.iloc[i][1][0] == 'W' else 'red' if form_table.iloc[i][1][0] == 'L' else 'orange' if form_table.iloc[i][1][0] == 'D' else '{{ theme }}-m'}}" style="padding: 15px 5px;">{{ form_table.iloc[i][1][0] }}</td>
+                    <td class="{{ theme }}-{{'green' if form_table.iloc[i][2][0] == 'W' else 'red' if form_table.iloc[i][2][0] == 'L' else 'orange' if form_table.iloc[i][2][0] == 'D' else '{{ theme }}-m'}}" style="padding: 15px 5px;">{{ form_table.iloc[i][2][0] }}</td>
+                  </tr>
+                </table>
+              </div>
+
+              <div class="boxtableshort {{ theme }}-theme-light">
+                <table>
+                  <tr>
+                    <td class="{{ theme }}-{{'green' if form_table.iloc[i][3][0] == 'W' else 'red' if form_table.iloc[i][3][0] == 'L' else 'orange' if form_table.iloc[i][3][0] == 'D' else '{{ theme }}-m'}}" style="padding: 15px 5px;">{{ form_table.iloc[i][3][0] }}</td>
+                    <td class="{{ theme }}-{{'green' if form_table.iloc[i][4][0] == 'W' else 'red' if form_table.iloc[i][4][0] == 'L' else 'orange' if form_table.iloc[i][4][0] == 'D' else '{{ theme }}-m'}}" style="padding: 15px 5px;">{{ form_table.iloc[i][4][0] }}</td>
+                    <td class="{{ theme }}-{{'green' if form_table.iloc[i][5][0] == 'W' else 'red' if form_table.iloc[i][5][0] == 'L' else 'orange' if form_table.iloc[i][5][0] == 'D' else '{{ theme }}-m'}}" style="padding: 15px 5px;">{{ form_table.iloc[i][5][0] }}</td>
+                    <td class="{{ theme }}-{{'green' if form_table.iloc[i][6][0] == 'W' else 'red' if form_table.iloc[i][6][0] == 'L' else 'orange' if form_table.iloc[i][6][0] == 'D' else '{{ theme }}-m'}}" style="padding: 15px 5px;">{{ form_table.iloc[i][6][0] }}</td>
+                    <td class="{{ theme }}-{{'green' if form_table.iloc[i][7][0] == 'W' else 'red' if form_table.iloc[i][7][0] == 'L' else 'orange' if form_table.iloc[i][7][0] == 'D' else '{{ theme }}-m'}}" style="padding: 15px 5px;">{{ form_table.iloc[i][7][0] }}</td>
+                  </tr>
+                </table>
+              </div>
+              {%endfor%}
         </div>
-        <!-- end of table header -->
-    </div>
-
-    <div class="w3-container">
-        <!-- table -->
-        {%for i in range(0,form_table.shape[0])%}
-          <div class="w3-half">
-            <div>
-              <table>
-                <tr>
-                  <td class="{{ theme }}-m" style="width:60%;">{{ form_table.iloc[i][0] }}</td>
-                  <td class="{{ theme }}-{{'green' if form_table.iloc[i][1][0] == 'W' else 'red' if form_table.iloc[i][1][0] == 'L' else 'orange' if form_table.iloc[i][1][0] == 'D' else '{{ theme }}-m'}}" style="padding: 15px 5px;">{{ form_table.iloc[i][1][0] }}</td>
-                  <td class="{{ theme }}-{{'green' if form_table.iloc[i][2][0] == 'W' else 'red' if form_table.iloc[i][2][0] == 'L' else 'orange' if form_table.iloc[i][2][0] == 'D' else '{{ theme }}-m'}}" style="padding: 15px 5px;">{{ form_table.iloc[i][2][0] }}</td>
-                </tr>
-              </table>
-            </div>
-          </div>
-          <div class="w3-half">
-            <div>
-              <table>
-                <tr>
-                  <td class="{{ theme }}-{{'green' if form_table.iloc[i][3][0] == 'W' else 'red' if form_table.iloc[i][3][0] == 'L' else 'orange' if form_table.iloc[i][3][0] == 'D' else '{{ theme }}-m'}}" style="padding: 15px 5px;">{{ form_table.iloc[i][3][0] }}</td>
-                  <td class="{{ theme }}-{{'green' if form_table.iloc[i][4][0] == 'W' else 'red' if form_table.iloc[i][4][0] == 'L' else 'orange' if form_table.iloc[i][4][0] == 'D' else '{{ theme }}-m'}}" style="padding: 15px 5px;">{{ form_table.iloc[i][4][0] }}</td>
-                  <td class="{{ theme }}-{{'green' if form_table.iloc[i][5][0] == 'W' else 'red' if form_table.iloc[i][5][0] == 'L' else 'orange' if form_table.iloc[i][5][0] == 'D' else '{{ theme }}-m'}}" style="padding: 15px 5px;">{{ form_table.iloc[i][5][0] }}</td>
-                  <td class="{{ theme }}-{{'green' if form_table.iloc[i][6][0] == 'W' else 'red' if form_table.iloc[i][6][0] == 'L' else 'orange' if form_table.iloc[i][6][0] == 'D' else '{{ theme }}-m'}}" style="padding: 15px 5px;">{{ form_table.iloc[i][6][0] }}</td>
-                  <td class="{{ theme }}-{{'green' if form_table.iloc[i][7][0] == 'W' else 'red' if form_table.iloc[i][7][0] == 'L' else 'orange' if form_table.iloc[i][7][0] == 'D' else '{{ theme }}-m'}}" style="padding: 15px 5px;">{{ form_table.iloc[i][7][0] }}</td>
-                </tr>
-              </table>
-            </div>
-          </div>
-          {%endfor%}
-          <!-- end of table -->
-
-    </div>
+      <!-- end of form-->
 
 
-  {% endblock %}
+
+
+
+{% endblock %}

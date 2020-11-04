@@ -1,117 +1,74 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse {{ theme }}-m w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
-  <div class="w3-container w3-row">
-    <div class="w3-col s4">
-      <img src="static/images/flags/CPL-Crest-White.png" class="w3-circle w3-margin-right" style="width:46px">
+<!-- page content -->
+
+  <!-- header -->
+  <div class="titlediv">
+    <form method="POST" action="/roster">
+      <table>
+        <tr>
+          <td><h3><b>Player Information - {{ name }}</b></h3></td>
+          <td class="textright"><a href="{{ url_for('roster') }}"><input class="text-white button" type="submit" id="team" name="team" value="{{ html_table.iloc[0,0] }}"/></a></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
+    <!-- profile section including photo -->
+  <div class="parent {{ team_colour }}">
+
+    <div class="box center">
+        <img src="static/images/players/2020/{{ html_table.at[0,'image'] }}" alt="{{ html_table.iloc[0,5] }}" style="max-width:80%">
     </div>
-      <div>
-        <h3>{{ year }} Season</h3>
+
+    <div class="box center">
+      <img src="static/images/2020/player_graphs/{{ radar }}" alt="player radar" style="max-width:90%">
+    </div>
+
+    <div class="box center">
+      <img src="static/images/2020/player_graphs/{{ graph }}" alt="player performance" style="max-width:90%">
+    </div>
+
+      <div class="boxtable">
+      <table>
+        <tr>
+          <td><a><img src="static/images/flags/{{ html_table.at[0,'flag'] }}" alt="{{ html_table.iloc[0,2] }}" style="max-height:30px"><a></td>
+          <td>{{ nationality }}</td>
+          <td>{{ html_table.at[0,'overall'] }}**</td>
+        </tr>
+      </table>
+      </div>
+      <div class="boxtable">
+        <table>
+          <tr>
+            <td>MIN: {{ html_table.at[0,'minutes'] }}</td>
+            <td>xG: {{ html_table.at[0,'xG'] }}**</td>
+            <td>xA: {{ html_table.at[0,'xA'] }}**</td>
+          </tr>
+        </table>
+      </div>
+      <div class="boxtable">
+        <table>
+          <tr>
+            <td>Y: {{ html_table.at[0,'yellow'] }}</td>
+            <td>R: {{ html_table.at[0,'red'] }}</td>
+            <td>#: {{ html_table.at[0,'number'] }}</td>
+            <td>{{ html_table.at[0,'position'] }}</td>
+          </tr>
+        </table>
       </div>
     </div>
 
-  <div class="w3-bar-block">
-    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-    <a href="{{ url_for('index_19') }}" class="w3-bar-item w3-button w3-padding">  Go to 2019 Season</a>
-    <a href="{{ url_for('index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-dashboard fa-fw"></i>  Dashboard</a>
-    <a href="{{ url_for('standings') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-trophy fa-fw"></i>  Standings</a>
-    <a href="{{ url_for('power') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bolt fa-fw"></i>  Power Rankings</a>
-    <a href="{{ url_for('comparison1') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Match Prediction</a>
-    <a href="{{ url_for('teams') }}" class="w3-bar-item w3-button w3-padding {{ theme }}-blue-l"><i class="fa fa-shield fa-fw"></i>  Teams</a>
-    <a href="{{ url_for('radar') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-line-chart fa-fw"></i>  Radar Charts</a>
-    <a href="{{ url_for('eleven') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Best Eleven</a>
-    <a href="{{ url_for('goals') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-soccer-ball-o fa-fw"></i>  Goals and Assists</a>
-    <a href="{{ url_for('forwards') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-scissors-o fa-fw"></i>  Forwards</a>
-    <a href="{{ url_for('forwards_90') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-scissors-o fa-fw"></i>  Forwards Per 90</a>
-    <a href="{{ url_for('midfielders') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-grab-o fa-fw"></i>  Midfielders</a>
-    <a href="{{ url_for('midfielders_90') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-grab-o fa-fw"></i>  Midfielders Per 90</a>
-    <a href="{{ url_for('defenders') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-stop-o fa-fw"></i>  Defenders</a>
-    <a href="{{ url_for('defenders_90') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-stop-o fa-fw"></i>  Defenders Per 90</a>
-    <a href="{{ url_for('keepers') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-child fa-fw"></i>  Goal Keepers</a>
-    <a href="{{ url_for('keepers_90') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-child fa-fw"></i>  Goal Keepers Per 90</a>
-    <a href="{{ url_for('discipline') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-copy fa-fw"></i>  Discipline</a><br><br>
-</nav>
-
-<!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
-
-<!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:300px;margin-top:43px;">
-
-  <!-- Header -->
-  <header class="w3-container" style="padding-top:22px">
-    <div class="w3-half">
-      <h5><b><i class="fa fa-users"></i> Player Information - {{ name }}</b></h5>
-    </div>
-    <div class="w3-half" style="text-align: right">
-      <form method="POST" action="/roster">
-        <a class="w3-button" href="{{ url_for('roster') }}"><input class="w3-button" type="submit" id="team" name="team" value="{{ html_table.iloc[0,0] }}"/></a>
-        </form>
-    </div>
-  </header>
-
-  <section>
-  <div class="w3-container">
-
-    <!-- profile section including photo -->
-      <div class="w3-container {{ team_colour }}">
-        <div class="w3-third">
-          <div class="w3-center">
-              <img src="static/images/players/2020/{{ html_table.at[0,'image'] }}" alt="{{ html_table.iloc[0,5] }}" style="max-width:80%">
-          </div>
-        </div>
-
-        <div class="w3-third w3-center">
-          <img src="static/images/2020/player_graphs/{{ radar }}" alt="player radar" style="max-width:90%">
-        </div>
-
-        <div class="w3-third w3-center">
-          <img src="static/images/2020/player_graphs/{{ graph }}" alt="player performance" style="max-width:90%">
-        </div>
-
-
-        <div class="w3-container {{ team_colour }}">
-          <div class="w3-third">
-          <table>
-            <tr>
-              <td><a><img src="static/images/flags/{{ html_table.at[0,'flag'] }}" alt="{{ html_table.iloc[0,2] }}" style="max-height:30px"><a></td>
-              <td>{{ nationality }}</td>
-              <td>{{ html_table.at[0,'overall'] }}**</td>
-            </tr>
-          </table>
-          </div>
-          <div class="w3-third">
-          <table>
-            <tr>
-              <td style="height:50px">MIN: {{ html_table.at[0,'minutes'] }}</td>
-              <td>xG: {{ html_table.at[0,'xG'] }}**</td>
-              <td>xA: {{ html_table.at[0,'xA'] }}**</td>
-            </tr>
-          </table>
-          </div>
-          <div class="w3-third">
-          <table>
-            <tr>
-              <td style="height:50px">Y: {{ html_table.at[0,'yellow'] }}</td>
-              <td>R: {{ html_table.at[0,'red'] }}</td>
-              <td>#: {{ html_table.at[0,'number'] }}</td>
-              <td>{{ html_table.at[0,'position'] }}</td>
-            </tr>
-          </table>
-          </div>
-        </div>
-
-      <div class="w3-container {{ team_colour }}">
+      <div class="parent {{ team_colour }}">
         <!-- graph section -->
-          <div>
-              <div><h5>{{ year }} Rolling Statistics</h5></div>
+          <div class="titlediv">
+              <h3>{{ year }} Rolling Statistics</h3>
           </div>
 
         <!-- table section -->
-          <div class="w3-half">
-            <table style="width: 100%;">
+          <div class="boxtable">
+            <table>
                 <tr>
                   <td>Goals: {{ html_table.at[0,'goals'] }}</td>
                   <td>Assists: {{ html_table.at[0,'assists'] }}</td>
@@ -139,8 +96,8 @@
               </table>
           </div>
 
-          <div class="w3-half">
-            <table style="width: 100%;">
+          <div class="boxtable">
+            <table>
                 <tr>
                   <td>Duels: {{ html_table.at[0,'duels'] }}</td>
                   <td>Duels Won: {{ html_table.at[0,'d-won'] }}</td>
@@ -167,17 +124,18 @@
                 </tr>
               </table>
             </div>
-
-            <div>
-               <a class="w3-button w3-right" href="{{ html_table.iloc[0,33] }}" target="_blank"><b> Wiki Link</b></a>
-           </div>
-
-           <div>
-             <a style="font-size:10px">**NOTE: Overall, xG & xA are rolling results. Altered after each match played.</a>
+        </div>
+            <div class=" {{ team_colour }}">
+              <div class="spacer"></div>
+              <table>
+                <tr>
+                  <td><a>**NOTE: Overall, xG & xA are rolling results. Altered after each match played.</a></td>
+                  <td class="textright"><a class="text-white button" href="{{ html_table.iloc[0,33] }}" target="_blank"><b> Wiki Link</b></a></td>
+                </tr>
+             </table>
+             <div class="spacer"></div>
            </div>
          <!-- end of graph and table section -->
-         </div>
   </div>
-  </section>
 
 {% endblock %}

@@ -3,144 +3,142 @@
 <title>CanPL Stats</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="static/css/w3.css">
+<link rel="stylesheet" href="static/css/nav.css">
 <link rel="stylesheet" href="static/css/style.css">
 <link rel="stylesheet" href="static/css/themes.css">
-<link rel="stylesheet" href="static/css/w3-colors-vivid.css">
 <link rel="stylesheet" href="static/css/team-colours.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link  rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 <!-- link rel="stylesheet" href="static/css/font-awesome.min.css" -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato&family=Montserrat&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
 
-html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
-
-table {
-  border-collapse: collapse;
-  table-layout:fixed;
-  /*border: 2px solid rgb(200,200,200);*/
-  /*letter-spacing: 4px;*/
-  margin: 0px auto;
-  width:100%;
+html,h1,h2,h3 {
+  font-family: "Lato", sans-serif
 }
 
-tr {
-  line-height: 1px;
-  white-space: nowrap;
-}
-
-td, th {
-  /*border: 1px solid rgb(190,190,190);*/
-  padding: 10px 5px;
-}
-
-td {
-  text-align: left;
-}
-
-.button {
-  border:none;
-  padding:8px 0px;
-  text-decoration:none;
-  color:inherit;
-  background-color:inherit;
-  cursor:pointer;
-}
-
-caption {
-  padding: 10px;
+body,h4,h5,a {
+  font-family: 'Montserrat', sans-serif;
 }
 
 </style>
 
-<body class="{{ theme }}-d">
-
 <!-- Top container -->
-<div class="w3-bar w3-top {{ theme }}-d w3-large" style="z-index:4">
-  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
-  <span class="w3-bar-item w3-center">CPL FAN ANALYSIS</span>
-</div>
+<div class="container">
+  <body class="{{ theme }}-theme">
 
+    <nav class="{{ theme }}-theme-dark" role="navigation" id="navmenu">
+      <ul>
+        <li class="{{ theme }}-theme-dark"><b><a href="{{ url_for('index') }}">CanPL Stats</b></a></li>
+        <li><a href="#">Season</a>
+          <ul class="dropdown">
+            <li><a href="{{ url_for('index') }}">2020</a></li>
+            <li><a href="{{ url_for('index_19') }}">2019</a></li>
+          </ul>
+        </li>
+        <li><a href="{{ url_for('teams') }}">Teams</a>
+          <ul class="dropdown">
+            <form method="POST" action="/roster">
+            <li><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="Atlético Ottawa"/></a></li>
+            <li><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="Cavalry FC"/></a></li>
+            <li><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="FC Edmonton"/></a></li>
+            <li><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="Forge FC"/></a></li>
+            <li><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="HFX Wanderers FC"/></a></li>
+            <li><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="Pacific FC"/></a></li>
+            <li><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="Valour FC"/></a></li>
+            <li><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="York9 FC"/></a></li>
+            </form>
+          </ul>
+        </li>
+        <li><a href="{{ url_for('standings') }}">Analysis</a>
+          <ul class="dropdown">
+            <li><a href="{{ url_for('standings') }}">Standings</a></li>
+            <li><a href="{{ url_for('power') }}">Power Rankings</a></li>
+            <li><a href="{{ url_for('comparison1') }}">Match Prediction</a></li>
+            <li><a href="{{ url_for('radar') }}">Radar Charts</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Positions</a>
+          <ul class="dropdown">
+            <li><a href="{{ url_for('eleven') }}">Best Eleven</a></li>
+            <li><a href="{{ url_for('forwards') }}">Forwards</a></li>
+            <li><a href="{{ url_for('midfielders') }}">Midfielders</a></li>
+            <li><a href="{{ url_for('defenders') }}">Defenders</a></li>
+            <li><a href="{{ url_for('keepers') }}">Goal Keepers</a></li>
+          </ul>
+        </li>
+        <li><a href="{{ url_for('goals') }}">Goals & Assists</a></li>
+        <li><a href="{{ url_for('discipline') }}">Discipline</a></li>
+      </ul>
 
-{% block content %}{% endblock %}
+      <select class="{{ theme }}-theme-dark button">
+        <option><a href="{{ url_for('index') }}">&#xf0c9;</a></option>
+        <option><a href="{{ url_for('index_19') }}">2019 Season</a></option>
+        <option><a href="{{ url_for('index') }}">Dashboard</a></option>
+        <option><a href="{{ url_for('teams') }}">Teams</a></option>
+        <option><a href="{{ url_for('standings') }}">Standings</a></option>
+        <option><a href="{{ url_for('power') }}">Power Rankings</a></option>
+        <option><a href="{{ url_for('comparison1') }}">Match Prediction</a></option>
+        <option><a href="{{ url_for('radar') }}">Radar Charts</a></option>
+        <option><a href="{{ url_for('eleven') }}">Best Eleven</a></option>
+        <option><a href="{{ url_for('forwards') }}">Forwards</a></option>
+        <option><a href="{{ url_for('midfielders') }}">Midfielders</a></option>
+        <option><a href="{{ url_for('defenders') }}">Defenders</a></option>
+        <option><a href="{{ url_for('keepers') }}">Goal Keepers</a></option>
+        <option><a href="{{ url_for('goals') }}">Goals and Assists</a></option>
+        <option><a href="{{ url_for('discipline') }}">Discipline</a></option>
+      </select>
 
+    </nav>
+
+  {% block content %}{% endblock %}
+
+  </body>
 <!-- league information container -->
-
-  <br>
-  <div class="w3-container {{ theme }}-d w3-padding-32">
-    <div class="w3-row">
-      <div class="w3-container w3-third">
-        <h5 class="bottombar blue-bar">Canadian Premier League</h5>
-        <a href="https://canpl.ca/" target="_blank" class="button">official site</a><br>
+  <div class="parent">
+      <div class="box">
+        <h3 class="bottombar blue-bar">Canadian Premier League</h3>
+        <a class="{{ theme }}-button-l button" href="https://canpl.ca/" target="_blank">official site</a><br>
         <a>Toronto, Canada</a>
       </div>
-      <div class="w3-container w3-third">
-        <h5 class="bottombar pink-bar">One Soccer</h5>
-        <a href="https://onesoccer.ca/" target="_blank" class="button">official tv partner</a><br>
+      <div class="box">
+        <h3 class="bottombar pink-bar">One Soccer</h3>
+        <a class="{{ theme }}-button-l button" href="https://onesoccer.ca/" target="_blank">official tv partner</a><br>
         <a>Toronto, Canada</a>
       </div>
-      <div class="w3-container w3-third">
-        <h5 class="bottombar green-bar">Team Links</h5>
+      <div class="box">
+        <h3 class="bottombar green-bar">Team Links</h3>
         <table>
           <tr>
-            <td><a href="https://atleticoottawa.canpl.ca/" target="_blank"  class="button">Atletico Ottawa</a></td>
-            <td><a href="https://cavalryfc.canpl.ca/" target="_blank" class="button">Cavalry FC</a></td>
+            <td><a class="{{ theme }}-button-l button" href="https://atleticoottawa.canpl.ca/" target="_blank">Atletico Ottawa</a></td>
+            <td><a class="{{ theme }}-button-l button" href="https://cavalryfc.canpl.ca/" target="_blank">Cavalry FC</a></td>
           </tr>
           <tr>
-            <td><a href="https://fcedmonton.canpl.ca/" target="_blank" class="button">FC Edmonton</a></td>
-            <td><a href="https://forgefc.canpl.ca/" target="_blank" class="button">Forge FC</a></td>
+            <td><a class="{{ theme }}-button-l button" href="https://fcedmonton.canpl.ca/" target="_blank">FC Edmonton</a></td>
+            <td><a class="{{ theme }}-button-l button" href="https://forgefc.canpl.ca/" target="_blank">Forge FC</a></td>
           </tr>
           <tr>
-            <td><a href="https://hfxwanderersfc.canpl.ca/" target="_blank" class="button">HFX Wanderers Fc</a></td>
-            <td><a href="https://pacificfc.canpl.ca/" target="_blank" class="button">Pacific FC</a></td>
+            <td><a class="{{ theme }}-button-l button" href="https://hfxwanderersfc.canpl.ca/" target="_blank">HFX Wanderers Fc</a></td>
+            <td><a class="{{ theme }}-button-l button" href="https://pacificfc.canpl.ca/" target="_blank">Pacific FC</a></td>
           </tr>
           <tr>
-            <td><a href="https://valourfc.canpl.ca/" target="_blank" class="button">Valour FC</a></td>
-            <td><a href="https://york9fc.canpl.ca/" target="_blank" class="button">York9 FC</a></td>
+            <td><a class="{{ theme }}-button-l button" href="https://valourfc.canpl.ca/" target="_blank">Valour FC</a></td>
+            <td><a class="{{ theme }}-button-l button" href="https://york9fc.canpl.ca/" target="_blank">York9 FC</a></td>
           </tr>
-      </table>
+        </table>
       </div>
-    </div>
   </div>
 
   <!-- Footer -->
-  <footer class="w3-container w3-padding-16 {{ theme }}-d">
+  <div class="spacer"></div>
+  <footer class="{{ theme }}-theme">
     <a> Todd McCullough</a>
-    <a href="https://twitter.com/tamccullough" target="_blank"><i class="fa fa-twitter"></i></a>
-    <a href="https://twitter.com/tamccullough" target="_blank"><i class="fa fa-github"></i></a>
-    <a href="https://twitter.com/tamccullough" target="_blank"><i class="fa fa-linkedin"></i></a>
-    <p class="w3-text-grey">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+    <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{ theme }}-button-l fa fa-twitter"></i></a>
+    <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{ theme }}-button-l fa fa-github"></i></a>
+    <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{ theme }}-button-l fa fa-linkedin"></i></a>
   </footer>
 
   <!-- End page content -->
 </div>
-
-<script>
-// Get the Sidebar
-var mySidebar = document.getElementById("mySidebar");
-
-// Get the DIV with overlay effect
-var overlayBg = document.getElementById("myOverlay");
-
-// Toggle between showing and hiding the sidebar, and add overlay effect
-function w3_open() {
-  if (mySidebar.style.display === 'block') {
-    mySidebar.style.display = 'none';
-    overlayBg.style.display = "none";
-  } else {
-    mySidebar.style.display = 'block';
-    overlayBg.style.display = "block";
-  }
-}
-
-// Close the sidebar with the close button
-function w3_close() {
-  mySidebar.style.display = "none";
-  overlayBg.style.display = "none";
-}
-</script>
-
-</body>
 </html>

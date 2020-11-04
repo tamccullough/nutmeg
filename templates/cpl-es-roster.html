@@ -1,110 +1,66 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse {{ theme }}-m w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
-  <div class="w3-container w3-row">
-    <div class="w3-col s4">
-      <img src="static/images/flags/CPL-Crest-White.png" class="w3-circle w3-margin-right" style="width:46px">
-    </div>
-      <div>
-        <h3>{{ year }} Season</h3>
-      </div>
-    </div>
+<!-- page content -->
 
-  <div class="w3-bar-block">
-    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-    <a href="{{ url_for('index_19') }}" class="w3-bar-item w3-button w3-padding">  Go to 2019 Season</a>
-    <a href="{{ url_for('index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-dashboard fa-fw"></i>  Dashboard</a>
-    <a href="{{ url_for('standings') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-trophy fa-fw"></i>  Standings</a>
-    <a href="{{ url_for('power') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bolt fa-fw"></i>  Power Rankings</a>
-    <a href="{{ url_for('comparison1') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Match Prediction</a>
-    <a href="{{ url_for('teams') }}" class="w3-bar-item w3-button w3-padding {{ theme }}-blue-l"><i class="fa fa-shield fa-fw"></i>  Teams</a>
-    <a href="{{ url_for('radar') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-line-chart fa-fw"></i>  Radar Charts</a>
-    <a href="{{ url_for('eleven') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Best Eleven</a>
-    <a href="{{ url_for('goals') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-soccer-ball-o fa-fw"></i>  Goals and Assists</a>
-    <a href="{{ url_for('forwards') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-scissors-o fa-fw"></i>  Forwards</a>
-    <a href="{{ url_for('forwards_90') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-scissors-o fa-fw"></i>  Forwards Per 90</a>
-    <a href="{{ url_for('midfielders') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-grab-o fa-fw"></i>  Midfielders</a>
-    <a href="{{ url_for('midfielders_90') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-grab-o fa-fw"></i>  Midfielders Per 90</a>
-    <a href="{{ url_for('defenders') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-stop-o fa-fw"></i>  Defenders</a>
-    <a href="{{ url_for('defenders_90') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hand-stop-o fa-fw"></i>  Defenders Per 90</a>
-    <a href="{{ url_for('keepers') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-child fa-fw"></i>  Goal Keepers</a>
-    <a href="{{ url_for('keepers_90') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-child fa-fw"></i>  Goal Keepers Per 90</a>
-    <a href="{{ url_for('discipline') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-copy fa-fw"></i>  Discipline</a><br><br>
+  <!-- header -->
+  <div class="titlediv">
+    <h3><b>{{ team_name }} - Roster (click name to view)</b></h3>
   </div>
-</nav>
 
-<!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
-
-<!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:300px;margin-top:43px;">
-
-  <!-- Header -->
-  <header class="w3-container" style="padding-top:22px">
-      <div class="w3-half"><h5><b><i class="fa fa-users"></i> {{ team_name }} - Roster (click name to view)</b></h5></div>
-    <div class="w3-half" style="text-align: right"><a href="{{ url_for('teams') }}"><b><input class="w3-button" value="Return to Teams"/></b></a></div>
-  </header>
-
-
-  <div class="w3-container w3-row-padding">
-    <div>
+  <!-- body -->
+  <div class="parent">
       {%for i in range(0,html_table.shape[0])%}
-      <div class="w3-quarter w3-card-4 {{ team_colour }}">
-        <div class="w3-container w3-center">
+      <div class="boxsmall {{ team_colour }}">
         <form method="POST" action="/player">
-          <div class="w3-center {{ team_colour }}">
+          <div  style="text-align: center;">
             <img src="static/images/players/2020/{{ html_table.iloc[i,0] }}" alt="{{ html_table.iloc[i,1] }}" style="max-height:200px">
           </div>
           <table>
             <tr>
-              <td style="padding: 5px 5px;"><p><img src="static/images/flags/{{ html_table.iloc[i,6] }}" alt="{{ html_table.iloc[i,6] }}" style="max-height:20px"></p></td>
-              <td style="padding: 5px 5px;"><h4>{{ html_table.iloc[i,3] }}</h4></td>
+              <td style="text-align: center;"><img src="static/images/flags/{{ html_table.iloc[i,6] }}" alt="{{ html_table.iloc[i,6] }}" style="max-height:20px"></td>
+              <td><h3>{{ html_table.iloc[i,3] }}</h3></td>
             </tr>
             <tr>
-              <td colspan="2"><h5 href="{{ url_for('player') }}"><input class="button" type="submit" id="name" name="name" value="{{ html_table.iloc[i,8] }}"></h5></td>
+              <td colspan="2"><h3 href="{{ url_for('player') }}"><input class="text-white button" type="submit" id="name" name="name" value="{{ html_table.iloc[i,8] }}"></h3></td>
             </tr>
             <tr style="min-width:120px">
               {% if html_table.iloc[i,4] == 'f' %}
-                  <td style="padding: 5px 5px;"><p>Attacker</p></td>
+                  <td><a>Attacker</a></td>
               {% elif html_table.iloc[i,4] == 'm' %}
-                  <td style="padding: 5px 5px;"><p>Midfielder</p></td>
+                  <td><a>Midfielder</a></td>
               {% elif html_table.iloc[i,4] == 'd' %}
-                  <td style="padding: 5px 5px;"><p>Defender</p></td>
+                  <td><a>Defender</a></td>
               {% else %}
-                  <td style="padding: 5px 5px;"><p>Goalkeeper</p></td>
+                  <td><a>Goalkeeper</a></td>
               {% endif %}
-              <td style="padding: 5px 5px;"><p>Overall {{ html_table.iloc[i,5] }}</p></td>
+              <td><a>Overall {{ html_table.iloc[i,5] }}</a></td>
             </tr>
           </table>
         </form>
-        </div>
       </div>
       {%endfor%}
-    </div>
   </div>
 
-  <div class="w3-container w3-row-padding">
+  <div class="parent">
     <div>
-      <div class="w3-half w3-card-4 {{ team_colour }}">
-        <div class="w3-center">
-            <img src="static/images/players/2020/{{ coach['image'].values[0] }}" alt="{{ coach['coach'].values[0] }}" style="max-height:200px">
-          </a>
+      <div class="box {{ team_colour }}">
+        <div class="center">
+            <a><img src="static/images/players/2020/{{ coach['image'].values[0] }}" alt="{{ coach['coach'].values[0] }}" style="max-height:200px"></a>
         </div>
-        <div class="w3-container {{ theme }}-m">
+        <div>
         <form method="POST" action="/player">
           <table>
             <tr>
-              <td style="padding: 5px 5px;"><p><img src="static/images/flags/{{ coach['country'].values[0] }}" alt="{{ coach['country'].values[0][:-4] }}" style="max-height:20px"></p></td>
-              <td style="padding: 5px 5px;"><p>{{ coach['coach'].values[0] }}</p></td>
+              <td><p><img src="static/images/flags/{{ coach['country'].values[0] }}" alt="{{ coach['country'].values[0][:-4] }}" style="max-height:20px"></p></td>
+              <td><p>{{ coach['coach'].values[0] }}</p></td>
             </tr>
           </table>
           <table>
             <tr>
-              <td style="padding: 5px 5px;"><a>Wins {{ coach['w'].values[0]}}</a></td>
-              <td style="padding: 5px 5px;"><a>Losses {{ coach['l'].values[0] }}</a></td>
-              <td style="padding: 5px 5px;"><a>Draws {{ coach['d'].values[0] }}</a></td>
+              <td><a>Wins {{ coach['w'].values[0]}}</a></td>
+              <td><a>Losses {{ coach['l'].values[0] }}</a></td>
+              <td><a>Draws {{ coach['d'].values[0] }}</a></td>
             </tr>
           </table>
             <br>

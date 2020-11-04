@@ -16,7 +16,7 @@ cpl_score_model = pickle.load(open(regressor, 'rb'))
 
 canples = Flask(__name__)
 
-theme = 'mono'
+theme = 'blue'
 
 def convert_num_str(num):
     num = str(num*100)
@@ -32,6 +32,9 @@ def load_main_files(year):
     current_teams = team_ref['team']
     results_old = results[results['hr'] != 'E'].copy()
     results_diff = pd.concat([results, results_old]).drop_duplicates(keep=False)
+    if results_diff.empty:
+        results_diff = results_old.tail(1)
+    print('THE DIFF \n',results_diff,'\n')
     schedule = cpl_main.get_schedule(results_diff) # from results create the schedule dataset
     team_stats = pd.read_csv(f'datasets/{year}/cpl-{year}-team_stats.csv')
     colours = team_ref['colour']
@@ -97,6 +100,7 @@ def index():
     bot_crest = bot_crest.iloc[0][5]
 
     game_week, goals, big_win, top_result, low_result, other_result, assists, yellows, reds = cpl_main.get_weeks_results(results[results['s'] <= 1],standings,stats,team_ref)
+    assists, yellows, reds = int(assists), int(yellows), int(reds)
 
     top_forward = rated_forwards.loc[0]
     top_midfielder = rated_midfielders.loc[0]
@@ -109,7 +113,7 @@ def index():
     if results.iloc[0]['hr'] == 'E':
         top_team, top_mover, top_dropper, first_crest, top_crest, bot_crest, first_colour = na, na, na, 'CPL-Crest-White.png', 'oneSoccer_nav.png', 'canNat_icon.png', 'w3-indigo'
 
-    champs = year + ' Forge FC 2020 Champions'
+    champs = f'{top_team} - {year} Champions'
     suspended = 'none'
 
     return render_template('cpl-es-index.html',top_mover = top_mover, top_dropper = top_dropper,
@@ -145,8 +149,8 @@ def index_19():
     top_dropper = 'HFX Wanderers FC'
     bot_crest = team_ref[team_ref['team'] == top_dropper].iloc[0][5]
 
-    #game_week, goals, big_win, top_result, low_result, other_result, assists, yellows, reds = cpl_main.get_weeks_results(results[results['s'] <= 1],standings,stats,team_ref)
-    goals, assists, yellows, reds = 248, 166, 307, 17
+    game_week, goals, big_win, top_result, low_result, other_result, assists, yellows, reds = cpl_main.get_weeks_results(results[results['s'] <= 1],standings,stats,team_ref)
+    assists, yellows, reds = int(assists), int(yellows), int(reds)
 
     top_forward = rated_forwards.loc[0]
     top_midfielder = rated_midfielders.loc[0]
@@ -157,10 +161,11 @@ def index_19():
     top_keeper = top_keeper.reset_index().loc[0]
     top_offender = rated_offenders.loc[0]
 
-    champs = 'Forge FC 2019 Champions'
+    champs = f'{top_team} - {year} Champions'
 
     return render_template('/2019/cpl-es-index.html',top_mover = top_mover, top_dropper = top_dropper,
     goals = goals,  assists = assists, yellows = yellows, reds = reds,
+    big_win = big_win, top_result = top_result, low_result = low_result, other_result = other_result,
     top_team = top_team, top_keeper = top_keeper,top_forward = top_forward,
     top_midfielder = top_midfielder, top_defender = top_defender,
     top_scorer = top_scorer, top_assist = top_assist, top_offender = top_offender,
@@ -209,8 +214,15 @@ def eleven():
         replace = player_info[player_info['display'] == name]['name'].values[0]
         names.append(replace)
     best_eleven['full_name'] = names
+    attackers = best_eleven[best_eleven['position'] == 'f']
+    midfield = best_eleven[best_eleven['position'] == 'm']
+    midfield = midfield.sort_values(by='overall')
+    print(midfield[['full_name','overall']])
+    defenders = best_eleven[best_eleven['position'] == 'd']
+    keeper = best_eleven[best_eleven['position'] == 'g']
 
     return render_template('cpl-es-best_eleven.html',html_table = best_eleven, year = year, other_year = other_year,
+    attackers = attackers, defenders = defenders, midfield = midfield, keeper = keeper,
     theme = theme)
 
 @canples.route('/best11-2019')
@@ -225,7 +237,13 @@ def eleven_19():
         replace = player_info[player_info['display'] == name]['name'].values[0]
         names.append(replace)
     best_eleven['full_name'] = names
+    attackers = best_eleven[best_eleven['position'] == 'f']
+    midfield = best_eleven[best_eleven['position'] == 'm']
+    defenders = best_eleven[best_eleven['position'] == 'd']
+    keeper = best_eleven[best_eleven['position'] == 'g']
+
     return render_template('cpl-es-best_eleven.html',html_table = best_eleven, year = year, other_year = other_year,
+    attackers = attackers, defenders = defenders, midfield = midfield, keeper = keeper,
     theme = theme)
 
 @canples.route('/power-rankings')
@@ -254,6 +272,7 @@ def comparison1():
     home_crest = home_team_info.iloc[0][5]
 
     game_info = schedule[schedule['home'] == q1]
+    print(game_info)
     game = game_info.iloc[0]['game']
 
     # away side
@@ -464,6 +483,7 @@ def roster():
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
     team = request.form['team']
     roster_team_info = team_ref[team_ref['team'] == team]
+    print('HERE\n',roster_team_info,'DONE\n')
     roster_colour = roster_team_info.iloc[0][4]
     roster = cpl_main.get_roster_overall(team,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info)
     roster2 = player_info[player_info['team'] == team]
@@ -496,7 +516,8 @@ def roster():
         roster.insert(2,'last',last)
     print(roster.columns)
 
-    return render_template('cpl-es-roster.html',team_name = team, coach = coach, html_table = roster, team_colour = roster_colour, year = year, crest = crest, other_year = other_year,
+    return render_template('cpl-es-roster.html',team_name = team, coach = coach,
+    html_table = roster, team_colour = roster_colour, year = year, crest = crest, other_year = other_year,
     theme = theme)
 
 @canples.route('/roster-2019', methods=['POST'])
@@ -514,7 +535,8 @@ def roster_19():
     roster = cpl_main.get_roster_overall(team,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info)
     crest = roster_team_info.iloc[0][5]
     coach = roster_team_info[['coach','country','image','w','l','d']]
-    return render_template('2019/cpl-es-roster.html',team_name = team, coach = coach, html_table = roster, team_colour = roster_colour, year = year, crest = crest, other_year = other_year,
+    return render_template('2019/cpl-es-roster.html',team_name = team, coach = coach,
+    html_table = roster, team_colour = roster_colour, year = year, crest = crest, other_year = other_year,
     theme = theme)
 
 @canples.route('/player', methods=['POST'])
@@ -622,9 +644,12 @@ def goals_19():
 def forwards():
     year = '2020'
     other_year = '2019'
+    position = 'Forwards'
     rated_forwards = pd.read_csv(f'datasets/{year}/cpl-{year}-forwards.csv')
     columns = rated_forwards.columns
-    return render_template('cpl-es-forwards.html',columns = columns,html_table = rated_forwards, year = year, other_year = other_year,
+    return render_template('cpl-es-forwards.html',
+    position = position,
+    columns = columns,html_table = rated_forwards, year = year, other_year = other_year,
     theme = theme)
 
 @canples.route('/forwardsP90')
@@ -658,9 +683,12 @@ def forwards_19_90():
 def midfielders():
     year = '2020'
     other_year = '2019'
+    position = 'Midfielders'
     rated_midfielders = pd.read_csv(f'datasets/{year}/cpl-{year}-midfielders.csv')
     columns = rated_midfielders.columns
-    return render_template('cpl-es-midfielders.html',columns = columns,html_table = rated_midfielders, year = year, other_year = other_year,
+    return render_template('cpl-es-midfielders.html',
+    position = position,
+    columns = columns,html_table = rated_midfielders, year = year, other_year = other_year,
     theme = theme)
 
 @canples.route('/midfieldersP90')
@@ -669,7 +697,8 @@ def midfielders_90():
     other_year = '2019'
     rated_midfielders = pd.read_csv(f'datasets/{year}/cpl-{year}-midfielders-p90.csv')
     columns = rated_midfielders.columns
-    return render_template('cpl-es-midfielders-p90.html',columns = columns,html_table = rated_midfielders, year = year, other_year = other_year,
+    return render_template('cpl-es-midfielders-p90.html',
+    columns = columns,html_table = rated_midfielders, year = year, other_year = other_year,
     theme = theme)
 
 @canples.route('/midfielders-2019')
@@ -694,9 +723,12 @@ def midfielders_19_90():
 def defenders():
     year = '2020'
     other_year = '2019'
+    position = 'Defenders'
     rated_defenders = pd.read_csv(f'datasets/{year}/cpl-{year}-defenders.csv')
     columns = rated_defenders.columns
-    return render_template('cpl-es-defenders.html',columns = columns,html_table = rated_defenders, year = year, other_year = other_year,
+    return render_template('cpl-es-defenders.html',
+    position = position,
+    columns = columns,html_table = rated_defenders, year = year, other_year = other_year,
     theme = theme)
 
 @canples.route('/defendersP90')
@@ -730,9 +762,12 @@ def defenders_19_90():
 def keepers():
     year = '2020'
     other_year = '2019'
+    position = 'Goal Keepers'
     rated_keepers = pd.read_csv(f'datasets/{year}/cpl-{year}-keepers.csv')
     columns = rated_keepers.columns
-    return render_template('cpl-es-keepers.html',columns = columns,html_table = rated_keepers, year = year, other_year = other_year,
+    return render_template('cpl-es-keepers.html',
+    position = position,
+    columns = columns,html_table = rated_keepers, year = year, other_year = other_year,
     theme = theme)
 
 @canples.route('/keepersP90')
