@@ -13,28 +13,26 @@
       {%for i in range(0,html_table.shape[0])%}
       <div class="boxsmall {{ team_colour }}">
         <form method="POST" action="/player">
+          <span><h3 href="{{ url_for('player') }}"><input class="{{ team_colour }} button" type="submit" id="name" name="name" value="{{ html_table.iloc[i,8] }}"></h3><span>
           <div  style="text-align: center;">
             <img src="static/images/players/2020/{{ html_table.iloc[i,0] }}" alt="{{ html_table.iloc[i,1] }}" style="max-height:200px">
           </div>
           <table>
             <tr>
-              <td style="text-align: center;"><img src="static/images/flags/{{ html_table.iloc[i,6] }}" alt="{{ html_table.iloc[i,6] }}" style="max-height:20px"></td>
-              <td><h3>{{ html_table.iloc[i,3] }}</h3></td>
+              <td style="text-align: center;"><img src="static/images/flags/{{ html_table.iloc[i,6] }}" alt="{{ html_table.iloc[i,6] }}" style="max-height:30px"></td>
+              <td style="text-align: center;"><h3>{{ html_table.iloc[i,3] }}</h3></td>
             </tr>
             <tr>
-              <td colspan="2"><h3 href="{{ url_for('player') }}"><input class="text-white button" type="submit" id="name" name="name" value="{{ html_table.iloc[i,8] }}"></h3></td>
-            </tr>
-            <tr style="min-width:120px">
               {% if html_table.iloc[i,4] == 'f' %}
-                  <td><a>Attacker</a></td>
+                  <td style="text-align: center;"><a>Attacker</a></td>
               {% elif html_table.iloc[i,4] == 'm' %}
-                  <td><a>Midfielder</a></td>
+                  <td style="text-align: center;"><a>Midfielder</a></td>
               {% elif html_table.iloc[i,4] == 'd' %}
-                  <td><a>Defender</a></td>
+                  <td style="text-align: center;"><a>Defender</a></td>
               {% else %}
-                  <td><a>Goalkeeper</a></td>
+                  <td style="text-align: center;"><a>Goalkeeper</a></td>
               {% endif %}
-              <td><a>Overall {{ html_table.iloc[i,5] }}</a></td>
+              <td style="text-align: center;"><a>Overall {{ html_table.iloc[i,5] }}</a></td>
             </tr>
           </table>
         </form>
@@ -44,7 +42,9 @@
 
   <div class="parent">
     <div>
+      <span><h3>{{ team_name }} Head Coach</h3></span>
       <div class="box {{ team_colour }}">
+        <span><h3 style="text-indent: 50px;">{{ coach['coach'].values[0] }}</h3><span>
         <div class="center">
             <a><img src="static/images/players/2020/{{ coach['image'].values[0] }}" alt="{{ coach['coach'].values[0] }}" style="max-height:200px"></a>
         </div>
@@ -52,12 +52,7 @@
         <form method="POST" action="/player">
           <table>
             <tr>
-              <td><p><img src="static/images/flags/{{ coach['country'].values[0] }}" alt="{{ coach['country'].values[0][:-4] }}" style="max-height:20px"></p></td>
-              <td><p>{{ coach['coach'].values[0] }}</p></td>
-            </tr>
-          </table>
-          <table>
-            <tr>
+              <td style="text-align: center;"><p ><img src="static/images/flags/{{ coach['country'].values[0] }}" alt="{{ coach['country'].values[0][:-4] }}" style="max-height:30px"></p></td>
               <td><a>Wins {{ coach['w'].values[0]}}</a></td>
               <td><a>Losses {{ coach['l'].values[0] }}</a></td>
               <td><a>Draws {{ coach['d'].values[0] }}</a></td>
