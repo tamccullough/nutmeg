@@ -30,14 +30,14 @@ body,h4,h5,a {
 
     <nav class="{{ theme }}-theme-dark" role="navigation" id="navmenu">
       <ul>
-        <li class="{{ theme }}-theme-dark"><b><a href="{{ url_for('index') }}">CanPL Stats</b></a></li>
-        <li><a href="#">Season</a>
+        <li><b><a class="{{ theme }}-button-l button" href="{{ url_for('index') }}">CanPL Stats</b></a></li>
+        <li><a class="{{ theme }}-button-l button" href="#">Season</a>
           <ul class="dropdown">
-            <li><a href="{{ url_for('index') }}">2020</a></li>
-            <li><a href="{{ url_for('index_19') }}">2019</a></li>
+            <li><a class="{{ theme }}-button-l button" href="{{ url_for('index') }}">2020</a></li>
+            <li><a class="{{ theme }}-button-l button" href="{{ url_for('index_19') }}">2019</a></li>
           </ul>
         </li>
-        <li><a href="{{ url_for('teams') }}">Teams</a>
+        <li><a class="{{ theme }}-button-l button" href="{{ url_for('teams') }}">Teams</a>
           <ul class="dropdown">
             <form method="POST" action="/roster">
             <li><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="Atlético Ottawa"/></a></li>
@@ -51,29 +51,29 @@ body,h4,h5,a {
             </form>
           </ul>
         </li>
-        <li><a href="{{ url_for('standings') }}">Analysis</a>
+        <li><a class="{{ theme }}-button-l button" href="{{ url_for('standings') }}">Analysis</a>
           <ul class="dropdown">
-            <li><a href="{{ url_for('standings') }}">Standings</a></li>
-            <li><a href="{{ url_for('power') }}">Power Rankings</a></li>
-            <li><a href="{{ url_for('comparison1') }}">Match Prediction</a></li>
-            <li><a href="{{ url_for('radar') }}">Radar Charts</a></li>
+            <li><a class="{{ theme }}-button-l button" href="{{ url_for('standings') }}">Standings</a></li>
+            <li><a class="{{ theme }}-button-l button" href="{{ url_for('power') }}">Power Rankings</a></li>
+            <li><a class="{{ theme }}-button-l button" href="{{ url_for('comparison1') }}">Match Prediction</a></li>
+            <li><a class="{{ theme }}-button-l button" href="{{ url_for('radar') }}">Radar Charts</a></li>
           </ul>
         </li>
-        <li><a href="#">Positions</a>
+        <li><a class="{{ theme }}-button-l button" href="#">Positions</a>
           <ul class="dropdown">
-            <li><a href="{{ url_for('eleven') }}">Best Eleven</a></li>
-            <li><a href="{{ url_for('forwards') }}">Forwards</a></li>
-            <li><a href="{{ url_for('forwards_90') }}">Forwards per 90</a></li>
-            <li><a href="{{ url_for('midfielders') }}">Midfielders</a></li>
-            <li><a href="{{ url_for('midfielders_90') }}">Midfielders per 90</a></li>
-            <li><a href="{{ url_for('defenders') }}">Defenders</a></li>
-            <li><a href="{{ url_for('defenders_90') }}">Defenders per 90</a></li>
-            <li><a href="{{ url_for('keepers') }}">Goal Keepers</a></li>
-            <li><a href="{{ url_for('keepers_90') }}">Goal Keepers per 90</a></li>
+            <li><a class="{{ theme }}-button-l button" href="{{ url_for('eleven') }}">Best Eleven</a></li>
+            <li><a class="{{ theme }}-button-l button" href="{{ url_for('forwards') }}">Forwards</a></li>
+            <li><a class="{{ theme }}-button-l button" href="{{ url_for('forwards_90') }}">Forwards per 90</a></li>
+            <li><a class="{{ theme }}-button-l button" href="{{ url_for('midfielders') }}">Midfielders</a></li>
+            <li><a class="{{ theme }}-button-l button" href="{{ url_for('midfielders_90') }}">Midfielders per 90</a></li>
+            <li><a class="{{ theme }}-button-l button" href="{{ url_for('defenders') }}">Defenders</a></li>
+            <li><a class="{{ theme }}-button-l button" href="{{ url_for('defenders_90') }}">Defenders per 90</a></li>
+            <li><a class="{{ theme }}-button-l button" href="{{ url_for('keepers') }}">Goal Keepers</a></li>
+            <li><a class="{{ theme }}-button-l button" href="{{ url_for('keepers_90') }}">Goal Keepers per 90</a></li>
           </ul>
         </li>
-        <li><a href="{{ url_for('goals') }}">Goals & Assists</a></li>
-        <li><a href="{{ url_for('discipline') }}">Discipline</a></li>
+        <li><a class="{{ theme }}-button-l button" href="{{ url_for('goals') }}">Goals & Assists</a></li>
+        <li><a class="{{ theme }}-button-l button" href="{{ url_for('discipline') }}">Discipline</a></li>
       </ul>
 
       <select class="{{ theme }}-theme-dark button">

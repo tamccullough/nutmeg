@@ -4,24 +4,19 @@ a {
 
 ul {
   background: inherit;
-    list-style: none;
-    margin: 0;
-    padding-left: 0;
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
 }
 
 li {
-    color: #fff;
   background: inherit;
-    display: block;
-    float: left;
-    padding: 1rem;
-    position: relative;
-    text-decoration: none;
+  display: block;
+  float: left;
+  padding: 1rem;
+  position: relative;
+  text-decoration: none;
   transition-duration: 0.5s;
-}
-
-li a {
-  color: #fff;
 }
 
 li:hover,
@@ -34,14 +29,14 @@ li:focus-within a {
 }
 
 ul li ul {
-    background: inherit;
-    visibility: hidden;
+  background: inherit;
+  visibility: hidden;
   opacity: 0;
   min-width: 5rem;
-    position: absolute;
+  position: absolute;
   transition: all 0.5s ease;
   margin-top: 1rem;
-    left: 0;
+  left: 0;
   display: none;
 }
 
@@ -55,6 +50,6 @@ ul li ul:focus {
 }
 
 ul li ul li {
-    clear: both;
+  clear: both;
   width: 100%;
 }
