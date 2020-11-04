@@ -62,8 +62,7 @@
     <div class="parent">
 
         <div class="box {{ theme }}-theme-light">
-          <h3>Teams of the Week</h3>
-          <p>Biggest Win</p>
+          <h3>Biggest Win</h3>
           <div class="child">
             {% if big_win.at[0,'hs'] > big_win.at[0,'as'] %}
             <div class="boxm {{ theme }}-green">{{ big_win.iloc[0]['home']}} {{big_win.iloc[0]['hs'].astype('int') }}</div>
@@ -77,7 +76,7 @@
             {% endif %}
           </div>
 
-          <p>Top Team Result</p>
+          <h3>Other Results</h3>
           <div class="child">
             {% if top_result.at[0,'hs'] > top_result.at[0,'as'] %}
             <div class="boxm {{ theme }}-green">{{ top_result.iloc[0]['home']}} {{top_result.iloc[0]['hs'].astype('int') }}</div>
@@ -91,7 +90,6 @@
             {% endif %}
           </div>
 
-          <p>Other Results</p>
           <div class="child">
             {% if other_result.at[0,'hs'] > other_result.at[0,'as'] %}
             <div class="boxm {{ theme }}-green">{{ other_result.iloc[0]['home']}} {{other_result.iloc[0]['hs'].astype('int') }}</div>
@@ -105,7 +103,7 @@
             {% endif %}
           </div>
 
-          <p>Bottom Team Result</p>
+          <h3>Bottom Team Result</h3>
           <div class="child">
             {% if low_result.at[0,'hs'] > low_result.at[0,'as'] %}
             <div class="boxm {{ theme }}-green">{{ low_result.iloc[0]['home']}} {{low_result.iloc[0]['hs'].astype('int') }}</div>
@@ -118,6 +116,7 @@
             <div class="boxm {{ theme }}-orange">{{ low_result.iloc[0]['away']}} {{low_result.iloc[0]['as'].astype('int') }}</div>
             {% endif %}
           </div>
+          <div class="spacer"></div>
         </div>
 
         <div class="box {{ theme }}-theme-light">
@@ -125,52 +124,44 @@
           <div>
             <table>
               <tr>
-                <td style="width:30px"><i class="fa fa-soccer-ball-o {{ theme }}-text-green w3-large"></i></td>
                 <td>Top Scorer</td>
                 <td>{{top_scorer['name']}}</td>
-                <td style="text-align:left;width:100px;"><i>{{top_scorer['overall']}}</i></td>
+                <td style="text-align:left;width:100px;">{{top_scorer['overall']}}</td>
               </tr>
               <tr>
-                <td style="width:30px"><i class="fa fa-soccer-ball-o {{ theme }}-text-orange w3-large"></i></td>
-                <td>Top Assists</td>
+                <td>Most Assists</td>
                 <td>{{top_assist['name']}}</td>
-                <td style="text-align:left;width:100px;"><i>{{top_assist['overall']}}</i></td>
+                <td style="text-align:left;width:100px;">{{top_assist['overall']}}</td>
               </tr>
               <tr>
-                <td style="width:30px"><i class="fa fa-hand-scissors-o {{ theme }}-text-blue w3-large"></i></td>
                 <td>Top Forward</td>
                 <td>{{top_forward['name']}}</td>
-                <td style="text-align:left;width:100px;"><i>{{top_forward['overall']}}</i></td>
+                <td style="text-align:left;width:100px;">{{top_forward['overall']}}</td>
               </tr>
               <tr>
-                <td style="width:30px"><i class="fa fa-hand-grab-o {{ theme }}-text-blue w3-large"></i></td>
                 <td>Top Midfielder</td>
                 <td>{{top_midfielder['name']}}</td>
-                <td style="text-align:left;width:100px;"><i>{{top_midfielder['overall']}}</i></td>
+                <td style="text-align:left;width:100px;">{{top_midfielder['overall']}}</td>
               </tr>
               <tr>
-                <td style="width:30px"><i class="fa fa-hand-stop-o {{ theme }}-text-blue w3-large"></i></td>
                 <td>Top Defender</td>
                 <td>{{top_defender['name']}}</td>
-                <td style="text-align:left;width:100px;"><i>{{top_defender['overall']}}</i></td>
+                <td style="text-align:left;width:100px;">{{top_defender['overall']}}</td>
               </tr>
               <tr>
-                <td style="width:30px"><i class="fa fa-child {{ theme }}-text-green w3-large"></i></td>
-                <td>Top Goal Keeper</td>
+                <td>Top Keeper</td>
                 <td>{{top_keeper['name']}}</td>
-                <td style="text-align:left;;width:100px;"><i>{{top_keeper['overall']}}</i></td>
+                <td style="text-align:left;;width:100px;">{{top_keeper['overall']}}</td>
               </tr>
               <tr>
-                <td style="width:30px"><i class="fa fa-copy {{ theme }}-text-yellow w3-large"></i></td>
-                <td>Worst Offender</td>
+                <td>Top Offender</td>
                 <td>{{top_offender['name']}}</td>
-                <td style="text-align:left;width:100px;"><i>{{top_offender['overall']}}</i></td>
+                <td style="text-align:left;width:100px;">{{top_offender['overall']}}</td>
               </tr>
               <tr>
-                <td style="width:30px"><i class="fa fa-copy {{ theme }}-text-red w3-large"></i></td>
                 <td>Suspended</td>
-                <td>{{ suspended }} </td>
-                <td><i>-</i></td>
+                <td>{{ suspended }}</td>
+                <td></td>
               </tr>
             </table>
             </div>
