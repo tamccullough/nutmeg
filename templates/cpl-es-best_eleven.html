@@ -4,14 +4,12 @@
 <!-- page content -->
 
   <!-- header -->
-  <div class="titlediv">
-    <h3><b>{{ year }} Best Eleven</b></h3>
-  </div>
+<h3><b>{{ year }} Best Eleven</b></h3>
 
 
 <div class="parent">
       <!-- FORWARDS -->
-      <span style="text-indent: 20px;"><h3><b>Attackers</b></h3></span>
+      <span style="text-indent: 10px;"><h3><b>Attackers</b></h3></span>
       <div class="parent">
       {%for i in range(attackers.shape[0])%}
       <div class="boxtable {{ attackers.iloc[i,8] }}">

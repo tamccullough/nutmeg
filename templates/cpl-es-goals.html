@@ -4,16 +4,13 @@
 <!-- page content -->
 
   <!-- header -->
-  <div class="titlediv">
-    <span><h3><b>Goals and Assists</b></h3></span>
-    <span><h4><b>Top Goalscorers</b></h4></span>
-  </div>
+<span><h4><b>Top Goalscorers</b></h4></span>
 
   <!-- body -->
 
-      <div class="parent {{ theme }}-theme-dark">
+      <div class="parent {{ theme }}-dark">
           <!-- table header -->
-          <div class="boxtableshort {{ theme }}-theme-dark">
+          <div class="boxtableshort {{ theme }}-dark">
             <div>
               <table>
                 <tr>
@@ -23,7 +20,7 @@
               </table>
             </div>
           </div>
-            <div class="boxtableshort {{ theme }}-theme-dark">
+            <div class="boxtableshort {{ theme }}-dark">
               <div>
                 <table>
                   <tr>
@@ -38,9 +35,9 @@
       <!-- end of table header -->
       <!-- table -->
       </div>
-      <div class="parent {{ theme }}-theme-light">
+      <div class="parent {{ theme }}-light">
       {%for i in range(0,html_table.shape[0])%}
-        <div class="boxtableshort {{ theme }}-theme-light">
+        <div class="boxtableshort {{ theme }}-light">
           <div>
             <table>
               <tr>
@@ -50,14 +47,14 @@
             </table>
           </div>
         </div>
-        <div class="boxtableshort {{ theme }}-theme-light">
+        <div class="boxtableshort {{ theme }}-light">
           <div>
             <table>
               <tr>
                 <td>{{ html_table.iloc[i][3] }}</td>
                 <td>{{ html_table.iloc[i][4] }}</td>
                 <td>{{ html_table.iloc[i][5] }}</td>
-                <td class="{{ theme }}-text-blue"><b>{{ html_table.iloc[i][6] }}</b></td>
+                <td class="{{ theme }}-t-blue"><b>{{ html_table.iloc[i][6] }}</b></td>
               </tr>
             </table>
           </div>
@@ -66,9 +63,9 @@
         <!-- end of table -->
         </div>
         <span><h4><b>Top Assist Makers</b></h4></span>
-        <div class="parent {{ theme }}-theme-dark">
+        <div class="parent {{ theme }}-dark">
             <!-- table header -->
-            <div class="boxtableshort {{ theme }}-theme-dark">
+            <div class="boxtableshort {{ theme }}-dark">
               <div>
                 <table>
                   <tr>
@@ -78,7 +75,7 @@
                 </table>
               </div>
             </div>
-              <div class="boxtableshort {{ theme }}-theme-dark">
+              <div class="boxtableshort {{ theme }}-dark">
                 <div>
                   <table>
                     <tr>
@@ -93,9 +90,9 @@
         <!-- end of table header -->
         <!-- table -->
       </div>
-      <div class="parent {{ theme }}-theme-light">
+      <div class="parent {{ theme }}-light">
         {%for i in range(0,assists_table.shape[0])%}
-          <div class="boxtableshort {{ theme }}-theme-light">
+          <div class="boxtableshort {{ theme }}-light">
             <div>
               <table>
                 <tr>
@@ -106,14 +103,14 @@
               </table>
             </div>
           </div>
-          <div class="boxtableshort {{ theme }}-theme-light">
+          <div class="boxtableshort {{ theme }}-light">
             <div>
               <table>
                 <tr>
                   <td>{{ assists_table.iloc[i][3] }}</td>
                   <td>{{ assists_table.iloc[i][4] }}</td>
                   <td >{{ assists_table.iloc[i][5] }}</td>
-                  <td class="{{ theme }}-text-blue"><b>{{ assists_table.iloc[i][6] }}</b></td>
+                  <td class="{{ theme }}-t-blue"><b>{{ assists_table.iloc[i][6] }}</b></td>
                 </tr>
               </table>
             </div>

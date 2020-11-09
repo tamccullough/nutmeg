@@ -4,16 +4,14 @@
 <!-- page content -->
 
   <!-- header -->
-  <div class="titlediv">
-    <span><h3><b>Rated {{ position }} per 90 Minutes</b></h3></span>
-  </div>
+<span><h3><b>Rated {{ position }} per 90</b></h3></span>
 
   <!-- body -->
 
   <!-- position table -->
-    <div class="parent {{ theme }}-theme-dark">
+    <div class="parent {{ theme }}-dark">
 
-        <div class="boxtableshort {{ theme }}-theme-dark">
+        <div class="boxtableshort {{ theme }}-dark">
             <table>
               <tr>
                 <td><b>team / #</b></td>
@@ -22,7 +20,7 @@
             </table>
         </div>
 
-        <div class="boxtableshort {{ theme }}-theme-dark">
+        <div class="boxtableshort {{ theme }}-dark">
             <table>
               <tr>
                 <td><b>MIN</b></td>
@@ -35,9 +33,9 @@
             </table>
         </div>
     </div>
-    <div class="parent {{ theme }}-theme-light">
+    <div class="parent {{ theme }}-light">
             {%for i in range(html_table.shape[0])%}
-            <div class="boxtableshort {{ theme }}-theme-light">
+            <div class="boxtableshort {{ theme }}-light">
                 <table>
                   <tr>
                     <td>{{ html_table.at[i, 'team'] }} / {{ html_table.at[i,'number'] }}</td>
@@ -45,7 +43,7 @@
                   </tr>
                 </table>
             </div>
-            <div class="boxtableshort {{ theme }}-theme-light">
+            <div class="boxtableshort {{ theme }}-light">
                 <table>
                   <tr>
                     <td>{{ html_table.at[i, 'minutes'] }}</td>
@@ -53,7 +51,7 @@
                     <td>{{ html_table.at[i, 'saves'] }}</td>
                     <td>{{ html_table.at[i, 'shots faced'] }}</td>
                     <td>{{ html_table.at[i, 'claimed crosses'] }}</td>
-                    <td class="{{ theme }}-text-blue"><b>{{ html_table.at[i, 'new_overall'] }}</b></td>
+                    <td class="{{ theme }}-t-blue"><b>{{ html_table.at[i, 'new_overall'] }}</b></td>
                   </tr>
                 </table>
             </div>

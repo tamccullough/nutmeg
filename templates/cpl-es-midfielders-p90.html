@@ -4,17 +4,14 @@
 <!-- page content -->
 
   <!-- header -->
-  <div class="titlediv">
-    <span><h3><b>Rated {{ position }} per 90 Minutes</b></h3></span>
-    <span><h4><b>Top 10</b></h4></span>
-  </div>
+<span><h3><b>Top 10 {{ position }} per 90</b></h3></span>
 
   <!-- body -->
 
   <!-- top position table -->
-    <div class="parent {{ theme }}-theme-dark">
+    <div class="parent {{ theme }}-dark">
 
-        <div class="boxtable {{ theme }}-theme-dark">
+        <div class="boxtable {{ theme }}-dark">
             <table>
               <tr>
                 <td><b>team / #</b></td>
@@ -23,7 +20,7 @@
             </table>
         </div>
 
-        <div class="boxtable {{ theme }}-theme-dark">
+        <div class="boxtable {{ theme }}-dark">
             <table>
               <tr>
                 <td><b>MIN</b></td>
@@ -35,7 +32,7 @@
               </tr>
             </table>
         </div>
-        <div class="boxtable {{ theme }}-theme-dark">
+        <div class="boxtable {{ theme }}-dark">
             <table>
               <tr>
                 <td><b>C</b></td>
@@ -48,9 +45,9 @@
             </table>
         </div>
     </div>
-    <div class="parent {{ theme }}-theme-light">
+    <div class="parent {{ theme }}-light">
             {%for i in range(0,10)%}
-            <div class="boxtable {{ theme }}-theme-light">
+            <div class="boxtable {{ theme }}-light">
                 <table>
                   <tr>
                     <td>{{ html_table.at[i, 'team'] }} / {{ html_table.at[i,'number'] }}</td>
@@ -58,7 +55,7 @@
                   </tr>
                 </table>
             </div>
-            <div class="boxtable {{ theme }}-theme-light">
+            <div class="boxtable {{ theme }}-light">
                 <table>
                   <tr>
                     <td>{{ html_table.at[i,'minutes'] }}</td>
@@ -70,7 +67,7 @@
                   </tr>
                 </table>
             </div>
-            <div class="boxtable {{ theme }}-theme-light">
+            <div class="boxtable {{ theme }}-light">
                 <table>
                   <tr>
                     <td>{{ html_table.at[i,'crosses'] }}</td>
@@ -87,9 +84,9 @@
     <!-- end of top position table-->
     <!-- position table -->
     <span><h4><b>rest of the table</b></h4></span>
-      <div class="parent {{ theme }}-theme-dark">
+      <div class="parent {{ theme }}-dark">
 
-          <div class="boxtable {{ theme }}-theme-dark">
+          <div class="boxtable {{ theme }}-dark">
               <table>
                 <tr>
                   <td><b>team / #</b></td>
@@ -98,7 +95,7 @@
               </table>
           </div>
 
-          <div class="boxtable {{ theme }}-theme-dark">
+          <div class="boxtable {{ theme }}-dark">
               <table>
                 <tr>
                   <td><b>MIN</b></td>
@@ -110,7 +107,7 @@
                 </tr>
               </table>
           </div>
-          <div class="boxtable {{ theme }}-theme-dark">
+          <div class="boxtable {{ theme }}-dark">
               <table>
                 <tr>
                   <td><b>C</b></td>
@@ -123,9 +120,9 @@
               </table>
           </div>
       </div>
-      <div class="parent {{ theme }}-theme-light">
+      <div class="parent {{ theme }}-light">
               {%for i in range(10,html_table.shape[0])%}
-              <div class="boxtable {{ theme }}-theme-light">
+              <div class="boxtable {{ theme }}-light">
                   <table>
                     <tr>
                       <td>{{ html_table.at[i, 'team'] }} / {{ html_table.at[i,'number'] }}</td>
@@ -133,7 +130,7 @@
                     </tr>
                   </table>
               </div>
-              <div class="boxtable {{ theme }}-theme-light">
+              <div class="boxtable {{ theme }}-light">
                   <table>
                     <tr>
                       <td>{{ html_table.at[i,'minutes'] }}</td>
@@ -145,7 +142,7 @@
                     </tr>
                   </table>
               </div>
-              <div class="boxtable {{ theme }}-theme-light">
+              <div class="boxtable {{ theme }}-light">
                   <table>
                     <tr>
                       <td>{{ html_table.at[i,'crosses'] }}</td>

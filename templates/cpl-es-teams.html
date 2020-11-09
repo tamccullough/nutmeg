@@ -4,16 +4,14 @@
 <!-- page content -->
 
   <!-- header -->
-  <div class="titlediv">
-    <h3><b>Team Information</b></h3>
-  </div>
+<h3><b>Team Information</b></h3>
 
   <!-- body -->
   <!-- weekly team performance -->
-    <div class="parent {{ theme }}-theme-dark">
+    <div class="parent {{ theme }}-dark">
 
         <!-- table header -->
-        <div class="boxtable {{ theme }}-theme-dark">
+        <div class="boxtable {{ theme }}-dark">
             <table>
               <tr>
                 <td style="text-align: center;"><b>crest</b></td>
@@ -22,7 +20,7 @@
               </tr>
             </table>
         </div>
-        <div class="boxtable {{ theme }}-theme-dark">
+        <div class="boxtable {{ theme }}-dark">
             <table>
               <tr>
                 <td style="text-align: center;"><b>wins</b></td>
@@ -31,7 +29,7 @@
               </tr>
             </table>
         </div>
-          <div class="boxtable {{ theme }}-theme-dark">
+          <div class="boxtable {{ theme }}-dark">
               <table>
                 <tr>
                   <td style="text-align: center;"><b>Roster</b></td>
@@ -43,14 +41,14 @@
     <!-- end of table header -->
     <!-- table -->
     </div>
-    <div class="parent {{ theme }}-theme-light">
+    <div class="parent {{ theme }}-light">
     {%for i in range(0,html_table.shape[0])%}
       <div class="boxtable">
         <form method="POST" action="/roster">
           <table>
             <tr>
               <td style="text-align: center;"><img src="static/images/flags/{{ html_table.iloc[i,5] }}" alt="{{ html_table.iloc[i,0] }} Crest" style="max-height:60px"></td>
-              <td><a href="{{ url_for('roster') }}"><input class="{{ theme }}-theme-light button" type="submit" id="team" name="team" value="{{ html_table.iloc[i,0] }}"/></a></td>
+              <td><a href="{{ url_for('roster') }}"><input class="{{ theme }}-light button" type="submit" id="team" name="team" value="{{ html_table.iloc[i,0] }}"/></a></td>
               <td><a>{{ html_table.iloc[i][1] }} {{ html_table.iloc[i][2] }}</td>
             </tr>
           </table>
@@ -69,9 +67,9 @@
         <form method="POST" action="/roster">
           <table>
             <tr>
-              <td style="height: 61px; overflow:hidden;"><a href="{{ url_for('roster') }}"><input class="{{ theme }}-theme-light button" type="submit" id="team" name="team" value="{{ html_table.iloc[i,0] }}"/></a></td>
-              <td><a class="{{ theme }}-theme-light button" href="{{ html_table.iloc[i,6] }}" target="_blank">club site</a></td>
-              <td><a class="{{ theme }}-theme-light button" href="{{ html_table.iloc[i,7] }}" target="_blank">wikipedia</a></td>
+              <td style="height: 61px; overflow:hidden;"><a href="{{ url_for('roster') }}"><input class="{{ theme }}-light button" type="submit" id="team" name="team" value="{{ html_table.iloc[i,0] }}"/></a></td>
+              <td><a class="{{ theme }}-light button" href="{{ html_table.iloc[i,6] }}" target="_blank">club site</a></td>
+              <td><a class="{{ theme }}-light button" href="{{ html_table.iloc[i,7] }}" target="_blank">wikipedia</a></td>
             </tr>
           </table>
         </form>

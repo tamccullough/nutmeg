@@ -1,0 +1,56 @@
+.navmenu{
+
+}
+
+.navmenu ul {
+  background: inherit;
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.navmenu li {
+  background: inherit;
+  display: block;
+  float: left;
+  padding: 1rem;
+  position: relative;
+  text-decoration: none;
+  transition-duration: 0.5s;
+}
+
+.navmenu li:hover,
+.navmenu li:focus-within {
+  background: yellow;
+    cursor: pointer;
+}
+
+.navmenu li:focus-within a {
+  outline: none;
+}
+
+.navmenu ul li ul {
+  background: blue;
+  visibility: hidden;
+  opacity: 0;
+  width: 10rem;
+  position: absolute;
+  transition: all 0.5s ease;
+  margin-top: 1rem;
+  left: 0;
+  display: none;
+}
+
+.navmenu ul li:hover > ul,
+.navmenu ul li:focus-within > ul,
+.navmenu ul li ul:hover,
+.navmenu ul li ul:focus {
+  visibility: visible;
+  opacity: 1;
+  display: block
+}
+
+ul li ul li {
+  clear: both;
+  width: 100%;
+}

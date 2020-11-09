@@ -13,6 +13,17 @@ import re
 from sklearn.naive_bayes import GaussianNB, BernoulliNB, MultinomialNB
 import statistics
 
+def get_weekday():
+    weekDays = ('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday')
+    current_year = date.today().strftime('%Y')
+    month = datetime.today().strftime('%B')
+    today = datetime.today()
+    day = datetime.today().strftime('%d')
+
+    weekday_num = today.weekday()
+    weekday = weekDays[weekday_num]
+    return month, day, weekday
+
 def get_long_name(string,team_ref):
     for short in team_ref['short']:
         row = team_ref[team_ref['short'] == short]

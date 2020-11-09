@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="static/css/nav.css">
-<link rel="stylesheet" href="static/css/menu.css">
 <link rel="stylesheet" href="static/css/style.css">
 <link rel="stylesheet" href="static/css/themes.css">
 <link rel="stylesheet" href="static/css/team-colours.css">
@@ -64,55 +63,53 @@ body,h4,h5,a {font-family: 'Montserrat', sans-serif;}
       <h3 class="{{ theme }}-t-blue" style="display: inline;">{{ weekday }} {{ month }} <b class="bold">{{ day }}</b></h3>
       </div>
       <div class="spacer"></div>
-      <div class="{{ theme }}-colour">
-        <nav class="navmenu" role="navigation">
-          <ul>
-            <li><b><a class="{{ theme }}-button-l button" href="{{ url_for('index') }}">Home</b></a></li>
-            <li><a class="{{ theme }}-button-l button" href="#">Season</a>
-              <ul class="dropdown">
-                <li><a class="{{ theme }}-button-l button" href="{{ url_for('index') }}">2020</a></li>
-                <li><a class="{{ theme }}-button-l button" href="{{ url_for('index_19') }}">2019</a></li>
-              </ul>
-            </li>
-            <li><a class="{{ theme }}-button-l button" href="{{ url_for('teams') }}">Teams</a>
-              <ul class="dropdown">
-                <form method="POST" action="/roster">
-                <li style="height: 10px;"><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="Atlético Ottawa"/></a></li>
-                <li style="height: 10px;"><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="Cavalry FC"/></a></li>
-                <li style="height: 10px;"><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="FC Edmonton"/></a></li>
-                <li style="height: 10px;"><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="Forge FC"/></a></li>
-                <li style="height: 10px;"><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="HFX Wanderers FC"/></a></li>
-                <li style="height: 10px;"><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="Pacific FC"/></a></li>
-                <li style="height: 10px;"><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="Valour FC"/></a></li>
-                <li style="height: 20px;"><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="York9 FC"/></a></li>
-                </form>
-              </ul>
-            </li>
-            <li><a class="{{ theme }}-button-l button" href="{{ url_for('standings') }}">Analysis</a>
-              <ul class="dropdown">
-                <li><a class="{{ theme }}-button-l button" href="{{ url_for('standings') }}">Standings</a></li>
-                <li><a class="{{ theme }}-button-l button" href="{{ url_for('power') }}">Power Rankings</a></li>
-                <li><a class="{{ theme }}-button-l button" href="{{ url_for('comparison1') }}">Match Prediction</a></li>
-                <li><a class="{{ theme }}-button-l button" href="{{ url_for('radar') }}">Radar Charts</a></li>
-              </ul>
-            </li>
-            <li><a class="{{ theme }}-button-l button" href="#">Positions</a>
-              <ul class="dropdown">
-                <li><a class="{{ theme }}-button-l button" href="{{ url_for('eleven') }}">Best Eleven</a></li>
-                <li><a class="{{ theme }}-button-l button" href="{{ url_for('forwards') }}">Forwards</a></li>
-                <li><a class="{{ theme }}-button-l button" href="{{ url_for('forwards_90') }}">Forwards per 90</a></li>
-                <li><a class="{{ theme }}-button-l button" href="{{ url_for('midfielders') }}">Midfielders</a></li>
-                <li><a class="{{ theme }}-button-l button" href="{{ url_for('midfielders_90') }}">Midfielders per 90</a></li>
-                <li><a class="{{ theme }}-button-l button" href="{{ url_for('defenders') }}">Defenders</a></li>
-                <li><a class="{{ theme }}-button-l button" href="{{ url_for('defenders_90') }}">Defenders per 90</a></li>
-                <li><a class="{{ theme }}-button-l button" href="{{ url_for('keepers') }}">Goal Keepers</a></li>
-                <li><a class="{{ theme }}-button-l button" href="{{ url_for('keepers_90') }}">Goal Keepers per 90</a></li>
-              </ul>
-            </li>
-            <li><a class="{{ theme }}-button-l button" href="{{ url_for('goals') }}">Goals & Assists</a></li>
-            <li><a class="{{ theme }}-button-l button" href="{{ url_for('discipline') }}">Discipline</a></li>
-          </ul>
-        </nav>
+      <div class="{{ theme }}-colour" role="navigation" id="navmenu">
+        <ul>
+          <li><b><a class="{{ theme }}-button-l button" href="{{ url_for('index') }}">Home</b></a></li>
+          <li><a class="{{ theme }}-button-l button" href="#">Season</a>
+            <ul class="dropdown">
+              <li><a class="{{ theme }}-button-l button" href="{{ url_for('index') }}">2020</a></li>
+              <li><a class="{{ theme }}-button-l button" href="{{ url_for('index_19') }}">2019</a></li>
+            </ul>
+          </li>
+          <li><a class="{{ theme }}-button-l button" href="{{ url_for('teams') }}">Teams</a>
+            <ul class="dropdown">
+              <form method="POST" action="/roster">
+              <li><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="Atlético Ottawa"/></a></li>
+              <li><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="Cavalry FC"/></a></li>
+              <li><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="FC Edmonton"/></a></li>
+              <li><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="Forge FC"/></a></li>
+              <li><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="HFX Wanderers FC"/></a></li>
+              <li><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="Pacific FC"/></a></li>
+              <li><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="Valour FC"/></a></li>
+              <li><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="York9 FC"/></a></li>
+              </form>
+            </ul>
+          </li>
+          <li><a class="{{ theme }}-button-l button" href="{{ url_for('standings') }}">Analysis</a>
+            <ul class="dropdown">
+              <li><a class="{{ theme }}-button-l button" href="{{ url_for('standings') }}">Standings</a></li>
+              <li><a class="{{ theme }}-button-l button" href="{{ url_for('power') }}">Power Rankings</a></li>
+              <li><a class="{{ theme }}-button-l button" href="{{ url_for('comparison1') }}">Match Prediction</a></li>
+              <li><a class="{{ theme }}-button-l button" href="{{ url_for('radar') }}">Radar Charts</a></li>
+            </ul>
+          </li>
+          <li><a class="{{ theme }}-button-l button" href="#">Positions</a>
+            <ul class="dropdown">
+              <li><a class="{{ theme }}-button-l button" href="{{ url_for('eleven') }}">Best Eleven</a></li>
+              <li><a class="{{ theme }}-button-l button" href="{{ url_for('forwards') }}">Forwards</a></li>
+              <li><a class="{{ theme }}-button-l button" href="{{ url_for('forwards_90') }}">Forwards per 90</a></li>
+              <li><a class="{{ theme }}-button-l button" href="{{ url_for('midfielders') }}">Midfielders</a></li>
+              <li><a class="{{ theme }}-button-l button" href="{{ url_for('midfielders_90') }}">Midfielders per 90</a></li>
+              <li><a class="{{ theme }}-button-l button" href="{{ url_for('defenders') }}">Defenders</a></li>
+              <li><a class="{{ theme }}-button-l button" href="{{ url_for('defenders_90') }}">Defenders per 90</a></li>
+              <li><a class="{{ theme }}-button-l button" href="{{ url_for('keepers') }}">Goal Keepers</a></li>
+              <li><a class="{{ theme }}-button-l button" href="{{ url_for('keepers_90') }}">Goal Keepers per 90</a></li>
+            </ul>
+          </li>
+          <li><a class="{{ theme }}-button-l button" href="{{ url_for('goals') }}">Goals & Assists</a></li>
+          <li><a class="{{ theme }}-button-l button" href="{{ url_for('discipline') }}">Discipline</a></li>
+        </ul>
       </div>
       <div class="spacer"></div>
     </div>

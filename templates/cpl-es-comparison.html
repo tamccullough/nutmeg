@@ -4,9 +4,7 @@
 <!-- page content -->
 
   <!-- header -->
-  <div class="titlediv">
-    <h3><b>CPL Match Prediction - {{ headline }}</b></h3>
-  </div>
+<h3><b>CPL Match Prediction - {{ headline }}</b></h3>
 
 <div class="parent">
 
@@ -85,11 +83,11 @@
           <tr>
             <td style="padding: 15px 5px;" class="{{ theme }}-green"> {{ home_history['w'].values[0] }}</td>
             <td style="padding: 15px 5px;" class="{{ theme }}-red"> {{ home_history['l'].values[0] }}</td>
-            <td style="padding: 15px 5px;" class="{{ theme }}-text-white {{ theme }}-orange"> {{ home_history['d'].values[0] }}</td>
+            <td style="padding: 15px 5px;" class="{{ theme }}-t-white {{ theme }}-orange"> {{ home_history['d'].values[0] }}</td>
           </tr>
         </table>
       <div><div class="spacer"></div><a>Recommended Starting 11</a><div class="spacer"></div></div>
-        <table class="{{ theme }}-theme-light">
+        <table class="{{ theme }}-light">
           {%for i in range(0,home_table.shape[0])%}
           <tr>
               {%for r in range(home_table.shape[1])%}
@@ -162,7 +160,7 @@
           </tr>
         </table>
         <div><div class="spacer"></div><a>Recommended Starting 11</a><div class="spacer"></div></div>
-        <table class="{{ theme }}-theme-light">
+        <table class="{{ theme }}-light">
           {%for i in range(0,away_table.shape[0])%}
           <tr>
               {%for r in range(away_table.shape[1])%}

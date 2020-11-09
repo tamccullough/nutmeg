@@ -55,33 +55,34 @@ img {
 
 .menuDrop{
   display: none;
-  width: 20%;
-  height: 50px;
-  color: white;
-  background: black;
+  width: 100%;
 }
 
 .menuHoriz{
-  display:block;
-  width: 20%;
-  height: 50px;
-  color: black;
-  background: white;
+  display: block;
+  width: 100%;
 }
 
 @media only screen and (max-width: 1000px) {
-  nav ul {display: none;}
-  nav select {display: block;}
-  .menuDrop{ display:block; }
+  .menuDrop{ display: block; }
   .menuHoriz{ display: none; }
 }
 
+/*assorted container sizes*/
 
 .container {
   min-width: 400px;
   max-width: 80%;
-  height: 90%;
+  height: 95%;
   min-height: 500px;
+  margin: 0 auto;
+}
+
+.containermid {
+  min-width: 400px;
+  max-width: 60%;
+  height: 95%;
+  min-height: 800px;
   margin: 0 auto;
 }
 
@@ -171,21 +172,22 @@ img {
   min-width: 400px;
   max-width: 85%;
   min-height:500px;
+  /*overflow-y: scroll;*/
   height: 90%;
   margin: 0 auto;
 }
 
 .titlediv {
   min-width: 400px;
-  max-width: 100%;
-  min-height: 50px;
+  max-width: 85%;
+  height: 50px;
   margin: 0 auto;
-  padding: 0px 20px;
 }
 
 .textdiv {
-  width: 95%;
-  min-height: 100px;
+  min-width: 400px;
+  max-width: 85%;
+  height: 90%;
   margin: 0 auto;
 }
 
@@ -210,16 +212,17 @@ img {
 
 .menudiv {
   min-width: 400px;
-  max-width: 90%;
-  height: 50px;
+  max-width: 85%;
+  height: 60px;
   margin: 0 auto;
 }
 
 .inputdiv {
   min-width: 400px;
-  max-width: 85%;
+  max-width: 86%;
   height: 50px;
   margin: 0 auto;
+  justify-content: center;
 }
 
 .inputbox {
@@ -248,7 +251,6 @@ img {
 .button {
   font-size: 1em;
   font-color: inherit;
-  min-width: 100px;
   height: 40px;
   border:none;
   text-decoration:none;

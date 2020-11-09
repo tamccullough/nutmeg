@@ -4,15 +4,13 @@
 <!-- page content -->
 
   <!-- header -->
-  <div class="titlediv">
-    <span><h3><b>Discipline {{ year }}</b></h3></span>
-  </div>
+<span><h3><b>Discipline {{ year }}</b></h3></span>
 
   <!-- body -->
 
   <!-- position table -->
-  <div class="parent {{ theme }}-theme-dark">
-    <div class="boxtableshort {{ theme }}-theme-dark">
+  <div class="parent {{ theme }}-dark">
+    <div class="boxtableshort {{ theme }}-dark">
       <div>
         <table>
           <tr>
@@ -22,7 +20,7 @@
         </table>
       </div>
     </div>
-      <div class="boxtableshort {{ theme }}-theme-dark">
+      <div class="boxtableshort {{ theme }}-dark">
         <div>
           <table>
             <tr>
@@ -37,10 +35,10 @@
       </div>
       <!-- end of table header -->
   </div>
-  <div class="parent {{ theme }}-theme-light">
+  <div class="parent {{ theme }}-light">
       <!-- table -->
       {%for i in range(0,html_table.shape[0])%}
-        <div class="boxtableshort {{ theme }}-theme-light">
+        <div class="boxtableshort {{ theme }}-light">
           <div>
             <table>
               <tr>
@@ -50,7 +48,7 @@
             </table>
           </div>
         </div>
-        <div class="boxtableshort {{ theme }}-theme-light">
+        <div class="boxtableshort {{ theme }}-light">
           <div>
             <table>
               <tr>
@@ -58,7 +56,7 @@
                 <td>{{ html_table.iloc[i][5] }}</td>
                 <td>{{ html_table.iloc[i][6] }}</td>
                 <td>{{ html_table.iloc[i][7] }}</td>
-                <td class="{{ theme }}-text-blue"><b>{{ html_table.iloc[i][8] }}</b></td>
+                <td class="{{ theme }}-t-blue"><b>{{ html_table.iloc[i][8] }}</b></td>
               </tr>
             </table>
           </div>

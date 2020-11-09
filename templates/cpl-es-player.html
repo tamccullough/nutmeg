@@ -4,16 +4,14 @@
 <!-- page content -->
 
   <!-- header -->
-  <div class="titlediv">
-    <form method="POST" action="/roster">
-      <table>
-        <tr>
-          <td><h3><b>Player Information - {{ name }}</b></h3></td>
-          <td class="textright"><a href="{{ url_for('roster') }}"><input class="text-white button" type="submit" id="team" name="team" value="{{ html_table.iloc[0,0] }}"/></a></td>
-        </tr>
-      </table>
-    </form>
-  </div>
+  <form method="POST" action="/roster">
+    <table>
+      <tr>
+        <td><h3><b>Player Information - {{ name }}</b></h3></td>
+        <td class="textright"><a href="{{ url_for('roster') }}"><input class="text-white button" type="submit" id="team" name="team" value="{{ html_table.iloc[0,0] }}"/></a></td>
+      </tr>
+    </table>
+  </form>
 
     <!-- profile section including photo -->
   <div class="parent {{ team_colour }}">
@@ -136,6 +134,6 @@
              <div class="spacer"></div>
            </div>
          <!-- end of graph and table section -->
-  </div>
+
 
 {% endblock %}

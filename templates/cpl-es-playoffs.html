@@ -4,16 +4,14 @@
 <!-- page content -->
 
   <!-- header -->
-  <div class="titlediv">
-    <h3><b>CPL Playoff and Regular Season Standings</b></h3>
-  </div>
+<h3><b>CPL Playoff and Regular Season Standings</b></h3>
 
   <!-- body -->
   <!-- playoffs -->
   <span><h3><b>{{ year }} Playoffs</b></h3></span>
-    <div class="parent {{ theme }}-theme-dark">
+    <div class="parent {{ theme }}-dark">
 
-        <div class="boxtable {{ theme }}-theme-dark">
+        <div class="boxtable {{ theme }}-dark">
             <table>
               <tr>
                 <td style="width:50%;"><b>rank / team </b></td>
@@ -24,7 +22,7 @@
             </table>
         </div>
 
-        <div class="boxtable {{ theme }}-theme-dark">
+        <div class="boxtable {{ theme }}-dark">
             <table>
               <tr>
                 <td><b>W</b></td>
@@ -37,9 +35,9 @@
             </table>
         </div>
     </div>
-    <div class="parent {{ theme }}-theme-light">
+    <div class="parent {{ theme }}-light">
             {%for i in range(0,championship_table.shape[0])%}
-            <div class="boxtableshort {{ theme }}-theme-light">
+            <div class="boxtableshort {{ theme }}-light">
                 <table>
                   <tr>
                     <td style="width:50%;">{{ championship_table.iloc[i][0] }} - {{ championship_table.iloc[i][1] }}</b></td>
@@ -50,15 +48,15 @@
                 </table>
             </div>
 
-            <div class="boxtableshort {{ theme }}-theme-light">
+            <div class="boxtableshort {{ theme }}-light">
                 <table>
                   <tr>
                     <td class="{{ theme }}-green">{{ championship_table.iloc[i][6] }}</td>
                     <td class="{{ theme }}-orange">{{ championship_table.iloc[i][8] }}</td>
                     <td class="{{ theme }}-red">{{ championship_table.iloc[i][7] }}</td>
-                    <td class="{{ theme }}-text-blue"><b>{{ championship_table.iloc[i][9] }}</td>
-                    <td class="{{ theme }}-text-blue"><b>{{ championship_table.iloc[i][10] }}</td>
-                    <td class="{{ theme }}-text-blue"><b>{{ championship_table.iloc[i][11] }}</td>
+                    <td class="{{ theme }}-t-blue"><b>{{ championship_table.iloc[i][9] }}</td>
+                    <td class="{{ theme }}-t-blue"><b>{{ championship_table.iloc[i][10] }}</td>
+                    <td class="{{ theme }}-t-blue"><b>{{ championship_table.iloc[i][11] }}</td>
                   </tr>
                 </table>
             </div>
@@ -67,9 +65,9 @@
     <!-- end of playoffs-->
     <!-- regular season -->
     <span><h3><b>Regular Season</b></h3></span>
-      <div class="parent {{ theme }}-theme-dark">
+      <div class="parent {{ theme }}-dark">
 
-          <div class="boxtableshort {{ theme }}-theme-dark">
+          <div class="boxtableshort {{ theme }}-dark">
               <table>
                 <tr>
                   <td style="width:50%;"><b>rank / team </b></td>
@@ -80,7 +78,7 @@
               </table>
           </div>
 
-          <div class="boxtableshort {{ theme }}-theme-dark">
+          <div class="boxtableshort {{ theme }}-dark">
               <table>
                 <tr>
                   <td><b>W</b></td>
@@ -93,9 +91,9 @@
               </table>
           </div>
       </div>
-      <div class="parent {{ theme }}-theme-light">
+      <div class="parent {{ theme }}-light">
               {%for i in range(0,standings_table.shape[0])%}
-              <div class="boxtableshort {{ theme }}-theme-light">
+              <div class="boxtableshort {{ theme }}-light">
                   <table>
                     <tr>
                       <td style="width:50%;">{{ standings_table.iloc[i][0] }} - {{ standings_table.iloc[i][1] }}</td>
@@ -106,15 +104,15 @@
                   </table>
               </div>
 
-              <div class="boxtableshort {{ theme }}-theme-light">
+              <div class="boxtableshort {{ theme }}-light">
                   <table>
                     <tr>
                       <td class="{{ theme }}-green">{{ standings_table.iloc[i][6] }}</td>
                       <td class="{{ theme }}-orange">{{ standings_table.iloc[i][8] }}</td>
                       <td class="{{ theme }}-red">{{ standings_table.iloc[i][7] }}</td>
-                      <td class="{{ theme }}-text-blue">{{ standings_table.iloc[i][9] }}</td>
-                      <td class="{{ theme }}-text-blue">{{ standings_table.iloc[i][10] }}</td>
-                      <td class="{{ theme }}-text-blue">{{ standings_table.iloc[i][11] }}</td>
+                      <td class="{{ theme }}-t-blue">{{ standings_table.iloc[i][9] }}</td>
+                      <td class="{{ theme }}-t-blue">{{ standings_table.iloc[i][10] }}</td>
+                      <td class="{{ theme }}-t-blue">{{ standings_table.iloc[i][11] }}</td>
                     </tr>
                   </table>
               </div>
@@ -123,9 +121,9 @@
       <!-- end of regular season-->
       <!-- form -->
       <span><h3><b>Form</b></h3></span>
-        <div class="parent {{ theme }}-theme-dark">
+        <div class="parent {{ theme }}-dark">
 
-            <div class="boxtableshort {{ theme }}-theme-dark">
+            <div class="boxtableshort {{ theme }}-dark">
                 <table>
                   <tr>
                     <td style="width:60%;"><b>team </b></td>
@@ -136,7 +134,7 @@
                 </table>
             </div>
 
-            <div class="boxtableshort {{ theme }}-theme-dark">
+            <div class="boxtableshort {{ theme }}-dark">
               <table>
                 <tr>
                   {% for i in range(3,8) %}
@@ -146,19 +144,19 @@
               </table>
             </div>
         </div>
-        <div class="parent {{ theme }}-theme-light">
+        <div class="parent {{ theme }}-light">
                 {%for i in range(0,standings_table.shape[0])%}
-                <div class="boxtableshort {{ theme }}-theme-light">
+                <div class="boxtableshort {{ theme }}-light">
                   <table>
                     <tr>
-                      <td class="{{ theme }}-text-blue" style="width:60%;">{{ form_table.iloc[i][0] }}</td>
+                      <td class="{{ theme }}-t-blue" style="width:60%;">{{ form_table.iloc[i][0] }}</td>
                       <td class="{{ theme }}-{{'green' if form_table.iloc[i][1][0] == 'W' else 'red' if form_table.iloc[i][1][0] == 'L' else 'orange' if form_table.iloc[i][1][0] == 'D' else '{{ theme }}-m'}}" style="padding: 15px 5px;">{{ form_table.iloc[i][1][0] }}</td>
                       <td class="{{ theme }}-{{'green' if form_table.iloc[i][2][0] == 'W' else 'red' if form_table.iloc[i][2][0] == 'L' else 'orange' if form_table.iloc[i][2][0] == 'D' else '{{ theme }}-m'}}" style="padding: 15px 5px;">{{ form_table.iloc[i][2][0] }}</td>
                     </tr>
                   </table>
                 </div>
 
-                <div class="boxtableshort {{ theme }}-theme-light">
+                <div class="boxtableshort {{ theme }}-light">
                   <table>
                     <tr>
                       <td class="{{ theme }}-{{'green' if form_table.iloc[i][3][0] == 'W' else 'red' if form_table.iloc[i][3][0] == 'L' else 'orange' if form_table.iloc[i][3][0] == 'D' else '{{ theme }}-m'}}" style="padding: 15px 5px;">{{ form_table.iloc[i][3][0] }}</td>
