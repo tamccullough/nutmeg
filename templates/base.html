@@ -19,6 +19,7 @@ html,h1,h2,h3 {font-family: "Lato", sans-serif}
 
 body,h4,h5,a {font-family: 'Montserrat', sans-serif;}
 
+
 </style>
 
 <!-- Top container -->
@@ -69,13 +70,13 @@ body,h4,h5,a {font-family: 'Montserrat', sans-serif;}
           <ul>
             <li><b><a class="{{ theme }}-button-l button" href="{{ url_for('index') }}">Home</b></a></li>
             <li><a class="{{ theme }}-button-l button" href="#">Season</a>
-              <ul class="dropdown">
+              <ul class="dropdown {{ theme }}-light">
                 <li><a class="{{ theme }}-button-l button" href="{{ url_for('index') }}">2020</a></li>
                 <li><a class="{{ theme }}-button-l button" href="{{ url_for('index_19') }}">2019</a></li>
               </ul>
             </li>
             <li><a class="{{ theme }}-button-l button" href="{{ url_for('teams') }}">Teams</a>
-              <ul class="dropdown">
+              <ul class="dropdown {{ theme }}-dark">
                 <form method="POST" action="/roster">
                 <li style="height: 10px;"><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="Atlético Ottawa"/></a></li>
                 <li style="height: 10px;"><a href="{{ url_for('roster') }}"><input class="{{ theme }}-button-l button" type="submit" id="team" name="team" value="Cavalry FC"/></a></li>
@@ -89,7 +90,7 @@ body,h4,h5,a {font-family: 'Montserrat', sans-serif;}
               </ul>
             </li>
             <li><a class="{{ theme }}-button-l button" href="{{ url_for('standings') }}">Analysis</a>
-              <ul class="dropdown">
+              <ul class="dropdown {{ theme }}-dark">
                 <li><a class="{{ theme }}-button-l button" href="{{ url_for('standings') }}">Standings</a></li>
                 <li><a class="{{ theme }}-button-l button" href="{{ url_for('power') }}">Power Rankings</a></li>
                 <li><a class="{{ theme }}-button-l button" href="{{ url_for('comparison1') }}">Match Prediction</a></li>
@@ -97,7 +98,7 @@ body,h4,h5,a {font-family: 'Montserrat', sans-serif;}
               </ul>
             </li>
             <li><a class="{{ theme }}-button-l button" href="#">Positions</a>
-              <ul class="dropdown">
+              <ul class="dropdown {{ theme }}-dark">
                 <li><a class="{{ theme }}-button-l button" href="{{ url_for('eleven') }}">Best Eleven</a></li>
                 <li><a class="{{ theme }}-button-l button" href="{{ url_for('forwards') }}">Forwards</a></li>
                 <li><a class="{{ theme }}-button-l button" href="{{ url_for('forwards_90') }}">Forwards per 90</a></li>

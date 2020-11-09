@@ -1,5 +1,4 @@
 .navmenu{
-
 }
 
 .navmenu ul {
@@ -19,18 +18,11 @@
   transition-duration: 0.5s;
 }
 
-.navmenu li:hover,
-.navmenu li:focus-within {
-  background: yellow;
-    cursor: pointer;
-}
-
 .navmenu li:focus-within a {
   outline: none;
 }
 
 .navmenu ul li ul {
-  background: blue;
   visibility: hidden;
   opacity: 0;
   width: 10rem;
