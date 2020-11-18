@@ -80,12 +80,59 @@ body,h4,h5,a {
     <!-- end of navigation -->
   </div>
 </div>
+
 <div class="container">
   <div class="page80">
   {% block content %}{% endblock %}
 
 
 <!-- league information container -->
+<div class="mobile {{ theme }}-colour">
+  <div class="parent">
+      <div class="box">
+        <h3 class="bottombar blue-bar">Canadian Premier League</h3>
+        <a class="{{ theme }}-button-d button" href="https://canpl.ca/" target="_blank">official site</a><br>
+        <a>Toronto, Canada</a>
+      </div>
+      <div class="box">
+        <h3 class="bottombar pink-bar">One Soccer</h3>
+        <a class="{{ theme }}-button-d button" href="https://onesoccer.ca/" target="_blank">official tv partner</a><br>
+        <a>Toronto, Canada</a>
+      </div>
+      <div class="box">
+        <h3 class="bottombar green-bar">Team Links</h3>
+        <table>
+          <tr>
+            <td><a class="{{ theme }}-button-d button" href="https://atleticoottawa.canpl.ca/" target="_blank">Atletico Ottawa</a></td>
+            <td><a class="{{ theme }}-button-d button" href="https://cavalryfc.canpl.ca/" target="_blank">Cavalry FC</a></td>
+          </tr>
+          <tr>
+            <td><a class="{{ theme }}-button-d button" href="https://fcedmonton.canpl.ca/" target="_blank">FC Edmonton</a></td>
+            <td><a class="{{ theme }}-button-d button" href="https://forgefc.canpl.ca/" target="_blank">Forge FC</a></td>
+          </tr>
+          <tr>
+            <td><a class="{{ theme }}-button-d button" href="https://hfxwanderersfc.canpl.ca/" target="_blank">HFX Wanderers Fc</a></td>
+            <td><a class="{{ theme }}-button-d button" href="https://pacificfc.canpl.ca/" target="_blank">Pacific FC</a></td>
+          </tr>
+          <tr>
+            <td><a class="{{ theme }}-button-d button" href="https://valourfc.canpl.ca/" target="_blank">Valour FC</a></td>
+            <td><a class="{{ theme }}-button-d button" href="https://york9fc.canpl.ca/" target="_blank">York9 FC</a></td>
+          </tr>
+        </table>
+      </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="spacer"></div>
+  <footer>
+    <a> Todd McCullough</a>
+    <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{ theme }}-button-d fa fa-twitter"></i></a>
+    <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{ theme }}-button-d fa fa-github"></i></a>
+    <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{ theme }}-button-d fa fa-linkedin"></i></a>
+  </footer>
+</div>
+
+<div class="desktop">
   <div class="parent">
       <div class="box {{ theme }}">
         <h3 class="bottombar blue-bar">Canadian Premier League</h3>
@@ -128,6 +175,7 @@ body,h4,h5,a {
     <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{ theme }}-button-d fa fa-github"></i></a>
     <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{ theme }}-button-d fa fa-linkedin"></i></a>
   </footer>
+</div>
 
   <!-- End page content -->
   </div>
