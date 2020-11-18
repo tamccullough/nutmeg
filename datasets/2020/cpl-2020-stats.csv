@@ -13,7 +13,7 @@ II1,Forge FC,Kyle Bekker,m,10.0,Kyle,Bekker,90,47,36,80.6,2,0.0,0,0,1,3,2,1,2,0,
 II1,Forge FC,Marcel Zajac,f,9.0,Marcel,Zajac,45,15,7,71.4,1,0.0,0,0,0,1,0,1,0,0,0,6,3,1,0,1,0,2,1,0,0,0,0
 II1,Forge FC,Maxim Tissot,d,15.0,Maxim,Tissot,10,10,7,42.9,1,0.0,0,0,0,0,0,0,0,0,0,2,0,1,0,0,0,0,0,0,0,0,0
 II1,Forge FC,Molham Babouli,f,19.0,Mo,Babouli,24,12,6,100.0,0,0.0,0,0,0,0,0,0,0,1,1,4,3,1,0,0,0,0,0,0,0,0,0
-II1,Forge FC,Paolo Sabak,m,24.0,Paolo,Sabak,80,45,32,84.4,1,0.0,0,2,0,1,0,0,1,0,0,10,6,1,1,0,0,4,1,0,0,0,0
+II1,Forge FC,Paolo Sabak,m,24.0,Paolo,Sabak,80,45,32,84.4,1,0.0,0,2,0,1,0,0,1,0,0,10,6,1,1,0,0,4,1,0,0,0,1
 II1,Forge FC,Triston Henry,g,1.0,Triston,Henry,90,43,31,64.5,0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,4,1,0
 II1,Cavalry FC,Aribim Pepple,f,24.0,Aribim,Pepple,10,5,3,33.3,0,0.0,0,1,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0
 II1,Cavalry FC,Bruno Zebie,m,16.0,Bruno,Zebie,5,8,5,80.0,0,0.0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
@@ -28,7 +28,7 @@ II1,Cavalry FC,Mason Trafford,d,5.0,Mason,Trafford,90,58,55,80.0,0,0.0,0,0,0,0,0
 II1,Cavalry FC,Mohamed Farsi,d,21.0,Mohamed,Farsi,10,4,3,66.7,0,0.0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 II1,Cavalry FC,Nathan Mavila,d,3.0,Nathan,Mavila,90,51,27,74.1,2,100.0,0,1,1,1,1,1,0,1,1,13,7,0,1,0,0,2,4,0,0,0,0
 II1,Cavalry FC,Nico Pasquotti,f,17.0,Nico,Pasquotti,90,56,29,72.4,5,0.0,0,0,0,1,1,0,1,2,2,15,8,1,1,0,0,2,2,0,0,0,0
-II1,Cavalry FC,Nikolas Ledgerwood,m,6.0,Nik,Ledgerwood,85,41,25,68.0,3,66.7,1,2,0,3,1,1,2,3,3,15,6,0,0,0,0,2,3,0,0,0,1
+II1,Cavalry FC,Nikolas Ledgerwood,m,6.0,Nik,Ledgerwood,85,41,25,68.0,3,66.7,1,2,0,3,1,1,2,3,3,15,6,0,0,0,0,2,3,0,0,0,0
 II1,Cavalry FC,Oliver Minatel,f,7.0,Oliver,Minatel,80,34,26,65.4,0,0.0,0,3,0,1,0,0,1,0,0,9,5,2,0,0,0,3,2,0,0,0,0
 II1,Cavalry FC,Sergio Camargo,m,10.0,Sergio,Camargo,80,37,22,72.7,3,0.0,0,0,0,2,0,0,2,1,1,6,4,0,0,0,0,1,0,0,0,0,0
 II2,York9 FC,Diyaeddine Abzi,d,20.0,Diyaeddine,Abzi,84,55,34,79.4,1,0.0,0,1,0,2,1,2,0,2,2,10,6,1,2,0,0,2,1,0,0,0,0
@@ -54,7 +54,7 @@ II2,Atlético Ottawa,Francisco Javier Acuña Víctor,m,8.0,Francisco,Acuña,54,5
 II2,Atlético Ottawa,Ignacio Zabal Almazán,g,1.0,Nacho,Zabal,90,54,43,60.5,0,0.0,0,0,0,0,0,0,0,0,0,1,1,2,0,0,0,1,0,6,4,0,0
 II2,Atlético Ottawa,Jarred Phillips,d,14.0,Jarred,Phillips,36,12,6,50.0,0,0.0,0,0,0,0,0,0,0,1,1,4,1,1,0,0,0,0,1,0,0,0,0
 II2,Atlético Ottawa,Maksym Kowal,f,21.0,Maksym,Kowal,34,17,10,60.0,0,0.0,0,0,0,0,0,0,0,0,0,8,3,0,2,0,0,1,1,0,0,0,0
-II2,Atlético Ottawa,Malcolm Isaiah Shaw,f,19.0,Malcolm,Shaw,56,17,13,76.9,0,0.0,0,0,1,1,1,1,0,0,0,11,1,0,0,0,0,1,2,0,0,0,1
+II2,Atlético Ottawa,Malcolm Isaiah Shaw,f,19.0,Malcolm,Shaw,56,17,13,76.9,0,0.0,0,0,1,1,1,1,0,0,0,11,1,0,0,0,0,1,2,0,0,0,0
 II2,Atlético Ottawa,Malyk Hamilton,m,2.0,Malyk,Hamilton,90,68,44,93.2,2,0.0,0,0,0,0,0,0,0,3,1,9,3,1,3,0,0,0,2,0,0,0,0
 II2,Atlético Ottawa,Milovan Kapor,d,3.0,Milovan,Kapor,90,61,42,88.1,0,0.0,0,0,0,0,0,0,0,2,2,10,4,7,6,0,0,1,2,0,0,0,0
 II2,Atlético Ottawa,Mohamed Kourouma,f,9.0,Mohamed,Kourouma,90,54,38,78.9,2,0.0,0,0,1,3,1,1,2,1,1,10,5,0,0,0,0,3,3,0,0,0,0
@@ -1034,3 +1034,31 @@ II34,Pacific FC,Sean Young,m,20.0,Sean,Young,90,76,57,93.0,1,100.0,0,1,0,0,0,0,0
 II34,Pacific FC,Terran Campbell,f,14.0,Terran,Campbell,90,53,33,60.6,0,0.0,1,1,1,2,2,2,0,1,1,19,9,0,0,0,0,0,4,0,0,0,0
 II34,Pacific FC,Thomas Meilleur-Giguère,d,26.0,Thomas,Meilleur-Giguère,90,79,63,90.5,0,0.0,0,0,0,0,0,0,0,0,0,4,1,8,5,1,0,0,1,0,0,0,0
 II34,Pacific FC,Victor Blasco,m,23.0,Victor,Blasco,16,21,8,87.5,1,0.0,0,1,1,2,1,1,1,1,1,7,3,0,0,0,0,0,0,0,0,0,0
+II35,Forge FC,Alexander Achinioti-Jönsson,m,13.0,Alexander,Achinioti-Jönsson,90,44,30,0.5329999999999999,0,0.0,0,0,1,1,1,1,0,5,3,7,7,1,3,0,0,1,0,0,0,0,0
+II35,Forge FC,Anthony Novak,f,23.0,Anthony,Novak,10,11,5,0.8,0,0.0,0,0,0,1,0,1,0,0,0,4,1,0,0,0,0,0,1,0,0,0,0
+II35,Forge FC,Daniel Krutzen,d,5.0,Daniel,Krutzen,90,66,36,0.75,4,0.0,0,0,0,3,0,2,1,1,1,3,3,6,8,0,0,2,0,0,0,0,0
+II35,Forge FC,David Choinière,m,7.0,David,Choinière,89,39,20,0.85,0,0.0,0,1,0,2,1,1,1,0,0,10,7,1,1,0,0,2,0,0,0,0,0
+II35,Forge FC,David Edgar,d,30.0,David,Edgar,90,32,25,0.8,0,0.0,0,0,0,0,0,0,0,0,0,4,1,5,0,1,0,0,2,0,0,0,0
+II35,Forge FC,Dominic Samuel,d,4.0,Dominic,Samuel,90,44,22,0.591,1,0.0,0,0,0,0,0,0,0,3,2,10,10,2,0,0,0,4,0,0,0,0,0
+II35,Forge FC,Jonathan Grant,d,2.0,Jonathan,Grant,67,33,19,0.368,2,0.0,0,0,0,1,0,1,0,0,0,14,1,1,1,1,0,0,5,0,0,0,0
+II35,Forge FC,Jordan Dunstan,d,21.0,Jordan,Dunstan,1,1,0,0.0,0,0.0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+II35,Forge FC,Kadell Thomas,f,17.0,Kadell,Thomas,23,9,5,0.4,0,0.0,0,0,0,0,0,0,0,1,0,7,3,0,0,0,0,2,1,0,0,0,0
+II35,Forge FC,Kwame Awuah,d,6.0,Kwame,Awuah,90,65,28,0.643,2,0.0,0,1,0,0,0,0,0,3,2,13,6,1,2,0,0,2,3,0,0,0,0
+II35,Forge FC,Kyle Bekker,m,10.0,Kyle,Bekker,90,53,32,0.688,11,0.091,0,1,0,0,0,0,0,3,2,10,4,2,2,0,0,1,3,0,0,0,0
+II35,Forge FC,Maxim Tissot,d,15.0,Maxim,Tissot,10,9,5,0.2,0,0.0,0,0,1,1,1,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+II35,Forge FC,Molham Babouli,f,19.0,Mo,Babouli,80,40,21,0.667,4,0.25,1,4,0,2,2,2,0,0,0,10,5,1,0,0,0,0,0,0,0,0,0
+II35,Forge FC,Paolo Sabak,m,24.0,Paolo,Sabak,80,33,20,0.85,1,0.0,0,0,0,0,0,0,0,3,3,10,5,1,1,0,0,1,3,0,0,0,0
+II35,Forge FC,Triston Henry,g,1.0,Triston,Henry,90,32,25,0.76,0,0.0,0,0,0,0,0,0,0,0,0,1,1,2,0,0,0,0,0,2,2,0,1
+II35,HFX Wanderers FC,Aboubacar Sissoko,m,17.0,Aboubacar,Sissoko,90,72,59,0.78,0,0.0,0,0,0,0,0,0,0,0,0,8,4,2,2,0,0,3,0,0,0,0,0
+II35,HFX Wanderers FC,Akeem Garcia,f,11.0,Akeem,Garcia,90,31,18,0.833,0,0.0,0,0,0,1,1,1,0,0,0,6,2,1,0,0,0,1,3,0,0,0,0
+II35,HFX Wanderers FC,Alessandro Riggi,f,10.0,Alessandro,Riggi,71,28,18,0.833,1,0.0,0,1,0,2,1,0,2,1,1,7,2,0,0,0,0,1,1,0,0,0,0
+II35,HFX Wanderers FC,Alex Marshall,m,7.0,Alex,Marshall,90,49,26,0.6920000000000001,2,0.0,0,0,0,1,0,0,1,2,2,11,8,0,1,0,0,4,2,0,0,0,0
+II35,HFX Wanderers FC,Andre Rampersad,m,18.0,Andre,Rampersad,90,69,52,0.769,0,0.0,0,0,0,1,0,0,1,0,0,10,5,3,0,0,0,2,0,0,0,0,0
+II35,HFX Wanderers FC,Chrisnovic N'Sa,d,6.0,Chris,N'sa,90,75,35,0.7140000000000001,1,0.0,0,0,0,0,0,0,0,4,1,15,9,5,3,0,0,3,3,0,0,0,0
+II35,HFX Wanderers FC,Christian Oxner,g,50.0,Christian,Oxner,90,50,38,0.5529999999999999,0,0.0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,1,0,5,3,0,0
+II35,HFX Wanderers FC,Cory Bent,m,23.0,Cory,Bent,19,13,10,0.5,0,0.0,0,0,0,1,0,0,1,0,0,2,1,0,0,0,0,0,0,0,0,0,0
+II35,HFX Wanderers FC,Jems Geffrard,d,3.0,Jems,Geffrard,90,58,42,0.762,0,0.0,0,1,0,0,0,0,0,1,0,3,2,9,1,0,0,1,0,0,0,0,0
+II35,HFX Wanderers FC,João Morelli Neto,f,22.0,João,Morelli,81,38,21,0.762,6,0.0,0,1,0,1,0,0,1,0,0,12,6,0,0,0,0,2,1,0,0,0,0
+II35,HFX Wanderers FC,Mateo Restrepo,d,14.0,Mateo,Restrepo,90,49,26,0.615,1,1.0,0,1,0,0,0,0,0,5,4,17,6,4,1,0,0,0,5,0,0,0,0
+II35,HFX Wanderers FC,Omar Kreim,m,8.0,Omar,Kreim,9,6,3,0.33299999999999996,0,0.0,0,0,0,0,0,0,0,1,0,4,1,0,0,0,0,0,1,0,0,0,0
+II35,HFX Wanderers FC,Peter Schaale,d,2.0,Peter,Schaale,90,44,37,0.703,0,0.0,0,0,0,0,0,0,0,2,1,9,4,3,0,0,0,0,2,0,0,0,0

@@ -4,7 +4,7 @@
 <!-- page content -->
 
   <!-- header -->
-<h3><b>Power Rankings</b></h3>
+<h3 class="{{ theme }}-dark"><b>Power Rankings</b></h3>
 
   <div class="parent">
     {%for i in range(0,html_table.shape[0])%}
@@ -12,7 +12,7 @@
       <div class="{{ html_table.iloc[i,8] }}">
         <table>
           <tr>
-            <td colspan="2" class="xxfont"><h3>{{ html_table.iloc[i,1] }}</h3></td>
+            <td colspan="2" class="xxfont"><h3 style="text-align:center;">{{ html_table.iloc[i,1] }}</h3></td>
           </tr>
           <tr>
             <td style="text-align:center;width:38%;" rowspan="4"><img src="static/images/flags/{{ html_table.iloc[i,7] }}" alt="{{ html_table.iloc[i,1] }} Crest" style="max-height:100px"></td>
@@ -21,10 +21,10 @@
             <td><h1>{{ html_table.iloc[i,0] }}</h1></td>
           </tr>
           <tr>
-            <td><h2>Movement: {{ html_table.iloc[i,9] }}</h2></td>
+            <td class="xfont"><h4>Movement: {{ html_table.iloc[i,9] }}</h4></td>
           </tr>
           <tr>
-            <td><h2>Form: {{ html_table.iloc[i,2]}}</h2></td>
+            <td class="xfont"><h4>Form: {{ html_table.iloc[i,2]}}</h4></td>
           </tr>
           </table>
         </div>

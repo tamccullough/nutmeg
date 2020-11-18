@@ -3,68 +3,102 @@
 
 <!-- page content -->
 
-  <!-- header -->
-<span><h3><b>Discipline {{ year }}</b></h3></span>
+<!-- header -->
+<div class="{{ theme }}-dark">
+  <h3><b>Discipline {{ year }}</b></h3>
+  <form class="center" method="post" action="{{ page }}" style="width: 80%">
+    <div class="form">
+      <input class="{{ theme }}-colour inputbox" style="width: 40%;display: inline;" type="text" id="year" name="year" autocomplete="off" required />
+      <label for="first" class="label-name">
+        <span class="content-name">Select Year</span>
+      </label>
+      <input class="{{ theme }}-action button" style="width: 20%;display: inline;" type="submit" formaction="{{ page }}" value="submit"/>
+    </div>
+    <div class="spacer"></div>
+  </form>
+</div>
 
-  <!-- body -->
+<!-- body -->
 
-  <!-- position table -->
+<!-- position table -->
+<div class="mobile">
   <div class="parent {{ theme }}-dark">
-    <div class="boxtableshort {{ theme }}-dark">
+    <div class="{{ theme }}-dark">
       <div>
         <table>
           <tr>
-            <td><b>team / #</b></td>
-            <td style="width:75%;"><b>{{ columns[1] }}</b></td>
+            <td style="width:20%;"><b>team / #</b></td>
+            <td style="width:45%;"><b>name</b></td>
+            <td><b>Y</b></td>
+            <td><b>R</b></td>
+            <td><b>O</b></td>
           </tr>
         </table>
       </div>
     </div>
-      <div class="boxtableshort {{ theme }}-dark">
-        <div>
-          <table>
-            <tr>
-              <td ><b>MIN</b></td>
-              <td><b>Y</b></td>
-              <td><b>R</b></td>
-              <td><b>Fls</b></td>
-              <td><b>O</b></td>
-            </tr>
-          </table>
-        </div>
-      </div>
-      <!-- end of table header -->
+    <!-- end of table header -->
   </div>
   <div class="parent {{ theme }}-light">
-      <!-- table -->
-      {%for i in range(0,html_table.shape[0])%}
-        <div class="boxtableshort {{ theme }}-light">
-          <div>
-            <table>
-              <tr>
-                <td>{{ html_table.iloc[i][0] }} / {{ html_table.iloc[i][3] }}</td>
-                <td style="width:75%;"><b>{{ html_table.iloc[i][1] }}</b></td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div class="boxtableshort {{ theme }}-light">
-          <div>
-            <table>
-              <tr>
-                <td>{{ html_table.iloc[i][4] }}</td>
-                <td>{{ html_table.iloc[i][5] }}</td>
-                <td>{{ html_table.iloc[i][6] }}</td>
-                <td>{{ html_table.iloc[i][7] }}</td>
-                <td class="{{ theme }}-t-blue"><b>{{ html_table.iloc[i][8] }}</b></td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        {%endfor%}
-        <!-- end of table -->
-
+    <!-- table -->
+    {%for i in range(0,html_table.shape[0])%}
+    <div class="{{ theme }}-light">
+      <div>
+        <table>
+          <tr>
+            <td style="width:20%;">{{ html_table.iloc[i][0] }} / {{ html_table.iloc[i][3] }}</td>
+            <td style="width:45%;"><b>{{ ' '.join((html_table.iloc[i][1]).split()[1:]) }}</b></td>
+            <td>{{ html_table.iloc[i][5] }}</td>
+            <td>{{ html_table.iloc[i][6] }}</td>
+            <td class="{{ theme }}-t-blue"><b>{{ html_table.iloc[i][8] }}</b></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    {%endfor%}
+    <!-- end of table -->
   </div>
+</div>
 
+<div class="desktop">
+  <div class="parent {{ theme }}-dark">
+    <div class="{{ theme }}-dark">
+      <div>
+        <table>
+          <tr>
+            <td><b>team / #</b></td>
+            <td style="width:45%;"><b>{{ columns[1] }}</b></td>
+            <td ><b>MIN</b></td>
+            <td><b>Y</b></td>
+            <td><b>R</b></td>
+            <td><b>Fls</b></td>
+            <td><b>O</b></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <!-- end of table header -->
+  </div>
+  <div class="parent {{ theme }}-light">
+    <!-- table -->
+    {%for i in range(0,html_table.shape[0])%}
+    <div class="{{ theme }}-light">
+      <div>
+        <table>
+          <tr>
+            <td>{{ html_table.iloc[i][0] }} / {{ html_table.iloc[i][3] }}</td>
+            <td style="width:45%;"><b>{{ html_table.iloc[i][1] }}</b></td>
+            <td>{{ html_table.iloc[i][4] }}</td>
+            <td>{{ html_table.iloc[i][5] }}</td>
+            <td>{{ html_table.iloc[i][6] }}</td>
+            <td>{{ html_table.iloc[i][7] }}</td>
+            <td class="{{ theme }}-t-blue"><b>{{ html_table.iloc[i][8] }}</b></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    {%endfor%}
+    <!-- end of table -->
+  </div>
+</div>
 
-  {% endblock %}
+{% endblock %}

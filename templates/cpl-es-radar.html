@@ -4,16 +4,32 @@
 <!-- page content -->
 
   <!-- header -->
-<h3><b>Radar Charts</b></h3>
+  <div class="{{ theme }}-dark">
+    <h3><b>Radar Charts {{ year }}</b></h3>
+    <form class="center" method="post" action="{{ page }}" style="width: 80%">
+      <div class="form">
+        <input class="{{ theme }}-colour inputbox" style="width: 40%;display: inline;" type="text" id="year" name="year" autocomplete="off" required />
+        <label for="first" class="label-name">
+          <span class="content-name">Select Year</span>
+        </label>
+        <input class="{{ theme }}-action button" style="width: 20%;display: inline;" type="submit" formaction="{{ page }}" value="submit"/>
+        <input class="{{ theme }}-action button" style="width: 20%;display: inline;" type="reset" formaction="{{ page[:-1] }}" value="reset">
+      </div>
+      <div class="spacer"></div>
+    </form>
+  </div>
 
   <div class="parent">
-      <span><h3>Atlético Ottawa</h3></span>
-          <div class="child {{ html_table.iloc[0,4] }}">
+    {% if year == '2020' %}
+      {% for name in ['Atlético Ottawa','Cavalry FC','FC Edmonton','Forge FC','HFX Wanderers FC','Pacific FC','Valour FC','York9 FC']%}
+        <span><h3>{{ name }}</h3></span>
+          <div class="child {{ html_table[html_table['team'] == name ]['colour'] }}">
             <div class="box center">
-              <img src="static/images/2020/cpl-2020-Atlético Ottawa-radar.png" alt="Atlético Ottawa Radar" style="max-width:400px">
+              <img src="static/images/{{ year }}/cpl-{{ year }}-{{ name }}-radar.png" alt="{{ name }} Radar" style="max-width:60%">
             </div>
 
             <div class="box">
+              <div class="spacer"></div><div class="spacer"></div>
                 <table>
                   <tr>
                     <td colspan="3"><h3>Rolling Expected</h3></td>
@@ -26,196 +42,19 @@
                 </table>
 
              <div class="box center">
-               <img src="static/images/2020/cpl-2020-Atlético Ottawa-overall-graph.png" alt="team performance" style="max-width:98%">
+               <img src="static/images/{{ year }}/cpl-2020-{{ name }}-overall-graph.png" alt="team performance" style="max-width:98%">
              </div>
             </div>
          </div>
-         <div class="{{ html_table.iloc[0,4] }}" style="height:20px">
-         </div>
-         <span><h3>Cavalry FC</h3></span>
-         <div class="child {{ html_table.iloc[1,4] }}">
-           <div class="box center">
-             <img src="static/images/2020/cpl-2020-Cavalry FC-radar.png" alt="Cavalry FC Radar" style="max-width:400px">
-           </div>
-
-           <div class="box">
-             <table>
-               <tr>
-                 <td colspan="3"><h3>Rolling Expected</h3></td>
-               </tr>
-               <tr>
-                 <td style="text-align:right;"><h3> xG: </h3></td><td><h3> {{ stats.at[1,'xg'] }}</h3></td>
-                 <td style="text-align:right;"><h3> xPPG: </h3></td><td><h3> {{ stats.at[1,'xp'] }}</h3></td>
-                 <td style="text-align:right;"><h3> xPTS: </h3></td><td><h3> {{ stats.at[1,'xt'] }}</h3></td>
-               </tr>
-             </table>
-
-            <div class="box center">
-              <img src="static/images/2020/cpl-2020-Cavalry FC-overall-graph.png" alt="team performance" style="max-width:98%">
+         {% endfor %}
+      {% else %}
+        {% for name in ['Cavalry FC','FC Edmonton','Forge FC','HFX Wanderers FC','Pacific FC','Valour FC','York9 FC']%}
+            <div class="box {{ html_table[html_table['team'] == name ]['colour'] }}">
+              <span><h3>{{ name }}</h3></span>
+              <img class="center" src="static/images/{{ year }}/cpl-{{ year }}-{{ name }}-radar.png" alt="{{ name }} Radar" style="max-width:300px">
             </div>
-            </div>
-        </div>
-        <div class="{{ html_table.iloc[1,4] }}" style="height:20px">
-        </div>
-
-        <span><h3>FC Edmonton</h3></span>
-        <div class="child {{ html_table.iloc[2,4] }}">
-
-          <div class="box center">
-            <img src="static/images/2020/cpl-2020-FC Edmonton-radar.png" alt="Cavalry FC Radar" style="max-width:400px">
-          </div>
-
-          <div class="box">
-            <table>
-              <tr>
-                <td colspan="3"><h3>Rolling Expected</h3></td>
-              </tr>
-              <tr>
-                <td style="text-align:right;"><h3> xG: </h3></td><td><h3> {{ stats.at[2,'xg'] }}</h3></td>
-                <td style="text-align:right;"><h3> xPPG: </h3></td><td><h3> {{ stats.at[2,'xp'] }}</h3></td>
-                <td style="text-align:right;"><h3> xPTS: </h3></td><td><h3> {{ stats.at[2,'xt'] }}</h3></td>
-              </tr>
-            </table>
-
-           <div class="box center">
-             <img src="static/images/2020/cpl-2020-FC Edmonton-overall-graph.png" alt="team performance" style="max-width:98%">
-           </div>
-          </div>
-       </div>
-       <div class="{{ html_table.iloc[2,4] }}" style="height:20px">
-       </div>
-
-       <span><h3>Forge FC</h3></span>
-       <div class="child {{ html_table.iloc[3,4] }}">
-
-         <div class="box center">
-           <img src="static/images/2020/cpl-2020-Forge FC-radar.png" alt="Cavalry FC Radar" style="max-width:400px">
-         </div>
-
-         <div class="box">
-           <table>
-             <tr>
-               <td colspan="3"><h3>Rolling Expected</h3></td>
-             </tr>
-             <tr>
-               <td style="text-align:right;"><h3> xG: </h3></td><td><h3> {{ stats.at[3,'xg'] }}</h3></td>
-               <td style="text-align:right;"><h3> xPPG: </h3></td><td><h3> {{ stats.at[3,'xp'] }}</h3></td>
-               <td style="text-align:right;"><h3> xPTS: </h3></td><td><h3> {{ stats.at[3,'xt'] }}</h3></td>
-             </tr>
-           </table>
-
-          <div class="box center">
-            <img src="static/images/2020/cpl-2020-Forge FC-overall-graph.png" alt="team performance" style="max-width:98%">
-          </div>
-          </div>
-        </div>
-        <div class="{{ html_table.iloc[3,4] }}" style="height:20px">
-        </div>
-        <span><h3>HFX Wanderers FC</h3></span>
-        <div class="child {{ html_table.iloc[4,4] }}">
-
-          <div class="box center">
-             <img src="static/images/2020/cpl-2020-HFX Wanderers FC-radar.png" alt="Cavalry FC Radar" style="max-width:400px">
-          </div>
-
-          <div class="box">
-            <table>
-              <tr>
-                <td colspan="3"><h3>Rolling Expected</h3></td>
-              </tr>
-              <tr>
-                <td style="text-align:right;"><h3> xG: </h3></td><td><h3> {{ stats.at[4,'xg'] }}</h3></td>
-                <td style="text-align:right;"><h3> xPPG: </h3></td><td><h3> {{ stats.at[4,'xp'] }}</h3></td>
-                <td style="text-align:right;"><h3> xPTS: </h3></td><td><h3> {{ stats.at[4,'xt'] }}</h3></td>
-              </tr>
-            </table>
-
-           <div class="box center">
-             <img src="static/images/2020/cpl-2020-HFX Wanderers FC-overall-graph.png" alt="team performance" style="max-width:98%">
-           </div>
-           </div>
-         </div>
-         <div class="{{ html_table.iloc[4,4] }}" style="height:20px">
-         </div>
-         <span><h3>Pacific FC</h3></span>
-         <div class="child {{ html_table.iloc[5,4] }}">
-
-           <div class="box center">
-             <img src="static/images/2020/cpl-2020-Pacific FC-radar.png" alt="Cavalry FC Radar" style="max-width:400px">
-           </div>
-
-           <div class="box">
-             <table>
-               <tr>
-                 <td colspan="3"><h3>Rolling Expected</h3></td>
-               </tr>
-               <tr>
-                 <td style="text-align:right;"><h3> xG: </h3></td><td><h3> {{ stats.at[5,'xg'] }}</h3></td>
-                 <td style="text-align:right;"><h3> xPPG: </h3></td><td><h3> {{ stats.at[5,'xp'] }}</h3></td>
-                 <td style="text-align:right;"><h3> xPTS: </h3></td><td><h3> {{ stats.at[5,'xt'] }}</h3></td>
-               </tr>
-             </table>
-
-            <div class="box center">
-              <img src="static/images/2020/cpl-2020-Pacific FC-overall-graph.png" alt="team performance" style="max-width:98%">
-            </div>
-            </div>
-          </div>
-          <div class="{{ html_table.iloc[5,4] }}" style="height:20px">
-          </div>
-          <span><h3>Valour FC</h3></span>
-          <div class="child {{ html_table.iloc[6,4] }}">
-
-            <div class="box center">
-              <img src="static/images/2020/cpl-2020-Valour FC-radar.png" alt="Cavalry FC Radar" style="max-width:400px">
-            </div>
-
-            <div class="box">
-              <table>
-                <tr>
-                  <td colspan="3"><h3>Rolling Expected</h3></td>
-                </tr>
-                <tr>
-                  <td style="text-align:right;"><h3> xG: </h3></td><td><h3> {{ stats.at[6,'xg'] }}</h3></td>
-                  <td style="text-align:right;"><h3> xPPG: </h3></td><td><h3> {{ stats.at[6,'xp'] }}</h3></td>
-                  <td style="text-align:right;"><h3> xPTS: </h3></td><td><h3> {{ stats.at[6,'xt'] }}</h3></td>
-                </tr>
-              </table>
-
-             <div class="box center">
-               <img src="static/images/2020/cpl-2020-Valour FC-overall-graph.png" alt="team performance" style="max-width:98%">
-             </div>
-             </div>
-           </div>
-           <div class="{{ html_table.iloc[6,4] }}" style="height:20px">
-           </div>
-           <span><h3>York9 FC</h3></span>
-           <div class="child {{ html_table.iloc[7,4] }}">
-
-             <div class="box center">
-               <img src="static/images/2020/cpl-2020-York9 FC-radar.png" alt="Cavalry FC Radar" style="max-width:400px">
-             </div>
-
-             <div class="box">
-               <table>
-                 <tr>
-                   <td colspan="3"><h3>Rolling Expected</h3></td>
-                 </tr>
-                 <tr>
-                   <td style="text-align:right;"><h3> xG: </h3></td><td><h3> {{ stats.at[7,'xg'] }}</h3></td>
-                   <td style="text-align:right;"><h3> xPPG: </h3></td><td><h3> {{ stats.at[7,'xp'] }}</h3></td>
-                   <td style="text-align:right;"><h3> xPTS: </h3></td><td><h3> {{ stats.at[7,'xt'] }}</h3></td>
-                 </tr>
-               </table>
-
-              <div class="box center">
-                <img src="static/images/2020/cpl-2020-York9 FC-overall-graph.png" alt="team performance" style="max-width:98%">
-              </div>
-              </div>
-            </div>
-            <div class="{{ html_table.iloc[7,4] }}" style="height:20px">
-            </div>
-
+        {% endfor %}
+      {% endif %}
   </div>
 
 

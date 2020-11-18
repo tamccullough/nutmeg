@@ -4,7 +4,7 @@
 <!-- page content -->
 
   <!-- header -->
-<h3><b>CPL Match Prediction - {{ headline }}</b></h3>
+<h3 class="{{ theme }}-dark"><b>CPL Match Prediction - {{ headline }}</b></h3>
 
 <div class="parent">
 
@@ -13,19 +13,19 @@
       <table style="width:100%;">
         {% if group2 == 1 %}
         <tr>
-          <td class="{{ theme }}-blue" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="{{ theme }}-button-l button" type="submit" id="home1" name="home" value="{{ group1 }}"/></a></td>
+          <td class="borderq {{ theme }}-blue" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="{{ theme }}-button-l button" type="submit" id="home1" name="home" value="{{ group1 }}"/></a></td>
         </tr>
         {% elif group3 == 1 %}
         <tr>
-          <td class="{{ theme }}-blue" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="{{ theme }}-button-l button" type="submit" id="home1" name="home" value="{{ group1 }}"/></a></td>
-          <td class="{{ theme }}-green" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="{{ theme }}-button-l button" type="submit" id="home1" name="home" value="{{ group2 }}"/></a></td>
+          <td class="borderq {{ theme }}-blue" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="{{ theme }}-button-l button" type="submit" id="home1" name="home" value="{{ group1 }}"/></a></td>
+          <td class="borderq {{ theme }}-green" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="{{ theme }}-button-l button" type="submit" id="home1" name="home" value="{{ group2 }}"/></a></td>
         </tr>
         {% else %}
         <tr>
-          <td class="{{ theme }}-blue" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="{{ theme }}-button-l button" type="submit" id="home1" name="home" value="{{ group1 }}"/></a></td>
-          <td class="{{ theme }}-green" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="{{ theme }}-button-l button" type="submit" id="home1" name="home" value="{{ group2 }}"/></a></td>
-          <td class="{{ theme }}-blue" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="{{ theme }}-button-l button" type="submit" id="home1" name="home" value="{{ group3 }}"/></a></td>
-          <td class="{{ theme }}-green" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="{{ theme }}-button-l button" type="submit" id="home1" name="home" value="{{ group4 }}"/></a></td>
+          <td class="borderq {{ theme }}-blue" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="{{ theme }}-button-l button" type="submit" id="home1" name="home" value="{{ group1 }}"/></a></td>
+          <td class="borderq {{ theme }}-green" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="{{ theme }}-button-l button" type="submit" id="home1" name="home" value="{{ group2 }}"/></a></td>
+          <td class="borderq {{ theme }}-blue" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="{{ theme }}-button-l button" type="submit" id="home1" name="home" value="{{ group3 }}"/></a></td>
+          <td class="borderq {{ theme }}-green" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="{{ theme }}-button-l button" type="submit" id="home1" name="home" value="{{ group4 }}"/></a></td>
         </tr>
         {% endif %}
       </table>

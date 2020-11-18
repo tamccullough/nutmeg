@@ -1,123 +1,179 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<!-- page content -->
-
-  <!-- header -->
-<span><h4><b>Top Goalscorers</b></h4></span>
-
-  <!-- body -->
-
-      <div class="parent {{ theme }}-dark">
-          <!-- table header -->
-          <div class="boxtableshort {{ theme }}-dark">
-            <div>
-              <table>
-                <tr>
-                  <td><b>rank / team</b></td>
-                  <td><b>name</b></td>
-                </tr>
-              </table>
-            </div>
-          </div>
-            <div class="boxtableshort {{ theme }}-dark">
-              <div>
-                <table>
-                  <tr>
-                    <td><b>Pos</b></td>
-                    <td><b>#</b></td>
-                    <td><b>MIN</b></td>
-                    <td><b>G</b></td>
-                  </tr>
-                </table>
-              </div>
-            </div>
-      <!-- end of table header -->
-      <!-- table -->
+<!-- header -->
+<div class="{{ theme }}-dark">
+  <h3><b>Top Goalscorers {{ year }}</b></h3>
+  <form class="center" method="post" action="{{ page }}" style="width: 80%">
+    <div class="form">
+      <input class="{{ theme }}-colour inputbox" style="width: 40%;display: inline;" type="text" id="year" name="year" autocomplete="off" required />
+      <label for="first" class="label-name">
+        <span class="content-name">Select Year</span>
+      </label>
+      <input class="{{ theme }}-action button" style="width: 20%;display: inline;" type="submit" formaction="{{ page }}" value="submit"/>
+    </div>
+    <div class="spacer"></div>
+  </form>
+</div>
+<!-- body -->
+<div class="mobile">
+  <div class="parent {{ theme }}-dark">
+    <!-- table header -->
+    <div class="{{ theme }}-dark">
+      <div>
+        <table>
+          <tr>
+            <td><b>rank</b></td>
+            <td style="width:40%;"><b>name</b></td>
+            <td><b>Pos</b></td>
+            <td><b>#</b></td>
+            <td><b>MIN</b></td>
+            <td><b>G</b></td>
+          </tr>
+        </table>
       </div>
-      <div class="parent {{ theme }}-light">
-      {%for i in range(0,html_table.shape[0])%}
-        <div class="boxtableshort {{ theme }}-light">
-          <div>
-            <table>
-              <tr>
-                <td>{{ html_table.iloc[i][0] }} / {{ html_table.iloc[i][1] }}</td>
-                <td style="width:75%;">{{ html_table.iloc[i][2] }}</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div class="boxtableshort {{ theme }}-light">
-          <div>
-            <table>
-              <tr>
-                <td>{{ html_table.iloc[i][3] }}</td>
-                <td>{{ html_table.iloc[i][4] }}</td>
-                <td>{{ html_table.iloc[i][5] }}</td>
-                <td class="{{ theme }}-t-blue"><b>{{ html_table.iloc[i][6] }}</b></td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        {%endfor%}
-        <!-- end of table -->
-        </div>
-        <span><h4><b>Top Assist Makers</b></h4></span>
-        <div class="parent {{ theme }}-dark">
-            <!-- table header -->
-            <div class="boxtableshort {{ theme }}-dark">
-              <div>
-                <table>
-                  <tr>
-                    <td><b>rank / team</b></td>
-                    <td><b>name</b></td>
-                  </tr>
-                </table>
-              </div>
-            </div>
-              <div class="boxtableshort {{ theme }}-dark">
-                <div>
-                  <table>
-                    <tr>
-                      <td><b>Pos</b></td>
-                      <td><b>#</b></td>
-                      <td><b>MIN</b></td>
-                      <td><b>A</b></td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-        <!-- end of table header -->
-        <!-- table -->
+    </div>
+    <!-- end of table header -->
+    <!-- table -->
+  </div>
+  <div class="parent {{ theme }}-light">
+    {%for i in range(0,html_table.shape[0])%}
+    <div class="{{ theme }}-light">
+      <div>
+        <table>
+          <tr>
+            <td>{{ html_table.iloc[i][0] }}</td>
+            <td style="width:40%;">{{ ' '.join((html_table.iloc[i][2]).split()[1:]) }}</td>
+            <td>{{ html_table.iloc[i][3] }}</td>
+            <td>{{ html_table.iloc[i][4] }}</td>
+            <td>{{ html_table.iloc[i][5] }}</td>
+            <td class="{{ theme }}-t-blue"><b>{{ html_table.iloc[i][6] }}</b></td>
+          </tr>
+        </table>
       </div>
-      <div class="parent {{ theme }}-light">
-        {%for i in range(0,assists_table.shape[0])%}
-          <div class="boxtableshort {{ theme }}-light">
-            <div>
-              <table>
-                <tr>
-                  <td>{{ assists_table.iloc[i][0] }} / {{ assists_table.iloc[i][1] }}</td>
-                  <td></td>
-                  <td style="width:75%;">{{ assists_table.iloc[i][2] }}</td>
-                </tr>
-              </table>
-            </div>
-          </div>
-          <div class="boxtableshort {{ theme }}-light">
-            <div>
-              <table>
-                <tr>
-                  <td>{{ assists_table.iloc[i][3] }}</td>
-                  <td>{{ assists_table.iloc[i][4] }}</td>
-                  <td >{{ assists_table.iloc[i][5] }}</td>
-                  <td class="{{ theme }}-t-blue"><b>{{ assists_table.iloc[i][6] }}</b></td>
-                </tr>
-              </table>
-            </div>
-          </div>
-          {%endfor%}
-          </div>
-          <!-- end of table -->
+    </div>
+    {%endfor%}
+    <!-- end of table -->
+  </div>
+  <span><h3  class="{{ theme }}-dark"><b>Top Assist Makers</b></h3></span>
+  <div class="parent {{ theme }}-dark">
+    <!-- table header -->
+    <div class="{{ theme }}-dark">
+      <div>
+        <table>
+          <tr>
+            <td><b>rank</b></td>
+            <td style="width:40%;"><b>name</b></td>
+            <td><b>Pos</b></td>
+            <td><b>#</b></td>
+            <td><b>MIN</b></td>
+            <td><b>A</b></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <!-- end of table header -->
+    <!-- table -->
+  </div>
+  <div class="parent {{ theme }}-light">
+    {%for i in range(0,assists_table.shape[0])%}
+    <div class="{{ theme }}-light">
+      <div>
+        <table>
+          <tr>
+            <td>{{ assists_table.iloc[i][0] }}</td>
+            <td style="width:40%;">{{ ' '.join((assists_table.iloc[i][2]).split()[1:]) }}</td>
+            <td>{{ assists_table.iloc[i][3] }}</td>
+            <td>{{ assists_table.iloc[i][4] }}</td>
+            <td >{{ assists_table.iloc[i][5] }}</td>
+            <td class="{{ theme }}-t-blue"><b>{{ assists_table.iloc[i][6] }}</b></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    {%endfor%}
+  </div>
+  <!-- end of table -->
+</div>
 
+<div class="desktop">
+  <div class="parent {{ theme }}-dark">
+    <!-- table header -->
+    <div class="{{ theme }}-dark">
+      <div>
+        <table>
+          <tr>
+            <td><b>rank / team</b></td>
+            <td style="width:35%;"><b>name</b></td>
+            <td><b>Pos</b></td>
+            <td><b>#</b></td>
+            <td><b>MIN</b></td>
+            <td><b>G</b></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <!-- end of table header -->
+    <!-- table -->
+  </div>
+  <div class="parent {{ theme }}-light">
+    {%for i in range(0,html_table.shape[0])%}
+    <div class="{{ theme }}-light">
+      <div>
+        <table>
+          <tr>
+            <td>{{ html_table.iloc[i][0] }} / {{ html_table.iloc[i][1] }}</td>
+            <td style="width:35%;">{{ html_table.iloc[i][2] }}</td>
+            <td>{{ html_table.iloc[i][3] }}</td>
+            <td>{{ html_table.iloc[i][4] }}</td>
+            <td>{{ html_table.iloc[i][5] }}</td>
+            <td class="{{ theme }}-t-blue"><b>{{ html_table.iloc[i][6] }}</b></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    {%endfor%}
+    <!-- end of table -->
+  </div>
+  <span><h3  class="{{ theme }}-dark"><b>Top Assist Makers</b></h3></span>
+  <div class="parent {{ theme }}-dark">
+    <!-- table header -->
+    <div class="{{ theme }}-dark">
+      <div>
+        <table>
+          <tr>
+            <td><b>rank / team</b></td>
+            <td style="width:35%;"><b>name</b></td>
+            <td><b>Pos</b></td>
+            <td><b>#</b></td>
+            <td><b>MIN</b></td>
+            <td><b>A</b></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <!-- end of table header -->
+    <!-- table -->
+  </div>
+  <div class="parent {{ theme }}-light">
+    {%for i in range(0,assists_table.shape[0])%}
+    <div class="{{ theme }}-light">
+      <div>
+        <table>
+          <tr>
+            <td>{{ assists_table.iloc[i][0] }} / {{ assists_table.iloc[i][1] }}</td>
+            <td style="width:35%;">{{ assists_table.iloc[i][2] }}</td>
+            <td>{{ assists_table.iloc[i][3] }}</td>
+            <td>{{ assists_table.iloc[i][4] }}</td>
+            <td >{{ assists_table.iloc[i][5] }}</td>
+            <td class="{{ theme }}-t-blue"><b>{{ assists_table.iloc[i][6] }}</b></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    {%endfor%}
+  </div>
+  <!-- end of table -->
+</div>
 
-  {% endblock %}
+{% endblock %}

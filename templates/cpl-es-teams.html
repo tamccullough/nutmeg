@@ -3,71 +3,93 @@
 
 <!-- page content -->
 
-  <!-- header -->
-<h3><b>Team Information</b></h3>
-
-  <!-- body -->
-  <!-- weekly team performance -->
-    <div class="parent {{ theme }}-dark">
-
-        <!-- table header -->
-        <div class="boxtable {{ theme }}-dark">
-            <table>
-              <tr>
-                <td style="text-align: center;"><b>crest</b></td>
-                <td style="text-align: center;"><b> team</b></td>
-                <td style="text-align: center;"><b> city/prov</b></td>
-              </tr>
-            </table>
-        </div>
-        <div class="boxtable {{ theme }}-dark">
-            <table>
-              <tr>
-                <td style="text-align: center;"><b>wins</b></td>
-                <td style="text-align: center;"><b>draws</b></td>
-                <td style="text-align: center;"><b>loses</b></td>
-              </tr>
-            </table>
-        </div>
-          <div class="boxtable {{ theme }}-dark">
-              <table>
-                <tr>
-                  <td style="text-align: center;"><b>Roster</b></td>
-                  <td style="text-align: center;"><b>{{ columns[6] }}</b></td>
-                  <td style="text-align: center;"><b>{{ columns[7] }}</b></td>
-                </tr>
-              </table>
-          </div>
-    <!-- end of table header -->
-    <!-- table -->
+<!-- header -->
+<div class="{{ theme }}-dark">
+  <h3><b>Club Information {{ year }}</b></h3>
+  <form class="center" method="post" action="{{ page }}" style="width: 80%">
+    <div class="form">
+      <input class="{{ theme }}-colour inputbox" style="width: 40%;display: inline;" type="text" id="year" name="year" autocomplete="off" required />
+      <label for="first" class="label-name">
+        <span class="content-name">Select Year</span>
+      </label>
+      <input class="{{ theme }}-action button" style="width: 20%;display: inline;" type="submit" formaction="{{ page }}" value="submit"/>
     </div>
-    <div class="parent {{ theme }}-light">
+    <div class="spacer"></div>
+  </form>
+</div>
+<div class="mobile">
+  <!-- table -->
+  <div class="parent">
+    <!-- table header -->
+    <div>
+      <table>
+        <tr>
+          <td><b>crest</b></td>
+          <td style="width:38%;"><b>team</b></td>
+          <td style="width:8%;"><b>W</b></td>
+          <td style="width:8%;"><b>D</b></td>
+          <td style="width:8%;"><b>L</b></td>
+          <td><b>{{ columns[6] }}</b></td>
+          <td><b>{{ columns[7] }}</b></td>
+        </tr>
+      </table>
+    </div>
+    <!-- end of table header -->
+  </div>
+  <div class="parent">
     {%for i in range(0,html_table.shape[0])%}
-      <div class="boxtable">
-        <form method="POST" action="/roster">
-          <table>
-            <tr>
-              <td style="text-align: center;"><img src="static/images/flags/{{ html_table.iloc[i,5] }}" alt="{{ html_table.iloc[i,0] }} Crest" style="max-height:60px"></td>
-              <td><a href="{{ url_for('roster') }}"><input class="{{ theme }}-light button" type="submit" id="team" name="team" value="{{ html_table.iloc[i,0] }}"/></a></td>
-              <td><a>{{ html_table.iloc[i][1] }} {{ html_table.iloc[i][2] }}</td>
-            </tr>
-          </table>
-        </form>
-      </div>
-      <div class="boxtable">
-          <table>
-            <tr>
-              <td style="height: 61px; overflow:hidden;">w-{{ html_table.iloc[i][10] }}</td>
-              <td><a>d-{{ html_table.iloc[i][12] }}</a></td>
-              <td><a>l-{{ html_table.iloc[i][11] }}</a></td>
-            </tr>
-          </table>
-      </div>
-      <div class="boxtable">
-        <form method="POST" action="/roster">
-          <table>
-            <tr>
-              <td style="height: 61px; overflow:hidden;"><a href="{{ url_for('roster') }}"><input class="{{ theme }}-light button" type="submit" id="team" name="team" value="{{ html_table.iloc[i,0] }}"/></a></td>
+    <div>
+      <form method="POST" action="/roster">
+        <table>
+          <tr>
+            <td style="text-align:center;"><img src="static/images/flags/{{ html_table.iloc[i,5] }}" alt="{{ html_table.iloc[i,0] }} Crest" style="max-height:30px"></td>
+            <td style="width:38%;"><a href="{{ roster }}"><input class="{{ theme }}-colour button" type="submit" id="team" name="team" value="{{ html_table.iloc[i,0] }}"/></a></td>
+            <td class="{{ theme }}-green" style="width:8%;">{{ html_table.iloc[i][10] }}</td>
+            <td class="{{ theme }}-orange" style="width:8%;"><a>{{ html_table.iloc[i][12] }}</a></td>
+            <td class="{{ theme }}-red" style="width:8%;"><a>{{ html_table.iloc[i][11] }}</a></td>
+            <td><a class="{{ theme }}-colour button" href="{{ html_table.iloc[i,6] }}" target="_blank">site</a></td>
+            <td><a class="{{ theme }}-colour button" href="{{ html_table.iloc[i,7] }}" target="_blank">wiki</a></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    {%endfor%}
+  </div>
+  <!-- end of table -->
+</div>
+
+<div class="desktop">
+  <!-- table -->
+  <div class="parent {{ theme }}-dark">
+    <!-- table header -->
+    <div class="{{ theme }}-dark">
+      <table>
+        <tr>
+          <td style="width:10%;"><b>crest</b></td>
+          <td style="width:25%;"><b> team</b></td>
+          <td style="width:20%;"><b> city/prov</b></td>
+          <td style="width:5%;"><b>wins</b></td>
+          <td style="width:5%;"><b>draws</b></td>
+          <td style="width:5%;"><b>loses</b></td>
+          <td><b>{{ columns[6] }}</b></td>
+          <td><b>{{ columns[7] }}</b></td>
+        </tr>
+      </table>
+    </div>
+    <!-- end of table header -->
+  </div>
+  <div class="parent {{ theme }}-light">
+    {%for i in range(0,html_table.shape[0])%}
+    <div>
+      <form method="POST" action="/roster">
+        <table>
+          <tr>
+            <td style="width:10%;text-align:center;"><img src="static/images/flags/{{ html_table.iloc[i,5] }}" alt="{{ html_table.iloc[i,0] }} Crest" style="max-height:60px"></td>
+            <td style="width:25%;"><a href="{{ url_for('roster') }}"><input class="{{ theme }}-light button" type="submit" id="team" name="team" value="{{ html_table.iloc[i,0] }}"/></a></td>
+            <td style="width:20%;"><a>{{ html_table.iloc[i][1] }} {{ html_table.iloc[i][2] }}</td>
+              <td class="{{ theme }}-green" style="width:5%;height: 61px; overflow:hidden;">{{ html_table.iloc[i][10] }}</td>
+              <td class="{{ theme }}-orange" style="width:5%;"><a>{{ html_table.iloc[i][12] }}</a></td>
+              <td class="{{ theme }}-red" style="width:5%;"><a>{{ html_table.iloc[i][11] }}</a></td>
               <td><a class="{{ theme }}-light button" href="{{ html_table.iloc[i,6] }}" target="_blank">club site</a></td>
               <td><a class="{{ theme }}-light button" href="{{ html_table.iloc[i,7] }}" target="_blank">wikipedia</a></td>
             </tr>
@@ -75,8 +97,8 @@
         </form>
       </div>
       {%endfor%}
-      <!-- end of table -->
     </div>
+    <!-- end of table -->
+  </div>
 
-
-{% endblock %}
+  {% endblock %}
