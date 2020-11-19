@@ -9,7 +9,7 @@ nav {
   justify-content: space-around;
   align-items: center;
   min-height: 8vh;
-  background-color: inherit;
+  background-color: #8a1317;
 }
 
 .logo {
@@ -65,7 +65,7 @@ nav {
     position: absolute;
     right: 0px;
     height: 75vh;
-    top: 5vh;
+    top: 8.25vh;
     background-color: inherit;
     display: flex;
     flex-direction: column;
@@ -73,6 +73,7 @@ nav {
     width: 80%;
     transform: translate(100%);
     transition: transform 0.25s ease;
+    z-index:1;
    }
    .nav-links li {
      opacity: 0;
