@@ -235,7 +235,7 @@ body {
   content: "";
   position: absolute;
   left: 0px;
-  bottom: 10px;
+  bottom: 0px;
   height: 100%;
   width: 100%;
   border-bottom: 2px solid white;
@@ -245,7 +245,7 @@ body {
 
 .content-name {
   position: absolute;
-  bottom: 20px;
+  bottom: 2px;
   left: 10px;
   transition: all 0.3s ease;
 }

@@ -608,25 +608,29 @@ def player():
 @canples.route('/goals')
 def goals():
     year = '2020'
+    page = '/goals-'
     rated_goalscorers = pd.read_csv(f'datasets/{year}/cpl-{year}-rated_goalscorers.csv')
     rated_g10 = rated_goalscorers.head(10)
     rated_assists = pd.read_csv(f'datasets/{year}/cpl-{year}-rated_assists.csv')
     rated_a10 = rated_assists.head(10)
     columns_g = rated_goalscorers.columns
     columns_a = rated_assists.columns
-    return render_template('cpl-es-goals.html',columns_g = columns_g, columns_a = columns_a,html_table = rated_g10, assists_table = rated_a10, year = year,
+    return render_template('cpl-es-goals.html',columns_g = columns_g, columns_a = columns_a,
+    html_table = rated_g10, assists_table = rated_a10, year = year, page = page,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/goals-', methods=['POST'])
 def goalsY():
     year = request.form['year']
+    page = '/goals-'
     rated_goalscorers = pd.read_csv(f'datasets/{year}/cpl-{year}-rated_goalscorers.csv')
     rated_g10 = rated_goalscorers.head(10)
     rated_assists = pd.read_csv(f'datasets/{year}/cpl-{year}-rated_assists.csv')
     rated_a10 = rated_assists.head(10)
     columns_g = rated_goalscorers.columns
     columns_a = rated_assists.columns
-    return render_template('cpl-es-goals.html',columns_g = columns_g, columns_a = columns_a,html_table = rated_g10, assists_table = rated_a10, year = year,
+    return render_template('cpl-es-goals.html',columns_g = columns_g, columns_a = columns_a,
+    html_table = rated_g10, assists_table = rated_a10, year = year, page = page,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/forwards')
