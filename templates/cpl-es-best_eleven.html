@@ -26,7 +26,7 @@
   <div style="text-indent: 10px;"><h3><b>Attackers</b></h3></div>
   <div class="parent">
     {%for i in range(attackers.shape[0])%}
-    <div class="boxtable {{ attackers.iloc[i,8] }}">
+    <div class="box {{ attackers.iloc[i,8] }}">
       <form method="POST" action="/player">
         <div class="{{ attackers.iloc[i,8] }}">
           <table>
@@ -58,7 +58,7 @@
 <span style="text-indent: 20px;"><h3><b>Midfielders</b></h3></span>
 <div class="parent">
   {%for i in range(3,5)%}
-  <div class="boxtable {{ midfield.iloc[i,8] }}">
+  <div class="box {{ midfield.iloc[i,8] }}">
     <form method="POST" action="/player">
       <div class="{{ midfield.iloc[i,8] }}">
         <table>
@@ -89,7 +89,7 @@
 <!-- MIDFILED 2 -->
 <div class="parent">
   {%for i in range(0,3)%}
-  <div class="boxtable {{ midfield.iloc[i,8] }}">
+  <div class="box {{ midfield.iloc[i,8] }}">
     <form method="POST" action="/player">
       <div class="{{ midfield.iloc[i,8] }}">
         <table>
@@ -121,7 +121,7 @@
 <span style="text-indent: 20px;"><h3><b>Defenders</b></h3></span>
 <div class="parent">
   {%for i in range(defenders.shape[0])%}
-  <div class="boxtable {{ defenders.iloc[i,8] }}">
+  <div class="box {{ defenders.iloc[i,8] }}">
     <form method="POST" action="/player">
       <div class="{{ defenders.iloc[i,8] }}">
         <table>
@@ -151,7 +151,7 @@
 <!-- GOALKEEPER -->
 <span style="text-indent: 20px;"><h3><b>Goal Keeper</b></h3></span>
 <div class="parent">
-  <div class="boxtable {{ keeper.iloc[0,8] }}">
+  <div class="box {{ keeper.iloc[0,8] }}">
     <form method="POST" action="/player">
       <div class="{{ keeper.iloc[0,8] }}">
         <table>
