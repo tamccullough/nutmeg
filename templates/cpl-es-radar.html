@@ -7,19 +7,22 @@
   <div class="{{ theme }}-dark">
     <h3><b>Radar Charts {{ year }}</b></h3>
     <form class="center" method="post" action="{{ page }}" style="width: 80%">
-      <div class="form">
-        <input class="{{ theme }}-colour inputbox" style="width: 40%;display: inline;" type="text" id="year" name="year" autocomplete="off" required />
-        <label for="first" class="label-name">
-          <span class="content-name">Select Year</span>
-        </label>
-        <input class="{{ theme }}-action button" style="width: 20%;display: inline;" type="submit" formaction="{{ page }}" value="submit"/>
-        <input class="{{ theme }}-action button" style="width: 20%;display: inline;" type="reset" formaction="{{ page[:-1] }}" value="reset">
+      <div class="parent">
+        <div class="form box">
+          <input class="{{ theme }}-colour inputbox" type="text" id="year" name="year" autocomplete="off" required />
+          <label for="year" class="label-name">
+            <span class="content-name">Select Year</span>
+          </label>
+          </div>
+        <div class="box">
+          <input class="{{ theme }}-action button" style="width: 80%;dislay: inline;" type="submit" formaction="{{ page }}" value="submit"/>
+        </div>
       </div>
       <div class="spacer"></div>
     </form>
   </div>
 
-  <div class="parent">
+  <div class="parent {{ theme }}-dark">
     {% if year == '2020' %}
       {% for name in ['Atlético Ottawa','Cavalry FC','FC Edmonton','Forge FC','HFX Wanderers FC','Pacific FC','Valour FC','York9 FC']%}
         <span><h3>{{ name }}</h3></span>

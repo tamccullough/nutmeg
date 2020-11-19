@@ -125,28 +125,14 @@ body {
 .boxm {
   place-items: center;
   border-radius: 0.15rem;
-  flex: 1 1 50px;
-}
-
-.boxsmall {
-  place-items: center;
-  border-radius: 0.15rem;
   flex: 1 1 250px;
   margin: 2px;
 }
 
-.boxtable {
+.boxs {
   place-items: center;
   border-radius: 0.15rem;
-  flex: 1 1 400px;
-  margin: 2px;
-}
-
-.boxtableshort {
-  place-items: center;
-  border-radius: 0.15rem;
-  flex: 2 1 500px;
-  margin: 2px;
+  flex: 1 1 50px;
 }
 
 /* assorted divs might be removed*/
@@ -214,8 +200,68 @@ body {
   justify-content: center;
 }
 
+/* forms */
+
+.card {
+  min-height:100px;
+  max-height:300px;
+}
+
+.form {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.form input {
+  width: 100%;
+  padding-top: 15px;
+}
+
+.form label {
+  position: absolute;
+  bottom: 0px;
+  left: 0%;
+  width: inherit;
+  height: inherit;
+  pointer-events: none;
+}
+
+.form label::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 10px;
+  height: 100%;
+  width: 100%;
+  border-bottom: 2px solid white;
+  transform: translate(-100%);
+  transition: all 0.3s ease;
+}
+
+.content-name {
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
+  transition: all 0.3s ease;
+}
+
+.form input:focus + .label-name .content-name,
+.form input:valid + .label-name .content-name {
+  font-size: 0.8rem;
+  transform: translateY(-150%);
+}
+
+.form input:focus + .label-name::after,
+.form input:valid + .lable-name::after {
+  transform: translateX(0%);
+}
+
 /* image related */
 
+img {
+  border-radius: 0.25rem;
+}
 .imgsepia {
   filter: sepia(100%) saturate(300%) brightness(70%) hue-rotate(180deg);
 }
@@ -274,30 +320,7 @@ td {
 
 /* nav */
 
-/*nav {
-  min-width: 400px;
-  max-width: 100%;
-  height: 52px;
-  margin: 0 auto;
-}
 
-nav ul {
-  display: block;
-}
-
-nav select {
-  display: none;
-  appearance: none;
-  font-family: 'FontAwesome', 'Second Font name';
-}
-
-nav select option {
-  font-size: 1em;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: inherit;
-}*/
 
 /* buttons and inputs */
 
