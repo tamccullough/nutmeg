@@ -107,11 +107,11 @@ body {
 
 .box {
   place-items: center;
-  border-radius: 0.15rem;
+  border-radius: 0.5rem;
   flex: 1 1 300px; /*  Stretching: */
   /*flex: 0 1 150px;   No stretching: */
   margin: 2px;
-  padding: 10px 10px;
+  padding: 2px 2px;
 }
 
 .boxl {
@@ -120,6 +120,7 @@ body {
   border-radius: 0.15rem;
   flex: 1 1 400px;
   margin: 2px;
+  padding: 2px 2px;
 }
 
 .boxm {
@@ -127,12 +128,15 @@ body {
   border-radius: 0.15rem;
   flex: 1 1 250px;
   margin: 2px;
+  padding: 2px 2px;
 }
 
 .boxs {
   place-items: center;
   border-radius: 0.15rem;
   flex: 1 1 50px;
+  margin: 2px;
+  padding: 2px 2px;
 }
 
 /* assorted divs might be removed*/

@@ -8,8 +8,8 @@
 
   <div class="parent">
     {%for i in range(0,html_table.shape[0])%}
-    <div class="boxm">
-      <div class="{{ html_table.iloc[i,8] }}">
+    <div class="box {{ html_table.iloc[i,8] }}">
+      <div>
         <table>
           <tr>
             <td colspan="2" class="xxfont"><h3 style="text-align:center;">{{ html_table.iloc[i,1] }}</h3></td>
