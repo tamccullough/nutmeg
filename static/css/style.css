@@ -29,6 +29,16 @@ body {
   border: 3px solid orange;
 }
 
+/* fonts */
+
+.coiny {
+  font-family: 'Coiny', cursive;
+  font-weight: 400;
+  font-size: 2em;
+  letter-spacing: -3px;
+  vertical-align: center;
+}
+
 /*mobile - desktop settings*/
 
 .mobile{
@@ -108,7 +118,7 @@ body {
 .box {
   place-items: center;
   border-radius: 0.5rem;
-  flex: 1 1 300px; /*  Stretching: */
+  flex: 1 1 200px; /*  Stretching: */
   /*flex: 0 1 150px;   No stretching: */
   margin: 2px;
   padding: 2px 2px;
@@ -134,7 +144,7 @@ body {
 .boxs {
   place-items: center;
   border-radius: 0.15rem;
-  flex: 1 1 50px;
+  flex: 1 1 150px;
   margin: 2px;
   padding: 2px 2px;
 }
@@ -276,6 +286,19 @@ img {
 
 .imgdrop {
   filter: drop-shadow(3px 3px 5px brown);
+}
+
+.img-block {
+  display: inline;
+  position:relative;
+}
+
+.img-title {
+  position: absolute;
+  margin-top: 0px;
+  color: white;
+  background-color: inherit;
+  width: 80%;
 }
 
 /* text alignment */
