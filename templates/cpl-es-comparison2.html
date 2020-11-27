@@ -13,12 +13,12 @@
       <table style="width:100%;">
         {% if group2 == 1 %}
         <tr>
-          <td class="borderq {{ theme }}-blue" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="{{ theme }}-button-l button" type="submit" id="home1" name="home" value="{{ group1 }}"/></a></td>
+          <td class="xxfont borderq {{ theme }}-blue" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="{{ theme }}-button-l button" type="submit" id="home1" name="home" value="{{ group1 }}"/></a></td>
         </tr>
         {% elif group3 == 1 %}
         <tr>
-          <td class="borderq {{ theme }}-blue" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="{{ theme }}-button-l button" type="submit" id="home1" name="home" value="{{ group1 }}"/></a></td>
-          <td class="borderq {{ theme }}-green" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="{{ theme }}-button-l button" type="submit" id="home1" name="home" value="{{ group2 }}"/></a></td>
+          <td class="xfont borderq {{ theme }}-blue" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="{{ theme }}-button-l button" type="submit" id="home1" name="home" value="{{ group1 }}"/></a></td>
+          <td class="xfont borderq {{ theme }}-green" style="text-align:center; padding: 15px 0px;"><a href="{{ url_for('comparison2') }}"><input class="{{ theme }}-button-l button" type="submit" id="home1" name="home" value="{{ group2 }}"/></a></td>
         </tr>
         {% else %}
         <tr>
@@ -38,7 +38,7 @@
         <table>
           <tr>
             <td style="text-align: center; width:30%;" rowspan="2"><img src="static/images/flags/{{ home_crest }}" alt="{{ home_team }} Crest" style="max-height:100px"></td>
-            <td><h3>{{ home_team }}</h3></td>
+            <td class="xxfont"><h3>{{ home_team }}</h3></td>
           </tr>
           <tr>
             <td><h4>Home Team</h4></td>
@@ -111,7 +111,7 @@
         <table>
           <tr>
             <td style="text-align: center; width:30%;" rowspan="2"><img src="static/images/flags/{{ away_crest }}" alt="{{ away_team }} Crest" style="max-height:100px"></td>
-            <td><h3>{{ away_team }}</h3></td>
+            <td class="xxfont"><h3>{{ away_team }}</h3></td>
           </tr>
           <tr>
             <td><h4>Away Team</h4></td>
