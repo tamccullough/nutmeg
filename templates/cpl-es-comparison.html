@@ -38,10 +38,10 @@
         <table>
           <tr>
             <td style="text-align: center; width:30%;" rowspan="2"><img src="static/images/flags/{{ home_crest }}" alt="{{ home_team }} Crest" style="max-height:100px"></td>
-            <td class="xxfont"><h3>{{ home_team }}</h3></td>
+            <td class="xxxfont"><h3>{{ home_team }}</h3></td>
           </tr>
           <tr>
-            <td><h4>Home Team</h4></td>
+            <td><h4 class="xxfont">Home Team</h4></td>
           </tr>
         </table>
       </div>
@@ -101,7 +101,7 @@
           {%endfor%}
         </table>
         </div>
-      <div class="{{ home_colour }}">
+      <div class="{{ home_colour }} center">
         <img src="static/images/2020/cpl-2020-{{ home_team }}-radar.png" alt="{{ home_team }} Radar" style="max-width:95%">
       </div>
     </div>
@@ -110,11 +110,11 @@
       <div class="w3-container {{ away_colour }} w3-padding-16">
         <table>
           <tr>
-            <td style="text-align: center; width:30%;" rowspan="2"><img src="static/images/flags/{{ away_crest }}" alt="{{ away_team }} Crest" style="max-height:100px"></td>
-            <td class="xxfont"><h3>{{ away_team }}</h3></td>
+            <td style="width:30%;" rowspan="2"><img src="static/images/flags/{{ away_crest }}" alt="{{ away_team }} Crest" style="max-height:100px"></td>
+            <td class="xxxfont"><h3>{{ away_team }}</h3></td>
           </tr>
           <tr>
-            <td><h4>Away Team</h4></td>
+            <td><h4 class="xxfont">Away Team</h4></td>
           </tr>
         </table>
       </div>
@@ -174,7 +174,7 @@
           {%endfor%}
         </table>
       </div>
-      <div class="{{ away_colour }}">
+      <div class="{{ away_colour }} center">
         <img src="static/images/2020/cpl-2020-{{ away_team }}-radar.png" alt="{{ away_team }} Radar" style="max-width:95%">
       </div>
     </div>

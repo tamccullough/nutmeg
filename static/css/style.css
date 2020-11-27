@@ -62,7 +62,7 @@ body {
 }
 
 .xxfont {
-  font-size: 2em;
+  font-size: 1.8em;
   line-height: 0.25;
 }
 
@@ -73,8 +73,8 @@ body {
 
 @media screen and (max-width: 1024px) {
   .xfont {font-size: 16px;}
-  .xxfont {font-size: 28px;}
-  .xxxfont {font-size: 32px;}
+  .xxfont {font-size: 18px;}
+  .xxxfont {font-size: 30px;}
 }
 
 /* main containers and page layouts */
@@ -125,12 +125,11 @@ body {
 }
 
 .boxl {
-  padding: 1rem;
   place-items: center;
   border-radius: 0.15rem;
   flex: 1 1 400px;
   margin: 2px;
-  padding: 2px 2px;
+  padding: 5px 5px;
 }
 
 .boxm {
@@ -158,6 +157,9 @@ body {
   justify-content: center;
 }
 
+.t-center {
+  text-align: center;
+}
 .chatdiv {
   min-width: 400px;
   max-width: 85%;
@@ -275,6 +277,7 @@ body {
 
 img {
   border-radius: 0.25rem;
+  /*border: 2px solid black;*/
 }
 .imgsepia {
   filter: sepia(100%) saturate(300%) brightness(70%) hue-rotate(180deg);
@@ -327,7 +330,7 @@ img {
 table {
   border-collapse: collapse;
   table-layout:fixed;
-  margin: 0px auto;
+  margin: 0px;
   width:100% !important;
 }
 
@@ -341,9 +344,9 @@ td, th {
   padding: 10px 10px;
 }
 
-td {
+/*td {
   text-align: left;
-}
+}*/
 
 /* nav */
 
