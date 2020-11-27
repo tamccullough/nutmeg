@@ -22,6 +22,49 @@
     </form>
   </div>
 
+  <div class="mobile">
+    <div class="parent {{ theme }}-dark">
+      {% if year == '2020' %}
+        {% for name in ['Atlético Ottawa','Cavalry FC','FC Edmonton','Forge FC','HFX Wanderers FC','Pacific FC','Valour FC','York9 FC']%}
+          <span><h3>{{ name }}</h3></span>
+            <div class="child {{ html_table[html_table['team'] == name ]['colour'] }}">
+              <div class="box center">
+                <img src="static/images/{{ year }}/cpl-{{ year }}-{{ name }}-radar.png" alt="{{ name }} Radar" style="max-height:190px">
+              </div>
+
+              <div class="box">
+                <div class="spacer"></div>
+                <div class="spacer"></div>
+                <div class="spacer"></div>
+                  <table>
+                    <tr>
+                      <td colspan="3"><h3>Rolling Expected</h3></td>
+                    </tr>
+                    <tr>
+                      <td><h3>xG: {{ stats.at[0,'xg'] }}</h3></td>
+                      <td style="text-indent: -10px;"><h3>xPPG: {{ stats.at[0,'xp'] }}</h3></td>
+                      <td><h3> xPTS: {{ stats.at[0,'xt'] }}</h3></td>
+                    </tr>
+                  </table>
+
+               <div class="box center">
+                 <img src="static/images/{{ year }}/cpl-2020-{{ name }}-overall-graph.png" alt="team performance" style="max-width:98%">
+               </div>
+              </div>
+           </div>
+           {% endfor %}
+        {% else %}
+          {% for name in ['Cavalry FC','FC Edmonton','Forge FC','HFX Wanderers FC','Pacific FC','Valour FC','York9 FC']%}
+              <div class="box {{ html_table[html_table['team'] == name ]['colour'] }}">
+                <span><h3>{{ name }}</h3></span>
+                <img class="center" src="static/images/{{ year }}/cpl-{{ year }}-{{ name }}-radar.png" alt="{{ name }} Radar" style="max-width:300px">
+              </div>
+          {% endfor %}
+        {% endif %}
+    </div>
+  </div>
+
+<div class="desktop">
   <div class="parent {{ theme }}-dark">
     {% if year == '2020' %}
       {% for name in ['Atlético Ottawa','Cavalry FC','FC Edmonton','Forge FC','HFX Wanderers FC','Pacific FC','Valour FC','York9 FC']%}
@@ -32,7 +75,8 @@
             </div>
 
             <div class="box">
-              <div class="spacer"></div><div class="spacer"></div>
+              <div class="spacer"></div>
+              <div class="spacer"></div>
                 <table>
                   <tr>
                     <td colspan="3"><h3>Rolling Expected</h3></td>
@@ -59,6 +103,6 @@
         {% endfor %}
       {% endif %}
   </div>
-
+</div>
 
 {% endblock %}
