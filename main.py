@@ -186,10 +186,12 @@ def standings():
     championship = pd.read_csv(f'datasets/{year}/cpl-{year}-championship.csv')
     standings = pd.read_csv(f'datasets/{year}/cpl-{year}-standings_current.csv')
     team_form_results = pd.read_csv(f'datasets/{year}/cpl-{year}-team_form.csv')
+
     team_ref = pd.read_csv(f'datasets/teams.csv')
     championship['crest'] = championship['team'].apply(lambda x: team_ref[team_ref['team'] == x]['crest'].values[0])
     standings['crest'] = standings['team'].apply(lambda x: team_ref[team_ref['team'] == x]['crest'].values[0])
-    team_form_results['index'] = team_form_results['index'].apply(lambda x: team_ref[team_ref['team'] == x]['crest'].values[0])
+    team_form_results['crest'] = team_form_results['index'].apply(lambda x: team_ref[team_ref['team'] == x]['crest'].values[0])
+
     columns = standings.columns
     if championship.at[0,'gp'] == 0:
         check = 0
@@ -211,6 +213,12 @@ def standingsY():
     else:
         standings = pd.read_csv(f'datasets/{year}/cpl-{year}-standings_current.csv')
     team_form_results = pd.read_csv(f'datasets/{year}/cpl-{year}-team_form.csv')
+
+    team_ref = pd.read_csv(f'datasets/teams.csv')
+    championship['crest'] = championship['team'].apply(lambda x: team_ref[team_ref['team'] == x]['crest'].values[0])
+    standings['crest'] = standings['team'].apply(lambda x: team_ref[team_ref['team'] == x]['crest'].values[0])
+    team_form_results['crest'] = team_form_results['index'].apply(lambda x: team_ref[team_ref['team'] == x]['crest'].values[0])
+
     columns = standings.columns
     if championship.at[0,'gp'] == 0:
         check = 0

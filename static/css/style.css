@@ -67,14 +67,12 @@ body {
 }
 
 .xxxfont {
-  font-size: 4em;
+  font-size: 2.1em;
   line-height: 0.25;
 }
 
-@media screen and (max-width: 1024px) {
-  .xfont {font-size: 16px;}
-  .xxfont {font-size: 18px;}
-  .xxxfont {font-size: 30px;}
+.sfont {
+  font-size:.8em;
 }
 
 /* main containers and page layouts */
@@ -94,7 +92,10 @@ body {
   margin: 0 auto;
 }
 
-@media only screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
+  .xfont {font-size: 1em;}
+  .xxfont {font-size: 1.1em;}
+  .xxxfont {font-size: 1.8em;}
   .page80{ width: 90%; }
   .page60{ width: 90%; }
 }
@@ -127,7 +128,7 @@ body {
 .boxl {
   place-items: center;
   border-radius: 0.15rem;
-  flex: 1 1 400px;
+  flex: 1 1 350px;
   margin: 2px;
   padding: 5px 5px;
 }
@@ -157,9 +158,6 @@ body {
   justify-content: center;
 }
 
-.t-center {
-  text-align: center;
-}
 .chatdiv {
   min-width: 400px;
   max-width: 85%;
@@ -325,6 +323,18 @@ img {
   margin-right: 20px;
 }
 
+.t-center {
+  text-align: center;
+}
+
+.t-left {
+  text-align: left;
+}
+
+.t-right {
+  text-align: right;
+}
+
 /* tables */
 
 table {
@@ -344,9 +354,9 @@ td, th {
   padding: 10px 10px;
 }
 
-/*td {
-  text-align: left;
-}*/
+td {
+  text-align: center;
+}
 
 /* nav */
 

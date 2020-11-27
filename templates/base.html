@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="static/css/nav.css">
 <link rel="stylesheet" href="static/css/menu.css">
 <link rel="stylesheet" href="static/css/style.css">
-<link rel="stylesheet" href="static/css/test.css">
 <link rel="stylesheet" href="static/css/themes.css">
 <link rel="stylesheet" href="static/css/team-colours.css">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet"/>
@@ -73,121 +72,122 @@ body,h4,h5,a {
 <!-- end of nav menu -->
 <div class="desktop {{ theme }}-colour">
   <div class="page80">
-    <h3 class="{{ theme }}-t-green" style="display: inline;">{{ weekday }} {{ month }} <b class="bold">{{ day }}</b></h3>
+    <div class="spacer"></div>
+    <h3 class="xxfont" style="display: inline;">{{ weekday }} {{ month }} <b class="bold">{{ day }}</b></h3>
   </div>
 </div>
 <!-- Top container -->
 <body class="{{ theme }}-colour">
-<div class="container {{ theme }}-colour">
-  <div class="page80">
-    <!-- navigation -->
+  <div class="container {{ theme }}-colour">
+    <div class="page80">
+      <!-- navigation -->
 
 
 
-    <!-- end of navigation -->
-  </div>
-</div>
-
-<div class="container">
-  <div class="page80">
-  {% block content %}{% endblock %}
-
-
-<!-- league information container -->
-<div class="mobile {{ theme }}-colour">
-  <div class="parent">
-      <div class="boxs">
-        <h3 class="bottombar blue-bar">Canadian Premier League</h3>
-        <a class="{{ theme }}-button-d button" href="https://canpl.ca/" target="_blank">official site</a><br>
-        <a>Toronto, Canada</a>
-      </div>
-      <div class="boxs">
-        <h3 class="bottombar pink-bar">One Soccer</h3>
-        <a class="{{ theme }}-button-d button" href="https://onesoccer.ca/" target="_blank">official tv partner</a><br>
-        <a>Toronto, Canada</a>
-      </div>
-      <div class="box">
-        <h3 class="bottombar green-bar">Team Links</h3>
-        <table>
-          <tr>
-            <td><a class="{{ theme }}-button-d button" href="https://atleticoottawa.canpl.ca/" target="_blank">Atletico Ottawa</a></td>
-            <td><a class="{{ theme }}-button-d button" href="https://cavalryfc.canpl.ca/" target="_blank">Cavalry FC</a></td>
-          </tr>
-          <tr>
-            <td><a class="{{ theme }}-button-d button" href="https://fcedmonton.canpl.ca/" target="_blank">FC Edmonton</a></td>
-            <td><a class="{{ theme }}-button-d button" href="https://forgefc.canpl.ca/" target="_blank">Forge FC</a></td>
-          </tr>
-          <tr>
-            <td><a class="{{ theme }}-button-d button" href="https://hfxwanderersfc.canpl.ca/" target="_blank">HFX Wanderers Fc</a></td>
-            <td><a class="{{ theme }}-button-d button" href="https://pacificfc.canpl.ca/" target="_blank">Pacific FC</a></td>
-          </tr>
-          <tr>
-            <td><a class="{{ theme }}-button-d button" href="https://valourfc.canpl.ca/" target="_blank">Valour FC</a></td>
-            <td><a class="{{ theme }}-button-d button" href="https://york9fc.canpl.ca/" target="_blank">York9 FC</a></td>
-          </tr>
-        </table>
-      </div>
+      <!-- end of navigation -->
+    </div>
   </div>
 
-  <!-- Footer -->
-  <div class="spacer"></div>
-  <footer>
-    <a> Todd McCullough</a>
-    <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{ theme }}-button-d fa fa-twitter"></i></a>
-    <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{ theme }}-button-d fa fa-github"></i></a>
-    <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{ theme }}-button-d fa fa-linkedin"></i></a>
-  </footer>
-</div>
+  <div class="container">
+    <div class="page80">
+      {% block content %}{% endblock %}
 
-<div class="desktop">
-  <div class="parent {{ theme }}-colour">
-      <div class="box">
-        <h3 class="bottombar blue-bar">Canadian Premier League</h3>
-        <a class="{{ theme }}-colour button" href="https://canpl.ca/" target="_blank">official site</a><br>
-        <a>Toronto, Canada</a>
+
+      <!-- league information container -->
+      <div class="mobile {{ theme }}-colour">
+        <div class="parent">
+          <div class="boxs">
+            <h3 class="bottombar blue-bar">Canadian Premier League</h3>
+            <a class="{{ theme }}-button-d button" href="https://canpl.ca/" target="_blank">official site</a><br>
+            <a>Toronto, Canada</a>
+          </div>
+          <div class="boxs">
+            <h3 class="bottombar pink-bar">One Soccer</h3>
+            <a class="{{ theme }}-button-d button" href="https://onesoccer.ca/" target="_blank">official tv partner</a><br>
+            <a>Toronto, Canada</a>
+          </div>
+          <div class="box">
+            <h3 class="bottombar green-bar">Club Links</h3>
+            <table>
+              <tr>
+                <td class="t-left"><a class="{{ theme }}-colour button" href="https://atleticoottawa.canpl.ca/" target="_blank">Atletico Ottawa</a></td>
+                <td class="t-left"><a class="{{ theme }}-colour button" href="https://cavalryfc.canpl.ca/" target="_blank">Cavalry FC</a></td>
+              </tr>
+              <tr>
+                <td class="t-left"><a class="{{ theme }}-colour button" href="https://fcedmonton.canpl.ca/" target="_blank">FC Edmonton</a></td>
+                <td class="t-left"><a class="{{ theme }}-colour button" href="https://forgefc.canpl.ca/" target="_blank">Forge FC</a></td>
+              </tr>
+              <tr>
+                <td class="t-left"><a class="{{ theme }}-colour button" href="https://hfxwanderersfc.canpl.ca/" target="_blank">HFX Wanderers FC</a></td>
+                <td class="t-left"><a class="{{ theme }}-colour button" href="https://pacificfc.canpl.ca/" target="_blank">Pacific FC</a></td>
+              </tr>
+              <tr>
+                <td class="t-left"><a class="{{ theme }}-colour button" href="https://valourfc.canpl.ca/" target="_blank">Valour FC</a></td>
+                <td class="t-left"><a class="{{ theme }}-colour button" href="https://york9fc.canpl.ca/" target="_blank">York9 FC</a></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="spacer"></div>
+        <footer>
+          <a> Todd McCullough</a>
+          <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{ theme }}-button-d fa fa-twitter"></i></a>
+          <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{ theme }}-button-d fa fa-github"></i></a>
+          <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{ theme }}-button-d fa fa-linkedin"></i></a>
+        </footer>
       </div>
-      <div class="box">
-        <h3 class="bottombar pink-bar">One Soccer</h3>
-        <a class="{{ theme }}-colour button" href="https://onesoccer.ca/" target="_blank">official tv partner</a><br>
-        <a>Toronto, Canada</a>
+
+      <div class="desktop">
+        <div class="parent {{ theme }}-colour">
+          <div class="box">
+            <h3 class="bottombar blue-bar">Canadian Premier League</h3>
+            <a class="{{ theme }}-colour button" href="https://canpl.ca/" target="_blank">official site</a><br>
+            <a>Toronto, Canada</a>
+          </div>
+          <div class="box">
+            <h3 class="bottombar pink-bar">One Soccer</h3>
+            <a class="{{ theme }}-colour button" href="https://onesoccer.ca/" target="_blank">official tv partner</a><br>
+            <a>Toronto, Canada</a>
+          </div>
+          <div class="boxl">
+            <h3 class="bottombar green-bar">Club Links</h3>
+            <table>
+              <tr>
+                <td class="t-left"><a class="{{ theme }}-colour button" href="https://atleticoottawa.canpl.ca/" target="_blank">Atletico Ottawa</a></td>
+                <td class="t-left"><a class="{{ theme }}-colour button" href="https://cavalryfc.canpl.ca/" target="_blank">Cavalry FC</a></td>
+              </tr>
+              <tr>
+                <td class="t-left"><a class="{{ theme }}-colour button" href="https://fcedmonton.canpl.ca/" target="_blank">FC Edmonton</a></td>
+                <td class="t-left"><a class="{{ theme }}-colour button" href="https://forgefc.canpl.ca/" target="_blank">Forge FC</a></td>
+              </tr>
+              <tr>
+                <td class="t-left"><a class="{{ theme }}-colour button" href="https://hfxwanderersfc.canpl.ca/" target="_blank">HFX Wanderers FC</a></td>
+                <td class="t-left"><a class="{{ theme }}-colour button" href="https://pacificfc.canpl.ca/" target="_blank">Pacific FC</a></td>
+              </tr>
+              <tr>
+                <td class="t-left"><a class="{{ theme }}-colour button" href="https://valourfc.canpl.ca/" target="_blank">Valour FC</a></td>
+                <td class="t-left"><a class="{{ theme }}-colour button" href="https://york9fc.canpl.ca/" target="_blank">York9 FC</a></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="spacer"></div>
+        <footer class="{{theme}}-colour">
+          <a> Todd McCullough</a>
+          <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{theme}}-colour fa fa-twitter"></i></a>
+          <a href="https://github.com/tamccullough" target="_blank"><i class="{{theme}}-colour fa fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/tamccullough/" target="_blank"><i class="{{theme}}-colour fa fa-linkedin"></i></a>
+        </footer>
       </div>
-      <div class="box">
-        <h3 class="bottombar green-bar">Team Links</h3>
-        <table>
-          <tr>
-            <td><a class="{{ theme }}-colour button" href="https://atleticoottawa.canpl.ca/" target="_blank">Atletico Ottawa</a></td>
-            <td><a class="{{ theme }}-colour button" href="https://cavalryfc.canpl.ca/" target="_blank">Cavalry FC</a></td>
-          </tr>
-          <tr>
-            <td><a class="{{ theme }}-colour button" href="https://fcedmonton.canpl.ca/" target="_blank">FC Edmonton</a></td>
-            <td><a class="{{ theme }}-colour button" href="https://forgefc.canpl.ca/" target="_blank">Forge FC</a></td>
-          </tr>
-          <tr>
-            <td><a class="{{ theme }}-colour button" href="https://hfxwanderersfc.canpl.ca/" target="_blank">HFX Wanderers Fc</a></td>
-            <td><a class="{{ theme }}-colour button" href="https://pacificfc.canpl.ca/" target="_blank">Pacific FC</a></td>
-          </tr>
-          <tr>
-            <td><a class="{{ theme }}-colour button" href="https://valourfc.canpl.ca/" target="_blank">Valour FC</a></td>
-            <td><a class="{{ theme }}-colour button" href="https://york9fc.canpl.ca/" target="_blank">York9 FC</a></td>
-          </tr>
-        </table>
-      </div>
+      <div class="spacer"></div>
+
+      <!-- End page content -->
+    </div>
   </div>
-
-  <!-- Footer -->
-  <div class="spacer"></div>
-  <footer class="{{theme}}-colour">
-    <a> Todd McCullough</a>
-    <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{theme}}-colour fa fa-twitter"></i></a>
-    <a href="https://github.com/tamccullough" target="_blank"><i class="{{theme}}-colour fa fa-github"></i></a>
-    <a href="https://www.linkedin.com/in/tamccullough/" target="_blank"><i class="{{theme}}-colour fa fa-linkedin"></i></a>
-  </footer>
-</div>
-<div class="spacer"></div>
-
-  <!-- End page content -->
-  </div>
-</div>
-<script src="static/css/app.js"></script>
+  <script src="static/css/app.js"></script>
 </body>
 </html>

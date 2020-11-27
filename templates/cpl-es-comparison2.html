@@ -65,7 +65,7 @@
             </tr>
           </table>
         </div>
-      <div>
+      <div class="t-center">
         <div class="{{ home_colour }}"><div class="spacer"></div><a> Current Form</a><div class="spacer"></div></div>
         <table style="width:100%;">
           <tr>
@@ -76,8 +76,8 @@
         </table>
       </div>
       <div class="{{ home_colour }}">
-        <div>
-          <a> CanPL Season Matches VS {{ away_team }}</a>
+        <div class="t-center">
+          <a>Matches VS {{ away_team }}</a>
         </div>
         <table>
           <tr>
@@ -86,7 +86,7 @@
             <td style="padding: 15px 5px;" class="{{ theme }}-t-white {{ theme }}-orange"> {{ home_history['d'].values[0] }}</td>
           </tr>
         </table>
-      <div><div class="spacer"></div><a>Recommended Starting 11</a><div class="spacer"></div></div>
+      <div class="t-center"><div class="spacer"></div><a>Recommended Starting 11</a><div class="spacer"></div></div>
         <table class="{{ theme }}-light">
           {%for i in range(0,home_table.shape[0])%}
           <tr>
@@ -138,7 +138,7 @@
           </tr>
         </table>
       </div>
-      <div>
+      <div class="t-center">
         <div class="{{ away_colour }}"><div class="spacer"></div><a> Current Form</a><div class="spacer"></div></div>
         <table style="width:100%;">
           <tr>
@@ -149,8 +149,8 @@
         </table>
       </div>
       <div class="{{ away_colour }}">
-        <div>
-          <a> CanPL Season Matches VS {{ home_team }}</a>
+        <div class="t-center">
+          <a>Matches VS {{ home_team }}</a>
         </div>
         <table>
           <tr>
@@ -159,7 +159,7 @@
             <td style="padding: 15px 5px;" class="{{ theme }}-orange"> {{ away_history['d'].values[0] }}</td>
           </tr>
         </table>
-        <div><div class="spacer"></div><a>Recommended Starting 11</a><div class="spacer"></div></div>
+        <div class="t-center"><div class="spacer"></div><a>Recommended Starting 11</a><div class="spacer"></div></div>
         <table class="{{ theme }}-light">
           {%for i in range(0,away_table.shape[0])%}
           <tr>
