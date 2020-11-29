@@ -3,7 +3,7 @@
 [CANPLES Heroku App LINK](https://canples.herokuapp.com/)
 
 ## canpl-es
-A (WIP) expert system to analyse the satistics and results of the Canadian Premier League
+CanPL Fan Site | analyse the satistics & results of the Canadian Premier League
 
 Currently using MultinomialNB(), RandomForestRegressor() and RandomForestClassifier() to make the match predictions between teams as games are listed in the schedule.
 
