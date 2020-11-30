@@ -9,11 +9,11 @@ nav {
   justify-content: space-around;
   align-items: center;
   min-height: 8vh;
-  background-color: #8a1317;
+  background-color: #3141a8;
 }
 
 .logo {
-  color: #ffffff;
+  color: #fff;
   /*text-transform: uppercase;*/
   letter-spacing: 5px;
   font-size: 20px;
@@ -57,7 +57,7 @@ nav {
    }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1376px) {
   body {
     overflow-x: hidden;
   }
