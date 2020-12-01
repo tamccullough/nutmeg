@@ -2,7 +2,25 @@
 {% block content %}
 
 <!-- page content -->
-
+{% if 'P90' in page: %}
+<div class="parent">
+  <div class="boxs center {{ theme }}-action">
+    <a class="{{ theme }}-action button" href="{{'/'+page[1:-4]}}">{{page[1:2].upper()+page[2:-4]}} Total</a>
+  </div>
+  <div class="boxs center {{ theme }}-dark">
+    <a class="{{ theme }}-dark button" href="{{'/'+page[1:-4]+'P90'}}" >{{page[1:2].upper()+page[2:-4]}} Per 90</a>
+  </div>
+</div>
+{% else %}
+<div class="parent">
+  <div class="boxs center {{ theme }}-dark">
+    <a class="{{ theme }}-dark button" href="{{'/'+page[1:-1]}}">{{page[1:2].upper()+page[2:-1]}} Total</a>
+  </div>
+  <div class="boxs center {{ theme }}-action">
+    <a class="{{ theme }}-action button" href="{{'/'+page[1:-1]+'P90'}}" >{{page[1:2].upper()+page[2:-1]}} Per 90</a>
+  </div>
+</div>
+{% endif %}
 <!-- header -->
 <div class="{{ theme }}-dark">
   <h3><b>Top 10 {{ position }} {{ year }}</b></h3>

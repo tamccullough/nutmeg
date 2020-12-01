@@ -768,6 +768,7 @@ def defenders_19():
 @canples.route('/defendersP90')
 def defenders_90():
     year = '2020'
+    position = 'Defenders'
     page = '/defendersP90-'
     rated_defenders = pd.read_csv(f'datasets/{year}/cpl-{year}-defenders-p90.csv')
     columns = rated_defenders.columns
