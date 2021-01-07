@@ -20,6 +20,8 @@ theme = 'bland'
 month, day, weekday = cpl_main.get_weekday()
 year = '2020'
 
+games_played = {1:28,2:7}
+
 def convert_num_str(num):
     num = str(num*100)
     return num[0:4]
@@ -41,9 +43,18 @@ def load_main_files(year):
     team_stats = pd.read_csv(f'datasets/{year}/cpl-{year}-team_stats.csv')
     colours = team_ref['colour']
     results_brief = pd.read_csv(f'datasets/{year}/cpl-{year}-results_brief.csv')
-    matches_predictions = pd.read_csv(f'datasets/{year}/cpl-{year}-match_predictions.csv')
-    game_form = pd.read_csv(f'datasets/{year}/cpl-{year}-game_form.csv')
-    team_rosters = pd.read_csv(f'datasets/{year}/cpl-{year}-team_rosters.csv')
+    try:
+        matches_predictions = pd.read_csv(f'datasets/{year}/cpl-{year}-match_predictions.csv')
+    except:
+        matches_predictions = pd.DataFrame()
+    try:
+        game_form = pd.read_csv(f'datasets/{year}/cpl-{year}-game_form.csv')
+    except:
+        game_form = pd.DataFrame()
+    try:
+        team_rosters = pd.read_csv(f'datasets/{year}/cpl-{year}-team_rosters.csv')
+    except:
+        team_rosters = pd.DataFrame()
 
     return results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters
 
@@ -80,8 +91,9 @@ def index():
     na = 'TBD'
 
     year = '2020'
-    other_year = '2019'
+    page = '/-'
 
+    championship = pd.read_csv(f'datasets/{year}/cpl-{year}-championship.csv')
     results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters = load_main_files(year)
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
 
@@ -89,16 +101,33 @@ def index():
     standings_old =pd.read_csv(f'datasets/{year}/cpl-{year}-standings_previous.csv')
     compare_standings = cpl_main.compare_standings(standings,standings_old,team_ref)
 
-    top_team = 'Forge FC'#standings.iloc[0]['team']
-    top_team_info = team_ref[team_ref['team'] == top_team]
-    first_colour = top_team_info.iloc[0][4]
-    first_crest = top_team_info.iloc[0][5]
-    top_mover = 'Cavalry FC'#compare_standings.iloc[0]['team']
-    top_crest = team_ref[team_ref['team'] == top_mover]
-    top_crest = top_crest.iloc[0][5]
-    top_dropper = 'FC Edmonton'#compare_standings.iloc[-1]['team']
-    bot_crest = team_ref[team_ref['team'] == top_dropper]
-    bot_crest = bot_crest.iloc[0][5]
+    if championship.empty:
+        top_team = standings.iloc[0]['team']
+        top_team_info = team_ref[team_ref['team'] == top_team]
+        first_colour = top_team_info.iloc[0][4]
+        first_crest = top_team_info.iloc[0][5]
+        top_mover = compare_standings.iloc[0]['team']
+        top_crest = team_ref[team_ref['team'] == top_mover]
+        top_crest = top_crest.iloc[0][5]
+        top_dropper = compare_standings.iloc[-1]['team']
+        bot_crest = team_ref[team_ref['team'] == top_dropper]
+        bot_crest = bot_crest.iloc[0][5]
+    else:
+        top_team = championship.iloc[0]['team']
+        top_team_info = team_ref[team_ref['team'] == top_team]
+        first_colour = top_team_info.iloc[0][4]
+        first_crest = top_team_info.iloc[0][5]
+        '''if year == '2020':
+            gp = games_played[2]
+        else:
+            gp = games_played[1]
+        print(f'\nTHIS IS THE GAMES PLAYED DURING THE SEASON {gp}\n')'''
+        top_mover = standings.iloc[0]['team']
+        top_crest = team_ref[team_ref['team'] == top_mover]
+        top_crest = top_crest.iloc[0][5]
+        top_dropper = standings.iloc[-1]['team']
+        bot_crest = team_ref[team_ref['team'] == top_dropper]
+        bot_crest = bot_crest.iloc[0][5]
 
     game_week, goals, big_win, top_result, low_result, other_result, assists, yellows, reds = cpl_main.get_weeks_results(results[results['s'] <= 1],standings,stats,team_ref)
     assists, yellows, reds = int(assists), int(yellows), int(reds)
@@ -126,31 +155,46 @@ def index():
     top_midfielder = top_midfielder, top_defender = top_defender,
     top_scorer = top_scorer, top_assist = top_assist, top_offender = top_offender, suspended = suspended,
     first_crest = first_crest, first_colour = first_colour, top_crest = top_crest, bot_crest = bot_crest,
-    today = today, year = year, other_year = other_year, champs = champs,
+    today = today, year = year, page = page, champs = champs,
     day = day, weekday = weekday, month = month, theme = theme)
 
-@canples.route('/year')
+@canples.route('/-', methods=['POST'])
 def index_19():
     na = 'TBD'
 
-    year = '2019'
-    other_year = '2020'
+    year = request.form['year']
+    page = '/standings-'
 
-    results, stats, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief = load_main_files_old(year)
-    rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers,rated_assists = load_player_files(year)
+    championship = pd.read_csv(f'datasets/{year}/cpl-{year}-championship.csv')
+    results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters = load_main_files(year)
+    rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
 
-    standings = pd.read_csv(f'datasets/{year}/cpl-{year}-standings.csv')
-    standings_old = cpl_main.get_standings(results_old,1,team_ref)
-    compare_standings = cpl_main.compare_standings(standings,standings_old,team_ref)
+    standings = cpl_main.get_standings(results,1,team_ref)
+    #standings_old =pd.read_csv(f'datasets/{year}/cpl-{year}-standings_previous.csv')
+    #compare_standings = cpl_main.compare_standings(standings,standings_old,team_ref)
 
-    top_team = 'Forge FC'
-    top_team_info = team_ref[team_ref['team'] == top_team]
-    first_colour = top_team_info.iloc[0][4]
-    first_crest = top_team_info.iloc[0][5]
-    top_mover = 'Cavalry FC'
-    top_crest = team_ref[team_ref['team'] == top_mover].iloc[0][5]
-    top_dropper = 'HFX Wanderers FC'
-    bot_crest = team_ref[team_ref['team'] == top_dropper].iloc[0][5]
+    if championship.empty:
+        top_team = standings.iloc[0]['team']
+        top_team_info = team_ref[team_ref['team'] == top_team]
+        first_colour = top_team_info.iloc[0][4]
+        first_crest = top_team_info.iloc[0][5]
+        top_mover = standings.iloc[0]['team']
+        top_crest = team_ref[team_ref['team'] == top_mover]
+        top_crest = top_crest.iloc[0][5]
+        top_dropper = standings.iloc[-1]['team']
+        bot_crest = team_ref[team_ref['team'] == top_dropper]
+        bot_crest = bot_crest.iloc[0][5]
+    else:
+        top_team = championship.iloc[0]['team']
+        top_team_info = team_ref[team_ref['team'] == top_team]
+        first_colour = top_team_info.iloc[0][4]
+        first_crest = top_team_info.iloc[0][5]
+        top_mover = standings.iloc[0]['team']
+        top_crest = team_ref[team_ref['team'] == top_mover]
+        top_crest = top_crest.iloc[0][5]
+        top_dropper = standings.iloc[-1]['team']
+        bot_crest = team_ref[team_ref['team'] == top_dropper]
+        bot_crest = bot_crest.iloc[0][5]
 
     game_week, goals, big_win, top_result, low_result, other_result, assists, yellows, reds = cpl_main.get_weeks_results(results[results['s'] <= 1],standings,stats,team_ref)
     assists, yellows, reds = int(assists), int(yellows), int(reds)
@@ -176,7 +220,7 @@ def index_19():
     top_midfielder = top_midfielder, top_defender = top_defender,
     top_scorer = top_scorer, top_assist = top_assist, top_offender = top_offender, suspended = suspended,
     first_crest = first_crest, first_colour = first_colour, top_crest = top_crest, bot_crest = bot_crest,
-    today = today, year = year, other_year = other_year, champs = champs,
+    today = today, year = year, champs = champs,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/standings')
@@ -281,15 +325,13 @@ def elevenY():
 @canples.route('/power')
 def power():
     year = '2020'
-    other_year = '2019'
     power = pd.read_csv(f'datasets/{year}/cpl-{year}-power_rankings.csv')
-    return render_template('cpl-es-power.html',html_table = power, year = year, other_year = other_year,
+    return render_template('cpl-es-power.html',html_table = power, year = year,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/versus')
 def comparison1():
     year = '2020'
-    other_year = '2019'
     headline = 'Finals - Forge VS Wanderers'
     results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters  = load_main_files(year)
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
@@ -364,14 +406,13 @@ def comparison1():
     home_history = q1_r, away_history = q2_r,
     home_team = q1, away_team = q2, away_win = away_win, draw = draw, home_form = home_form, away_form = away_form, schedule = schedule, year = year,
     home_crest = home_crest, home_colour = home_colour, away_crest = away_crest, away_colour = away_colour, headline = headline, home_score = home_score, away_score = away_score,
-    team1 = team1, team2 = team2, team3 = team3, team4 = team4, team5 = team5, team6 = team6, team7 = team7, team8 = team8, other_year = other_year,
+    team1 = team1, team2 = team2, team3 = team3, team4 = team4, team5 = team5, team6 = team6, team7 = team7, team8 = team8,
     group1 = group1, group2 = group2, group3 = group3, group4 = group4,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/versus-', methods=['POST'])
 def comparison2():
     year = '2020'
-    other_year = '2019'
     headline = 'Last 3 Matches - 1st Potential Match of Second Round'
     results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters = load_main_files(year)
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
@@ -447,7 +488,7 @@ def comparison2():
     home_history = q1_r, away_history = q2_r,
     home_team = q1, away_team = q2, away_win = away_win, draw = draw, home_form = home_form, away_form = away_form, schedule = schedule, year = year,
     home_crest = home_crest, home_colour = home_colour, away_crest = away_crest, away_colour = away_colour, headline = headline, home_score = home_score, away_score = away_score,
-    team1 = team1, team2 = team2, team3 = team3, team4 = team4, team5 = team5, team6 = team6, team7 = team7, team8 = team8, other_year = other_year,
+    team1 = team1, team2 = team2, team3 = team3, team4 = team4, team5 = team5, team6 = team6, team7 = team7, team8 = team8,
     group1 = group1, group2 = group2, group3 = group3, group4 = group4,
     day = day, weekday = weekday, month = month, theme = theme)
 
