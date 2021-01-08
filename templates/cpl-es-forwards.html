@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-
 <!-- page content -->
+<!-- header -->
 {% if 'P90' in page: %}
 <div class="parent">
   <div class="boxs center {{ theme }}-action">
@@ -22,24 +22,22 @@
 </div>
 {% endif %}
 <!-- header -->
-<div class="{{ theme }}-dark">
-  <h3><b>Top 10 {{ position }} {{ year }}</b></h3>
-  <form class="center" method="post" action="{{ page }}" style="width: 80%">
-    <div class="parent">
-      <div class="form box">
-        <input class="{{ theme }}-colour inputbox" type="text" id="year" name="year" autocomplete="off" required />
-        <label for="year" class="label-name">
-          <span class="content-name">Select Year</span>
-        </label>
-        </div>
-      <div class="box">
-        <input class="{{ theme }}-action button" style="width: 80%;dislay: inline;" type="submit" formaction="{{ page }}" value="submit"/>
-      </div>
+<form class="{{ theme }}-dark" method="post" action="{{ page }}">
+<div class="parent">
+  <div class="box">
+    <h3><b>Top 10 {{ position }} {{ year }}</b></h3>
+  </div>
+  <div class="form box">
+    <input class="{{ theme }}-colour inputbox" type="text" id="year" name="year" autocomplete="off" required />
+    <label for="year" class="label-name">
+      <span class="content-name">Select Year</span>
+    </label>
     </div>
-    <div class="spacer"></div>
-  </form>
+  <div class="box">
+    <input class="{{ theme }}-action button" style="width: 100%;dislay: inline;" type="submit" formaction="{{ page }}" value="submit"/>
+  </div>
 </div>
-
+</form>
 <!-- body -->
 <div class="mobile">
     <div class="{{ theme }}-dark">

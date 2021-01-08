@@ -331,8 +331,7 @@ def power():
 
 @canples.route('/versus')
 def comparison1():
-    year = '2020'
-    headline = 'Finals - Forge VS Wanderers'
+    headline = year+' Finals - Forge VS Wanderers'
     results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters  = load_main_files(year)
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
 
@@ -412,8 +411,7 @@ def comparison1():
 
 @canples.route('/versus-', methods=['POST'])
 def comparison2():
-    year = '2020'
-    headline = 'Last 3 Matches - 1st Potential Match of Second Round'
+    headline = year+' Finals - Forge VS Wanderers'
     results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters = load_main_files(year)
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
 
@@ -484,7 +482,7 @@ def comparison2():
     away_sum = away_roster['overall'].sum()
     #print(home_sum,away_sum)
 
-    return render_template('cpl-es-comparison2.html',home_table = home_roster.head(11), away_table = away_roster.head(11), home_win = home_win,
+    return render_template('cpl-es-comparison.html',home_table = home_roster.head(11), away_table = away_roster.head(11), home_win = home_win,
     home_history = q1_r, away_history = q2_r,
     home_team = q1, away_team = q2, away_win = away_win, draw = draw, home_form = home_form, away_form = away_form, schedule = schedule, year = year,
     home_crest = home_crest, home_colour = home_colour, away_crest = away_crest, away_colour = away_colour, headline = headline, home_score = home_score, away_score = away_score,

@@ -30,7 +30,11 @@
             <td style="vertical-align: bottom;"><h2 class="xxfont"> Champions</h2></td>
           </tr>
           <tr>
+            {% if top_team|length > 12 %}
+            <td><h3 class="xfont"> {{ top_team }}</h3></td>
+            {% else %}
             <td><h3 class="xxfont"> {{ top_team }}</h3></td>
+            {% endif %}
           </tr>
         </table>
       </div>
@@ -41,7 +45,11 @@
             <td style="vertical-align: bottom;"><h2 class="xxfont"> Top Team</h2></td>
           </tr>
           <tr>
+            {% if top_mover|length > 12 %}
+            <td><h3 class="xfont"> {{ top_mover }}</h3></td>
+            {% else %}
             <td><h3 class="xxfont"> {{ top_mover }}</h3></td>
+            {% endif %}
           </tr>
         </table>
       </div>
@@ -52,7 +60,11 @@
             <td style="vertical-align: bottom;"><h2 class="xxfont"> Bottom Team</h2></td>
           </tr>
           <tr>
+            {% if top_dropper|length > 12 %}
+            <td><h3 class="xfont"> {{ top_dropper }}</h3></td>
+            {% else %}
             <td><h3 class="xxfont"> {{ top_dropper }}</h3></td>
+            {% endif %}
           </tr>
         </table>
       </div>
@@ -78,7 +90,11 @@
             <td style="vertical-align: bottom;"><h2 class="xxfont"> Champions</h2></td>
           </tr>
           <tr>
+            {% if top_team|length > 12 %}
+            <td><h3 class="xfont"> {{ top_team }}</h3></td>
+            {% else %}
             <td><h3 class="xxfont"> {{ top_team }}</h3></td>
+            {% endif %}
           </tr>
         </table>
       </div>
@@ -89,7 +105,11 @@
             <td style="vertical-align: bottom;"><h2 class="xxfont"> Top Team</h2></td>
           </tr>
           <tr>
+            {% if top_mover|length > 12 %}
+            <td><h3 class="xfont"> {{ top_mover }}</h3></td>
+            {% else %}
             <td><h3 class="xxfont"> {{ top_mover }}</h3></td>
+            {% endif %}
           </tr>
         </table>
       </div>
@@ -100,7 +120,11 @@
             <td style="vertical-align: bottom;"><h2 class="xxfont"> Bottom Team</h2></td>
           </tr>
           <tr>
+            {% if top_dropper|length > 12 %}
+            <td><h3 class="xfont"> {{ top_dropper }}</h3></td>
+            {% else %}
             <td><h3 class="xxfont"> {{ top_dropper }}</h3></td>
+            {% endif %}
           </tr>
         </table>
       </div>
