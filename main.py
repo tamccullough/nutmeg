@@ -608,28 +608,35 @@ def roster():
 
 @canples.route('/player', methods=['POST'])
 def player():
-    stats = pd.read_csv(f'datasets/{year}/cpl-{year}-stats.csv')
-    stats_seed = pd.read_csv(f'datasets/{year}/cpl-{year}-stats-seed.csv')
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
     player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
 
     name = request.form['name']
 
-    player = cpl_main.get_player_card(name,stats,stats_seed,player_info)
+    player = player_info[player_info['name'] == name]
     team = player['team'].values[0]
     roster_team_info = team_ref[team_ref['team'] == team]
     roster_colour = roster_team_info.iloc[0][4]
     crest = roster_team_info.iloc[0][5]
+    pos = player['position'].values[0]
+    position = {'d':'defenders','f':'forwards','k':'keepers','m':'midfielders'}
+    db = pd.read_csv(f'datasets/{year}/cpl-{year}-{position.get(pos)}.csv')
+    db90 = pd.read_csv(f'datasets/{year}/cpl-{year}-{position.get(pos)}-p90.csv')
+    discipline = pd.read_csv(f'datasets/{year}/cpl-{year}-discipline.csv')
+    db = db[db['name'] == name][db.columns]
+    print('\n',name,'\n',db)
+    db90 = db90[db90['name'] == name][db90.columns]
+    discipline[discipline['name'] == name][discipline.columns[5:-1]]
 
     try:
-        player_name = player_info[player_info['display'] == player['name'].values[0]]['display'].values[0]
+        player_name = player[player['display'] == name]['display'].values[0]
     except:
-        player_name = player_info[player_info['name'] == player['name'].values[0]]['display'].values[0]
+        player_name = player[player['name'] == name]['display'].values[0]
     try:
-        nationality = player_info[player_info['display'] == player['name'].values[0]]['nationality'].values[0]
+        nationality = player[player['display'] == name]['nationality'].values[0]
     except:
-        nationality = player_info[player_info['name'] == player['name'].values[0]]['nationality'].values[0]
+        nationality = player[player['name'] == name]['nationality'].values[0]
     try:
         if year != '2019':
             graph_image = player_info[player_info['display'] == player_name]['graph'].values[0]
@@ -652,8 +659,10 @@ def player():
             radar_image = ''
 
 
-    return render_template('cpl-es-player.html', name = player_name, graph = graph_image, radar = radar_image, nationality = nationality,
-    team_name = team, html_table = player, team_colour = roster_colour, year = year, crest = crest,
+    return render_template('cpl-es-player.html', name = player_name, graph = graph_image,
+    radar = radar_image, nationality = nationality, team_name = team, player_info = player,
+    team_colour = roster_colour, year = year, crest = crest, position = position.get(pos)[:-1],
+    stats = db, stats90 = db90, discipline = discipline,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/goals')

@@ -6,136 +6,277 @@
   <div>
     <h3><b>Player Information - {{ name }}</b></h3>
   </div>
-  <div><a href="{{ url_for('roster') }}"><input class="text-white button" type="submit" id="team" name="team" value="{{ html_table.iloc[0,0] }}"/></a>
+  <div><a href="{{ url_for('roster') }}"><input class="text-white button" type="submit" id="team" name="team" value="{{ player_info.iloc[0]['team'] }}"/></a>
   </div>
 </form>
 
 <!-- profile section including photo -->
-<div class="parent {{ team_colour }}">
-  {% if year != '2019'%}
-  <div class="box center">
-    <img src="static/images/players/{{ year }}/{{ html_table.at[0,'image'] }}" alt="{{ html_table.iloc[0,5] }}" style="max-width:80%">
+<div class="{{ team_colour }}">
+  <div class="mobile">
+    <div class="{{ team_colour }}">
+      {% if year != '2019'%}
+      <div class="box center">
+        <img src="static/images/players/{{ year }}/{{ player_info.iloc[0]['image'] }}" alt="{{ player_info.iloc[0]['name'] }}" style="max-width:60%;">
+      </div>
+      <div class="textcenter xxfont" style="width:100%;">
+        <a>{{ position }}</a>
+      </div>
+      <div class="spacer">
+
+      </div>
+      <div>
+        <img src="static/images/{{ year }}/player_graphs/{{ radar }}" alt="player radar" style="max-width:50%;float:left">
+      </div>
+      <div>
+        <img src="static/images/{{ year }}/player_graphs/{{ graph }}" alt="player performance" style="max-width:50%">
+      </div>
+      {% else %}
+      <div class="center">
+        <img src="static/images/players/{{ year }}/{{ player_info.iloc[0]['image'] }}" alt="{{ player_info.iloc[0]['name'] }}" style="max-width:80%">
+      </div>
+      {% endif %}
+    </div>
   </div>
-  <div class="box center">
-    <img src="static/images/{{ year }}/player_graphs/{{ radar }}" alt="player radar" style="max-width:90%">
+
+  <div class="desktop">
+    <div class="parent {{ team_colour }}">
+      {% if year != '2019'%}
+      <div class="box center">
+        <img src="static/images/players/{{ year }}/{{ player_info.iloc[0]['image'] }}" alt="{{ player_info.iloc[0]['name'] }}" style="max-width:80%">
+      </div>
+      <div class="box center">
+        <img src="static/images/{{ year }}/player_graphs/{{ radar }}" alt="player radar" style="max-width:90%">
+      </div>
+      <div class="box center">
+        <img src="static/images/{{ year }}/player_graphs/{{ graph }}" alt="player performance" style="max-width:90%">
+      </div>
+      {% else %}
+      <div class="center">
+        <img src="static/images/players/{{ year }}/{{player_info.iloc[0]['image'] }}" alt="{{ player_info.iloc[0]['name'] }}" style="max-width:80%">
+      </div>
+      {% endif %}
+    </div>
   </div>
-  <div class="box center">
-    <img src="static/images/{{ year }}/player_graphs/{{ graph }}" alt="player performance" style="max-width:90%">
-  </div>
-  {% else %}
-  <div class="center">
-    <img src="static/images/players/{{ year }}/{{ html_table.at[0,'image'] }}" alt="{{ html_table.iloc[0,5] }}" style="max-width:80%">
-  </div>
-  {% endif %}
+
   <div class="mobile">
     <table>
       <tr>
-        <td><a><img src="static/images/flags/{{ html_table.at[0,'flag'] }}" alt="{{ html_table.iloc[0,2] }}" style="max-height:30px"><a></td>
+        <td><a><img src="static/images/flags/{{ player_info.iloc[0]['flag'] }}" alt="{{ player_info.iloc[0]['flag'][:-4] }}" style="max-height:30px"><a></td>
         <td>{{ nationality }}</td>
-        <td>{{ html_table.at[0,'overall'] }}**</td>
+        <td>{{ stats90.iloc[0]['overall'] }}**</td>
       </tr>
       <tr>
-        <td>MIN: {{ html_table.at[0,'minutes'] }}</td>
-        <td>xG: {{ html_table.at[0,'xG'] }}**</td>
-        <td>xA: {{ html_table.at[0,'xA'] }}**</td>
+        <td>MIN: {{ stats90.iloc[0]['minutes'] }}</td>
+        <td>xG: {{ stats90.iloc[0]['goals'] }}**</td>
+        <td>xA: {{ stats90.iloc[0]['assists'] }}**</td>
       </tr>
       <tr>
-        <td>Y: {{ html_table.at[0,'yellow'] }}</td>
-        <td>R: {{ html_table.at[0,'red'] }}</td>
-        <td>#: {{ html_table.at[0,'number'] }}</td>
+        <td>Yellows: {{ discipline.iloc[0]['yellow'] }}</td>
+        <td>Reds: {{ discipline.iloc[0]['red'] }}</td>
+        <td>Number: {{ stats.iloc[0]['number'] }}</td>
       </tr>
     </table>
-    <span><a>{{ html_table.at[0,'position'] }}</a></span>
   </div>
+
   <div class="desktop">
     <table>
       <tr>
-        <td><a><img src="static/images/flags/{{ html_table.at[0,'flag'] }}" alt="{{ html_table.iloc[0,2] }}" style="max-height:30px"><a></td>
+        <td><a><img src="static/images/flags/{{ player_info.iloc[0]['flag'] }}" alt="{{ player_info.iloc[0]['flag'][:-4] }}" style="max-height:30px"><a></td>
         <td>{{ nationality }}</td>
-        <td>{{ html_table.at[0,'overall'] }}**</td>
-        <td>MIN: {{ html_table.at[0,'minutes'] }}</td>
-        <td>xG: {{ html_table.at[0,'xG'] }}**</td>
-        <td>xA: {{ html_table.at[0,'xA'] }}**</td>
-        <td>Y: {{ html_table.at[0,'yellow'] }}</td>
-        <td>R: {{ html_table.at[0,'red'] }}</td>
-        <td>#: {{ html_table.at[0,'number'] }}</td>
-        <td>{{ html_table.at[0,'position'] }}</td>
+        <td>{{ stats.iloc[0]['overall'] }}**</td>
+        <td>MIN: {{ stats.iloc[0]['minutes']|int }}</td>
+        <td>xG: {{ stats90.iloc[0]['goals'] }}**</td>
+        <td>xA: {{ stats90.iloc[0]['assists'] }}**</td>
+        <td>Y: {{ discipline.iloc[0]['yellow'] }}</td>
+        <td>R: {{ discipline.iloc[0]['red'] }}</td>
+        <td>#: {{ stats.iloc[0]['number'] }}</td>
+        <td>{{ position }}</td>
       </tr>
     </table>
   </div>
 </div>
 
-  <div class="parent {{ team_colour }}">
-    <!-- graph section -->
-    <div class="{{ theme }}-dark" style="width:100%;">
-      <h3>{{ year }} Rolling Statistics</h3>
+<div class="mobile">
+  <!-- table section -->
+    <div class="parent {{ team_colour }}">
+      <div class="{{ theme }}-dark" style="width:100%;">
+        <h3>{{ year }} Rolling Statistics</h3>
+      </div>
+      <div class="{{ theme }}-dark" style="width:100%;">
+        <h4> Season</h4>
+      </div>
+      <div class="parent {{ theme }}-dark">
+        <div class="{{ theme }}-dark">
+          <table>
+            <tr>
+              {% for column in stats.columns[4:9] %}
+                <td>{{ column }}</td>
+              {% endfor %}
+            </tr>
+          </table>
+        </div>
+        <div class="{{ theme }}-light">
+          <table>
+            <tr>
+              {% for column in stats.columns[4:9] %}
+                {% if column == 'overall'%}
+                <td>{{ stats.iloc[0][column] }}</td>
+                {% else %}
+                <td>{{ stats.iloc[0][column]|int }}</td>
+                {% endif %}
+              {% endfor %}
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="parent {{ theme }}-dark">
+        <div class="{{ theme }}-dark">
+          <table>
+            <tr>
+              {% for column in stats.columns[9:] %}
+                <td>{{ column }}</td>
+              {% endfor %}
+            </tr>
+          </table>
+        </div>
+        <div class="{{ theme }}-light">
+          <table>
+            <tr>
+              {% for column in stats.columns[9:] %}
+                {% if column == 'overall'%}
+                <td>{{ stats.iloc[0][column] }}</td>
+                {% else %}
+                <td>{{ stats.iloc[0][column]|int }}</td>
+                {% endif %}
+              {% endfor %}
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="{{ theme }}-dark" style="width:100%;">
+        <h4> Per 90</h4>
+      </div>
+      <div class="parent {{ theme }}-dark">
+        <div class="{{ theme }}-dark">
+          <table>
+            <tr>
+              {% for column in stats90.columns[4:9] %}
+                <td>{{ column }}</td>
+              {% endfor %}
+            </tr>
+          </table>
+        </div>
+        <div class="{{ theme }}-light">
+          <table>
+            <tr>
+              {% for column in stats90.columns[4:9] %}
+                {% if column == 'minutes'%}
+                <td>per{{ stats90.iloc[0][column] }}</td>
+                {% else %}
+                <td>{{ stats90.iloc[0][column] }}</td>
+                {% endif %}
+              {% endfor %}
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="parent {{ theme }}-dark">
+        <div class="{{ theme }}-dark">
+          <table>
+            <tr>
+              {% for column in stats90.columns[9:-2] %}
+                <td>{{ column }}</td>
+              {% endfor %}
+            </tr>
+          </table>
+        </div>
+        <div class="{{ theme }}-light">
+          <table>
+            <tr>
+              {% for column in stats90.columns[9:-2] %}
+                {% if column == 'minutes'%}
+                <td>per{{ stats90.iloc[0][column] }}</td>
+                {% else %}
+                <td>{{ stats90.iloc[0][column] }}</td>
+                {% endif %}
+              {% endfor %}
+            </tr>
+          </table>
+        </div>
+      </div>
     </div>
+  <!-- END table section -->
+</div>
 
-    <!-- table section -->
-    <div class="center" style="width:80%;">
-      <table>
-        <tr>
-          <td>Goals: {{ html_table.at[0,'goals'] }}</td>
-          <td>Assists: {{ html_table.at[0,'assists'] }}</td>
-        </tr>
-        <tr>
-          <td>Passes: {{ html_table.at[0,'passes'] }}</td>
-          <td>Accuracy: {{ html_table.at[0,'pass-acc'] }}</td>
-        </tr>
-        <tr>
-          <td>Crosses: {{ html_table.at[0,'cross'] }}</td>
-          <td>Accuracy: {{ html_table.at[0,'cross-acc'] }}</td>
-        </tr>
-        <tr>
-          <td>Shots: {{ html_table.at[0,'shots'] }}</td>
-          <td>Shots on Target: {{ html_table.at[0,'s-target'] }}</td>
-        </tr>
-        <tr>
-          <td>Shots Inside Box: {{ html_table.at[0,'s-box'] }}</td>
-          <td>Shots Outside Box: {{ html_table.at[0,'s-out-box'] }}</td>
-        </tr>
-        <tr>
-          <td>Tackles: {{ html_table.at[0,'tackles'] }}</td>
-          <td>Tackles Won: {{ html_table.at[0,'t-won'] }}</td>
-        </tr>
-        <tr>
-          <td>Duels: {{ html_table.at[0,'duels'] }}</td>
-          <td>Duels Won: {{ html_table.at[0,'d-won'] }}</td>
-        </tr>
-        <tr>
-          <td>Fouls Won: {{ html_table.at[0,'f-won'] }}</td>
-          <td>Fouls Conceded: {{ html_table.at[0,'f-conceded'] }}</td>
-        </tr>
-        <tr>
-          <td>Touches: {{ html_table.at[0,'touches'] }}</td>
-          <td>Chances: {{ html_table.at[0,'chances'] }}</td>
-        </tr>
-        <tr>
-          <td>Clearances: {{ html_table.at[0,'clearances'] }}</td>
-          <td>Interceptions: {{ html_table.at[0,'interceptions'] }}</td>
-        </tr>
-        <tr>
-          <td>Shots Faced: {{ html_table.at[0,'shots faced'] }}</td>
-          <td>Claimed Crosses: {{ html_table.at[0,'claimed crosses'] }}</td>
-        </tr>
-        <tr>
-          <td>Saves: {{ html_table.at[0,'saves'] }}</td>
-          <td>Clean Sheets: {{ html_table.at[0,'cs'] }}</td>
-        </tr>
-      </table>
+<div class="desktop">
+  <!-- table section -->
+    <div class="parent {{ team_colour }}">
+      <div class="{{ theme }}-dark" style="width:100%;">
+        <h3>{{ year }} Rolling Statistics</h3>
+      </div>
+      <div class="parent {{ theme }}-dark">
+        <div class="{{ theme }}-dark">
+          <table>
+            <tr>
+              {% for column in stats.columns[4:] %}
+                <td>{{ column }}</td>
+              {% endfor %}
+            </tr>
+          </table>
+        </div>
+        <div class="{{ theme }}-light">
+          <table>
+            <tr>
+              {% for column in stats.columns[4:] %}
+                {% if column == 'overall'%}
+                <td>{{ stats.iloc[0][column] }}</td>
+                {% else %}
+                <td>{{ stats.iloc[0][column]|int }}</td>
+                {% endif %}
+              {% endfor %}
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="parent {{ theme }}-dark">
+        <div class="{{ theme }}-dark">
+          <table>
+            <tr>
+              {% for column in stats90.columns[4:-2] %}
+                <td>{{ column }}</td>
+              {% endfor %}
+            </tr>
+          </table>
+        </div>
+        <div class="{{ theme }}-light">
+          <table>
+            <tr>
+              {% for column in stats90.columns[4:-2] %}
+                {% if column == 'minutes'%}
+                <td>per{{ stats90.iloc[0][column] }}</td>
+                {% else %}
+                <td>{{ stats90.iloc[0][column] }}</td>
+                {% endif %}
+              {% endfor %}
+            </tr>
+          </table>
+        </div>
+      </div>
     </div>
+  <!-- END table section -->
+</div>
 
-  </div>
-  <div class=" {{ team_colour }}">
+  <div class=" {{ team_colour }}" style="width:100%;">
     <div class="spacer"></div>
-    <div style="width:95%;text-align:right;">
-      <a class="text-white button" href="{{ html_table.iloc[0,33] }}" target="_blank"><b> Wiki Link</b></a>
+    <div style="text-align:right; padding: 0px 15px;">
+      <a class="text-white button" href="{{ player_info.iloc[0]['link'] }}" target="_blank"><b> Wiki Link</b></a>
     </div>
     <div class="mobile">
       <a style="font-size:0.7em;">**NOTE: Overall, xG & xA are rolling results. Altered after each match played.</a>
     </div>
     <div class="desktop">
-      <a>**NOTE: Overall, xG & xA are rolling results. Altered after each match played.</a>
+      <a style=" padding: 0px 15px;">**NOTE: Overall, xG & xA are rolling results. Altered after each match played.</a>
     </div>
     <div class="spacer"></div>
   </div>
