@@ -206,8 +206,7 @@ def get_90(dataframe):
             pass
         else:
             col_max = data[col].max()
-            data[col] = [round(x/(y/90)) if (x > 0) & (y > 0) else 0 for x,y in zip(data[col],data['minutes'])]
-            data[col] = [ int(x) for x in data[col]]
+            data[col] = [round(x/(y/90),2) if (x > 0) & (y > 0) else 0 for x,y in zip(data[col],data['minutes'])]
     data['new_overall'] = 0.0
     for i in range(data.shape[0]):
         summed = data.iloc[i][cols].sum()
