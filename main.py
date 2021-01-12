@@ -627,7 +627,8 @@ def player():
     db = db[db['name'] == name][db.columns]
     print('\n',name,'\n',db)
     db90 = db90[db90['name'] == name][db90.columns]
-    discipline[discipline['name'] == name][discipline.columns[5:-1]]
+    discipline = discipline[discipline['name'] == name][discipline.columns[5:-1]]
+    print('\n',discipline,'\n')
 
     try:
         player_name = player[player['display'] == name]['display'].values[0]
