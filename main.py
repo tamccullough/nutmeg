@@ -215,6 +215,7 @@ def index_19():
 
     champs = f'{top_team} - {year} Champions'
     suspended = 'none'
+    headline = f'{champs}'
 
     return render_template('cpl-es-index.html',top_mover = top_mover, top_dropper = top_dropper,
     goals = goals,  assists = assists, yellows = yellows, reds = reds,
@@ -223,7 +224,7 @@ def index_19():
     top_midfielder = top_midfielder, top_defender = top_defender,
     top_scorer = top_scorer, top_assist = top_assist, top_offender = top_offender, suspended = suspended,
     first_crest = first_crest, first_colour = first_colour, top_crest = top_crest, bot_crest = bot_crest,
-    today = today, year = year, champs = champs,
+    today = today, year = year, champs = champs, headline = headline,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/standings')
