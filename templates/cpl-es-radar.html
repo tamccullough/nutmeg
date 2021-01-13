@@ -1,24 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
+
+<!-- header -->
+{% include "form.html" %}
+{% block body %}{% endblock %}
+
 <!-- page content -->
-  <!-- header -->
-  <!-- header -->
-<form class="{{ theme }}-dark" method="post" action="{{ page }}">
-  <div class="parent">
-    <div class="box">
-      <h3><b>Radar Charts {{ year }}</b></h3>
-    </div>
-    <div class="form box">
-      <input class="{{ theme }}-colour inputbox" type="text" id="year" name="year" autocomplete="off" required />
-      <label for="year" class="label-name">
-        <span class="content-name">Select Year</span>
-      </label>
-      </div>
-    <div class="box">
-      <input class="{{ theme }}-action button" style="width: 100%;dislay: inline;" type="submit" formaction="{{ page }}" value="submit"/>
-    </div>
-  </div>
-</form>
   <!-- body -->
   <div class="mobile">
     <div class="parent {{ theme }}-dark">
@@ -39,9 +26,9 @@
                       <td colspan="3"><h3>Rolling Expected</h3></td>
                     </tr>
                     <tr>
-                      <td><h3>xG: {{ stats.at[0,'xg'] }}</h3></td>
-                      <td style="text-indent: -10px;"><h3>xPPG: {{ stats.at[0,'xp'] }}</h3></td>
-                      <td><h3> xPTS: {{ stats.at[0,'xt'] }}</h3></td>
+                      <td><h3>xG: {{ stats[stats['team'] == name]['xg'].values[0] }}</h3></td>
+                      <td style="text-indent: -10px;"><h3>xPPG: {{ stats[stats['team'] == name]['xp'].values[0] }}</h3></td>
+                      <td><h3> xPTS: {{ stats[stats['team'] == name]['xt'].values[0] }}</h3></td>
                     </tr>
                   </table>
 
@@ -80,9 +67,9 @@
                     <td colspan="3"><h3>Rolling Expected</h3></td>
                   </tr>
                   <tr>
-                    <td style="text-align:right;"><h3> xG: </h3></td><td><h3> {{ stats.at[0,'xg'] }}</h3></td>
-                    <td style="text-align:right;"><h3> xPPG: </h3></td><td><h3> {{ stats.at[0,'xp'] }}</h3></td>
-                    <td style="text-align:right;"><h3> xPTS: </h3></td><td><h3> {{ stats.at[0,'xt'] }}</h3></td>
+                    <td style="text-align:right;"><h3> xG: </h3></td><td><h3> {{ stats[stats['team'] == name]['xg'].values[0] }}</h3></td>
+                    <td style="text-align:right;"><h3> xPPG: </h3></td><td><h3> {{ stats[stats['team'] == name]['xp'].values[0] }}</h3></td>
+                    <td style="text-align:right;"><h3> xPTS: </h3></td><td><h3> {{ stats[stats['team'] == name]['xt'].values[0] }}</h3></td>
                   </tr>
                 </table>
 

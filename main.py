@@ -148,6 +148,7 @@ def index():
 
     champs = f'{top_team} - {year} Champions'
     suspended = 'none'
+    headline = f'{champs}'
 
     return render_template('cpl-es-index.html',top_mover = top_mover, top_dropper = top_dropper,
     goals = goals,  assists = assists, yellows = yellows, reds = reds,
@@ -156,7 +157,7 @@ def index():
     top_midfielder = top_midfielder, top_defender = top_defender,
     top_scorer = top_scorer, top_assist = top_assist, top_offender = top_offender, suspended = suspended,
     first_crest = first_crest, first_colour = first_colour, top_crest = top_crest, bot_crest = bot_crest,
-    today = today, year = year, page = page, champs = champs,
+    today = today, year = year, page = page, champs = champs, headline = headline,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/-', methods=['POST'])
@@ -227,6 +228,7 @@ def index_19():
 
 @canples.route('/standings')
 def standings():
+
     year = current_year
     page = '/standings-'
     championship = pd.read_csv(f'datasets/{year}/cpl-{year}-championship.csv')
@@ -243,14 +245,18 @@ def standings():
         check = 0
     else:
         check = 1
+
+    headline = f'Standings - {year}'
+
     return render_template('cpl-es-standings.html',columns = columns,
     championship_table = championship, check = check,
     standings_table = standings, form_table = team_form_results,
-    year = year, page = page,
+    year = year, page = page, headline =headline,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/standings-', methods=['POST'])
 def standingsY():
+
     year = request.form['year']
     page = '/standings-'
     championship = pd.read_csv(f'datasets/{year}/cpl-{year}-championship.csv')
@@ -270,14 +276,17 @@ def standingsY():
         check = 0
     else:
         check = 1
+    headline = f'Standings - {year}'
+
     return render_template('cpl-es-standings.html',columns = columns,
     championship_table = championship, check = check,
     standings_table = standings, form_table = team_form_results,
-    year = year, page = page,
+    year = year, page = page,  headline =headline,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/best11')
 def eleven():
+
     global year
     year = current_year
     page = '/best11-'
@@ -295,14 +304,16 @@ def eleven():
     print(midfield[['full_name','overall']])
     defenders = best_eleven[best_eleven['position'] == 'd']
     keeper = best_eleven[best_eleven['position'] == 'g']
+    headline = f'Best Eleven {year}'
 
     return render_template('cpl-es-best_eleven.html',
-    html_table = best_eleven, year = year, page = page,
+    html_table = best_eleven, year = year, page = page, headline = headline,
     attackers = attackers, defenders = defenders, midfield = midfield, keeper = keeper,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/best11-', methods=['POST'])
 def elevenY():
+
     global year
     year = request.form['year']
     page = '/best11-'
@@ -320,9 +331,10 @@ def elevenY():
     print(midfield[['full_name','overall']])
     defenders = best_eleven[best_eleven['position'] == 'd']
     keeper = best_eleven[best_eleven['position'] == 'g']
+    headline = f'Best Eleven {year}'
 
     return render_template('cpl-es-best_eleven.html',
-    html_table = best_eleven, year = year, page = page,
+    html_table = best_eleven, year = year, page = page, headline = headline,
     attackers = attackers, defenders = defenders, midfield = midfield, keeper = keeper,
     day = day, weekday = weekday, month = month, theme = theme)
 
@@ -498,6 +510,7 @@ def comparison2():
 
 @canples.route('/teams')
 def teams():
+
     global year
     year = current_year
     page ='/teams-'
@@ -505,12 +518,15 @@ def teams():
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
     columns = team_ref.columns
-    return render_template('cpl-es-teams.html',columns = columns,
+    headline = f'Club Information {year}'
+
+    return render_template('cpl-es-teams.html',columns = columns, headline =headline,
     html_table = team_ref, year = year, page = page, roster = roster,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/teams-', methods=['POST'])
 def teamsY():
+
     global year
     year = request.form['year']
     page ='/teams-'
@@ -518,12 +534,15 @@ def teamsY():
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
     columns = team_ref.columns
-    return render_template('cpl-es-teams.html',columns = columns,
+    headline = f'Club Information {year}'
+
+    return render_template('cpl-es-teams.html',columns = columns, headline =headline,
     html_table = team_ref, year = year, page = page, roster = roster,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/radar')
 def radar():
+
     year = current_year
     page = '/radar-'
     team_standings = pd.read_csv(f'datasets/{year}/cpl-{year}-standings_current.csv')
@@ -539,12 +558,15 @@ def radar():
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
     columns = team_ref.columns
+    headline = f'Radar Charts {year}'
+
     return render_template('cpl-es-radar.html',columns = columns, html_table = team_ref,
-    stats = team_standings,page = page, year = year,
+    stats = team_standings,page = page, year = year, headline = headline,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/radar-', methods=['POST'])
 def radar_19():
+
     global year
     year = request.form['year']
     page = '/radar-'
@@ -564,8 +586,10 @@ def radar_19():
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
     columns = team_ref.columns
+    headline = f'Radar Charts {year}'
+
     return render_template('cpl-es-radar.html',columns = columns, html_table = team_ref,
-    stats = team_standings,page = page, year = year,
+    stats = team_standings,page = page, year = year, headline = headline,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/roster', methods=['POST'])
@@ -684,12 +708,15 @@ def goals():
     rated_a10 = rated_assists.head(10)
     columns_g = rated_goalscorers.columns
     columns_a = rated_assists.columns
+    headline = f'Top Goal Scorers {year}'
+
     return render_template('cpl-es-goals.html',columns_g = columns_g, columns_a = columns_a,
-    html_table = rated_g10, assists_table = rated_a10, year = year, page = page,
+    html_table = rated_g10, assists_table = rated_a10, year = year, page = page, headline = headline,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/goals-', methods=['POST'])
 def goalsY():
+    global year
     year = request.form['year']
     page = '/goals-'
     rated_goalscorers = pd.read_csv(f'datasets/{year}/cpl-{year}-rated_goalscorers.csv')
@@ -698,8 +725,10 @@ def goalsY():
     rated_a10 = rated_assists.head(10)
     columns_g = rated_goalscorers.columns
     columns_a = rated_assists.columns
+    headline = f'Top Goal Scorers {year}'
+
     return render_template('cpl-es-goals.html',columns_g = columns_g, columns_a = columns_a,
-    html_table = rated_g10, assists_table = rated_a10, year = year, page = page,
+    html_table = rated_g10, assists_table = rated_a10, year = year, page = page, headline = headline,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/forwards')
@@ -709,20 +738,25 @@ def forwards():
     page = '/forwards-'
     rated_forwards = pd.read_csv(f'datasets/{year}/cpl-{year}-forwards.csv')
     columns = rated_forwards.columns
+    headline = f'Top 10 {position} {year}'
+
     return render_template('cpl-es-forwards.html',
-    position = position, page = page,
+    position = position, page = page, headline = headline,
     columns = columns,html_table = rated_forwards, year = year,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/forwards-', methods=['POST'])
 def forwards_19():
+    global year
     year = request.form['year']
     position = 'Forwards'
     page = '/forwards-'
     rated_forwards = pd.read_csv(f'datasets/{year}/cpl-{year}-forwards.csv')
     columns = rated_forwards.columns
+    headline = f'Top 10 {position} {year}'
+
     return render_template('cpl-es-forwards.html',
-    position = position, page = page,
+    position = position, page = page, headline = headline,
     columns = columns,html_table = rated_forwards, year = year,
     day = day, weekday = weekday, month = month, theme = theme)
 
@@ -735,13 +769,16 @@ def forwards_90():
     rated_forwards['overall'] = rated_forwards['new_overall']
     rated_forwards = rated_forwards.sort_values(by='overall',ascending=False)
     columns = rated_forwards.columns
+    headline = f'Top 10 {position} PER 90 {year}'
+
     return render_template('cpl-es-forwards.html',
-    position = position, page = page,
+    position = position, page = page, headline = headline,
     columns = columns,html_table = rated_forwards, year = year,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/forwardsP90-', methods=['POST'])
 def forwards_19_90():
+    global year
     year = request.form['year']
     position = 'Forwards per 90'
     page = '/forwardsP90-'
@@ -749,8 +786,10 @@ def forwards_19_90():
     rated_forwards['overall'] = rated_forwards['new_overall']
     rated_forwards = rated_forwards.sort_values(by='overall',ascending=False)
     columns = rated_forwards.columns
+    headline = f'Top 10 {position} PER 90 {year}'
+
     return render_template('cpl-es-forwards.html',
-    position = position, page = page,
+    position = position, page = page, headline = headline,
     columns = columns,html_table = rated_forwards, year = year,
     day = day, weekday = weekday, month = month, theme = theme)
 
@@ -761,20 +800,25 @@ def midfielders():
     page = '/midfielders-'
     rated_midfielders = pd.read_csv(f'datasets/{year}/cpl-{year}-midfielders.csv')
     columns = rated_midfielders.columns
+    headline = f'Top 10 {position} {year}'
+
     return render_template('cpl-es-midfielders.html',
-    position = position, page = page,
+    position = position, page = page, headline = headline,
     columns = columns,html_table = rated_midfielders, year = year,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/midfielders-', methods=['POST'])
 def midfielders_19():
+    global year
     year = request.form['year']
     position = 'Midfielders'
     page = '/midfielders-'
     rated_midfielders = pd.read_csv(f'datasets/{year}/cpl-{year}-midfielders.csv')
     columns = rated_midfielders.columns
+    headline = f'Top 10 {position} {year}'
+
     return render_template('cpl-es-midfielders.html',
-    position = position, page = page,
+    position = position, page = page, headline = headline,
     columns = columns,html_table = rated_midfielders, year = year,
     day = day, weekday = weekday, month = month, theme = theme)
 
@@ -787,13 +831,16 @@ def midfielders_90():
     rated_midfielders['overall'] = rated_midfielders['new_overall']
     rated_midfielders = rated_midfielders.sort_values(by='overall',ascending=False)
     columns = rated_midfielders.columns
+    headline = f'Top 10 {position} PER 90 {year}'
+
     return render_template('cpl-es-midfielders.html',
-    position = position, page = page,
+    position = position, page = page, headline = headline,
     columns = columns,html_table = rated_midfielders, year = year,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/midfieldersP90-', methods=['POST'])
 def midfielders_19_90():
+    global year
     year = request.form['year']
     position = 'Midfielders per 90'
     page = '/midfieldersP90-'
@@ -801,8 +848,10 @@ def midfielders_19_90():
     rated_midfielders['overall'] = rated_midfielders['new_overall']
     rated_midfielders = rated_midfielders.sort_values(by='overall',ascending=False)
     columns = rated_midfielders.columns
+    headline = f'Top 10 {position} PER 90 {year}'
+
     return render_template('cpl-es-midfielders.html',
-    position = position, page = page,
+    position = position, page = page, headline = headline,
     columns = columns,html_table = rated_midfielders, year = year,
     day = day, weekday = weekday, month = month, theme = theme)
 
@@ -813,20 +862,25 @@ def defenders():
     page = '/defenders-'
     rated_defenders = pd.read_csv(f'datasets/{year}/cpl-{year}-defenders.csv')
     columns = rated_defenders.columns
+    headline = f'Top 10 {position} {year}'
+
     return render_template('cpl-es-defenders.html',
-    position = position, page = page,
+    position = position, page = page, headline = headline,
     columns = columns,html_table = rated_defenders, year = year,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/defenders-', methods=['POST'])
 def defenders_19():
+    global year
     year = request.form['year']
     position = 'Defenders'
     page = '/defenders-'
     rated_defenders = pd.read_csv(f'datasets/{year}/cpl-{year}-defenders.csv')
     columns = rated_defenders.columns
+    headline = f'Top 10 {position} {year}'
+
     return render_template('cpl-es-defenders.html',
-    position = position, page = page,
+    position = position, page = page, headline = headline,
     columns = columns,html_table = rated_defenders, year = year,
     day = day, weekday = weekday, month = month, theme = theme)
 
@@ -839,13 +893,16 @@ def defenders_90():
     rated_defenders['overall'] = rated_defenders['new_overall']
     rated_defenders = rated_defenders.sort_values(by='overall',ascending=False)
     columns = rated_defenders.columns
+    headline = f'Top 10 {position} PER 90 {year}'
+
     return render_template('cpl-es-defenders.html',
-    position = position, page = page,
+    position = position, page = page, headline = headline,
     columns = columns,html_table = rated_defenders, year = year,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/defendersP90-', methods=['POST'])
 def defenders_19_90():
+    global year
     year = request.form['year']
     position = 'Defenders per 90'
     page = '/defendersP90-'
@@ -853,8 +910,10 @@ def defenders_19_90():
     rated_defenders['overall'] = rated_defenders['new_overall']
     rated_defenders = rated_defenders.sort_values(by='overall',ascending=False)
     columns = rated_defenders.columns
+    headline = f'Top 10 {position} PER 90 {year}'
+
     return render_template('cpl-es-defenders.html',
-    position = position, page = page,
+    position = position, page = page, headline = headline,
     columns = columns,html_table = rated_defenders, year = year,
     day = day, weekday = weekday, month = month, theme = theme)
 
@@ -865,20 +924,25 @@ def keepers():
     page = '/keepers-'
     rated_keepers = pd.read_csv(f'datasets/{year}/cpl-{year}-keepers.csv')
     columns = rated_keepers.columns
+    headline = f'Rated {position} {year}'
+
     return render_template('cpl-es-keepers.html',
-    position = position, page = page,
+    position = position, page = page, headline = headline,
     columns = columns,html_table = rated_keepers, year = year,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/keepers-', methods=['POST'])
 def keepers_19():
+    global year
     year = request.form['year']
     position = 'Goal Keepers'
     page = '/keepers-'
     rated_keepers = pd.read_csv(f'datasets/{year}/cpl-{year}-keepers.csv')
     columns = rated_keepers.columns
+    headline = f'Rated {position} {year}'
+
     return render_template('cpl-es-keepers.html',
-    position = position, page = page,
+    position = position, page = page, headline = headline,
     columns = columns,html_table = rated_keepers, year = year,
     day = day, weekday = weekday, month = month, theme = theme)
 
@@ -891,13 +955,16 @@ def keepers_90():
     rated_keepers['overall'] = rated_keepers['new_overall']
     rated_keepers = rated_keepers.sort_values(by='overall',ascending=False)
     columns = rated_keepers.columns
+    headline = f'Rated {position} PER 90 {year}'
+
     return render_template('cpl-es-keepers.html',
-    position = position, page = page,
+    position = position, page = page, headline = headline,
     columns = columns,html_table = rated_keepers, year = year,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/keepersP90-', methods=['POST'])
 def keepers_19_90():
+    global year
     year = request.form['year']
     position = 'Goal Keepers per 90'
     page = '/keepersP90-'
@@ -905,8 +972,10 @@ def keepers_19_90():
     rated_keepers['overall'] = rated_keepers['new_overall']
     rated_keepers = rated_keepers.sort_values(by='overall',ascending=False)
     columns = rated_keepers.columns
+    headline = f'Rated {position} PER 90 {year}'
+
     return render_template('cpl-es-keepers.html',
-    position = position, page = page,
+    position = position, page = page, headline = headline,
     columns = columns,html_table = rated_keepers, year = year,
     day = day, weekday = weekday, month = month, theme = theme)
 
@@ -916,18 +985,23 @@ def discipline():
     page = '/discipline-'
     rated_offenders = pd.read_csv(f'datasets/{year}/cpl-{year}-discipline.csv')
     columns = rated_offenders.columns
+    headline = f'Discipline {year}'
+
     return render_template('cpl-es-discipline.html',columns = columns,
-    html_table = rated_offenders, year = year, page = page,
+    html_table = rated_offenders, year = year, page = page, headline = headline,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/discipline-', methods=['POST'])
 def discipline_19():
+    global year
     year = request.form['year']
     page = '/discipline-'
     rated_offenders = pd.read_csv(f'datasets/{year}/cpl-{year}-discipline.csv')
     columns = rated_offenders.columns
+    headline = f'Discipline {year}'
+
     return render_template('cpl-es-discipline.html',columns = columns,
-    html_table = rated_offenders, year = year, page = page,
+    html_table = rated_offenders, year = year, page = page, headline = headline,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/hell')
