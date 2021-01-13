@@ -42,17 +42,17 @@
     <div class="parent {{ team_colour }}">
       {% if year != '2019'%}
       <div class="box center">
-        <img src="static/images/players/{{ year }}/{{ player_info.iloc[0]['image'] }}" alt="{{ player_info.iloc[0]['name'] }}" style="max-width:80%">
+        <img src="static/images/players/{{ year }}/{{ player_info.iloc[0]['image'] }}" alt="{{ player_info.iloc[0]['name'] }}" style="max-width:60%">
       </div>
       <div class="box center">
-        <img src="static/images/{{ year }}/player_graphs/{{ radar }}" alt="player radar" style="max-width:90%">
+        <img src="static/images/{{ year }}/player_graphs/{{ radar }}" alt="player radar" style="max-width:70%">
       </div>
       <div class="box center">
-        <img src="static/images/{{ year }}/player_graphs/{{ graph }}" alt="player performance" style="max-width:90%">
+        <img src="static/images/{{ year }}/player_graphs/{{ graph }}" alt="player performance" style="max-width:70%">
       </div>
       {% else %}
-      <div class="center">
-        <img src="static/images/players/{{ year }}/{{player_info.iloc[0]['image'] }}" alt="{{ player_info.iloc[0]['name'] }}" style="max-width:80%">
+      <div style="padding: 10px 25px;">
+        <img src="static/images/players/{{ year }}/{{player_info.iloc[0]['image'] }}" alt="{{ player_info.iloc[0]['name'] }}" style="max-width:40%;">
       </div>
       {% endif %}
     </div>

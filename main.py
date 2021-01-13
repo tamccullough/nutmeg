@@ -18,7 +18,8 @@ canples = Flask(__name__)
 
 theme = 'bland'
 month, day, weekday = cpl_main.get_weekday()
-year = '2020'
+current_year = '2020'
+year = current_year
 
 games_played = {1:28,2:7}
 
@@ -90,7 +91,7 @@ def load_player_files(year):
 def index():
     na = 'TBD'
 
-    year = '2020'
+    year = current_year
     page = '/-'
 
     championship = pd.read_csv(f'datasets/{year}/cpl-{year}-championship.csv')
@@ -162,6 +163,7 @@ def index():
 def index_19():
     na = 'TBD'
 
+    global year
     year = request.form['year']
     page = '/standings-'
 
@@ -225,7 +227,7 @@ def index_19():
 
 @canples.route('/standings')
 def standings():
-    year = '2020'
+    year = current_year
     page = '/standings-'
     championship = pd.read_csv(f'datasets/{year}/cpl-{year}-championship.csv')
     standings = pd.read_csv(f'datasets/{year}/cpl-{year}-standings_current.csv')
@@ -276,7 +278,8 @@ def standingsY():
 
 @canples.route('/best11')
 def eleven():
-    year = '2020'
+    global year
+    year = current_year
     page = '/best11-'
     best_eleven = pd.read_csv(f'datasets/{year}/cpl-{year}-best_eleven.csv')
     player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
@@ -300,6 +303,7 @@ def eleven():
 
 @canples.route('/best11-', methods=['POST'])
 def elevenY():
+    global year
     year = request.form['year']
     page = '/best11-'
     best_eleven = pd.read_csv(f'datasets/{year}/cpl-{year}-best_eleven.csv')
@@ -324,13 +328,14 @@ def elevenY():
 
 @canples.route('/power')
 def power():
-    year = '2020'
+    year = current_year
     power = pd.read_csv(f'datasets/{year}/cpl-{year}-power_rankings.csv')
     return render_template('cpl-es-power.html',html_table = power, year = year,
     day = day, weekday = weekday, month = month, theme = theme)
 
 @canples.route('/versus')
 def comparison1():
+    year = current_year
     headline = year+' Finals - Forge VS Wanderers'
     results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters  = load_main_files(year)
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
@@ -411,6 +416,7 @@ def comparison1():
 
 @canples.route('/versus-', methods=['POST'])
 def comparison2():
+    year = current_year
     headline = year+' Finals - Forge VS Wanderers'
     results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters = load_main_files(year)
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
@@ -493,7 +499,7 @@ def comparison2():
 @canples.route('/teams')
 def teams():
     global year
-    year = '2020'
+    year = current_year
     page ='/teams-'
     roster = '/roster'
     team_ref = pd.read_csv('datasets/teams.csv')
@@ -518,6 +524,7 @@ def teamsY():
 
 @canples.route('/radar')
 def radar():
+    year = current_year
     page = '/radar-'
     team_standings = pd.read_csv(f'datasets/{year}/cpl-{year}-standings_current.csv')
     team_standings = team_standings.sort_values(by='team')
@@ -538,6 +545,7 @@ def radar():
 
 @canples.route('/radar-', methods=['POST'])
 def radar_19():
+    global year
     year = request.form['year']
     page = '/radar-'
     if year == '2019':
@@ -668,7 +676,7 @@ def player():
 
 @canples.route('/goals')
 def goals():
-    year = '2020'
+    year = current_year
     page = '/goals-'
     rated_goalscorers = pd.read_csv(f'datasets/{year}/cpl-{year}-rated_goalscorers.csv')
     rated_g10 = rated_goalscorers.head(10)
@@ -696,7 +704,7 @@ def goalsY():
 
 @canples.route('/forwards')
 def forwards():
-    year = '2020'
+    year = current_year
     position = 'Forwards'
     page = '/forwards-'
     rated_forwards = pd.read_csv(f'datasets/{year}/cpl-{year}-forwards.csv')
@@ -720,7 +728,7 @@ def forwards_19():
 
 @canples.route('/forwardsP90')
 def forwards_90():
-    year = '2020'
+    year = current_year
     position = 'Forwards per 90'
     page = '/forwardsP90-'
     rated_forwards = pd.read_csv(f'datasets/{year}/cpl-{year}-forwards-p90.csv')
@@ -748,7 +756,7 @@ def forwards_19_90():
 
 @canples.route('/midfielders')
 def midfielders():
-    year = '2020'
+    year = current_year
     position = 'Midfielders'
     page = '/midfielders-'
     rated_midfielders = pd.read_csv(f'datasets/{year}/cpl-{year}-midfielders.csv')
@@ -772,7 +780,7 @@ def midfielders_19():
 
 @canples.route('/midfieldersP90')
 def midfielders_90():
-    year = '2020'
+    year = current_year
     position = 'Midfielders per 90'
     page = '/midfieldersP90-'
     rated_midfielders = pd.read_csv(f'datasets/{year}/cpl-{year}-midfielders-p90.csv')
@@ -800,7 +808,7 @@ def midfielders_19_90():
 
 @canples.route('/defenders')
 def defenders():
-    year = '2020'
+    year = current_year
     position = 'Defenders'
     page = '/defenders-'
     rated_defenders = pd.read_csv(f'datasets/{year}/cpl-{year}-defenders.csv')
@@ -824,7 +832,7 @@ def defenders_19():
 
 @canples.route('/defendersP90')
 def defenders_90():
-    year = '2020'
+    year = current_year
     position = 'Defenders'
     page = '/defendersP90-'
     rated_defenders = pd.read_csv(f'datasets/{year}/cpl-{year}-defenders-p90.csv')
@@ -852,7 +860,7 @@ def defenders_19_90():
 
 @canples.route('/keepers')
 def keepers():
-    year = '2020'
+    year = current_year
     position = 'Goal Keepers'
     page = '/keepers-'
     rated_keepers = pd.read_csv(f'datasets/{year}/cpl-{year}-keepers.csv')
@@ -876,7 +884,7 @@ def keepers_19():
 
 @canples.route('/keepersP90')
 def keepers_90():
-    year = '2020'
+    year = current_year
     position = 'Goal Keepers per 90'
     page = '/keepersP90-'
     rated_keepers = pd.read_csv(f'datasets/{year}/cpl-{year}-keepers-p90.csv')
@@ -904,7 +912,7 @@ def keepers_19_90():
 
 @canples.route('/discipline')
 def discipline():
-    year = '2020'
+    year = current_year
     page = '/discipline-'
     rated_offenders = pd.read_csv(f'datasets/{year}/cpl-{year}-discipline.csv')
     columns = rated_offenders.columns
