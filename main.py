@@ -739,7 +739,7 @@ def forwards():
     page = '/forwards-'
     rated_forwards = pd.read_csv(f'datasets/{year}/cpl-{year}-forwards.csv')
     columns = rated_forwards.columns
-    headline = f'Top 10 {position} {year}'
+    headline = f'Top {position} {year}'
 
     return render_template('cpl-es-forwards.html',
     position = position, page = page, headline = headline,
@@ -754,7 +754,7 @@ def forwards_19():
     page = '/forwards-'
     rated_forwards = pd.read_csv(f'datasets/{year}/cpl-{year}-forwards.csv')
     columns = rated_forwards.columns
-    headline = f'Top 10 {position} {year}'
+    headline = f'Top {position} {year}'
 
     return render_template('cpl-es-forwards.html',
     position = position, page = page, headline = headline,
@@ -770,7 +770,7 @@ def forwards_90():
     rated_forwards['overall'] = rated_forwards['new_overall']
     rated_forwards = rated_forwards.sort_values(by='overall',ascending=False)
     columns = rated_forwards.columns
-    headline = f'Top 10 {position} PER 90 {year}'
+    headline = f'Top {position} {year}'
 
     return render_template('cpl-es-forwards.html',
     position = position, page = page, headline = headline,
@@ -787,7 +787,7 @@ def forwards_19_90():
     rated_forwards['overall'] = rated_forwards['new_overall']
     rated_forwards = rated_forwards.sort_values(by='overall',ascending=False)
     columns = rated_forwards.columns
-    headline = f'Top 10 {position} PER 90 {year}'
+    headline = f'Top {position} {year}'
 
     return render_template('cpl-es-forwards.html',
     position = position, page = page, headline = headline,
@@ -801,7 +801,7 @@ def midfielders():
     page = '/midfielders-'
     rated_midfielders = pd.read_csv(f'datasets/{year}/cpl-{year}-midfielders.csv')
     columns = rated_midfielders.columns
-    headline = f'Top 10 {position} {year}'
+    headline = f'Top {position} {year}'
 
     return render_template('cpl-es-midfielders.html',
     position = position, page = page, headline = headline,
@@ -816,7 +816,7 @@ def midfielders_19():
     page = '/midfielders-'
     rated_midfielders = pd.read_csv(f'datasets/{year}/cpl-{year}-midfielders.csv')
     columns = rated_midfielders.columns
-    headline = f'Top 10 {position} {year}'
+    headline = f'Top {position} {year}'
 
     return render_template('cpl-es-midfielders.html',
     position = position, page = page, headline = headline,
@@ -832,7 +832,7 @@ def midfielders_90():
     rated_midfielders['overall'] = rated_midfielders['new_overall']
     rated_midfielders = rated_midfielders.sort_values(by='overall',ascending=False)
     columns = rated_midfielders.columns
-    headline = f'Top 10 {position} PER 90 {year}'
+    headline = f'Top {position} {year}'
 
     return render_template('cpl-es-midfielders.html',
     position = position, page = page, headline = headline,
@@ -849,7 +849,7 @@ def midfielders_19_90():
     rated_midfielders['overall'] = rated_midfielders['new_overall']
     rated_midfielders = rated_midfielders.sort_values(by='overall',ascending=False)
     columns = rated_midfielders.columns
-    headline = f'Top 10 {position} PER 90 {year}'
+    headline = f'Top {position} {year}'
 
     return render_template('cpl-es-midfielders.html',
     position = position, page = page, headline = headline,
@@ -863,7 +863,7 @@ def defenders():
     page = '/defenders-'
     rated_defenders = pd.read_csv(f'datasets/{year}/cpl-{year}-defenders.csv')
     columns = rated_defenders.columns
-    headline = f'Top 10 {position} {year}'
+    headline = f'Top {position} {year}'
 
     return render_template('cpl-es-defenders.html',
     position = position, page = page, headline = headline,
@@ -878,7 +878,7 @@ def defenders_19():
     page = '/defenders-'
     rated_defenders = pd.read_csv(f'datasets/{year}/cpl-{year}-defenders.csv')
     columns = rated_defenders.columns
-    headline = f'Top 10 {position} {year}'
+    headline = f'Top {position} {year}'
 
     return render_template('cpl-es-defenders.html',
     position = position, page = page, headline = headline,
@@ -894,7 +894,7 @@ def defenders_90():
     rated_defenders['overall'] = rated_defenders['new_overall']
     rated_defenders = rated_defenders.sort_values(by='overall',ascending=False)
     columns = rated_defenders.columns
-    headline = f'Top 10 {position} PER 90 {year}'
+    headline = f'Top {position} {year}'
 
     return render_template('cpl-es-defenders.html',
     position = position, page = page, headline = headline,
@@ -911,7 +911,7 @@ def defenders_19_90():
     rated_defenders['overall'] = rated_defenders['new_overall']
     rated_defenders = rated_defenders.sort_values(by='overall',ascending=False)
     columns = rated_defenders.columns
-    headline = f'Top 10 {position} PER 90 {year}'
+    headline = f'Top {position} {year}'
 
     return render_template('cpl-es-defenders.html',
     position = position, page = page, headline = headline,
@@ -956,7 +956,7 @@ def keepers_90():
     rated_keepers['overall'] = rated_keepers['new_overall']
     rated_keepers = rated_keepers.sort_values(by='overall',ascending=False)
     columns = rated_keepers.columns
-    headline = f'Rated {position} PER 90 {year}'
+    headline = f'Rated {position} {year}'
 
     return render_template('cpl-es-keepers.html',
     position = position, page = page, headline = headline,
@@ -973,7 +973,7 @@ def keepers_19_90():
     rated_keepers['overall'] = rated_keepers['new_overall']
     rated_keepers = rated_keepers.sort_values(by='overall',ascending=False)
     columns = rated_keepers.columns
-    headline = f'Rated {position} PER 90 {year}'
+    headline = f'Rated {position} {year}'
 
     return render_template('cpl-es-keepers.html',
     position = position, page = page, headline = headline,

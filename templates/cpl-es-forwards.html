@@ -32,7 +32,7 @@
         <table>
           <tr>
             <td style="width:10%;"><b>team</b></td>
-            <td style="width:50%;"><b>name</b></td>
+            <td style="width:38%;"><b>name</b></td>
             <td><b>G</b></td>
             <td><b>A</b></td>
             <td><b>Ch</b></td>
@@ -42,11 +42,11 @@
           {%for i in range(0,10)%}
           <tr class="{{ theme }}-light">
             <td style="width:10%;">{{ html_table.at[i, 'team'] }}</td>
-            <td style="width:50%;"><b>{{ ' '.join((html_table.at[i,'name']).split()[1:]) }}</b></td>
-            <td>{{ html_table.at[i,'goals'] }}</td>
-            <td>{{ html_table.at[i,'assists'] }}</td>
-            <td>{{ html_table.at[i,'chances'] }}</td>
-            <td>{{ html_table.at[i,'s-target'] }}</td>
+            <td style="font-size: 0.8em;width:38%;"><b>{{ ' '.join((html_table.at[i,'name']).split()[1:]) }}</b></td>
+            <td style="font-size: 0.8em;">{{ html_table.at[i,'goals'] }}</td>
+            <td style="font-size: 0.8em;">{{ html_table.at[i,'assists'] }}</td>
+            <td style="font-size: 0.8em;">{{ html_table.at[i,'chances'] }}</td>
+            <td style="font-size: 0.8em;">{{ html_table.at[i,'s-target'] }}</td>
             <td class="{{ theme }}-t-blue" style="width:15%;"><b>{{ html_table.at[i,'overall'] }}</b></td>
           </tr>
           {%endfor%}
@@ -61,7 +61,7 @@
           <table>
             <tr>
               <td style="width:10%;"><b>team</b></td>
-              <td style="width:50%;"><b>name</b></td>
+              <td style="width:38%;"><b>name</b></td>
               <td><b>G</b></td>
               <td><b>A</b></td>
               <td><b>Ch</b></td>
@@ -71,11 +71,11 @@
             {%for i in range(10,html_table.shape[0])%}
             <tr class="{{ theme }}-light">
               <td style="width:10%;">{{ html_table.at[i, 'team'] }}</td>
-              <td style="width:50%;"><b>{{ ' '.join((html_table.at[i,'name']).split()[1:]) }}</b></td>
-              <td>{{ html_table.at[i,'goals'] }}</td>
-              <td>{{ html_table.at[i,'assists'] }}</td>
-              <td>{{ html_table.at[i,'chances'] }}</td>
-              <td>{{ html_table.at[i,'s-target'] }}</td>
+              <td style="font-size: 0.8em;width:38%;"><b>{{ ' '.join((html_table.at[i,'name']).split()[1:]) }}</b></td>
+              <td style="font-size: 0.8em;">{{ html_table.at[i,'goals'] }}</td>
+              <td style="font-size: 0.8em;">{{ html_table.at[i,'assists'] }}</td>
+              <td style="font-size: 0.8em;">{{ html_table.at[i,'chances'] }}</td>
+              <td style="font-size: 0.8em;">{{ html_table.at[i,'s-target'] }}</td>
               <td class="{{ theme }}-t-blue" style="width:15%;"><b>{{ html_table.at[i,'overall'] }}</b></td>
             </tr>
             {%endfor%}

@@ -38,8 +38,8 @@
           <td style="width:38%;"><b>name</b></td>
           <td><b>G</b></td>
           <td><b>A</b></td>
-          <td style="width:12%;"><b>P%</b></td>
-          <td style="width:12%;"><b>C%</b></td>
+          <td><b>P%</b></td>
+          <td><b>C%</b></td>
           <td><b>Ch</b></td>
           <td style="text-align:center;width:14%;"><b>O</b></td>
         </tr>
@@ -53,11 +53,11 @@
         <tr>
           <td style="width:10%;">{{ html_table.at[i, 'team'] }}</td>
           <td style="font-size: 0.8em;width:38%;"><b>{{ ' '.join((html_table.at[i,'name']).split()[1:]) }}</b></td>
-          <td>{{ html_table.at[i,'goals'] }}</td>
-          <td>{{ html_table.at[i,'assists'] }}</td>
-          <td style="width:12%;">{{ html_table.at[i,'pass-acc'] }}</td>
-          <td style="width:12%;">{{ html_table.at[i,'cross-acc'] }}</td>
-          <td>{{ html_table.at[i,'chances'] }}</td>
+          <td style="font-size: 0.8em;">{{ html_table.at[i,'goals'] }}</td>
+          <td style="font-size: 0.8em;">{{ html_table.at[i,'assists'] }}</td>
+          <td style="font-size: 0.8em;">{{ html_table.at[i,'pass-acc'] }}</td>
+          <td style="font-size: 0.8em;">{{ html_table.at[i,'cross-acc'] }}</td>
+          <td style="font-size: 0.8em;">{{ html_table.at[i,'chances'] }}</td>
           <td class="{{ theme }}-t-blue" style="text-align:right;width:14%;"><b>{{ html_table.at[i,'overall'] }}</b></td>
         </tr>
       </table>
@@ -76,8 +76,8 @@
           <td style="width:38%;"><b>name</b></td>
           <td><b>G</b></td>
           <td><b>A</b></td>
-          <td style="width:12%;"><b>P%</b></td>
-          <td style="width:12%;"><b>C%</b></td>
+          <td><b>P%</b></td>
+          <td><b>C%</b></td>
           <td><b>Ch</b></td>
           <td style="text-align:center;width:14%;"><b>O</b></td>
         </tr>
@@ -91,11 +91,11 @@
         <tr>
           <td style="width:10%;">{{ html_table.at[i, 'team'] }}</td>
           <td style="font-size: 0.8em;width:38%;"><b>{{ ' '.join((html_table.at[i,'name']).split()[1:]) }}</b></td>
-          <td>{{ html_table.at[i,'goals'] }}</td>
-          <td>{{ html_table.at[i,'assists'] }}</td>
-          <td style="width:12%;">{{ html_table.at[i,'pass-acc'] }}</td>
-          <td style="width:12%;">{{ html_table.at[i,'cross-acc'] }}</td>
-          <td>{{ html_table.at[i,'chances'] }}</td>
+          <td style="font-size: 0.8em;">{{ html_table.at[i,'goals'] }}</td>
+          <td style="font-size: 0.8em;">{{ html_table.at[i,'assists'] }}</td>
+          <td style="font-size: 0.8em;">{{ html_table.at[i,'pass-acc'] }}</td>
+          <td style="font-size: 0.8em;">{{ html_table.at[i,'cross-acc'] }}</td>
+          <td style="font-size: 0.8em;">{{ html_table.at[i,'chances'] }}</td>
           <td class="{{ theme }}-t-blue" style="text-align:right;width:14%;"><b>{{ html_table.at[i,'overall'] }}</b></td>
         </tr>
       </table>
