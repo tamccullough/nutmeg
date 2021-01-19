@@ -384,6 +384,25 @@ td {
 
 /* buttons and inputs */
 
+.topbutton {
+  decoration:none;
+  border:none;
+  display: block;
+  position:fixed;
+  border-radius: 0.25rem;
+  width:65px;
+  height:75px;
+  right:200px;
+  bottom:30vh;
+}
+
+#backToTop {
+    visibility:hidden;
+    top:calc(100% / 2);
+    top:-moz-calc(100% / 2);
+    top:-o-calc(100% / 2);
+}
+
 .button {
   font-size: 1em;
   font-color: inherit;
