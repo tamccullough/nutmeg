@@ -71,6 +71,7 @@
   <div class="desktop">
     <div class="parent">
       <div class="box {{ first_colour }}">
+        <div class="spacer"></div>
         <table>
           <tr>
             <td style="width:25%; text-align:center;" rowspan="2"><img src="static/images/flags/{{ first_crest }}" alt="{{ top_team }} Crest" style="max-height:60px"></td>
@@ -84,8 +85,10 @@
             {% endif %}
           </tr>
         </table>
+        <div class="spacer"></div>
       </div>
       <div class="box {{ theme }}-green">
+        <div class="spacer"></div>
         <table>
           <tr>
             <td style="width:25%; text-align:center;" rowspan="2"><img src="static/images/flags/{{ top_crest }}" alt="{{ top_mover }} Crest" style="max-height:60px"></td>
@@ -99,8 +102,10 @@
             {% endif %}
           </tr>
         </table>
+        <div class="spacer"></div>
       </div>
       <div class="box {{ theme }}-red">
+        <div class="spacer"></div>
         <table>
           <tr>
             <td style="width:25%; text-align:center;" rowspan="2"><img src="static/images/flags/{{ bot_crest }}" alt="{{ top_dropper }} Crest" style="max-height:60px"></td>
@@ -114,8 +119,10 @@
             {% endif %}
           </tr>
         </table>
+        <div class="spacer"></div>
       </div>
       <div class="box {{ theme }}-blue">
+        <div class="spacer"></div>
         <table>
           <tr>
             <td style="width:25%; text-align:center;" rowspan="2"><img src="static/images/flags/CPL-Crest-White.png" alt="{{ top_dropper }} Crest" style="max-height:60px"></td>
@@ -125,6 +132,7 @@
             <td><h3 class="xxfont"> {{ yellows }} Y / {{ reds }} R </h3></td>
           </tr>
         </table>
+        <div class="spacer"></div>
       </div>
     </div>
   </div>
@@ -245,7 +253,8 @@
   <div class="parent">
 
       <div class="box {{ theme }}-light">
-        <h3>Biggest Win</h3>
+        <div class="spacer"></div>
+        <h2>Biggest Win</h2>
         <div class="child">
           {% if big_win.at[0,'hs'] > big_win.at[0,'as'] %}
           <div class="boxs {{ theme }}-green">{{ big_win.iloc[0]['home']}} {{big_win.iloc[0]['hs'].astype('int') }}</div>
@@ -300,10 +309,12 @@
           {% endif %}
         </div>
         <div class="spacer"></div>
+        <div class="spacer"></div>
       </div>
 
       <div class="box {{theme}}-light">
-        <span><h3>Players of the Week</h3></span>
+        <div class="spacer"></div>
+        <span><h2>Players of the Week</h2></span>
         <div>
           <table>
             <tr>
@@ -348,6 +359,7 @@
             </tr>
           </table>
           </div>
+          <div class="spacer"></div>
       </div>
     </div>
 </div>
