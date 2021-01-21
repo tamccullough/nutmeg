@@ -634,6 +634,7 @@ def roster():
         roster.insert(1,'first',first)
         roster.insert(2,'last',last)
     print(roster.columns)
+    print(roster)
 
     return render_template('cpl-es-roster.html',team_name = team, coach = coach,
     html_table = roster, team_colour = roster_colour, year = year, crest = crest,
@@ -653,7 +654,7 @@ def player():
     roster_colour = roster_team_info.iloc[0][4]
     crest = roster_team_info.iloc[0][5]
     pos = player['position'].values[0]
-    position = {'d':'defenders','f':'forwards','k':'keepers','m':'midfielders'}
+    position = {'d':'defenders','f':'forwards','g':'keepers','m':'midfielders'}
     db = pd.read_csv(f'datasets/{year}/cpl-{year}-{position.get(pos)}.csv')
     db90 = pd.read_csv(f'datasets/{year}/cpl-{year}-{position.get(pos)}-p90.csv')
     discipline = pd.read_csv(f'datasets/{year}/cpl-{year}-discipline.csv')
