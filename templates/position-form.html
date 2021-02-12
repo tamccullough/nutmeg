@@ -1,8 +1,33 @@
 
+{% if request.endpoint[-3:] == '_90' %}
+{% set PAGE = request.endpoint[:-3] %}
+{% set MIN = ' per 90' %}
+{% else %}
+{% set PAGE = request.endpoint %}
+{% set MIN = '' %}
+{% endif %}
+
+{% if PAGE == 'keepers' %}
+{% set TOP = 'rated ' %}
+{% else %}
+{% set TOP = 'top ' %}
+{% endif %}
+
+
+<div class="parent">
+  <div class="boxs center {{ theme }}-dark">
+    <a class="{{ theme }}-dark button" href="/{{ PAGE }}">{{ PAGE }} Total</a>
+  </div>
+  <div class="boxs center {{ theme }}-action">
+    <a class="{{ theme }}-action button" href="/{{ PAGE }}P90" >{{ PAGE }} Per 90</a>
+  </div>
+</div>
+
+
 <div class="mobile">
   <form class="{{ theme }}-dark" method="post" action="{{ url_for(request.endpoint) }}">
     <div class="textcenter" style="width:100%;">
-      <h1><b>{{ headline }}</b></h1>
+      <h1><b>{{ TOP }}{{ PAGE[0:1].upper() }}{{ PAGE[1:] }}{{ MIN }} {{ year }}</b></h1>
     </div>
   <div class="parent">
     <div class="form boxs" style="height:3em;">
@@ -23,7 +48,7 @@
   <form class="{{ theme }}-dark" method="post" action="{{ url_for(request.endpoint) }}">
   <div class="parent">
     <div class="box">
-      <h3 class="xfont" style="padding: 25px;"><b>{{ headline }}</b></h3>
+      <h3 class="xfont" style="padding: 25px;"><b>{{ TOP }}{{ PAGE[0:1].upper() }}{{ PAGE[1:] }}{{ MIN }} {{ year }}</b></h3>
     </div>
     <div class="form box">
       <select class="{{ theme }}-colour staat xfont" name="year" id="year">
