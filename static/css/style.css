@@ -9,6 +9,10 @@ body {
   overflow-x: hidden;
 }
 
+a:link:hover {
+  text-decoration: underline;
+}
+
 /* The emerging W3C standard
    that is currently Firefox-only */
 * {
@@ -405,12 +409,16 @@ td {
 
 .button {
   font-size: 1em;
-  font-color: inherit;
+  color: inherit;
   height: 40px;
   border:none;
-  text-decoration:none;
   background-color:inherit;
   cursor:pointer;
+  text-decoration: none;
+}
+
+.button:hover {
+  text-decoration: underline;
 }
 
 .card3{

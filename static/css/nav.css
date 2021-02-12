@@ -31,11 +31,15 @@ nav {
 }
 
 .nav-links a {
-  color: #ffffff;
+  color: #fff;
   text-decoration: none;
   letter-spacing: 3px;
   font-weight: bold;
   font-size: 14px;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
 }
 
 .burger {
