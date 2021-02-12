@@ -18,8 +18,7 @@ canples = Flask(__name__)
 
 theme = 'bland'
 month, day, weekday = cpl_main.get_weekday()
-current_year = '2020'
-year = current_year
+year = '2020'
 
 games_played = {1:28,2:7}
 
@@ -233,7 +232,7 @@ def power():
     power = pd.read_csv(f'datasets/{year}/cpl-{year}-power_rankings.csv')
     return render_template('cpl-es-power.html',html_table = power)
 
-@canples.route('/versus')
+@canples.route('/versus', methods=['GET','POST'])
 def comparison1():
     get_year()
     headline = year+' Finals - Forge VS Wanderers'
@@ -309,89 +308,7 @@ def comparison1():
     return render_template('cpl-es-comparison.html',home_table = home_roster.head(11),
     away_table = away_roster.head(11), home_win = home_win,
     home_history = q1_r, away_history = q2_r,
-    home_team = q1, away_team = q2, away_win = away_win, draw = draw, home_form = home_form, away_form = away_form, schedule = schedule,
-    home_crest = home_crest, home_colour = home_colour, away_crest = away_crest, away_colour = away_colour, headline = headline, home_score = home_score, away_score = away_score,
-    team1 = team1, team2 = team2, team3 = team3, team4 = team4, team5 = team5, team6 = team6, team7 = team7, team8 = team8,
-    group1 = group1, group2 = group2, group3 = group3, group4 = group4)
-
-@canples.route('/versus-', methods=['POST'])
-def comparison2():
-    get_year()
-    headline = year+' Finals - Forge VS Wanderers'
-    results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, stats, team_stats, results_brief, matches_predictions, game_form, team_rosters = load_main_files(year)
-    rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
-
-    results_old = pd.read_csv(f'datasets/{year}/cpl-{year}-results_old.csv')
-    stats_old = pd.read_csv(f'datasets/{year}/cpl-{year}-stats_old.csv')
-
-    # home side
-    home = request.form['home']
-    teams = home.split('-')
-
-    q1 = cpl_main.get_long_name(teams[0],team_ref)
-    home_team_info = team_ref[team_ref['team'] == q1]
-    home_colour = home_team_info.iloc[0][4]
-    home_crest = home_team_info.iloc[0][5]
-
-    game_info = schedule[schedule['home'] == q1]
-    game = game_info.iloc[0]['game']
-
-    # away side
-    q2 = cpl_main.get_long_name(teams[1],team_ref)
-    away_team_info = team_ref[team_ref['team'] == q2]
-    away_colour = away_team_info.iloc[0][4]
-    away_crest = away_team_info.iloc[0][5]
-
-    home_win = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['home_p'].values[0]
-    draw = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['draw_p'].values[0]
-    away_win = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['away_p'].values[0]
-    home_form = game_form[q1]
-    away_form = game_form[q2]
-
-    home_roster = cpl_main.best_roster(q1,results,results_old,stats,stats_old,stats_seed,player_info,rated_forwards)
-    away_roster = cpl_main.best_roster(q2,results,results_old,stats,stats_old,stats_seed,player_info,rated_forwards)
-    home_score = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['hs'].values[0]
-    away_score = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['as'].values[0]
-
-    results_brief = cpl_main.get_results_brief(results,team_ref)
-    results_brief_old = cpl_main.get_results_brief(results_old,team_ref)
-    results_brief = pd.concat([results_brief,results_brief_old])
-    compare = cpl_main.get_team_comparison(results_brief,q1,q2)
-    q1_r = cpl_main.get_match_history(compare,q1)
-    q2_r = cpl_main.get_match_history(compare,q2)
-
-    team1, team2, team3, team4, team5, team6, team7, team8 = cpl_main.get_team_files(schedule,team_ref)
-
-    print(home_win,away_win,draw)
-    if (home_win < draw) and (away_win < draw):
-        home_win, away_win = draw, draw
-
-    home_win = round(round(home_win,3)*100,3)
-    away_win = round(round(away_win,3)*100,3)
-    draw = round(round(draw,3)*100,3)
-
-    group1 = team1 + '-' + team2
-    if team3 == 1:
-        group2 = 1
-        group3 = 1
-        group4 = 1
-    else:
-        group2 = team3 + '-' + team4
-        if team5 == 1:
-            group3 = 1
-            group4 = 1
-        else:
-            group3 = team5 + '-' + team6
-            group4 = team7 + '-' + team8
-
-    home_sum = home_roster['overall'].sum()
-    away_sum = away_roster['overall'].sum()
-    #print(home_sum,away_sum)
-
-    return render_template('cpl-es-comparison.html',home_table = home_roster.head(11),
-    away_table = away_roster.head(11), home_win = home_win,
-    home_history = q1_r, away_history = q2_r,
-    home_team = q1, away_team = q2, away_win = away_win, draw = draw, home_form = home_form, away_form = away_form, schedule = schedule,
+    home_team = q1, away_team = q2, away_win = away_win, draw = draw, home_form = home_form, away_form = away_form,
     home_crest = home_crest, home_colour = home_colour, away_crest = away_crest, away_colour = away_colour, headline = headline, home_score = home_score, away_score = away_score,
     team1 = team1, team2 = team2, team3 = team3, team4 = team4, team5 = team5, team6 = team6, team7 = team7, team8 = team8,
     group1 = group1, group2 = group2, group3 = group3, group4 = group4)

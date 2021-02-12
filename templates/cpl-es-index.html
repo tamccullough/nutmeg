@@ -141,7 +141,7 @@
     <div class="mobile">
       <div class="parent">
 
-          <div class="box">
+          <div class="box" style="padding: 15px 15px;">
             <h3>Biggest Win</h3>
             <div class="child">
               {% if big_win.at[0,'hs'] > big_win.at[0,'as'] %}
@@ -155,7 +155,7 @@
               <div class="boxs {{ theme }}-orange">{{ big_win.iloc[0]['away']}} {{big_win.iloc[0]['as'].astype('int') }}</div>
               {% endif %}
             </div>
-
+            <br>
             <h3>Other Results</h3>
             <div class="child">
               {% if top_result.at[0,'hs'] > top_result.at[0,'as'] %}
@@ -169,7 +169,7 @@
               <div class="boxs {{ theme }}-orange">{{ top_result.iloc[0]['away']}} {{top_result.iloc[0]['as'].astype('int') }}</div>
               {% endif %}
             </div>
-
+            <br>
             <div class="child">
               {% if other_result.at[0,'hs'] > other_result.at[0,'as'] %}
               <div class="boxs {{ theme }}-green">{{ other_result.iloc[0]['home']}} {{other_result.iloc[0]['hs'].astype('int') }}</div>
@@ -182,7 +182,7 @@
               <div class="boxs {{ theme }}-orange">{{ other_result.iloc[0]['away']}} {{other_result.iloc[0]['as'].astype('int') }}</div>
               {% endif %}
             </div>
-
+            <br>
             <h3>Bottom Team Result</h3>
             <div class="child">
               {% if low_result.at[0,'hs'] > low_result.at[0,'as'] %}
@@ -198,8 +198,8 @@
             </div>
             <div class="spacer"></div>
           </div>
-
-          <div class="box">
+          <br>
+          <div class="box" style="padding: 15px 15px;">
             <span><h3>Players of the Week</h3></span>
             <div>
               <table>
@@ -252,7 +252,7 @@
 <div class="desktop">
   <div class="parent">
 
-      <div class="box {{ theme }}-light">
+      <div class="box {{ theme }}-light" style="padding: 15px 15px;">
         <div class="spacer"></div>
         <h2>Biggest Win</h2>
         <div class="child">
@@ -267,7 +267,7 @@
           <div class="boxs {{ theme }}-orange">{{ big_win.iloc[0]['away']}} {{big_win.iloc[0]['as'].astype('int') }}</div>
           {% endif %}
         </div>
-
+        <br>
         <h3>Other Results</h3>
         <div class="child">
           {% if top_result.at[0,'hs'] > top_result.at[0,'as'] %}
@@ -281,7 +281,7 @@
           <div class="boxs {{ theme }}-orange">{{ top_result.iloc[0]['away']}} {{top_result.iloc[0]['as'].astype('int') }}</div>
           {% endif %}
         </div>
-
+        <br>
         <div class="child">
           {% if other_result.at[0,'hs'] > other_result.at[0,'as'] %}
           <div class="boxs {{ theme }}-green">{{ other_result.iloc[0]['home']}} {{other_result.iloc[0]['hs'].astype('int') }}</div>
@@ -294,7 +294,7 @@
           <div class="boxs {{ theme }}-orange">{{ other_result.iloc[0]['away']}} {{other_result.iloc[0]['as'].astype('int') }}</div>
           {% endif %}
         </div>
-
+        <br>
         <h3>Bottom Team Result</h3>
         <div class="child">
           {% if low_result.at[0,'hs'] > low_result.at[0,'as'] %}
@@ -311,8 +311,8 @@
         <div class="spacer"></div>
         <div class="spacer"></div>
       </div>
-
-      <div class="box {{theme}}-light">
+      <br>
+      <div class="box {{theme}}-light" style="padding: 15px 15px;">
         <div class="spacer"></div>
         <span><h2>Players of the Week</h2></span>
         <div>

@@ -366,6 +366,8 @@ table {
   table-layout:fixed;
   margin: 0px;
   width:100% !important;
+  border-collapse: separate;
+  border-spacing: 5px;
 }
 
 tr {
