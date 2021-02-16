@@ -2,7 +2,11 @@
 <div class="mobile">
   <form class="{{ theme }}-dark" method="post" action="{{ url_for(request.endpoint) }}">
     <div class="textcenter" style="width:100%;">
-      <h1><b>{{ headline }} {{ year }}</b></h1>
+      {% if request.endpoint == 'index'%}
+        <h1><b>{{ headline }}</b></h1>
+      {% else %}
+        <h1><b>{{ headline }} {{ year }}</b></h1>
+      {% endif %}
     </div>
   <div class="parent">
     <div class="form boxs" style="height:3em;">
@@ -23,7 +27,11 @@
   <form class="{{ theme }}-dark" method="post" action="{{ url_for(request.endpoint) }}">
   <div class="parent">
     <div class="box">
-      <h3 class="xfont" style="padding: 25px;"><b>{{ headline }} {{ year }}</b></h3>
+      {% if request.endpoint == 'index'%}
+        <h3 class="xfont" style="padding: 25px;"><b>{{ headline }}</b></h3>
+      {% else %}
+        <h3 class="xfont" style="padding: 25px;"><b>{{ headline }} {{ year }}</b></h3>
+      {% endif %}
     </div>
     <div class="form box">
       <select class="{{ theme }}-colour staat xfont" name="year" id="year">

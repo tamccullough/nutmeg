@@ -359,19 +359,26 @@ img {
   text-align: right;
 }
 
+.indent {
+  text-indent: 30px;
+}
+
 /* tables */
 
 table {
   border-collapse: collapse;
   table-layout:fixed;
   margin: 0px;
-  width:100% !important;
-  border-collapse: separate;
+  width:100%;
   border-spacing: 5px;
 }
 
+.table-collapse {
+  border-collapse: separate;
+}
+
 tr {
-  line-height: 1px;
+  line-height: 5px;
   white-space: nowrap;
 }
 

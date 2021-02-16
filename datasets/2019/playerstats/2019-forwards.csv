@@ -1,0 +1,35 @@
+team,Age,pos,name,overall,Min,ExpG,ExpA,Goal,PenGoal,GoalDirFK,GoalHead,Ast,BgChnc,BgChncCrtd,ChncOpnPl,Chance,SOG,SOTInBox,SOTOBox,ShotDirFK,SOTHead,Pass%,display
+Pacific,22,cf,Terran Campbell,0.65,2334,8.89,2.86,11,1,0,4,2,12,3,30,31,23,18,5,3,5,77.0,Terran Campbell
+York United,29,cf,Rodrigo Pablo Gattas Bertoni,0.62,1958,9.19,1.99,9,2,0,2,0,12,3,22,23,36,26,10,1,8,76.0,Rodrigo Gattas
+Cavalry,31,cf,Dominique Malonga,0.58,1961,15.57,3.55,11,1,0,1,1,27,5,17,19,34,29,5,0,3,82.0,Dominique Malonga
+Pacific,26,lw,Victor Blasco,0.57,1586,2.9,3.8,6,0,2,0,3,5,6,21,27,18,8,10,5,1,75.0,Victor Blasco
+Edmonton,26,cf,Oumar Diouck,0.53,1976,4.91,3.48,6,0,0,1,2,7,5,24,30,16,8,8,6,1,77.0,Oumar Diouck
+Valour,25,cf,Michael Petrasso,0.47,1301,6.57,3.78,6,4,0,0,5,8,4,20,22,13,8,5,0,0,79.0,Michael Petrasso
+Edmonton,22,cf,Easton Ongaro,0.45,1167,8.45,1.29,10,0,0,3,2,13,2,9,11,20,18,2,2,5,74.0,Easton Ongaro
+HFX Wanderers,24,cf,Akeem Garcia,0.37,2082,6.62,1.3,7,0,0,0,0,14,2,15,15,23,22,1,0,1,80.0,Akeem Garcia
+Cavalry,24,cf,Jordan Brown,0.35,1397,7.07,3.13,4,0,0,1,1,9,6,14,17,13,11,2,0,1,75.0,Jordan Brown
+York United,27,cf,Simon Karlsson Adjei,0.35,1422,7.61,1.49,7,0,0,0,2,10,1,19,21,16,14,2,0,1,73.0,Simon Karlsson Adjei
+Edmonton,32,cf,Tomi Ameobi,0.35,1859,4.22,2.15,4,1,0,1,0,5,3,21,22,10,10,0,0,3,75.0,Tomi Ameobi
+Forge,22,cf,Marcel Dominik Zajac,0.33,1073,5.01,2.87,1,0,0,1,3,8,5,12,13,11,10,1,0,2,80.0,Marcel Dominik Zajac
+Forge,26,cf,Anthony Joseph Novak,0.33,1112,3.51,2.61,6,0,0,0,3,7,5,12,14,13,11,2,0,0,66.0,Anthony Joseph Novak
+Valour,19,cf,Tyler Attardo,0.29,999,4.35,0.71,6,0,0,3,0,7,1,5,7,11,9,2,0,4,62.0,Tyler Attardo
+Forge,29,cf,Emery Welshman,0.29,931,5.0,2.03,3,1,0,0,2,7,3,15,15,9,8,1,0,1,72.0,Emery Welshman
+HFX Wanderers,23,cf,Tomasz Skublak,0.28,1389,4.78,1.48,1,0,0,0,1,8,1,19,20,13,11,2,0,1,70.0,Tomasz Skublak
+HFX Wanderers,34,cf,Luis Alberto Perea,0.28,1014,3.42,0.87,3,2,0,0,1,5,1,11,12,11,7,4,0,1,75.0,Luis Alberto Perea
+Pacific,31,cf,Marcus Haber,0.24,703,4.19,1.36,3,1,0,2,0,6,1,8,9,6,6,0,0,4,59.0,Marcus Haber
+Pacific,20,cf,José Hernández,0.23,652,1.84,1.39,1,0,0,1,2,2,2,6,6,7,5,2,0,3,78.0,José Hernández
+Valour,34,cf,Michele Paolucci,0.22,1139,3.04,0.86,3,0,0,0,2,2,1,6,6,11,7,4,0,0,65.0,Michele Paolucci
+Valour,24,cf,Ali Musse,0.2,740,2.41,1.29,2,0,0,0,2,2,1,8,8,10,8,2,0,0,71.0,Ali Musse
+Pacific,36,cf,Issey Nakajima-Farran,0.18,252,1.02,0.07,1,0,1,0,0,1,0,2,2,5,1,4,4,0,71.0,Issey Nakajima-Farran
+Edmonton,30,cf,Randy Edwini-Bonsu,0.17,363,0.59,1.57,0,0,0,0,1,0,2,5,10,6,2,4,1,0,65.0,Randy Edwini-Bonsu
+Forge,23,cf,Jace Kotsopoulos,0.12,138,1.72,0.04,2,0,0,1,0,3,0,1,1,5,5,0,0,1,79.0,Jace Kotsopoulos
+Edmonton,25,cf,Ajeej Sarkaria,0.11,566,0.9,0.4,0,0,0,0,1,1,1,2,2,2,1,1,0,0,76.0,Ajeej Sarkaria
+Cavalry,22,lw,Gabriel Bitar,0.1,90,0.72,0.1,0,0,0,0,0,2,0,2,2,4,1,3,0,0,88.0,Gabriel Bitar
+Valour,28,cf,Stephen Hoyle,0.09,237,2.04,0.12,1,0,0,0,0,3,0,2,3,2,2,0,0,0,69.0,Stephen Hoyle
+York United,28,cf,Michael Cox,0.09,184,0.34,0.1,0,0,0,0,0,0,0,2,2,1,1,0,0,1,88.0,Michael Cox
+Valour,25,cf,Calum Ferguson,0.08,344,1.24,0.0,1,0,0,0,0,1,0,0,0,3,3,0,0,0,73.0,Calum Ferguson
+York United,25,cf,Stefan Lamanna,0.08,77,0.17,0.53,0,0,0,0,1,0,1,1,1,0,0,0,0,0,77.0,Stefan Lamanna
+York United,22,cf,Cyrus Rollocks,0.07,292,0.58,0.83,0,0,0,0,0,1,1,4,4,0,0,0,0,0,52.0,Cyrus Rollocks
+HFX Wanderers,21,cf,Vincent Lamy,0.06,88,0.12,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,79.0,Vincent Lamy
+Cavalry,17,ss,Aribim Pepple,0.06,61,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,78.0,Aribim Pepple
+HFX Wanderers,21,sa,Abd-El-Aziz Yousef,,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,Abd-El-Aziz Yousef

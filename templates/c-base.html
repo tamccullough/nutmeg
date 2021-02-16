@@ -140,5 +140,96 @@
   </div>
   <script src="static/css/app.js"></script>
   <script src="static/css/top.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+  {% if home_team == 'HFX Wanderers FC'%}
+  {% set home_text = '#302117' %}
+  {% else %}
+  {% set home_text = '#fff' %}
+  {% endif %}
+  <script type="text/javascript">
+    new Chart(document.getElementById('homeChart'), {
+      type: 'radar',
+      data: {
+        labels: ['finish','def','att','mid','net','big','save','goals'],
+        datasets: [{
+          data: [{{ home_radar.loc[0].values[1:]|join(', ') }}],
+          fill: true,
+          backgroundColor: '{{home_fill}}'+'BF',
+          borderColor: '{{home_fill}}',
+          pointHoverRadius: 10,
+          pointHoverBackgroundColor: '{{home_fill}}',
+          pointBackgroundColor: '{{home_fill}}'
+        }]
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        borderWidth: 10,
+        scale: {
+          ticks: {
+            display: false,
+            beginAtZero: true,
+            maxTicksLimit: 10,
+            max: 1
+          },
+          gridLines: {
+            lineWidth: 0.5,
+            color: '#fff'
+          },
+          pointLabels: {
+            fontColor: '{{ home_text}}',
+            fontSize: 16,
+            fontFamily: "'Lato', sans-serif"
+          }
+        }
+      }
+    });
+    </script>
+    {% if away_team == 'HFX Wanderers FC'%}
+    {% set away_text = '#302117' %}
+    {% else %}
+    {% set away_text = '#fff' %}
+    {% endif %}
+    <script type="text/javascript">
+    new Chart(document.getElementById('awayChart'), {
+      type: 'radar',
+      data: {
+        labels: ['finish','def','att','mid','net','big','save','goals'],
+        datasets: [{
+          data: [{{ away_radar.loc[0].values[1:]|join(', ') }}],
+          fill: true,
+          backgroundColor: '{{away_fill}}'+'BF',
+          borderColor: '{{away_fill}}',
+          pointHoverRadius: 10,
+          pointHoverBackgroundColor: '{{away_fill}}',
+          pointBackgroundColor: '{{away_fill}}'
+        }]
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        borderWidth: 10,
+        scale: {
+          ticks: {
+            display: false,
+            beginAtZero: true,
+            maxTicksLimit: 10,
+            max: 1
+          },
+          gridLines: {
+            lineWidth: 0.5,
+            color: '#fff'
+          },
+          pointLabels: {
+            fontColor: '{{away_text}}',
+            fontSize: 16,
+            fontFamily: "'Lato', sans-serif"
+          }
+        }
+      }
+    });
+  </script>
 </body>
 </html>

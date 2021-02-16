@@ -346,14 +346,17 @@ def compare_standings(standings_current,standings_old,team_ref):
     return current_rankings
 
 def clean_team_game(standings,db,check):
+    team_names = ['Atlético Ottawa','Cavalry FC','FC Edmonton','Forge FC','HFX Wanderers FC','Pacific FC','Valour FC','York9 FC','York United FC']
     db_tail = db.copy()
     shape = db_tail.shape[0]
     db_tail = db_tail.tail(shape)
     if check == 0:
         team = standings.iloc[0]['team'] # Getting the name of the top team
+        team = [x for x in team_names if team in x][0]
     else:
         team = standings.iloc[-1]['team'] # Getting the name of the bottom placed team
-    if standings.iloc[-1]['gp'] == 0 and check == 1:
+        team = [x for x in team_names if team in x][0]
+    if standings.iloc[-1]['matches'] == 0 and check == 1:
         db = pd.DataFrame([('TBD',0,'TBD',0)],columns=['home','hs','away','as']) # make an empty set if the game is empty
     else:
         df = db_tail[(db_tail['home'] == team) | (db_tail['away'] == team)].tail(1) # get appropirate game results for specified team
@@ -365,10 +368,10 @@ def clean_team_game(standings,db,check):
 
 def get_weeks_results(results,standings,stats,team_ref):
     if results.iloc[0]['hr'] == 'E':
-        db = pd.DataFrame([('TBD',0,'TBD',0)],columns=['home','hs','away','as'])
+        game_week = pd.DataFrame([('TBD',0,'TBD',0)],columns=['home','hs','away','as'])
         big_win, top_team, low_team,other_team = db,db,db,db
         goals, assists, yellows, reds = 0,0,0,0
-        return db,goals,big_win,top_team,low_team,other_team, assists, yellows, reds
+        return game_week,goals,big_win,top_team,low_team,other_team, assists, yellows, reds
 
     played_games = results[results['hr'] != 'E']
     played_games = played_games.tail(1)
@@ -387,18 +390,18 @@ def get_weeks_results(results,standings,stats,team_ref):
         df = results[results['hr'] != 'E'].tail(6)
 
     if day > 7:
-        db = df[df['m'] == month]
-        db = db.sort_values(by='d',ascending=False)
-        db = db.sort_values(by='d')
+        game_week = df[df['m'] == month]
+        game_week = game_week.sort_values(by='d',ascending=False)
+        game_week = game_week.sort_values(by='d')
     else:
-        db = df[df['m'] == month]
-        db = db[db['d'] <= day]
-        if db.shape[0] < 4:
+        game_week = df[df['m'] == month]
+        game_week = game_week[game_week['d'] <= day]
+        if game_week.shape[0] < 4:
             dz = df[df['m'] == month - 1]
-            dz = dz.sort_values(by='d',ascending=False).tail(6-db.shape[0])
-            db = pd.concat([db,dz])
-    db['hs'] = db['hs'].astype('int')
-    db['as'] = db['as'].astype('int')
+            dz = dz.sort_values(by='d',ascending=False).tail(6-game_week.shape[0])
+            game_week = pd.concat([db,dz])
+    game_week['hs'] = game_week['hs'].astype('int')
+    game_week['as'] = game_week['as'].astype('int')
 
 
     max_home = results[(results['hs'] == results['hs'].max()) & (results['hr'] == "W")]
@@ -424,20 +427,20 @@ def get_weeks_results(results,standings,stats,team_ref):
     big_win = pd.DataFrame(big_win.loc[0])
     big_win = big_win.T
     # top team
-    top_team = clean_team_game(standings,db,0) # finding top team
+    top_team = clean_team_game(standings,game_week,0) # finding top team
     #top_team = get_short_name(top_team,team_ref)
     # low team
-    low_team = clean_team_game(standings,db,1) # finding bottom team
+    low_team = clean_team_game(standings,game_week,1) # finding bottom team
     #low_team = get_short_name(low_team,team_ref)
     # other results
     teams_in = pd.concat([big_win,top_team,low_team,team_ref])#get_longest_name(big_win,top_team,low_team,team_ref)
-    other_team = db[(~db['home'].isin(teams_in)) | (~db['away'].isin(teams_in))]
+    other_team = game_week[(~game_week['home'].isin(teams_in)) | (~game_week['away'].isin(teams_in))]
     other_team = index_reset(other_team)
     other_team = pd.DataFrame(other_team.loc[0][['home','hs','away','as']])
     other_team = other_team.T
     #other_team = get_short_name(other_team,team_ref)
 
-    goals = standings['gf'].sum()
+    goals = standings['Goal'].sum()
     assists = stats['assists'].sum()
     yellows = stats['yellow'].sum()
     reds = stats['red'].sum()
@@ -449,11 +452,12 @@ def get_weeks_results(results,standings,stats,team_ref):
     # check if other teams have played
     other_home = other_team['home'].values[0]
     other_home = get_long_name(other_home,team_ref)
-    other_played = standings[standings['team'] == other_home]['gp'].values[0]
+    team = max(other_home.split(' '), key=len)
+    other_played = standings[standings['team'].str.contains(team)]['matches'].values[0]
     if other_played == 0:
         other_team = pd.DataFrame([('TBD',0,'TBD',0)],columns=['home','hs','away','as'])
 
-    return db, goals, big_win, top_team, low_team, other_team, assists, yellows, reds
+    return game_week, goals, big_win, top_team, low_team, other_team, assists, yellows, reds
 
 def get_team_stats(stats,query):
     team_stats = stats[stats['team'] == query]
@@ -914,15 +918,15 @@ def best_roster(query,results,results_old,stats,stats_old,stats_seed,player_info
 
     overall_list, number_list = [],[]
     for name in game_roster.name.unique():
-        if not player_info[player_info['name'] == name]['overall'].values[0]:
-            overall_list.append(0.0)
-        else:
+        try:
             overall_list.append(player_info[player_info['name'] == name]['overall'].values[0])
+        except:
+            overall_list.append(0.0)
 
-        if not player_info[player_info['name'] == name]['number'].values[0]:
-            number_list.append(0)
-        else:
+        try:
             number_list.append(player_info[player_info['name'] == name]['number'].values[0])
+        except:
+            number_list.append(0)
 
     game_roster.insert(1,'number',number_list)
     game_roster['overall'] = overall_list

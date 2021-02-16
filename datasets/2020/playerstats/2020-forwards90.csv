@@ -1,0 +1,35 @@
+team,Age,pos,name,overall,Min,ExpG,ExpA,Goal,PenGoal,GoalDirFK,GoalHead,Ast,BgChnc,BgChncCrtd,ChncOpnPl,Chance,SOG,SOTInBox,SOTOBox,ShotDirFK,SOTHead,Pass%,display
+HFX Wanderers,24.0,cf,Akeem Garcia,0.54,90,0.62,0.04,0.75,0.25,0.0,0.0,0.0,1.25,0.0,0.75,0.75,1.38,1.25,0.12,0.0,0.12,10.12,Akeem Garcia
+Pacific,24.0,cf,Alejandro Díaz Liceága,0.51,90,0.43,0.26,0.43,0.0,0.0,0.0,0.29,0.71,0.43,1.0,1.0,1.14,1.14,0.0,0.0,0.29,10.0,Alejandro Diaz
+Cavalry,31.0,cf,Marcus Haber,0.44,90,0.56,0.08,0.33,0.0,0.0,0.17,0.0,1.33,0.0,0.83,0.83,1.33,1.33,0.0,0.0,0.67,10.0,Marcus Haber
+York United,26.0,cf,Ryan Telfer,0.42,90,0.24,0.13,0.0,0.0,0.0,0.0,0.0,0.29,0.14,0.43,1.71,1.0,0.43,0.57,0.57,0.14,10.29,Ryan Telfer
+Forge,27.0,cf,Molham Babouli,0.39,90,0.13,0.4,0.2,0.0,0.0,0.0,0.4,0.2,0.6,1.6,1.8,0.8,0.8,0.0,0.0,0.0,13.6,Mo Babouli
+Pacific,22.0,cf,Terran Campbell,0.35,90,0.22,0.15,0.2,0.0,0.0,0.2,0.2,0.2,0.4,0.8,1.0,0.6,0.6,0.0,0.0,0.2,13.2,Terran Campbell
+Atlético Ottawa,25.0,cf,Malcolm Isaiah Shaw,0.34,90,0.33,0.05,0.29,0.0,0.0,0.0,0.14,0.57,0.14,0.43,0.43,0.86,0.71,0.14,0.14,0.0,11.57,Malcolm Shaw
+Cavalry,24.0,cf,Jordan Brown,0.34,90,0.33,0.07,0.43,0.14,0.0,0.0,0.0,0.43,0.0,0.43,0.57,1.0,0.71,0.29,0.0,0.0,11.57,Jordan Brown
+Edmonton,22.0,cf,Easton Ongaro,0.32,90,0.44,0.05,0.6,0.0,0.0,0.2,0.0,0.4,0.0,0.8,1.0,0.6,0.6,0.0,0.2,0.2,15.2,Easton Ongaro
+Cavalry,28.0,cf,Oliver Minatel,0.29,90,0.06,0.21,0.0,0.0,0.0,0.0,0.2,0.0,0.4,1.2,1.2,0.4,0.0,0.4,0.0,0.0,16.0,Oliver Minatel
+Forge,23.0,rw,David Choinière,0.28,90,0.15,0.09,0.14,0.0,0.0,0.0,0.14,0.14,0.14,0.71,0.71,0.43,0.43,0.0,0.0,0.0,11.43,David Choinière
+Valour,21.0,cf,Shaan Hundal,0.27,90,0.09,0.07,0.0,0.0,0.0,0.0,0.67,0.0,0.0,1.67,1.67,1.33,0.67,0.67,0.0,0.0,25.67,Shaan Hundal
+Cavalry,25.0,rw,Nico Pasquotti,0.24,90,0.24,0.09,0.0,0.0,0.0,0.0,0.0,0.33,0.17,1.0,1.0,0.33,0.17,0.17,0.0,0.0,12.67,Nico Pasquotti
+Forge,26.0,cf,Anthony Joseph Novak,0.24,90,0.64,0.04,0.5,0.0,0.0,0.0,0.0,0.75,0.0,0.75,0.75,1.5,1.5,0.0,0.0,0.0,20.25,Anthony Novak
+HFX Wanderers,23.0,cf,Cory Bent,0.21,90,0.07,0.11,0.17,0.0,0.0,0.0,0.0,0.17,0.17,0.83,1.17,0.17,0.17,0.0,0.0,0.0,10.33,Cory Bent
+Valour,24.0,cf,Austin Ricci,0.18,90,0.24,0.03,0.0,0.0,0.0,0.0,0.0,0.25,0.0,0.75,0.75,1.25,1.25,0.0,0.0,0.0,14.5,Austin Ricci
+Forge,25.0,lw,Christopher Lenroy Nanco,0.17,90,0.1,0.4,1.0,0.0,0.0,0.0,0.0,0.0,0.5,0.5,0.5,1.5,1.0,0.5,0.0,0.0,35.0,Chris Nanco
+Forge,24.0,lw,Kadell Thomas,0.17,90,0.38,0.07,0.0,0.0,0.0,0.0,0.33,0.67,0.0,1.0,1.0,0.33,0.33,0.0,0.0,0.0,24.33,Kadell Thomas
+Valour,33.0,cf,Daryl Fordyce,0.15,90,0.76,0.0,0.5,0.0,0.0,0.0,0.0,1.5,0.0,0.0,0.0,1.5,1.5,0.0,0.5,0.5,31.0,Daryl Fordyce
+York United,23.0,cf,Álvaro Rivero Sánchez,0.15,90,0.08,0.01,0.25,0.0,0.0,0.0,0.0,0.0,0.0,0.25,0.25,0.5,0.25,0.25,0.0,0.0,21.75,Álvaro Rivero
+Forge,20.0,lw,Montther Mohsen,0.15,90,0.0,0.64,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,1.5,0.0,0.0,0.0,0.0,0.0,41.5,Monti Mohsen
+Edmonton,32.0,cf,Tomi Ameobi,0.14,90,0.5,0.04,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.33,0.67,0.67,0.67,0.0,0.0,0.0,24.67,Tomi Ameobi
+HFX Wanderers,26.0,cf,Ibrahima Sanoh,0.13,90,1.3,0.04,1.0,1.0,0.0,0.0,0.0,2.0,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,55.0,Ibrahima Sanoh
+Cavalry,20.0,cf,José Hernández,0.11,90,0.03,0.44,0.0,0.0,0.0,0.0,0.0,0.0,1.0,2.0,2.0,0.0,0.0,0.0,0.0,0.0,82.0,Jose Hernandez
+Forge,22.0,lw,Marcel Dominik Zajac,0.1,90,0.31,0.0,0.0,0.0,0.0,0.0,0.0,0.67,0.0,0.0,0.0,0.33,0.33,0.0,0.0,0.0,26.67,Marcel Zajac
+York United,17.0,ss,Lowell Wright,0.09,90,0.8,0.0,1.0,0.0,0.0,0.0,0.0,2.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,58.0,Lowell Wright
+Cavalry,24.0,lw,Jair Ayrton Córdova Carpio,0.09,90,0.66,0.04,1.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,62.0,Jair Córdova
+Forge,27.0,lw,Jonathan Grant,0.09,90,0.06,0.06,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.67,0.67,0.0,0.0,0.0,0.0,0.0,20.33,Jonathan Grant
+Forge,22.0,cf,Gabriel Wiethaeuper-Balbinotti,0.08,90,0.28,0.0,0.0,0.0,0.0,0.0,0.0,0.5,0.0,0.0,0.0,0.5,0.5,0.0,0.0,0.0,30.5,Gabriel Balbinotti
+York United,24.0,cf,Gabriel Monteiro Vasconcelos,0.06,90,0.05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,79.0,Gabriel Vasconcelos
+Atlético Ottawa,29.0,cf,Maksym Kowal,0.05,90,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,58.0,Maksym Kowal
+Edmonton,20.0,cf,David Doe,0.04,90,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,43.0,David Doe
+York United,23.0,ss,Jace Kotsopoulos,0.04,90,,,,,,,,,,,,,,,,,inf,Jace Kotsopoulos
+Atlético Ottawa,18.0,sa,Matteo de Brienne,,90,,,,,,,,,,,,,,,,,,Matteo  de Brienne

@@ -18,8 +18,8 @@
           <td><b>G</b></td>
           <td><b>A</b></td>
           <td><b>P%</b></td>
-          <td><b>C%</b></td>
-          <td><b>Ch</b></td>
+          <td><b>X</b></td>
+          <td><b>DlsW</b></td>
           <td style="text-align:center;width:14%;"><b>O</b></td>
         </tr>
       </table>
@@ -32,11 +32,11 @@
         <tr>
           <td style="width:10%;">{{ html_table.at[i, 'team'] }}</td>
           <td style="font-size: 0.8em;width:38%;"><b>{{ ' '.join((html_table.at[i,'name']).split()[1:]) }}</b></td>
-          <td style="font-size: 0.8em;">{{ html_table.at[i,'goals'] }}</td>
-          <td style="font-size: 0.8em;">{{ html_table.at[i,'assists'] }}</td>
-          <td style="font-size: 0.8em;">{{ html_table.at[i,'pass-acc'] }}</td>
-          <td style="font-size: 0.8em;">{{ html_table.at[i,'cross-acc'] }}</td>
-          <td style="font-size: 0.8em;">{{ html_table.at[i,'chances'] }}</td>
+          <td style="font-size: 0.8em;">{{ html_table.at[i,'Goal'] }}</td>
+          <td style="font-size: 0.8em;">{{ html_table.at[i,'Ast'] }}</td>
+          <td style="font-size: 0.8em;">{{ html_table.at[i,'Pass%'] }}</td>
+          <td style="font-size: 0.8em;">{{ html_table.at[i,'Crosses'] }}</td>
+          <td style="font-size: 0.8em;">{{ html_table.at[i,'DuelsW%'] }}</td>
           <td class="{{ theme }}-t-blue" style="text-align:right;width:14%;"><b>{{ html_table.at[i,'overall'] }}</b></td>
         </tr>
       </table>
@@ -56,8 +56,8 @@
           <td><b>G</b></td>
           <td><b>A</b></td>
           <td><b>P%</b></td>
-          <td><b>C%</b></td>
-          <td><b>Ch</b></td>
+          <td><b>X</b></td>
+          <td><b>DlsW</b></td>
           <td style="text-align:center;width:14%;"><b>O</b></td>
         </tr>
       </table>
@@ -70,11 +70,11 @@
         <tr>
           <td style="width:10%;">{{ html_table.at[i, 'team'] }}</td>
           <td style="font-size: 0.8em;width:38%;"><b>{{ ' '.join((html_table.at[i,'name']).split()[1:]) }}</b></td>
-          <td style="font-size: 0.8em;">{{ html_table.at[i,'goals'] }}</td>
-          <td style="font-size: 0.8em;">{{ html_table.at[i,'assists'] }}</td>
-          <td style="font-size: 0.8em;">{{ html_table.at[i,'pass-acc'] }}</td>
-          <td style="font-size: 0.8em;">{{ html_table.at[i,'cross-acc'] }}</td>
-          <td style="font-size: 0.8em;">{{ html_table.at[i,'chances'] }}</td>
+          <td style="font-size: 0.8em;">{{ html_table.at[i,'Goal'] }}</td>
+          <td style="font-size: 0.8em;">{{ html_table.at[i,'Ast'] }}</td>
+          <td style="font-size: 0.8em;">{{ html_table.at[i,'Pass%'] }}</td>
+          <td style="font-size: 0.8em;">{{ html_table.at[i,'Crosses'] }}</td>
+          <td style="font-size: 0.8em;">{{ html_table.at[i,'DuelsW%'] }}</td>
           <td class="{{ theme }}-t-blue" style="text-align:right;width:14%;"><b>{{ html_table.at[i,'overall'] }}</b></td>
         </tr>
       </table>
@@ -97,13 +97,10 @@
           <td><b>G</b></td>
           <td><b>A</b></td>
           <td><b>Tch</b></td>
-          <td><b>P</b></td>
           <td><b>P%</b></td>
-          <td><b>C</b></td>
-          <td><b>C%</b></td>
-          <td><b>Ch</b></td>
-          <td><b>Dls</b></td>
-          <td><b>Tkl</b></td>
+          <td><b>X</b></td>
+          <td><b>DlsW</b></td>
+          <td><b>TklM</b></td>
           <td><b>O</b></td>
         </tr>
       </table>
@@ -114,19 +111,16 @@
     <div class="{{ theme }}-light">
       <table>
         <tr>
-          <td style="width:10%;">{{ html_table.at[i, 'team'] }} / {{ html_table.at[i,'number'] }}</td>
+          <td class="textleft" style="width:10%;">{{ html_table.at[i, 'team'] }} / {{ html_table.at[i,'number'] }}</td>
           <td style="width:25%;"><b>{{ html_table.at[i,'name'] }}</b></td>
-          <td>{{ html_table.at[i,'minutes'] }}</td>
-          <td>{{ html_table.at[i,'goals'] }}</td>
-          <td>{{ html_table.at[i,'assists'] }}</td>
-          <td>{{ html_table.at[i,'touches'] }}</td>
-          <td>{{ html_table.at[i,'passes'] }}</td>
-          <td>{{ html_table.at[i,'pass-acc'] }}</td>
-          <td>{{ html_table.at[i,'crosses'] }}</td>
-          <td>{{ html_table.at[i,'cross-acc'] }}</td>
-          <td>{{ html_table.at[i,'chances'] }}</td>
-          <td>{{ html_table.at[i,'duels'] }}</td>
-          <td>{{ html_table.at[i,'tackles'] }}</td>
+          <td>{{ html_table.at[i,'Min'] }}</td>
+          <td>{{ html_table.at[i,'Goal'] }}</td>
+          <td>{{ html_table.at[i,'Ast'] }}</td>
+          <td>{{ html_table.at[i,'Touches'] }}</td>
+          <td>{{ html_table.at[i,'Pass%'] }}</td>
+          <td>{{ html_table.at[i,'Crosses'] }}</td>
+          <td>{{ html_table.at[i,'DuelsW%'] }}</td>
+          <td>{{ html_table.at[i,'TcklMade%'] }}</td>
           <td class="{{ theme }}-t-blue"><b>{{ html_table.at[i,'overall'] }}</b></td>
         </tr>
       </table>
@@ -147,13 +141,10 @@
           <td><b>G</b></td>
           <td><b>A</b></td>
           <td><b>Tch</b></td>
-          <td><b>P</b></td>
           <td><b>P%</b></td>
-          <td><b>C</b></td>
-          <td><b>C%</b></td>
-          <td><b>Ch</b></td>
-          <td><b>Dls</b></td>
-          <td><b>Tkl</b></td>
+          <td><b>X</b></td>
+          <td><b>DlsW</b></td>
+          <td><b>TklM</b></td>
           <td><b>O</b></td>
         </tr>
       </table>
@@ -164,19 +155,16 @@
     <div class="{{ theme }}-light">
       <table>
         <tr>
-          <td style="width:10%;">{{ html_table.at[i, 'team'] }} / {{ html_table.at[i,'number'] }}</td>
+          <td class="textleft" style="width:10%;">{{ html_table.at[i, 'team'] }} / {{ html_table.at[i,'number'] }}</td>
           <td style="width:25%;"><b>{{ html_table.at[i,'name'] }}</b></td>
-          <td>{{ html_table.at[i,'minutes'] }}</td>
-          <td>{{ html_table.at[i,'goals'] }}</td>
-          <td>{{ html_table.at[i,'assists'] }}</td>
-          <td>{{ html_table.at[i,'touches'] }}</td>
-          <td>{{ html_table.at[i,'passes'] }}</td>
-          <td>{{ html_table.at[i,'pass-acc'] }}</td>
-          <td>{{ html_table.at[i,'crosses'] }}</td>
-          <td>{{ html_table.at[i,'cross-acc'] }}</td>
-          <td>{{ html_table.at[i,'chances'] }}</td>
-          <td>{{ html_table.at[i,'duels'] }}</td>
-          <td>{{ html_table.at[i,'tackles'] }}</td>
+          <td>{{ html_table.at[i,'Min'] }}</td>
+          <td>{{ html_table.at[i,'Goal'] }}</td>
+          <td>{{ html_table.at[i,'Ast'] }}</td>
+          <td>{{ html_table.at[i,'Touches'] }}</td>
+          <td>{{ html_table.at[i,'Pass%'] }}</td>
+          <td>{{ html_table.at[i,'Crosses'] }}</td>
+          <td>{{ html_table.at[i,'DuelsW%'] }}</td>
+          <td>{{ html_table.at[i,'TcklMade%'] }}</td>
           <td class="{{ theme }}-t-blue"><b>{{ html_table.at[i,'overall'] }}</b></td>
         </tr>
       </table>

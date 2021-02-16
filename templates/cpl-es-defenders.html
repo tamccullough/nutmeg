@@ -31,7 +31,7 @@
         <tr>
           <td style="width:12%;">{{ html_table.at[i, 'team'] }}</td>
           <td style="font-size: 0.8em;width:38%;"><b>{{  ' '.join((html_table.at[i,'name']).split()[1:])  }}</b></td>
-          <td style="font-size: 0.8em;">{{ html_table.at[i,'goals'] }}</td>
+          <td style="font-size: 0.8em;">{{ html_table.at[i,'Goal'] }}</td>
           <td style="font-size: 0.8em;">{{ html_table.at[i,'t-won'] }}</td>
           <td style="font-size: 0.8em;">{{ html_table.at[i,'interceptions'] }}</td>
           <td style="font-size: 0.8em;">{{ html_table.at[i,'d-won'] }}</td>
@@ -91,12 +91,11 @@
           <td style="width:25%;"><b>name</b></td>
           <td><b>MIN</b></td>
           <td><b>G</b></td>
-          <td><b>Tkl</b></td>
-          <td><b>TklW</b></td>
+          <td><b>TklM</b></td>
           <td><b>Clr</b></td>
-          <td><b>Intr</b></td>
-          <td><b>Dls</b></td>
+          <td><b>Int</b></td>
           <td><b>DlsW</b></td>
+          <td><b>G-DFK</b></td>
           <td><b>O</b></td>
         </tr>
       </table>
@@ -107,16 +106,15 @@
     <div class="{{ theme }}-light">
       <table>
         <tr>
-          <td>{{ html_table.at[i, 'team'] }} / {{ html_table.at[i,'number'] }}</td>
+          <td class="textleft">{{ html_table.at[i, 'team'] }} / {{ html_table.at[i,'number'] }}</td>
           <td style="width:25%;"><b>{{ html_table.at[i,'name'] }}</b></td>
-          <td>{{ html_table.at[i,'minutes'] }}</td>
-          <td>{{ html_table.at[i,'goals'] }}</td>
-          <td>{{ html_table.at[i,'tackles'] }}</td>
-          <td>{{ html_table.at[i,'t-won'] }}</td>
-          <td>{{ html_table.at[i,'clearances'] }}</td>
-          <td>{{ html_table.at[i,'interceptions'] }}</td>
-          <td>{{ html_table.at[i,'duels'] }}</td>
-          <td>{{ html_table.at[i,'d-won'] }}</td>
+          <td>{{ html_table.at[i,'Min'] }}</td>
+          <td>{{ html_table.at[i,'Goal'] }}</td>
+          <td>{{ html_table.at[i,'TcklMade%'] }}</td>
+          <td>{{ html_table.at[i,'Clrnce'] }}</td>
+          <td>{{ html_table.at[i,'Int'] }}</td>
+          <td>{{ html_table.at[i,'DuelsW%'] }}</td>
+          <td>{{ html_table.at[i,'GoalDirFK'] }}</td>
           <td class="{{ theme }}-t-blue"><b>{{ html_table.at[i,'overall'] }}</b></td>
         </tr>
       </table>
@@ -135,12 +133,11 @@
           <td style="width:25%;"><b>name</b></td>
           <td><b>MIN</b></td>
           <td><b>G</b></td>
-          <td><b>Tkl</b></td>
-          <td><b>TklW</b></td>
+          <td><b>TklM</b></td>
           <td><b>Clr</b></td>
-          <td><b>Intr</b></td>
-          <td><b>Dls</b></td>
+          <td><b>Int</b></td>
           <td><b>DlsW</b></td>
+          <td><b>G-DFK</b></td>
           <td><b>O</b></td>
         </tr>
       </table>
@@ -151,16 +148,15 @@
     <div class="{{ theme }}-light">
       <table>
         <tr>
-          <td>{{ html_table.at[i, 'team'] }} / {{ html_table.at[i,'number'] }}</td>
+          <td class="textleft">{{ html_table.at[i, 'team'] }} / {{ html_table.at[i,'number'] }}</td>
           <td style="width:25%;"><b>{{ html_table.at[i,'name'] }}</b></td>
-          <td>{{ html_table.at[i,'minutes'] }}</td>
-          <td>{{ html_table.at[i,'goals'] }}</td>
-          <td>{{ html_table.at[i,'tackles'] }}</td>
-          <td>{{ html_table.at[i,'t-won'] }}</td>
-          <td>{{ html_table.at[i,'clearances'] }}</td>
-          <td>{{ html_table.at[i,'interceptions'] }}</td>
-          <td>{{ html_table.at[i,'duels'] }}</td>
-          <td>{{ html_table.at[i,'d-won'] }}</td>
+          <td>{{ html_table.at[i,'Min'] }}</td>
+          <td>{{ html_table.at[i,'Goal'] }}</td>
+          <td>{{ html_table.at[i,'TcklMade%'] }}</td>
+          <td>{{ html_table.at[i,'Clrnce'] }}</td>
+          <td>{{ html_table.at[i,'Int'] }}</td>
+          <td>{{ html_table.at[i,'DuelsW%'] }}</td>
+          <td>{{ html_table.at[i,'GoalDirFK'] }}</td>
           <td class="{{ theme }}-t-blue"><b>{{ html_table.at[i,'overall'] }}</b></td>
         </tr>
       </table>

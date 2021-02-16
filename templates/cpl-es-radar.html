@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'r-base.html' %}
 {% block content %}
 
 <!-- header -->
@@ -51,12 +51,22 @@
 
 <div class="desktop">
   <div class="parent {{ theme }}-dark">
-    {% if year == '2020' %}
+    {% if year == '2019' %}
+      {% for name in ['Cavalry FC','FC Edmonton','Forge FC','HFX Wanderers FC','Pacific FC','Valour FC','York9 FC']%}
+          <div class="boxs {{ html_table[html_table['team'] == name ]['colour'] }}">
+            <span><h3>{{ name }}</h3></span>
+            <canvas id="{{ name }}"></canvas>
+            <!--img class="center" src="static/images/{{ year }}/cpl-{{ year }}-{{ name }}-radar.png" alt="{{ name }} Radar" style="max-width:300px"-->
+          </div>
+      {% endfor %}
+    {% else %}
       {% for name in ['Atlético Ottawa','Cavalry FC','FC Edmonton','Forge FC','HFX Wanderers FC','Pacific FC','Valour FC','York9 FC']%}
         <span><h3>{{ name }}</h3></span>
           <div class="child {{ html_table[html_table['team'] == name ]['colour'] }}">
             <div class="box center">
-              <img src="static/images/{{ year }}/cpl-{{ year }}-{{ name }}-radar.png" alt="{{ name }} Radar" style="max-width:60%">
+              <canvas id="{{ name }}"></canvas>
+              <!--div id="{{ name }}" style="background:black;width: 100%;padding: 20px"></div-->
+              <!--img src="static/images/{{ year }}/cpl-{{ year }}-{{ name }}-radar.png" alt="{{ name }} Radar" style="max-width:60%"-->
             </div>
 
             <div class="box">
@@ -79,14 +89,7 @@
             </div>
          </div>
          {% endfor %}
-      {% else %}
-        {% for name in ['Cavalry FC','FC Edmonton','Forge FC','HFX Wanderers FC','Pacific FC','Valour FC','York9 FC']%}
-            <div class="box {{ html_table[html_table['team'] == name ]['colour'] }}">
-              <span><h3>{{ name }}</h3></span>
-              <img class="center" src="static/images/{{ year }}/cpl-{{ year }}-{{ name }}-radar.png" alt="{{ name }} Radar" style="max-width:300px">
-            </div>
-        {% endfor %}
-      {% endif %}
+    {% endif %}
   </div>
 </div>
 

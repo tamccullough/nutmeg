@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'c-base.html' %}
 {% block content %}
 
 <!-- page content -->
@@ -110,7 +110,8 @@
         </div>
       </div>
       <div class="{{ home_colour }} center">
-        <img src="static/images/2020/cpl-2020-{{ home_team }}-radar.png" alt="{{ home_team }} Radar" style="max-width:95%">
+        <canvas id="homeChart"></canvas>
+        <!--img src="static/images/2020/cpl-2020-{{ home_team }}-radar.png" alt="{{ home_team }} Radar" style="max-width:95%"-->
       </div>
     </div>
     <!-- END OF home team stats -->
@@ -195,7 +196,8 @@
         </div>
       </div>
       <div class="{{ away_colour }} center">
-        <img src="static/images/2020/cpl-2020-{{ away_team }}-radar.png" alt="{{ away_team }} Radar" style="max-width:95%">
+        <canvas id="awayChart"></canvas>
+        <!--img src="static/images/2020/cpl-2020-{{ away_team }}-radar.png" alt="{{ away_team }} Radar" style="max-width:95%"-->
       </div>
     </div>
     <!-- END OF away team stats -->

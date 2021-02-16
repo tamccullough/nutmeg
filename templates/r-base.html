@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>Nutmeg: Canadian Premier League Fans {{year}}</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Todd McCullough">
+  <meta name="description" content="Canadian Premier League Stats for league fans. CanPL stats. Standings, team and roster information, data analysis and data visualization for football and Soccer fans of the Canadian Premier League.">
+  <link rel="stylesheet" href="static/css/nav.css">
+  <link rel="stylesheet" href="static/css/menu.css">
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="static/css/themes.css">
+  <link rel="stylesheet" href="static/css/team-colours.css">
+  <!--link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet"/-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Staatliches&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.min.js" type="text/javascript"></script>
+
+  <style>
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #3141a8 #2d62b5;
+  }
+
+  html,h1,h2,h3 {
+    font-family: 'Staatliches', cursive;
+  }
+
+  .staat {
+    font-family: 'Staatliches', cursive;
+  }
+
+  body,h4,h5,a {
+    font-family: 'Lato', sans-serif;
+  }
+  </style>
+
+</head>
+
+<!-- nav menu -->
+<div>
+  <nav>
+    <div class="logo">
+      <a class="mobile staat logo" href="/" style="font-size:3em;">Nutmeg</a>
+      <a class="desktop staat logo" href="/">Nutmeg</a>
+      <a class="desktop" style="font-size:0.5em;">For CPL Fans</a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/teams">teams</a></li>
+      <li><a href="/standings">standings</a></li>
+      <li><a href="/power">rankings</a></li>
+      <li><a href="/radar">radar</a></li>
+      <li><a href="/versus">prediction</a></li>
+      <li><a href="/best11">best/11</a></li>
+      <li><a href="/forwards">forwards</a></li>
+      <li><a href="/midfielders">midfield</a></li>
+      <li><a href="/defenders">defense</a></li>
+      <li><a href="/keepers">keepers</a></li>
+      <li><a href="/goals">goals/assists</a></li>
+      <li><a href="/discipline">discipline</a></li>
+    </ul>
+    <div class="burger">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+  </nav>
+</div>
+<!-- end of nav menu -->
+<div class="desktop">
+  <div class="page80">
+    <div class="spacer"></div>
+    <h3 class="xxfont" style="display: inline;">{{ weekday }} {{ month }} <b class="bold">{{ day }}</b></h3>
+  </div>
+</div>
+<!-- Top container -->
+<body id="top" class="{{ theme }}-colour">
+
+  <div class="container">
+    <div class="page80">
+
+      <button id="backToTop" class="topbutton {{ theme }}-action textcenter">
+        <a class="button text-white" href="#top">top</a>
+      </button>
+
+      {% block content %}
+      {% endblock %}
+
+
+      <!-- league information container -->
+      <div>
+        <div class="parent {{ theme }}-colour">
+          <div class="boxs">
+            <h3 class="bottombar blue-bar">Official Site</h3>
+            <a class="button" href="https://canpl.ca/" target="_blank">Canadian Premier League</a><br>
+            <a>Toronto, Canada</a>
+          </div>
+          <div class="boxs">
+            <h3 class="bottombar pink-bar">Official TV Partner</h3>
+            <a class="button" href="https://onesoccer.ca/" target="_blank">One Soccer</a><br>
+            <a>Toronto, Canada</a>
+          </div>
+          <div class="boxl">
+            <h3 class="bottombar green-bar">Club Links</h3>
+            <table>
+              <tr>
+                <td class="t-left"><a class="button" href="https://atleticoottawa.canpl.ca/" target="_blank">Atletico Ottawa</a></td>
+                <td class="t-left"><a class="button" href="https://cavalryfc.canpl.ca/" target="_blank">Cavalry FC</a></td>
+              </tr>
+              <tr>
+                <td class="t-left"><a class="button" href="https://fcedmonton.canpl.ca/" target="_blank">FC Edmonton</a></td>
+                <td class="t-left"><a class="button" href="https://forgefc.canpl.ca/" target="_blank">Forge FC</a></td>
+              </tr>
+              <tr>
+                <td class="t-left"><a class="button" href="https://hfxwanderersfc.canpl.ca/" target="_blank">HFX Wanderers FC</a></td>
+                <td class="t-left"><a class="button" href="https://pacificfc.canpl.ca/" target="_blank">Pacific FC</a></td>
+              </tr>
+              <tr>
+                <td class="t-left"><a class="button" href="https://valourfc.canpl.ca/" target="_blank">Valour FC</a></td>
+                <td class="t-left"><a class="button" href="https://yorkunitedfc.canpl.ca/" target="_blank">York United FC</a></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+      </div>
+      <div class="spacer"></div>
+      <!-- Footer -->
+      <div class="spacer"></div>
+      <footer class="{{ theme }}-colour">
+        <a> Todd McCullough</a>
+        <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{theme}}-colour fa fa-twitter"></i></a>
+        <a href="https://github.com/tamccullough" target="_blank"><i class="{{theme}}-colour fa fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/tamccullough/" target="_blank"><i class="{{theme}}-colour fa fa-linkedin"></i></a>
+      </footer>
+
+      <!-- End page content -->
+    </div>
+    finish,def,att,mid,net,big,save,goals
+  </div>
+  <script src="static/css/app.js"></script>
+  <script src="static/css/top.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+  {% if year != '2019' %}
+  {% set check = 0%}
+  <script type="text/javascript">
+    new Chart(document.getElementById('Atlético Ottawa'), {
+      type: 'radar',
+      data: {
+        labels: ['finish','def','att','mid','net','big','save','goals'],
+        datasets: [{
+          data: [{{ radar.loc[0].values[1:]|join(', ') }}],
+          fill: true,
+          backgroundColor: '#102f52'+'BF',
+          borderColor: '#102f52',
+          pointHoverRadius: 10,
+          pointHoverBackgroundColor: "#fff",
+          pointBackgroundColor: '#102f52'
+        }]
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        borderWidth: 10,
+        scale: {
+          ticks: {
+            display: false,
+            beginAtZero: true,
+            maxTicksLimit: 10,
+            max: 1
+          },
+          gridLines: {
+            lineWidth: 0.5,
+            color: '#fff'
+          },
+          pointLabels: {
+            fontColor: '#fff',
+            fontSize: 16,
+            fontFamily: "'Lato', sans-serif"
+          }
+        }
+      }
+    });
+  </script>
+  {% else %}
+  {% set check = 1%}
+  {% endif %}
+  <script>
+  new Chart(document.getElementById('Cavalry FC'), {
+    type: 'radar',
+    data: {
+      labels: ['finish','def','att','mid','net','big','save','goals'],
+      datasets: [{
+        data: [{{ radar.loc[1-check].values[1:]|join(', ') }}],
+        fill: true,
+        backgroundColor: '#335525'+'BF',
+        borderColor: '#335525',
+        pointHoverRadius: 10,
+        pointHoverBackgroundColor: "#fff",
+        pointBackgroundColor: '#335525'
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      borderWidth: 10,
+      scale: {
+        ticks: {
+          display: false,
+          beginAtZero: true,
+          maxTicksLimit: 10,
+          max: 1
+        },
+        gridLines: {
+          lineWidth: 0.5,
+          color: '#fff'
+        },
+        pointLabels: {
+          fontColor: '#fff',
+          fontSize: 16,
+          fontFamily: "'Lato', sans-serif"
+        }
+      }
+    }
+  });
+
+  new Chart(document.getElementById('FC Edmonton'), {
+    type: 'radar',
+    data: {
+      labels: ['finish','def','att','mid','net','big','save','goals'],
+      datasets: [{
+        data: [{{ radar.loc[2-check].values[1:]|join(', ') }}],
+        fill: true,
+        backgroundColor: '#0c2340'+'BF',
+        borderColor: '#0c2340',
+        pointHoverRadius: 10,
+        pointHoverBackgroundColor: "#fff",
+        pointBackgroundColor: '#0c2340'
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      borderWidth: 10,
+      scale: {
+        ticks: {
+          display: false,
+          beginAtZero: true,
+          maxTicksLimit: 10,
+          max: 1
+        },
+        gridLines: {
+          lineWidth: 0.5,
+          color: '#fff'
+        },
+        pointLabels: {
+          fontColor: '#fff',
+          fontSize: 16,
+          fontFamily: "'Lato', sans-serif"
+        }
+      }
+    }
+  });
+
+  new Chart(document.getElementById('Forge FC'), {
+    type: 'radar',
+    data: {
+      labels: ['finish','def','att','mid','net','big','save','goals'],
+      datasets: [{
+        data: [{{ radar.loc[3-check].values[1:]|join(', ') }}],
+        fill: true,
+        backgroundColor: '#53565a'+'BF',
+        borderColor: '#53565a',
+        pointHoverRadius: 10,
+        pointHoverBackgroundColor: "#fff",
+        pointBackgroundColor: '#53565a'
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      borderWidth: 10,
+      scale: {
+        ticks: {
+          display: false,
+          beginAtZero: true,
+          maxTicksLimit: 10,
+          max: 1
+        },
+        gridLines: {
+          lineWidth: 0.5,
+          color: '#fff'
+        },
+        pointLabels: {
+          fontColor: '#fff',
+          fontSize: 16,
+          fontFamily: "'Lato', sans-serif"
+        }
+      }
+    }
+  });
+
+  new Chart(document.getElementById('HFX Wanderers FC'), {
+    type: 'radar',
+    data: {
+      labels: ['finish','def','att','mid','net','big','save','goals'],
+      datasets: [{
+        data: [{{ radar.loc[4-check].values[1:]|join(', ') }}],
+        fill: true,
+        backgroundColor: '#052049'+'BF',
+        borderColor: '#052049',
+        pointHoverRadius: 10,
+        pointHoverBackgroundColor: "#fff",
+        pointBackgroundColor: '#052049'
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      borderWidth: 10,
+      scale: {
+        ticks: {
+          display: false,
+          beginAtZero: true,
+          maxTicksLimit: 10,
+          max: 1
+        },
+        gridLines: {
+          lineWidth: 0.5,
+          color: '#fff'
+        },
+        pointLabels: {
+          fontColor: '#302117',
+          fontSize: 16,
+          fontFamily: "'Lato', sans-serif"
+        }
+      }
+    }
+  });
+
+  new Chart(document.getElementById('Pacific FC'), {
+    type: 'radar',
+    data: {
+      labels: ['finish','def','att','mid','net','big','save','goals'],
+      datasets: [{
+        data: [{{ radar.loc[5-check].values[1:]|join(', ') }}],
+        fill: true,
+        backgroundColor: '#00b7bd'+'BF',
+        borderColor: '#00b7bd',
+        pointHoverRadius: 10,
+        pointHoverBackgroundColor: "#fff",
+        pointBackgroundColor: '#00b7bd'
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      borderWidth: 10,
+      scale: {
+        ticks: {
+          display: false,
+          beginAtZero: true,
+          maxTicksLimit: 10,
+          max: 1
+        },
+        gridLines: {
+          lineWidth: 0.5,
+          color: '#fff'
+        },
+        pointLabels: {
+          fontColor: '#fff',
+          fontSize: 16,
+          fontFamily: "'Lato', sans-serif"
+        }
+      }
+    }
+  });
+
+  new Chart(document.getElementById('Valour FC'), {
+    type: 'radar',
+    data: {
+      labels: ['finish','def','att','mid','net','big','save','goals'],
+      datasets: [{
+        data: [{{ radar.loc[6-check].values[1:]|join(', ') }}],
+        fill: true,
+        backgroundColor: '#b9975b'+'BF',
+        borderColor: '#b9975b',
+        pointHoverRadius: 10,
+        pointHoverBackgroundColor: "#fff",
+        pointBackgroundColor: '#b9975b'
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      borderWidth: 10,
+      scale: {
+        ticks: {
+          display: false,
+          beginAtZero: true,
+          maxTicksLimit: 10,
+          max: 1
+        },
+        gridLines: {
+          lineWidth: 0.5,
+          color: '#fff'
+        },
+        pointLabels: {
+          fontColor: '#fff',
+          fontSize: 16,
+          fontFamily: "'Lato', sans-serif"
+        }
+      }
+    }
+  });
+
+  new Chart(document.getElementById('York9 FC'), {
+    type: 'radar',
+    data: {
+      labels: ['finish','def','att','mid','net','big','save','goals'],
+      datasets: [{
+        data: [{{ radar.loc[7-check].values[1:]|join(', ') }}],
+        fill: true,
+        backgroundColor: '#003b5c'+'BF',
+        borderColor: '#003b5c',
+        pointHoverRadius: 10,
+        pointHoverBackgroundColor: "#fff",
+        pointBackgroundColor: '#003b5c'
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      borderWidth: 10,
+      scale: {
+        ticks: {
+          display: false,
+          beginAtZero: true,
+          maxTicksLimit: 10,
+          max: 1
+        },
+        gridLines: {
+          lineWidth: 0.5,
+          color: '#fff'
+        },
+        pointLabels: {
+          fontColor: '#fff',
+          fontSize: 16,
+          fontFamily: "'Lato', sans-serif"
+        }
+      }
+    }
+  });
+
+</script>
+</body>
+</html>

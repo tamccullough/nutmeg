@@ -1,0 +1,53 @@
+team,Age,pos,name,overall,Min,Goal,GoalDirFK,GoalHead,Clrnce,Int,TcklMade%,DuelsW%,display
+York United,25,rcb,Luca Gasparotto,0.67,2520,1,0,1,117,49,75.6,72.0,Luca Gasparotto
+HFX Wanderers,26,lcb,Matthew Arnone,0.63,2094,2,0,1,99,49,68.9,62.0,Matthew Arnone
+Forge,24,lcb,Daniel Krutzen,0.62,2470,1,0,1,95,46,75.4,59.0,Daniel Krutzen
+Cavalry,26,rcb,Dominick Zator,0.62,2425,1,0,1,76,51,81.0,63.0,Dominick Zator
+Pacific,25,rcb,Lukas MacNaughton,0.62,1704,2,0,2,95,29,79.2,57.0,Lukas MacNaughton
+Edmonton,25,lcb,Mélé Temguia,0.56,2429,2,0,0,82,51,72.6,57.0,Mélé Temguia
+Forge,27,rb,Giuliano Frano,0.5,1964,1,0,1,34,41,73.5,55.0,Giuliano Frano
+Pacific,26,lw,Victor Blasco,0.49,1586,6,2,0,4,2,55.8,47.0,Victor Blasco
+Edmonton,25,rcb,Amer Didic,0.48,1650,0,0,0,109,25,82.9,69.0,Amer Didic
+Pacific,29,lcb,Hendrik Starostzik,0.47,1161,1,0,1,72,25,68.4,59.0,Hendrik Starostzik
+HFX Wanderers,30,rb,André Bona,0.47,2053,0,0,0,76,32,85.7,58.0,André Bona
+Forge,26,rcb,Dominic Samuel,0.47,2133,0,0,0,75,31,87.8,56.0,Dominic Samuel
+Valour,27,rcb,Skylar Rutherford Thomas,0.46,1894,0,0,0,102,23,77.1,60.0,Skylar Thomas
+Cavalry,24,rcb,Joel Waterman,0.46,1719,1,0,0,45,47,69.2,63.0,Joel Waterman
+HFX Wanderers,24,rcb,Peter Schaale,0.46,1530,1,0,0,100,24,76.4,60.0,Peter Schaale
+York United,26,rb,Morey Doner,0.45,2250,1,0,0,35,32,74.1,61.0,Morey Doner
+Pacific,29,lb,Blake Smith,0.45,2004,0,0,0,53,43,74.5,56.0,Blake Smith
+York United,22,lb,Diyaeddine Abzi,0.44,1814,1,0,0,31,48,70.6,50.0,Diyaeddine Abzi
+Forge,27,lcb,Bertrand Owundi,0.43,1756,0,0,0,92,24,70.4,55.0,Bertrand Owundi
+Pacific,22,rb,Kadin Chung,0.43,2032,1,0,0,42,31,75.0,55.0,Kadin Chung
+Edmonton,24,rb,Jeannot Esua,0.42,1798,0,0,0,40,33,76.7,62.0,Jeannot Esua
+Valour,27,lcb,Jordan Peter Murrell,0.41,1784,0,0,0,63,26,76.3,58.0,Jordan Murrell
+Cavalry,32,rcb,Jonathan Wheeldon,0.4,1497,0,0,0,71,14,88.9,61.0,Jay Wheeldon
+Forge,25,lb,Kwame Awuah,0.4,1974,0,0,0,20,41,80.5,48.0,Kwame Awuah
+Forge,33,rcb,David Edward Edgar,0.39,834,1,0,1,36,8,75.0,64.0,David Edward Edgar
+Valour,29,lb,Martín Arguiñarena,0.38,1534,0,0,0,18,35,69.1,65.0,Martín Arguiñarena
+Cavalry,25,lb,Nathan Mavila,0.38,2021,0,0,0,45,22,68.8,53.0,Nathan Mavila
+HFX Wanderers,21,lcb,Chrisnovic N'Sa,0.38,1217,0,0,0,44,25,83.3,62.0,Chris N'sa
+Edmonton,27,lb,Allan Zebie,0.37,1970,0,0,0,31,27,70.3,52.0,Allan Zebie
+Valour,27,lcb,Adam Mitter,0.37,1513,0,0,0,50,29,63.0,52.0,Adam Mitter
+York United,24,lcb,Daniel Gogarty,0.36,1551,0,0,0,40,21,76.3,57.0,Daniel Gogarty
+York United,27,rcb,Justin Springer,0.36,945,0,0,0,47,10,90.9,71.0,Justin Springer
+Cavalry,34,lcb,Mason Trafford,0.36,1891,0,0,0,57,15,63.2,55.0,Mason Trafford
+Pacific,22,rb,Zachary Verhoven,0.35,1285,2,0,0,27,20,62.5,52.0,Zach Verhoven
+Pacific,29,lcb,Ryan McCurdy,0.34,744,0,0,0,35,13,92.9,71.0,Ryan McCurdy
+Pacific,22,lcb,Matthew Baldisimo,0.33,1809,0,0,0,29,25,57.3,45.0,Matthew Baldisimo
+Edmonton,30,rb,Kareem Moses,0.33,969,0,0,0,26,14,80.0,73.0,Kareem Moses
+Pacific,20,rcb,Émile Legault,0.33,915,0,0,0,41,21,73.8,59.0,Émile Legault
+York United,29,lcb,Roger Thompson,0.3,802,0,0,0,40,15,69.2,54.0,Roger Thompson
+HFX Wanderers,22,lb,Ndzemdzela Langwa,0.3,1281,0,0,0,20,14,69.1,57.0,Zoom Langwa
+HFX Wanderers,25,lcb,Duran Lee,0.3,678,0,0,0,21,9,96.6,57.0,Duran Lee
+Forge,27,rb,Jonathan Grant,0.29,882,1,0,0,15,13,81.1,45.0,Jonathan Grant
+HFX Wanderers,28,lb,Alex De Carolis,0.29,1246,0,0,0,34,14,64.2,47.0,Alex De Carolis
+Valour,21,rb,Raphaël Garcia,0.28,943,0,0,0,20,9,73.3,56.0,Raphaël Garcia
+Valour,20,lcb,Yohan Le Bourhis,0.28,720,0,0,0,41,5,80.0,48.0,Yohan Le Bourhis
+Forge,21,rb,Klaidi Cela,0.27,326,1,0,0,18,5,73.7,62.0,Klaidi Cela
+Cavalry,21,rb,Malyk Hamilton,0.27,1275,0,0,0,12,8,64.0,53.0,Malyk Hamilton
+HFX Wanderers,29,rcb,Chakib Hocine,0.26,352,0,0,0,12,8,100.0,50.0,Chakib Hocine
+Edmonton,29,rb,Yong-Chan Son,0.25,952,0,0,0,3,8,78.4,47.0,Yong-Chan Son
+Forge,18,lb,Oluwaseun Oyegunle,0.25,38,0,0,0,1,1,100.0,67.0,Oluwaseun Oyegunle
+Forge,20,lb,Montther Mohsen,0.19,363,1,0,0,6,5,47.4,42.0,Montther Mohsen
+Cavalry,22,lw,Gabriel Bitar,0.12,90,0,0,0,1,0,50.0,29.0,Gabriel Bitar

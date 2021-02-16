@@ -16,17 +16,17 @@
             <td><b>G</b></td>
             <td><b>A</b></td>
             <td><b>Ch</b></td>
-            <td><b>SoT</b></td>
+            <td><b>SOG</b></td>
             <td style="width:15%;text-align:center;"><b>O</b></td>
           </tr>
           {%for i in range(0,10)%}
           <tr class="{{ theme }}-light">
             <td style="width:10%;">{{ html_table.at[i, 'team'] }}</td>
             <td style="font-size: 0.8em;width:38%;"><b>{{ ' '.join((html_table.at[i,'name']).split()[1:]) }}</b></td>
-            <td style="font-size: 0.8em;">{{ html_table.at[i,'goals'] }}</td>
-            <td style="font-size: 0.8em;">{{ html_table.at[i,'assists'] }}</td>
-            <td style="font-size: 0.8em;">{{ html_table.at[i,'chances'] }}</td>
-            <td style="font-size: 0.8em;">{{ html_table.at[i,'s-target'] }}</td>
+            <td style="font-size: 0.8em;">{{ html_table.at[i,'Goal'] }}</td>
+            <td style="font-size: 0.8em;">{{ html_table.at[i,'Ast'] }}</td>
+            <td style="font-size: 0.8em;">{{ html_table.at[i,'Chance'] }}</td>
+            <td style="font-size: 0.8em;">{{ html_table.at[i,'SOG'] }}</td>
             <td class="{{ theme }}-t-blue" style="width:15%;"><b>{{ html_table.at[i,'overall'] }}</b></td>
           </tr>
           {%endfor%}
@@ -45,17 +45,17 @@
               <td><b>G</b></td>
               <td><b>A</b></td>
               <td><b>Ch</b></td>
-              <td><b>SoT</b></td>
+              <td><b>SOG</b></td>
               <td style="width:15%;text-align:center;"><b>O</b></td>
             </tr>
             {%for i in range(10,html_table.shape[0])%}
             <tr class="{{ theme }}-light">
               <td style="width:10%;">{{ html_table.at[i, 'team'] }}</td>
               <td style="font-size: 0.8em;width:38%;"><b>{{ ' '.join((html_table.at[i,'name']).split()[1:]) }}</b></td>
-              <td style="font-size: 0.8em;">{{ html_table.at[i,'goals'] }}</td>
-              <td style="font-size: 0.8em;">{{ html_table.at[i,'assists'] }}</td>
-              <td style="font-size: 0.8em;">{{ html_table.at[i,'chances'] }}</td>
-              <td style="font-size: 0.8em;">{{ html_table.at[i,'s-target'] }}</td>
+              <td style="font-size: 0.8em;">{{ html_table.at[i,'Goal'] }}</td>
+              <td style="font-size: 0.8em;">{{ html_table.at[i,'Ast'] }}</td>
+              <td style="font-size: 0.8em;">{{ html_table.at[i,'Chance'] }}</td>
+              <td style="font-size: 0.8em;">{{ html_table.at[i,'SOG'] }}</td>
               <td class="{{ theme }}-t-blue" style="width:15%;"><b>{{ html_table.at[i,'overall'] }}</b></td>
             </tr>
             {%endfor%}
@@ -77,28 +77,28 @@
             <td><b>G</b></td>
             <td><b>A</b></td>
             <td><b>Ch</b></td>
-            <td><b>S</b></td>
-            <td><b>SOT</b></td>
-            <td><b>P</b></td>
-            <td><b>X</b></td>
-            <td><b>Dls</b></td>
-            <td><b>Tkl</b></td>
+            <td><b>Big</b></td>
+            <td><b>Ch OP</b></td>
+            <td><b>SOG</b></td>
+            <td><b>S-I-B</b></td>
+            <td><b>S-O-B</b></td>
+            <td><b>Pass%</b></td>
             <td><b>O</b></td>
           </tr>
           {%for i in range(0,10)%}
           <tr class="{{ theme }}-light">
-            <td style="width:10%;">{{ html_table.at[i, 'team'] }} / {{ html_table.at[i,'number'] }}</td>
+            <td class="textleft" style="width:10%;">{{ html_table.at[i, 'team'] }} / {{ html_table.at[i,'number'] }}</td>
             <td style="width:30%;"><b>{{ html_table.at[i,'name'] }}</b></td>
-            <td>{{ html_table.at[i,'minutes'] }}</td>
-            <td>{{ html_table.at[i,'goals'] }}</td>
-            <td>{{ html_table.at[i,'assists'] }}</td>
-            <td>{{ html_table.at[i,'chances'] }}</td>
-            <td>{{ html_table.at[i,'shots'] }}</td>
-            <td>{{ html_table.at[i,'s-target'] }}</td>
-            <td>{{ html_table.at[i,'passes'] }}</td>
-            <td>{{ html_table.at[i,'crosses'] }}</td>
-            <td>{{ html_table.at[i,'duels'] }}</td>
-            <td>{{ html_table.at[i,'tackles'] }}</td>
+            <td>{{ html_table.at[i,'Min'] }}</td>
+            <td>{{ html_table.at[i,'Goal'] }}</td>
+            <td>{{ html_table.at[i,'Ast'] }}</td>
+            <td>{{ html_table.at[i,'Chance'] }}</td>
+            <td>{{ html_table.at[i,'BgChncCrtd'] }}</td>
+            <td>{{ html_table.at[i,'ChncOpnPl'] }}</td>
+            <td>{{ html_table.at[i,'SOG'] }}</td>
+            <td>{{ html_table.at[i,'SOTInBox'] }}</td>
+            <td>{{ html_table.at[i,'SOTOBox'] }}</td>
+            <td>{{ html_table.at[i,'Pass%'] }}</td>
             <td class="{{ theme }}-t-blue"><b>{{ html_table.at[i,'overall'] }}</b></td>
           </tr>
           {%endfor%}
@@ -118,28 +118,28 @@
               <td><b>G</b></td>
               <td><b>A</b></td>
               <td><b>Ch</b></td>
-              <td><b>S</b></td>
-              <td><b>SOT</b></td>
-              <td><b>P</b></td>
-              <td><b>X</b></td>
-              <td><b>Dls</b></td>
-              <td><b>Tkl</b></td>
+              <td><b>Big</b></td>
+              <td><b>Ch OP</b></td>
+              <td><b>SOG</b></td>
+              <td><b>S-I-B</b></td>
+              <td><b>S-O-B</b></td>
+              <td><b>Pass%</b></td>
               <td><b>O</b></td>
             </tr>
             {%for i in range(10,html_table.shape[0])%}
             <tr class="{{ theme }}-light">
-              <td style="width:10%;">{{ html_table.at[i, 'team'] }} / {{ html_table.at[i,'number'] }}</td>
+              <td class="textleft" style="width:10%;">{{ html_table.at[i, 'team'] }} / {{ html_table.at[i,'number'] }}</td>
               <td style="width:30%;"><b>{{ html_table.at[i,'name'] }}</b></td>
-              <td>{{ html_table.at[i,'minutes'] }}</td>
-              <td>{{ html_table.at[i,'goals'] }}</td>
-              <td>{{ html_table.at[i,'assists'] }}</td>
-              <td>{{ html_table.at[i,'chances'] }}</td>
-              <td>{{ html_table.at[i,'shots'] }}</td>
-              <td>{{ html_table.at[i,'s-target'] }}</td>
-              <td>{{ html_table.at[i,'passes'] }}</td>
-              <td>{{ html_table.at[i,'crosses'] }}</td>
-              <td>{{ html_table.at[i,'duels'] }}</td>
-              <td>{{ html_table.at[i,'tackles'] }}</td>
+              <td>{{ html_table.at[i,'Min'] }}</td>
+              <td>{{ html_table.at[i,'Goal'] }}</td>
+              <td>{{ html_table.at[i,'Ast'] }}</td>
+              <td>{{ html_table.at[i,'Chance'] }}</td>
+              <td>{{ html_table.at[i,'BgChncCrtd'] }}</td>
+              <td>{{ html_table.at[i,'ChncOpnPl'] }}</td>
+              <td>{{ html_table.at[i,'SOG'] }}</td>
+              <td>{{ html_table.at[i,'SOTInBox'] }}</td>
+              <td>{{ html_table.at[i,'SOTOBox'] }}</td>
+              <td>{{ html_table.at[i,'Pass%'] }}</td>
               <td class="{{ theme }}-t-blue"><b>{{ html_table.at[i,'overall'] }}</b></td>
             </tr>
             {%endfor%}

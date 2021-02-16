@@ -14,10 +14,11 @@
         <tr>
           <td><b>team</b></td>
           <td style="width:35%;"><b>name</b></td>
+          <td><b>MIN</b></td>
           <td><b>CS</b></td>
           <td><b>Sv</b></td>
-          <td><b>SF</b></td>
-          <td><b>CX</b></td>
+          <td><b>X-P</b></td>
+          <td><b>G-Cncd</b></td>
           <td style="text-align: center;"><b>O</b></td>
         </tr>
       </table>
@@ -28,12 +29,13 @@
     <div class="{{ theme }}-light">
       <table>
         <tr>
-          <td>{{ html_table.at[i, 'team'] }}</td>
+          <td class="textleft">{{ html_table.at[i, 'team'] }}</td>
           <td style="font-size: 0.8em;width:35%;"><b>{{  ' '.join((html_table.at[i,'name']).split()[1:])  }}</b></td>
-          <td>{{ html_table.at[i, 'cs'] }}</td>
-          <td>{{ html_table.at[i, 'saves'] }}</td>
-          <td>{{ html_table.at[i, 'shots faced'] }}</td>
-          <td>{{ html_table.at[i, 'claimed crosses'] }}</td>
+          <td>{{ html_table.at[i, 'Min'] }}</td>
+          <td>{{ html_table.at[i, 'CleanSheet'] }}</td>
+          <td>{{ html_table.at[i, 'Saves'] }}</td>
+          <td>{{ html_table.at[i, 'CrossPunch'] }}</td>
+          <td>{{ html_table.at[i, 'GoalCncd'] }}</td>
           <td class="{{ theme }}-t-blue"><b>{{ html_table.at[i, 'overall'] }}</b></td>
         </tr>
       </table>
@@ -54,8 +56,8 @@
           <td><b>MIN</b></td>
           <td><b>CS</b></td>
           <td><b>Sv</b></td>
-          <td><b>SF</b></td>
-          <td><b>CX</b></td>
+          <td><b>X-P</b></td>
+          <td><b>G-Cncd</b></td>
           <td style="text-align: center;"><b>O</b></td>
         </tr>
       </table>
@@ -66,13 +68,13 @@
     <div class="{{ theme }}-light">
       <table>
         <tr>
-          <td>{{ html_table.at[i, 'team'] }} / {{ html_table.at[i,'number'] }}</td>
+          <td class="textleft">{{ html_table.at[i, 'team'] }} / {{ html_table.at[i,'number'] }}</td>
           <td style="width:35%;"><b>{{ html_table.at[i,'name'] }}</b></td>
-          <td>{{ html_table.at[i, 'minutes'] }}</td>
-          <td>{{ html_table.at[i, 'cs'] }}</td>
-          <td>{{ html_table.at[i, 'saves'] }}</td>
-          <td>{{ html_table.at[i, 'shots faced'] }}</td>
-          <td>{{ html_table.at[i, 'claimed crosses'] }}</td>
+          <td>{{ html_table.at[i, 'Min'] }}</td>
+          <td>{{ html_table.at[i, 'CleanSheet'] }}</td>
+          <td>{{ html_table.at[i, 'Saves'] }}</td>
+          <td>{{ html_table.at[i, 'CrossPunch'] }}</td>
+          <td>{{ html_table.at[i, 'GoalCncd'] }}</td>
           <td class="{{ theme }}-t-blue"><b>{{ html_table.at[i, 'overall'] }}</b></td>
         </tr>
       </table>

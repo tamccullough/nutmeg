@@ -16,9 +16,10 @@
           <tr>
             <td style="width:20%;"><b>team / #</b></td>
             <td style="width:45%;"><b>name</b></td>
-            <td><b>Y</b></td>
             <td><b>R</b></td>
-            <td><b>O</b></td>
+            <td><b>2Y</b></td>
+            <td><b>Y</b></td>
+            <td><b>Fls</b></td>
           </tr>
         </table>
       </div>
@@ -32,11 +33,12 @@
       <div>
         <table>
           <tr>
-            <td style="width:20%;">{{ html_table.iloc[i][0] }} / {{ html_table.iloc[i][3] }}</td>
-            <td style="width:45%;"><b>{{ ' '.join((html_table.iloc[i][1]).split()[1:]) }}</b></td>
-            <td>{{ html_table.iloc[i][5] }}</td>
-            <td>{{ html_table.iloc[i][6] }}</td>
-            <td class="{{ theme }}-t-blue"><b>{{ html_table.iloc[i][8] }}</b></td>
+            <td style="width:20%;">{{ html_table.iloc[i]['team'] }} / {{ html_table.iloc[i][3] }}</td>
+            <td style="width:45%;"><b>{{ ' '.join((html_table.iloc[i]['name']).split()[1:]) }}</b></td>
+            <td>{{ html_table.iloc[i]['Red'] }}</td>
+            <td>{{ html_table.iloc[i]['2ndYellow'] }}</td>
+            <td>{{ html_table.iloc[i]['Yellow'] }}</td>
+            <td class="{{ theme }}-t-blue"><b>{{ html_table.iloc[i]['Fls'] }}</b></td>
           </tr>
         </table>
       </div>
@@ -53,12 +55,12 @@
         <table>
           <tr>
             <td><b>team / #</b></td>
-            <td style="width:45%;"><b>{{ columns[1] }}</b></td>
+            <td style="width:45%;"><b>name</b></td>
             <td ><b>MIN</b></td>
-            <td><b>Y</b></td>
-            <td><b>R</b></td>
+            <td><b>Red</b></td>
+            <td><b>2nd Yellow</b></td>
+            <td><b>Yellow</b></td>
             <td><b>Fls</b></td>
-            <td><b>O</b></td>
           </tr>
         </table>
       </div>
@@ -72,13 +74,13 @@
       <div>
         <table>
           <tr>
-            <td>{{ html_table.iloc[i][0] }} / {{ html_table.iloc[i][3] }}</td>
-            <td style="width:45%;"><b>{{ html_table.iloc[i][1] }}</b></td>
-            <td>{{ html_table.iloc[i][4] }}</td>
-            <td>{{ html_table.iloc[i][5] }}</td>
-            <td>{{ html_table.iloc[i][6] }}</td>
-            <td>{{ html_table.iloc[i][7] }}</td>
-            <td class="{{ theme }}-t-blue"><b>{{ html_table.iloc[i][8] }}</b></td>
+            <td class="textleft">{{ html_table.iloc[i]['team'] }} / {{ html_table.iloc[i][3] }}</td>
+            <td style="width:45%;"><b>{{ html_table.iloc[i]['name'] }}</b></td>
+            <td>{{ html_table.iloc[i]['Min'] }}</td>
+            <td>{{ html_table.iloc[i]['Red'] }}</td>
+            <td>{{ html_table.iloc[i]['2ndYellow'] }}</td>
+            <td>{{ html_table.iloc[i]['Yellow'] }}</td>
+            <td class="{{ theme }}-t-blue"><b>{{ html_table.iloc[i]['Fls'] }}</b></td>
           </tr>
         </table>
       </div>
