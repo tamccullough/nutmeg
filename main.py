@@ -9,6 +9,7 @@ this_year = date.today().strftime('%Y')
 
 import numpy as np
 import pandas as pd
+import re
 
 import pickle
 classifier = 'models/cpl_MATCH_classifier-08-21-rf1-2.sav' # BEST so far (25.0, 39.29, 35.71)
@@ -468,21 +469,50 @@ def player():
     db = pd.read_csv(f'datasets/{year}/playerstats/{year}-{position.get(pos)}.csv')
     db90 = pd.read_csv(f'datasets/{year}/playerstats/{year}-{position.get(pos)}90.csv')
     discipline = pd.read_csv(f'datasets/{year}/playerstats/{year}-discipline.csv')
+
     radar_chart = db.copy()
     radar_chart.pop('display')
     for col in radar_chart.columns[5:-1]:
-        print('*********************************************')
-        print(col)
-        print('*********************************************')
         radar_chart[col] = round((radar_chart[col] / (radar_chart[col].max()+0.05)),2)
     radar_chart = radar_chart[radar_chart['name'] == name][radar_chart.columns[6:-1]]
     radar_chart = cpl_main .index_reset(radar_chart)
     radar_chart_cols = "'"+"', '".join(radar_chart.columns)+"'"
     db = db[db['name'] == name][db.columns]
-    print('\n',name,'\n',db)
     db90 = db90[db90['name'] == name][db90.columns]
     discipline = discipline[discipline['name'] == name]
-    print('\n',discipline,'\n')
+
+    def norm_line_column(data):
+        return round(data / (data.max()+0.05),2)
+
+    def percentage_check(x):
+        try:
+            if '%' in x:
+                return float(re.sub('%','',x))
+            elif '-' in x:
+                return 0.0
+        except:
+            return x
+
+    player_line_db = pd.read_csv(f'datasets/{year}/playerstats/{year}-{position.get(pos)}-line.csv')
+    player_line = player_line_db[player_line_db['name'] == name][player_line_db.columns[2:]].copy()
+    for col in player_line.columns:
+        player_line[col] = player_line[col].apply(lambda x: percentage_check(x))
+        player_line[col] = norm_line_column(player_line[col])
+    player_line = cpl_main.index_reset(player_line).values.tolist()
+
+    try:
+        if player_line[0]:
+            print(True)
+    except:
+        print(False)
+
+        display = player_info[player_info['name'] == name]['display'].values[0]
+        print(display)
+        player_line = player_line_db[player_line_db['name'] == display][player_line_db.columns[2:]].copy()
+        for col in player_line.columns:
+            player_line[col] = player_line[col].apply(lambda x: percentage_check(x))
+            player_line[col] = norm_line_column(player_line[col])
+        player_line = cpl_main.index_reset(player_line).values.tolist()
 
     details = {}
     for word in ['display','number','nationality','graph','radar']:
@@ -501,7 +531,7 @@ def player():
     print('*********************************************')
     print('Player:\n',details['display'])
     print('nationality:\n',details['nationality'])
-    print('\n')
+    print(pos,position.get(pos),position.get(pos)[:-1])
     print(radar_chart_cols)
     print(', '.join([str(x) for x in radar_chart.loc[0]]))
     print('\n')
@@ -510,8 +540,13 @@ def player():
     print(int(len(db.columns)))
     print(5+int((len(db.columns)-5)/2))
     print('*********************************************')
-    print('=============================================')
-    if position.get(pos)[:-1] == 'f':
+    print('*********************************************')
+    print('LINE DATA: ')
+    print(player_line)
+    print(player_line[3:])
+    print('*********************************************')
+
+    if position.get(pos)[:1] == 'f':
         col_nums = [8,8+int((len(db.columns)-8)/2)]
     else:
         col_nums = [8,8+int((len(db.columns)-8)/2)]
@@ -524,7 +559,7 @@ def player():
     radar = details['radar_image'], nationality = details['nationality'], team_name = team, player_info = player,
     team_colour = roster_colour, crest = crest, position = position.get(pos)[:-1], number = details['number'],
     stats = db, stats90 = db90, discipline = discipline, radar_chart = radar_chart, radar_chart_cols = radar_chart_cols,
-    colour1 = colour1, colour2 = colour2,col_nums = col_nums)
+    colour1 = colour1, colour2 = colour2,col_nums = col_nums, player_line = player_line)
 
 @canples.route('/goals', methods=['GET','POST'])
 def goals():

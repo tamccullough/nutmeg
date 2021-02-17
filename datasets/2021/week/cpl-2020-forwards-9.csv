@@ -1,0 +1,38 @@
+team,name,number,position,minutes,goals,chances,assists,shots,s-target,passes,crosses,duels,tackles,overall
+ATO,Mohamed Kourouma,9,f,617,1,6,0,14,6,234,33,76,11,0.67
+HFX,Akeem Garcia,11,f,667,6,5,0,20,10,116,1,73,5,0.62
+HFX,João Morelli Neto,22,f,391,4,5,1,11,6,135,10,53,6,0.54
+PFC,Alejandro Díaz Liceága,9,f,445,2,6,1,18,7,143,6,43,3,0.53
+ATO,Malcolm Isaiah Shaw,19,f,595,2,3,1,16,6,118,2,106,3,0.53
+HFX,Alessandro Riggi,10,f,401,1,7,1,6,4,112,9,51,13,0.51
+CFC,Nico Pasquotti,17,f,537,0,6,0,12,2,162,17,82,6,0.48
+CFC,Jordan Brown,9,f,583,3,4,0,17,6,93,9,52,2,0.46
+CFC,Marcus Haber,29,f,417,2,5,0,11,7,98,11,75,1,0.44
+CFC,Oliver Minatel,7,f,454,0,6,1,7,2,133,5,56,6,0.42
+FCE,Easton Ongaro,19,f,480,3,4,0,10,3,87,7,70,2,0.39
+FFC,Kadell Thomas,17,f,237,0,2,1,4,1,52,10,58,14,0.35
+FFC,Anthony Novak,23,f,351,2,3,0,8,6,86,0,47,3,0.33
+VFC,Shaan Hundal,11,f,232,0,5,2,4,4,36,2,30,1,0.32
+VFC,Austin Ricci,9,f,365,0,3,0,9,5,51,5,48,6,0.31
+VFC,Mastanabal Kacher,7,f,360,1,6,0,7,1,123,10,25,1,0.31
+PFC,Terran Campbell,14,f,364,0,3,0,10,1,84,5,56,5,0.29
+FFC,Molham Babouli,19,f,253,0,3,1,4,1,76,5,51,5,0.29
+VFC,Federico Peña,77,f,327,0,2,0,3,0,87,9,38,14,0.29
+FCE,Tomi Ameobi,18,f,287,0,2,0,3,2,75,0,50,5,0.22
+FCE,Marcus Velado-Tsegaye,17,f,230,1,0,0,11,4,72,4,28,2,0.22
+FFC,Christopher Nanco,11,f,168,2,1,0,4,3,41,5,33,3,0.2
+Y9,Álvaro Rivero Sánchez,7,f,360,1,1,0,6,2,55,0,33,1,0.19
+FFC,Marcel Zajac,9,f,170,0,0,0,4,1,41,3,28,5,0.14
+FCE,Prince Amanda,16,f,145,0,0,0,3,1,42,6,28,5,0.14
+VFC,Daryl Fordyce,16,f,162,1,0,0,6,3,39,1,17,1,0.14
+FFC,Gabriel Wiethaeuper-Balbinotti,20,f,146,0,0,0,5,1,34,0,32,2,0.11
+Y9,Lowell Wright,80,f,127,1,0,0,3,1,16,0,12,2,0.09
+HFX,Ibrahima Sanoh,9,f,79,1,1,0,2,1,16,1,20,0,0.09
+CFC,José Hernández,20,f,75,0,1,0,1,0,22,1,22,3,0.08
+CFC,Aribim Pepple,24,f,65,0,1,0,3,1,13,1,16,2,0.08
+CFC,Jair Ayrton Córdova Carpio,19,f,55,1,1,0,1,1,15,0,8,0,0.06
+FCE,David Doe,26,f,54,0,0,0,0,0,13,1,9,1,0.03
+Y9,Gabriel Monteiro Vasconcelos,99,f,88,0,0,0,1,0,18,0,3,0,0.02
+Y9,Jace Kotsopoulos,12,f,28,0,0,0,0,0,7,0,4,2,0.02
+ATO,Maksym Kowal,21,f,51,0,0,0,0,0,12,0,12,0,0.02
+CFC,Oluwatofarati Fakunle,25,f,7,0,0,0,1,0,3,0,0,0,0.0

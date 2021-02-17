@@ -1,0 +1,26 @@
+team,name,number,position,minutes,goals,chances,assists,shots,s-target,passes,crosses,duels,tackles,overall
+CFC,Nico Pasquotti,17,f,135,0,0,0,2,1,37,5,24,3,0.57
+CFC,Marcus Haber,29,f,89,1,0,0,3,2,22,2,21,0,0.54
+ATO,Mohamed Kourouma,9,f,90,1,0,0,3,1,38,2,10,1,0.51
+PFC,Terran Campbell,14,f,140,0,1,0,3,0,20,3,17,5,0.51
+Y9,Lowell Wright,80,f,91,1,0,0,3,1,10,0,8,1,0.39
+CFC,Oliver Minatel,7,f,125,0,3,0,1,0,32,0,14,0,0.36
+HFX,João Morelli Neto,22,f,72,1,0,0,1,1,21,1,11,0,0.35
+Y9,Álvaro Rivero Sánchez,7,f,89,1,1,0,1,1,10,0,9,0,0.34
+ATO,Malcolm Isaiah Shaw,19,f,56,1,0,0,1,1,13,0,11,0,0.3
+FFC,Anthony Novak,23,f,66,1,0,0,1,1,14,0,7,0,0.29
+CFC,Jordan Brown,9,f,106,0,1,0,1,0,12,1,4,1,0.23
+HFX,Ibrahima Sanoh,9,f,9,1,0,0,1,1,2,1,2,0,0.22
+CFC,Aribim Pepple,24,f,35,0,1,0,1,1,7,0,9,1,0.21
+FFC,Christopher Nanco,11,f,66,0,0,0,1,1,3,0,10,0,0.18
+FFC,Kadell Thomas,17,f,24,0,1,0,1,0,7,1,8,1,0.17
+VFC,Daryl Fordyce,16,f,45,0,0,0,2,0,13,1,2,0,0.16
+VFC,Shaan Hundal,11,f,72,0,1,0,0,0,11,0,6,0,0.13
+HFX,Akeem Garcia,11,f,34,0,0,0,1,1,9,0,2,0,0.13
+HFX,Alessandro Riggi,10,f,56,0,0,0,0,0,7,1,9,1,0.13
+PFC,Alejandro Díaz Liceága,9,f,40,0,1,0,0,0,12,0,5,1,0.13
+FFC,Marcel Zajac,9,f,45,0,0,0,1,0,7,1,6,0,0.12
+ATO,Maksym Kowal,21,f,34,0,0,0,0,0,10,0,8,0,0.08
+Y9,Gabriel Monteiro Vasconcelos,99,f,54,0,0,0,0,0,8,0,1,0,0.06
+FFC,Molham Babouli,19,f,24,0,0,0,0,0,6,0,4,1,0.06
+VFC,Mastanabal Kacher,7,f,26,0,0,0,0,0,3,1,2,0,0.05

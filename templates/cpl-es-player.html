@@ -23,25 +23,28 @@
       </div>
       <div class="spacer"></div>
       <div>
-        <img src="static/images/{{ year }}/player_graphs/{{ radar }}" alt="player radar" style="max-width:50%;float:left">
+        <canvas id="playerRadarMobile"></canvas>
+        <!--img src="static/images/{{ year }}/player_graphs/{{ radar }}" alt="player radar" style="max-width:50%;float:left"-->
       </div>
       <div>
-        <img src="static/images/{{ year }}/player_graphs/{{ graph }}" alt="player performance" style="max-width:50%">
+        <canvas id="playerLineMobile"></canvas>
+        <!--img src="static/images/{{ year }}/player_graphs/{{ graph }}" alt="player performance" style="max-width:50%"-->
       </div>
     </div>
   </div>
 
   <div class="desktop">
     <div class="parent {{ team_colour }}">
-      <div class="box center">
+      <div class="boxs center">
         <img src="static/images/players/{{ year }}/{{ player_info.iloc[0]['image'] }}" alt="{{ player_info.iloc[0]['name'] }}" style="max-width:60%">
       </div>
-      <div class="box center">
+      <div class="box">
         <canvas id="playerRadar"></canvas>
         <!--img src="static/images/{{ year }}/player_graphs/{{ radar }}" alt="player radar" style="max-width:70%"-->
       </div>
-      <div class="box center">
-        <img src="static/images/{{ year }}/player_graphs/{{ graph }}" alt="player performance" style="max-width:70%">
+      <div class="box">
+        <canvas id="playerLine"></canvas>
+        <!--img src="static/images/{{ year }}/player_graphs/{{ graph }}" alt="player performance" style="max-width:70%"-->
       </div>
     </div>
   </div>
@@ -204,7 +207,7 @@
         <div class="{{ theme }}-dark">
           <table>
             <tr>
-              {% for column in stats.columns[ col_nums[0] :-1] %}
+              {% for column in stats.columns[ col_nums[0] :-2] %}
                 <td>{{ column }}</td>
               {% endfor %}
             </tr>
@@ -213,7 +216,7 @@
         <div class="{{ theme }}-light">
           <table>
             <tr>
-              {% for column in stats.columns[ col_nums[0] :-1] %}
+              {% for column in stats.columns[ col_nums[0] :-2] %}
                 {% if column == 'overall'%}
                 <td>{{ stats.iloc[0][column] }}</td>
                 {% else %}
@@ -231,7 +234,7 @@
         <div class="{{ theme }}-dark">
           <table>
             <tr>
-              {% for column in stats90.columns[ col_nums[0] :-1] %}
+              {% for column in stats90.columns[ col_nums[0] :-2] %}
                 <td>{{ column }}</td>
               {% endfor %}
             </tr>
@@ -240,7 +243,7 @@
         <div class="{{ theme }}-light">
           <table>
             <tr>
-              {% for column in stats90.columns[ col_nums[0] :-1] %}
+              {% for column in stats90.columns[ col_nums[0] :-2] %}
                 {% if column == 'Min'%}
                 <td>per{{ stats90.iloc[0][column] }}</td>
                 {% else %}

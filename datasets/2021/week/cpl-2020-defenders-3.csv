@@ -1,0 +1,51 @@
+team,name,number,position,minutes,goals,tackles,t-won,clearances,interceptions,duels,d-won,overall
+FCE,Mélé Temguia,8,d,270,0,10,7,8,7,35,22,0.7
+FFC,Kwame Awuah,6,d,270,1,9,5,7,5,32,22,0.67
+FFC,Daniel Krutzen,5,d,270,0,6,5,13,7,37,22,0.66
+PFC,Kadin Chung,7,d,180,0,9,7,7,4,35,26,0.63
+CFC,Dominick Zator,4,d,360,1,5,3,6,1,38,25,0.59
+HFX,Peter Schaale,2,d,270,0,6,4,17,5,23,13,0.55
+CFC,Nathan Mavila,3,d,270,2,2,2,3,3,38,16,0.54
+Y9,Luca Gasparotto,13,d,270,0,3,2,18,8,17,14,0.52
+Y9,Roger Thompson,6,d,270,0,3,2,14,7,23,16,0.51
+Y9,Diyaeddine Abzi,20,d,259,0,6,4,6,7,25,13,0.51
+HFX,Chrisnovic N'Sa,6,d,180,0,8,7,6,3,27,15,0.51
+ATO,Gianfranco Facchineri,6,d,180,0,9,8,8,2,18,12,0.49
+PFC,Lukas MacNaughton,6,d,180,1,6,3,10,1,28,17,0.49
+FFC,David Edgar,30,d,270,0,4,2,20,5,16,11,0.48
+HFX,Mateo Restrepo,14,d,181,0,8,6,5,6,18,10,0.48
+FCE,Ramon Soria,5,d,270,0,5,4,11,4,22,14,0.48
+FFC,Dominic Samuel,4,d,190,0,6,0,5,4,35,23,0.46
+FCE,Jeannot Esua,3,d,257,0,2,2,10,6,26,14,0.45
+VFC,Julian Dunn-Johnson,5,d,270,0,8,2,7,2,23,13,0.43
+VFC,Andrew Jean-Baptiste,35,d,270,1,1,1,14,4,16,8,0.42
+ATO,Milovan Kapor,3,d,154,0,3,3,12,8,16,7,0.42
+CFC,Robert Boskovic,25,d,225,0,5,1,3,5,23,13,0.39
+HFX,Jems Geffrard,3,d,270,0,3,2,11,4,11,9,0.37
+ATO,Evan Brandon John,4,d,270,0,3,2,8,3,17,12,0.37
+PFC,Thomas Meilleur-Giguère,26,d,180,0,1,1,11,8,12,4,0.34
+CFC,Dean Northover,12,d,180,0,4,2,3,3,18,13,0.33
+CFC,Mason Trafford,5,d,270,0,2,1,6,3,15,12,0.32
+Y9,Morey Doner,3,d,270,0,1,1,3,7,13,7,0.32
+CFC,Mohamed Farsi,21,d,165,0,3,3,5,3,15,10,0.31
+PFC,Jordan Haynes,3,d,109,0,5,2,2,4,14,8,0.29
+FCE,Allan Zebie,4,d,240,0,2,2,0,2,16,10,0.27
+CFC,Jonathan Wheeldon,14,d,180,0,1,0,9,3,13,7,0.25
+FCE,Kareem Moses,12,d,139,0,3,1,10,1,12,5,0.24
+FCE,Samuel Gardner,33,d,70,0,3,3,2,2,13,6,0.22
+HFX,Jake Ruby,20,d,102,0,3,3,4,0,15,6,0.22
+PFC,Marcel de Jong,17,d,78,0,1,1,9,4,7,3,0.21
+FCE,Terique Mohammed,57,d,78,0,3,1,6,0,12,7,0.19
+ATO,Vashon Neufville,44,d,140,0,2,1,1,2,14,4,0.19
+FFC,Maxim Tissot,15,d,68,0,3,2,1,1,17,3,0.18
+VFC,Arnold Bouka Moutou,29,d,65,0,2,1,0,1,10,5,0.13
+HFX,Alex De Carolis,24,d,81,0,1,1,0,1,5,5,0.11
+Y9,Matthew Arnone,17,d,62,0,1,1,1,2,3,2,0.1
+FFC,Jordan Dunstan,21,d,0,0,2,2,1,1,4,2,0.1
+FFC,Jonathan Grant,2,d,78,0,0,0,5,0,10,2,0.1
+HFX,Daniel Kinumbe,13,d,45,0,1,1,0,1,6,4,0.09
+ATO,Jarred Phillips,14,d,36,0,1,1,1,0,4,1,0.06
+FCE,Amer Didic,55,d,61,0,0,0,2,0,3,2,0.05
+Y9,Ijah Halley,14,d,6,0,0,0,0,0,5,2,0.02
+Y9,Fugo Segawa,26,d,5,0,0,0,1,0,2,1,0.01
+FFC,Klaidi Cela,16,d,2,0,0,0,0,0,2,0,0.0

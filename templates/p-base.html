@@ -133,13 +133,142 @@
         <a href="https://github.com/tamccullough" target="_blank"><i class="{{theme}}-colour fa fa-github"></i></a>
         <a href="https://www.linkedin.com/in/tamccullough/" target="_blank"><i class="{{theme}}-colour fa fa-linkedin"></i></a>
       </footer>
-
+      <!--div>
+        <p>{{ player_line }}</p>
+      </div-->
       <!-- End page content -->
     </div>
   </div>
+  {% set colour_lst = ['lawngreen','lemonchiffon','lightblue','lightcoral','lightcyan','lightgreen','lightpink','lightsalmon','lightseagreen','lightskyblue','limegreen','linen','magenta','mintcream','mistyrose']%}
   <script src="static/css/app.js"></script>
   <script src="static/css/top.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+  <script type="text/javascript">
+    new Chart(document.getElementById('playerLine'), {
+      type: 'line',
+      data: {
+        labels: [
+          {% for x in range(1,(player_line[0] | length)-1) %}
+          {{ x }},
+          {% endfor %}
+          {{ (player_line[0] | length) }}
+        ],
+        datasets: [
+          {% for i in range((player_line | length) -1) %}
+          {
+            label: 'data1',
+            data: [
+              {% for x in range(player_line[i] | length -1) %}
+              {{ player_line[i][x] | safe }},
+              {% endfor %}
+              {{ player_line[i][-1] | safe}}
+
+            ],
+            fill: false,
+            borderColor: '{{ colour_lst[i] }}',
+            backgroundColor: '{{ colour_lst[i] }}'
+          },
+          {% endfor %}
+          {
+            label: 'data2',
+            data: [
+              {% for j in range(player_line[-1] | length -1) %}
+              {{ player_line[-1][j] | safe }},
+              {% endfor %}
+              {{ player_line[-1][-1] | safe}}
+            ],
+            fill: false,
+            borderColor: '{{ colour_lst[-1] }}',
+            backgroundColor: '{{ colour_lst[-1] }}'
+          }
+        ],
+      },
+      options: {
+        legend: {
+            display: false,
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                fontColor: 'white'
+              }
+            }
+          ],
+          xAxes: [
+            {
+              ticks: {
+                fontColor: 'white'
+              }
+            }
+          ]
+        }
+      }
+    });
+  </script>
+  <script type="text/javascript">
+    new Chart(document.getElementById('playerLineMobile'), {
+      type: 'line',
+      data: {
+        labels: [
+          {% for x in range(1,(player_line[0] | length)-1) %}
+          {{ x }},
+          {% endfor %}
+          {{ (player_line[0] | length) }}
+        ],
+        datasets: [
+          {% for i in range((player_line | length) -1) %}
+          {
+            label: 'data1',
+            data: [
+              {% for x in range(player_line[i] | length -1) %}
+              {{ player_line[i][x] | safe }},
+              {% endfor %}
+              {{ player_line[i][-1] | safe}}
+
+            ],
+            fill: false,
+            borderColor: '{{ colour_lst[i] }}',
+            backgroundColor: '{{ colour_lst[i] }}'
+          },
+          {% endfor %}
+          {
+            label: 'data2',
+            data: [
+              {% for j in range(player_line[-1] | length -1) %}
+              {{ player_line[-1][j] | safe }},
+              {% endfor %}
+              {{ player_line[-1][-1] | safe}}
+            ],
+            fill: false,
+            borderColor: '{{ colour_lst[-1] }}',
+            backgroundColor: '{{ colour_lst[-1] }}'
+          }
+        ],
+      },
+      options: {
+        legend: {
+            display: false,
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                fontColor: 'white'
+              }
+            }
+          ],
+          xAxes: [
+            {
+              ticks: {
+                fontColor: 'white'
+              }
+            }
+          ]
+        }
+      }
+    });
+  </script>
   <script type="text/javascript">
     new Chart(document.getElementById('playerRadar'), {
       type: 'radar',
@@ -148,11 +277,51 @@
         datasets: [{
           data: [{{ radar_chart.loc[0].values[:]|join(',') }}],
           fill: true,
-          backgroundColor: '{{ colour2 }}',
-          borderColor: '{{ colour2 }}',
+          backgroundColor: '{{ colour_lst[2] }}',
+          borderColor: '{{ colour_lst[2] }}',
           pointHoverRadius: 10,
           pointHoverBackgroundColor: "#fff",
-          pointBackgroundColor: '{{ colour2 }}'
+          pointBackgroundColor: '{{ colour_lst[2] }}'
+        }]
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        borderWidth: 10,
+        scale: {
+          ticks: {
+            display: false,
+            beginAtZero: true,
+            maxTicksLimit: 10,
+            max: 1
+          },
+          gridLines: {
+            lineWidth: 0.5,
+            color: '#fff'
+          },
+          pointLabels: {
+            fontColor: '#fff',
+            fontSize: 14,
+            fontFamily: "'Lato', sans-serif"
+          }
+        }
+      }
+    });
+  </script>
+  <script type="text/javascript">
+    new Chart(document.getElementById('playerRadarMobile'), {
+      type: 'radar',
+      data: {
+        labels: [{{ radar_chart_cols | safe }}],
+        datasets: [{
+          data: [{{ radar_chart.loc[0].values[:]|join(',') }}],
+          fill: true,
+          backgroundColor: '{{ colour_lst[2] }}',
+          borderColor: '{{ colour_lst[2] }}',
+          pointHoverRadius: 10,
+          pointHoverBackgroundColor: "#fff",
+          pointBackgroundColor: '{{ colour_lst[2] }}'
         }]
       },
       options: {
