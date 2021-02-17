@@ -457,6 +457,11 @@ def player():
     print('=============================================')
     name = request.form['name']
 
+    if name in player_info['name'].unique():
+        pass
+    else:
+        name = player_info[player_info['display'] == name]['name'].values[0]
+
     player = player_info[player_info['name'] == name]
     team = player['team'].values[0]
     roster_team_info = team_ref[team_ref['team'] == team]
@@ -542,6 +547,7 @@ def player():
     print('*********************************************')
     print('*********************************************')
     print('LINE DATA: ')
+    print(player_line_db.columns)
     print(player_line)
     print(player_line[3:])
     print('*********************************************')
@@ -581,7 +587,7 @@ def forwards():
     rated_forwards = pd.read_csv(f'datasets/{year}/playerstats/{year}-forwards.csv')
     columns = rated_forwards.columns
 
-    return render_template('cpl-es-forwards.html',
+    return render_template('cpl-es-position.html',
     columns = columns,html_table = rated_forwards)
 
 @canples.route('/forwardsP90', methods=['GET','POST'])
@@ -592,7 +598,7 @@ def forwards_90():
     rated_forwards = rated_forwards_90.sort_values(by='overall',ascending=False)
     columns = rated_forwards.columns
 
-    return render_template('cpl-es-forwards.html',
+    return render_template('cpl-es-position.html',
     columns = columns,html_table = rated_forwards)
 
 @canples.route('/midfielders', methods=['GET','POST'])
@@ -602,7 +608,7 @@ def midfielders():
     rated_midfielders = pd.read_csv(f'datasets/{year}/playerstats/{year}-midfielders.csv')
     columns = rated_midfielders.columns
 
-    return render_template('cpl-es-midfielders.html',
+    return render_template('cpl-es-position.html',
     columns = columns,html_table = rated_midfielders)
 
 @canples.route('/midfieldersP90', methods=['GET','POST'])
@@ -613,7 +619,7 @@ def midfielders_90():
     rated_midfielders = rated_midfielders_90.sort_values(by='overall',ascending=False)
     columns = rated_midfielders.columns
 
-    return render_template('cpl-es-midfielders.html',
+    return render_template('cpl-es-position.html',
     columns = columns,html_table = rated_midfielders)
 
 @canples.route('/defenders', methods=['GET','POST'])
@@ -623,7 +629,7 @@ def defenders():
     rated_defenders = pd.read_csv(f'datasets/{year}/playerstats/{year}-defenders.csv')
     columns = rated_defenders.columns
 
-    return render_template('cpl-es-defenders.html',
+    return render_template('cpl-es-position.html',
     columns = columns,html_table = rated_defenders)
 
 @canples.route('/defendersP90', methods=['GET','POST'])
@@ -634,7 +640,7 @@ def defenders_90():
     rated_defenders = rated_defenders_90.sort_values(by='overall',ascending=False)
     columns = rated_defenders.columns
 
-    return render_template('cpl-es-defenders.html',
+    return render_template('cpl-es-position.html',
     columns = columns,html_table = rated_defenders)
 
 @canples.route('/keepers', methods=['GET','POST'])
@@ -644,7 +650,7 @@ def keepers():
     rated_keepers = pd.read_csv(f'datasets/{year}/playerstats/{year}-keepers.csv')
     columns = rated_keepers.columns
 
-    return render_template('cpl-es-keepers.html',
+    return render_template('cpl-es-position.html',
     columns = columns,html_table = rated_keepers)
 
 @canples.route('/keepersP90', methods=['GET','POST'])
@@ -655,7 +661,7 @@ def keepers_90():
     rated_keepers = rated_keepers_90.sort_values(by='overall',ascending=False)
     columns = rated_keepers.columns
 
-    return render_template('cpl-es-keepers.html',
+    return render_template('cpl-es-position.html',
     columns = columns,html_table = rated_keepers)
 
 @canples.route('/discipline', methods=['GET','POST'])

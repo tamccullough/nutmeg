@@ -1,35 +1,35 @@
-team,Age,pos,name,overall,Min,ExpG,ExpA,Goal,PenGoal,GoalDirFK,GoalHead,Ast,BgChnc,BgChncCrtd,ChncOpnPl,Chance,SOG,SOTInBox,SOTOBox,ShotDirFK,SOTHead,Pass%,display
-HFX Wanderers,24.0,cf,Akeem Garcia,0.54,758,5.0,0.36,6,2,0,0,0,10,0,6,6,11,10,1,0,1,81.0,Akeem Garcia
-Pacific,24.0,cf,Alejandro Díaz Liceága,0.51,609,2.98,1.79,3,0,0,0,2,5,3,7,7,8,8,0,0,2,70.0,Alejandro Diaz
-Cavalry,31.0,cf,Marcus Haber,0.44,507,3.38,0.48,2,0,0,1,0,8,0,5,5,8,8,0,0,4,60.0,Marcus Haber
-York United,26.0,cf,Ryan Telfer,0.42,620,1.67,0.9,0,0,0,0,0,2,1,3,12,7,3,4,4,1,72.0,Ryan Telfer
-Forge,27.0,cf,Molham Babouli,0.39,455,0.63,1.98,1,0,0,0,2,1,3,8,9,4,4,0,0,0,68.0,Mo Babouli
-Pacific,22.0,cf,Terran Campbell,0.35,480,1.11,0.76,1,0,0,1,1,1,2,4,5,3,3,0,0,1,66.0,Terran Campbell
-Atlético Ottawa,25.0,cf,Malcolm Isaiah Shaw,0.34,595,2.31,0.38,2,0,0,0,1,4,1,3,3,6,5,1,1,0,81.0,Malcolm Shaw
-Cavalry,24.0,cf,Jordan Brown,0.34,657,2.29,0.49,3,1,0,0,0,3,0,3,4,7,5,2,0,0,81.0,Jordan Brown
-Edmonton,22.0,cf,Easton Ongaro,0.32,480,2.2,0.25,3,0,0,1,0,2,0,4,5,3,3,0,1,1,76.0,Easton Ongaro
-Cavalry,28.0,cf,Oliver Minatel,0.29,454,0.32,1.03,0,0,0,0,1,0,2,6,6,2,0,2,0,0,80.0,Oliver Minatel
-Forge,23.0,rw,David Choinière,0.28,598,1.07,0.66,1,0,0,0,1,1,1,5,5,3,3,0,0,0,80.0,David Choinière
-Valour,21.0,cf,Shaan Hundal,0.27,232,0.26,0.2,0,0,0,0,2,0,0,5,5,4,2,2,0,0,77.0,Shaan Hundal
-Cavalry,25.0,rw,Nico Pasquotti,0.24,537,1.46,0.54,0,0,0,0,0,2,1,6,6,2,1,1,0,0,76.0,Nico Pasquotti
-Forge,26.0,cf,Anthony Joseph Novak,0.24,381,2.57,0.17,2,0,0,0,0,3,0,3,3,6,6,0,0,0,81.0,Anthony Joseph Novak
-HFX Wanderers,23.0,cf,Cory Bent,0.21,500,0.4,0.65,1,0,0,0,0,1,1,5,7,1,1,0,0,0,62.0,Cory Bent
-Valour,24.0,cf,Austin Ricci,0.18,365,0.94,0.13,0,0,0,0,0,1,0,3,3,5,5,0,0,0,57.99999999999999,Austin Ricci
-Forge,25.0,lw,Christopher Lenroy Nanco,0.17,224,0.19,0.79,2,0,0,0,0,0,1,1,1,3,2,1,0,0,70.0,Christopher Lenroy Nanco
-Forge,24.0,lw,Kadell Thomas,0.17,283,1.13,0.21,0,0,0,0,1,2,0,3,3,1,1,0,0,0,73.0,Kadell Thomas
-Valour,33.0,cf,Daryl Fordyce,0.15,164,1.51,0.0,1,0,0,0,0,3,0,0,0,3,3,0,1,1,62.0,Daryl Fordyce
-York United,23.0,cf,Álvaro Rivero Sánchez,0.15,359,0.34,0.05,1,0,0,0,0,0,0,1,1,2,1,1,0,0,87.0,Álvaro Rivero
-Forge,20.0,lw,Montther Mohsen,0.15,208,0.0,1.27,0,0,0,0,0,0,2,2,3,0,0,0,0,0,83.0,Montther Mohsen
-Edmonton,32.0,cf,Tomi Ameobi,0.14,287,1.5,0.13,0,0,0,0,0,3,0,1,2,2,2,0,0,0,74.0,Tomi Ameobi
-HFX Wanderers,26.0,cf,Ibrahima Sanoh,0.13,124,1.3,0.04,1,1,0,0,0,2,0,1,1,1,1,0,0,0,55.00000000000001,Ibrahima Sanoh
-Cavalry,20.0,cf,José Hernández,0.11,102,0.03,0.44,0,0,0,0,0,0,1,2,2,0,0,0,0,0,82.0,Jose Hernandez
-Forge,22.0,lw,Marcel Dominik Zajac,0.1,237,0.94,0.0,0,0,0,0,0,2,0,0,0,1,1,0,0,0,80.0,Marcel Dominik Zajac
-York United,17.0,ss,Lowell Wright,0.09,128,0.8,0.0,1,0,0,0,0,2,0,0,0,1,1,0,0,0,57.99999999999999,Lowell Wright
-Cavalry,24.0,lw,Jair Ayrton Córdova Carpio,0.09,71,0.66,0.04,1,0,0,0,0,1,0,1,1,1,1,0,0,0,62.0,Jair Córdova
-Forge,27.0,lw,Jonathan Grant,0.09,274,0.18,0.18,0,0,0,0,0,0,0,2,2,0,0,0,0,0,61.0,Jonathan Grant
-Forge,22.0,cf,Gabriel Wiethaeuper-Balbinotti,0.08,203,0.57,0.0,0,0,0,0,0,1,0,0,0,1,1,0,0,0,61.0,Gabriel Balbinotti
-York United,24.0,cf,Gabriel Monteiro Vasconcelos,0.06,87,0.05,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,79.0,Gabriel Vasconcelos
-Atlético Ottawa,29.0,cf,Maksym Kowal,0.05,51,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,57.99999999999999,Maksym Kowal
-Edmonton,20.0,cf,David Doe,0.04,54,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,43.0,David Doe
-York United,23.0,ss,Jace Kotsopoulos,0.04,28,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,56.99999999999999,Jace Kotsopoulos
-Atlético Ottawa,18.0,sa,Matteo de Brienne,,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,Matteo  de Brienne
+team,name,Min,ExpG,overall,ExpA,Goal,Off,PsOpHfFl,PsAtt,PsOpHfScs,ChncOpnPl,SucflDuels,Touches,DuelLs,Recovery,FlComA3,FlSufM3,Disposs,TchsA3,TouchOpBox,PsCmpA3,display,number
+hfx,Akeem Garcia,758,5.0,0.71,0.36,6,8,22,140,75,6,41,257,40,17,12,18,7,119,37,44,Akeem Garcia,11
+ato,Mohamed Kourouma,617,1.61,0.67,0.57,1,5,43,239,121,3,39,383,41,40,4,7,8,177,10,77,Mohamed Kourouma,9
+hfx,João Morelli Neto,561,2.87,0.63,0.34,4,4,53,188,78,6,31,317,44,27,4,7,11,135,13,40,João Morelli,22
+ato,Malcolm Isaiah Shaw,595,2.31,0.62,0.38,2,6,23,125,63,3,39,251,69,10,9,12,16,126,29,44,Malcolm Shaw,19
+cav,Marcus Haber,507,3.38,0.62,0.48,2,6,46,125,55,5,48,200,54,10,15,3,9,114,35,36,Marcus Haber,29
+cav,Nico Pasquotti,537,1.46,0.6,0.54,0,4,31,158,84,6,42,318,41,31,2,5,10,186,25,55,Nico Pasquotti,17
+pac,Alejandro Díaz Liceága,609,2.98,0.56,1.79,3,5,44,171,80,7,23,259,24,19,1,4,7,124,25,48,Alejandro Diaz,9
+pac,Terran Campbell,480,1.11,0.55,0.76,1,7,39,126,52,4,22,226,55,14,8,1,16,118,25,30,Terran Campbell,14
+for,Molham Babouli,455,0.63,0.51,1.98,1,1,32,129,62,8,34,230,37,17,6,4,8,129,22,39,Mo Babouli,19
+cav,Jordan Brown,657,2.29,0.48,0.49,3,6,19,108,52,3,16,209,46,13,5,3,10,111,32,33,Jordan Brown,9
+fce,Easton Ongaro,480,2.2,0.43,0.25,3,5,17,89,42,4,26,174,47,13,2,2,8,99,24,29,Easton Ongaro,19
+hfx,Alessandro Riggi,471,0.55,0.43,0.89,1,1,32,132,72,6,21,204,32,22,4,4,8,93,5,39,Alessandro Riggi,10
+cav,Oliver Minatel,454,0.32,0.42,1.03,0,4,22,138,70,6,24,194,30,19,3,6,2,85,13,44,Oliver Minatel,7
+for,Kadell Thomas,283,1.13,0.36,0.21,0,2,12,64,34,3,32,151,42,27,4,3,8,68,14,22,Kadell Thomas,17
+val,Mastanabal Kacher,360,0.3,0.35,0.4,1,3,26,122,54,5,11,182,15,18,0,1,5,87,9,37,Masta Kacher,7
+val,Austin Ricci,365,0.94,0.33,0.13,0,3,20,53,25,3,20,126,30,8,5,6,4,82,29,16,Austin Ricci,9
+val,Federico Peña,327,0.1,0.26,0.28,0,2,9,92,43,2,21,177,17,18,4,0,3,54,4,26,Federico Peña,77
+fce,Tomi Ameobi,287,1.5,0.26,0.13,0,1,17,77,31,1,27,116,26,12,4,3,5,43,10,21,Tomi Ameobi,18
+yor,Álvaro Rivero Sánchez,359,0.34,0.25,0.05,1,3,4,55,32,1,13,103,20,5,3,8,8,38,11,14,Álvaro Rivero,7
+fce,Marcus Velado-Tsegaye,230,0.41,0.22,0.0,1,0,13,72,36,0,12,122,16,11,1,4,6,50,9,19,Marcus Velado-Tsegaye,17
+val,Shaan Hundal,232,0.26,0.19,0.2,0,0,8,35,13,5,4,66,25,7,6,0,4,36,7,9,Shaan Hundal,11
+for,Gabriel Wiethaeuper-Balbinotti,203,0.57,0.19,0.0,0,4,11,36,13,0,10,66,25,3,3,3,6,32,9,5,Gabriel Balbinotti,20
+cav,José Hernández,102,0.03,0.17,0.44,0,1,6,33,21,2,10,63,21,5,3,2,8,26,4,10,Jose Hernandez,20
+hfx,Ibrahima Sanoh,124,1.3,0.15,0.04,1,2,12,29,11,1,9,58,15,7,0,2,4,32,5,6,Ibrahima Sanoh,9
+fce,Prince Amanda,145,0.14,0.14,0.0,0,0,7,41,20,0,13,95,15,7,0,2,5,30,5,6,Prince Amanda,16
+val,Daryl Fordyce,164,1.51,0.14,0.0,1,3,12,40,15,0,8,63,12,3,3,1,0,26,5,10,Daryl Fordyce,16
+cav,Aribim Pepple,67,0.36,0.1,0.07,0,1,3,13,7,1,4,41,12,4,1,0,5,25,6,6,Aribim Pepple,24
+yor,Lowell Wright,128,0.8,0.1,0.0,1,2,8,19,11,0,4,38,10,1,1,0,2,21,7,7,Lowell Wright,80
+cav,Jair Ayrton Córdova Carpio,71,0.66,0.1,0.04,1,1,8,24,12,1,4,32,9,5,0,1,1,13,5,5,Jair Córdova,19
+yor,Gabriel Monteiro Vasconcelos,87,0.05,0.05,0.0,0,1,4,19,11,0,1,28,3,2,0,0,1,15,2,6,Gabriel Vasconcelos,99
+fce,David Doe,54,0.0,0.04,0.0,0,0,8,14,1,0,5,28,7,3,0,0,1,6,0,1,David Doe,26
+ato,Maksym Kowal,51,0.0,0.04,0.0,0,0,3,12,5,0,3,23,10,1,0,0,1,11,0,2,Maksym Kowal,21
+yor,Jace Kotsopoulos,28,0.0,0.02,0.0,0,0,2,7,2,0,3,11,1,1,0,0,1,7,2,2,Jace Kotsopoulos,12
+cav,Oluwatofarati Fakunle,7,0.07,0.01,0.0,0,1,0,3,1,0,0,5,0,0,0,0,0,2,1,1,Tofa Fakunle,25

@@ -443,6 +443,19 @@ td {
   text-decoration: underline;
 }
 
+.table-button {
+  font-size: 1em;
+  height: 10px;
+  border:none;
+  background-color:inherit;
+  cursor:pointer;
+  text-decoration: none;
+}
+
+.table-button:hover {
+  text-decoration: underline;
+}
+
 .card3{
   float:left;
   width:33.33333%;

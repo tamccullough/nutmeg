@@ -12,7 +12,7 @@
     <div class="{{ theme }}-dark">
       <table>
         <tr>
-          <th style="width:12%;">team/#</th>
+          <th style="text-align:left;">team/#</th>
           <th style="width:38%;">name</th>
           {% for col in html_table.columns[2:6] %}
           <th style="font-size: 0.8em;">{{ col[:4] | lower}}</th>
@@ -28,8 +28,8 @@
         {% for i in range(0,9) %}
         <tr>
             <td style="font-size: 0.8em;">{{ html_table.iloc[i]['team'] }}</td>
-            <!--td style="text-align:right;width:25%;"><b>{{ html_table.iloc[i]['name'] }}</b></td-->
-            <td style="text-align:right;font-size: 0.8em;width:38%;width:25%;"><input href="{{ url_for('player') }}" class="{{ team_colour }} table-button" type="submit" id="name" name="name" value="{{ html_table.iloc[i]['name'] }}" style="height:10%;"></input></td>
+            <!--td style="text-align:right;width:20%;"><b>{{ html_table.iloc[i]['name'] }}</b></td-->
+            <td style="text-align:left;font-size: 0.8em;width:38%;"><input href="{{ url_for('player') }}" class="{{ team_colour }} table-button" type="submit" id="name" name="name" value="{{ html_table.iloc[i]['display'] }}" style="height:10%;"></input></td>
             {% for col in html_table.columns[2:6] %}
             <td style="font-size: 0.8em;">{{ html_table.iloc[i][col] }}</td>
             {% endfor%}
@@ -47,7 +47,7 @@
     <div class="{{ theme }}-dark">
       <table>
         <tr>
-          <th style="width:12%;">team/#</th>
+          <th style="text-align:left;">team/#</th>
           <th style="width:38%;">name</th>
           {% for col in html_table.columns[2:6] %}
           <th style="font-size: 0.8em;">{{ col[:4] | lower}}</th>
@@ -62,8 +62,8 @@
         {% for i in range(9,html_table.shape[0]) %}
         <tr>
             <td style="font-size: 0.8em;">{{ html_table.iloc[i]['team'] }}</td>
-            <!--td style="text-align:right;width:25%;"><b>{{ html_table.iloc[i]['name'] }}</b></td-->
-            <td style="text-align:right;font-size: 0.8em;width:38%;width:25%;"><input href="{{ url_for('player') }}" class="{{ team_colour }} button" type="submit" id="name" name="name" value="{{ html_table.iloc[i]['name'] }}" style="height:10%;"></input></td>
+            <!--td style="text-align:right;width:20%;"><b>{{ html_table.iloc[i]['name'] }}</b></td-->
+            <td style="text-align:left;font-size: 0.8em;width:38%;"><input href="{{ url_for('player') }}" class="{{ team_colour }} button" type="submit" id="name" name="name" value="{{ html_table.iloc[i]['display'] }}" style="height:10%;"></input></td>
             {% for col in html_table.columns[2:6] %}
             <td style="font-size: 0.8em;">{{ html_table.iloc[i][col] }}</td>
             {% endfor%}
@@ -82,10 +82,10 @@
     <div class="{{ theme }}-dark">
       <table>
         <tr>
-          <th>team/#</th>
-          <th style="width:25%;">name</th>
+          <th style="text-align:left;width:3vw;">team/#</th>
+          <th style="width:10vw;">name</th>
           {% for col in html_table.columns[2:-2] %}
-          <th>{{ col[:4] | lower}}</th>
+          <th style="font-size: 0.8em;width:2vw;">{{ col[:2] | lower}}</th>
           {% endfor%}
         </tr>
       </table>
@@ -97,11 +97,11 @@
       <table>
         {% for i in range(0,9) %}
         <tr>
-            <td>{{ html_table.iloc[i]['team'] }}</td>
-            <!--td style="text-align:right;width:25%;"><b>{{ html_table.iloc[i]['name'] }}</b></td-->
-            <td style="text-align:right;width:25%;"><input href="{{ url_for('player') }}" class="{{ team_colour }} table-button" type="submit" id="name" name="name" value="{{ html_table.iloc[i]['name'] }}" style="height:10%;"></input></td>
+            <td style="text-align:left;width:3vw;">{{ html_table.iloc[i]['team'] }}</td>
+            <!--td style="text-align:right;width:20%;"><b>{{ html_table.iloc[i]['name'] }}</b></td-->
+            <td style="text-align:left;;width:10vw;"><input href="{{ url_for('player') }}" class="{{ team_colour }} table-button" type="submit" id="name" name="name" value="{{ html_table.iloc[i]['display'] }}" style="height:10%;"></input></td>
             {% for col in html_table.columns[2:-2] %}
-            <td>{{ html_table.iloc[i][col] }}</td>
+            <td style="font-size: 0.8em;width:2vw;">{{ html_table.iloc[i][col] }}</td>
             {% endfor%}
         </tr>
         {% endfor%}
@@ -116,10 +116,10 @@
     <div class="{{ theme }}-dark">
       <table>
         <tr>
-          <th>team/#</th>
-          <th style="width:25%;">name</th>
+          <th style="text-align:left;width:3vw;">team/#</th>
+          <th style="width:10vw;">name</th>
           {% for col in html_table.columns[2:-2] %}
-          <th>{{ col[:4] | lower}}</th>
+          <th style="font-size: 0.8em;width:2vw;">{{ col[:2] | lower}}</th>
           {% endfor%}
         </tr>
       </table>
@@ -131,10 +131,10 @@
       <table>
         {% for i in range(9,html_table.shape[0]) %}
         <tr>
-            <td>{{ html_table.iloc[i]['team'] }}</td>
-            <td style="text-align:right;width:25%;"><input href="{{ url_for('player') }}" class="{{ team_colour }} table-button" type="submit" id="name" name="name" value="{{ html_table.iloc[i]['name'] }}" style="height:10%;"></input></td>
+            <td style="text-align:left;width:3vw;">{{ html_table.iloc[i]['team'] }}</td>
+            <td style="text-align:left;;width:10vw;"><input href="{{ url_for('player') }}" class="{{ team_colour }} table-button" type="submit" id="name" name="name" value="{{ html_table.iloc[i]['display'] }}" style="height:10%;"></input></td>
             {% for col in html_table.columns[2:-2] %}
-            <td>{{ html_table.iloc[i][col] }}</td>
+            <td style="font-size: 0.8em;width:2vw;">{{ html_table.iloc[i][col] }}</td>
             {% endfor%}
         </tr>
         {% endfor%}

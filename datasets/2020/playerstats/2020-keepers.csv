@@ -1,15 +1,15 @@
-team,Age,pos,name,overall,Min,CleanSheet,CrossPunch,Saves,SvInBox,SvOutBox,SvPrdDng,SvPrdSaf,SvReach,SvStoop,KeeperCtch,GoalCncd,display,number
-Forge,27.0,g,Triston Henry,0.72,900,5,4,23,16,7,1,11,0,6,8,8,Triston Henry,1
-Pacific,27.0,g,Callum Irving,0.65,540,1,5,22,16,6,4,4,1,10,5,8,Callum Irving,13
-Atlético Ottawa,33.0,g,Ignacio Zabal Almazán,0.62,630,2,1,24,15,9,3,9,1,3,2,12,Nacho Zabal,1
-HFX Wanderers,24.0,g,Christian Oxner,0.62,630,2,10,22,16,6,2,9,2,4,1,6,Christian Oxner,50
-Valour,23.0,g,James Pantemis,0.55,630,2,4,19,14,5,4,8,0,2,2,9,James Pantemis,1
-Cavalry,24.0,g,Marco Carducci,0.45,810,3,1,10,6,4,2,3,4,0,0,10,Marco Carducci,1
-York United,27.0,g,Nathan Ingham,0.42,540,2,2,13,8,5,4,6,0,0,2,6,Nathan Ingham,29
-Edmonton,24.0,g,Connor James,0.33,540,0,0,11,6,5,2,2,0,0,2,13,Connor James,1
-HFX Wanderers,26.0,g,Jason Beaulieu,0.31,360,0,3,10,6,4,1,6,0,2,0,10,Jason Beaulieu,1
-Pacific,25.0,g,Nolan Wirth,0.24,360,1,2,9,5,4,0,1,1,2,0,5,Nolan Wirth,1
-Forge,20.0,g,Baj Maan,0.13,90,0,2,6,3,3,0,3,0,0,1,2,Baj Maan,31
-Edmonton,24.0,g,Dylon Powley,0.06,90,0,0,3,1,2,0,2,0,0,0,1,Dylon Powley,13
-Cavalry,26.0,g,Nikolaos Giantsopoulos,0.06,90,0,1,2,2,0,0,2,0,0,1,1,Niko Giantsopoulos,22
-York United,18.0,g,Ezequiel Carrasco,0.03,90,0,0,1,1,0,0,0,0,1,0,1,Ezequiel Carrasco,37
+team,name,Min,CleanSheet,overall,PsOnHfFl,Recovery,GoalCncd,GoalCnIBx,Saves,SvClct,SvDive,SvHands,SvInBox,SvOutBox,SvPrdSaf,SvStand,BgChncFace,ExpGAg,display,number
+ato,Ignacio Zabal Almazán,630,2,0.93,19,12,12,10,24,12,10,21,15,9,9,7,18,12.48,Nacho Zabal,1
+for,Triston Henry,900,5,0.76,13,5,8,7,23,11,12,22,16,7,11,4,10,8.49,Triston Henry,1
+pac,Callum Irving,540,1,0.74,8,13,8,8,22,14,5,21,16,6,4,5,14,10.37,Callum Irving,13
+val,James Pantemis,630,2,0.69,8,9,9,8,19,6,11,17,14,5,8,6,12,7.37,James Pantemis,1
+hfx,Christian Oxner,630,2,0.62,12,3,6,3,22,8,7,21,16,6,9,6,6,5.98,Christian Oxner,50
+cav,Marco Carducci,810,3,0.56,20,12,10,9,10,3,4,10,6,4,3,2,15,8.81,Marco Carducci,1
+fce,Connor James,540,0,0.56,9,5,13,12,11,7,7,10,6,5,2,4,14,7.6,Connor James,1
+hfx,Jason Beaulieu,360,0,0.49,11,10,10,9,10,3,5,8,6,4,6,2,11,5.01,Jason Beaulieu,1
+yor,Nathan Ingham,540,2,0.47,2,6,6,6,13,2,11,12,8,5,6,2,8,7.24,Nathan Ingham,29
+pac,Nolan Wirth,360,1,0.41,17,5,5,5,9,8,0,9,5,4,1,6,6,4.4,Nolan Wirth,1
+for,Baj Maan,90,0,0.2,2,1,2,2,6,3,3,5,3,3,3,2,4,1.56,Baj Maan,31
+fce,Dylon Powley,90,0,0.11,2,2,1,0,3,1,3,3,1,2,2,0,1,1.12,Dylon Powley,13
+cav,Nikolaos Giantsopoulos,90,0,0.09,4,0,1,1,2,0,2,2,2,0,2,0,2,1.24,Niko Giantsopoulos,22
+yor,Ezequiel Carrasco,90,0,0.05,2,2,1,0,1,1,0,1,1,0,0,0,2,1.1,Ezequiel Carrasco,37

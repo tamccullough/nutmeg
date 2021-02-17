@@ -1,50 +1,50 @@
-team,Age,pos,name,overall,Min,Goal,GoalDirFK,GoalHead,Clrnce,Int,TcklMade%,DuelsW%,display,number
-HFX Wanderers,26,lcb,Matthew Arnone,0.71,2094,2,0,1,99,49,68.9,62.0,Matthew Arnone,23
-York United,25,rcb,Luca Gasparotto,0.71,2520,1,0,1,117,49,75.6,72.0,Luca Gasparotto,13
-Pacific,25,rcb,Lukas MacNaughton,0.7,1704,2,0,2,95,29,79.2,57.0,Lukas MacNaughton,14
-Cavalry,26,rcb,Dominick Zator,0.66,2425,1,0,1,76,51,81.0,63.0,Dominick Zator,4
-Forge,24,lcb,Daniel Krutzen,0.66,2470,1,0,1,95,46,75.4,59.0,Daniel Krutzen,10
-Edmonton,25,lcb,Mélé Temguia,0.65,2429,2,0,0,82,51,72.6,57.0,Mélé Temguia,8
-Edmonton,31,cm,Ramon Soria,0.58,2010,1,1,0,26,32,74.5,54.0,Ramón Soria,5
-Pacific,29,lcb,Hendrik Starostzik,0.51,1161,1,0,1,72,25,68.4,59.0,Hendrik Starostzik,16
-HFX Wanderers,24,rcb,Peter Schaale,0.5,1530,1,0,0,100,24,76.4,60.0,Peter Schaale,2
-York United,26,rb,Morey Doner,0.49,2250,1,0,0,35,32,74.1,61.0,Morey Doner,3
-York United,22,lb,Diyaeddine Abzi,0.48,1814,1,0,0,31,48,70.6,50.0,Diyaeddine Abzi,20
-Edmonton,25,rcb,Amer Didic,0.48,1650,0,0,0,109,25,82.9,69.0,Amer Didic,55
-HFX Wanderers,30,rb,André Bona,0.47,2053,0,0,0,76,32,85.7,58.0,André Bona,3
-Pacific,22,rb,Kadin Chung,0.47,2032,1,0,0,42,31,75.0,55.0,Kadin Chung,7
-Forge,26,rcb,Dominic Samuel,0.47,2133,0,0,0,75,31,87.8,56.0,Dominic Samuel,22
-Valour,27,rcb,Skylar Rutherford Thomas,0.46,1894,0,0,0,102,23,77.1,60.0,Skylar Thomas,3
-Pacific,29,lb,Blake Smith,0.45,2004,0,0,0,53,43,74.5,56.0,Blake Smith,4
-Forge,27,lcb,Bertrand Owundi,0.43,1756,0,0,0,92,24,70.4,55.0,Bertrand Owundi,16
-Forge,33,rcb,David Edward Edgar,0.43,834,1,0,1,36,8,75.0,64.0,David Edgar,30
-Edmonton,24,rb,Jeannot Esua,0.42,1798,0,0,0,40,33,76.7,62.0,Jeannot Esua,3
-Valour,27,lcb,Jordan Peter Murrell,0.41,1784,0,0,0,63,26,76.3,58.0,Jordan Murrell,4
-Cavalry,32,rcb,Jonathan Wheeldon,0.4,1497,0,0,0,71,14,88.9,61.0,Jay Wheeldon,14
-Forge,25,lb,Kwame Awuah,0.4,1974,0,0,0,20,41,80.5,48.0,Kwame Awuah,2
-HFX Wanderers,21,lcb,Chrisnovic N'Sa,0.38,1217,0,0,0,44,25,83.3,62.0,Chris N'sa,6
-Cavalry,25,lb,Nathan Mavila,0.38,2021,0,0,0,45,22,68.8,53.0,Nathan Mavila,3
-Valour,29,lb,Martín Arguiñarena,0.38,1534,0,0,0,18,35,69.1,65.0,Martín Arguiñarena,6
-Edmonton,27,lb,Allan Zebie,0.37,1970,0,0,0,31,27,70.3,52.0,Allan Zebie,4
-Valour,27,lcb,Adam Mitter,0.37,1513,0,0,0,50,29,63.0,52.0,Adam Mitter,15
-Cavalry,34,lcb,Mason Trafford,0.36,1891,0,0,0,57,15,63.2,55.0,Mason Trafford,5
-York United,24,lcb,Daniel Gogarty,0.36,1551,0,0,0,40,21,76.3,57.0,Daniel Gogarty,2
-York United,27,rcb,Justin Springer,0.36,945,0,0,0,47,10,90.9,71.0,Justin Springer,5
-Pacific,29,lcb,Ryan McCurdy,0.34,744,0,0,0,35,13,92.9,71.0,Ryan McCurdy,3
-Pacific,20,rcb,Émile Legault,0.33,915,0,0,0,41,21,73.8,59.0,Emile Legault,20
-Forge,27,rb,Jonathan Grant,0.33,882,1,0,0,15,13,81.1,45.0,Jonathan Grant,8
-Edmonton,30,rb,Kareem Moses,0.33,969,0,0,0,26,14,80.0,73.0,Kareem Moses,12
-Forge,21,rb,Klaidi Cela,0.31,326,1,0,0,18,5,73.7,62.0,Klaidi Cela,16
-HFX Wanderers,25,lcb,Duran Lee,0.3,678,0,0,0,21,9,96.6,57.0,Duran Lee,16
-HFX Wanderers,22,lb,Ndzemdzela Langwa,0.3,1281,0,0,0,20,14,69.1,57.0,Zoom Langwa,20
-York United,29,lcb,Roger Thompson,0.3,802,0,0,0,40,15,69.2,54.0,Roger Thompson,6
-HFX Wanderers,28,lb,Alex De Carolis,0.29,1246,0,0,0,34,14,64.2,47.0,Alex De Carolis,24
-Cavalry,29,rm,Dean Northover,0.28,609,0,0,0,10,15,80.0,57.0,Dean Northover,12
-Valour,21,rb,Raphaël Garcia,0.28,943,0,0,0,20,9,73.3,56.0,Raphaël Garcia,2
-Valour,20,lcb,Yohan Le Bourhis,0.28,720,0,0,0,41,5,80.0,48.0,Yohan Le Bourhis,25
-HFX Wanderers,29,rcb,Chakib Hocine,0.26,352,0,0,0,12,8,100.0,50.0,Chakib Hocine,4
-Pacific,34,cam,Marcel de Jong,0.25,50,0,0,0,2,0,100.0,71.0,Marcel de Jong,8
-Forge,18,lb,Oluwaseun Oyegunle,0.25,38,0,0,0,1,1,100.0,67.0,Oluwaseun Oyegunle,15
-York United,22,cm,Steven Furlano,0.24,517,0,0,0,6,10,83.3,45.0,Steven Furlano,77
-Forge,20,lb,Montther Mohsen,0.23,363,1,0,0,6,5,47.4,42.0,Monti Mohsen,11
-HFX Wanderers,25,ram,Zachary Sukunda,0.21,841,0,0,0,11,7,60.0,40.0,Zachary Sukunda,25
+team,name,Min,ExpG,overall,ExpA,Goal,PsOnHfFl,Touches,SucflTkls,Int,DefTouch,Clrnce,Recovery,TchsM3,Aerials,DuelsW%,display,number
+cav,Dominick Zator,2425,3.09,0.82,3.08,1,126,1933,33,51,174,76,142,780,149,63.0,Dominick Zator,4
+yor,Luca Gasparotto,2520,1.54,0.82,1.5,1,96,1729,24,49,200,117,137,593,162,72.0,Luca Gasparotto,13
+fce,Mélé Temguia,2429,2.41,0.8,0.6,2,98,1680,41,51,197,82,147,589,69,57.0,Mélé Temguia,8
+for,Daniel Krutzen,2470,1.32,0.79,1.56,1,87,2029,24,46,197,95,154,1005,85,59.0,Daniel Krutzen,10
+hfx,Matthew Arnone,2094,2.1,0.72,0.22,2,86,1181,20,49,179,99,112,407,91,62.0,Matthew Arnone,23
+hfx,André Bona,2053,1.69,0.68,1.29,0,88,1510,50,32,189,76,161,577,76,58.0,André Bona,3
+yor,Diyaeddine Abzi,1814,1.56,0.65,3.32,1,71,1705,35,48,134,31,155,830,41,50.0,Diyaeddine Abzi,20
+yor,Morey Doner,2250,0.15,0.63,2.36,1,74,1715,27,32,119,35,155,773,63,61.0,Morey Doner,3
+pac,Kadin Chung,2032,0.3,0.61,1.26,1,71,1411,42,31,134,42,139,583,45,55.0,Kadin Chung,7
+for,Kwame Awuah,1974,0.21,0.59,3.45,0,59,1665,43,41,131,20,162,814,46,48.0,Kwame Awuah,2
+hfx,Peter Schaale,1530,2.14,0.59,1.03,1,72,930,29,24,166,100,91,280,88,60.0,Peter Schaale,2
+pac,Lukas MacNaughton,1704,1.26,0.59,0.0,2,50,1273,14,29,146,95,71,417,78,57.0,Lukas MacNaughton,14
+for,Dominic Samuel,2133,0.05,0.58,0.36,0,82,1404,29,31,154,75,110,664,60,56.0,Dominic Samuel,22
+pac,Blake Smith,2004,0.28,0.58,2.87,0,65,1602,26,43,137,53,145,721,39,56.0,Blake Smith,4
+fce,Ramon Soria,2010,0.76,0.57,2.86,1,65,1390,24,32,98,26,146,832,52,54.0,Ramón Soria,5
+fce,Amer Didic,1650,1.82,0.56,2.02,0,64,1171,20,25,163,109,92,372,94,69.0,Amer Didic,55
+val,Skylar Rutherford Thomas,1894,0.93,0.56,1.49,0,60,1119,24,23,164,102,100,409,101,60.0,Skylar Thomas,3
+cav,Nathan Mavila,2021,0.03,0.53,1.16,0,80,1447,33,22,129,45,112,641,55,53.0,Nathan Mavila,3
+fce,Jeannot Esua,1798,0.47,0.51,1.87,0,62,1327,18,33,102,40,128,571,56,62.0,Jeannot Esua,3
+fce,Allan Zebie,1970,0.24,0.51,0.41,0,66,1429,34,27,107,31,100,671,56,52.0,Allan Zebie,4
+for,Bertrand Owundi,1756,0.33,0.51,0.0,0,51,1266,13,24,138,92,92,641,67,55.0,Bertrand Owundi,16
+val,Jordan Peter Murrell,1784,0.74,0.49,0.21,0,54,1050,27,26,139,63,88,467,63,58.0,Jordan Murrell,4
+val,Martín Arguiñarena,1534,0.46,0.46,0.71,0,45,1092,35,35,114,18,84,482,32,65.0,Martín Arguiñarena,6
+pac,Hendrik Starostzik,1161,0.86,0.43,0.14,1,39,849,11,25,111,72,61,192,44,59.0,Hendrik Starostzik,16
+hfx,Ndzemdzela Langwa,1281,0.32,0.42,0.49,0,56,1000,47,14,108,20,93,372,12,57.0,Zoom Langwa,20
+yor,Daniel Gogarty,1551,1.04,0.42,0.22,0,66,1127,19,21,93,40,73,451,47,57.0,Daniel Gogarty,2
+cav,Mason Trafford,1891,1.16,0.4,0.34,0,61,1196,5,15,86,57,79,412,55,55.0,Mason Trafford,5
+cav,Jonathan Wheeldon,1497,0.75,0.39,0.07,0,37,935,12,14,103,71,62,273,69,61.0,Jay Wheeldon,14
+hfx,Chrisnovic N'Sa,1217,0.73,0.39,0.06,0,47,744,17,25,97,44,82,280,38,62.0,Chris N'sa,6
+val,Adam Mitter,1513,0.12,0.37,0.1,0,34,760,13,29,96,50,46,262,75,52.0,Adam Mitter,15
+hfx,Alex De Carolis,1246,0.45,0.35,0.62,0,47,827,21,14,87,34,78,366,32,47.0,Alex De Carolis,24
+pac,Émile Legault,915,0.1,0.34,0.03,0,26,651,22,21,97,41,59,267,22,59.0,Emile Legault,20
+val,Raphaël Garcia,943,0.13,0.32,1.31,0,27,675,36,9,88,20,44,326,20,56.0,Raphaël Garcia,2
+for,Jonathan Grant,882,0.58,0.31,1.33,1,34,635,22,13,60,15,40,254,23,45.0,Jonathan Grant,8
+fce,Kareem Moses,969,0.76,0.31,0.19,0,27,578,15,14,64,26,48,256,45,73.0,Kareem Moses,12
+for,David Edward Edgar,834,0.99,0.3,0.0,1,24,594,6,8,56,36,39,258,20,64.0,David Edgar,30
+yor,Justin Springer,945,0.05,0.29,0.03,0,21,479,13,10,79,47,36,149,38,71.0,Justin Springer,5
+pac,Ryan McCurdy,744,0.0,0.29,0.0,0,42,483,8,13,64,35,47,163,34,71.0,Ryan McCurdy,3
+yor,Roger Thompson,802,0.45,0.28,0.69,0,32,628,4,15,66,40,40,216,40,54.0,Roger Thompson,6
+hfx,Duran Lee,678,0.05,0.25,0.23,0,24,385,24,9,60,21,50,112,12,57.0,Duran Lee,16
+cav,Dean Northover,609,0.05,0.24,0.42,0,23,478,13,15,48,10,32,227,24,57.0,Dean Northover,12
+val,Yohan Le Bourhis,720,0.3,0.23,0.0,0,37,361,9,5,60,41,30,131,31,48.0,Yohan Le Bourhis,25
+for,Klaidi Cela,326,0.33,0.22,0.49,1,8,241,6,5,38,18,14,103,18,62.0,Klaidi Cela,16
+hfx,Zachary Sukunda,841,0.27,0.17,0.28,0,17,400,7,7,27,11,39,205,15,40.0,Zachary Sukunda,25
+yor,Steven Furlano,517,0.1,0.17,1.06,0,15,325,9,10,31,6,24,193,15,45.0,Steven Furlano,77
+for,Montther Mohsen,363,0.15,0.17,0.63,1,4,243,5,5,23,6,10,106,11,42.0,Monti Mohsen,11
+hfx,Chakib Hocine,352,0.0,0.13,0.0,0,13,161,2,8,22,12,16,48,8,50.0,Chakib Hocine,4
+pac,Marcel de Jong,50,0.11,0.1,0.07,0,1,39,3,0,5,2,2,7,2,71.0,Marcel de Jong,8
+for,Oluwaseun Oyegunle,38,0.0,0.09,0.0,0,0,22,0,1,3,1,0,9,1,67.0,Oluwaseun Oyegunle,15
