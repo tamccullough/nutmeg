@@ -13,6 +13,27 @@ import re
 from sklearn.naive_bayes import GaussianNB, BernoulliNB, MultinomialNB
 import statistics
 
+ccd_names = {'Atlético Ottawa' : 'Atlético Ottawa',
+            'Cavalry' : 'Cavalry FC',
+            'Edmonton' : 'FC Edmonton',
+            'Forge' : 'Forge FC',
+            'HFX Wanderers' : 'HFX Wanderers FC',
+            'Pacific' : 'Pacific FC',
+            'Valour' : 'Valour FC',
+            'York United' : 'York United FC',
+            'York United' : 'York9 FC','York9' : 'York9 FC'}
+
+team_names = {'Atlético Ottawa' : 'ato',
+              'Cavalry FC' : 'cav','Cavalry' : 'cav',
+              'FC Edmonton' : 'fce','Edmonton' : 'fce',
+              'Forge FC' : 'for','Forge' : 'for',
+              'HFX Wanderers FC' : 'hfx','HFX Wanderers' : 'hfx',
+              'Pacific FC' : 'pac','Pacific' : 'pac',
+              'Valour FC' : 'val','Valour' : 'val',
+              'York United FC' : 'yor','York United' : 'yor',
+              'York9 FC' : 'y9','York9' : 'y9'}
+name_fix = {'United' : 'York United FC'}
+
 def get_weekday():
     weekDays = ('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday')
     current_year = date.today().strftime('%Y')
@@ -24,62 +45,32 @@ def get_weekday():
     weekday = weekDays[weekday_num]
     return month, day, weekday
 
-def get_long_name(string,team_ref):
-    for short in team_ref['short']:
-        row = team_ref[team_ref['short'] == short]
-        if string == short:
-            string = row.iloc[0]['team']
-    return string
+def get_shortest_name(team_name):
+    return team_names[team_name]
 
-def get_shortest_name(string,team_ref):
-    for team in team_ref['team']:
-        row = team_ref[team_ref['team'] == team]
-        if string == team:
-            string = str(row.iloc[0]['short'])
-    return string
+def get_long_name(string,team_names):
+    for key, value in team_names.items():
+        if string in value:
+            print(key)
+            break
+    return key
 
-def get_longest_name(da,db,dc,team_ref):
-    def get_long(data,dd):
-        db = data.copy()
-        for team in db['home']:
-            row = dd[dd['short'] == team]
-            db.at[0,'home'] = row.iloc[0]['team']
-        for team in db['away']:
-            row = dd[dd['short'] == team]
-            db.at[0,'away'] = row.iloc[0]['team']
-        return db
-    da = get_long(da,team_ref)
-    db = get_long(db,team_ref)
-    dc = get_long(dc,team_ref)
-    teams_in = pd.DataFrame([da.iloc[0]['home'],da.iloc[0]['away'],db.iloc[0]['home'],db.iloc[0]['away'],dc.iloc[0]['home'],dc.iloc[0]['away']],columns=['teams'])
-    teams_in = teams_in.teams.unique()
-    return teams_in
-
-def get_short_name(data,dc):
-    for team in data['home']:
-        row = dc[dc['team'] == team]
-        data.at[0,'home'] = row.iloc[0]['short']
-    for team in data['away']:
-        row = dc[dc['team'] == team]
-        data.at[0,'away'] = row.iloc[0]['short']
-    return data
-
-def get_schedule(data):
+'''def get_schedule(data):
     db = data.copy()
     #db = db[db['s'] <= 1]
     #db = db.tail(4)
     db = db[['game','home','away']]
     db = index_reset(db)
     #db = db.sort_values(by=['game'])
-    return db
+    return db'''
 
-def fix_db_na(data):
+'''def fix_db_na(data):
     db = data.copy()
     if db['team'].isnull().values.any():
         for row in range(db.shape[0]):
             if pd.isna(db.iloc[row]['team']) == True:
                 db.iloc[row]['team'] = get_long_name(db.iloc[row]['team'],data)
-    return db
+    return db'''
 
 def index_reset(data):
     data = data.reset_index()
@@ -115,13 +106,45 @@ def get_team_brief(results_db,query,df):
     team_brief['team'] = query # create team column holding the team's name in all rows
     return team_brief # return the dataframe
 
-def get_results_brief(results,team_ref):
+'''def get_results_brief(results):
     db = pd.DataFrame()
     for team in team_ref['team']:
         df = get_team_brief(results,team,team_ref)
         db = pd.concat([db,df])
     db = index_reset(db)
-    return db
+    return db'''
+
+def get_results_brief(results):
+    results_brief = pd.DataFrame()
+    temp = results[['d','m','hs','as','home','hr','away','ar']]
+    for team in sorted(results['home'].unique()):
+        db = temp[temp['home'] == team]
+        db = index_reset(db)
+        db['summary'] = ''
+        db['team'] = team
+        df = temp[temp['away'] == team]
+        df = index_reset(df)
+        df['summary'] = ''
+        df['team'] = team
+        for i in range(db.shape[0]):
+            db.at[i,'summary'] = ' '.join([str(x) for x in db.loc[i][['hr','hs','as']]])
+            try:
+                db.at[i,'summary'] = db.at[i,'summary'] + ' ' + team_names[db.loc[i,'away']]
+            except:
+                print('\nTHIS IS THE TEAM THAT IS AN ISSUE:\n')
+                print(db.loc[i,'away'],'\n')
+            db.at[i,'summary'] = db.at[i,'summary'][:1] + ' h ' + db.at[i,'summary'][1:]
+        for i in range(df.shape[0]):
+            df.at[i,'summary'] = ' '.join([str(x) for x in df.loc[i][['ar','hs','as']]])
+            try:
+                df.at[i,'summary'] = df.at[i,'summary'] + ' ' + team_names[df.loc[i,'home']]
+            except:
+                print('\nTHIS IS THE TEAM THAT IS AN ISSUE:\n')
+                print(db.loc[i,'home'],'\n')
+            df.at[i,'summary'] = df.at[i,'summary'][:1] + ' a ' + df.at[i,'summary'][1:]
+        results_brief = pd.concat([results_brief,db])
+        results_brief = pd.concat([results_brief,df])
+    return results_brief
 
 def get_club_statistics(team_results,query):
 
@@ -218,114 +241,6 @@ def get_90(dataframe):
     data['minutes'] = 90
     return data
 
-def get_team_graphs(stats,standings):
-    comparing = standings.sort_values(by=['team'])
-
-    def get_column_overall(lst):
-        data = stats[lst]
-        data = data.groupby(['team']).sum()
-        data['overall'] = data.sum(axis=1) / data.shape[1]
-        data['overall'] = data['overall'] / data['overall'].max()
-        data['overall'] = data['overall'] - 0.1
-        data = data[['overall']]
-        data = data.reset_index()
-        data.pop('team')
-        return data['overall']
-
-    offense = get_column_overall(['team','goals','chances','assists','shots','s-target','passes','crosses','duels','tackles'])
-    central = get_column_overall(['team','goals','assists','touches','passes','pass-acc','crosses','cross-acc','chances','duels','tackles'])
-    defense = get_column_overall(['team','tackles','t-won','clearances','interceptions','duels','d-won'])
-    keeping = get_column_overall(['team','cs','saves','shots faced','claimed crosses'])
-
-    g_cols = ['chances','goals','assists','pass-acc','cross-acc','shots','s-target','s-box','s-out-box','clearances','interceptions','yellow','shots faced','claimed crosses','cs']
-    team_mean = stats.copy()
-    goals = stats[['team','goals']]
-    assists = stats[['team','assists']]
-    team_mean = team_mean.select_dtypes(include=['float'])
-    team_mean.insert(0,'team',stats['team'])
-    try:
-        team_mean = team_mean.groupby(['team']).mean()
-    except:
-        teams = stats.team.unique()
-        team_mean = pd.DataFrame(columns=['team','clean sheets','big chances','attacking plays','combination plays','accuracy','defending','chance creation','finishing'])
-        team_mean['team'] = teams
-        for col in team_mean.columns:
-            if col == 'team':
-                continue
-            else:
-                team_mean[col] = 0.5
-        return team_mean
-
-    team_mean = team_mean[g_cols]
-    team_mean['claimed crosses'] = team_mean['claimed crosses'] * 15
-    team_mean['cs'] = team_mean['cs'] * 100
-    team_mean['goals'] = goals.groupby(['team']).sum()
-    team_mean['assists'] = assists.groupby(['team']).sum()
-    team_mean['big chances'] = (team_mean['goals'] + 2) / team_mean['chances']
-    team_mean['attacking plays'] = (team_mean['assists'] + 2) / team_mean['chances']
-    team_mean['combination plays'] = team_mean['assists'] / team_mean['goals'] * 100
-    team_mean['offense'] = comparing['gf'].values / offense.values
-    team_mean['midfield'] = comparing['gd'].values * central.values + comparing['gd'].max()
-    team_mean['defending'] = 100 - (comparing['ga'].values * defense.values)
-    team_mean['chance creation'] = (team_mean['shots'] + team_mean['s-box'] + team_mean['s-out-box']) * team_mean['s-target'] * 100
-    team_mean['finishing'] = team_mean['chance creation'] * team_mean['goals']
-    team_mean = team_mean.rename(columns={'cs':'clean sheets'})
-
-    for col in team_mean.columns:
-        if team_mean[col].max() > 1.0:
-            team_mean[col] = team_mean[col] / team_mean[col].max()
-        if team_mean[col].max() < 0.2:
-            team_mean[col] = team_mean[col] * 5
-        else:
-            continue
-    for col in team_mean.columns:
-        team_mean[col] = team_mean[col] - 0.1
-
-    team_mean = team_mean[['clean sheets','big chances','attacking plays','combination plays','offense','midfield','defending','chance creation','finishing']]
-    team_mean = team_mean.reset_index()
-    return team_mean
-
-def make_radar(data,team_ref,year):
-    team = data['team']
-    info = team_ref[team_ref['team'] == team]
-    colour1 = info['colour1'].values
-    colour1 = colour1[0]
-    colour2 = info['colour2'].values
-    colour2 = colour2[0]
-    # number of variable
-    categories=list(data)[1:]
-    N = len(categories)
-
-    # We are going to plot the first line of the data frame.
-    # But we need to repeat the first value to close the circular graph:
-    values = data.drop('team').values.flatten().tolist()
-    values += values[:1]
-    values
-
-    # What will be the angle of each axis in the plot? (we divide the plot / number of variable)
-    angles = [n / float(N) * 2 * pi for n in range(N)]
-    angles += angles[:1]
-
-    # Initialise the spider plot
-    plt.figure(figsize=(8,8))
-    ax = plt.subplot(111, polar=True)
-
-    # Draw one axe per variable + add labels labels yet
-    plt.xticks(angles[:-1], categories, color='grey', size=14)
-
-    # Draw ylabels
-    ax.set_title(data['team'], color=colour1, size=24)
-    ax.set_rlabel_position(0)
-    plt.yticks([0.25,0.5,0.75], ["0.25","0.50","0.75"], color='silver', size=12)
-    plt.ylim(0,1)
-    # Plot data
-    ax.plot(angles, values, linewidth=8, linestyle='solid', color=colour1)
-
-    # Fill area
-    ax.fill(angles, values, colour2, alpha=0.4)
-    filename = f'static/images/{year}/cpl-{year}-{team}-radar.png'
-    plt.savefig(filename)
-
 def compare_standings(standings_current,standings_old,team_ref):
     # getting the change in team standings between current week and previous week
     a = []
@@ -345,9 +260,9 @@ def compare_standings(standings_current,standings_old,team_ref):
     current_rankings = index_reset(current_rankings)
     return current_rankings
 
-def clean_team_game(standings,db,check):
+def clean_team_game(standings,game_week,check):
     team_names = ['Atlético Ottawa','Cavalry FC','FC Edmonton','Forge FC','HFX Wanderers FC','Pacific FC','Valour FC','York9 FC','York United FC']
-    db_tail = db.copy()
+    db_tail = game_week.copy()
     shape = db_tail.shape[0]
     db_tail = db_tail.tail(shape)
     if check == 0:
@@ -359,105 +274,207 @@ def clean_team_game(standings,db,check):
     if standings.iloc[-1]['matches'] == 0 and check == 1:
         db = pd.DataFrame([('TBD',0,'TBD',0)],columns=['home','hs','away','as']) # make an empty set if the game is empty
     else:
-        df = db_tail[(db_tail['home'] == team) | (db_tail['away'] == team)].tail(1) # get appropirate game results for specified team
-        db = index_reset(df)
-        db = db.iloc[0][['home','hs','away','as']]
-        db = pd.DataFrame(db)
-        db = db.T
+        try:
+            df = db_tail[(db_tail['home'] == team) | (db_tail['away'] == team)].tail(1) # get appropirate game results for specified team
+            db = index_reset(df)
+            db = db.iloc[0][['home','hs','away','as']]
+            db = pd.DataFrame(db)
+            db = db.T
+        except:
+            print('\n')
+            print('\n')
+            print('ERROR**************************************')
+            print(team)
+            print('ERROR**************************************')
+            print('\n')
+            print('\n')
     return db
 
-def get_weeks_results(results,standings,stats,team_ref):
+def get_weeks_results(year,results,standings,stats,team_ref,team_names):
     if results.iloc[0]['hr'] == 'E':
         game_week = pd.DataFrame([('TBD',0,'TBD',0)],columns=['home','hs','away','as'])
         big_win, top_team, low_team,other_team = db,db,db,db
         goals, assists, yellows, reds = 0,0,0,0
         return game_week,goals,big_win,top_team,low_team,other_team, assists, yellows, reds
+    elif results.tail(1)['hr'].values[0] != 'E':
+        print('\n')
+        print('=====================================')
+        print('SEASON COMPLETED')
+        print('=====================================')
+        print('\n')
+        if year == '2019':
+            played_games = results[results['s'] == 2]
+        else:
+            played_games = results[results['s'] == 1]
 
-    played_games = results[results['hr'] != 'E']
-    played_games = played_games.tail(1)
-    played_games = played_games.sort_values(by=['m','d'], ascending=False)
-    played_games = index_reset(played_games)
-    month = played_games.iloc[0]['m']
-    day = played_games.iloc[0]['d']
-    print('month ',month,'day ',day)
+        max_home = played_games[(played_games['hs'] == played_games['hs'].max()) & (played_games['hr'] == "W")]
+        max_home = played_games[played_games['as'] == played_games['as'].min()]
+        max_home = index_reset(max_home)
+        print('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
+        print(max_home[['hr','home','hs','away','as','ar']])
+        print('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
+        print('\n')
 
-    # perform a check to check the amount of games played are enough to analyze
-    check = results[results['hr'] != 'E'].shape[0]
+        max_away = played_games[(played_games['as'] == played_games['as'].max()) & (played_games['ar'] == "W")]
+        max_away = index_reset(max_away)
+        if max_away.empty:
+            max_away = played_games[played_games['as'] == played_games['as'].max()]
+            max_away = index_reset(max_away)
 
-    if check <= 5:
-        df = results.tail(check)
+        print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
+        print(max_away[['hr','home','hs','away','as','ar']])
+        print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
+        print('\n')
+
+        if max_home.at[0,'hs'] > max_away.at[0,'as']:
+            max_home_win = max_home
+        else:
+            max_home_win = max_away
+
+        big_win = max_home_win[['home','hs','away','as']]
+        big_win = index_reset(big_win)
+        big_win = pd.DataFrame(big_win.loc[0])
+        big_win = big_win.T
+
+        top_result = played_games[(played_games['home'] == standings.iloc[0]['team']) | (played_games['away'] == standings.iloc[0]['team'])][['hr','home','hs','away','as','ar']]#clean_team_game(standings,game_week,0) # finding top team
+        top_result = top_result[(top_result['hs'] == top_result['hs'].min()) | (top_result['as'] == top_result['as'].min())]
+        top_result['abs'] = abs(top_result['hs'] - top_result['as'])
+        top_result = top_result[(top_result['abs'] == top_result['abs'].max())]
+        top_result = top_result[((top_result['hr'] == "W") & (top_result['home'] == standings.iloc[0]['team'])) | ((top_result['ar'] == "W") & (top_result['away'] == standings.iloc[0]['team']))]
+        top_result = index_reset(top_result)
+
+        low_result = played_games[(played_games['home'] == standings.iloc[-1]['team']) | (played_games['away'] == standings.iloc[-1]['team'])][['hr','home','hs','away','as','ar']]#clean_team_game(standings,game_week,1) # finding bottom team
+        low_result = low_result[(low_result['hs'] == low_result['hs'].min()) | (low_result['as'] == low_result['as'].min())]
+        low_result['abs'] = abs(low_result['hs'] - low_result['as'])
+        low_result = low_result[(low_result['abs'] == low_result['abs'].max())]
+        low_result = index_reset(low_result)
+
+        teams_in = pd.concat([big_win,top_result,low_result,team_ref])#get_longest_name(big_win,top_team,low_team,team_ref)
+        other_team = played_games[(~played_games['home'].isin(teams_in)) | (~played_games['away'].isin(teams_in))]
+        other_team = index_reset(other_team)
+        other_team = pd.DataFrame(other_team.loc[0][['home','hs','away','as']])
+        other_team = other_team.T
+
+        print('************************************')
+        print('BIG WIN')
+        print(big_win)
+        print('************************************')
+        print('\n')
+        print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
+        print('TOP TEAM')
+        print(top_result)
+        print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
+        print('\n')
+        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+        print('LOW TEAM')
+        print(low_result)
+        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+        print('\n')
+        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+        print('OTHER TEAM')
+        print(other_team)
+        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+        print('\n')
+
+
+        goals = standings['Goal'].sum()
+        assists = stats['assists'].sum()
+        yellows = stats['yellow'].sum()
+        reds = stats['red'].sum()
+
+        return played_games, goals, big_win, top_result, low_result, other_team, assists, yellows, reds
     else:
-        df = results[results['hr'] != 'E'].tail(6)
+        print('\n')
+        print('=====================================')
+        print('SEASON ONGOING')
+        print('=====================================')
+        print('\n')
+        if year == '2019':
+            played_games = results[results['s'] == 2]
+        else:
+            played_games = results[results['s'] == 1]
+        print('WEEK-------------------------------')
+        print(played_games['w'].tail(1).values[0])
+        print('WEEK-------------------------------')
+        print('\n')
+        game_week = played_games[played_games['w'] == played_games['w'].tail(1).values[0]]
 
-    if day > 7:
-        game_week = df[df['m'] == month]
-        game_week = game_week.sort_values(by='d',ascending=False)
-        game_week = game_week.sort_values(by='d')
-    else:
-        game_week = df[df['m'] == month]
-        game_week = game_week[game_week['d'] <= day]
-        if game_week.shape[0] < 4:
-            dz = df[df['m'] == month - 1]
-            dz = dz.sort_values(by='d',ascending=False).tail(6-game_week.shape[0])
-            game_week = pd.concat([db,dz])
-    game_week['hs'] = game_week['hs'].astype('int')
-    game_week['as'] = game_week['as'].astype('int')
+        max_home = game_week[(game_week['hs'] == game_week['hs'].max()) & (game_week['hr'] == "W")]
+        max_home = max_home[max_home['as'] == max_home['as'].min()]
+        max_home = index_reset(max_home)
+        print('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
+        print(max_home[['hr','home','hs','away','as','ar']])
+        print('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
+        print('\n')
+
+        max_away = game_week[(game_week['as'] == game_week['as'].max()) & (game_week['ar'] == "W")]
+        max_away = index_reset(max_away)
+        if max_away.empty:
+            max_away = game_week[game_week['as'] == game_week['as'].max()]
+            max_away = index_reset(max_away)
+
+        print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
+        print(max_away[['hr','home','hs','away','as','ar']])
+        print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
+        print('\n')
+
+        if max_home.at[0,'hs'] > max_away.at[0,'as']:
+            max_home_win = max_home
+        else:
+            max_home_win = max_away
+
+        big_win = max_home_win[['home','hs','away','as']]
+        big_win = index_reset(big_win)
+        big_win = pd.DataFrame(big_win.loc[0])
+        big_win = big_win.T
+
+        top_result = game_week[(game_week['home'] == standings.iloc[0]['team']) | (game_week['away'] == standings.iloc[0]['team'])][['home','hs','away','as']]#clean_team_game(standings,game_week,0) # finding top team
+        top_result = top_result[(top_result['hs'] == top_result['hs'].min()) | (top_result['as'] == top_result['as'].min())]
+        top_result['abs'] = abs(top_result['hs'] - top_result['as'])
+        top_result = top_result[(top_result['abs'] == top_result['abs'].max())]
+        top_result = top_result[((top_result['hr'] == "W") & (top_result['home'] == standings.iloc[0]['team'])) | ((top_result['ar'] == "W") & (top_result['away'] == standings.iloc[0]['team']))]
+        top_result = index_reset(top_result)
+
+        low_result = game_week[(game_week['home'] == standings.iloc[-1]['team']) | (game_week['away'] == standings.iloc[-1]['team'])][['home','hs','away','as']]#clean_team_game(standings,game_week,1) # finding bottom team
+        low_result = low_result[(low_result['hs'] == low_result['hs'].min()) | (low_result['as'] == low_result['as'].min())]
+        low_result['abs'] = abs(low_result['hs'] - low_result['as'])
+        low_result = low_result[(low_result['abs'] == low_result['abs'].max())]
+        low_result = index_reset(low_result)
+
+        teams_in = pd.concat([big_win,top_result,low_result,team_ref])#get_longest_name(big_win,top_team,low_team,team_ref)
+        other_team = game_week[(~game_week['home'].isin(teams_in)) | (~game_week['away'].isin(teams_in))]
+        other_team = index_reset(other_team)
+        other_team = pd.DataFrame(other_team.loc[0][['home','hs','away','as']])
+        other_team = other_team.T
+
+        print('************************************')
+        print('BIG WIN')
+        print(big_win)
+        print('************************************')
+        print('\n')
+        print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
+        print('TOP TEAM')
+        print(top_result)
+        print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
+        print('\n')
+        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+        print('LOW TEAM')
+        print(low_result)
+        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+        print('\n')
+        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+        print('OTHER TEAM')
+        print(other_team)
+        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+        print('\n')
 
 
-    max_home = results[(results['hs'] == results['hs'].max()) & (results['hr'] == "W")]
-    max_home = index_reset(max_home)
+        goals = standings['Goal'].sum()
+        assists = stats['assists'].sum()
+        yellows = stats['yellow'].sum()
+        reds = stats['red'].sum()
 
-    if max_home.empty:
-        max_home = pd.DataFrame([('TBD',0,'TBD',0)],columns=['home','hs','away','as'])
-
-    max_away = results[(results['as'] == results['as'].max()) & (results['ar'] == "W")]
-    max_away = index_reset(max_away)
-
-    if max_away.empty:
-        max_away = pd.DataFrame([('TBD',0,'TBD',0)],columns=['home','hs','away','as'])
-
-    if max_home.iloc[0]['hs'] > max_away.iloc[0]['as']:
-        max_home_win = max_home
-    else:
-        max_home_win = max_away
-
-    big_win = max_home_win[['home','hs','away','as']]
-    big_win = index_reset(big_win)
-    #big_win = get_short_name(big_win,team_ref)
-    big_win = pd.DataFrame(big_win.loc[0])
-    big_win = big_win.T
-    # top team
-    top_team = clean_team_game(standings,game_week,0) # finding top team
-    #top_team = get_short_name(top_team,team_ref)
-    # low team
-    low_team = clean_team_game(standings,game_week,1) # finding bottom team
-    #low_team = get_short_name(low_team,team_ref)
-    # other results
-    teams_in = pd.concat([big_win,top_team,low_team,team_ref])#get_longest_name(big_win,top_team,low_team,team_ref)
-    other_team = game_week[(~game_week['home'].isin(teams_in)) | (~game_week['away'].isin(teams_in))]
-    other_team = index_reset(other_team)
-    other_team = pd.DataFrame(other_team.loc[0][['home','hs','away','as']])
-    other_team = other_team.T
-    #other_team = get_short_name(other_team,team_ref)
-
-    goals = standings['Goal'].sum()
-    assists = stats['assists'].sum()
-    yellows = stats['yellow'].sum()
-    reds = stats['red'].sum()
-
-    # verify low team has played
-    if low_team['home'].values[0] == low_team['away'].values[0]:
-        low_team = pd.DataFrame([('TBD',0,'TBD',0)],columns=['home','hs','away','as'])
-
-    # check if other teams have played
-    other_home = other_team['home'].values[0]
-    other_home = get_long_name(other_home,team_ref)
-    team = max(other_home.split(' '), key=len)
-    other_played = standings[standings['team'].str.contains(team)]['matches'].values[0]
-    if other_played == 0:
-        other_team = pd.DataFrame([('TBD',0,'TBD',0)],columns=['home','hs','away','as'])
-
-    return game_week, goals, big_win, top_team, low_team, other_team, assists, yellows, reds
+        return played_games, goals, big_win, top_result, low_result, other_team, assists, yellows, reds
 
 def get_team_stats(stats,query):
     team_stats = stats[stats['team'] == query]
@@ -485,7 +502,7 @@ def get_stats_all(stats,team_ref):
     stats_all = pd.DataFrame()
     for team in team_ref['team']:
         df = get_team_stats(stats,team)
-        short_team = get_shortest_name(team,team_ref)
+        short_team = get_shortest_name(team)
         df.insert(0,'team',short_team)
         stats_all = pd.concat([stats_all,df])
     stats_all = index_reset(stats_all)
@@ -1039,18 +1056,17 @@ def get_player_card_previous(name,stats,player_info):
     return player_stats
 
 def get_roster_overall(query,stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info): # use team stats to get the player information
-    team = get_shortest_name(query,team_ref)
+    team = get_shortest_name(query)
     def get_score(data,name):
         db = data[data['name'] == name]
-        if db.empty:
-            previous = player_info[player_info['name'] == name]['overall'].values[0]
-            if previous is None:
-                db = 0.0
-            else:
-                db = previous
-        else:
-            db = db['overall'].values[0]
-        return db
+        try:
+            return db['overall'].values[0]
+        except:
+            try:
+                previous = player_info[player_info['name'] == name]['overall'].values[0]
+                return previous
+            except:
+                return 0.0
     def get_image(player_info,name):
         db = player_info[player_info['name'] == name]
         if db['image'].empty:
@@ -1073,9 +1089,11 @@ def get_roster_overall(query,stats,team_ref,rated_forwards,rated_midfielders,rat
             db = db['flag'].values[0]
         return db
     def get_name(player_info,name):
-        db = player_info[player_info['name'] == name]
-        db = db['display'].values[0]
-        return db
+        try:
+            db = player_info[player_info['name'] == name]
+            return db['display'].values[0]
+        except:
+            return name
     roster = get_stats_all(stats,team_ref)
     roster = roster[roster['team'] == team].copy()
     roster = roster[['name','first','last','number','position']] # scale the dataframe down to what we need
@@ -1396,84 +1414,65 @@ def get_power_rankings(standings,standings_old,team_ref,results,previous_ranking
     power_rankings['previous'] = (power_rankings['rank'] - power_rankings['old_rank'])*-1
     return power_rankings
 
-def get_best_eleven(team_stats,team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info):
-    def get_image(data,name):
-        db = data[data['name'] == name]
-        if db['image'].empty:
-            db = 'empty.jpg'
-        else:
-            db = db['image'].values
-            db = db[0]
-        return db
-    def get_link(data,name):
-        db = data[data['name'] == name]
-        if db['link'].empty:
-            db = 'https://en.wikipedia.org/wiki/Canadian_Premier_League'
-        else:
-            db = db['link'].values
-            db = db[0]
-        return db
-    def get_flag(data,name):
-        db = data[data['name'] == name]
-        if db['flag'].empty:
-            db = 'empty.png'
-        else:
-            db = db['flag'].values
-            db = db[0]
-        return db
-    def get_colour(data,team):
-        colour = data[data['team'] == team]['colour'].values[0]
-        if not colour:
-            colour = 'cpl-eclipse-l'
-        else:
-            pass
-        return colour
+def get_best_eleven(team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info):
 
-    check = team_stats.describe()
-    if check.loc['max']['minutes'] == 0:
-        best_eleven = pd.read_csv('datasets/2019/cpl-2019-best_eleven.csv')
-        #best_eleven = pd.DataFrame([['empty.jpg','empty.png',0,'NA',0,'NA','NA','https://canpl.ca/']],columns=['image','flag','number','position','overall','first','last','link'])
-        #best_eleven = pd.concat([best_eleven]*11)
+    year_check = team_ref['year'].unique()[0]#.values[0]
+    if year_check != '2019':
+        year_check = str(int(year_check)-1)
+
+    check = rated_forwards.describe()
+    if check.loc['max']['Min'] == 0:
+        best_eleven = pd.read_csv(f'datasets/{year_check}/cpl-{year_check}-best_eleven.csv')
         return best_eleven
     else:
-        roster = team_stats.copy()
-        roster = roster[['name','first','last']]
-
         top_keeper = rated_keepers.head(1)
-        top_keeper = top_keeper[['name','number','position','overall']]
-        top_defenders = rated_defenders.iloc[0:3][['name','number','position','overall']]
-        top_midfielders = rated_midfielders.iloc[0:5][['name','number','position','overall']]
-        top_forwards = rated_forwards.iloc[0:2][['name','number','position','overall']]
-        best_eleven = pd.DataFrame(columns=['name','number','position','overall'])
+        top_keeper = top_keeper[['name','number','overall']]
+        top_keeper['position'] = 'g'
+        top_defenders = rated_defenders.iloc[0:3][['name','number','overall']]
+        top_defenders['position'] = 'd'
+        top_midfielders = rated_midfielders.iloc[0:5][['name','number','overall']]
+        top_midfielders['position'] = 'm'
+        top_forwards = rated_forwards.iloc[0:2][['name','number','overall']]
+        top_forwards['position'] = 'f'
+        best_eleven = pd.DataFrame(columns=['name','number','overall','position'])
         best_eleven = pd.concat([best_eleven,top_keeper,top_defenders,top_midfielders,top_forwards])
         a,b,c,d,e,f = [],[],[],[],[],[]
-
 
         names = best_eleven['name'].values
 
         for i in range(0,best_eleven.shape[0]):
-            player = roster[roster['name'] == best_eleven.iloc[i]['name']]
+            name = best_eleven.iloc[i]['name']
             try:
-                team = player_info[player_info['name'] == best_eleven.iloc[i]['name']]['team'].values[0]
+                player = player_info[player_info['name'] == name]
             except:
-                team = player_info[player_info['display'] == best_eleven.iloc[i]['name']]['team'].values[0]
-            player= index_reset(player)
-            first = player.at[0,'first']
-            last = player.at[0,'last']
-            a.append(first)
-            b.append(last)
-            c.append(get_image(player_info,best_eleven.iloc[i]['name']))
-            d.append(get_flag(player_info,best_eleven.iloc[i]['name']))
-            e.append(get_link(player_info,best_eleven.iloc[i]['name']))
-            f.append(get_colour(team_ref,team))
+                player = player_info[player_info['display'] == name]
+            try:
+                team = player[player['name'] == name]['team'].values[0]
+            except:
+                team = player[player['display'] == name]['team'].values[0]
+            #player= index_reset(player)
+            try:
+                #a.append(name.split(' ')[0])
+                #b.append(' '.join(name.split(' ')[1:]))
+                c.append(player[player['name'] == name]['image'].values[0])
+                d.append(player[player['name'] == name]['flag'].values[0])
+                e.append(player[player['name'] == name]['link'].values[0])
+                f.append(team_ref[team_ref['team'] == team]['colour'].values[0])
+            except 'Exception' as e:
+                #a.append(name.split(' ')[0])
+                #b.append(name.split(' ')[1:])
+                c.append(player[player['display'] == name]['image'].values[0])
+                d.append(player[player['display'] == name]['flag'].values[0])
+                e.append(player[player['display'] == name]['link'].values[0])
+                f.append(team_ref[team_ref['team'] == team]['colour'].values[0])
+                print(e)
+
 
         best_eleven.insert(0,'image',c)
-        best_eleven.insert(1,'first',a)
-        best_eleven.insert(2,'last',b)
         best_eleven.insert(3,'flag',d)
         best_eleven['link'] = e
         best_eleven['colour'] = f
-        best_eleven.pop('name')
+        #best_eleven.pop('name')
         best_eleven = index_reset(best_eleven)
         return best_eleven
 
@@ -1520,11 +1519,6 @@ def get_final_score_prediction(model,q1_roster,q2_roster,home_win_new,away_win_n
 
 
 def get_game_roster_prediction(get_games,results,stats,team_ref,player_info):
-    def index_reset(data):
-        data = data.reset_index()
-        data.pop('index')
-        return data
-
     a = []
     for game in get_games: # cycle through the available games
         row = results[results['game'] == game] # select specific game results
@@ -1563,19 +1557,19 @@ def get_game_roster_prediction(get_games,results,stats,team_ref,player_info):
     return a
 
 def get_team_files(schedule,team_ref):
-    team1 = get_shortest_name(schedule.iloc[0]['home'],team_ref)
-    team2 = get_shortest_name(schedule.iloc[0]['away'],team_ref)
+    team1 = get_shortest_name(schedule.iloc[0]['home'])
+    team2 = get_shortest_name(schedule.iloc[0]['away'])
     try:
-        team3 = get_shortest_name(schedule.iloc[1]['home'],team_ref)
-        team4 = get_shortest_name(schedule.iloc[1]['away'],team_ref)
+        team3 = get_shortest_name(schedule.iloc[1]['home'])
+        team4 = get_shortest_name(schedule.iloc[1]['away'])
     except:
         team3 = 1
         team4 = 1
     try:
-        team5 = get_shortest_name(schedule.iloc[2]['home'],team_ref)
-        team6 = get_shortest_name(schedule.iloc[2]['away'],team_ref)
-        team7 = get_shortest_name(schedule.iloc[3]['home'],team_ref)
-        team8 = get_shortest_name(schedule.iloc[3]['away'],team_ref)
+        team5 = get_shortest_name(schedule.iloc[2]['home'])
+        team6 = get_shortest_name(schedule.iloc[2]['away'])
+        team7 = get_shortest_name(schedule.iloc[3]['home'])
+        team8 = get_shortest_name(schedule.iloc[3]['away'])
     except:
         team5 = 1
         team6 = 1
@@ -1632,7 +1626,6 @@ def update_player_info(year,week,player_info,rated_forwards,rated_midfielders,ra
     return player_info
 
 ## this can be combined
-
 ####
 
 def add_regressor_features(data):
@@ -1699,7 +1692,6 @@ def add_classifier_features(data,score,team_pred):
     return data
 
 ######################
-
 ### make the player_graphs
 
 def get_team_graphs(stats,standings):

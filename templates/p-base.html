@@ -139,5 +139,46 @@
   </div>
   <script src="static/css/app.js"></script>
   <script src="static/css/top.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+  <script type="text/javascript">
+    new Chart(document.getElementById('playerRadar'), {
+      type: 'radar',
+      data: {
+        labels: [{{ radar_chart_cols | safe }}],
+        datasets: [{
+          data: [{{ radar_chart.loc[0].values[:]|join(',') }}],
+          fill: true,
+          backgroundColor: '{{ colour2 }}',
+          borderColor: '{{ colour2 }}',
+          pointHoverRadius: 10,
+          pointHoverBackgroundColor: "#fff",
+          pointBackgroundColor: '{{ colour2 }}'
+        }]
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        borderWidth: 10,
+        scale: {
+          ticks: {
+            display: false,
+            beginAtZero: true,
+            maxTicksLimit: 10,
+            max: 1
+          },
+          gridLines: {
+            lineWidth: 0.5,
+            color: '#fff'
+          },
+          pointLabels: {
+            fontColor: '#fff',
+            fontSize: 14,
+            fontFamily: "'Lato', sans-serif"
+          }
+        }
+      }
+    });
+  </script>
 </body>
 </html>

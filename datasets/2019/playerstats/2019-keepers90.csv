@@ -1,23 +1,16 @@
-team,Age,pos,name,overall,Min,CleanSheet,CrossPunch,Saves,SvInBox,SvOutBox,SvPrdDng,SvPrdSaf,SvReach,SvStoop,KeeperCtch,GoalCncd,display
-York United,27,g,Nathan Ingham,0.88,90,0.23,0.46,3.38,2.31,1.08,0.46,1.42,0.04,0.81,0.65,1.31,Nathan Ingham
-Cavalry,24,g,Marco Carducci,0.75,90,0.36,0.52,2.6,1.32,1.28,0.48,0.84,0.12,0.48,0.52,0.68,Marco Carducci
-Edmonton,24,g,Connor James,0.74,90,0.32,0.32,3.05,1.73,1.32,0.55,1.14,0.27,0.5,0.41,1.09,Connor James
-Forge,27,g,Triston Henry,0.64,90,0.41,0.41,2.5,1.32,1.18,0.41,0.95,0.05,0.45,0.64,0.77,Triston Henry
-HFX Wanderers,24,g,Christian Oxner,0.56,90,0.35,0.88,2.53,1.76,0.76,0.59,1.06,0.06,0.53,0.59,0.94,Christian Oxner
-Pacific,25,g,Nolan Wirth,0.53,90,0.08,0.33,4.92,2.67,2.25,0.92,1.5,0.17,1.17,0.5,2.0,Nolan Wirth
-Pacific,29,g,Mark Village,0.52,90,0.25,0.12,2.94,1.5,1.44,0.31,0.94,0.25,0.81,0.62,1.38,Mark Village
-Valour,29,g,Tyson Farago,0.5,90,0.12,0.06,2.94,1.94,1.0,0.44,0.94,0.12,0.81,0.81,1.88,Tyson Farago
-Valour,22,g,Mathias Janssens,0.44,90,0.33,0.25,3.58,2.42,1.17,0.92,1.25,0.33,0.25,0.0,1.83,Mathias Janssens
-HFX Wanderers,36,g,Jan-Michael Williams,0.42,90,0.18,0.45,3.64,2.45,1.18,0.36,1.55,0.45,0.73,0.36,1.73,Jan-Michael Williams
-Forge,26,g,Quillan Roberts,0.26,90,0.5,0.0,3.38,2.12,1.25,0.88,0.5,0.12,0.75,0.25,1.12,Quillan Roberts
-Cavalry,26,g,Nikolaos Giantsopoulos,0.2,90,0.6,0.0,4.2,2.0,2.2,0.6,1.4,0.0,2.2,0.2,0.8,Nikolaos Giantsopoulos
-Edmonton,24,g,Dylon Powley,0.17,90,0.17,0.0,3.33,2.5,0.83,1.0,0.5,0.0,0.5,0.33,1.5,Dylon Powley
-York United,28,g,Colm Vance,0.05,90,0.0,0.0,4.0,3.0,1.0,1.0,3.0,0.0,1.0,3.0,2.0,Colm Vance
-York United,29,g,Matthew Silva,0.01,90,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,Matthew Silva
-Pacific,26,sg,Tyrone Venhola,0.0,90,,,,,,,,,,,,Tyrone Venhola
-Forge,20,sg,Baj Maan,0.0,90,,,,,,,,,,,,Baj Maan
-Edmonton,20,sg,Chris Ezoua,0.0,90,,,,,,,,,,,,Chris Ezoua
-Valour,20,sg,Svyatik Artemenko,0.0,90,,,,,,,,,,,,Svyatik Artemenko
-Forge,23,sg,Luke Iacobellis,0.0,90,,,,,,,,,,,,Luke Iacobellis
-Cavalry,29,sg,Jordan Santiago,0.0,90,,,,,,,,,,,,Jordan Santiago
-Pacific,19,sg,Sachdev Grewal,0.0,90,,,,,,,,,,,,Sachdev Grewal
+team,Age,pos,name,overall,Min,CleanSheet,CrossPunch,Saves,SvInBox,SvOutBox,SvPrdDng,SvPrdSaf,SvReach,SvStoop,KeeperCtch,GoalCncd,display,number
+York9 FC,27,g,Nathan Ingham,0.88,90,0.23,0.46,3.38,2.31,1.08,0.46,1.42,0.04,0.81,0.65,1.31,Nathan Ingham,0.04
+Cavalry FC,24,g,Marco Carducci,0.75,90,0.36,0.52,2.6,1.32,1.28,0.48,0.84,0.12,0.48,0.52,0.68,Marco Carducci,0.04
+FC Edmonton,24,g,Connor James,0.74,90,0.32,0.32,3.05,1.73,1.32,0.55,1.14,0.27,0.5,0.41,1.09,Connor James,0.05
+Forge FC,27,g,Triston Henry,0.64,90,0.41,0.41,2.5,1.32,1.18,0.41,0.95,0.05,0.45,0.64,0.77,Triston Henry,0.41
+HFX Wanderers FC,24,g,Christian Oxner,0.56,90,0.35,0.88,2.53,1.76,0.76,0.59,1.06,0.06,0.53,0.59,0.94,Christian Oxner,2.94
+Pacific FC,25,g,Nolan Wirth,0.53,90,0.08,0.33,4.92,2.67,2.25,0.92,1.5,0.17,1.17,0.5,2.0,Nolan Wirth,0.5
+Pacific FC,29,g,Mark Village,0.52,90,0.25,0.12,2.94,1.5,1.44,0.31,0.94,0.25,0.81,0.62,1.38,Mark Village,0.06
+Valour FC,29,g,Tyson Farago,0.5,90,0.12,0.06,2.94,1.94,1.0,0.44,0.94,0.12,0.81,0.81,1.88,Tyson Farago,0.06
+Valour FC,22,g,Mathias Janssens,0.44,90,0.33,0.25,3.58,2.42,1.17,0.92,1.25,0.33,0.25,0.0,1.83,Mathias Janssens,2.17
+HFX Wanderers FC,36,g,Jan-Michael Williams,0.42,90,0.18,0.45,3.64,2.45,1.18,0.36,1.55,0.45,0.73,0.36,1.73,Jan-Michael Williams,1.91
+Forge FC,26,g,Quillan Roberts,0.26,90,0.5,0.0,3.38,2.12,1.25,0.88,0.5,0.12,0.75,0.25,1.12,Quillan Roberts,2.12
+Cavalry FC,26,g,Nikolaos Giantsopoulos,0.2,90,0.6,0.0,4.2,2.0,2.2,0.6,1.4,0.0,2.2,0.2,0.8,Niko Giantsopoulos,4.4
+FC Edmonton,24,g,Dylon Powley,0.17,90,0.17,0.0,3.33,2.5,0.83,1.0,0.5,0.0,0.5,0.33,1.5,Dylon Powley,2.17
+York9 FC,28,g,Colm Vance,0.05,90,0.0,0.0,4.0,3.0,1.0,1.0,3.0,0.0,1.0,3.0,2.0,Colm Vance,31.0
+York9 FC,29,g,Matthew Silva,0.01,90,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,Matt Silva,1.0

@@ -30,8 +30,8 @@
     <div class="{{ theme }}-light">
       <table>
         <tr>
-          <td style="width:10%;">{{ html_table.at[i, 'team'] }}</td>
-          <td style="font-size: 0.8em;width:38%;"><b>{{ ' '.join((html_table.at[i,'name']).split()[1:]) }}</b></td>
+          <td style="font-size: 0.8em;width:10%;">{{ html_table.at[i, 'team'] }}</td>
+          <td style="font-size: 0.8em;width:38%;"><b>{{ ' '.join((html_table.at[i,'name']).split()[-1:]) }}</b></td>
           <td style="font-size: 0.8em;">{{ html_table.at[i,'Goal'] }}</td>
           <td style="font-size: 0.8em;">{{ html_table.at[i,'Ast'] }}</td>
           <td style="font-size: 0.8em;">{{ html_table.at[i,'Pass%'] }}</td>
@@ -68,8 +68,8 @@
     <div class="{{ theme }}-light">
       <table>
         <tr>
-          <td style="width:10%;">{{ html_table.at[i, 'team'] }}</td>
-          <td style="font-size: 0.8em;width:38%;"><b>{{ ' '.join((html_table.at[i,'name']).split()[1:]) }}</b></td>
+          <td style="font-size: 0.8em;width:10%;">{{ html_table.at[i, 'team'] }}</td>
+          <td style="font-size: 0.8em;width:38%;"><b>{{ ' '.join((html_table.at[i,'name']).split()[-1:]) }}</b></td>
           <td style="font-size: 0.8em;">{{ html_table.at[i,'Goal'] }}</td>
           <td style="font-size: 0.8em;">{{ html_table.at[i,'Ast'] }}</td>
           <td style="font-size: 0.8em;">{{ html_table.at[i,'Pass%'] }}</td>

@@ -1,12 +1,13 @@
-{% extends 'base.html' %}
+{% extends 'p-base.html' %}
 {% block content %}
 
 <!-- header -->
 <form class="{{ theme }}-dark" method="POST" action="/roster">
   <div>
-    <h3><b>Player Information - {{ name }}</b></h3>
+    <h3><b>Player Information - {{ name }} - {{ year }}</b></h3>
   </div>
-  <div><a href="{{ url_for('roster') }}"><input class="text-white button" type="submit" id="team" name="team" value="{{ player_info.iloc[0]['team'] }}"/></a>
+  <div>
+    <h3>back to <a href="{{ url_for('roster') }}"><input class="text-white button staat" type="submit" id="team" name="team" value="{{ player_info.iloc[0]['team'] }}"/></a></h3>
   </div>
 </form>
 
@@ -14,47 +15,34 @@
 <div class="{{ team_colour }}">
   <div class="mobile">
     <div class="{{ team_colour }}">
-      {% if year != '2019'%}
       <div class="box center">
         <img src="static/images/players/{{ year }}/{{ player_info.iloc[0]['image'] }}" alt="{{ player_info.iloc[0]['name'] }}" style="max-width:60%;">
       </div>
       <div class="textcenter xxfont" style="width:100%;">
         <a>{{ position }}</a>
       </div>
-      <div class="spacer">
-
-      </div>
+      <div class="spacer"></div>
       <div>
         <img src="static/images/{{ year }}/player_graphs/{{ radar }}" alt="player radar" style="max-width:50%;float:left">
       </div>
       <div>
         <img src="static/images/{{ year }}/player_graphs/{{ graph }}" alt="player performance" style="max-width:50%">
       </div>
-      {% else %}
-      <div class="center">
-        <img src="static/images/players/{{ year }}/{{ player_info.iloc[0]['image'] }}" alt="{{ player_info.iloc[0]['name'] }}" style="max-width:80%">
-      </div>
-      {% endif %}
     </div>
   </div>
 
   <div class="desktop">
     <div class="parent {{ team_colour }}">
-      {% if year != '2019'%}
       <div class="box center">
         <img src="static/images/players/{{ year }}/{{ player_info.iloc[0]['image'] }}" alt="{{ player_info.iloc[0]['name'] }}" style="max-width:60%">
       </div>
       <div class="box center">
-        <img src="static/images/{{ year }}/player_graphs/{{ radar }}" alt="player radar" style="max-width:70%">
+        <canvas id="playerRadar"></canvas>
+        <!--img src="static/images/{{ year }}/player_graphs/{{ radar }}" alt="player radar" style="max-width:70%"-->
       </div>
       <div class="box center">
         <img src="static/images/{{ year }}/player_graphs/{{ graph }}" alt="player performance" style="max-width:70%">
       </div>
-      {% else %}
-      <div style="padding: 10px 25px;">
-        <img src="static/images/players/{{ year }}/{{player_info.iloc[0]['image'] }}" alt="{{ player_info.iloc[0]['name'] }}" style="max-width:40%;">
-      </div>
-      {% endif %}
     </div>
   </div>
 
@@ -66,7 +54,7 @@
         <td>{{ stats90.iloc[0]['overall'] }}**</td>
       </tr>
       <tr>
-        <td>MIN: {{ stats90.iloc[0]['minutes'] }}</td>
+        <td>MIN: {{ stats90.iloc[0]['Min'] }}</td>
         <td>xG: {{ stats90.iloc[0]['goals'] }}**</td>
         <td>xA: {{ stats90.iloc[0]['assists'] }}**</td>
       </tr>
@@ -84,12 +72,13 @@
         <td><a><img src="static/images/flags/{{ player_info.iloc[0]['flag'] }}" alt="{{ player_info.iloc[0]['flag'][:-4] }}" style="max-height:30px"><a></td>
         <td>{{ nationality }}</td>
         <td>{{ stats.iloc[0]['overall'] }}**</td>
-        <td>MIN: {{ stats.iloc[0]['minutes']|int }}</td>
-        <td>xG: {{ stats90.iloc[0]['goals'] }}**</td>
-        <td>xA: {{ stats90.iloc[0]['assists'] }}**</td>
-        <td>Y: {{ discipline.iloc[0]['yellow'] }}</td>
-        <td>R: {{ discipline.iloc[0]['red'] }}</td>
-        <td>#: {{ stats.iloc[0]['number'] }}</td>
+        <td>MIN: {{ stats.iloc[0]['Min']|int }}</td>
+        <td>xG: {{ stats90.iloc[0]['ExpG'] }}**</td>
+        <td>xA: {{ stats90.iloc[0]['ExpA'] }}**</td>
+        <td>Y: {{ discipline.iloc[0]['Yellow'] }}</td>
+        <td>R: {{ discipline.iloc[0]['Red'] }}</td>
+        <td>2ndY: {{ discipline.iloc[0]['2ndYellow'] }}</td>
+        <td>#: {{ number }}</td>
         <td>{{ position }}</td>
       </tr>
     </table>
@@ -100,16 +89,13 @@
   <!-- table section -->
     <div class="parent {{ team_colour }}">
       <div class="{{ theme }}-dark" style="width:100%;">
-        <h3>{{ year }} Rolling Statistics</h3>
-      </div>
-      <div class="{{ theme }}-dark" style="width:100%;">
-        <h4> Season</h4>
+        <h3>Rolling Statistics</h3>
       </div>
       <div class="parent {{ theme }}-dark">
         <div class="{{ theme }}-dark">
           <table>
             <tr>
-              {% for column in stats.columns[4:9] %}
+              {% for column in stats.columns[ col_nums[0] : col_nums[1] ] %}
                 <td>{{ column }}</td>
               {% endfor %}
             </tr>
@@ -118,7 +104,7 @@
         <div class="{{ theme }}-light">
           <table>
             <tr>
-              {% for column in stats.columns[4:9] %}
+              {% for column in stats.columns[ col_nums[0] : col_nums[1] ] %}
                 {% if column == 'overall'%}
                 <td>{{ stats.iloc[0][column] }}</td>
                 {% else %}
@@ -133,7 +119,7 @@
         <div class="{{ theme }}-dark">
           <table>
             <tr>
-              {% for column in stats.columns[9:] %}
+              {% for column in stats.columns[ col_nums[1] :-1] %}
                 <td>{{ column }}</td>
               {% endfor %}
             </tr>
@@ -142,7 +128,7 @@
         <div class="{{ theme }}-light">
           <table>
             <tr>
-              {% for column in stats.columns[9:] %}
+              {% for column in stats.columns[ col_nums[1] :-1] %}
                 {% if column == 'overall'%}
                 <td>{{ stats.iloc[0][column] }}</td>
                 {% else %}
@@ -154,13 +140,13 @@
         </div>
       </div>
       <div class="{{ theme }}-dark" style="width:100%;">
-        <h4> Per 90</h4>
+        <h3>Rolling Statistics Per 90</h3>
       </div>
       <div class="parent {{ theme }}-dark">
         <div class="{{ theme }}-dark">
           <table>
             <tr>
-              {% for column in stats90.columns[4:9] %}
+              {% for column in stats90.columns[ col_nums[0] : col_nums[1] ] %}
                 <td>{{ column }}</td>
               {% endfor %}
             </tr>
@@ -169,8 +155,8 @@
         <div class="{{ theme }}-light">
           <table>
             <tr>
-              {% for column in stats90.columns[4:9] %}
-                {% if column == 'minutes'%}
+              {% for column in stats90.columns[ col_nums[0] : col_nums[1] ] %}
+                {% if column == 'Min'%}
                 <td>per{{ stats90.iloc[0][column] }}</td>
                 {% else %}
                 <td>{{ stats90.iloc[0][column] }}</td>
@@ -184,7 +170,7 @@
         <div class="{{ theme }}-dark">
           <table>
             <tr>
-              {% for column in stats90.columns[9:-2] %}
+              {% for column in stats90.columns[ col_nums[1] :-1] %}
                 <td>{{ column }}</td>
               {% endfor %}
             </tr>
@@ -193,8 +179,8 @@
         <div class="{{ theme }}-light">
           <table>
             <tr>
-              {% for column in stats90.columns[9:-2] %}
-                {% if column == 'minutes'%}
+              {% for column in stats90.columns[ col_nums[1] :-1] %}
+                {% if column == 'Min'%}
                 <td>per{{ stats90.iloc[0][column] }}</td>
                 {% else %}
                 <td>{{ stats90.iloc[0][column] }}</td>
@@ -212,13 +198,13 @@
   <!-- table section -->
     <div class="parent {{ team_colour }}">
       <div class="{{ theme }}-dark" style="width:100%;">
-        <h3>{{ year }} Rolling Statistics</h3>
+        <h3>Rolling Statistics</h3>
       </div>
       <div class="parent {{ theme }}-dark">
         <div class="{{ theme }}-dark">
           <table>
             <tr>
-              {% for column in stats.columns[4:] %}
+              {% for column in stats.columns[ col_nums[0] :-1] %}
                 <td>{{ column }}</td>
               {% endfor %}
             </tr>
@@ -227,7 +213,7 @@
         <div class="{{ theme }}-light">
           <table>
             <tr>
-              {% for column in stats.columns[4:] %}
+              {% for column in stats.columns[ col_nums[0] :-1] %}
                 {% if column == 'overall'%}
                 <td>{{ stats.iloc[0][column] }}</td>
                 {% else %}
@@ -238,12 +224,14 @@
           </table>
         </div>
       </div>
-
+      <div class="{{ theme }}-dark" style="width:100%;">
+        <h3>Rolling Statistics Per 90</h3>
+      </div>
       <div class="parent {{ theme }}-dark">
         <div class="{{ theme }}-dark">
           <table>
             <tr>
-              {% for column in stats90.columns[4:-2] %}
+              {% for column in stats90.columns[ col_nums[0] :-1] %}
                 <td>{{ column }}</td>
               {% endfor %}
             </tr>
@@ -252,8 +240,8 @@
         <div class="{{ theme }}-light">
           <table>
             <tr>
-              {% for column in stats90.columns[4:-2] %}
-                {% if column == 'minutes'%}
+              {% for column in stats90.columns[ col_nums[0] :-1] %}
+                {% if column == 'Min'%}
                 <td>per{{ stats90.iloc[0][column] }}</td>
                 {% else %}
                 <td>{{ stats90.iloc[0][column] }}</td>

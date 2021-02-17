@@ -416,6 +416,19 @@ td {
     top:-o-calc(100% / 2);
 }
 
+@media only screen and (max-width: 600px) {
+  .topbutton {
+    width:30px;
+    right:-5px;
+    bottom:50vh;
+  }
+  .topbutton:hover {
+    width:65px;
+    right:5px;
+    bottom:50vh;
+  }
+}
+
 .button {
   font-size: 1em;
   color: inherit;

@@ -1,58 +1,58 @@
-team,Age,pos,name,overall,Min,Goal,GoalDirFK,GoalHead,Clrnce,Int,TcklMade%,DuelsW%,display
-Forge,24.0,lcb,Daniel Krutzen,0.78,90,0.18,0.0,0.09,3.45,3.09,5.93,5.55,Daniel Krutzen
-Pacific,25.0,rcb,Lukas MacNaughton,0.61,90,0.12,0.0,0.12,3.62,1.38,10.84,8.12,Lukas MacNaughton
-Cavalry,26.0,rcb,Dominick Zator,0.6,90,0.1,0.0,0.1,2.1,0.8,8.33,6.2,Dominick Zator
-Valour,28.0,lcb,Andrew Jean-Baptiste,0.53,90,0.2,0.0,0.2,4.0,1.6,16.66,11.8,Andrew Jean-Baptiste
-Forge,33.0,rcb,David Edward Edgar,0.5,90,0.0,0.0,0.0,5.3,1.4,8.0,6.2,David Edgar
-HFX Wanderers,28.0,lb,Alex De Carolis,0.5,90,0.25,0.25,0.0,2.0,1.25,20.45,17.0,Alex De Carolis
-Pacific,23.0,lcb,Thomas Meilleur-Giguère,0.48,90,0.0,0.0,0.0,4.6,2.5,6.25,5.0,Thomas Meilleur-Giguère
-HFX Wanderers,26.0,lcb,Jems Geffrard,0.48,90,0.0,0.0,0.0,3.9,1.5,8.57,6.0,Jems Geffrard
-HFX Wanderers,24.0,rcb,Peter Schaale,0.47,90,0.0,0.0,0.0,5.5,1.0,7.31,5.3,Peter Schaale
-Forge,25.0,lb,Kwame Awuah,0.46,90,0.11,0.0,0.0,1.33,1.56,9.06,6.33,Kwame Awuah
-York United,25.0,lcb,Luca Gasparotto,0.46,90,0.0,0.0,0.0,6.14,2.0,11.69,9.71,Luca Gasparotto
-HFX Wanderers,21.0,rb,Chrisnovic N'Sa,0.42,90,0.0,0.0,0.0,2.75,2.12,10.26,7.5,Chris N'sa
-Forge,26.0,rb,Dominic Samuel,0.39,90,0.0,0.0,0.0,2.5,1.25,10.0,8.0,Dominic Samuel
-HFX Wanderers,23.0,lb,Mateo Restrepo,0.39,90,0.0,0.0,0.0,2.86,2.43,10.3,8.43,Mateo Restrepo
-York United,29.0,rcb,Roger Thompson,0.39,90,0.0,0.0,0.0,4.0,1.86,9.53,9.14,Roger Thompson
-Valour,20.0,rcb,Julian Dunn-Johnson,0.38,90,0.0,0.0,0.0,3.14,1.57,11.43,8.14,Julian Dunn
-Edmonton,24.0,rb,Jeannot Esua,0.38,90,0.0,0.0,0.0,3.43,1.71,10.2,9.14,Jeannot Esua
-Cavalry,34.0,cd,Mason Trafford,0.38,90,0.0,0.0,0.0,3.12,1.38,8.34,7.0,Mason Trafford
-Atlético Ottawa,25.0,rcb,Evan Brandon John,0.37,90,0.0,0.0,0.0,3.29,1.14,10.71,8.86,Brandon John
-Pacific,34.0,lb,Marcel de Jong,0.36,90,0.0,0.0,0.0,2.8,2.0,18.0,13.6,Marcel de Jong
-Pacific,22.0,rb,Kadin Chung,0.36,90,0.0,0.0,0.0,1.5,1.25,8.71,7.5,Kadin Chung
-Edmonton,25.0,rcb,Mélé Temguia,0.36,90,0.0,0.0,0.0,3.0,2.4,17.78,11.8,Mélé Temguia
-York United,26.0,rb,Morey Doner,0.33,90,0.0,0.0,0.0,1.43,1.71,10.2,7.14,Morey Doner
-Edmonton,31.0,lcb,Ramon Soria,0.32,90,0.0,0.0,0.0,2.57,1.0,7.14,8.29,Ramon Soria
-Cavalry,32.0,cd,Jonathan Wheeldon,0.32,90,0.0,0.0,0.0,4.6,1.4,15.0,9.8,Jay Wheeldon
-Pacific,24.0,lb,Jordan Haynes,0.31,90,0.0,0.0,0.0,2.8,1.4,13.0,12.6,Jordan Haynes
-Valour,20.0,lcb,Yohan Le Bourhis,0.3,90,1.0,0.0,1.0,1.0,0.0,0.0,57.0,Yohan Le Bourhis
-Edmonton,25.0,rcb,Amer Didic,0.3,90,0.0,0.0,0.0,4.67,0.67,26.67,23.0,Amer Didic
-Cavalry,22.0,lcb,Robert Boskovic,0.3,90,0.0,0.0,0.0,1.4,1.8,14.28,11.6,Robert Boskovic
-Atlético Ottawa,21.0,rb,Malyk Hamilton,0.3,90,0.0,0.0,0.0,1.71,1.29,8.44,6.29,Malyk Hamilton
-Forge,23.0,rw,David Choinière,0.29,90,0.14,0.0,0.0,0.43,0.43,6.26,6.43,David Choinière
-York United,23.0,lb,Fugo Segawa,0.29,90,0.0,0.0,0.0,2.0,1.75,18.18,14.25,Fugo Segawa
-HFX Wanderers,20.0,rb,Jake Ruby,0.28,90,0.0,0.0,0.0,3.33,2.0,21.67,21.67,Jake Ruby
-York United,22.0,lb,Diyaeddine Abzi,0.28,90,0.0,0.0,0.0,1.6,1.4,14.54,9.2,Diyaeddine Abzi
-Valour,27.0,lb,Brett Levis,0.28,90,0.0,0.0,0.0,1.0,2.25,17.65,14.25,Brett Levis
-Valour,29.0,rb,Stefan Cebara,0.28,90,0.0,0.0,0.0,1.2,1.4,15.56,9.4,Stefan Cebara
-Valour,21.0,lb,Federico Peña,0.26,90,0.0,0.0,0.0,1.0,1.75,16.25,13.75,Federico Peña
-Forge,25.0,lw,Christopher Lenroy Nanco,0.26,90,1.0,0.0,0.0,0.5,0.0,20.0,13.5,Chris Nanco
-Forge,27.0,lb,Jordan Dunstan,0.26,90,0.0,0.0,0.0,4.33,2.0,22.23,16.67,Jordan Dunstan
-Atlético Ottawa,29.0,lcb,Milovan Kapor,0.25,90,0.0,0.0,0.0,4.33,1.17,3.33,7.0,Milovan Kapor
-Cavalry,25.0,rw,Nico Pasquotti,0.25,90,0.0,0.0,0.0,0.17,0.67,9.72,8.5,Nico Pasquotti
-Atlético Ottawa,18.0,lcb,Gianfranco Facchineri,0.25,90,0.0,0.0,0.0,5.0,1.0,37.5,28.5,Gianfranco Facchineri
-Edmonton,20.0,lb,Terique Mohammed,0.25,90,0.0,0.0,0.0,3.67,1.33,21.2,17.0,Terique Mohammed
-Edmonton,30.0,cd,Kareem Moses,0.25,90,0.0,0.0,0.0,5.0,0.5,50.0,21.0,Kareem Moses
-Edmonton,25.0,lb,Duran Lee,0.24,90,0.0,0.0,0.0,3.0,2.0,75.0,62.0,Duran Lee
-Pacific,24.0,rcb,Abdoulaye Samake,0.23,90,0.0,0.0,0.0,2.0,3.0,100.0,43.0,Abdou Samake
-Atlético Ottawa,21.0,lb,Vashon Neufville,0.23,90,0.0,0.0,0.0,0.67,2.0,22.23,15.67,Vashon Neufville
-Valour,29.0,lcb,Chakib Hocine,0.22,90,0.0,0.0,0.0,2.0,0.0,100.0,44.0,Chakib Hocine
-Forge,24.0,lw,Kadell Thomas,0.21,90,0.0,0.0,0.0,0.0,1.0,22.23,14.33,Kadell Thomas
-Forge,20.0,lw,Montther Mohsen,0.21,90,0.0,0.0,0.0,1.5,0.5,25.0,30.5,Monti Mohsen
-Valour,21.0,rb,Dante Campbell,0.2,90,0.0,0.0,0.0,1.33,2.0,16.67,13.67,Dante Campbell
-Atlético Ottawa,25.0,lb,Jarred Phillips,0.2,90,0.0,0.0,0.0,2.0,2.0,14.03,14.0,Jarred Phillips
-Forge,22.0,lw,Marcel Dominik Zajac,0.18,90,0.0,0.0,0.0,0.33,1.67,18.17,11.67,Marcel Zajac
-Valour,21.0,lb,Raphaël Garcia,0.18,90,,,,inf,inf,inf,inf,Raphaël Garcia
-HFX Wanderers,18.0,rcb,Luke Green,0.16,90,0.0,0.0,0.0,3.0,1.0,50.0,43.0,Luke Green
-Forge,27.0,lw,Jonathan Grant,0.14,90,0.0,0.0,0.0,2.0,2.33,4.77,9.33,Jonathan Grant
-Cavalry,24.0,lw,Jair Ayrton Córdova Carpio,0.13,90,1.0,0.0,0.0,1.0,0.0,0.0,31.0,Jair Córdova
+team,Age,pos,name,overall,Min,Goal,GoalDirFK,GoalHead,Clrnce,Int,TcklMade%,DuelsW%,display,number
+Forge FC,24.0,lcb,Daniel Krutzen,0.74,90,0.18,0.0,0.09,3.45,3.09,5.93,5.55,Daniel Krutzen,0.45
+Pacific FC,25.0,rcb,Lukas MacNaughton,0.59,90,0.12,0.0,0.12,3.62,1.38,10.84,8.12,Lukas MacNaughton,0.75
+Cavalry FC,26.0,rcb,Dominick Zator,0.58,90,0.1,0.0,0.1,2.1,0.8,8.33,6.2,Dominick Zator,0.4
+Valour FC,28.0,lcb,Andrew Jean-Baptiste,0.51,90,0.2,0.0,0.2,4.0,1.6,16.66,11.8,Andrew Jean-Baptiste,7.0
+Forge FC,33.0,rcb,David Edward Edgar,0.5,90,0.0,0.0,0.0,5.3,1.4,8.0,6.2,David Edgar,3.0
+HFX Wanderers FC,26.0,lcb,Jems Geffrard,0.48,90,0.0,0.0,0.0,3.9,1.5,8.57,6.0,Jems Geffrard,0.3
+HFX Wanderers FC,28.0,lb,Alex De Carolis,0.48,90,0.25,0.25,0.0,2.0,1.25,20.45,17.0,Alex De Carolis,6.0
+Pacific FC,23.0,lcb,Thomas Meilleur-Giguère,0.48,90,0.0,0.0,0.0,4.6,2.5,6.25,5.0,Thomas Meilleur-Giguère,2.6
+HFX Wanderers FC,24.0,rcb,Peter Schaale,0.47,90,0.0,0.0,0.0,5.5,1.0,7.31,5.3,Peter Schaale,0.2
+York9 FC,25.0,lcb,Luca Gasparotto,0.46,90,0.0,0.0,0.0,6.14,2.0,11.69,9.71,Luca Gasparotto,1.86
+Forge FC,25.0,lb,Kwame Awuah,0.44,90,0.11,0.0,0.0,1.33,1.56,9.06,6.33,Kwame Awuah,0.67
+Cavalry FC,25.0,lm,Nathan Mavila,0.43,90,0.38,0.0,0.0,0.75,1.25,7.81,5.62,Nathan Mavila,0.38
+HFX Wanderers FC,21.0,rb,Chrisnovic N'Sa,0.42,90,0.0,0.0,0.0,2.75,2.12,10.26,7.5,Chris N'sa,0.75
+HFX Wanderers FC,23.0,lb,Mateo Restrepo,0.39,90,0.0,0.0,0.0,2.86,2.43,10.3,8.43,Mateo Restrepo,2.0
+York9 FC,29.0,rcb,Roger Thompson,0.39,90,0.0,0.0,0.0,4.0,1.86,9.53,9.14,Roger Thompson,0.86
+Forge FC,28.0,cm,Maxim Tissot,0.39,90,0.25,0.25,0.0,1.5,1.0,15.0,9.25,Maxim Tissot,3.75
+Forge FC,26.0,rb,Dominic Samuel,0.39,90,0.0,0.0,0.0,2.5,1.25,10.0,8.0,Dominic Samuel,0.5
+FC Edmonton,24.0,rb,Jeannot Esua,0.38,90,0.0,0.0,0.0,3.43,1.71,10.2,9.14,Jeannot Esua,0.43
+Cavalry FC,21.0,rm,Mohamed Farsi,0.38,90,0.14,0.0,0.0,1.43,1.57,9.74,8.57,Mohamed Farsi,3.0
+Cavalry FC,34.0,cd,Mason Trafford,0.38,90,0.0,0.0,0.0,3.12,1.38,8.34,7.0,Mason Trafford,0.62
+Valour FC,20.0,rcb,Julian Dunn-Johnson,0.38,90,0.0,0.0,0.0,3.14,1.57,11.43,8.14,Julian Dunn,0.71
+Atlético Ottawa,25.0,rcb,Evan Brandon John,0.37,90,0.0,0.0,0.0,3.29,1.14,10.71,8.86,Brandon John,0.57
+Pacific FC,22.0,rb,Kadin Chung,0.36,90,0.0,0.0,0.0,1.5,1.25,8.71,7.5,Kadin Chung,0.88
+Pacific FC,34.0,lb,Marcel de Jong,0.36,90,0.0,0.0,0.0,2.8,2.0,18.0,13.6,Marcel de Jong,3.4
+FC Edmonton,25.0,rcb,Mélé Temguia,0.36,90,0.0,0.0,0.0,3.0,2.4,17.78,11.8,Mélé Temguia,1.6
+York9 FC,26.0,rb,Morey Doner,0.33,90,0.0,0.0,0.0,1.43,1.71,10.2,7.14,Morey Doner,0.43
+Cavalry FC,32.0,cd,Jonathan Wheeldon,0.32,90,0.0,0.0,0.0,4.6,1.4,15.0,9.8,Jay Wheeldon,2.8
+FC Edmonton,31.0,lcb,Ramon Soria,0.32,90,0.0,0.0,0.0,2.57,1.0,7.14,8.29,Ramon Soria,0.71
+Pacific FC,24.0,lb,Jordan Haynes,0.31,90,0.0,0.0,0.0,2.8,1.4,13.0,12.6,Jordan Haynes,0.6
+FC Edmonton,25.0,rcb,Amer Didic,0.3,90,0.0,0.0,0.0,4.67,0.67,26.67,23.0,Amer Didic,18.33
+Cavalry FC,22.0,lcb,Robert Boskovic,0.3,90,0.0,0.0,0.0,1.4,1.8,14.28,11.6,Robert Boskovic,5.0
+York9 FC,23.0,lb,Fugo Segawa,0.29,90,0.0,0.0,0.0,2.0,1.75,18.18,14.25,Fugo Segawa,6.5
+Valour FC,20.0,lcb,Yohan Le Bourhis,0.28,90,1.0,0.0,1.0,1.0,0.0,0.0,57.0,Yohan Le Bourhis,4.0
+HFX Wanderers FC,20.0,rb,Jake Ruby,0.28,90,0.0,0.0,0.0,3.33,2.0,21.67,21.67,Jake Ruby,6.67
+Cavalry FC,29.0,rm,Dean Northover,0.28,90,0.0,0.0,0.0,1.25,2.0,17.5,14.5,Dean Northover,3.0
+York9 FC,22.0,lb,Diyaeddine Abzi,0.28,90,0.0,0.0,0.0,1.6,1.4,14.54,9.2,Diyaeddine Abzi,4.0
+FC Edmonton,27.0,cm,Allan Zebie,0.26,90,0.0,0.0,0.0,0.0,1.0,12.22,12.4,Allan Zebie,0.8
+York9 FC,26.0,cm,Matthew Arnone,0.26,90,0.0,0.0,0.0,1.0,2.0,100.0,67.0,Matthew Arnone,17.0
+Forge FC,27.0,lb,Jordan Dunstan,0.26,90,0.0,0.0,0.0,4.33,2.0,22.23,16.67,Jordan Dunstan,7.0
+FC Edmonton,30.0,cd,Kareem Moses,0.25,90,0.0,0.0,0.0,5.0,0.5,50.0,21.0,Kareem Moses,6.0
+Atlético Ottawa,29.0,lcb,Milovan Kapor,0.25,90,0.0,0.0,0.0,4.33,1.17,3.33,7.0,Milovan Kapor,0.5
+FC Edmonton,20.0,lb,Terique Mohammed,0.25,90,0.0,0.0,0.0,3.67,1.33,21.2,17.0,Terique Mohammed,19.0
+Atlético Ottawa,18.0,lcb,Gianfranco Facchineri,0.25,90,0.0,0.0,0.0,5.0,1.0,37.5,28.5,Gianfranco Facchineri,3.0
+FC Edmonton,25.0,lb,Duran Lee,0.24,90,0.0,0.0,0.0,3.0,2.0,75.0,62.0,Duran Lee,23.0
+HFX Wanderers FC,21.0,lm,Daniel Kinumbe,0.24,90,0.0,0.0,0.0,0.5,3.5,25.0,32.0,Daniel Kinumbe,6.5
+Pacific FC,24.0,rcb,Abdoulaye Samake,0.23,90,0.0,0.0,0.0,2.0,3.0,100.0,43.0,Abdou Samake,5.0
+Atlético Ottawa,21.0,lb,Vashon Neufville,0.23,90,0.0,0.0,0.0,0.67,2.0,22.23,15.67,Vashon Neufville,14.67
+Valour FC,32.0,lam,Arnold Bouka Moutou,0.22,90,0.0,0.0,0.0,0.0,1.0,100.0,45.0,Arnold Bouka Moutou,29.0
+Valour FC,29.0,lcb,Chakib Hocine,0.22,90,0.0,0.0,0.0,2.0,0.0,100.0,44.0,Chakib Hocine,4.0
+Forge FC,20.0,lw,Montther Mohsen,0.21,90,0.0,0.0,0.0,1.5,0.5,25.0,30.5,Monti Mohsen,11.0
+FC Edmonton,23.0,dm,Samuel Gardner,0.2,90,0.0,0.0,0.0,2.0,2.0,75.0,47.0,Sam Gardner,33.0
+Atlético Ottawa,25.0,lb,Jarred Phillips,0.2,90,0.0,0.0,0.0,2.0,2.0,14.03,14.0,Jarred Phillips,4.67
+York9 FC,19.0,rm,Ijah Halley,0.19,90,0.0,0.0,0.0,0.5,0.0,33.35,22.5,Ijah Halley,7.0
+Valour FC,21.0,lb,Raphaël Garcia,0.18,90,,,,inf,inf,inf,inf,Raphaël Garcia,inf
+HFX Wanderers FC,18.0,rcb,Luke Green,0.16,90,0.0,0.0,0.0,3.0,1.0,50.0,43.0,Luke Green,16.0
+Forge FC,27.0,lw,Jonathan Grant,0.14,90,0.0,0.0,0.0,2.0,2.33,4.77,9.33,Jonathan Grant,0.67
+Forge FC,21.0,cm,Klaidi Cela,0.0,90,,,,,,,,Klaidi Cela,inf

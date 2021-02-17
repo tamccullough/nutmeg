@@ -1,73 +1,62 @@
-team,Age,pos,name,overall,Min,ExpG,ExpA,Goal,PenGoal,GoalDirFK,GoalHead,Ast,Crosses,Touches,TcklMade%,Pass%,DuelsW%,display
-Pacific,24.0,rm,Marco Bustos,0.62,90,0.3,0.24,0.56,0.0,0.0,0.11,0.33,3.33,58.67,2.47,9.44,6.33,Marco Bustos
-Cavalry,25.0,lm,Nathan Mavila,0.59,90,0.28,0.14,0.38,0.25,0.0,0.0,0.12,5.75,61.88,7.81,9.12,5.62,Nathan Mavila
-Forge,30.0,cm,Kyle Edward Bekker,0.57,90,0.13,0.08,0.3,0.0,0.0,0.1,0.1,4.9,55.6,4.64,7.6,4.6,Kyle Bekker
-Forge,21.0,cm,Paolo Sabak,0.53,90,0.31,0.24,0.25,0.25,0.0,0.0,0.25,1.12,55.88,5.0,9.75,6.38,Paolo Sabak
-Pacific,26.0,lm,Victor Blasco,0.52,90,0.42,0.31,0.29,0.0,0.0,0.0,0.29,6.0,63.0,10.71,10.71,8.0,Victor Blasco
-York United,28.0,cm,Joseph Di Chiara,0.52,90,0.35,0.05,0.5,0.33,0.0,0.17,0.0,1.5,65.33,10.83,14.33,8.17,Joseph Di Chiara
-Forge,24.0,cm,Alexander Börje Achinioti-Jönsson,0.52,90,0.27,0.0,0.33,0.0,0.0,0.22,0.0,0.11,48.22,8.7,9.11,6.89,Alexander Achinioti-Jönsson
-HFX Wanderers,24.0,cam,João Morelli Neto,0.49,90,0.48,0.06,0.67,0.33,0.0,0.0,0.17,3.0,52.83,6.67,11.67,6.83,João Morelli
-Cavalry,24.0,cm,Elijah Adekugbe,0.49,90,0.07,0.09,0.14,0.0,0.0,0.0,0.14,4.57,78.14,10.71,12.14,9.0,Elijah Adekugbe
-Cavalry,21.0,rm,Mohamed Farsi,0.46,90,0.06,0.11,0.14,0.0,0.0,0.0,0.14,5.14,68.86,9.74,10.57,8.57,Mohamed Farsi
-York United,25.0,cm,Manuel Aparicio,0.45,90,0.07,0.1,0.33,0.0,0.33,0.0,0.0,1.5,63.17,11.12,13.17,7.83,Manny Aparicio
-HFX Wanderers,25.0,dm,Andre Rampersad,0.44,90,0.02,0.11,0.0,0.0,0.0,0.0,0.22,0.56,59.0,6.34,9.33,6.44,Andre Rampersad
-Cavalry,35.0,cm,Nikolas Ledgerwood,0.43,90,0.19,0.13,0.2,0.2,0.0,0.0,0.2,6.4,50.6,15.0,14.2,9.6,Nik Ledgerwood
-Forge,28.0,cm,Maxim Tissot,0.42,90,0.22,0.62,0.25,0.0,0.25,0.0,0.5,5.75,67.75,15.0,18.75,9.25,Maxim Tissot
-Atlético Ottawa,32.0,cam,Francisco Javier Acuña Víctor,0.42,90,0.06,0.19,0.33,0.0,0.0,0.0,0.33,2.67,58.67,8.73,14.0,7.5,Francisco Acuña
-Pacific,22.0,dm,Matthew Baldisimo,0.42,90,0.01,0.07,0.0,0.0,0.0,0.0,0.1,0.3,55.9,6.34,8.0,5.6,Matthew Baldisimo
-HFX Wanderers,22.0,ram,Alex Marshall,0.4,90,0.06,0.16,0.0,0.0,0.0,0.0,0.33,3.0,51.33,11.9,12.5,8.83,Alex Marshall
-Atlético Ottawa,30.0,ram,Mohamed Kourouma,0.39,90,0.23,0.08,0.14,0.0,0.0,0.0,0.0,4.57,54.71,9.53,11.0,7.0,Mohamed Kourouma
-York United,30.0,cam,Kyle Porter,0.36,90,0.14,0.16,0.25,0.0,0.0,0.0,0.25,5.75,49.75,20.0,21.5,10.25,Kyle Porter
-Valour,23.0,cm,Moses Dyer,0.36,90,0.28,0.04,0.33,0.0,0.0,0.33,0.0,1.0,44.67,33.33,27.33,19.67,Moses Dyer
-HFX Wanderers,25.0,cm,Aboubacar Sissoko,0.36,90,0.04,0.02,0.0,0.0,0.0,0.0,0.0,0.12,64.5,8.34,10.25,6.25,Aboubacar Sissoko
-Valour,25.0,cm,Dylan Carreiro,0.35,90,0.42,0.08,0.25,0.0,0.0,0.0,0.0,5.0,47.25,17.85,19.5,18.5,Dylan Carreiro
-Edmonton,26.0,cam,Keven Steven Alemán Bustos,0.35,90,0.17,0.27,0.17,0.0,0.0,0.0,0.0,3.33,57.0,9.8,13.5,8.17,Keven Alemán
-HFX Wanderers,25.0,cam,Omar Kreim,0.34,90,0.09,0.16,0.25,0.0,0.25,0.0,0.0,2.0,58.75,17.1,19.0,12.0,Omar Kreim
-Forge,25.0,cm,Elimane Oumar Cissé,0.34,90,0.11,0.14,0.0,0.0,0.0,0.0,0.0,1.33,59.33,12.32,13.33,9.17,Elimane Cissé
-Pacific,31.0,cm,Jamar Dixon,0.34,90,0.2,0.03,0.14,0.0,0.0,0.0,0.0,0.0,38.0,12.34,11.29,7.29,Jamar Dixon
-Valour,25.0,ram,Fraser Aird,0.34,90,0.23,0.14,0.2,0.2,0.0,0.0,0.0,5.0,52.0,8.0,15.0,6.2,Fraser Aird
-Pacific,22.0,ram,Zachary Verhoven,0.33,90,0.11,0.48,0.33,0.0,0.0,0.0,0.33,8.67,87.33,17.47,25.67,12.67,Zach Verhoven
-HFX Wanderers,27.0,lam,Alessandro Riggi,0.32,90,0.11,0.18,0.2,0.0,0.0,0.0,0.2,2.0,40.8,11.42,14.8,8.0,Alessandro Riggi
-Edmonton,23.0,cm,Erik Zetterberg,0.31,90,0.04,0.15,0.0,0.0,0.0,0.0,0.0,2.8,66.8,11.42,16.0,8.8,Erik Zetterberg
-Edmonton,20.0,ram,Antony Caceres,0.31,90,0.02,0.37,0.0,0.0,0.0,0.0,0.33,0.67,43.0,26.67,29.67,20.0,Anthony Caceres
-Cavalry,26.0,cam,Sergio Camargo,0.31,90,0.97,0.08,1.0,1.0,0.0,0.0,0.0,4.0,62.0,75.0,79.0,58.0,Sergio Camargo
-Valour,23.0,cm,Diego Gutiérrez,0.31,90,0.02,0.02,0.0,0.0,0.0,0.0,0.0,1.4,77.6,11.26,16.8,8.6,Diego Gutiérrez
-Valour,34.0,dm,José Antonio Galán Pedrosa,0.31,90,0.07,0.13,0.33,0.0,0.0,0.0,0.33,1.0,86.67,18.33,28.33,15.67,José Galán
-Pacific,19.0,cm,Sean Young,0.3,90,0.04,0.07,0.0,0.0,0.0,0.0,0.0,0.2,53.6,15.0,16.4,10.0,Sean Young
-HFX Wanderers,25.0,cm,Louis Béland-Goyette,0.3,90,0.02,0.1,0.0,0.0,0.0,0.0,0.0,0.86,62.86,6.19,11.29,4.86,Louis Béland-Goyette
-Edmonton,27.0,cm,Allan Zebie,0.3,90,0.03,0.01,0.0,0.0,0.0,0.0,0.0,0.0,53.8,12.22,17.6,12.4,Allan Zebie
-Atlético Ottawa,27.0,lm,Ben Fisk,0.3,90,0.06,0.07,0.14,0.0,0.0,0.0,0.0,2.0,41.57,5.81,11.14,4.29,Ben Fisk
-Valour,25.0,dm,Raphael Ohin,0.3,90,0.05,0.08,0.0,0.0,0.0,0.0,0.0,0.0,58.0,9.72,14.5,8.0,Raphael Ohin
-Cavalry,22.0,cm,Elliot Simmons,0.3,90,0.01,0.11,0.0,0.0,0.0,0.0,0.0,0.71,65.29,5.61,11.71,5.29,Elliot Simmons
-Atlético Ottawa,23.0,cm,Víctor Martínez Manrique,0.3,90,0.15,0.0,0.17,0.0,0.0,0.0,0.0,0.33,54.33,7.93,13.0,7.17,Viti Martínez
-York United,25.0,cm,Wataru Murofushi,0.29,90,0.03,0.14,0.0,0.0,0.0,0.0,0.0,0.0,62.75,20.0,22.25,13.0,Wataru Murofushi
-Pacific,20.0,cm,Alessandro Hojabrpour,0.29,90,0.12,0.03,0.0,0.0,0.0,0.0,0.0,0.25,53.25,19.12,20.0,15.0,Alessandro Hojabrpour
-Atlético Ottawa,27.0,cm,Ben McKendry,0.29,90,0.02,0.01,0.0,0.0,0.0,0.0,0.0,0.8,58.4,13.34,15.6,10.4,Ben McKendry
-Cavalry,25.0,cm,Bruno Zebie,0.28,90,0.19,0.01,0.0,0.0,0.0,0.0,0.0,0.6,50.6,12.64,16.4,9.2,Bruno Zebie
-Pacific,26.0,lm,Josh Heard,0.27,90,0.59,0.18,0.5,0.0,0.0,0.0,0.5,6.0,51.0,25.0,36.0,19.0,Josh Heard
-Cavalry,29.0,rm,Dean Northover,0.27,90,0.01,0.07,0.0,0.0,0.0,0.0,0.0,0.75,62.0,17.5,15.0,14.5,Dean Northover
-Pacific,21.0,cm,Noah Verhoeven,0.26,90,0.04,0.06,0.0,0.0,0.0,0.0,0.0,2.5,57.5,37.5,37.0,32.5,Noah Verhoeven
-York United,19.0,cm,Isaiah Johnston,0.26,90,,,,,,,,,inf,inf,inf,inf,Isaiah Johnston
-York United,26.0,cm,Matthew Arnone,0.26,90,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,32.0,100.0,79.0,67.0,Matthew Arnone
-Edmonton,24.0,cam,Hanson Boakai,0.26,90,0.1,0.04,0.0,0.0,0.0,0.0,0.0,4.0,68.0,14.3,29.67,13.67,Hanson Boakai
-Edmonton,19.0,dm,Chance Carter,0.25,90,0.02,0.06,0.0,0.0,0.0,0.0,0.0,0.0,60.5,37.5,43.5,26.0,Chance Carter
-Valour,25.0,cm,Mastanabal Kacher,0.25,90,0.08,0.1,0.25,0.0,0.0,0.0,0.0,2.5,45.5,8.32,18.5,10.5,Masta Kacher
-Edmonton,19.0,lam,Marcus Velado-Tsegaye,0.24,90,0.14,0.0,0.33,0.0,0.0,0.0,0.0,0.67,40.67,16.67,27.0,14.33,Marcus Velado-Tsegaye
-Edmonton,19.0,ram,Prince Amanda,0.24,90,0.07,0.0,0.0,0.0,0.0,0.0,0.0,3.0,47.5,40.0,38.0,23.0,Prince Amanda
-HFX Wanderers,21.0,lm,Daniel Kinumbe,0.23,90,0.08,0.02,0.0,0.0,0.0,0.0,0.0,0.0,54.5,25.0,35.0,32.0,Daniel Kinumbe
-York United,19.0,rm,Ijah Halley,0.22,90,0.06,0.1,0.0,0.0,0.0,0.0,0.0,1.5,41.5,33.35,37.5,22.5,Ijah Halley
-Atlético Ottawa,25.0,dm,Ajay Khabra,0.22,90,0.04,0.02,0.0,0.0,0.0,0.0,0.0,0.33,55.0,16.67,28.67,9.67,Ajay Khabra
-Edmonton,23.0,dm,Samuel Gardner,0.22,90,0.06,0.0,0.0,0.0,0.0,0.0,0.0,2.0,71.0,75.0,76.0,47.0,Sam Gardner
-Atlético Ottawa,17.0,cm,Antoine Coupland,0.22,90,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,29.0,80.0,75.0,56.0,Antoine Coupland
-Edmonton,29.0,dm,Yong-Chan Son,0.22,90,0.0,0.07,0.0,0.0,0.0,0.0,0.0,1.67,57.33,13.33,27.67,11.0,Yong-Chan Son
-Valour,32.0,lam,Arnold Bouka Moutou,0.21,90,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.0,34.0,100.0,53.0,45.0,Arnold Bouka Moutou
-HFX Wanderers,19.0,cm,Scott Firth,0.21,90,0.0,0.06,0.0,0.0,0.0,0.0,0.0,0.0,71.0,40.0,87.0,56.0,Scott Firth
-York United,26.0,dm,Chris Mannella,0.21,90,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,69.0,66.7,76.0,48.0,Chris Mannella
-Atlético Ottawa,22.0,cm,Michel Djaozandry,0.2,90,,,,,,,,,inf,inf,inf,inf,Michel Djaozandry
-York United,20.0,ram,Max Ferrari,0.19,90,0.13,0.0,0.0,0.0,0.0,0.0,0.0,3.0,41.5,25.0,40.0,14.5,Max Ferrari
-Cavalry,17.0,cam,Aribim Pepple,0.18,90,0.36,0.07,0.0,0.0,0.0,0.0,0.0,1.0,41.0,66.7,77.0,25.0,Aribim Pepple
-Valour,20.0,lam,Solomon Kojo Antwi,0.16,90,0.02,0.0,0.0,0.0,0.0,0.0,0.0,0.0,43.0,44.4,74.0,28.0,Solomon Kojo Antwi
-York United,25.0,ram,Michael Petrasso,0.15,90,0.58,0.0,0.0,0.0,0.0,0.0,0.0,4.0,42.0,0.0,84.0,40.0,Michael Petrasso
-Forge,21.0,cm,Klaidi Cela,0.0,90,,,,,,,,,inf,,,,Klaidi Cela
-Cavalry,25.0,rm,Oluwatofarati Fakunle,,90,inf,,,,,,,,inf,,inf,,Tofa Fakunle
-York United,18.0,sm,Julian Altobelli,,90,,,,,,,,,,,,,Julian Altobelli
+team,Age,pos,name,overall,Min,ExpG,ExpA,Goal,PenGoal,GoalDirFK,GoalHead,Ast,Crosses,Touches,TcklMade%,Pass%,DuelsW%,display,number
+Pacific FC,24.0,rm,Marco Bustos,0.62,90,0.3,0.24,0.56,0.0,0.0,0.11,0.33,3.33,58.67,2.47,9.44,6.33,Marco Bustos,1.11
+Forge FC,30.0,cm,Kyle Edward Bekker,0.57,90,0.13,0.08,0.3,0.0,0.0,0.1,0.1,4.9,55.6,4.64,7.6,4.6,Kyle Bekker,1.0
+Forge FC,21.0,cm,Paolo Sabak,0.53,90,0.31,0.24,0.25,0.25,0.0,0.0,0.25,1.12,55.88,5.0,9.75,6.38,Paolo Sabak,3.0
+York9 FC,28.0,cm,Joseph Di Chiara,0.52,90,0.35,0.05,0.5,0.33,0.0,0.17,0.0,1.5,65.33,10.83,14.33,8.17,Joseph Di Chiara,1.33
+Pacific FC,26.0,lm,Victor Blasco,0.52,90,0.42,0.31,0.29,0.0,0.0,0.0,0.29,6.0,63.0,10.71,10.71,8.0,Victor Blasco,3.29
+Forge FC,24.0,cm,Alexander Börje Achinioti-Jönsson,0.52,90,0.27,0.0,0.33,0.0,0.0,0.22,0.0,0.11,48.22,8.7,9.11,6.89,Alexander Achinioti-Jönsson,1.44
+Cavalry FC,24.0,cm,Elijah Adekugbe,0.49,90,0.07,0.09,0.14,0.0,0.0,0.0,0.14,4.57,78.14,10.71,12.14,9.0,Elijah Adekugbe,1.14
+York9 FC,25.0,cm,Manuel Aparicio,0.45,90,0.07,0.1,0.33,0.0,0.33,0.0,0.0,1.5,63.17,11.12,13.17,7.83,Manny Aparicio,1.67
+HFX Wanderers FC,25.0,dm,Andre Rampersad,0.44,90,0.02,0.11,0.0,0.0,0.0,0.0,0.22,0.56,59.0,6.34,9.33,6.44,Andre Rampersad,2.0
+Cavalry FC,35.0,cm,Nikolas Ledgerwood,0.43,90,0.19,0.13,0.2,0.2,0.0,0.0,0.2,6.4,50.6,15.0,14.2,9.6,Nik Ledgerwood,1.2
+Atlético Ottawa,32.0,cam,Francisco Javier Acuña Víctor,0.42,90,0.06,0.19,0.33,0.0,0.0,0.0,0.33,2.67,58.67,8.73,14.0,7.5,Francisco Acuña,1.33
+Pacific FC,22.0,dm,Matthew Baldisimo,0.42,90,0.01,0.07,0.0,0.0,0.0,0.0,0.1,0.3,55.9,6.34,8.0,5.6,Matthew Baldisimo,0.8
+HFX Wanderers FC,22.0,ram,Alex Marshall,0.4,90,0.06,0.16,0.0,0.0,0.0,0.0,0.33,3.0,51.33,11.9,12.5,8.83,Alex Marshall,1.17
+Atlético Ottawa,21.0,rb,Malyk Hamilton,0.39,90,0.0,0.07,0.0,0.0,0.0,0.0,0.14,3.71,61.0,8.44,11.71,6.29,Malyk Hamilton,0.29
+York9 FC,26.0,cf,Ryan Telfer,0.39,90,0.24,0.13,0.0,0.0,0.0,0.0,0.0,6.14,45.29,9.19,10.29,7.57,Ryan Telfer,2.57
+Valour FC,27.0,lb,Brett Levis,0.38,90,0.02,0.17,0.0,0.0,0.0,0.0,0.5,3.0,74.75,17.65,21.0,14.25,Brett Levis,4.25
+Forge FC,23.0,rw,David Choinière,0.36,90,0.15,0.09,0.14,0.0,0.0,0.0,0.14,2.71,43.29,6.26,11.43,6.43,David Choinière,1.0
+York9 FC,30.0,cam,Kyle Porter,0.36,90,0.14,0.16,0.25,0.0,0.0,0.0,0.25,5.75,49.75,20.0,21.5,10.25,Kyle Porter,4.75
+Valour FC,23.0,cm,Moses Dyer,0.36,90,0.28,0.04,0.33,0.0,0.0,0.33,0.0,1.0,44.67,33.33,27.33,19.67,Moses Dyer,2.0
+HFX Wanderers FC,25.0,cm,Aboubacar Sissoko,0.36,90,0.04,0.02,0.0,0.0,0.0,0.0,0.0,0.12,64.5,8.34,10.25,6.25,Aboubacar Sissoko,2.12
+Valour FC,25.0,cm,Dylan Carreiro,0.35,90,0.42,0.08,0.25,0.0,0.0,0.0,0.0,5.0,47.25,17.85,19.5,18.5,Dylan Carreiro,2.5
+FC Edmonton,26.0,cam,Keven Steven Alemán Bustos,0.35,90,0.17,0.27,0.17,0.0,0.0,0.0,0.0,3.33,57.0,9.8,13.5,8.17,Keven Alemán,1.83
+HFX Wanderers FC,25.0,cam,Omar Kreim,0.34,90,0.09,0.16,0.25,0.0,0.25,0.0,0.0,2.0,58.75,17.1,19.0,12.0,Omar Kreim,2.0
+Valour FC,25.0,ram,Fraser Aird,0.34,90,0.23,0.14,0.2,0.2,0.0,0.0,0.0,5.0,52.0,8.0,15.0,6.2,Fraser Aird,6.6
+Pacific FC,31.0,cm,Jamar Dixon,0.34,90,0.2,0.03,0.14,0.0,0.0,0.0,0.0,0.0,38.0,12.34,11.29,7.29,Jamar Dixon,3.14
+Forge FC,25.0,cm,Elimane Oumar Cissé,0.34,90,0.11,0.14,0.0,0.0,0.0,0.0,0.0,1.33,59.33,12.32,13.33,9.17,Elimane Cissé,0.5
+Pacific FC,22.0,ram,Zachary Verhoven,0.33,90,0.11,0.48,0.33,0.0,0.0,0.0,0.33,8.67,87.33,17.47,25.67,12.67,Zach Verhoven,5.33
+HFX Wanderers FC,23.0,cf,Cory Bent,0.32,90,0.07,0.11,0.17,0.0,0.0,0.0,0.0,3.83,40.33,8.77,10.33,8.5,Cory Bent,3.83
+FC Edmonton,20.0,ram,Antony Caceres,0.31,90,0.02,0.37,0.0,0.0,0.0,0.0,0.33,0.67,43.0,26.67,29.67,20.0,Anthony Caceres,6.67
+FC Edmonton,23.0,cm,Erik Zetterberg,0.31,90,0.04,0.15,0.0,0.0,0.0,0.0,0.0,2.8,66.8,11.42,16.0,8.8,Erik Zetterberg,4.2
+Valour FC,34.0,dm,José Antonio Galán Pedrosa,0.31,90,0.07,0.13,0.33,0.0,0.0,0.0,0.33,1.0,86.67,18.33,28.33,15.67,José Galán,7.0
+Valour FC,23.0,cm,Diego Gutiérrez,0.31,90,0.02,0.02,0.0,0.0,0.0,0.0,0.0,1.4,77.6,11.26,16.8,8.6,Diego Gutiérrez,1.6
+Cavalry FC,26.0,cam,Sergio Camargo,0.31,90,0.97,0.08,1.0,1.0,0.0,0.0,0.0,4.0,62.0,75.0,79.0,58.0,Sergio Camargo,10.0
+Cavalry FC,22.0,cm,Elliot Simmons,0.3,90,0.01,0.11,0.0,0.0,0.0,0.0,0.0,0.71,65.29,5.61,11.71,5.29,Elliot Simmons,2.14
+HFX Wanderers FC,25.0,cm,Louis Béland-Goyette,0.3,90,0.02,0.1,0.0,0.0,0.0,0.0,0.0,0.86,62.86,6.19,11.29,4.86,Louis Béland-Goyette,0.71
+Valour FC,29.0,rb,Stefan Cebara,0.3,90,0.09,0.11,0.0,0.0,0.0,0.0,0.0,0.4,61.8,15.56,15.6,9.4,Stefan Cebara,2.8
+Valour FC,25.0,dm,Raphael Ohin,0.3,90,0.05,0.08,0.0,0.0,0.0,0.0,0.0,0.0,58.0,9.72,14.5,8.0,Raphael Ohin,4.5
+Atlético Ottawa,23.0,cm,Víctor Martínez Manrique,0.3,90,0.15,0.0,0.17,0.0,0.0,0.0,0.0,0.33,54.33,7.93,13.0,7.17,Viti Martínez,0.83
+Pacific FC,19.0,cm,Sean Young,0.3,90,0.04,0.07,0.0,0.0,0.0,0.0,0.0,0.2,53.6,15.0,16.4,10.0,Sean Young,4.0
+Atlético Ottawa,27.0,lm,Ben Fisk,0.3,90,0.06,0.07,0.14,0.0,0.0,0.0,0.0,2.0,41.57,5.81,11.14,4.29,Ben Fisk,1.43
+York9 FC,25.0,cm,Wataru Murofushi,0.29,90,0.03,0.14,0.0,0.0,0.0,0.0,0.0,0.0,62.75,20.0,22.25,13.0,Wataru Murofushi,5.75
+Pacific FC,20.0,cm,Alessandro Hojabrpour,0.29,90,0.12,0.03,0.0,0.0,0.0,0.0,0.0,0.25,53.25,19.12,20.0,15.0,Alessandro Hojabrpour,5.25
+Atlético Ottawa,27.0,cm,Ben McKendry,0.29,90,0.02,0.01,0.0,0.0,0.0,0.0,0.0,0.8,58.4,13.34,15.6,10.4,Ben McKendry,4.4
+Cavalry FC,25.0,cm,Bruno Zebie,0.28,90,0.19,0.01,0.0,0.0,0.0,0.0,0.0,0.6,50.6,12.64,16.4,9.2,Bruno Zebie,3.2
+Pacific FC,26.0,lm,Josh Heard,0.27,90,0.59,0.18,0.5,0.0,0.0,0.0,0.5,6.0,51.0,25.0,36.0,19.0,Josh Heard,5.5
+FC Edmonton,24.0,cam,Hanson Boakai,0.26,90,0.1,0.04,0.0,0.0,0.0,0.0,0.0,4.0,68.0,14.3,29.67,13.67,Hanson Boakai,3.33
+York9 FC,19.0,cm,Isaiah Johnston,0.26,90,,,,,,,,,inf,inf,inf,inf,Isaiah Johnston,inf
+Pacific FC,21.0,cm,Noah Verhoeven,0.26,90,0.04,0.06,0.0,0.0,0.0,0.0,0.0,2.5,57.5,37.5,37.0,32.5,Noah Verhoeven,9.5
+FC Edmonton,19.0,dm,Chance Carter,0.25,90,0.02,0.06,0.0,0.0,0.0,0.0,0.0,0.0,60.5,37.5,43.5,26.0,Chance Carter,7.0
+Atlético Ottawa,17.0,cm,Antoine Coupland,0.22,90,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,29.0,80.0,75.0,56.0,Antoine Coupland,11.0
+FC Edmonton,29.0,dm,Yong-Chan Son,0.22,90,0.0,0.07,0.0,0.0,0.0,0.0,0.0,1.67,57.33,13.33,27.67,11.0,Yong-Chan Son,2.33
+Atlético Ottawa,25.0,dm,Ajay Khabra,0.22,90,0.04,0.02,0.0,0.0,0.0,0.0,0.0,0.33,55.0,16.67,28.67,9.67,Ajay Khabra,7.67
+HFX Wanderers FC,19.0,cm,Scott Firth,0.21,90,0.0,0.06,0.0,0.0,0.0,0.0,0.0,0.0,71.0,40.0,87.0,56.0,Scott Firth,15.0
+York9 FC,26.0,dm,Chris Mannella,0.21,90,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,69.0,66.7,76.0,48.0,Chris Mannella,5.0
+Valour FC,21.0,rb,Dante Campbell,0.21,90,0.0,0.01,0.0,0.0,0.0,0.0,0.0,0.33,52.33,16.67,24.33,13.67,Dante Campbell,16.0
+Atlético Ottawa,22.0,cm,Michel Djaozandry,0.2,90,,,,,,,,,inf,inf,inf,inf,Michel Djaozandry,inf
+York9 FC,20.0,ram,Max Ferrari,0.19,90,0.13,0.0,0.0,0.0,0.0,0.0,0.0,3.0,41.5,25.0,40.0,14.5,Max Ferrari,8.0
+Valour FC,20.0,lam,Solomon Kojo Antwi,0.16,90,0.02,0.0,0.0,0.0,0.0,0.0,0.0,0.0,43.0,44.4,74.0,28.0,Solomon Kojo Antwi,25.0
+York9 FC,25.0,ram,Michael Petrasso,0.15,90,0.58,0.0,0.0,0.0,0.0,0.0,0.0,4.0,42.0,0.0,84.0,40.0,Michael Petrasso,21.0
+Atlético Ottawa,18.0,sa,Matteo de Brienne,,90,,,,,,,,,,,,,Matteo  de Brienne,inf
+York9 FC,18.0,sm,Julian Altobelli,,90,,,,,,,,,,,,,Julian Altobelli,inf

@@ -1,53 +1,50 @@
-team,Age,pos,name,overall,Min,Goal,GoalDirFK,GoalHead,Clrnce,Int,TcklMade%,DuelsW%,display
-York United,25,rcb,Luca Gasparotto,0.67,90,0.04,0.0,0.04,4.18,1.75,2.7,2.57,Luca Gasparotto
-HFX Wanderers,26,lcb,Matthew Arnone,0.63,90,0.09,0.0,0.04,4.3,2.13,3.0,2.7,Matthew Arnone
-Forge,24,lcb,Daniel Krutzen,0.62,90,0.04,0.0,0.04,3.52,1.7,2.79,2.19,Daniel Krutzen
-Cavalry,26,rcb,Dominick Zator,0.62,90,0.04,0.0,0.04,2.81,1.89,3.0,2.33,Dominick Zator
-Pacific,25,rcb,Lukas MacNaughton,0.62,90,0.11,0.0,0.11,5.0,1.53,4.17,3.0,Lukas MacNaughton
-Edmonton,25,lcb,Mélé Temguia,0.56,90,0.07,0.0,0.0,3.04,1.89,2.69,2.11,Mélé Temguia
-Forge,27,rb,Giuliano Frano,0.5,90,0.05,0.0,0.05,1.55,1.86,3.34,2.5,Giuliano Frano
-Pacific,26,lw,Victor Blasco,0.49,90,0.33,0.11,0.0,0.22,0.11,3.1,2.61,Victor Blasco
-Edmonton,25,rcb,Amer Didic,0.48,90,0.0,0.0,0.0,6.06,1.39,4.61,3.83,Amer Didic
-Pacific,29,lcb,Hendrik Starostzik,0.47,90,0.08,0.0,0.08,5.54,1.92,5.26,4.54,Hendrik Starostzik
-HFX Wanderers,30,rb,André Bona,0.47,90,0.0,0.0,0.0,3.3,1.39,3.73,2.52,André Bona
-Forge,26,rcb,Dominic Samuel,0.47,90,0.0,0.0,0.0,3.12,1.29,3.66,2.33,Dominic Samuel
-Valour,27,rcb,Skylar Rutherford Thomas,0.46,90,0.0,0.0,0.0,4.86,1.1,3.67,2.86,Skylar Thomas
-Cavalry,24,rcb,Joel Waterman,0.46,90,0.05,0.0,0.0,2.37,2.47,3.64,3.32,Joel Waterman
-HFX Wanderers,24,rcb,Peter Schaale,0.46,90,0.06,0.0,0.0,5.88,1.41,4.49,3.53,Peter Schaale
-York United,26,rb,Morey Doner,0.45,90,0.04,0.0,0.0,1.4,1.28,2.96,2.44,Morey Doner
-Pacific,29,lb,Blake Smith,0.45,90,0.0,0.0,0.0,2.41,1.95,3.39,2.55,Blake Smith
-York United,22,lb,Diyaeddine Abzi,0.44,90,0.05,0.0,0.0,1.55,2.4,3.53,2.5,Diyaeddine Abzi
-Forge,27,lcb,Bertrand Owundi,0.43,90,0.0,0.0,0.0,4.6,1.2,3.52,2.75,Bertrand Owundi
-Pacific,22,rb,Kadin Chung,0.43,90,0.04,0.0,0.0,1.83,1.35,3.26,2.39,Kadin Chung
-Edmonton,24,rb,Jeannot Esua,0.42,90,0.0,0.0,0.0,2.0,1.65,3.84,3.1,Jeannot Esua
-Valour,27,lcb,Jordan Peter Murrell,0.41,90,0.0,0.0,0.0,3.15,1.3,3.82,2.9,Jordan Murrell
-Cavalry,32,rcb,Jonathan Wheeldon,0.4,90,0.0,0.0,0.0,4.18,0.82,5.23,3.59,Jay Wheeldon
-Forge,25,lb,Kwame Awuah,0.4,90,0.0,0.0,0.0,0.91,1.86,3.66,2.18,Kwame Awuah
-Forge,33,rcb,David Edward Edgar,0.39,90,0.11,0.0,0.11,4.0,0.89,8.33,7.11,David Edward Edgar
-Valour,29,lb,Martín Arguiñarena,0.38,90,0.0,0.0,0.0,1.06,2.06,4.06,3.82,Martín Arguiñarena
-Cavalry,25,lb,Nathan Mavila,0.38,90,0.0,0.0,0.0,2.05,1.0,3.13,2.41,Nathan Mavila
-HFX Wanderers,21,lcb,Chrisnovic N'Sa,0.38,90,0.0,0.0,0.0,3.14,1.79,5.95,4.43,Chris N'sa
-Edmonton,27,lb,Allan Zebie,0.37,90,0.0,0.0,0.0,1.41,1.23,3.2,2.36,Allan Zebie
-Valour,27,lcb,Adam Mitter,0.37,90,0.0,0.0,0.0,2.94,1.71,3.71,3.06,Adam Mitter
-York United,24,lcb,Daniel Gogarty,0.36,90,0.0,0.0,0.0,2.35,1.24,4.49,3.35,Daniel Gogarty
-York United,27,rcb,Justin Springer,0.36,90,0.0,0.0,0.0,4.7,1.0,9.09,7.1,Justin Springer
-Cavalry,34,lcb,Mason Trafford,0.36,90,0.0,0.0,0.0,2.71,0.71,3.01,2.62,Mason Trafford
-Pacific,22,rb,Zachary Verhoven,0.35,90,0.14,0.0,0.0,1.93,1.43,4.46,3.71,Zach Verhoven
-Pacific,29,lcb,Ryan McCurdy,0.34,90,0.0,0.0,0.0,4.38,1.62,11.61,8.88,Ryan McCurdy
-Pacific,22,lcb,Matthew Baldisimo,0.33,90,0.0,0.0,0.0,1.45,1.25,2.86,2.25,Matthew Baldisimo
-Edmonton,30,rb,Kareem Moses,0.33,90,0.0,0.0,0.0,2.36,1.27,7.27,6.64,Kareem Moses
-Pacific,20,rcb,Émile Legault,0.33,90,0.0,0.0,0.0,4.1,2.1,7.38,5.9,Émile Legault
-York United,29,lcb,Roger Thompson,0.3,90,0.0,0.0,0.0,4.44,1.67,7.69,6.0,Roger Thompson
-HFX Wanderers,22,lb,Ndzemdzela Langwa,0.3,90,0.0,0.0,0.0,1.43,1.0,4.94,4.07,Zoom Langwa
-HFX Wanderers,25,lcb,Duran Lee,0.3,90,0.0,0.0,0.0,2.62,1.12,12.08,7.12,Duran Lee
-Forge,27,rb,Jonathan Grant,0.29,90,0.1,0.0,0.0,1.5,1.3,8.11,4.5,Jonathan Grant
-HFX Wanderers,28,lb,Alex De Carolis,0.29,90,0.0,0.0,0.0,2.43,1.0,4.59,3.36,Alex De Carolis
-Valour,21,rb,Raphaël Garcia,0.28,90,0.0,0.0,0.0,2.0,0.9,7.33,5.6,Raphaël Garcia
-Valour,20,lcb,Yohan Le Bourhis,0.28,90,0.0,0.0,0.0,5.12,0.62,10.0,6.0,Yohan Le Bourhis
-Forge,21,rb,Klaidi Cela,0.27,90,0.25,0.0,0.0,4.5,1.25,18.42,15.5,Klaidi Cela
-Cavalry,21,rb,Malyk Hamilton,0.27,90,0.0,0.0,0.0,0.86,0.57,4.57,3.79,Malyk Hamilton
-HFX Wanderers,29,rcb,Chakib Hocine,0.26,90,0.0,0.0,0.0,3.0,2.0,25.0,12.5,Chakib Hocine
-Edmonton,29,rb,Yong-Chan Son,0.25,90,0.0,0.0,0.0,0.27,0.73,7.13,4.27,Yong-Chan Son
-Forge,18,lb,Oluwaseun Oyegunle,0.25,90,,,,inf,inf,inf,inf,Oluwaseun Oyegunle
-Forge,20,lb,Montther Mohsen,0.19,90,0.25,0.0,0.0,1.5,1.25,11.85,10.5,Montther Mohsen
-Cavalry,22,lw,Gabriel Bitar,0.12,90,0.0,0.0,0.0,1.0,0.0,50.0,29.0,Gabriel Bitar
+team,Age,pos,name,overall,Min,Goal,GoalDirFK,GoalHead,Clrnce,Int,TcklMade%,DuelsW%,display,number
+HFX Wanderers FC,26,lcb,Matthew Arnone,0.71,90,0.09,0.0,0.04,4.3,2.13,3.0,2.7,Matthew Arnone,1.0
+York9 FC,25,rcb,Luca Gasparotto,0.71,90,0.04,0.0,0.04,4.18,1.75,2.7,2.57,Luca Gasparotto,0.46
+Pacific FC,25,rcb,Lukas MacNaughton,0.7,90,0.11,0.0,0.11,5.0,1.53,4.17,3.0,Lukas MacNaughton,0.74
+Cavalry FC,26,rcb,Dominick Zator,0.66,90,0.04,0.0,0.04,2.81,1.89,3.0,2.33,Dominick Zator,0.15
+Forge FC,24,lcb,Daniel Krutzen,0.66,90,0.04,0.0,0.04,3.52,1.7,2.79,2.19,Daniel Krutzen,0.37
+FC Edmonton,25,lcb,Mélé Temguia,0.65,90,0.07,0.0,0.0,3.04,1.89,2.69,2.11,Mélé Temguia,0.3
+FC Edmonton,31,cm,Ramon Soria,0.58,90,0.05,0.05,0.0,1.18,1.45,3.39,2.45,Ramón Soria,0.23
+Pacific FC,29,lcb,Hendrik Starostzik,0.51,90,0.08,0.0,0.08,5.54,1.92,5.26,4.54,Hendrik Starostzik,1.23
+HFX Wanderers FC,24,rcb,Peter Schaale,0.5,90,0.06,0.0,0.0,5.88,1.41,4.49,3.53,Peter Schaale,0.12
+York9 FC,26,rb,Morey Doner,0.49,90,0.04,0.0,0.0,1.4,1.28,2.96,2.44,Morey Doner,0.12
+York9 FC,22,lb,Diyaeddine Abzi,0.48,90,0.05,0.0,0.0,1.55,2.4,3.53,2.5,Diyaeddine Abzi,1.0
+FC Edmonton,25,rcb,Amer Didic,0.48,90,0.0,0.0,0.0,6.06,1.39,4.61,3.83,Amer Didic,3.06
+HFX Wanderers FC,30,rb,André Bona,0.47,90,0.0,0.0,0.0,3.3,1.39,3.73,2.52,André Bona,0.13
+Pacific FC,22,rb,Kadin Chung,0.47,90,0.04,0.0,0.0,1.83,1.35,3.26,2.39,Kadin Chung,0.3
+Forge FC,26,rcb,Dominic Samuel,0.47,90,0.0,0.0,0.0,3.12,1.29,3.66,2.33,Dominic Samuel,0.92
+Valour FC,27,rcb,Skylar Rutherford Thomas,0.46,90,0.0,0.0,0.0,4.86,1.1,3.67,2.86,Skylar Thomas,0.14
+Pacific FC,29,lb,Blake Smith,0.45,90,0.0,0.0,0.0,2.41,1.95,3.39,2.55,Blake Smith,0.18
+Forge FC,27,lcb,Bertrand Owundi,0.43,90,0.0,0.0,0.0,4.6,1.2,3.52,2.75,Bertrand Owundi,0.8
+Forge FC,33,rcb,David Edward Edgar,0.43,90,0.11,0.0,0.11,4.0,0.89,8.33,7.11,David Edgar,3.33
+FC Edmonton,24,rb,Jeannot Esua,0.42,90,0.0,0.0,0.0,2.0,1.65,3.84,3.1,Jeannot Esua,0.15
+Valour FC,27,lcb,Jordan Peter Murrell,0.41,90,0.0,0.0,0.0,3.15,1.3,3.82,2.9,Jordan Murrell,0.2
+Cavalry FC,32,rcb,Jonathan Wheeldon,0.4,90,0.0,0.0,0.0,4.18,0.82,5.23,3.59,Jay Wheeldon,0.82
+Forge FC,25,lb,Kwame Awuah,0.4,90,0.0,0.0,0.0,0.91,1.86,3.66,2.18,Kwame Awuah,0.09
+HFX Wanderers FC,21,lcb,Chrisnovic N'Sa,0.38,90,0.0,0.0,0.0,3.14,1.79,5.95,4.43,Chris N'sa,0.43
+Cavalry FC,25,lb,Nathan Mavila,0.38,90,0.0,0.0,0.0,2.05,1.0,3.13,2.41,Nathan Mavila,0.14
+Valour FC,29,lb,Martín Arguiñarena,0.38,90,0.0,0.0,0.0,1.06,2.06,4.06,3.82,Martín Arguiñarena,0.35
+FC Edmonton,27,lb,Allan Zebie,0.37,90,0.0,0.0,0.0,1.41,1.23,3.2,2.36,Allan Zebie,0.18
+Valour FC,27,lcb,Adam Mitter,0.37,90,0.0,0.0,0.0,2.94,1.71,3.71,3.06,Adam Mitter,0.88
+Cavalry FC,34,lcb,Mason Trafford,0.36,90,0.0,0.0,0.0,2.71,0.71,3.01,2.62,Mason Trafford,0.24
+York9 FC,24,lcb,Daniel Gogarty,0.36,90,0.0,0.0,0.0,2.35,1.24,4.49,3.35,Daniel Gogarty,0.12
+York9 FC,27,rcb,Justin Springer,0.36,90,0.0,0.0,0.0,4.7,1.0,9.09,7.1,Justin Springer,0.5
+Pacific FC,29,lcb,Ryan McCurdy,0.34,90,0.0,0.0,0.0,4.38,1.62,11.61,8.88,Ryan McCurdy,0.38
+Pacific FC,20,rcb,Émile Legault,0.33,90,0.0,0.0,0.0,4.1,2.1,7.38,5.9,Emile Legault,2.0
+Forge FC,27,rb,Jonathan Grant,0.33,90,0.1,0.0,0.0,1.5,1.3,8.11,4.5,Jonathan Grant,0.8
+FC Edmonton,30,rb,Kareem Moses,0.33,90,0.0,0.0,0.0,2.36,1.27,7.27,6.64,Kareem Moses,1.09
+Forge FC,21,rb,Klaidi Cela,0.31,90,0.25,0.0,0.0,4.5,1.25,18.42,15.5,Klaidi Cela,4.0
+HFX Wanderers FC,25,lcb,Duran Lee,0.3,90,0.0,0.0,0.0,2.62,1.12,12.08,7.12,Duran Lee,2.0
+HFX Wanderers FC,22,lb,Ndzemdzela Langwa,0.3,90,0.0,0.0,0.0,1.43,1.0,4.94,4.07,Zoom Langwa,1.43
+York9 FC,29,lcb,Roger Thompson,0.3,90,0.0,0.0,0.0,4.44,1.67,7.69,6.0,Roger Thompson,0.67
+HFX Wanderers FC,28,lb,Alex De Carolis,0.29,90,0.0,0.0,0.0,2.43,1.0,4.59,3.36,Alex De Carolis,1.71
+Cavalry FC,29,rm,Dean Northover,0.28,90,0.0,0.0,0.0,1.43,2.14,11.43,8.14,Dean Northover,1.71
+Valour FC,21,rb,Raphaël Garcia,0.28,90,0.0,0.0,0.0,2.0,0.9,7.33,5.6,Raphaël Garcia,0.2
+Valour FC,20,lcb,Yohan Le Bourhis,0.28,90,0.0,0.0,0.0,5.12,0.62,10.0,6.0,Yohan Le Bourhis,3.12
+HFX Wanderers FC,29,rcb,Chakib Hocine,0.26,90,0.0,0.0,0.0,3.0,2.0,25.0,12.5,Chakib Hocine,1.0
+Pacific FC,34,cam,Marcel de Jong,0.25,90,0.0,0.0,0.0,2.0,0.0,100.0,71.0,Marcel de Jong,8.0
+Forge FC,18,lb,Oluwaseun Oyegunle,0.25,90,,,,inf,inf,inf,inf,Oluwaseun Oyegunle,inf
+York9 FC,22,cm,Steven Furlano,0.24,90,0.0,0.0,0.0,1.0,1.67,13.88,7.5,Steven Furlano,12.83
+Forge FC,20,lb,Montther Mohsen,0.23,90,0.25,0.0,0.0,1.5,1.25,11.85,10.5,Monti Mohsen,2.75
+HFX Wanderers FC,25,ram,Zachary Sukunda,0.21,90,0.0,0.0,0.0,1.22,0.78,6.67,4.44,Zachary Sukunda,2.78

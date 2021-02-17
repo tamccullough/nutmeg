@@ -1,35 +1,44 @@
-team,Age,pos,name,overall,Min,ExpG,ExpA,Goal,PenGoal,GoalDirFK,GoalHead,Ast,BgChnc,BgChncCrtd,ChncOpnPl,Chance,SOG,SOTInBox,SOTOBox,ShotDirFK,SOTHead,Pass%,display
-Pacific,22,cf,Terran Campbell,0.65,90,0.34,0.11,0.42,0.04,0.0,0.15,0.08,0.46,0.12,1.15,1.19,0.88,0.69,0.19,0.12,0.19,2.96,Terran Campbell
-York United,29,cf,Rodrigo Pablo Gattas Bertoni,0.62,90,0.42,0.09,0.41,0.09,0.0,0.09,0.0,0.55,0.14,1.0,1.05,1.64,1.18,0.45,0.05,0.36,3.45,Rodrigo Gattas
-Cavalry,31,cf,Dominique Malonga,0.58,90,0.71,0.16,0.5,0.05,0.0,0.05,0.05,1.23,0.23,0.77,0.86,1.55,1.32,0.23,0.0,0.14,3.73,Dominique Malonga
-Pacific,26,lw,Victor Blasco,0.57,90,0.16,0.21,0.33,0.0,0.11,0.0,0.17,0.28,0.33,1.17,1.5,1.0,0.44,0.56,0.28,0.06,4.17,Victor Blasco
-Edmonton,26,cf,Oumar Diouck,0.53,90,0.22,0.16,0.27,0.0,0.0,0.05,0.09,0.32,0.23,1.09,1.36,0.73,0.36,0.36,0.27,0.05,3.5,Oumar Diouck
-Valour,25,cf,Michael Petrasso,0.47,90,0.47,0.27,0.43,0.29,0.0,0.0,0.36,0.57,0.29,1.43,1.57,0.93,0.57,0.36,0.0,0.0,5.64,Michael Petrasso
-Edmonton,22,cf,Easton Ongaro,0.45,90,0.65,0.1,0.77,0.0,0.0,0.23,0.15,1.0,0.15,0.69,0.85,1.54,1.38,0.15,0.15,0.38,5.69,Easton Ongaro
-HFX Wanderers,24,cf,Akeem Garcia,0.37,90,0.29,0.06,0.3,0.0,0.0,0.0,0.0,0.61,0.09,0.65,0.65,1.0,0.96,0.04,0.0,0.04,3.48,Akeem Garcia
-Cavalry,24,cf,Jordan Brown,0.35,90,0.44,0.2,0.25,0.0,0.0,0.06,0.06,0.56,0.38,0.88,1.06,0.81,0.69,0.12,0.0,0.06,4.69,Jordan Brown
-York United,27,cf,Simon Karlsson Adjei,0.35,90,0.48,0.09,0.44,0.0,0.0,0.0,0.12,0.62,0.06,1.19,1.31,1.0,0.88,0.12,0.0,0.06,4.56,Simon Karlsson Adjei
-Edmonton,32,cf,Tomi Ameobi,0.35,90,0.2,0.1,0.19,0.05,0.0,0.05,0.0,0.24,0.14,1.0,1.05,0.48,0.48,0.0,0.0,0.14,3.57,Tomi Ameobi
-Forge,22,cf,Marcel Dominik Zajac,0.33,90,0.42,0.24,0.08,0.0,0.0,0.08,0.25,0.67,0.42,1.0,1.08,0.92,0.83,0.08,0.0,0.17,6.67,Marcel Dominik Zajac
-Forge,26,cf,Anthony Joseph Novak,0.33,90,0.29,0.22,0.5,0.0,0.0,0.0,0.25,0.58,0.42,1.0,1.17,1.08,0.92,0.17,0.0,0.0,5.5,Anthony Joseph Novak
-Valour,19,cf,Tyler Attardo,0.29,90,0.4,0.06,0.55,0.0,0.0,0.27,0.0,0.64,0.09,0.45,0.64,1.0,0.82,0.18,0.0,0.36,5.64,Tyler Attardo
-Forge,29,cf,Emery Welshman,0.29,90,0.5,0.2,0.3,0.1,0.0,0.0,0.2,0.7,0.3,1.5,1.5,0.9,0.8,0.1,0.0,0.1,7.2,Emery Welshman
-HFX Wanderers,23,cf,Tomasz Skublak,0.28,90,0.32,0.1,0.07,0.0,0.0,0.0,0.07,0.53,0.07,1.27,1.33,0.87,0.73,0.13,0.0,0.07,4.67,Tomasz Skublak
-HFX Wanderers,34,cf,Luis Alberto Perea,0.28,90,0.31,0.08,0.27,0.18,0.0,0.0,0.09,0.45,0.09,1.0,1.09,1.0,0.64,0.36,0.0,0.09,6.82,Luis Alberto Perea
-Pacific,31,cf,Marcus Haber,0.24,90,0.52,0.17,0.38,0.12,0.0,0.25,0.0,0.75,0.12,1.0,1.12,0.75,0.75,0.0,0.0,0.5,7.38,Marcus Haber
-Pacific,20,cf,José Hernández,0.23,90,0.26,0.2,0.14,0.0,0.0,0.14,0.29,0.29,0.29,0.86,0.86,1.0,0.71,0.29,0.0,0.43,11.14,José Hernández
-Valour,34,cf,Michele Paolucci,0.22,90,0.23,0.07,0.23,0.0,0.0,0.0,0.15,0.15,0.08,0.46,0.46,0.85,0.54,0.31,0.0,0.0,5.0,Michele Paolucci
-Valour,24,cf,Ali Musse,0.2,90,0.3,0.16,0.25,0.0,0.0,0.0,0.25,0.25,0.12,1.0,1.0,1.25,1.0,0.25,0.0,0.0,8.88,Ali Musse
-Pacific,36,cf,Issey Nakajima-Farran,0.18,90,0.34,0.02,0.33,0.0,0.33,0.0,0.0,0.33,0.0,0.67,0.67,1.67,0.33,1.33,1.33,0.0,23.67,Issey Nakajima-Farran
-Edmonton,30,cf,Randy Edwini-Bonsu,0.17,90,0.15,0.39,0.0,0.0,0.0,0.0,0.25,0.0,0.5,1.25,2.5,1.5,0.5,1.0,0.25,0.0,16.25,Randy Edwini-Bonsu
-Forge,23,cf,Jace Kotsopoulos,0.12,90,0.86,0.02,1.0,0.0,0.0,0.5,0.0,1.5,0.0,0.5,0.5,2.5,2.5,0.0,0.0,0.5,39.5,Jace Kotsopoulos
-Edmonton,25,cf,Ajeej Sarkaria,0.11,90,0.15,0.07,0.0,0.0,0.0,0.0,0.17,0.17,0.17,0.33,0.33,0.33,0.17,0.17,0.0,0.0,12.67,Ajeej Sarkaria
-Cavalry,22,lw,Gabriel Bitar,0.1,90,0.72,0.1,0.0,0.0,0.0,0.0,0.0,2.0,0.0,2.0,2.0,4.0,1.0,3.0,0.0,0.0,88.0,Gabriel Bitar
-Valour,28,cf,Stephen Hoyle,0.09,90,0.68,0.04,0.33,0.0,0.0,0.0,0.0,1.0,0.0,0.67,1.0,0.67,0.67,0.0,0.0,0.0,23.0,Stephen Hoyle
-York United,28,cf,Michael Cox,0.09,90,0.17,0.05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.5,0.5,0.0,0.0,0.5,44.0,Michael Cox
-Valour,25,cf,Calum Ferguson,0.08,90,0.31,0.0,0.25,0.0,0.0,0.0,0.0,0.25,0.0,0.0,0.0,0.75,0.75,0.0,0.0,0.0,18.25,Calum Ferguson
-York United,25,cf,Stefan Lamanna,0.08,90,0.17,0.53,0.0,0.0,0.0,0.0,1.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,77.0,Stefan Lamanna
-York United,22,cf,Cyrus Rollocks,0.07,90,0.19,0.28,0.0,0.0,0.0,0.0,0.0,0.33,0.33,1.33,1.33,0.0,0.0,0.0,0.0,0.0,17.33,Cyrus Rollocks
-HFX Wanderers,21,cf,Vincent Lamy,0.06,90,0.12,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,79.0,Vincent Lamy
-Cavalry,17,ss,Aribim Pepple,0.06,90,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,78.0,Aribim Pepple
-HFX Wanderers,21,sa,Abd-El-Aziz Yousef,,90,,,,,,,,,,,,,,,,,,Abd-El-Aziz Yousef
+team,Age,pos,name,overall,Min,ExpG,ExpA,Goal,PenGoal,GoalDirFK,GoalHead,Ast,BgChnc,BgChncCrtd,ChncOpnPl,Chance,SOG,SOTInBox,SOTOBox,ShotDirFK,SOTHead,Pass%,display,number
+Pacific FC,22,cf,Terran Campbell,0.62,90,0.34,0.11,0.42,0.04,0.0,0.15,0.08,0.46,0.12,1.15,1.19,0.88,0.69,0.19,0.12,0.19,2.96,Terran Campbell,0.54
+York9 FC,29,cf,Rodrigo Pablo Gattas Bertoni,0.61,90,0.42,0.09,0.41,0.09,0.0,0.09,0.0,0.55,0.14,1.0,1.05,1.64,1.18,0.45,0.05,0.36,3.45,Rodrigo Gattas,1.0
+Cavalry FC,31,cf,Dominique Malonga,0.56,90,0.71,0.16,0.5,0.05,0.0,0.05,0.05,1.23,0.23,0.77,0.86,1.55,1.32,0.23,0.0,0.14,3.73,Dominique Malonga,0.86
+HFX Wanderers FC,30,lm,Mohamed Kourouma,0.53,90,0.19,0.31,0.05,0.05,0.0,0.0,0.14,0.09,0.59,0.91,2.0,0.77,0.27,0.5,0.41,0.0,3.09,Mohamed Kourouma,0.55
+FC Edmonton,26,cf,Oumar Diouck,0.47,90,0.22,0.16,0.27,0.0,0.0,0.05,0.09,0.32,0.23,1.09,1.36,0.73,0.36,0.36,0.27,0.05,3.5,Oumar Diouck,2.05
+FC Edmonton,22,cf,Easton Ongaro,0.43,90,0.65,0.1,0.77,0.0,0.0,0.23,0.15,1.0,0.15,0.69,0.85,1.54,1.38,0.15,0.15,0.38,5.69,Easton Ongaro,1.46
+Cavalry FC,25,ram,Nico Pasquotti,0.41,90,0.26,0.16,0.23,0.0,0.0,0.05,0.14,0.45,0.23,0.82,1.14,0.73,0.73,0.0,0.0,0.14,3.32,Nico Pasquotti,0.77
+Cavalry FC,28,cam,Oliver Minatel,0.36,90,0.42,0.18,0.44,0.0,0.0,0.12,0.06,0.75,0.25,1.0,1.06,0.75,0.69,0.06,0.0,0.19,4.75,Oliver Minatel,0.44
+York9 FC,27,cf,Simon Karlsson Adjei,0.34,90,0.48,0.09,0.44,0.0,0.0,0.0,0.12,0.62,0.06,1.19,1.31,1.0,0.88,0.12,0.0,0.06,4.56,Simon Karlsson Adjei,0.75
+FC Edmonton,32,cf,Tomi Ameobi,0.33,90,0.2,0.1,0.19,0.05,0.0,0.05,0.0,0.24,0.14,1.0,1.05,0.48,0.48,0.0,0.0,0.14,3.57,Tomi Ameobi,0.86
+Forge FC,25,lam,Christopher Lenroy Nanco,0.32,90,0.14,0.15,0.24,0.0,0.0,0.0,0.12,0.12,0.24,1.24,1.24,0.71,0.59,0.12,0.0,0.12,4.29,Chris Nanco,0.76
+Cavalry FC,24,cf,Jordan Brown,0.31,90,0.44,0.2,0.25,0.0,0.0,0.06,0.06,0.56,0.38,0.88,1.06,0.81,0.69,0.12,0.0,0.06,4.69,Jordan Brown,0.56
+Forge FC,22,cf,Marcel Dominik Zajac,0.31,90,0.42,0.24,0.08,0.0,0.0,0.08,0.25,0.67,0.42,1.0,1.08,0.92,0.83,0.08,0.0,0.17,6.67,Marcel Zajac,0.75
+Forge FC,26,cf,Anthony Joseph Novak,0.31,90,0.29,0.22,0.5,0.0,0.0,0.0,0.25,0.58,0.42,1.0,1.17,1.08,0.92,0.17,0.0,0.0,5.5,Anthony Novak,1.92
+HFX Wanderers FC,34,cf,Luis Alberto Perea,0.3,90,0.31,0.08,0.27,0.18,0.0,0.0,0.09,0.45,0.09,1.0,1.09,1.0,0.64,0.36,0.0,0.09,6.82,Luis Alberto Perea,0.91
+Forge FC,29,cf,Emery Welshman,0.29,90,0.5,0.2,0.3,0.1,0.0,0.0,0.2,0.7,0.3,1.5,1.5,0.9,0.8,0.1,0.0,0.1,7.2,Emery Welshman,1.4
+Valour FC,19,cf,Tyler Attardo,0.27,90,0.4,0.06,0.55,0.0,0.0,0.27,0.0,0.64,0.09,0.45,0.64,1.0,0.82,0.18,0.0,0.36,5.64,Tyler Attardo,1.45
+HFX Wanderers FC,23,cf,Tomasz Skublak,0.26,90,0.32,0.1,0.07,0.0,0.0,0.0,0.07,0.53,0.07,1.27,1.33,0.87,0.73,0.13,0.0,0.07,4.67,Tomasz Skublak,1.13
+Pacific FC,31,cf,Marcus Haber,0.24,90,0.52,0.17,0.38,0.12,0.0,0.25,0.0,0.75,0.12,1.0,1.12,0.75,0.75,0.0,0.0,0.5,7.38,Marcus Haber,1.12
+Valour FC,34,cf,Michele Paolucci,0.22,90,0.23,0.07,0.23,0.0,0.0,0.0,0.15,0.15,0.08,0.46,0.46,0.85,0.54,0.31,0.0,0.0,5.0,Michele Paolucci,1.31
+Pacific FC,20,cf,José Hernández,0.22,90,0.26,0.2,0.14,0.0,0.0,0.14,0.29,0.29,0.29,0.86,0.86,1.0,0.71,0.29,0.0,0.43,11.14,Jose Hernandez,2.14
+Pacific FC,36,cf,Issey Nakajima-Farran,0.19,90,0.34,0.02,0.33,0.0,0.33,0.0,0.0,0.33,0.0,0.67,0.67,1.67,0.33,1.33,1.33,0.0,23.67,Issey Nakajima-Farran,3.67
+Forge FC,24,lam,Kadell Thomas,0.16,90,0.12,0.22,0.5,0.0,0.0,0.0,0.17,0.0,0.33,0.67,0.67,1.17,0.67,0.5,0.0,0.0,12.5,Kadell Thomas,5.0
+Cavalry FC,21,rb,Malyk Hamilton,0.16,90,0.04,0.05,0.0,0.0,0.0,0.0,0.14,0.07,0.07,0.43,0.57,0.07,0.07,0.0,0.0,0.0,6.07,Malyk Hamilton,1.5
+Pacific FC,20,cm,Alessandro Hojabrpour,0.16,90,0.05,0.05,0.0,0.0,0.0,0.0,0.0,0.05,0.05,0.53,0.63,0.11,0.05,0.05,0.0,0.05,4.47,Alessandro Hojabrpour,1.11
+FC Edmonton,30,cf,Randy Edwini-Bonsu,0.15,90,0.15,0.39,0.0,0.0,0.0,0.0,0.25,0.0,0.5,1.25,2.5,1.5,0.5,1.0,0.25,0.0,16.25,Randy Edwini-Bonsu,2.75
+FC Edmonton,19,ram,Marcus Velado-Tsegaye,0.14,90,0.31,0.08,0.2,0.0,0.0,0.0,0.2,0.4,0.2,0.6,0.8,1.2,0.6,0.6,0.0,0.0,15.6,Marcus Velado-Tsegaye,3.4
+FC Edmonton,25,cf,Ajeej Sarkaria,0.11,90,0.15,0.07,0.0,0.0,0.0,0.0,0.17,0.17,0.17,0.33,0.33,0.33,0.17,0.17,0.0,0.0,12.67,Ajeej Sarkaria,1.5
+Cavalry FC,22,lw,Gabriel Bitar,0.1,90,0.72,0.1,0.0,0.0,0.0,0.0,0.0,2.0,0.0,2.0,2.0,4.0,1.0,3.0,0.0,0.0,88.0,Gabriel Bitar,19.0
+FC Edmonton,19,rm,Prince Amanda,0.09,90,0.08,0.2,0.5,0.0,0.0,0.0,0.5,0.0,0.5,0.5,0.5,0.5,0.5,0.0,0.0,0.0,35.0,Prince Amanda,8.0
+York9 FC,28,cf,Michael Cox,0.08,90,0.17,0.05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.5,0.5,0.0,0.0,0.5,44.0,Michael Cox,46.0
+York9 FC,25,cf,Stefan Lamanna,0.08,90,0.17,0.53,0.0,0.0,0.0,0.0,1.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,77.0,Stefan Lamanna,21.0
+Valour FC,28,cf,Stephen Hoyle,0.08,90,0.68,0.04,0.33,0.0,0.0,0.0,0.0,1.0,0.0,0.67,1.0,0.67,0.67,0.0,0.0,0.0,23.0,Stephen Hoyle,5.67
+York9 FC,24,ram,Austin Ricci,0.08,90,0.22,0.18,0.0,0.0,0.0,0.0,0.5,0.0,0.5,1.5,2.0,0.0,0.0,0.0,0.0,0.0,29.5,Austin Ricci,3.5
+Valour FC,21,rm,Federico Peña,0.08,90,0.02,0.21,0.0,0.0,0.0,0.0,0.0,0.0,0.5,0.5,0.5,0.25,0.0,0.25,0.0,0.0,18.0,Federico Peña,19.25
+Valour FC,25,cf,Calum Ferguson,0.07,90,0.31,0.0,0.25,0.0,0.0,0.0,0.0,0.25,0.0,0.0,0.0,0.75,0.75,0.0,0.0,0.0,18.25,Calum Ferguson,3.0
+Cavalry FC,19,cm,Victor Loturi,0.06,90,0.18,0.0,0.0,0.0,0.0,0.0,0.0,0.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,42.0,Victor Loturi,6.5
+York9 FC,22,cf,Cyrus Rollocks,0.06,90,0.19,0.28,0.0,0.0,0.0,0.0,0.0,0.33,0.33,1.33,1.33,0.0,0.0,0.0,0.0,0.0,17.33,Cyrus Rollocks,5.67
+Cavalry FC,25,lam,Oluwatofarati Fakunle,0.06,90,,,,,,,,,,,,,,,,,inf,Oluwatofarati Fakunle,inf
+HFX Wanderers FC,21,cf,Vincent Lamy,0.05,90,0.12,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,79.0,Vincent Lamy,14.0
+Cavalry FC,17,ss,Aribim Pepple,0.05,90,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,78.0,Aribim Pepple,24.0
+FC Edmonton,20,lam,David Doe,0.04,90,0.26,0.0,0.0,0.0,0.0,0.0,0.0,0.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,27.0,David Doe,13.0
+HFX Wanderers FC,21,sa,Abd-El-Aziz Yousef,,90,,,,,,,,,,,,,,,,,,Abd-El-Aziz Yousef,inf
