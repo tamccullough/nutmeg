@@ -37,17 +37,18 @@
 
 </head>
 
-{% include "nav.html" %}
-{% block body %}{% endblock %}
-
-<div class="desktop">
-  <div class="page80">
-    <div class="spacer"></div>
-    <h3 style="display: inline;">{{ weekday }} {{ month }} <b class="bold">{{ day }}</b></h3>
-  </div>
-</div>
-<!-- Top container -->
 <body id="top" class="{{ theme }}-colour">
+
+    {% include "nav.html" %}
+    {% block body %}{% endblock %}
+
+  <div class="desktop">
+    <div class="page80">
+      <div class="spacer"></div>
+      <h3 style="display: inline;">{{ weekday }} {{ month }} <b class="bold">{{ day }}</b></h3>
+    </div>
+  </div>
+  <!-- Top container -->
 
   <div class="container">
     <div class="page80">
@@ -56,9 +57,7 @@
         <a class="button text-white" href="#top">top</a>
       </button>
 
-      {% block content %}
-      {% endblock %}
-
+  {% block content %}{% endblock %}
 
       <!-- league information container -->
       <div>
@@ -106,9 +105,7 @@
         <a href="https://github.com/tamccullough" target="_blank"><i class="{{theme}}-colour fa fa-github"></i></a>
         <a href="https://www.linkedin.com/in/tamccullough/" target="_blank"><i class="{{theme}}-colour fa fa-linkedin"></i></a>
       </footer>
-      <div>
-        <p>{{ line_columns }}</p>
-      </div>
+
       <!-- End page content -->
     </div>
   </div>
@@ -137,9 +134,11 @@
               {{ player_line[i][-1] | safe}}
 
             ],
-            fill: false,
+            fill: true,
             borderColor: '{{ chart_team_colour_list[i] }}',
-            backgroundColor: '{{ chart_team_colour_list[i] }}'
+            backgroundColor: '{{ chart_team_colour_list[i] }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ chart_team_colour_list[i] }}'
           },
           {% endfor %}
           {
@@ -150,9 +149,11 @@
               {% endfor %}
               {{ player_line[-1][-1] | safe}}
             ],
-            fill: false,
+            fill: true,
             borderColor: '{{ chart_team_colour_list[-1] }}',
-            backgroundColor: '{{ chart_team_colour_list[-1] }}'
+            backgroundColor: '{{ chart_team_colour_list[-1] }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ chart_team_colour_list[-1] }}'
           }
         ],
       },
@@ -200,9 +201,11 @@
               {{ player_line[i][-1] | safe}}
 
             ],
-            fill: false,
+            fill: true,
             borderColor: '{{ chart_team_colour_list[i] }}',
-            backgroundColor: '{{ chart_team_colour_list[i] }}'
+            backgroundColor: '{{ chart_team_colour_list[i] }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ chart_team_colour_list[i] }}'
           },
           {% endfor %}
           {
@@ -213,9 +216,11 @@
               {% endfor %}
               {{ player_line[-1][-1] | safe}}
             ],
-            fill: false,
+            fill: true,
             borderColor: '{{ chart_team_colour_list[-1] }}',
-            backgroundColor: '{{ chart_team_colour_list[-1] }}'
+            backgroundColor: '{{ chart_team_colour_list[-1] }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ chart_team_colour_list[-1] }}'
           }
         ],
       },
@@ -253,7 +258,7 @@
           backgroundColor: '{{ colour2 }}'+'BF',
           borderColor: '{{ colour2 }}',
           pointHoverRadius: 10,
-          pointHoverBackgroundColor: "#fff",
+          pointHoverBackgroundColor: '{{ colour2 }}',
           pointBackgroundColor: '{{ colour2 }}'
         }]
       },

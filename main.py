@@ -442,6 +442,8 @@ def roster():
 
     player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
     roster = player_info[player_info['team'] == team][['name','image','position','number','flag','overall','link']]
+    team_ref = pd.read_csv('datasets/teams.csv')
+    team_ref = team_ref[team_ref['year'] == int(year)]
     coach = team_ref[team_ref['team'] == team][['cw','cl','cd','coach','country','image','w','l','d','year']]
 
     roster_team_info = team_ref[team_ref['team'] == team].copy()

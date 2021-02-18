@@ -104,35 +104,51 @@
     </div>
     <div class="boxl">
       <br>
-      <h2><b>{{ team_name }} - {{ year }} Roster (click name to view)</b></h2>
+      <h2 style="display:inline;"><b>{{ team_name }} </b></h2>
+      <a style="display:inline;padding:25px;"> {{ year }} team info / roster (click name to view)</a>
     </div>
   </div>
   <!-- team information section -->
   <div class="parent">
       <div class="boxs {{ team_colour }}">
-        <br>
-        <br>
         <canvas id="teamRadar"></canvas>
       </div>
 
       <!-- COACH section -->
       <div class="boxs {{ team_colour }}">
-        <span><h3 style="text-indent: 50px;">{{ coach['coach'].values[0] }}</h3><span>
-        <div class="center">
-            <a><img src="static/images/players/{{ year }}/{{ coach['image'].values[0] }}" alt="photo of {{ coach['coach'].values[0] }}" style="max-height:200px"></a>
-        </div>
-        <div>
-          <table>
-            <tr>
-              <td style="text-align: center;"><p ><img src="static/images/flags/{{ coach['country'].values[0] }}" alt="{{ coach['country'].values[0][:-4] }}" style="max-height:30px"></p></td>
-              <td><a>Wins {{ coach['cw'].values[0]}}</a></td>
-              <td><a>Draws {{ coach['cd'].values[0] }}</a></td>
-              <td><a>Losses {{ coach['cl'].values[0] }}</a></td>
-            </tr>
-          </table>
+        <div class="parent">
+          <div class="boxs">
             <br>
+            <table>
+              <tr>
+                <th colspan="2"  style="text-align:center;"><a><img src="static/images/flags/{{ coach['country'].values[0] }}" alt="{{ coach['country'].values[0][:-4] }}" style="max-height:30px"></a></th>
+              </tr>
+              <tr>
+                <th><b>Club</b></th>
+                <th><b>Coach</b></th>
+              </tr>
+              <tr>
+                <td>Wins: <b>{{ coach['w'].values[0]}}</b></td>
+                <td>Wins: <b>{{ coach['cw'].values[0]}}</b></td>
+              </tr>
+              <tr>
+                <td>Draws: <b>{{ coach['d'].values[0] }}</b></td>
+                <td>Draws: <b>{{ coach['cd'].values[0] }}</b></td>
+              </tr>
+              <tr>
+                <td>Losses: <b>{{ coach['l'].values[0] }}</b></td>
+                <td>Losses: <b>{{ coach['cl'].values[0] }}</b></td>
+              </tr>
+            </table>
+          </div>
+          <div class="boxm">
+            <span><h3 style="text-indent: 50px;">{{ coach['coach'].values[0] }}</h3><span>
+            <div class="center">
+                <a><img src="static/images/players/{{ year }}/{{ coach['image'].values[0] }}" alt="photo of {{ coach['coach'].values[0] }}" style="max-height:200px"></a>
+            </div>
+          </div>
         </div>
-      </div>
+        </div>
       <!-- END OF COACH section -->
   </div>
   <!-- end of team information section -->

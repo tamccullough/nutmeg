@@ -2,12 +2,12 @@
 {% block content %}
 
 <!-- header -->
-<form class="{{ theme }}-dark" method="POST" action="/roster">
+<form method="POST" action="/roster">
   <div>
     <h3><b>Player Information - {{ name }} - {{ year }}</b></h3>
   </div>
   <div>
-    <h3>back to <a href="{{ url_for('roster') }}"><input class="text-white button staat" type="submit" id="team" name="team" value="{{ player_info.iloc[0]['team'] }}"/></a></h3>
+    <p>back to -> <a href="{{ url_for('roster') }}"><input class="text-white button staat" type="submit" id="team" name="team" value="{{ player_info.iloc[0]['team'] }}"/></a></p>
   </div>
 </form>
 
@@ -39,10 +39,12 @@
         <img src="static/images/players/{{ year }}/{{ player_info.iloc[0]['image'] }}" alt="{{ player_info.iloc[0]['name'] }}" style="max-width:60%">
       </div>
       <div class="box">
+        <br>
         <canvas id="playerRadar"></canvas>
         <!--img src="static/images/{{ year }}/player_graphs/{{ radar }}" alt="player radar" style="max-width:70%"-->
       </div>
       <div class="box">
+        <br>
         <canvas id="playerLine" style="padding: 20px 20px;"></canvas>
         <!--img src="static/images/{{ year }}/player_graphs/{{ graph }}" alt="player performance" style="max-width:70%"-->
       </div>
