@@ -58,22 +58,21 @@ nav {
 }
 
 @media screen and (max-width: 1024px) {
-  nav {
-    background-color: inherit;
-  }
-  .nav-links {
-    width: 60%;
-   }
+
 }
 
-@media screen and (max-width: 1376px) {
+@media screen and (max-width: 1024px) {
   body {
     overflow-x: hidden;
     position: relative;
   }
+  nav {
+    background-color: inherit;
+  }
   .nav-links {
     position: absolute;
     right: 0px;
+    width: 60%;
     height: 75vh;
     top: 8.25vh;
     color: transparent;
@@ -93,17 +92,6 @@ nav {
   z-index:25;
   color: #fff;
   background-color: #3141a8;
-}
-
-@keyframes navLinkFade {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0px);
-  }
 }
 
 .toggle .line1 {
