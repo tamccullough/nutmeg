@@ -4,7 +4,7 @@
 <!-- header -->
 <form method="POST" action="/roster">
   <div>
-    <h3><b>Player Information - {{ name }} - {{ year }}</b></h3>
+    <h3><b>{{ name }} - {{ year }}</b></h3>
   </div>
   <div>
     <p>back to -> <a href="{{ url_for('roster') }}"><input class="text-white button staat" type="submit" id="team" name="team" value="{{ player_info.iloc[0]['team'] }}"/></a></p>
@@ -265,6 +265,7 @@
     <div class="spacer"></div>
   </div>
   <!-- end of graph and table section -->
+</div>
 
 
   {% endblock %}

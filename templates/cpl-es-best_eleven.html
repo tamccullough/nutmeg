@@ -8,7 +8,7 @@
 
 <!-- page content -->
   <!-- body -->
-<div class="parent {{ theme }}-dark">
+<div class="parent">
   <!-- FORWARDS -->
   <div style="text-indent: 10px;"><h3><b>Attackers</b></h3></div>
   <div class="parent">
@@ -42,7 +42,7 @@
 </div>
 
 <!-- MIDFILED 1-->
-<span style="text-indent: 20px;"><h3><b>Midfielders</b></h3></span>
+<span style="text-indent: 20px;"><h3 class="{{ theme }}-t"><b>Midfielders</b></h3></span>
 <div class="parent">
   {%for i in range(0,2)%}
   <div class="boxm {{ midfield.iloc[i]['colour'] }}">

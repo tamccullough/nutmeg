@@ -6,8 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="Todd McCullough">
   <meta name="description" content="Canadian Premier League Stats for league fans. CanPL stats. Standings, team and roster information, data analysis and data visualization for football and Soccer fans of the Canadian Premier League.">
-  <link rel="stylesheet" href="static/css/nav.css">
-  <link rel="stylesheet" href="static/css/menu.css">
   <link rel="stylesheet" href="static/css/style.css">
   <link rel="stylesheet" href="static/css/themes.css">
   <link rel="stylesheet" href="static/css/team-colours.css">
@@ -17,10 +15,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato&family=Staatliches&display=swap" rel="stylesheet">
 
   <style>
-  * {
-    scrollbar-width: auto;
-    scrollbar-color: #3141a8 #2d62b5;
-  }
 
   html,h1,h2 {
     font-family: 'Staatliches', cursive;
@@ -52,7 +46,9 @@
   <div class="desktop">
     <div class="page80">
       <div class="spacer"></div>
-      <h3 style="display: inline;">{{ weekday }} {{ month }} <b class="bold">{{ day }}</b></h3>
+      <div style="text-align:right">
+        <h3 style="display:inline;">{{ weekday }} {{ month }} <b class="bold">{{ day }}</b></h3>
+      </div>
     </div>
   </div>
   <!-- Top container -->

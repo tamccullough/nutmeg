@@ -486,17 +486,5 @@ td {
 }
 
 .bottombar {
-  border-bottom:6px solid #ccc!important;
-}
-
-.blue-bar {
-  border-color:#40baed!important;
-}
-
-.pink-bar {
-  border-color:#e91e63!important;
-}
-
-.green-bar {
-  border-color:#a2c523!important;
+  border-bottom:6px solid #ccc;
 }

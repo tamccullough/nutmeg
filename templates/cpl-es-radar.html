@@ -8,7 +8,7 @@
 <!-- page content -->
   <!-- body -->
   <div class="mobile">
-    <div class="parent {{ theme }}-dark">
+    <div class="parent">
       {% if year == '2020' %}
         {% for name in ['Atlético Ottawa','Cavalry FC','FC Edmonton','Forge FC','HFX Wanderers FC','Pacific FC','Valour FC','York9 FC']%}
           <span><h3>{{ name }}</h3></span>
@@ -52,7 +52,7 @@
   </div>
 
 <div class="desktop">
-  <div class="parent {{ theme }}-dark">
+  <div class="parent">
     {% if year == '2019' %}
       {% for name in ['Cavalry FC','FC Edmonton','Forge FC','HFX Wanderers FC','Pacific FC','Valour FC','York9 FC']%}
           <div class="boxs {{ html_table[html_table['team'] == name ]['colour'] }}">

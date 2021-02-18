@@ -124,7 +124,7 @@ rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offende
 @canples.context_processor
 def inject_user():
 
-    return dict(today = today, day = day, weekday = weekday, month = month, year = year, theme = 'bland')
+    return dict(today = today, day = day, weekday = weekday, month = month, year = year, theme = 'mono')
 
 @canples.route('/', methods=['GET','POST'])
 def index():
@@ -200,7 +200,7 @@ def index():
     if championship.empty:
         headline = f'{year} Season Underway'
     else:
-        headline = f"{year} Champions - {championship.iloc[0]['team']}"
+        headline = f"{year} Season Completed"
 
     return render_template('cpl-es-index.html',top_mover = top_mover, top_dropper = top_dropper,
     goals = goals,  assists = assists, yellows = yellows, reds = reds,
