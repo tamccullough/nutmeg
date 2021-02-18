@@ -276,7 +276,7 @@ def power():
     return render_template('cpl-es-power.html',html_table = power)
 
 @canples.route('/versus', methods=['GET','POST'])
-def comparison():
+def versus():
 
     get_year()
 
