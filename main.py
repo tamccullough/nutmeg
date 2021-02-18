@@ -612,20 +612,23 @@ def player():
     print('\n')
     print(colour2)
     print(line_chart_colours)
+    if position.get(pos)[:1] == 'f':
+        length = len(db.columns)
+        half = int(length/2)
+        full = int(len(db.columns) - 2)
+        col_nums = [half,full]
+    else:
+        length = len(db.columns)
+        half = int(length/2)
+        full = int(len(db.columns) - 2)
+        col_nums = [half,full]
+    print(col_nums)
     print(int(len(db.columns)))
-    print(5+int((len(db.columns)-5)/2))
     print('*********************************************')
     print('*********************************************')
     print('LINE DATA: ')
     print(line_columns)
     print(player_line)
-    print('*********************************************')
-
-    if position.get(pos)[:1] == 'f':
-        col_nums = [8,8+int((len(db.columns)-8)/2)]
-    else:
-        col_nums = [8,8+int((len(db.columns)-8)/2)]
-    print(col_nums)
     print('*********************************************')
     print('=============================================')
 

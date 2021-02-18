@@ -31,27 +31,7 @@
         <!--img src="static/images/{{ year }}/player_graphs/{{ graph }}" alt="player performance" style="max-width:50%"-->
       </div>
     </div>
-  </div>
 
-  <div class="desktop">
-    <div class="parent {{ team_colour }}">
-      <div class="boxs center">
-        <img src="static/images/players/{{ year }}/{{ player_info.iloc[0]['image'] }}" alt="{{ player_info.iloc[0]['name'] }}" style="max-width:60%">
-      </div>
-      <div class="box">
-        <br>
-        <canvas id="playerRadar"></canvas>
-        <!--img src="static/images/{{ year }}/player_graphs/{{ radar }}" alt="player radar" style="max-width:70%"-->
-      </div>
-      <div class="box">
-        <br>
-        <canvas id="playerLine" style="padding: 20px 20px;"></canvas>
-        <!--img src="static/images/{{ year }}/player_graphs/{{ graph }}" alt="player performance" style="max-width:70%"-->
-      </div>
-    </div>
-  </div>
-
-  <div class="mobile">
     <table>
       <tr>
         <td><a><img src="static/images/flags/{{ player_info.iloc[0]['flag'] }}" alt="{{ player_info.iloc[0]['flag'][:-4] }}" style="max-height:30px"><a></td>
@@ -60,8 +40,8 @@
       </tr>
       <tr>
         <td>MIN: {{ stats90.iloc[0]['Min'] }}</td>
-        <td>xG: {{ stats90.iloc[0]['goals'] }}**</td>
-        <td>xA: {{ stats90.iloc[0]['assists'] }}**</td>
+        <td>xG: {{ stats.iloc[0]['ExpG'] }}**</td>
+        <td>xA: {{ stats.iloc[0]['ExpA'] }}**</td>
       </tr>
       <tr>
         <td>Yellows: {{ discipline.iloc[0]['yellow'] }}</td>
@@ -69,28 +49,7 @@
         <td>Number: {{ stats.iloc[0]['number'] }}</td>
       </tr>
     </table>
-  </div>
 
-  <div class="desktop">
-    <table>
-      <tr>
-        <td><a><img src="static/images/flags/{{ player_info.iloc[0]['flag'] }}" alt="{{ player_info.iloc[0]['flag'][:-4] }}" style="max-height:30px"><a></td>
-        <td>{{ nationality }}</td>
-        <td>{{ stats.iloc[0]['overall'] }}**</td>
-        <td>MIN: {{ stats.iloc[0]['Min']|int }}</td>
-        <td>xG: {{ stats90.iloc[0]['ExpG'] }}**</td>
-        <td>xA: {{ stats90.iloc[0]['ExpA'] }}**</td>
-        <td>Y: {{ discipline.iloc[0]['Yellow'] }}</td>
-        <td>R: {{ discipline.iloc[0]['Red'] }}</td>
-        <td>2ndY: {{ discipline.iloc[0]['2ndYellow'] }}</td>
-        <td>#: {{ number }}</td>
-        <td>{{ position }}</td>
-      </tr>
-    </table>
-  </div>
-</div>
-
-<div class="mobile">
   <!-- table section -->
     <div class="parent {{ team_colour }}">
       <div class="{{ theme }}-dark" style="width:100%;">
@@ -98,19 +57,19 @@
       </div>
       <div class="parent {{ theme }}-dark">
         <div class="{{ theme }}-dark">
-          <table>
+          <table style="font-size:0.8em;">
             <tr>
-              {% for column in stats.columns[ col_nums[0] : col_nums[1] ] %}
-                <td>{{ column }}</td>
+              {% for column in stats.columns[ 2 : col_nums[0] ] %}
+                <td>{{ column[:4] }}</td>
               {% endfor %}
             </tr>
           </table>
         </div>
         <div class="{{ theme }}-light">
-          <table>
+          <table style="font-size:0.8em;">
             <tr>
-              {% for column in stats.columns[ col_nums[0] : col_nums[1] ] %}
-                {% if column == 'overall'%}
+              {% for column in stats.columns[ 2 : col_nums[0] ] %}
+                {% if (column == 'overall' or column == 'ExpG' or column == 'ExpA')%}
                 <td>{{ stats.iloc[0][column] }}</td>
                 {% else %}
                 <td>{{ stats.iloc[0][column]|int }}</td>
@@ -122,19 +81,19 @@
       </div>
       <div class="parent {{ theme }}-dark">
         <div class="{{ theme }}-dark">
-          <table>
+          <table style="font-size:0.8em;">
             <tr>
-              {% for column in stats.columns[ col_nums[1] :-1] %}
-                <td>{{ column }}</td>
+              {% for column in stats.columns[ col_nums[0] :-2] %}
+                <td>{{ column[:4] }}</td>
               {% endfor %}
             </tr>
           </table>
         </div>
         <div class="{{ theme }}-light">
-          <table>
+          <table style="font-size:0.8em;">
             <tr>
-              {% for column in stats.columns[ col_nums[1] :-1] %}
-                {% if column == 'overall'%}
+              {% for column in stats.columns[ col_nums[0] :-2] %}
+                {% if (column == 'overall' or column == 'ExpG' or column == 'ExpA')%}
                 <td>{{ stats.iloc[0][column] }}</td>
                 {% else %}
                 <td>{{ stats.iloc[0][column]|int }}</td>
@@ -149,18 +108,18 @@
       </div>
       <div class="parent {{ theme }}-dark">
         <div class="{{ theme }}-dark">
-          <table>
+          <table style="font-size:0.8em;">
             <tr>
-              {% for column in stats90.columns[ col_nums[0] : col_nums[1] ] %}
-                <td>{{ column }}</td>
+              {% for column in stats90.columns[ 3 : col_nums[0] ] %}
+                <td>{{ column[:4] }}</td>
               {% endfor %}
             </tr>
           </table>
         </div>
         <div class="{{ theme }}-light">
-          <table>
+          <table style="font-size:0.8em;">
             <tr>
-              {% for column in stats90.columns[ col_nums[0] : col_nums[1] ] %}
+              {% for column in stats90.columns[ 3 : col_nums[0] ] %}
                 {% if column == 'Min'%}
                 <td>per{{ stats90.iloc[0][column] }}</td>
                 {% else %}
@@ -173,18 +132,18 @@
       </div>
       <div class="parent {{ theme }}-dark">
         <div class="{{ theme }}-dark">
-          <table>
+          <table style="font-size:0.8em;">
             <tr>
-              {% for column in stats90.columns[ col_nums[1] :-1] %}
-                <td>{{ column }}</td>
+              {% for column in stats90.columns[ col_nums[0] :-2] %}
+                <td>{{ column[:4] }}</td>
               {% endfor %}
             </tr>
           </table>
         </div>
         <div class="{{ theme }}-light">
-          <table>
+          <table style="font-size:0.8em;">
             <tr>
-              {% for column in stats90.columns[ col_nums[1] :-1] %}
+              {% for column in stats90.columns[ col_nums[0] :-2] %}
                 {% if column == 'Min'%}
                 <td>per{{ stats90.iloc[0][column] }}</td>
                 {% else %}
@@ -200,6 +159,38 @@
 </div>
 
 <div class="desktop">
+  <div class="parent {{ team_colour }}">
+    <div class="boxs center">
+      <img src="static/images/players/{{ year }}/{{ player_info.iloc[0]['image'] }}" alt="{{ player_info.iloc[0]['name'] }}" style="max-width:60%">
+    </div>
+    <div class="box">
+      <br>
+      <canvas id="playerRadar"></canvas>
+      <!--img src="static/images/{{ year }}/player_graphs/{{ radar }}" alt="player radar" style="max-width:70%"-->
+    </div>
+    <div class="box">
+      <br>
+      <canvas id="playerLine" style="padding: 20px 20px;"></canvas>
+      <!--img src="static/images/{{ year }}/player_graphs/{{ graph }}" alt="player performance" style="max-width:70%"-->
+    </div>
+  </div>
+
+  <table>
+    <tr>
+      <td><a><img src="static/images/flags/{{ player_info.iloc[0]['flag'] }}" alt="{{ player_info.iloc[0]['flag'][:-4] }}" style="max-height:30px"><a></td>
+      <td>{{ nationality }}</td>
+      <td>{{ stats.iloc[0]['overall'] }}**</td>
+      <td>MIN: {{ stats.iloc[0]['Min']|int }}</td>
+      <td>xG: {{ stats90.iloc[0]['ExpG'] }}**</td>
+      <td>xA: {{ stats90.iloc[0]['ExpA'] }}**</td>
+      <td>Y: {{ discipline.iloc[0]['Yellow'] }}</td>
+      <td>R: {{ discipline.iloc[0]['Red'] }}</td>
+      <td>2ndY: {{ discipline.iloc[0]['2ndYellow'] }}</td>
+      <td>#: {{ number }}</td>
+      <td>{{ position }}</td>
+    </tr>
+  </table>
+
   <!-- table section -->
     <div class="parent {{ team_colour }}">
       <div class="{{ theme }}-dark" style="width:100%;">
@@ -207,10 +198,10 @@
       </div>
       <div class="parent {{ theme }}-dark">
         <div class="{{ theme }}-dark">
-          <table>
+          <table style="font-size:0.8em;">
             <tr>
-              {% for column in stats.columns[ col_nums[0] :-2] %}
-                <td>{{ column }}</td>
+              {% for column in stats.columns[ 3 :-2 ] %}
+                <td>{{ column[:6] }}</td>
               {% endfor %}
             </tr>
           </table>
@@ -218,8 +209,8 @@
         <div class="{{ theme }}-light">
           <table>
             <tr>
-              {% for column in stats.columns[ col_nums[0] :-2] %}
-                {% if column == 'overall'%}
+              {% for column in stats.columns[ 3 :-2 ] %}
+                {% if (column == 'overall' or column == 'ExpG' or column == 'ExpA')%}
                 <td>{{ stats.iloc[0][column] }}</td>
                 {% else %}
                 <td>{{ stats.iloc[0][column]|int }}</td>
@@ -234,10 +225,10 @@
       </div>
       <div class="parent {{ theme }}-dark">
         <div class="{{ theme }}-dark">
-          <table>
+          <table style="font-size:0.8em;">
             <tr>
-              {% for column in stats90.columns[ col_nums[0] :-2] %}
-                <td>{{ column }}</td>
+              {% for column in stats90.columns[ 3 :-2] %}
+                <td>{{ column[:6] }}</td>
               {% endfor %}
             </tr>
           </table>
@@ -245,7 +236,7 @@
         <div class="{{ theme }}-light">
           <table>
             <tr>
-              {% for column in stats90.columns[ col_nums[0] :-2] %}
+              {% for column in stats90.columns[ 3 :-2] %}
                 {% if column == 'Min'%}
                 <td>per{{ stats90.iloc[0][column] }}</td>
                 {% else %}
