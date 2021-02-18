@@ -10,11 +10,11 @@
 <div class="mobile">
   <!-- championship -->
   {% if championship_table is defined %}
-  <span><h3 class="{{ theme }}-dark indent"><b>Championship</b></h3></span>
+  <div><a class="indent"><b>Championship</b></a></div>
     <div>
       <div>
             <table>
-              <tr>
+              <tr style="font-size:0.8em;">
                 <td><b>rank</b></td>
                 <td style="width: 10%;"><b>team</b></td>
                 <td><b>MP</b></td>
@@ -27,7 +27,7 @@
               </tr>
               {%for i in range(0,championship_table.shape[0])%}
               <tr>
-                <td>{{ championship_table.iloc[i][0] }}</td>
+                <td>{{ i+1 }}</td>
                 <td class="t-center"><img style="max-height:30px;margin:-8px;text-align:center;" src="static/images/flags/{{ championship_table.at[i,'crest'] }}" alt="{{ championship_table.at[i,'crest'] }} Crest"></td>
                 <td>{{ championship_table.iloc[i][2] }}</td>
                 <td>{{ championship_table.iloc[i][3] }}</td>
@@ -35,7 +35,7 @@
                 <td class="{{ theme }}-green">{{ championship_table.iloc[i][6] }}</td>
                 <td class="{{ theme }}-orange">{{ championship_table.iloc[i][8] }}</td>
                 <td class="{{ theme }}-red">{{ championship_table.iloc[i][7] }}</td>
-                <td class="{{ theme }}-t-yellow"><b>{{ championship_table.iloc[i][9] }}</td>
+                <td class="{{ theme }}-t-yellow"><b>{{ championship_table.iloc[i]['gd'] }}</td>
               </tr>
               {%endfor%}
             </table>
@@ -48,14 +48,14 @@
     <!-- playoffs -->
     {% if championship_table is defined %}
     {% if year == '2019' %}
-    <span><h3 class="{{ theme }}-dark indent"><b>Summer Season</b></h3></span>
+    <div><a class="indent"><b>Summer Season</b></a></div>
     {% else %}
-    <span><h3 class="{{ theme }}-dark indent"><b>Playoffs</b></h3></span>
+    <div><a class="indent"><b>Playoffs</b></a></div>
     {% endif %}
       <div>
         <div>
               <table>
-                <tr>
+                <tr style="font-size:0.8em;">
                   <td><b>rank</b></td>
                   <td style="width: 10%;"><b>team</b></td>
                   <td><b>MP</b></td>
@@ -66,17 +66,17 @@
                   <td><b>L</b></td>
                   <td><b>GD</b></td>
                 </tr>
-                {%for i in range(0,championship_table.shape[0])%}
+                {%for i in range(0,playoffs_table.shape[0])%}
                 <tr>
-                  <td>{{ championship_table.iloc[i][0] }}</td>
-                  <td class="t-center"><img style="max-height:30px;margin:-8px;text-align:center;" src="static/images/flags/{{ championship_table.at[i,'crest'] }}" alt="{{ championship_table.at[i,'crest'] }} Crest"></td>
-                  <td>{{ championship_table.iloc[i][2] }}</td>
-                  <td>{{ championship_table.iloc[i][3] }}</td>
-                  <td>{{ championship_table.iloc[i][5] }}</td>
-                  <td class="{{ theme }}-green">{{ championship_table.iloc[i][6] }}</td>
-                  <td class="{{ theme }}-orange">{{ championship_table.iloc[i][8] }}</td>
-                  <td class="{{ theme }}-red">{{ championship_table.iloc[i][7] }}</td>
-                  <td class="{{ theme }}-t-yellow"><b>{{ championship_table.iloc[i][9] }}</td>
+                  <td>{{ i+1 }}</td>
+                  <td class="t-center"><img style="max-height:30px;margin:-8px;text-align:center;" src="static/images/flags/{{ playoffs_table.at[i,'crest'] }}" alt="{{ playoffs_table.at[i,'crest'] }} Crest"></td>
+                  <td>{{ playoffs_table.iloc[i][2] }}</td>
+                  <td>{{ playoffs_table.iloc[i][3] }}</td>
+                  <td>{{ playoffs_table.iloc[i][5] }}</td>
+                  <td class="{{ theme }}-green">{{ playoffs_table.iloc[i][6] }}</td>
+                  <td class="{{ theme }}-orange">{{ playoffs_table.iloc[i][8] }}</td>
+                  <td class="{{ theme }}-red">{{ playoffs_table.iloc[i][7] }}</td>
+                  <td class="{{ theme }}-t-yellow"><b>{{ playoffs_table.iloc[i]['gd'] }}</td>
                 </tr>
                 {%endfor%}
               </table>
@@ -88,13 +88,13 @@
 
       <!-- regular season -->
       {% if year == '2019' %}
-      <span><h3 class="{{ theme }}-dark indent"><b>Spring Season</b></h3></span>
+      <div><a class="indent"><b>Spring Season</b></a></div>
       {% else %}
-      <span><h3 class="{{ theme }}-dark indent"><b>Regular Season</b></h3></span>
+      <div><a class="indent"><b>Regular Season</b></a></div>
       {% endif %}
       <div>
           <table>
-            <tr>
+            <tr style="font-size:0.8em;">
               <td><b>rank</b></td>
               <td style="width: 10%;"><b>team</b></td>
               <td><b>MP</b></td>
@@ -107,7 +107,7 @@
             </tr>
             {%for i in range(0,standings_table.shape[0])%}
             <tr>
-              <td>{{ standings_table.iloc[i][0] }}</td>
+              <td>{{ i+1 }}</td>
               <td class="t-center"><img style="max-height:30px;margin:-8px;text-align:center;" src="static/images/flags/{{ standings_table.at[i,'crest'] }}" alt="{{ standings_table.at[i,'crest'] }} Crest"></td>
               <td>{{ standings_table.iloc[i][2] }}</td>
               <td>{{ standings_table.iloc[i][3] }}</td>
@@ -115,25 +115,25 @@
               <td class="{{ theme }}-green">{{ standings_table.iloc[i][6] }}</td>
               <td class="{{ theme }}-orange">{{ standings_table.iloc[i][8] }}</td>
               <td class="{{ theme }}-red">{{ standings_table.iloc[i][7] }}</td>
-              <td class="{{ theme }}-t-yellow">{{ standings_table.iloc[i][9] }}</td>
+              <td class="{{ theme }}-t-yellow">{{ standings_table.iloc[i]['gd'] }}</td>
             </tr>
             {%endfor%}
           </table>
       </div>
         <!-- end of regular season-->
         <!-- form -->
-        <span><h3 class="{{ theme }}-dark"><b>Form</b></h3></span>
+        <div><h3><b>Form</b></h3></div>
           <div>
-            <div class="parent {{ theme }}-dark">
+            <div class="parent">
               <div class="t-center" style="display:inline;width:15%;"><a>club</a></div>
               <div class="t-center" style="display:inline;width:85%;"><a>game</a></div>
             </div>
             <div>
-              <table style="width:200px;">
+              <table style="width:100%;">
                 <tr>
                   <td style="width:10%;"><b></b></td>
                   {% for i in range(1,form_table.shape[1]-1) %}
-                  <td class="t-center" style="font-size:10px;">{{ i }}</td>
+                  <td class="t-left" style="font-size:0.5em;">{{ i }}</td>
                   {% endfor %}
                 </tr>
                 {%for i in range(0,form_table.shape[0])%}

@@ -222,6 +222,20 @@ def standings():
 
     team_form_results = pd.read_csv(f'datasets/{year}/cpl-{year}-team_form.csv')
     team_ref = pd.read_csv(f'datasets/teams.csv')
+    team_ref = team_ref[team_ref['year'] == int(year)]
+
+    def get_crest(data,column):
+        data['crest'] = '-'
+        for i in range(data.shape[0]):
+            data.at[i,'crest'] = team_ref[team_ref['team'] == data.at[i,column]]['crest'].values[0]
+        return data
+
+    championship = get_crest(championship,'team')
+    playoffs = get_crest(playoffs,'team')
+    standings = get_crest(standings,'team')
+    team_form_results = get_crest(team_form_results,'index')
+
+    print(team_form_results['crest'])
 
     columns = standings.columns
 
