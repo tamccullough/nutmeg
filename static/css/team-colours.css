@@ -16,7 +16,7 @@
 }
 .cpl-hfx {
   background-color:#41B6E6;
-  color:#fff;
+  color:#052049;
 }
 .cpl-pfc {
   background-color:#582C83;
@@ -28,9 +28,45 @@
 }
 .cpl-y9 {
   background-color:#046a38;
-  color:#fff;
+  color:#003b5c;
 }
 .cpl-y9-old {
   background-color:#78BE20;
+  color:#003b5c;
+}
+.cpl-ao-2 {
+  background-color:#102f52;
   color:#fff;
+}
+.cpl-cfc-2 {
+  background-color:#335525;
+  color:#fff;
+}
+.cpl-fce-2 {
+  background-color:#0c2340;
+  color:#fff;
+}
+.cpl-ffc-2 {
+  background-color:#53565a;
+  color:#fff;
+}
+.cpl-hfx-2 {
+  background-color:#052049;
+  color:#fff;
+}
+.cpl-pfc-2 {
+  background-color:#00b7bd;
+  color:#582C83;
+}
+.cpl-vfc-2 {
+  background-color:#b9975b;
+  color:#7C2529;
+}
+.cpl-y9-2 {
+  background-color:#003b5c;
+  color:#fff;
+}
+.cpl-y9-old-2 {
+  background-color:#fff;
+  color:#003b5c;
 }

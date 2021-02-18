@@ -51,12 +51,12 @@
     </table>
 
   <!-- table section -->
-    <div class="parent {{ team_colour }}">
-      <div class="{{ theme }}-dark" style="width:100%;">
+    <div class="parent">
+      <div class="{{ team_colour }}-2" style="width:100%;">
         <h3>Rolling Statistics</h3>
       </div>
-      <div class="parent {{ theme }}-dark">
-        <div class="{{ theme }}-dark">
+      <div class="parent">
+        <div  class="{{ team_colour }}-2">
           <table style="font-size:0.8em;">
             <tr>
               {% for column in stats.columns[ 2 : col_nums[0] ] %}
@@ -79,8 +79,8 @@
           </table>
         </div>
       </div>
-      <div class="parent {{ theme }}-dark">
-        <div class="{{ theme }}-dark">
+      <div class="parent">
+        <div  class="{{ team_colour }}-2">
           <table style="font-size:0.8em;">
             <tr>
               {% for column in stats.columns[ col_nums[0] :-2] %}
@@ -103,11 +103,11 @@
           </table>
         </div>
       </div>
-      <div class="{{ theme }}-dark" style="width:100%;">
+      <div class="{{ team_colour }}-2" style="width:100%;">
         <h3>Rolling Statistics Per 90</h3>
       </div>
-      <div class="parent {{ theme }}-dark">
-        <div class="{{ theme }}-dark">
+      <div class="parent">
+        <div  class="{{ team_colour }}-2">
           <table style="font-size:0.8em;">
             <tr>
               {% for column in stats90.columns[ 3 : col_nums[0] ] %}
@@ -130,8 +130,8 @@
           </table>
         </div>
       </div>
-      <div class="parent {{ theme }}-dark">
-        <div class="{{ theme }}-dark">
+      <div class="parent">
+        <div class="{{ team_colour }}-2">
           <table style="font-size:0.8em;">
             <tr>
               {% for column in stats90.columns[ col_nums[0] :-2] %}
@@ -193,11 +193,11 @@
 
   <!-- table section -->
     <div class="parent {{ team_colour }}">
-      <div  style="background:{{ colour2 }};width:100%;">
+      <div  class="{{ team_colour }}-2" style="width:100%;">
         <h3>Rolling Statistics</h3>
       </div>
       <div class="parent">
-        <div style="background:{{ colour2 }};">
+        <div  class="{{ team_colour }}-2">
           <table style="font-size:0.8em;">
             <tr>
               {% for column in stats.columns[ 3 :-2 ] %}
@@ -220,11 +220,11 @@
           </table>
         </div>
       </div>
-      <div  style="background:{{ colour2 }};width:100%;">
+      <div  class="{{ team_colour }}-2" style="width:100%;">
         <h3>Rolling Statistics Per 90</h3>
       </div>
       <div class="parent">
-        <div style="background:{{ colour2 }};">
+        <div class="{{ team_colour }}-2">
           <table style="font-size:0.8em;">
             <tr>
               {% for column in stats90.columns[ 3 :-2] %}
