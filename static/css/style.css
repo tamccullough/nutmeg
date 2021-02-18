@@ -122,7 +122,8 @@ a:link:hover {
 
 .box {
   place-items: center;
-  border-radius: 0.5rem;
+  /*border-radius: 0.5rem;*/
+  border-radius: 0.5rem 0.5rem 0rem 0rem;
   flex: 1 1 200px; /*  Stretching: */
   /*flex: 0 1 150px;   No stretching: */
   margin: 2px;
@@ -131,7 +132,8 @@ a:link:hover {
 
 .boxl {
   place-items: center;
-  border-radius: 0.15rem;
+  /*border-radius: 0.15rem;*/
+  border-radius: 0.5rem 0.5rem 0rem 0rem;
   flex: 1 1 350px;
   margin: 2px;
   padding: 5px 5px;
@@ -139,7 +141,7 @@ a:link:hover {
 
 .boxm {
   place-items: center;
-  border-radius: 0.15rem;
+  border-radius: 0.5rem;
   flex: 1 1 250px;
   margin: 2px;
   padding: 2px 2px;
@@ -147,7 +149,7 @@ a:link:hover {
 
 .boxs {
   place-items: center;
-  border-radius: 0.15rem;
+  border-radius: 0.25rem;
   flex: 1 1 150px;
   margin: 2px;
   padding: 2px 2px;
@@ -289,6 +291,7 @@ select {
   text-align: center;
   color: inherit;
   background-color: inherit;
+  cursor: pointer;
 }
 
 .red {
@@ -445,7 +448,8 @@ td {
 
 .table-button {
   font-size: 1em;
-  height: 10px;
+  color: inherit;
+  height: 20px;
   border:none;
   background-color:inherit;
   cursor:pointer;

@@ -429,9 +429,27 @@ def roster():
 
     team = request.form['team']
 
+    radar = pd.read_csv(f'datasets/{year}/league/{year}-radar.csv')
+    radar = radar[radar['team'] == team]
+    radar = cpl_main.index_reset(radar)
+
+    print('=============================================')
+    print('*********************************************')
+    print('RADAR:\n')
+    print(radar)
+    print('*********************************************')
+    print('=============================================')
+
     player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
     roster = player_info[player_info['team'] == team][['name','image','position','number','flag','overall','link']]
     coach = team_ref[team_ref['team'] == team][['cw','cl','cd','coach','country','image','w','l','d','year']]
+
+    roster_team_info = team_ref[team_ref['team'] == team].copy()
+    roster_team_info = cpl_main.index_reset(roster_team_info)
+    roster_colour = roster_team_info.iloc[0]['colour']
+    crest = roster_team_info.iloc[0]['crest']
+    colour1 = roster_team_info.iloc[0]['colour1']
+    colour2 = roster_team_info.iloc[0]['colour2']
 
     print(roster.columns)
     print(roster)
@@ -439,8 +457,8 @@ def roster():
     print(coach)
     print('COLOUR:',team_ref[team_ref['team'] == team]['colour'].values[0])
 
-    return render_template('cpl-es-roster.html',team_name = team, coach = coach,
-    html_table = roster, team_colour = team_ref[team_ref['team'] == team]['colour'].values[0])
+    return render_template('cpl-es-roster.html',team_name = team, coach = coach, radar = radar,
+    crest = crest, colour1 = colour1, colour2 = colour2, html_table = roster, team_colour = roster_colour)
 
 @canples.route('/player', methods=['POST'])
 def player():
@@ -458,8 +476,10 @@ def player():
     name = request.form['name']
 
     if name in player_info['name'].unique():
+        print('NAME present')
         pass
     else:
+        print('NAME not present')
         name = player_info[player_info['display'] == name]['name'].values[0]
 
     player = player_info[player_info['name'] == name]
@@ -499,28 +519,59 @@ def player():
             return x
 
     player_line_db = pd.read_csv(f'datasets/{year}/playerstats/{year}-{position.get(pos)}-line.csv')
-    player_line = player_line_db[player_line_db['name'] == name][player_line_db.columns[2:]].copy()
+    print(player_line_db['display'].unique())
+    player_line = player_line_db[player_line_db['name'] == name][player_line_db.columns[5:]].copy().T
+    line_columns = [x for x in player_line_db.columns[5:]]
     for col in player_line.columns:
         player_line[col] = player_line[col].apply(lambda x: percentage_check(x))
-        player_line[col] = norm_line_column(player_line[col])
+        #player_line[col] = norm_line_column(player_line[col])
     player_line = cpl_main.index_reset(player_line).values.tolist()
 
-    try:
-        if player_line[0]:
-            print(True)
-    except:
-        print(False)
+    if player_line[0]:
+        print('Dataset filled')
+        print('=============================================')
+        print('*********************************************')
+    else:
+        print('Dataset empty')
+        print('=============================================')
+        print('*********************************************')
 
         display = player_info[player_info['name'] == name]['display'].values[0]
-        print(display)
-        player_line = player_line_db[player_line_db['name'] == display][player_line_db.columns[2:]].copy()
+
+        player_line = player_line_db[player_line_db['display'] == display][player_line_db.columns[5:]].copy().T
+        line_columns = [x for x in player_line_db.columns[5:]]
         for col in player_line.columns:
             player_line[col] = player_line[col].apply(lambda x: percentage_check(x))
-            player_line[col] = norm_line_column(player_line[col])
+            #player_line[col] = norm_line_column(player_line[col])
         player_line = cpl_main.index_reset(player_line).values.tolist()
+    #chart_team_colour_list = { 'Atlético Ottawa' : '#102f52','Cavalry FC' : '#335525','FC Edmonton' : '#0c2340','Forge FC' : '#53565a',
+    #'HFX Wanderers FC' : '#052049','Pacific FC' : '#00b7bd','Valour FC' : '#b9975b','York United FC' : '#003b5c','York9 FC': '#003b5c'}
+    #chart_team_colour_list = ['#102f52','#335525','#0c2340','#53565a','#052049','#00b7bd','#b9975b','#003b5c','#003b5c','#102f52','#335525','#0c2340','#53565a','#052049','#00b7bd','#b9975b','#003b5c','#003b5c']
+    chart_team_colour_list = ['#fa5252','#ffa64a','#88de62','#67bccf','#508ceb','#5199db','#6c51bd','#bf5c90']*2
+    cav = ["#007f5f","#2b9348","#55a630","#80b918","#aacc00","#bfd200","#d4d700","#dddf00","#eeef20","#ffff3f"]
+    ato = ["#03045e","#023e8a","#0077b6","#0096c7","#00b4d8","#48cae4","#90e0ef","#ade8f4","#caf0f8"]
+    forge = ["#03071e","#370617","#6a040f","#9d0208","#d00000","#dc2f02","#e85d04","#f48c06","#faa307","#ffba08"]
+    pastels = ["#7400b8","#6930c3","#5e60ce","#5390d9","#4ea8de","#48bfe3","#56cfe1","#64dfdf","#72efdd","#80ffdb"]
+    pastels2 = ["#f72585","#b5179e","#7209b7","#560bad","#480ca8","#3a0ca3","#3f37c9","#4361ee","#4895ef","#4cc9f0"]
+    oranges = ["#ff4800","#ff5400","#ff6000","#ff6d00","#ff7900","#ff8500","#ff9100","#ff9e00","#ffaa00","#ffb600"]
+    val = ["#ff7b00","#ff8800","#ff9500","#ffa200","#ffaa00","#ffb700","#ffc300","#ffd000","#ffdd00","#ffea00"]
+    grays = ["#eaeaea","#c0c1c4","#abadb1","#96989e","#81848b","#6c6f78","#63666f","#535761","#424651"]
+    blues2 = ["#0466c8","#0353a4","#023e7d","#002855","#001845","#001233","#33415c","#5c677d","#7d8597","#979dac"]
+
+
+    chart_team_colour_list = {
+    '#102f52' : ["#03045e","#023e8a","#0077b6","#0096c7","#00b4d8","#48cae4","#90e0ef","#ade8f4","#caf0f8"],
+    '#335525' : ["#007f5f","#2b9348","#55a630","#80b918","#aacc00","#bfd200","#d4d700","#dddf00","#eeef20","#ffff3f"],
+    '#0c2340' : ["#0466c8","#0353a4","#023e7d","#002855","#001845","#001233","#33415c","#5c677d","#7d8597","#979dac"],
+    '#53565a' : ["#eaeaea","#c0c1c4","#abadb1","#96989e","#81848b","#6c6f78","#63666f","#535761","#424651"],
+    '#052049' : ['#006666','#3300CC','#3333FF','#0033CC','#003399','#006699','#006666','#3399CC'],
+    '#00b7bd' : ["#7400b8","#6930c3","#5e60ce","#5390d9","#4ea8de","#48bfe3","#56cfe1","#64dfdf","#72efdd","#80ffdb"],
+    '#b9975b' : ["#ff7b00","#ff8800","#ff9500","#ffa200","#ffaa00","#ffb700","#ffc300","#ffd000","#ffdd00","#ffea00"],
+    '#003b5c' : ["#03045e","#023e8a","#0077b6","#0096c7","#00b4d8","#48cae4","#90e0ef","#ade8f4","#caf0f8"]
+    }
 
     details = {}
-    for word in ['display','number','nationality','graph','radar']:
+    for word in ['display','number','nationality','graph','radar','team']:
         if word in ['graph','radar']:
             try:
                 details[word+'_image'] = player[player['display'] == name][word].values[0]
@@ -531,6 +582,9 @@ def player():
                 details[word] = player[player['display'] == name][word].values[0]
             except:
                 details[word] = player[player['name'] == name][word].values[0]
+    #line_back_colour = chart_team_colour_list[details[team]]
+    line_chart_colours = chart_team_colour_list[colour2]
+    line_chart_colours = line_chart_colours*2
 
     print('=============================================')
     print('*********************************************')
@@ -540,16 +594,15 @@ def player():
     print(radar_chart_cols)
     print(', '.join([str(x) for x in radar_chart.loc[0]]))
     print('\n')
-    print(colour1)
     print(colour2)
+    print(line_chart_colours)
     print(int(len(db.columns)))
     print(5+int((len(db.columns)-5)/2))
     print('*********************************************')
     print('*********************************************')
     print('LINE DATA: ')
-    print(player_line_db.columns)
+    print(line_columns)
     print(player_line)
-    print(player_line[3:])
     print('*********************************************')
 
     if position.get(pos)[:1] == 'f':
@@ -563,9 +616,9 @@ def player():
 
     return render_template('cpl-es-player.html', name = details['display'], graph = details['graph_image'],
     radar = details['radar_image'], nationality = details['nationality'], team_name = team, player_info = player,
-    team_colour = roster_colour, crest = crest, position = position.get(pos)[:-1], number = details['number'],
+    team_colour = roster_colour, crest = crest, position = position.get(pos)[:-1], number = details['number'], chart_team_colour_list = chart_team_colour_list[colour2]*2,
     stats = db, stats90 = db90, discipline = discipline, radar_chart = radar_chart, radar_chart_cols = radar_chart_cols,
-    colour1 = colour1, colour2 = colour2,col_nums = col_nums, player_line = player_line)
+    colour1 = colour1, colour2 = colour2,col_nums = col_nums, player_line = player_line[:-1],line_columns = line_columns[:-1])
 
 @canples.route('/goals', methods=['GET','POST'])
 def goals():

@@ -8,6 +8,7 @@
   <!-- body -->
   <!-- weekly team performance -->
   <div class="mobile">
+    <form method="POST" action="/roster">
     <div class="parent">
       <div class="boxs {{ first_colour }}">
         <table>
@@ -19,7 +20,8 @@
             {% if top_team|length > 12 %}
             <td><h3 class="xfont"> {{ top_team }}</h3></td>
             {% else %}
-            <td><h3 class="xxfont"> {{ top_team }}</h3></td>
+            <!--td><h3><a class="xxfont button staat" href="/teams">{{ top_team }}</a></h3></td-->
+            <td><h3><a><input class="xxxfont table-button staat" type="submit" id="team" name="team" value="{{ top_team }}"/></a></h3></td>
             {% endif %}
           </tr>
         </table>
@@ -34,7 +36,8 @@
             {% if top_mover|length > 12 %}
             <td><h3 class="xfont"> {{ top_mover }}</h3></td>
             {% else %}
-            <td><h3 class="xxfont"> {{ top_mover }}</h3></td>
+            <!--td><h3 class="xxfont"> {{ top_mover }}</h3></td-->
+            <td><h3><a><input class="xxxfont table-button staat" type="submit" id="team" name="team" value="{{ top_mover }}"/></a></h3></td>
             {% endif %}
           </tr>
         </table>
@@ -49,7 +52,8 @@
             {% if top_dropper|length > 12 %}
             <td><h3 class="xfont"> {{ top_dropper }}</h3></td>
             {% else %}
-            <td><h3 class="xxfont"> {{ top_dropper }}</h3></td>
+            <!--td><h3 class="xxfont"> {{ top_dropper }}</h3></td-->
+            <td><h3><a><input class="xxxfont table-button staat" type="submit" id="team" name="team" value="{{ top_dropper }}"/></a></h3></td>
             {% endif %}
           </tr>
         </table>
@@ -66,8 +70,125 @@
         </table>
       </div>
     </div>
+    </form>
   </div>
+
+  <!-- end of weekly team performance -->
+  <div class="mobile">
+    <div class="parent">
+      <div class="box" style="padding: 15px 15px;">
+        <h3>Biggest Win</h3>
+        <div class="child">
+          {% if big_win.at[0,'hs'] > big_win.at[0,'as'] %}
+          <div class="boxs {{ theme }}-green">{{ big_win.iloc[0]['home']}} {{big_win.iloc[0]['hs'].astype('int') }}</div>
+          <div class="boxs {{ theme }}-red">{{ big_win.iloc[0]['away']}} {{big_win.iloc[0]['as'].astype('int') }}</div>
+          {% elif big_win.at[0,'as'] > big_win.at[0,'hs'] %}
+          <div class="boxs {{ theme }}-red">{{ big_win.iloc[0]['home']}} {{big_win.iloc[0]['hs'].astype('int') }}</div>
+          <div class="boxs {{ theme }}-green">{{ big_win.iloc[0]['away']}} {{big_win.iloc[0]['as'].astype('int') }}</div>
+          {% else %}
+          <div class="boxs {{ theme }}-orange">{{ big_win.iloc[0]['home']}} {{big_win.iloc[0]['hs'].astype('int') }}</div>
+          <div class="boxs {{ theme }}-orange">{{ big_win.iloc[0]['away']}} {{big_win.iloc[0]['as'].astype('int') }}</div>
+          {% endif %}
+        </div>
+        <br>
+        <h3>Other Results</h3>
+        <div class="child">
+          {% if top_result.at[0,'hs'] > top_result.at[0,'as'] %}
+          <div class="boxs {{ theme }}-green">{{ top_result.iloc[0]['home']}} {{top_result.iloc[0]['hs'].astype('int') }}</div>
+          <div class="boxs {{ theme }}-red">{{ top_result.iloc[0]['away']}} {{top_result.iloc[0]['as'].astype('int') }}</div>
+          {% elif top_result.at[0,'as'] > top_result.at[0,'hs'] %}
+          <div class="boxs {{ theme }}-red">{{ top_result.iloc[0]['home']}} {{top_result.iloc[0]['hs'].astype('int') }}</div>
+          <div class="boxs {{ theme }}-green">{{ top_result.iloc[0]['away']}} {{top_result.iloc[0]['as'].astype('int') }}</div>
+          {% else %}
+          <div class="boxs {{ theme }}-orange">{{ top_result.iloc[0]['home']}} {{top_result.iloc[0]['hs'].astype('int') }}</div>
+          <div class="boxs {{ theme }}-orange">{{ top_result.iloc[0]['away']}} {{top_result.iloc[0]['as'].astype('int') }}</div>
+          {% endif %}
+        </div>
+        <br>
+        <div class="child">
+          {% if other_result.at[0,'hs'] > other_result.at[0,'as'] %}
+          <div class="boxs {{ theme }}-green">{{ other_result.iloc[0]['home']}} {{other_result.iloc[0]['hs'].astype('int') }}</div>
+          <div class="boxs {{ theme }}-red">{{ other_result.iloc[0]['away']}} {{other_result.iloc[0]['as'].astype('int') }}</div>
+          {% elif other_result.at[0,'as'] > other_result.at[0,'hs'] %}
+          <div class="boxs {{ theme }}-red">{{ other_result.iloc[0]['home']}} {{other_result.iloc[0]['hs'].astype('int') }}</div>
+          <div class="boxs {{ theme }}-green">{{ other_result.iloc[0]['away']}} {{other_result.iloc[0]['as'].astype('int') }}</div>
+          {% else %}
+          <div class="boxs {{ theme }}-orange">{{ other_result.iloc[0]['home']}} {{other_result.iloc[0]['hs'].astype('int') }}</div>
+          <div class="boxs {{ theme }}-orange">{{ other_result.iloc[0]['away']}} {{other_result.iloc[0]['as'].astype('int') }}</div>
+          {% endif %}
+        </div>
+        <br>
+        <h3>Bottom Team Result</h3>
+        <div class="child">
+          {% if low_result.at[0,'hs'] > low_result.at[0,'as'] %}
+          <div class="boxs {{ theme }}-green">{{ low_result.iloc[0]['home']}} {{low_result.iloc[0]['hs'].astype('int') }}</div>
+          <div class="boxs {{ theme }}-red">{{ low_result.iloc[0]['away']}} {{low_result.iloc[0]['as'].astype('int') }}</div>
+          {% elif low_result.at[0,'as'] > low_result.at[0,'hs'] %}
+          <div class="boxs {{ theme }}-red">{{ low_result.iloc[0]['home']}} {{low_result.iloc[0]['hs'].astype('int') }}</div>
+          <div class="boxs {{ theme }}-green">{{ low_result.iloc[0]['away']}} {{low_result.iloc[0]['as'].astype('int') }}</div>
+          {% else %}
+          <div class="boxs {{ theme }}-orange">{{ low_result.iloc[0]['home']}} {{low_result.iloc[0]['hs'].astype('int') }}</div>
+          <div class="boxs {{ theme }}-orange">{{ low_result.iloc[0]['away']}} {{low_result.iloc[0]['as'].astype('int') }}</div>
+          {% endif %}
+        </div>
+        <div class="spacer"></div>
+      </div>
+      <br>
+      <div class="box" style="padding: 15px 15px;">
+        <span><h3>Players of the Week</h3></span>
+        <div>
+          <table>
+            <tr>
+              <td class="t-left sfont">Top Scorer</td>
+              <td class="t-left sfont" style="width: 45%;">{{top_scorer['name']}}</td>
+              <td>{{top_scorer['overall']}}</td>
+            </tr>
+            <tr>
+              <td class="t-left sfont">Most Assists</td>
+              <td class="t-left sfont">{{top_assist['name']}}</td>
+              <td>{{top_assist['overall']}}</td>
+            </tr>
+            <tr>
+              <td class="t-left sfont">Top Forward</td>
+              <td class="t-left sfont">{{top_forward['name']}}</td>
+              <td>{{top_forward['overall']}}</td>
+            </tr>
+            <tr>
+              <td class="t-left sfont">Top Midfielder</td>
+              <td class="t-left sfont">{{top_midfielder['name']}}</td>
+              <td>{{top_midfielder['overall']}}</td>
+            </tr>
+            <tr>
+              <td class="t-left sfont">Top Defender</td>
+              <td class="t-left sfont">{{top_defender['name']}}</td>
+              <td>{{top_defender['overall']}}</td>
+            </tr>
+            <tr>
+              <td class="t-left sfont">Top Keeper</td>
+              <td class="t-left sfont">{{top_keeper['name']}}</td>
+              <td style=";width:10%;">{{top_keeper['overall']}}</td>
+            </tr>
+            <tr>
+              <td class="t-left sfont">Top Offender</td>
+              <td class="t-left sfont">{{top_offender['name']}}</td>
+              <td>{{top_offender['overall']}}</td>
+            </tr>
+            <tr>
+              <td class="t-left sfont">Suspended</td>
+              <td class="t-left sfont">{{ suspended }}</td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DESKTOP SECTION -->
+  <!-- DESKTOP SECTION -->
+
   <div class="desktop">
+    <form method="POST" action="/roster">
     <div class="parent">
       <div class="box {{ first_colour }}">
         <div class="spacer"></div>
@@ -78,9 +199,10 @@
           </tr>
           <tr>
             {% if top_team|length > 12 %}
-            <td><h3 class="xfont"> {{ top_team }}</h3></td>
+            <td><h2><a><input class="xfont table-button staat" type="submit" id="team" name="team" value="{{ top_team }}"/></a></h2></td>
             {% else %}
-            <td><h3 class="xxfont"> {{ top_team }}</h3></td>
+            <!--td><h3><a class="xxfont button staat" href="/teams">{{ top_team }}</a></h3></td-->
+            <td><h2><a><input class="xxxfont table-button staat" type="submit" id="team" name="team" value="{{ top_team }}"/></a></h2></td>
             {% endif %}
           </tr>
         </table>
@@ -95,9 +217,9 @@
           </tr>
           <tr>
             {% if top_mover|length > 12 %}
-            <td><h3 class="xfont"> {{ top_mover }}</h3></td>
+            <td><h2><a><input class="xfont table-button staat" type="submit" id="team" name="team" value="{{ top_mover }}"/></a></h2></td>
             {% else %}
-            <td><h3 class="xxfont"> {{ top_mover }}</h3></td>
+            <td><h2><a><input class="xxxfont table-button staat" type="submit" id="team" name="team" value="{{ top_mover }}"/></a></h2></td>
             {% endif %}
           </tr>
         </table>
@@ -112,9 +234,9 @@
           </tr>
           <tr>
             {% if top_dropper|length > 12 %}
-            <td><h3 class="xfont"> {{ top_dropper }}</h3></td>
+            <td><h2><a><input class="xfont table-button staat" type="submit" id="team" name="team" value="{{ top_dropper }}"/></a></h2></td>
             {% else %}
-            <td><h3 class="xxfont"> {{ top_dropper }}</h3></td>
+            <td><h2><a><input class="xxxfont table-button staat" type="submit" id="team" name="team" value="{{ top_dropper }}"/></a></h2></td>
             {% endif %}
           </tr>
         </table>
@@ -134,119 +256,8 @@
         <div class="spacer"></div>
       </div>
     </div>
+    </form>
   </div>
-
-    <!-- end of weekly team performance -->
-    <div class="mobile">
-      <div class="parent">
-
-          <div class="box" style="padding: 15px 15px;">
-            <h3>Biggest Win</h3>
-            <div class="child">
-              {% if big_win.at[0,'hs'] > big_win.at[0,'as'] %}
-              <div class="boxs {{ theme }}-green">{{ big_win.iloc[0]['home']}} {{big_win.iloc[0]['hs'].astype('int') }}</div>
-              <div class="boxs {{ theme }}-red">{{ big_win.iloc[0]['away']}} {{big_win.iloc[0]['as'].astype('int') }}</div>
-              {% elif big_win.at[0,'as'] > big_win.at[0,'hs'] %}
-              <div class="boxs {{ theme }}-red">{{ big_win.iloc[0]['home']}} {{big_win.iloc[0]['hs'].astype('int') }}</div>
-              <div class="boxs {{ theme }}-green">{{ big_win.iloc[0]['away']}} {{big_win.iloc[0]['as'].astype('int') }}</div>
-              {% else %}
-              <div class="boxs {{ theme }}-orange">{{ big_win.iloc[0]['home']}} {{big_win.iloc[0]['hs'].astype('int') }}</div>
-              <div class="boxs {{ theme }}-orange">{{ big_win.iloc[0]['away']}} {{big_win.iloc[0]['as'].astype('int') }}</div>
-              {% endif %}
-            </div>
-            <br>
-            <h3>Other Results</h3>
-            <div class="child">
-              {% if top_result.at[0,'hs'] > top_result.at[0,'as'] %}
-              <div class="boxs {{ theme }}-green">{{ top_result.iloc[0]['home']}} {{top_result.iloc[0]['hs'].astype('int') }}</div>
-              <div class="boxs {{ theme }}-red">{{ top_result.iloc[0]['away']}} {{top_result.iloc[0]['as'].astype('int') }}</div>
-              {% elif top_result.at[0,'as'] > top_result.at[0,'hs'] %}
-              <div class="boxs {{ theme }}-red">{{ top_result.iloc[0]['home']}} {{top_result.iloc[0]['hs'].astype('int') }}</div>
-              <div class="boxs {{ theme }}-green">{{ top_result.iloc[0]['away']}} {{top_result.iloc[0]['as'].astype('int') }}</div>
-              {% else %}
-              <div class="boxs {{ theme }}-orange">{{ top_result.iloc[0]['home']}} {{top_result.iloc[0]['hs'].astype('int') }}</div>
-              <div class="boxs {{ theme }}-orange">{{ top_result.iloc[0]['away']}} {{top_result.iloc[0]['as'].astype('int') }}</div>
-              {% endif %}
-            </div>
-            <br>
-            <div class="child">
-              {% if other_result.at[0,'hs'] > other_result.at[0,'as'] %}
-              <div class="boxs {{ theme }}-green">{{ other_result.iloc[0]['home']}} {{other_result.iloc[0]['hs'].astype('int') }}</div>
-              <div class="boxs {{ theme }}-red">{{ other_result.iloc[0]['away']}} {{other_result.iloc[0]['as'].astype('int') }}</div>
-              {% elif other_result.at[0,'as'] > other_result.at[0,'hs'] %}
-              <div class="boxs {{ theme }}-red">{{ other_result.iloc[0]['home']}} {{other_result.iloc[0]['hs'].astype('int') }}</div>
-              <div class="boxs {{ theme }}-green">{{ other_result.iloc[0]['away']}} {{other_result.iloc[0]['as'].astype('int') }}</div>
-              {% else %}
-              <div class="boxs {{ theme }}-orange">{{ other_result.iloc[0]['home']}} {{other_result.iloc[0]['hs'].astype('int') }}</div>
-              <div class="boxs {{ theme }}-orange">{{ other_result.iloc[0]['away']}} {{other_result.iloc[0]['as'].astype('int') }}</div>
-              {% endif %}
-            </div>
-            <br>
-            <h3>Bottom Team Result</h3>
-            <div class="child">
-              {% if low_result.at[0,'hs'] > low_result.at[0,'as'] %}
-              <div class="boxs {{ theme }}-green">{{ low_result.iloc[0]['home']}} {{low_result.iloc[0]['hs'].astype('int') }}</div>
-              <div class="boxs {{ theme }}-red">{{ low_result.iloc[0]['away']}} {{low_result.iloc[0]['as'].astype('int') }}</div>
-              {% elif low_result.at[0,'as'] > low_result.at[0,'hs'] %}
-              <div class="boxs {{ theme }}-red">{{ low_result.iloc[0]['home']}} {{low_result.iloc[0]['hs'].astype('int') }}</div>
-              <div class="boxs {{ theme }}-green">{{ low_result.iloc[0]['away']}} {{low_result.iloc[0]['as'].astype('int') }}</div>
-              {% else %}
-              <div class="boxs {{ theme }}-orange">{{ low_result.iloc[0]['home']}} {{low_result.iloc[0]['hs'].astype('int') }}</div>
-              <div class="boxs {{ theme }}-orange">{{ low_result.iloc[0]['away']}} {{low_result.iloc[0]['as'].astype('int') }}</div>
-              {% endif %}
-            </div>
-            <div class="spacer"></div>
-          </div>
-          <br>
-          <div class="box" style="padding: 15px 15px;">
-            <span><h3>Players of the Week</h3></span>
-            <div>
-              <table>
-                <tr>
-                  <td class="t-left sfont">Top Scorer</td>
-                  <td class="t-left sfont" style="width: 45%;">{{top_scorer['name']}}</td>
-                  <td>{{top_scorer['overall']}}</td>
-                </tr>
-                <tr>
-                  <td class="t-left sfont">Most Assists</td>
-                  <td class="t-left sfont">{{top_assist['name']}}</td>
-                  <td>{{top_assist['overall']}}</td>
-                </tr>
-                <tr>
-                  <td class="t-left sfont">Top Forward</td>
-                  <td class="t-left sfont">{{top_forward['name']}}</td>
-                  <td>{{top_forward['overall']}}</td>
-                </tr>
-                <tr>
-                  <td class="t-left sfont">Top Midfielder</td>
-                  <td class="t-left sfont">{{top_midfielder['name']}}</td>
-                  <td>{{top_midfielder['overall']}}</td>
-                </tr>
-                <tr>
-                  <td class="t-left sfont">Top Defender</td>
-                  <td class="t-left sfont">{{top_defender['name']}}</td>
-                  <td>{{top_defender['overall']}}</td>
-                </tr>
-                <tr>
-                  <td class="t-left sfont">Top Keeper</td>
-                  <td class="t-left sfont">{{top_keeper['name']}}</td>
-                  <td style=";width:10%;">{{top_keeper['overall']}}</td>
-                </tr>
-                <tr>
-                  <td class="t-left sfont">Top Offender</td>
-                  <td class="t-left sfont">{{top_offender['name']}}</td>
-                  <td>{{top_offender['overall']}}</td>
-                </tr>
-                <tr>
-                  <td class="t-left sfont">Suspended</td>
-                  <td class="t-left sfont">{{ suspended }}</td>
-                  <td></td>
-                </tr>
-              </table>
-              </div>
-          </div>
-        </div>
-    </div>
 
 <div class="desktop">
   <div class="parent">
@@ -362,7 +373,7 @@
       </div>
     </div>
 </div>
-
+<!-- END OF DESKTOP SECTION -->
     <!-- end of weekly team performance-->
 
 

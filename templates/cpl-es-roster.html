@@ -1,36 +1,69 @@
-{% extends 'base.html' %}
+{% extends 't-base.html' %}
 {% block content %}
 
 <!-- page content -->
-
-  <!-- header -->
-<h3><b>{{ team_name }} - {{ year }} Roster (click name to view)</b></h3>
 <div class="mobile">
+  <div class="parent">
+    <div class="boxs center">
+      <img src="static/images/flags/{{ crest }}" alt="{{ team_name }} Crest" style="max-height:60px">
+    </div>
+    <div class="boxs">
+      <br>
+      <h3><b>{{ team_name }} - {{ year }} Roster (click name to view)</b></h3>
+    </div>
+  </div>
   <!-- body -->
+  <!-- team information section -->
+  <div class="parent">
+      <div class="boxs {{ team_colour }}">
+        <canvas id="teamRadarMobile"></canvas>
+      </div>
+
+      <!-- COACH section -->
+      <div class="boxs {{ team_colour }}">
+        <span><h3 style="text-indent: 50px;">{{ coach['coach'].values[0] }}</h3><span>
+        <div class="center">
+            <a><img src="static/images/players/{{ year }}/{{ coach['image'].values[0] }}" alt="photo of {{ coach['coach'].values[0] }}" style="max-height:100px"></a>
+        </div>
+        <div>
+          <table>
+            <tr>
+              <td style="text-align: center;"><p ><img src="static/images/flags/{{ coach['country'].values[0] }}" alt="{{ coach['country'].values[0][:-4] }}" style="max-height:30px"></p></td>
+              <td><a>wins: {{ coach['cw'].values[0]}}</a></td>
+              <td><a>draws: {{ coach['cd'].values[0] }}</a></td>
+              <td><a>losses: {{ coach['cl'].values[0] }}</a></td>
+            </tr>
+          </table>
+            <br>
+        </div>
+      </div>
+      <!-- END OF COACH section -->
+  </div>
+  <!-- end of team information section -->
   <div class="parent">
       {%for i in range(0,html_table.shape[0])%}
       <div class="boxs {{ team_colour }}">
         <form method="POST" action="/player">
-          <span><h3 href="{{ url_for('player') }}"><input class="{{ team_colour }} button" type="submit" id="name" name="name" value="{{ html_table.iloc[i]['name'] }}" style="width:100%;"></h3><span>
+          <span><a href="{{ url_for('player') }}"><input class="{{ team_colour }} button" type="submit" id="name" name="name" value="{{ html_table.iloc[i]['name'] }}" style="width:100%;"></a><span>
           <div  style="text-align: center;">
-            <img src="static/images/players/{{ year }}/{{ html_table.iloc[i]['image'] }}" alt="{{ html_table.iloc[i]['name'] }} photo" style="max-height:100px">
+            <img src="static/images/players/{{ year }}/{{ html_table.iloc[i]['image'] }}" alt="photo of {{ html_table.iloc[i]['name'] }}" style="max-height:100px">
           </div>
           <table>
             <tr>
               <td style="text-align: center;"><img src="static/images/flags/{{ html_table.iloc[i]['flag'] }}" alt="{{ html_table.iloc[i]['flag'] }}" style="max-height:30px"></td>
-              <td style="text-align: center;"><h3>{{ html_table.iloc[i]['name'] }}</h3></td>
+              <td style="text-align: center;"><h3>{{ html_table.iloc[i]['number'] }}</h3></td>
             </tr>
             <tr>
-              {% if html_table.iloc[i]['pos'] == 'f' %}
+              {% if html_table.iloc[i]['position'] == 'f' %}
                   <td style="text-align: center;"><a>Attacker</a></td>
-              {% elif html_table.iloc[i]['pos'] == 'm' %}
+              {% elif html_table.iloc[i]['position'] == 'm' %}
                   <td style="text-align: center;"><a>Midfielder</a></td>
-              {% elif html_table.iloc[i]['pos'] == 'd' %}
+              {% elif html_table.iloc[i]['position'] == 'd' %}
                   <td style="text-align: center;"><a>Defender</a></td>
               {% else %}
                   <td style="text-align: center;"><a>Goalkeeper</a></td>
               {% endif %}
-              <td style="text-align: center;"><a>Overall {{ html_table.iloc[i]['overall'] }}</a></td>
+              <td style="text-align: center;"><a>Ovrl: {{ html_table.iloc[i]['overall'] }}</a></td>
             </tr>
           </table>
         </form>
@@ -65,7 +98,46 @@
 </div>
 
 <div class="desktop">
-  <!-- body -->
+  <div class="parent">
+    <div class="boxs center">
+      <img src="static/images/flags/{{ crest }}" alt="{{ team_name }} Crest" style="max-height:80px">
+    </div>
+    <div class="boxl">
+      <br>
+      <h2><b>{{ team_name }} - {{ year }} Roster (click name to view)</b></h2>
+    </div>
+  </div>
+  <!-- team information section -->
+  <div class="parent">
+      <div class="boxs {{ team_colour }}">
+        <br>
+        <br>
+        <canvas id="teamRadar"></canvas>
+      </div>
+
+      <!-- COACH section -->
+      <div class="boxs {{ team_colour }}">
+        <span><h3 style="text-indent: 50px;">{{ coach['coach'].values[0] }}</h3><span>
+        <div class="center">
+            <a><img src="static/images/players/{{ year }}/{{ coach['image'].values[0] }}" alt="photo of {{ coach['coach'].values[0] }}" style="max-height:200px"></a>
+        </div>
+        <div>
+          <table>
+            <tr>
+              <td style="text-align: center;"><p ><img src="static/images/flags/{{ coach['country'].values[0] }}" alt="{{ coach['country'].values[0][:-4] }}" style="max-height:30px"></p></td>
+              <td><a>Wins {{ coach['cw'].values[0]}}</a></td>
+              <td><a>Draws {{ coach['cd'].values[0] }}</a></td>
+              <td><a>Losses {{ coach['cl'].values[0] }}</a></td>
+            </tr>
+          </table>
+            <br>
+        </div>
+      </div>
+      <!-- END OF COACH section -->
+  </div>
+  <!-- end of team information section -->
+
+  <!-- player CARD Section -->
   <div class="parent">
       {%for i in range(0,html_table.shape[0])%}
       <div class="boxm {{ team_colour }}">
@@ -95,31 +167,6 @@
         </form>
       </div>
       {%endfor%}
-  </div>
-
-  <div class="parent">
-    <div>
-      <span><h3>{{ team_name }} Head Coach</h3></span>
-      <div class="box {{ team_colour }}">
-        <span><h3 style="text-indent: 50px;">{{ coach['coach'].values[0] }}</h3><span>
-        <div class="center">
-            <a><img src="static/images/players/{{ year }}/{{ coach['image'].values[0] }}" alt="photo of {{ coach['coach'].values[0] }}" style="max-height:200px"></a>
-        </div>
-        <div>
-        <form method="POST" action="/player">
-          <table>
-            <tr>
-              <td style="text-align: center;"><p ><img src="static/images/flags/{{ coach['country'].values[0] }}" alt="{{ coach['country'].values[0][:-4] }}" style="max-height:30px"></p></td>
-              <td><a>Wins {{ coach['cw'].values[0]}}</a></td>
-              <td><a>Draws {{ coach['cd'].values[0] }}</a></td>
-              <td><a>Losses {{ coach['cl'].values[0] }}</a></td>
-            </tr>
-          </table>
-            <br>
-        </form>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 {% endblock %}

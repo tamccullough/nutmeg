@@ -14,7 +14,8 @@
           <span><h3>{{ name }}</h3></span>
             <div class="child {{ html_table[html_table['team'] == name ]['colour'] }}">
               <div class="box center">
-                <img src="static/images/{{ year }}/cpl-{{ year }}-{{ name }}-radar.png" alt="{{ name }} Radar" style="max-height:190px">
+                <canvas id="{{ name }} Mobile"></canvas>
+                <!-- img src="static/images/{{ year }}/cpl-{{ year }}-{{ name }}-radar.png" alt="{{ name }} Radar" style="max-height:190px" -->
               </div>
 
               <div class="box">
@@ -42,7 +43,8 @@
           {% for name in ['Cavalry FC','FC Edmonton','Forge FC','HFX Wanderers FC','Pacific FC','Valour FC','York9 FC']%}
               <div class="box {{ html_table[html_table['team'] == name ]['colour'] }}">
                 <span><h3>{{ name }}</h3></span>
-                <img class="center" src="static/images/{{ year }}/cpl-{{ year }}-{{ name }}-radar.png" alt="{{ name }} Radar" style="max-width:300px">
+                <canvas id="{{ name }} Mobile"></canvas>
+                <!--img class="center" src="static/images/{{ year }}/cpl-{{ year }}-{{ name }}-radar.png" alt="{{ name }} Radar" style="max-width:300px"-->
               </div>
           {% endfor %}
         {% endif %}

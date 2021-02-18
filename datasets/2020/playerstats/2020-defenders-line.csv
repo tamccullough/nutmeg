@@ -1,299 +1,299 @@
-team,name,Min,ExpG,ExpA,Goal,PsOnHfFl,SucflDuels,Touches,DuelLs,SucflTkls,Int,DefTouch,Clrnce,Recovery,TchsM3,Aerials
-Cavalry,Dominick Zator,90,0.06,0.31,0,4,5,108,7,0,0,1,1,3,72,7
-Cavalry,Dominick Zator,90,0.0,0.0,0,5,5,101,3,4,1,6,1,3,52,1
-Cavalry,Dominick Zator,90,0.0,0.0,0,4,3,86,2,0,3,4,1,4,30,3
-Cavalry,Dominick Zator,90,0.03,0.04,0,5,6,74,3,2,1,6,2,6,27,3
-Cavalry,Dominick Zator,90,0.08,0.03,0,1,2,69,0,0,0,2,2,1,24,1
-Cavalry,Dominick Zator,90,0.33,0.0,1,2,13,63,3,1,0,3,1,6,33,9
-Pacific,Lukas MacNaughton,90,0.15,0.0,0,5,7,107,2,1,2,4,1,4,37,5
-Pacific,Lukas MacNaughton,90,0.0,0.0,0,7,6,84,3,1,0,4,3,8,33,7
-Pacific,Lukas MacNaughton,90,0.0,0.0,0,5,6,62,1,0,3,9,6,7,9,2
-Pacific,Lukas MacNaughton,90,0.72,0.2,1,1,4,57,4,0,1,6,3,2,18,6
-Pacific,Lukas MacNaughton,90,0.0,0.0,0,3,4,56,2,0,2,6,4,4,19,4
-Pacific,Lukas MacNaughton,90,0.0,0.0,0,3,9,55,4,3,0,10,5,7,23,3
-Forge,Daniel Krutzen,90,0.06,0.0,0,4,6,102,3,0,2,7,4,5,35,1
-Forge,Daniel Krutzen,90,0.0,0.0,0,4,5,93,6,0,2,3,1,4,52,5
-Forge,Daniel Krutzen,90,0.06,0.0,0,3,2,82,2,0,0,4,3,2,36,0
-Forge,Daniel Krutzen,90,0.0,0.03,0,10,7,74,7,3,4,10,3,8,21,6
-Forge,Daniel Krutzen,90,0.06,0.0,0,2,4,66,1,2,1,8,5,6,29,2
-Forge,Daniel Krutzen,90,0.69,0.0,1,3,6,64,3,0,6,8,2,5,22,2
-Forge,David Edgar,90,0.0,0.0,0,1,2,98,2,0,1,5,3,2,49,2
-Forge,David Edgar,90,0.0,0.11,0,5,2,76,0,0,2,5,3,5,34,1
-Forge,David Edgar,90,0.0,0.0,0,5,5,69,1,2,3,12,5,5,17,2
-Forge,David Edgar,90,0.08,0.0,0,4,6,61,3,1,0,8,7,5,23,4
-Forge,David Edgar,90,0.0,0.0,0,3,2,60,2,0,0,5,5,9,24,1
-Forge,David Edgar,90,0.47,0.0,0,2,4,58,2,1,1,7,4,5,25,0
-Edmonton,Mélé Temguia,90,0.14,0.0,0,2,9,98,6,2,2,8,2,7,52,3
-Edmonton,Mélé Temguia,90,0.05,0.0,0,4,6,88,6,4,2,7,1,9,30,1
-Edmonton,Mélé Temguia,90,0.0,0.0,0,2,4,64,5,1,2,5,2,9,34,2
-Edmonton,Mélé Temguia,90,0.26,0.0,0,5,4,58,4,1,3,10,3,7,14,3
-Edmonton,Mélé Temguia,90,0.0,0.0,0,2,7,41,2,2,2,10,6,1,17,1
-Edmonton,Mélé Temguia,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Pacific,Thomas Meilleur-Giguère,90,0.0,0.0,0,4,3,92,3,0,0,7,7,6,29,5
-Pacific,Thomas Meilleur-Giguère,90,0.04,0.0,0,1,1,72,2,0,2,6,4,6,13,2
-Pacific,Thomas Meilleur-Giguère,90,0.0,0.0,0,2,2,71,2,0,4,8,4,2,21,3
-Pacific,Thomas Meilleur-Giguère,90,0.18,0.0,0,1,2,59,4,1,3,10,6,6,17,3
-Pacific,Thomas Meilleur-Giguère,90,0.0,0.0,0,5,2,53,1,1,2,7,4,3,18,2
-Pacific,Thomas Meilleur-Giguère,90,0.2,0.0,0,1,1,48,2,0,3,4,1,4,14,3
-Cavalry,Robert Boskovic,90,0.0,0.0,0,2,4,91,5,0,3,6,0,7,53,4
-Cavalry,Robert Boskovic,90,0.0,0.0,0,5,6,70,1,1,2,6,2,2,31,1
-Cavalry,Robert Boskovic,90,0.05,0.0,0,2,3,58,2,3,1,5,1,5,33,0
-Cavalry,Robert Boskovic,45,0.0,0.0,0,4,3,47,4,0,0,1,1,5,21,4
-Cavalry,Robert Boskovic,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Edmonton,Jeannot Esua,90,0.03,0.06,0,1,5,91,9,0,1,5,4,7,45,0
-Edmonton,Jeannot Esua,90,0.0,0.35,0,2,7,75,3,0,1,6,4,6,32,0
-Edmonton,Jeannot Esua,90,0.0,0.03,0,3,3,67,5,0,2,8,6,8,27,2
-Edmonton,Jeannot Esua,90,0.15,0.0,0,2,7,64,1,1,3,7,2,6,26,2
-Edmonton,Jeannot Esua,90,0.0,0.0,0,0,5,55,6,1,2,7,4,8,31,4
-Edmonton,Jeannot Esua,77,0.0,0.0,0,0,6,53,2,1,2,3,0,3,25,0
-Edmonton,Ramon Soria,90,0.0,0.0,0,4,3,90,3,1,0,4,2,7,32,3
-Edmonton,Ramon Soria,90,0.09,0.0,0,3,5,84,2,3,1,8,4,5,43,3
-Edmonton,Ramon Soria,90,0.0,0.05,0,5,3,82,5,0,2,4,2,6,34,2
-Edmonton,Ramon Soria,90,0.07,0.0,0,8,6,77,1,2,0,5,2,7,27,1
-Edmonton,Ramon Soria,90,0.0,0.09,0,0,3,52,3,0,0,7,6,4,16,2
-Edmonton,Ramon Soria,90,0.0,0.0,0,0,4,36,3,0,1,4,3,3,11,6
-York9,Fugo Segawa,90,0.0,0.02,0,3,6,89,5,1,1,6,3,4,51,2
-York9,Fugo Segawa,90,0.0,0.0,0,2,5,62,2,3,2,6,1,6,32,3
-York9,Fugo Segawa,90,0.04,0.08,0,2,6,55,4,2,2,5,1,1,17,0
-York9,Fugo Segawa,5,0.0,0.0,0,0,1,4,1,0,0,1,1,0,1,0
-York9,Fugo Segawa,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Edmonton,Amer Didic,90,0.0,0.0,0,5,8,88,1,3,1,8,4,2,41,5
-Edmonton,Amer Didic,61,0.13,0.0,0,0,2,37,1,0,0,4,4,0,16,2
-Edmonton,Amer Didic,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Forge,Kwame Awuah,90,0.03,0.0,1,4,8,88,1,2,0,6,1,5,43,3
-Forge,Kwame Awuah,90,0.0,0.1,0,6,4,64,3,0,2,4,1,6,18,0
-Forge,Kwame Awuah,90,0.0,0.0,0,5,4,61,6,1,2,9,5,4,21,5
-Forge,Kwame Awuah,90,0.05,0.0,0,3,6,48,1,3,1,4,0,5,21,2
-Forge,Kwame Awuah,22,0.0,0.0,0,1,4,22,3,3,1,5,1,3,7,1
-Forge,Kwame Awuah,10,0.0,0.0,0,0,2,12,0,0,0,0,0,1,9,0
-Cavalry,Nathan Mavila,90,0.0,0.05,0,3,4,88,7,0,0,1,1,4,53,4
-Cavalry,Nathan Mavila,90,0.07,0.0,1,2,5,75,9,1,2,5,2,11,18,3
-Cavalry,Nathan Mavila,90,0.46,0.03,0,1,6,61,7,0,2,2,0,3,27,5
-Cavalry,Nathan Mavila,90,0.79,0.21,1,3,6,49,6,1,1,2,0,6,19,2
-Cavalry,Nathan Mavila,58,0.79,0.0,1,2,2,35,4,1,0,3,0,3,14,0
-Cavalry,Nathan Mavila,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-York9,Roger Thompson,90,0.0,0.04,0,3,1,88,2,0,1,4,2,4,40,1
-York9,Roger Thompson,90,0.05,0.0,0,2,4,84,3,0,3,12,8,6,30,3
-York9,Roger Thompson,90,0.04,0.08,0,2,6,74,1,2,1,6,3,9,42,3
-York9,Roger Thompson,90,0.0,0.03,0,1,4,56,1,0,2,7,3,6,30,2
-York9,Roger Thompson,90,0.0,0.03,0,4,7,51,2,0,1,5,4,3,22,7
-York9,Roger Thompson,90,0.0,0.0,0,4,5,46,4,1,3,10,5,1,13,5
-Pacific,Kadin Chung,90,0.0,0.02,0,3,12,87,5,2,1,7,3,4,33,3
-Pacific,Kadin Chung,90,0.0,0.0,0,3,7,69,3,2,0,4,1,2,23,4
-Pacific,Kadin Chung,90,0.0,0.07,0,1,6,65,2,3,3,9,3,8,28,0
-Pacific,Kadin Chung,90,0.0,0.0,0,4,5,59,3,4,0,4,0,4,21,1
-Pacific,Kadin Chung,45,0.0,0.0,0,3,5,58,2,2,1,4,0,3,23,0
-Pacific,Kadin Chung,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Cavalry,Mason Trafford,90,0.05,0.03,0,3,8,85,2,1,1,6,2,5,22,4
-Cavalry,Mason Trafford,90,0.0,0.0,0,1,0,68,0,0,1,5,4,3,15,0
-Cavalry,Mason Trafford,90,0.0,0.0,0,1,2,64,4,2,0,5,3,1,22,2
-Cavalry,Mason Trafford,90,0.0,0.0,0,5,4,59,1,0,1,1,0,3,24,3
-Cavalry,Mason Trafford,90,0.28,0.0,0,3,4,46,4,1,0,4,3,3,17,5
-Cavalry,Mason Trafford,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Pacific,Jordan Haynes,90,0.0,0.03,0,4,7,85,6,2,2,8,2,6,41,4
-Pacific,Jordan Haynes,90,0.0,0.0,0,3,7,67,3,2,0,3,1,6,38,5
-Pacific,Jordan Haynes,45,0.0,0.0,0,7,3,41,1,0,0,2,2,3,18,3
-Pacific,Jordan Haynes,19,0.0,0.0,0,1,1,26,0,0,1,3,1,3,14,0
-Pacific,Jordan Haynes,13,0.0,0.0,0,0,1,9,1,0,0,1,1,1,1,0
-Pacific,Jordan Haynes,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-HFX Wanderers,Peter Schaale,90,0.0,0.04,0,1,7,84,5,0,1,11,7,4,43,6
-HFX Wanderers,Peter Schaale,90,0.21,0.0,0,2,7,67,2,0,1,10,9,8,33,5
-HFX Wanderers,Peter Schaale,90,0.0,0.0,0,2,2,61,3,2,2,9,5,5,26,0
-HFX Wanderers,Peter Schaale,90,0.05,0.0,0,6,4,54,2,2,2,10,5,3,17,2
-HFX Wanderers,Peter Schaale,90,0.0,0.05,0,1,6,39,4,1,0,8,6,1,13,5
-HFX Wanderers,Peter Schaale,90,0.0,0.0,0,4,3,38,5,1,2,9,5,4,16,4
-Pacific,Marcel de Jong,90,0.11,0.14,0,5,3,78,0,1,2,10,6,6,29,1
-Pacific,Marcel de Jong,77,0.09,0.09,0,3,5,67,0,1,4,7,2,0,36,2
-Pacific,Marcel de Jong,71,0.0,0.36,0,1,0,60,2,0,2,4,2,6,19,0
-Pacific,Marcel de Jong,45,0.0,0.02,0,1,2,35,3,1,0,1,0,1,18,2
-Pacific,Marcel de Jong,7,0.07,0.0,0,1,1,7,2,1,0,2,1,1,0,1
-Pacific,Marcel de Jong,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-York9,Luca Gasparotto,90,0.15,0.0,0,3,4,78,3,0,3,12,9,1,23,5
-York9,Luca Gasparotto,90,0.03,0.0,0,7,2,73,1,1,3,13,9,4,14,1
-York9,Luca Gasparotto,90,0.04,0.0,0,8,11,63,1,0,4,8,3,4,24,9
-York9,Luca Gasparotto,90,0.17,0.0,0,2,3,56,3,1,2,10,7,1,19,4
-York9,Luca Gasparotto,90,0.0,0.0,0,3,2,48,1,1,2,9,6,3,9,1
-York9,Luca Gasparotto,90,0.07,0.0,0,1,5,40,3,2,0,7,3,2,11,2
-York9,Morey Doner,90,0.0,0.05,0,1,0,78,2,0,0,1,1,3,42,1
-York9,Morey Doner,90,0.0,0.03,0,2,3,71,1,0,5,6,0,2,29,1
-York9,Morey Doner,90,0.0,0.0,0,3,1,66,6,1,3,6,2,8,25,1
-York9,Morey Doner,90,0.0,0.03,0,3,2,58,3,1,0,2,1,6,18,1
-York9,Morey Doner,90,0.0,0.0,0,2,2,55,6,0,2,4,2,6,21,3
-York9,Morey Doner,90,0.0,0.0,0,2,2,49,2,0,2,5,2,4,17,1
-Edmonton,Allan Zebie,82,0.03,0.0,0,4,5,77,5,4,4,8,0,9,47,1
-Edmonton,Allan Zebie,90,0.03,0.0,0,1,3,66,2,1,0,1,0,4,43,1
-Edmonton,Allan Zebie,90,0.0,0.07,0,2,7,62,3,3,1,6,0,9,38,2
-Edmonton,Allan Zebie,87,0.09,0.0,0,0,3,37,2,1,0,1,0,2,15,0
-Edmonton,Allan Zebie,63,0.0,0.0,0,2,3,26,1,0,2,2,0,4,19,2
-Edmonton,Allan Zebie,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-HFX Wanderers,Chrisnovic N'Sa,90,0.0,0.06,0,3,7,77,10,2,0,7,3,2,32,4
-HFX Wanderers,Chrisnovic N'Sa,90,0.05,0.0,0,6,8,67,2,5,3,12,3,5,24,1
-HFX Wanderers,Chrisnovic N'Sa,90,0.06,0.0,0,4,6,59,7,3,2,9,4,1,31,1
-HFX Wanderers,Chrisnovic N'Sa,90,0.0,0.0,0,3,11,51,2,6,1,8,0,9,11,1
-HFX Wanderers,Chrisnovic N'Sa,67,0.0,0.0,0,1,3,33,6,1,2,3,0,4,10,1
-HFX Wanderers,Chrisnovic N'Sa,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Cavalry,Jonathan Wheeldon,90,0.0,0.0,0,3,4,73,4,0,2,9,7,5,19,4
-Cavalry,Jonathan Wheeldon,90,0.02,0.0,0,7,3,71,5,0,0,9,9,7,24,6
-Cavalry,Jonathan Wheeldon,90,0.0,0.0,0,2,3,64,1,0,3,5,1,4,18,3
-Cavalry,Jonathan Wheeldon,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Cavalry,Jonathan Wheeldon,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Forge,Dominic Samuel,90,0.0,0.0,0,1,5,72,2,0,2,3,1,2,39,1
-Forge,Dominic Samuel,90,0.64,0.0,0,4,8,65,7,2,0,7,2,4,27,3
-Forge,Dominic Samuel,88,0.04,0.0,0,1,4,62,4,0,1,4,2,1,29,1
-Forge,Dominic Samuel,74,0.0,0.15,0,4,11,62,5,0,1,7,3,5,23,2
-Forge,Dominic Samuel,12,0.0,0.0,0,0,2,6,0,0,0,1,0,1,2,0
-Forge,Dominic Samuel,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Cavalry,Dean Northover,90,0.0,0.27,0,5,7,68,3,2,1,7,2,6,20,2
-Cavalry,Dean Northover,90,0.0,0.0,0,3,6,58,9,0,3,5,0,6,23,4
-Cavalry,Dean Northover,90,0.03,0.0,0,6,6,56,2,0,2,3,1,1,23,3
-Cavalry,Dean Northover,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Cavalry,Dean Northover,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Cavalry,Dean Northover,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Valour,Julian Dunn-Johnson,90,0.0,0.03,0,2,8,67,8,1,3,6,2,7,22,9
-Valour,Julian Dunn-Johnson,90,0.0,0.0,0,1,6,59,3,0,0,5,4,6,17,4
-Valour,Julian Dunn-Johnson,90,0.0,0.0,0,2,4,58,6,1,2,9,3,6,10,0
-Valour,Julian Dunn-Johnson,90,0.0,0.0,0,3,3,54,1,1,0,4,0,2,12,1
-Valour,Julian Dunn-Johnson,90,0.0,0.0,0,1,6,50,7,2,2,11,7,6,17,6
-Valour,Julian Dunn-Johnson,90,0.0,0.0,0,4,4,49,2,0,0,3,2,3,14,4
-Cavalry,Mohamed Farsi,71,0.0,0.06,0,2,7,67,2,3,1,5,0,4,25,1
-Cavalry,Mohamed Farsi,64,0.0,0.06,0,0,6,62,2,2,1,7,3,2,35,1
-Cavalry,Mohamed Farsi,90,0.0,0.49,0,1,4,56,3,1,2,5,2,6,18,1
-Cavalry,Mohamed Farsi,32,0.0,0.06,0,1,4,36,2,0,1,3,1,8,11,0
-Cavalry,Mohamed Farsi,10,0.07,0.0,0,1,0,5,1,0,0,0,0,0,1,0
-Cavalry,Mohamed Farsi,1,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-York9,Diyaeddine Abzi,89,0.12,0.08,0,1,4,64,9,2,0,2,0,7,17,3
-York9,Diyaeddine Abzi,90,0.0,0.0,0,3,6,63,4,1,4,12,5,5,25,1
-York9,Diyaeddine Abzi,85,0.0,0.08,0,4,1,61,4,1,1,2,0,3,22,0
-York9,Diyaeddine Abzi,84,0.07,0.08,0,2,6,57,4,2,2,7,2,8,25,1
-Edmonton,Duran Lee,78,0.0,0.05,0,3,11,62,6,3,0,8,3,4,27,6
-Edmonton,Duran Lee,44,0.0,0.0,0,1,4,39,3,1,1,4,2,6,21,1
-HFX Wanderers,Mateo Restrepo,90,0.0,0.0,0,4,8,62,4,5,4,17,4,6,24,1
-HFX Wanderers,Mateo Restrepo,90,0.0,0.0,0,1,8,57,1,6,4,13,1,5,26,0
-HFX Wanderers,Mateo Restrepo,82,0.0,0.0,0,5,2,51,4,1,2,6,1,6,23,1
-HFX Wanderers,Mateo Restrepo,9,0.0,0.0,0,0,0,7,0,0,0,0,0,0,6,0
-HFX Wanderers,Mateo Restrepo,12,0.0,0.0,0,0,1,5,0,0,0,0,0,0,3,1
-HFX Wanderers,Mateo Restrepo,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Atlético Ottawa,Milovan Kapor,90,0.0,0.0,0,3,2,61,6,0,4,11,7,6,17,2
-Atlético Ottawa,Milovan Kapor,90,0.0,0.0,0,2,3,58,2,1,0,4,3,4,30,2
-Atlético Ottawa,Milovan Kapor,90,0.0,0.0,0,2,1,37,0,0,1,6,5,3,21,1
-Atlético Ottawa,Milovan Kapor,90,0.0,0.09,0,3,1,32,4,0,1,2,1,1,4,2
-Atlético Ottawa,Milovan Kapor,64,0.0,0.0,0,1,3,31,3,1,2,8,5,1,12,2
-HFX Wanderers,Jake Ruby,90,0.1,0.0,0,1,3,61,9,2,1,5,2,8,21,2
-HFX Wanderers,Jake Ruby,23,0.0,0.0,0,0,4,13,0,0,0,3,2,1,5,1
-HFX Wanderers,Jake Ruby,8,0.04,0.0,0,0,0,8,1,0,0,1,1,0,0,0
-HFX Wanderers,Jake Ruby,4,0.0,0.0,0,1,2,7,0,1,0,2,1,1,2,1
-HFX Wanderers,Jake Ruby,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-HFX Wanderers,Jake Ruby,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Valour,Andrew Jean-Baptiste,90,0.09,0.0,1,3,1,57,1,0,2,5,3,3,21,0
-Valour,Andrew Jean-Baptiste,90,0.0,0.0,0,3,3,55,1,1,0,8,6,1,15,3
-Valour,Andrew Jean-Baptiste,90,0.2,0.0,0,4,4,55,2,0,2,4,2,4,24,3
-Valour,Andrew Jean-Baptiste,90,0.0,0.0,0,4,5,50,2,3,3,9,3,6,21,3
-Valour,Andrew Jean-Baptiste,90,0.0,0.0,0,1,4,47,6,0,2,7,5,1,16,5
-Valour,Andrew Jean-Baptiste,12,0.0,0.0,0,0,2,14,1,1,1,2,0,0,4,0
-Forge,Jordan Dunstan,90,0.0,0.0,0,0,4,57,1,0,2,5,2,1,31,2
-Forge,Jordan Dunstan,16,0.0,0.03,0,0,2,13,2,2,1,4,1,2,5,1
-Forge,Jordan Dunstan,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Forge,Jordan Dunstan,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Forge,Jordan Dunstan,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Forge,Jordan Dunstan,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Edmonton,Samuel Gardner,70,0.06,0.0,0,5,7,56,7,3,1,6,2,1,25,7
-Edmonton,Samuel Gardner,12,0.0,0.0,0,2,1,16,0,0,1,2,0,0,11,0
-Edmonton,Samuel Gardner,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Edmonton,Samuel Gardner,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Edmonton,Samuel Gardner,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Edmonton,Samuel Gardner,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Edmonton,Terique Mohammed,90,0.04,0.0,0,1,5,52,6,4,1,5,0,6,20,1
-Edmonton,Terique Mohammed,46,0.0,0.22,0,1,6,47,6,1,0,3,1,1,15,1
-Edmonton,Terique Mohammed,49,0.0,0.0,0,3,4,37,3,1,0,7,5,4,14,0
-Edmonton,Terique Mohammed,29,0.0,0.0,0,0,3,9,2,1,0,3,1,0,4,1
-Atlético Ottawa,Jarred Phillips,84,0.0,0.0,0,5,5,52,4,2,1,4,1,7,19,0
-Atlético Ottawa,Jarred Phillips,59,0.0,0.0,0,4,3,47,5,1,3,8,1,2,15,1
-Atlético Ottawa,Jarred Phillips,65,0.0,0.0,0,3,1,29,3,0,1,2,1,0,6,0
-Atlético Ottawa,Jarred Phillips,37,0.0,0.0,0,1,4,17,3,3,1,5,1,0,6,1
-Atlético Ottawa,Jarred Phillips,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Atlético Ottawa,Jarred Phillips,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-HFX Wanderers,Jems Geffrard,90,0.1,0.0,0,3,2,51,1,1,1,6,4,4,17,1
-HFX Wanderers,Jems Geffrard,90,0.0,0.0,0,2,5,50,1,0,1,6,4,4,11,3
-HFX Wanderers,Jems Geffrard,90,0.0,0.0,0,0,1,50,1,0,4,8,4,4,18,1
-HFX Wanderers,Jems Geffrard,90,0.0,0.0,0,3,5,41,4,1,0,3,2,6,9,3
-HFX Wanderers,Jems Geffrard,90,0.0,0.0,0,1,2,38,0,1,1,5,3,2,14,0
-HFX Wanderers,Jems Geffrard,90,0.0,0.0,0,5,2,33,2,0,3,6,3,5,7,4
-Atlético Ottawa,Vashon Neufville,50,0.0,0.67,0,2,1,48,5,0,0,0,0,7,17,1
-Atlético Ottawa,Vashon Neufville,90,0.0,0.07,0,1,3,48,5,1,2,7,1,4,17,1
-Atlético Ottawa,Vashon Neufville,31,0.0,0.0,0,3,2,12,3,0,1,1,0,1,5,2
-Atlético Ottawa,Vashon Neufville,25,0.0,0.0,0,1,2,12,1,0,1,1,0,1,5,0
-Atlético Ottawa,Vashon Neufville,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Atlético Ottawa,Gianfranco Facchineri,90,0.04,0.0,0,1,9,48,5,7,1,12,3,7,21,0
-Atlético Ottawa,Gianfranco Facchineri,90,0.0,0.0,0,2,3,28,2,1,1,7,5,1,6,1
-Atlético Ottawa,Gianfranco Facchineri,13,0.0,0.0,0,1,0,10,2,0,0,0,0,0,10,0
-Atlético Ottawa,Gianfranco Facchineri,12,0.0,0.0,0,0,0,3,0,0,0,2,2,0,1,0
-Atlético Ottawa,Gianfranco Facchineri,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Atlético Ottawa,Gianfranco Facchineri,1,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-HFX Wanderers,Alex De Carolis,90,0.04,0.0,0,3,7,48,4,4,1,7,1,3,22,3
-HFX Wanderers,Alex De Carolis,90,0.11,0.0,1,0,3,40,3,0,2,5,3,4,10,2
-HFX Wanderers,Alex De Carolis,81,0.0,0.1,0,3,6,37,0,1,0,2,0,4,9,0
-HFX Wanderers,Alex De Carolis,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-HFX Wanderers,Alex De Carolis,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-HFX Wanderers,Alex De Carolis,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Atlético Ottawa,Evan Brandon John,90,0.0,0.0,0,3,3,48,3,0,1,4,2,3,25,1
-Atlético Ottawa,Evan Brandon John,90,0.0,0.05,0,1,4,46,2,1,0,2,1,3,19,0
-Atlético Ottawa,Evan Brandon John,90,0.0,0.0,0,0,3,43,0,1,1,5,2,1,15,1
-Atlético Ottawa,Evan Brandon John,90,0.0,0.38,0,0,4,43,3,0,2,6,3,2,9,1
-Atlético Ottawa,Evan Brandon John,90,0.0,0.0,0,0,6,33,3,1,3,9,5,1,13,5
-Atlético Ottawa,Evan Brandon John,78,0.0,0.0,0,6,7,30,2,1,1,7,5,1,12,3
-Forge,Jonathan Grant,78,0.0,0.13,0,1,2,45,8,0,0,5,5,5,15,2
-Forge,Maxim Tissot,45,0.05,0.74,0,1,2,39,1,0,1,1,0,2,21,1
-Forge,Maxim Tissot,58,0.11,0.54,0,3,4,39,3,1,1,4,2,2,22,4
-Forge,Maxim Tissot,45,0.02,0.13,0,1,4,38,2,3,0,3,0,2,10,0
-Forge,Maxim Tissot,71,0.05,0.0,0,1,1,31,4,1,1,2,0,3,20,1
-Forge,Maxim Tissot,13,0.05,0.0,0,0,0,12,6,0,0,0,0,0,5,1
-Forge,Maxim Tissot,10,0.0,0.08,0,1,0,9,2,0,0,1,1,0,4,2
-Forge,Monti Mohsen,90,0.0,0.64,0,1,8,39,1,1,1,4,1,2,15,0
-Forge,Monti Mohsen,45,0.0,0.57,0,0,5,35,3,2,0,4,2,3,9,2
-Forge,Monti Mohsen,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Forge,Monti Mohsen,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Valour,Arnold Bouka Moutou,65,0.0,0.0,0,6,5,33,5,1,1,3,0,4,9,3
-Edmonton,Kareem Moses,90,0.05,0.0,0,0,3,33,2,0,1,9,7,2,16,3
-Edmonton,Kareem Moses,29,0.33,0.0,0,1,2,22,4,1,0,5,3,2,6,1
-Edmonton,Kareem Moses,20,0.05,0.0,0,0,0,7,1,0,0,0,0,0,2,1
-Edmonton,Kareem Moses,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-York9,Ijah Halley,72,0.04,0.06,0,0,4,30,8,0,0,0,0,4,11,0
-York9,Ijah Halley,21,0.0,0.0,0,0,4,20,4,0,0,2,1,2,6,1
-York9,Ijah Halley,58,0.08,0.02,0,1,4,19,3,1,0,2,0,1,7,2
-York9,Ijah Halley,6,0.0,0.11,0,0,2,11,2,0,0,0,0,0,1,0
-York9,Ijah Halley,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-York9,Matthew Arnone,53,0.0,0.0,0,2,2,30,1,1,2,4,1,5,23,0
-York9,Matthew Arnone,9,0.0,0.0,0,0,0,2,0,0,0,0,0,1,1,0
-York9,Matthew Arnone,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-York9,Matthew Arnone,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-York9,Matthew Arnone,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-York9,Matthew Arnone,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Valour,Chakib Hocine,66,0.04,0.0,0,3,4,28,4,1,0,3,2,2,8,4
-Valour,Chakib Hocine,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Valour,Chakib Hocine,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-HFX Wanderers,Daniel Kinumbe,45,0.0,0.0,0,1,4,18,2,1,1,2,0,3,12,0
-HFX Wanderers,Daniel Kinumbe,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-HFX Wanderers,Daniel Kinumbe,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-HFX Wanderers,Daniel Kinumbe,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-HFX Wanderers,Daniel Kinumbe,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-HFX Wanderers,Daniel Kinumbe,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Forge,Klaidi Cela,2,0.0,0.0,0,0,0,2,2,0,0,0,0,0,0,0
-Forge,Klaidi Cela,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Forge,Klaidi Cela,1,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Pacific,Abdoulaye Samake,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Pacific,Abdoulaye Samake,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Pacific,Abdoulaye Samake,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Pacific,Abdoulaye Samake,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Pacific,Abdoulaye Samake,1,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Pacific,Abdoulaye Samake,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Valour,Raphaël Garcia,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Valour,Raphaël Garcia,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Valour,Yohan Le Bourhis,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Valour,Yohan Le Bourhis,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Valour,Yohan Le Bourhis,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-Valour,Yohan Le Bourhis,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-HFX Wanderers,Luke Green,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-HFX Wanderers,Luke Green,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-HFX Wanderers,Luke Green,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-HFX Wanderers,Luke Green,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
-HFX Wanderers,Luke Green,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0
+team,name,Min,ExpG,ExpA,Goal,PsOnHfFl,SucflDuels,Touches,DuelLs,SucflTkls,Int,DefTouch,Clrnce,Recovery,TchsM3,Aerials,display
+Cavalry,Dominick Zator,90,0.06,0.31,0,4,5,108,7,0,0,1,1,3,72,7,Dominick Zator
+Cavalry,Dominick Zator,90,0.0,0.0,0,5,5,101,3,4,1,6,1,3,52,1,Dominick Zator
+Cavalry,Dominick Zator,90,0.0,0.0,0,4,3,86,2,0,3,4,1,4,30,3,Dominick Zator
+Cavalry,Dominick Zator,90,0.03,0.04,0,5,6,74,3,2,1,6,2,6,27,3,Dominick Zator
+Cavalry,Dominick Zator,90,0.08,0.03,0,1,2,69,0,0,0,2,2,1,24,1,Dominick Zator
+Cavalry,Dominick Zator,90,0.33,0.0,1,2,13,63,3,1,0,3,1,6,33,9,Dominick Zator
+Pacific,Lukas MacNaughton,90,0.15,0.0,0,5,7,107,2,1,2,4,1,4,37,5,Lukas MacNaughton
+Pacific,Lukas MacNaughton,90,0.0,0.0,0,7,6,84,3,1,0,4,3,8,33,7,Lukas MacNaughton
+Pacific,Lukas MacNaughton,90,0.0,0.0,0,5,6,62,1,0,3,9,6,7,9,2,Lukas MacNaughton
+Pacific,Lukas MacNaughton,90,0.72,0.2,1,1,4,57,4,0,1,6,3,2,18,6,Lukas MacNaughton
+Pacific,Lukas MacNaughton,90,0.0,0.0,0,3,4,56,2,0,2,6,4,4,19,4,Lukas MacNaughton
+Pacific,Lukas MacNaughton,90,0.0,0.0,0,3,9,55,4,3,0,10,5,7,23,3,Lukas MacNaughton
+Forge,Daniel Krutzen,90,0.06,0.0,0,4,6,102,3,0,2,7,4,5,35,1,Daniel Krutzen
+Forge,Daniel Krutzen,90,0.0,0.0,0,4,5,93,6,0,2,3,1,4,52,5,Daniel Krutzen
+Forge,Daniel Krutzen,90,0.06,0.0,0,3,2,82,2,0,0,4,3,2,36,0,Daniel Krutzen
+Forge,Daniel Krutzen,90,0.0,0.03,0,10,7,74,7,3,4,10,3,8,21,6,Daniel Krutzen
+Forge,Daniel Krutzen,90,0.06,0.0,0,2,4,66,1,2,1,8,5,6,29,2,Daniel Krutzen
+Forge,Daniel Krutzen,90,0.69,0.0,1,3,6,64,3,0,6,8,2,5,22,2,Daniel Krutzen
+Forge,David Edgar,90,0.0,0.0,0,1,2,98,2,0,1,5,3,2,49,2,David Edgar
+Forge,David Edgar,90,0.0,0.11,0,5,2,76,0,0,2,5,3,5,34,1,David Edgar
+Forge,David Edgar,90,0.0,0.0,0,5,5,69,1,2,3,12,5,5,17,2,David Edgar
+Forge,David Edgar,90,0.08,0.0,0,4,6,61,3,1,0,8,7,5,23,4,David Edgar
+Forge,David Edgar,90,0.0,0.0,0,3,2,60,2,0,0,5,5,9,24,1,David Edgar
+Forge,David Edgar,90,0.47,0.0,0,2,4,58,2,1,1,7,4,5,25,0,David Edgar
+Edmonton,Mélé Temguia,90,0.14,0.0,0,2,9,98,6,2,2,8,2,7,52,3,Mélé Temguia
+Edmonton,Mélé Temguia,90,0.05,0.0,0,4,6,88,6,4,2,7,1,9,30,1,Mélé Temguia
+Edmonton,Mélé Temguia,90,0.0,0.0,0,2,4,64,5,1,2,5,2,9,34,2,Mélé Temguia
+Edmonton,Mélé Temguia,90,0.26,0.0,0,5,4,58,4,1,3,10,3,7,14,3,Mélé Temguia
+Edmonton,Mélé Temguia,90,0.0,0.0,0,2,7,41,2,2,2,10,6,1,17,1,Mélé Temguia
+Edmonton,Mélé Temguia,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Mélé Temguia
+Pacific,Thomas Meilleur-Giguère,90,0.0,0.0,0,4,3,92,3,0,0,7,7,6,29,5,Thomas Meilleur-Giguère
+Pacific,Thomas Meilleur-Giguère,90,0.04,0.0,0,1,1,72,2,0,2,6,4,6,13,2,Thomas Meilleur-Giguère
+Pacific,Thomas Meilleur-Giguère,90,0.0,0.0,0,2,2,71,2,0,4,8,4,2,21,3,Thomas Meilleur-Giguère
+Pacific,Thomas Meilleur-Giguère,90,0.18,0.0,0,1,2,59,4,1,3,10,6,6,17,3,Thomas Meilleur-Giguère
+Pacific,Thomas Meilleur-Giguère,90,0.0,0.0,0,5,2,53,1,1,2,7,4,3,18,2,Thomas Meilleur-Giguère
+Pacific,Thomas Meilleur-Giguère,90,0.2,0.0,0,1,1,48,2,0,3,4,1,4,14,3,Thomas Meilleur-Giguère
+Cavalry,Robert Boskovic,90,0.0,0.0,0,2,4,91,5,0,3,6,0,7,53,4,Robert Boskovic
+Cavalry,Robert Boskovic,90,0.0,0.0,0,5,6,70,1,1,2,6,2,2,31,1,Robert Boskovic
+Cavalry,Robert Boskovic,90,0.05,0.0,0,2,3,58,2,3,1,5,1,5,33,0,Robert Boskovic
+Cavalry,Robert Boskovic,45,0.0,0.0,0,4,3,47,4,0,0,1,1,5,21,4,Robert Boskovic
+Cavalry,Robert Boskovic,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Robert Boskovic
+Edmonton,Jeannot Esua,90,0.03,0.06,0,1,5,91,9,0,1,5,4,7,45,0,Jeannot Esua
+Edmonton,Jeannot Esua,90,0.0,0.35,0,2,7,75,3,0,1,6,4,6,32,0,Jeannot Esua
+Edmonton,Jeannot Esua,90,0.0,0.03,0,3,3,67,5,0,2,8,6,8,27,2,Jeannot Esua
+Edmonton,Jeannot Esua,90,0.15,0.0,0,2,7,64,1,1,3,7,2,6,26,2,Jeannot Esua
+Edmonton,Jeannot Esua,90,0.0,0.0,0,0,5,55,6,1,2,7,4,8,31,4,Jeannot Esua
+Edmonton,Jeannot Esua,77,0.0,0.0,0,0,6,53,2,1,2,3,0,3,25,0,Jeannot Esua
+Edmonton,Ramon Soria,90,0.0,0.0,0,4,3,90,3,1,0,4,2,7,32,3,Ramon Soria
+Edmonton,Ramon Soria,90,0.09,0.0,0,3,5,84,2,3,1,8,4,5,43,3,Ramon Soria
+Edmonton,Ramon Soria,90,0.0,0.05,0,5,3,82,5,0,2,4,2,6,34,2,Ramon Soria
+Edmonton,Ramon Soria,90,0.07,0.0,0,8,6,77,1,2,0,5,2,7,27,1,Ramon Soria
+Edmonton,Ramon Soria,90,0.0,0.09,0,0,3,52,3,0,0,7,6,4,16,2,Ramon Soria
+Edmonton,Ramon Soria,90,0.0,0.0,0,0,4,36,3,0,1,4,3,3,11,6,Ramon Soria
+York9,Fugo Segawa,90,0.0,0.02,0,3,6,89,5,1,1,6,3,4,51,2,Fugo Segawa
+York9,Fugo Segawa,90,0.0,0.0,0,2,5,62,2,3,2,6,1,6,32,3,Fugo Segawa
+York9,Fugo Segawa,90,0.04,0.08,0,2,6,55,4,2,2,5,1,1,17,0,Fugo Segawa
+York9,Fugo Segawa,5,0.0,0.0,0,0,1,4,1,0,0,1,1,0,1,0,Fugo Segawa
+York9,Fugo Segawa,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Fugo Segawa
+Edmonton,Amer Didic,90,0.0,0.0,0,5,8,88,1,3,1,8,4,2,41,5,Amer Didic
+Edmonton,Amer Didic,61,0.13,0.0,0,0,2,37,1,0,0,4,4,0,16,2,Amer Didic
+Edmonton,Amer Didic,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Amer Didic
+Forge,Kwame Awuah,90,0.03,0.0,1,4,8,88,1,2,0,6,1,5,43,3,Kwame Awuah
+Forge,Kwame Awuah,90,0.0,0.1,0,6,4,64,3,0,2,4,1,6,18,0,Kwame Awuah
+Forge,Kwame Awuah,90,0.0,0.0,0,5,4,61,6,1,2,9,5,4,21,5,Kwame Awuah
+Forge,Kwame Awuah,90,0.05,0.0,0,3,6,48,1,3,1,4,0,5,21,2,Kwame Awuah
+Forge,Kwame Awuah,22,0.0,0.0,0,1,4,22,3,3,1,5,1,3,7,1,Kwame Awuah
+Forge,Kwame Awuah,10,0.0,0.0,0,0,2,12,0,0,0,0,0,1,9,0,Kwame Awuah
+Cavalry,Nathan Mavila,90,0.0,0.05,0,3,4,88,7,0,0,1,1,4,53,4,Nathan Mavila
+Cavalry,Nathan Mavila,90,0.07,0.0,1,2,5,75,9,1,2,5,2,11,18,3,Nathan Mavila
+Cavalry,Nathan Mavila,90,0.46,0.03,0,1,6,61,7,0,2,2,0,3,27,5,Nathan Mavila
+Cavalry,Nathan Mavila,90,0.79,0.21,1,3,6,49,6,1,1,2,0,6,19,2,Nathan Mavila
+Cavalry,Nathan Mavila,58,0.79,0.0,1,2,2,35,4,1,0,3,0,3,14,0,Nathan Mavila
+Cavalry,Nathan Mavila,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Nathan Mavila
+York9,Roger Thompson,90,0.0,0.04,0,3,1,88,2,0,1,4,2,4,40,1,Roger Thompson
+York9,Roger Thompson,90,0.05,0.0,0,2,4,84,3,0,3,12,8,6,30,3,Roger Thompson
+York9,Roger Thompson,90,0.04,0.08,0,2,6,74,1,2,1,6,3,9,42,3,Roger Thompson
+York9,Roger Thompson,90,0.0,0.03,0,1,4,56,1,0,2,7,3,6,30,2,Roger Thompson
+York9,Roger Thompson,90,0.0,0.03,0,4,7,51,2,0,1,5,4,3,22,7,Roger Thompson
+York9,Roger Thompson,90,0.0,0.0,0,4,5,46,4,1,3,10,5,1,13,5,Roger Thompson
+Pacific,Kadin Chung,90,0.0,0.02,0,3,12,87,5,2,1,7,3,4,33,3,Kadin Chung
+Pacific,Kadin Chung,90,0.0,0.0,0,3,7,69,3,2,0,4,1,2,23,4,Kadin Chung
+Pacific,Kadin Chung,90,0.0,0.07,0,1,6,65,2,3,3,9,3,8,28,0,Kadin Chung
+Pacific,Kadin Chung,90,0.0,0.0,0,4,5,59,3,4,0,4,0,4,21,1,Kadin Chung
+Pacific,Kadin Chung,45,0.0,0.0,0,3,5,58,2,2,1,4,0,3,23,0,Kadin Chung
+Pacific,Kadin Chung,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Kadin Chung
+Cavalry,Mason Trafford,90,0.05,0.03,0,3,8,85,2,1,1,6,2,5,22,4,Mason Trafford
+Cavalry,Mason Trafford,90,0.0,0.0,0,1,0,68,0,0,1,5,4,3,15,0,Mason Trafford
+Cavalry,Mason Trafford,90,0.0,0.0,0,1,2,64,4,2,0,5,3,1,22,2,Mason Trafford
+Cavalry,Mason Trafford,90,0.0,0.0,0,5,4,59,1,0,1,1,0,3,24,3,Mason Trafford
+Cavalry,Mason Trafford,90,0.28,0.0,0,3,4,46,4,1,0,4,3,3,17,5,Mason Trafford
+Cavalry,Mason Trafford,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Mason Trafford
+Pacific,Jordan Haynes,90,0.0,0.03,0,4,7,85,6,2,2,8,2,6,41,4,Jordan Haynes
+Pacific,Jordan Haynes,90,0.0,0.0,0,3,7,67,3,2,0,3,1,6,38,5,Jordan Haynes
+Pacific,Jordan Haynes,45,0.0,0.0,0,7,3,41,1,0,0,2,2,3,18,3,Jordan Haynes
+Pacific,Jordan Haynes,19,0.0,0.0,0,1,1,26,0,0,1,3,1,3,14,0,Jordan Haynes
+Pacific,Jordan Haynes,13,0.0,0.0,0,0,1,9,1,0,0,1,1,1,1,0,Jordan Haynes
+Pacific,Jordan Haynes,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Jordan Haynes
+HFX Wanderers,Peter Schaale,90,0.0,0.04,0,1,7,84,5,0,1,11,7,4,43,6,Peter Schaale
+HFX Wanderers,Peter Schaale,90,0.21,0.0,0,2,7,67,2,0,1,10,9,8,33,5,Peter Schaale
+HFX Wanderers,Peter Schaale,90,0.0,0.0,0,2,2,61,3,2,2,9,5,5,26,0,Peter Schaale
+HFX Wanderers,Peter Schaale,90,0.05,0.0,0,6,4,54,2,2,2,10,5,3,17,2,Peter Schaale
+HFX Wanderers,Peter Schaale,90,0.0,0.05,0,1,6,39,4,1,0,8,6,1,13,5,Peter Schaale
+HFX Wanderers,Peter Schaale,90,0.0,0.0,0,4,3,38,5,1,2,9,5,4,16,4,Peter Schaale
+Pacific,Marcel de Jong,90,0.11,0.14,0,5,3,78,0,1,2,10,6,6,29,1,Marcel de Jong
+Pacific,Marcel de Jong,77,0.09,0.09,0,3,5,67,0,1,4,7,2,0,36,2,Marcel de Jong
+Pacific,Marcel de Jong,71,0.0,0.36,0,1,0,60,2,0,2,4,2,6,19,0,Marcel de Jong
+Pacific,Marcel de Jong,45,0.0,0.02,0,1,2,35,3,1,0,1,0,1,18,2,Marcel de Jong
+Pacific,Marcel de Jong,7,0.07,0.0,0,1,1,7,2,1,0,2,1,1,0,1,Marcel de Jong
+Pacific,Marcel de Jong,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Marcel de Jong
+York9,Luca Gasparotto,90,0.15,0.0,0,3,4,78,3,0,3,12,9,1,23,5,Luca Gasparotto
+York9,Luca Gasparotto,90,0.03,0.0,0,7,2,73,1,1,3,13,9,4,14,1,Luca Gasparotto
+York9,Luca Gasparotto,90,0.04,0.0,0,8,11,63,1,0,4,8,3,4,24,9,Luca Gasparotto
+York9,Luca Gasparotto,90,0.17,0.0,0,2,3,56,3,1,2,10,7,1,19,4,Luca Gasparotto
+York9,Luca Gasparotto,90,0.0,0.0,0,3,2,48,1,1,2,9,6,3,9,1,Luca Gasparotto
+York9,Luca Gasparotto,90,0.07,0.0,0,1,5,40,3,2,0,7,3,2,11,2,Luca Gasparotto
+York9,Morey Doner,90,0.0,0.05,0,1,0,78,2,0,0,1,1,3,42,1,Morey Doner
+York9,Morey Doner,90,0.0,0.03,0,2,3,71,1,0,5,6,0,2,29,1,Morey Doner
+York9,Morey Doner,90,0.0,0.0,0,3,1,66,6,1,3,6,2,8,25,1,Morey Doner
+York9,Morey Doner,90,0.0,0.03,0,3,2,58,3,1,0,2,1,6,18,1,Morey Doner
+York9,Morey Doner,90,0.0,0.0,0,2,2,55,6,0,2,4,2,6,21,3,Morey Doner
+York9,Morey Doner,90,0.0,0.0,0,2,2,49,2,0,2,5,2,4,17,1,Morey Doner
+Edmonton,Allan Zebie,82,0.03,0.0,0,4,5,77,5,4,4,8,0,9,47,1,Allan Zebie
+Edmonton,Allan Zebie,90,0.03,0.0,0,1,3,66,2,1,0,1,0,4,43,1,Allan Zebie
+Edmonton,Allan Zebie,90,0.0,0.07,0,2,7,62,3,3,1,6,0,9,38,2,Allan Zebie
+Edmonton,Allan Zebie,87,0.09,0.0,0,0,3,37,2,1,0,1,0,2,15,0,Allan Zebie
+Edmonton,Allan Zebie,63,0.0,0.0,0,2,3,26,1,0,2,2,0,4,19,2,Allan Zebie
+Edmonton,Allan Zebie,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Allan Zebie
+HFX Wanderers,Chrisnovic N'Sa,90,0.0,0.06,0,3,7,77,10,2,0,7,3,2,32,4,Chris N'sa
+HFX Wanderers,Chrisnovic N'Sa,90,0.05,0.0,0,6,8,67,2,5,3,12,3,5,24,1,Chris N'sa
+HFX Wanderers,Chrisnovic N'Sa,90,0.06,0.0,0,4,6,59,7,3,2,9,4,1,31,1,Chris N'sa
+HFX Wanderers,Chrisnovic N'Sa,90,0.0,0.0,0,3,11,51,2,6,1,8,0,9,11,1,Chris N'sa
+HFX Wanderers,Chrisnovic N'Sa,67,0.0,0.0,0,1,3,33,6,1,2,3,0,4,10,1,Chris N'sa
+HFX Wanderers,Chrisnovic N'Sa,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Chris N'sa
+Cavalry,Jonathan Wheeldon,90,0.0,0.0,0,3,4,73,4,0,2,9,7,5,19,4,Jay Wheeldon
+Cavalry,Jonathan Wheeldon,90,0.02,0.0,0,7,3,71,5,0,0,9,9,7,24,6,Jay Wheeldon
+Cavalry,Jonathan Wheeldon,90,0.0,0.0,0,2,3,64,1,0,3,5,1,4,18,3,Jay Wheeldon
+Cavalry,Jonathan Wheeldon,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Jay Wheeldon
+Cavalry,Jonathan Wheeldon,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Jay Wheeldon
+Forge,Dominic Samuel,90,0.0,0.0,0,1,5,72,2,0,2,3,1,2,39,1,Dominic Samuel
+Forge,Dominic Samuel,90,0.64,0.0,0,4,8,65,7,2,0,7,2,4,27,3,Dominic Samuel
+Forge,Dominic Samuel,88,0.04,0.0,0,1,4,62,4,0,1,4,2,1,29,1,Dominic Samuel
+Forge,Dominic Samuel,74,0.0,0.15,0,4,11,62,5,0,1,7,3,5,23,2,Dominic Samuel
+Forge,Dominic Samuel,12,0.0,0.0,0,0,2,6,0,0,0,1,0,1,2,0,Dominic Samuel
+Forge,Dominic Samuel,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Dominic Samuel
+Cavalry,Dean Northover,90,0.0,0.27,0,5,7,68,3,2,1,7,2,6,20,2,Dean Northover
+Cavalry,Dean Northover,90,0.0,0.0,0,3,6,58,9,0,3,5,0,6,23,4,Dean Northover
+Cavalry,Dean Northover,90,0.03,0.0,0,6,6,56,2,0,2,3,1,1,23,3,Dean Northover
+Cavalry,Dean Northover,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Dean Northover
+Cavalry,Dean Northover,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Dean Northover
+Cavalry,Dean Northover,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Dean Northover
+Valour,Julian Dunn-Johnson,90,0.0,0.03,0,2,8,67,8,1,3,6,2,7,22,9,Julian Dunn
+Valour,Julian Dunn-Johnson,90,0.0,0.0,0,1,6,59,3,0,0,5,4,6,17,4,Julian Dunn
+Valour,Julian Dunn-Johnson,90,0.0,0.0,0,2,4,58,6,1,2,9,3,6,10,0,Julian Dunn
+Valour,Julian Dunn-Johnson,90,0.0,0.0,0,3,3,54,1,1,0,4,0,2,12,1,Julian Dunn
+Valour,Julian Dunn-Johnson,90,0.0,0.0,0,1,6,50,7,2,2,11,7,6,17,6,Julian Dunn
+Valour,Julian Dunn-Johnson,90,0.0,0.0,0,4,4,49,2,0,0,3,2,3,14,4,Julian Dunn
+Cavalry,Mohamed Farsi,71,0.0,0.06,0,2,7,67,2,3,1,5,0,4,25,1,Mohamed Farsi
+Cavalry,Mohamed Farsi,64,0.0,0.06,0,0,6,62,2,2,1,7,3,2,35,1,Mohamed Farsi
+Cavalry,Mohamed Farsi,90,0.0,0.49,0,1,4,56,3,1,2,5,2,6,18,1,Mohamed Farsi
+Cavalry,Mohamed Farsi,32,0.0,0.06,0,1,4,36,2,0,1,3,1,8,11,0,Mohamed Farsi
+Cavalry,Mohamed Farsi,10,0.07,0.0,0,1,0,5,1,0,0,0,0,0,1,0,Mohamed Farsi
+Cavalry,Mohamed Farsi,1,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Mohamed Farsi
+York9,Diyaeddine Abzi,89,0.12,0.08,0,1,4,64,9,2,0,2,0,7,17,3,Diyaeddine Abzi
+York9,Diyaeddine Abzi,90,0.0,0.0,0,3,6,63,4,1,4,12,5,5,25,1,Diyaeddine Abzi
+York9,Diyaeddine Abzi,85,0.0,0.08,0,4,1,61,4,1,1,2,0,3,22,0,Diyaeddine Abzi
+York9,Diyaeddine Abzi,84,0.07,0.08,0,2,6,57,4,2,2,7,2,8,25,1,Diyaeddine Abzi
+Edmonton,Duran Lee,78,0.0,0.05,0,3,11,62,6,3,0,8,3,4,27,6,Duran Lee
+Edmonton,Duran Lee,44,0.0,0.0,0,1,4,39,3,1,1,4,2,6,21,1,Duran Lee
+HFX Wanderers,Mateo Restrepo,90,0.0,0.0,0,4,8,62,4,5,4,17,4,6,24,1,Mateo Restrepo
+HFX Wanderers,Mateo Restrepo,90,0.0,0.0,0,1,8,57,1,6,4,13,1,5,26,0,Mateo Restrepo
+HFX Wanderers,Mateo Restrepo,82,0.0,0.0,0,5,2,51,4,1,2,6,1,6,23,1,Mateo Restrepo
+HFX Wanderers,Mateo Restrepo,9,0.0,0.0,0,0,0,7,0,0,0,0,0,0,6,0,Mateo Restrepo
+HFX Wanderers,Mateo Restrepo,12,0.0,0.0,0,0,1,5,0,0,0,0,0,0,3,1,Mateo Restrepo
+HFX Wanderers,Mateo Restrepo,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Mateo Restrepo
+Atlético Ottawa,Milovan Kapor,90,0.0,0.0,0,3,2,61,6,0,4,11,7,6,17,2,Milovan Kapor
+Atlético Ottawa,Milovan Kapor,90,0.0,0.0,0,2,3,58,2,1,0,4,3,4,30,2,Milovan Kapor
+Atlético Ottawa,Milovan Kapor,90,0.0,0.0,0,2,1,37,0,0,1,6,5,3,21,1,Milovan Kapor
+Atlético Ottawa,Milovan Kapor,90,0.0,0.09,0,3,1,32,4,0,1,2,1,1,4,2,Milovan Kapor
+Atlético Ottawa,Milovan Kapor,64,0.0,0.0,0,1,3,31,3,1,2,8,5,1,12,2,Milovan Kapor
+HFX Wanderers,Jake Ruby,90,0.1,0.0,0,1,3,61,9,2,1,5,2,8,21,2,Jake Ruby
+HFX Wanderers,Jake Ruby,23,0.0,0.0,0,0,4,13,0,0,0,3,2,1,5,1,Jake Ruby
+HFX Wanderers,Jake Ruby,8,0.04,0.0,0,0,0,8,1,0,0,1,1,0,0,0,Jake Ruby
+HFX Wanderers,Jake Ruby,4,0.0,0.0,0,1,2,7,0,1,0,2,1,1,2,1,Jake Ruby
+HFX Wanderers,Jake Ruby,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Jake Ruby
+HFX Wanderers,Jake Ruby,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Jake Ruby
+Valour,Andrew Jean-Baptiste,90,0.09,0.0,1,3,1,57,1,0,2,5,3,3,21,0,Andrew Jean-Baptiste
+Valour,Andrew Jean-Baptiste,90,0.0,0.0,0,3,3,55,1,1,0,8,6,1,15,3,Andrew Jean-Baptiste
+Valour,Andrew Jean-Baptiste,90,0.2,0.0,0,4,4,55,2,0,2,4,2,4,24,3,Andrew Jean-Baptiste
+Valour,Andrew Jean-Baptiste,90,0.0,0.0,0,4,5,50,2,3,3,9,3,6,21,3,Andrew Jean-Baptiste
+Valour,Andrew Jean-Baptiste,90,0.0,0.0,0,1,4,47,6,0,2,7,5,1,16,5,Andrew Jean-Baptiste
+Valour,Andrew Jean-Baptiste,12,0.0,0.0,0,0,2,14,1,1,1,2,0,0,4,0,Andrew Jean-Baptiste
+Forge,Jordan Dunstan,90,0.0,0.0,0,0,4,57,1,0,2,5,2,1,31,2,Jordan Dunstan
+Forge,Jordan Dunstan,16,0.0,0.03,0,0,2,13,2,2,1,4,1,2,5,1,Jordan Dunstan
+Forge,Jordan Dunstan,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Jordan Dunstan
+Forge,Jordan Dunstan,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Jordan Dunstan
+Forge,Jordan Dunstan,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Jordan Dunstan
+Forge,Jordan Dunstan,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Jordan Dunstan
+Edmonton,Samuel Gardner,70,0.06,0.0,0,5,7,56,7,3,1,6,2,1,25,7,Sam Gardner
+Edmonton,Samuel Gardner,12,0.0,0.0,0,2,1,16,0,0,1,2,0,0,11,0,Sam Gardner
+Edmonton,Samuel Gardner,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Sam Gardner
+Edmonton,Samuel Gardner,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Sam Gardner
+Edmonton,Samuel Gardner,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Sam Gardner
+Edmonton,Samuel Gardner,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Sam Gardner
+Edmonton,Terique Mohammed,90,0.04,0.0,0,1,5,52,6,4,1,5,0,6,20,1,Terique Mohammed
+Edmonton,Terique Mohammed,46,0.0,0.22,0,1,6,47,6,1,0,3,1,1,15,1,Terique Mohammed
+Edmonton,Terique Mohammed,49,0.0,0.0,0,3,4,37,3,1,0,7,5,4,14,0,Terique Mohammed
+Edmonton,Terique Mohammed,29,0.0,0.0,0,0,3,9,2,1,0,3,1,0,4,1,Terique Mohammed
+Atlético Ottawa,Jarred Phillips,84,0.0,0.0,0,5,5,52,4,2,1,4,1,7,19,0,Jarred Phillips
+Atlético Ottawa,Jarred Phillips,59,0.0,0.0,0,4,3,47,5,1,3,8,1,2,15,1,Jarred Phillips
+Atlético Ottawa,Jarred Phillips,65,0.0,0.0,0,3,1,29,3,0,1,2,1,0,6,0,Jarred Phillips
+Atlético Ottawa,Jarred Phillips,37,0.0,0.0,0,1,4,17,3,3,1,5,1,0,6,1,Jarred Phillips
+Atlético Ottawa,Jarred Phillips,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Jarred Phillips
+Atlético Ottawa,Jarred Phillips,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Jarred Phillips
+HFX Wanderers,Jems Geffrard,90,0.1,0.0,0,3,2,51,1,1,1,6,4,4,17,1,Jems Geffrard
+HFX Wanderers,Jems Geffrard,90,0.0,0.0,0,2,5,50,1,0,1,6,4,4,11,3,Jems Geffrard
+HFX Wanderers,Jems Geffrard,90,0.0,0.0,0,0,1,50,1,0,4,8,4,4,18,1,Jems Geffrard
+HFX Wanderers,Jems Geffrard,90,0.0,0.0,0,3,5,41,4,1,0,3,2,6,9,3,Jems Geffrard
+HFX Wanderers,Jems Geffrard,90,0.0,0.0,0,1,2,38,0,1,1,5,3,2,14,0,Jems Geffrard
+HFX Wanderers,Jems Geffrard,90,0.0,0.0,0,5,2,33,2,0,3,6,3,5,7,4,Jems Geffrard
+Atlético Ottawa,Vashon Neufville,50,0.0,0.67,0,2,1,48,5,0,0,0,0,7,17,1,Vashon Neufville
+Atlético Ottawa,Vashon Neufville,90,0.0,0.07,0,1,3,48,5,1,2,7,1,4,17,1,Vashon Neufville
+Atlético Ottawa,Vashon Neufville,31,0.0,0.0,0,3,2,12,3,0,1,1,0,1,5,2,Vashon Neufville
+Atlético Ottawa,Vashon Neufville,25,0.0,0.0,0,1,2,12,1,0,1,1,0,1,5,0,Vashon Neufville
+Atlético Ottawa,Vashon Neufville,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Vashon Neufville
+Atlético Ottawa,Gianfranco Facchineri,90,0.04,0.0,0,1,9,48,5,7,1,12,3,7,21,0,Gianfranco Facchineri
+Atlético Ottawa,Gianfranco Facchineri,90,0.0,0.0,0,2,3,28,2,1,1,7,5,1,6,1,Gianfranco Facchineri
+Atlético Ottawa,Gianfranco Facchineri,13,0.0,0.0,0,1,0,10,2,0,0,0,0,0,10,0,Gianfranco Facchineri
+Atlético Ottawa,Gianfranco Facchineri,12,0.0,0.0,0,0,0,3,0,0,0,2,2,0,1,0,Gianfranco Facchineri
+Atlético Ottawa,Gianfranco Facchineri,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Gianfranco Facchineri
+Atlético Ottawa,Gianfranco Facchineri,1,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Gianfranco Facchineri
+HFX Wanderers,Alex De Carolis,90,0.04,0.0,0,3,7,48,4,4,1,7,1,3,22,3,Alex De Carolis
+HFX Wanderers,Alex De Carolis,90,0.11,0.0,1,0,3,40,3,0,2,5,3,4,10,2,Alex De Carolis
+HFX Wanderers,Alex De Carolis,81,0.0,0.1,0,3,6,37,0,1,0,2,0,4,9,0,Alex De Carolis
+HFX Wanderers,Alex De Carolis,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Alex De Carolis
+HFX Wanderers,Alex De Carolis,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Alex De Carolis
+HFX Wanderers,Alex De Carolis,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Alex De Carolis
+Atlético Ottawa,Evan Brandon John,90,0.0,0.0,0,3,3,48,3,0,1,4,2,3,25,1,Brandon John
+Atlético Ottawa,Evan Brandon John,90,0.0,0.05,0,1,4,46,2,1,0,2,1,3,19,0,Brandon John
+Atlético Ottawa,Evan Brandon John,90,0.0,0.0,0,0,3,43,0,1,1,5,2,1,15,1,Brandon John
+Atlético Ottawa,Evan Brandon John,90,0.0,0.38,0,0,4,43,3,0,2,6,3,2,9,1,Brandon John
+Atlético Ottawa,Evan Brandon John,90,0.0,0.0,0,0,6,33,3,1,3,9,5,1,13,5,Brandon John
+Atlético Ottawa,Evan Brandon John,78,0.0,0.0,0,6,7,30,2,1,1,7,5,1,12,3,Brandon John
+Forge,Jonathan Grant,78,0.0,0.13,0,1,2,45,8,0,0,5,5,5,15,2,Jonathan Grant
+Forge,Maxim Tissot,45,0.05,0.74,0,1,2,39,1,0,1,1,0,2,21,1,Maxim Tissot
+Forge,Maxim Tissot,58,0.11,0.54,0,3,4,39,3,1,1,4,2,2,22,4,Maxim Tissot
+Forge,Maxim Tissot,45,0.02,0.13,0,1,4,38,2,3,0,3,0,2,10,0,Maxim Tissot
+Forge,Maxim Tissot,71,0.05,0.0,0,1,1,31,4,1,1,2,0,3,20,1,Maxim Tissot
+Forge,Maxim Tissot,13,0.05,0.0,0,0,0,12,6,0,0,0,0,0,5,1,Maxim Tissot
+Forge,Maxim Tissot,10,0.0,0.08,0,1,0,9,2,0,0,1,1,0,4,2,Maxim Tissot
+Forge,Monti Mohsen,90,0.0,0.64,0,1,8,39,1,1,1,4,1,2,15,0,Monti Mohsen
+Forge,Monti Mohsen,45,0.0,0.57,0,0,5,35,3,2,0,4,2,3,9,2,Monti Mohsen
+Forge,Monti Mohsen,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Monti Mohsen
+Forge,Monti Mohsen,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Monti Mohsen
+Valour,Arnold Bouka Moutou,65,0.0,0.0,0,6,5,33,5,1,1,3,0,4,9,3,Arnold Bouka Moutou
+Edmonton,Kareem Moses,90,0.05,0.0,0,0,3,33,2,0,1,9,7,2,16,3,Kareem Moses
+Edmonton,Kareem Moses,29,0.33,0.0,0,1,2,22,4,1,0,5,3,2,6,1,Kareem Moses
+Edmonton,Kareem Moses,20,0.05,0.0,0,0,0,7,1,0,0,0,0,0,2,1,Kareem Moses
+Edmonton,Kareem Moses,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Kareem Moses
+York9,Ijah Halley,72,0.04,0.06,0,0,4,30,8,0,0,0,0,4,11,0,Ijah Halley
+York9,Ijah Halley,21,0.0,0.0,0,0,4,20,4,0,0,2,1,2,6,1,Ijah Halley
+York9,Ijah Halley,58,0.08,0.02,0,1,4,19,3,1,0,2,0,1,7,2,Ijah Halley
+York9,Ijah Halley,6,0.0,0.11,0,0,2,11,2,0,0,0,0,0,1,0,Ijah Halley
+York9,Ijah Halley,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Ijah Halley
+York9,Matthew Arnone,53,0.0,0.0,0,2,2,30,1,1,2,4,1,5,23,0,Matthew Arnone
+York9,Matthew Arnone,9,0.0,0.0,0,0,0,2,0,0,0,0,0,1,1,0,Matthew Arnone
+York9,Matthew Arnone,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Matthew Arnone
+York9,Matthew Arnone,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Matthew Arnone
+York9,Matthew Arnone,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Matthew Arnone
+York9,Matthew Arnone,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Matthew Arnone
+Valour,Chakib Hocine,66,0.04,0.0,0,3,4,28,4,1,0,3,2,2,8,4,Chakib Hocine
+Valour,Chakib Hocine,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Chakib Hocine
+Valour,Chakib Hocine,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Chakib Hocine
+HFX Wanderers,Daniel Kinumbe,45,0.0,0.0,0,1,4,18,2,1,1,2,0,3,12,0,Daniel Kinumbe
+HFX Wanderers,Daniel Kinumbe,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Daniel Kinumbe
+HFX Wanderers,Daniel Kinumbe,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Daniel Kinumbe
+HFX Wanderers,Daniel Kinumbe,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Daniel Kinumbe
+HFX Wanderers,Daniel Kinumbe,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Daniel Kinumbe
+HFX Wanderers,Daniel Kinumbe,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Daniel Kinumbe
+Forge,Klaidi Cela,2,0.0,0.0,0,0,0,2,2,0,0,0,0,0,0,0,Klaidi Cela
+Forge,Klaidi Cela,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Klaidi Cela
+Forge,Klaidi Cela,1,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Klaidi Cela
+Pacific,Abdoulaye Samake,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Abdou Samake
+Pacific,Abdoulaye Samake,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Abdou Samake
+Pacific,Abdoulaye Samake,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Abdou Samake
+Pacific,Abdoulaye Samake,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Abdou Samake
+Pacific,Abdoulaye Samake,1,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Abdou Samake
+Pacific,Abdoulaye Samake,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Abdou Samake
+Valour,Raphaël Garcia,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Raphaël Garcia
+Valour,Raphaël Garcia,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Raphaël Garcia
+Valour,Yohan Le Bourhis,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Yohan Le Bourhis
+Valour,Yohan Le Bourhis,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Yohan Le Bourhis
+Valour,Yohan Le Bourhis,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Yohan Le Bourhis
+Valour,Yohan Le Bourhis,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Yohan Le Bourhis
+HFX Wanderers,Luke Green,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Luke Green
+HFX Wanderers,Luke Green,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Luke Green
+HFX Wanderers,Luke Green,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Luke Green
+HFX Wanderers,Luke Green,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Luke Green
+HFX Wanderers,Luke Green,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,Luke Green

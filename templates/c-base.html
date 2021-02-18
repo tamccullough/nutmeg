@@ -22,7 +22,7 @@
     scrollbar-color: #3141a8 #2d62b5;
   }
 
-  html,h1,h2,h3 {
+  html,h1,h2 {
     font-family: 'Staatliches', cursive;
   }
 
@@ -30,47 +30,27 @@
     font-family: 'Staatliches', cursive;
   }
 
-  body,h4,h5,a {
+  body,h3,h4,h5,a {
     font-family: 'Lato', sans-serif;
   }
+
+  canvas {
+    width:100px;
+    height:100px;
+  }
+
+
   </style>
 
 </head>
 
-<!-- nav menu -->
-<div>
-  <nav>
-    <div class="logo">
-      <a class="mobile staat logo" href="/" style="font-size:3em;">Nutmeg</a>
-      <a class="desktop staat logo" href="/">Nutmeg</a>
-      <a class="desktop" style="font-size:0.5em;">For CPL Fans</a>
-    </div>
-    <ul class="nav-links">
-      <li><a href="/teams">teams</a></li>
-      <li><a href="/standings">standings</a></li>
-      <li><a href="/power">rankings</a></li>
-      <li><a href="/radar">radar</a></li>
-      <li><a href="/versus">prediction</a></li>
-      <li><a href="/best11">best/11</a></li>
-      <li><a href="/forwards">forwards</a></li>
-      <li><a href="/midfielders">midfield</a></li>
-      <li><a href="/defenders">defense</a></li>
-      <li><a href="/keepers">keepers</a></li>
-      <li><a href="/goals">goals/assists</a></li>
-      <li><a href="/discipline">discipline</a></li>
-    </ul>
-    <div class="burger">
-      <div class="line1"></div>
-      <div class="line2"></div>
-      <div class="line3"></div>
-    </div>
-  </nav>
-</div>
-<!-- end of nav menu -->
+{% include "nav.html" %}
+{% block body %}{% endblock %}
+
 <div class="desktop">
   <div class="page80">
     <div class="spacer"></div>
-    <h3 class="xxfont" style="display: inline;">{{ weekday }} {{ month }} <b class="bold">{{ day }}</b></h3>
+    <h3 style="display: inline;">{{ weekday }} {{ month }} <b class="bold">{{ day }}</b></h3>
   </div>
 </div>
 <!-- Top container -->
@@ -136,7 +116,6 @@
 
       <!-- End page content -->
     </div>
-    finish,def,att,mid,net,big,save,goals
   </div>
   <script src="static/css/app.js"></script>
   <script src="static/css/top.js"></script>

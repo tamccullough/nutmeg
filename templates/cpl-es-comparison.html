@@ -2,9 +2,9 @@
 {% block content %}
 
 <!-- page content -->
-
-  <!-- header -->
-<h3 class="{{ theme }}-dark"><b>CPL Match Prediction {{ year }} - {{ headline }}</b></h3>
+<br>
+<h4><b>CPL Match Prediction {{ year }} - {{ headline }}</b></h4>
+<br>
   <div>
     <form method="POST" action="{{ url_for(request.endpoint) }}">
       <table style="width:100%;">
@@ -31,12 +31,12 @@
 
 <div class="parent">
   <!-- home team stats -->
-    <div class="boxl">
+    <div class="boxs">
       <div class="textcenter {{ home_colour }}">
         <table>
           <tr>
             <td style="width:30%;" rowspan="2"><img src="static/images/flags/{{ home_crest }}" alt="{{ home_team }} Crest" style="max-height:100px"></td>
-            <td class="xxxfont"><h3>{{ home_team }}</h3></td>
+            <td class="xfont"><h2>{{ home_team }}</h2></td>
           </tr>
           <tr>
             <td><h4 class="xxfont">Home Team</h4></td>
@@ -117,12 +117,12 @@
     <!-- END OF home team stats -->
 
     <!-- away team stats -->
-    <div class="boxl">
+    <div class="boxs">
       <div class="textcenter {{ away_colour }}">
         <table>
           <tr>
             <td style="width:30%;" rowspan="2"><img src="static/images/flags/{{ away_crest }}" alt="{{ away_team }} Crest" style="max-height:100px"></td>
-            <td class="xxxfont"><h3>{{ away_team }}</h3></td>
+            <td class="xfont"><h2>{{ away_team }}</h2></td>
           </tr>
           <tr>
             <td><h4 class="xxfont">Away Team</h4></td>
@@ -196,7 +196,7 @@
         </div>
       </div>
       <div class="{{ away_colour }} center">
-        <canvas id="awayChart"></canvas>
+        <!--canvas id="awayChart"></canvas-->
         <!--img src="static/images/2020/cpl-2020-{{ away_team }}-radar.png" alt="{{ away_team }} Radar" style="max-width:95%"-->
       </div>
     </div>

@@ -2,9 +2,13 @@
 {% if request.endpoint[-3:] == '_90' %}
 {% set PAGE = request.endpoint[:-3] %}
 {% set MIN = ' per 90' %}
+{% set button1 = 'action' %}
+{% set button2 = 'dark' %}
 {% else %}
 {% set PAGE = request.endpoint %}
 {% set MIN = '' %}
+{% set button1 = 'dark' %}
+{% set button2 = 'action' %}
 {% endif %}
 
 {% if PAGE == 'keepers' %}
@@ -15,49 +19,49 @@
 
 
 <div class="parent">
-  <div class="boxs center {{ theme }}-dark">
-    <a class="{{ theme }}-dark button" href="/{{ PAGE }}">{{ PAGE }} Total</a>
+  <div class="boxs center {{ theme }}-{{ button1 }}">
+    <a class="{{ theme }}-{{ button1 }} button" href="/{{ PAGE }}">{{ PAGE }} Total</a>
   </div>
-  <div class="boxs center {{ theme }}-action">
-    <a class="{{ theme }}-action button" href="/{{ PAGE }}P90" >{{ PAGE }} Per 90</a>
+  <div class="boxs center {{ theme }}-{{ button2 }}">
+    <a class="{{ theme }}-{{ button2 }} button" href="/{{ PAGE }}P90" >{{ PAGE }} Per 90</a>
   </div>
 </div>
 
 
 <div class="mobile">
-  <form class="{{ theme }}-dark" method="post" action="{{ url_for(request.endpoint) }}">
-    <div class="textcenter" style="width:100%;">
-      <h1><b>{{ TOP }}{{ PAGE[0:1].upper() }}{{ PAGE[1:] }}{{ MIN }} {{ year }}</b></h1>
+  <form method="post" action="{{ url_for(request.endpoint) }}">
+    <div style="width:100%;">
+      <h3><b>{{ TOP }}{{ PAGE[0:1].upper() }}{{ PAGE[1:] }}{{ MIN }} {{ year }}</b></h3>
     </div>
   <div class="parent">
-    <div class="form boxs" style="height:3em;">
-      <select class="{{ theme }}-colour staat xfont" name="year" id="year">
-        <option value="">Select Year</option>
+    <div class="form boxs" style="height:30px;">
+      <select class="{{ theme }}-colour" name="year" id="year">
+        <option value="">select year</option>
         <option value="2020">2020</option>
         <option value="2019">2019</option>
       </select>
       </div>
-    <div class="boxs xfont" style="height:3em;">
-      <input class="{{ theme }}-action button staat" style="width: 100%;height:100%;dislay: inline;" type="submit" formaction="{{ url_for(request.endpoint) }}" value="submit"/>
+    <div class="boxs" style="height:30px;">
+      <input class="{{ theme }}-action button" style="width: 100%;height:100%;dislay: inline;" type="submit" formaction="{{ url_for(request.endpoint) }}" value="submit"/>
     </div>
   </div>
   </form>
 </div>
 
 <div class="desktop">
-  <form class="{{ theme }}-dark" method="post" action="{{ url_for(request.endpoint) }}">
+  <form method="post" action="{{ url_for(request.endpoint) }}">
   <div class="parent">
     <div class="box">
-      <h3 class="xfont" style="padding: 25px;"><b>{{ TOP }}{{ PAGE[0:1].upper() }}{{ PAGE[1:] }}{{ MIN }} {{ year }}</b></h3>
+      <h3 style="padding: 10px;"><b>{{ TOP }}{{ PAGE[0:1].upper() }}{{ PAGE[1:] }}{{ MIN }} {{ year }}</b></h3>
     </div>
     <div class="form box">
-      <select class="{{ theme }}-colour staat xfont" name="year" id="year">
-        <option value="">Select Year</option>
+      <select class="{{ theme }}-dark" name="year" id="year">
+        <option value="">select year</option>
         <option value="2020">2020</option>
         <option value="2019">2019</option>
       </select>
       </div>
-    <div class="box xfont">
+    <div class="box">
       <input class="{{ theme }}-action button staat" style="width: 100%;height:100%;dislay: inline;" type="submit" formaction="{{ url_for(request.endpoint) }}" value="submit"/>
     </div>
   </div>

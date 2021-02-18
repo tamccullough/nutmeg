@@ -14,6 +14,7 @@
   <!--link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet"/-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Lato&family=Staatliches&display=swap" rel="stylesheet">
 
   <style>
@@ -22,7 +23,7 @@
     scrollbar-color: #3141a8 #2d62b5;
   }
 
-  html,h1,h2 {
+  html,h1,h2,h3 {
     font-family: 'Staatliches', cursive;
   }
 
@@ -30,9 +31,10 @@
     font-family: 'Staatliches', cursive;
   }
 
-  body,h3,h4,h5,a {
+  body,h4,h5,a {
     font-family: 'Lato', sans-serif;
   }
+
   </style>
 
 </head>
@@ -107,148 +109,21 @@
         <a href="https://www.linkedin.com/in/tamccullough/" target="_blank"><i class="{{theme}}-colour fa fa-linkedin"></i></a>
       </footer>
       <div>
-        <p>{{ line_columns }}</p>
+        {{ radar.loc[0].values[1:]|join(', ') }}
       </div>
       <!-- End page content -->
     </div>
   </div>
-  {% set colour_lst = ['lawngreen','lemonchiffon','lightblue','lightcoral','lightcyan','lightgreen','lightpink','lightsalmon','lightseagreen','lightskyblue','limegreen','linen','magenta','mintcream','mistyrose']%}
   <script src="static/css/app.js"></script>
   <script src="static/css/top.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
   <script type="text/javascript">
-    new Chart(document.getElementById('playerLine'), {
-      type: 'line',
-      data: {
-        labels: [
-          {% for x in range(1,(player_line[0] | length)-1) %}
-          {{ x }},
-          {% endfor %}
-          {{ (player_line[0] | length) }}
-        ],
-        datasets: [
-          {% for i in range((player_line | length) -1) %}
-          {
-            label: '{{line_columns[i]}}',
-            data: [
-              {% for x in range(player_line[i] | length -1) %}
-              {{ player_line[i][x] | safe }},
-              {% endfor %}
-              {{ player_line[i][-1] | safe}}
-
-            ],
-            fill: false,
-            borderColor: '{{ chart_team_colour_list[i] }}',
-            backgroundColor: '{{ chart_team_colour_list[i] }}'
-          },
-          {% endfor %}
-          {
-            label: 'line_columns[-1]',
-            data: [
-              {% for j in range(player_line[-1] | length -1) %}
-              {{ player_line[-1][j] | safe }},
-              {% endfor %}
-              {{ player_line[-1][-1] | safe}}
-            ],
-            fill: false,
-            borderColor: '{{ chart_team_colour_list[-1] }}',
-            backgroundColor: '{{ chart_team_colour_list[-1] }}'
-          }
-        ],
-      },
-      options: {
-        legend: {
-            display: false,
-        },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                fontColor: 'white'
-              }
-            }
-          ],
-          xAxes: [
-            {
-              ticks: {
-                fontColor: 'white'
-              }
-            }
-          ]
-        }
-      }
-    });
-  </script>
-  <script type="text/javascript">
-    new Chart(document.getElementById('playerLineMobile'), {
-      type: 'line',
-      data: {
-        labels: [
-          {% for x in range(1,(player_line[0] | length)-1) %}
-          {{ x }},
-          {% endfor %}
-          {{ (player_line[0] | length) }}
-        ],
-        datasets: [
-          {% for i in range((player_line | length) -1) %}
-          {
-            label: '{{line_columns[i]}}',
-            data: [
-              {% for x in range(player_line[i] | length -1) %}
-              {{ player_line[i][x] | safe }},
-              {% endfor %}
-              {{ player_line[i][-1] | safe}}
-
-            ],
-            fill: false,
-            borderColor: '{{ chart_team_colour_list[i] }}',
-            backgroundColor: '{{ chart_team_colour_list[i] }}'
-          },
-          {% endfor %}
-          {
-            label: 'line_columns[-1]',
-            data: [
-              {% for j in range(player_line[-1] | length -1) %}
-              {{ player_line[-1][j] | safe }},
-              {% endfor %}
-              {{ player_line[-1][-1] | safe}}
-            ],
-            fill: false,
-            borderColor: '{{ chart_team_colour_list[-1] }}',
-            backgroundColor: '{{ chart_team_colour_list[-1] }}'
-          }
-        ],
-      },
-      options: {
-        legend: {
-            display: false,
-        },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                fontColor: 'white'
-              }
-            }
-          ],
-          xAxes: [
-            {
-              ticks: {
-                fontColor: 'white'
-              }
-            }
-          ]
-        }
-      }
-    });
-  </script>
-  <script type="text/javascript">
-    new Chart(document.getElementById('playerRadar'), {
+    new Chart(document.getElementById('teamRadar'), {
       type: 'radar',
       data: {
-        labels: [{{ radar_chart_cols | safe }}],
+        labels: ['finish','def','att','mid','net','big','save','goals'],
         datasets: [{
-          data: [{{ radar_chart.loc[0].values[:]|join(',') }}],
+          data: [{{ radar.loc[0].values[1:] | join(', ') | safe }}],
           fill: true,
           backgroundColor: '{{ colour2 }}'+'BF',
           borderColor: '{{ colour2 }}',
@@ -275,7 +150,7 @@
           },
           pointLabels: {
             fontColor: '#fff',
-            fontSize: 14,
+            fontSize: 16,
             fontFamily: "'Lato', sans-serif"
           }
         }
@@ -283,12 +158,12 @@
     });
   </script>
   <script type="text/javascript">
-    new Chart(document.getElementById('playerRadarMobile'), {
+    new Chart(document.getElementById('teamRadarMobile'), {
       type: 'radar',
       data: {
-        labels: [{{ radar_chart_cols | safe }}],
+        labels: ['finish','def','att','mid','net','big','save','goals'],
         datasets: [{
-          data: [{{ radar_chart.loc[0].values[:]|join(',') }}],
+          data: [{{ radar.loc[0].values[1:] | join(', ') | safe }}],
           fill: true,
           backgroundColor: '{{ colour2 }}'+'BF',
           borderColor: '{{ colour2 }}',
@@ -315,7 +190,7 @@
           },
           pointLabels: {
             fontColor: '#fff',
-            fontSize: 14,
+            fontSize: 16,
             fontFamily: "'Lato', sans-serif"
           }
         }
