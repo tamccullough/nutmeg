@@ -269,11 +269,27 @@ def eleven():
     html_table = best_eleven,  headline = 'Best Eleven',
     attackers = attackers, defenders = defenders, midfield = midfield, keeper = keeper)
 
-@canples.route('/power')
+@canples.route('/power', methods=['GET','POST'])
 def power():
+
     get_year()
-    power = pd.read_csv(f'datasets/{year}/cpl-{year}-power_rankings.csv')
-    return render_template('cpl-es-power.html',html_table = power)
+
+    if year != this_year:
+        headline = f'Final Power Rankings for '
+    else:
+        headline = 'Power Rankings '
+
+    team_ref = pd.read_csv('datasets/teams.csv')
+    team_ref = team_ref[team_ref['year'] == int(year)]
+
+    #power = pd.read_csv(f'datasets/{year}/cpl-{year}-power_rankings.csv')
+    power = pd.read_csv(f'datasets/{year}/league/{year}-power_rankings.csv')
+
+    for i in range(power.shape[0]):
+        power.at[i,'crest'] = team_ref[team_ref['team'] == power.at[i,'team']]['crest'].values[0]
+        power.at[i,'colour'] = team_ref[team_ref['team'] == power.at[i,'team']]['colour'].values[0]
+
+    return render_template('cpl-es-power.html',html_table = power, headline = headline)
 
 @canples.route('/versus', methods=['GET','POST'])
 def versus():

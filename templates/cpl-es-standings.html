@@ -29,12 +29,12 @@
               <tr>
                 <td>{{ i+1 }}</td>
                 <td class="t-center"><img style="max-height:30px;margin:-8px;text-align:center;" src="static/images/flags/{{ championship_table.at[i,'crest'] }}" alt="{{ championship_table.at[i,'crest'] }} Crest"></td>
-                <td>{{ championship_table.iloc[i][2] }}</td>
-                <td>{{ championship_table.iloc[i][3] }}</td>
-                <td>{{ championship_table.iloc[i][5] }}</td>
-                <td class="{{ theme }}-green">{{ championship_table.iloc[i][6] }}</td>
-                <td class="{{ theme }}-orange">{{ championship_table.iloc[i][8] }}</td>
-                <td class="{{ theme }}-red">{{ championship_table.iloc[i][7] }}</td>
+                <td>{{ championship_table.iloc[i]['matches'] }}</td>
+                <td>{{ championship_table.iloc[i]['points'] }}</td>
+                <td>{{ (championship_table.iloc[i]['points']/championship_table.iloc[i]['matches'])|round(2) }}</td>
+                <td class="{{ theme }}-green">{{ championship_table.iloc[i]['win'] }}</td>
+                <td class="{{ theme }}-orange">{{ championship_table.iloc[i]['draw'] }}</td>
+                <td class="{{ theme }}-red">{{ championship_table.iloc[i]['loss'] }}</td>
                 <td class="{{ theme }}-t-yellow"><b>{{ championship_table.iloc[i]['gd'] }}</td>
               </tr>
               {%endfor%}
@@ -70,12 +70,12 @@
                 <tr>
                   <td>{{ i+1 }}</td>
                   <td class="t-center"><img style="max-height:30px;margin:-8px;text-align:center;" src="static/images/flags/{{ playoffs_table.at[i,'crest'] }}" alt="{{ playoffs_table.at[i,'crest'] }} Crest"></td>
-                  <td>{{ playoffs_table.iloc[i][2] }}</td>
-                  <td>{{ playoffs_table.iloc[i][3] }}</td>
-                  <td>{{ playoffs_table.iloc[i][5] }}</td>
-                  <td class="{{ theme }}-green">{{ playoffs_table.iloc[i][6] }}</td>
-                  <td class="{{ theme }}-orange">{{ playoffs_table.iloc[i][8] }}</td>
-                  <td class="{{ theme }}-red">{{ playoffs_table.iloc[i][7] }}</td>
+                  <td>{{ playoffs_table.iloc[i]['matches'] }}</td>
+                  <td>{{ playoffs_table.iloc[i]['points'] }}</td>
+                  <td>{{ (playoffs_table.iloc[i]['points']/playoffs_table.iloc[i]['matches'])|round(2) }}</td>
+                  <td class="{{ theme }}-green">{{ playoffs_table.iloc[i]['win'] }}</td>
+                  <td class="{{ theme }}-orange">{{ playoffs_table.iloc[i]['draw'] }}</td>
+                  <td class="{{ theme }}-red">{{ playoffs_table.iloc[i]['loss'] }}</td>
                   <td class="{{ theme }}-t-yellow"><b>{{ playoffs_table.iloc[i]['gd'] }}</td>
                 </tr>
                 {%endfor%}
@@ -109,12 +109,12 @@
             <tr>
               <td>{{ i+1 }}</td>
               <td class="t-center"><img style="max-height:30px;margin:-8px;text-align:center;" src="static/images/flags/{{ standings_table.at[i,'crest'] }}" alt="{{ standings_table.at[i,'crest'] }} Crest"></td>
-              <td>{{ standings_table.iloc[i][2] }}</td>
-              <td>{{ standings_table.iloc[i][3] }}</td>
-              <td>{{ standings_table.iloc[i][5] }}</td>
-              <td class="{{ theme }}-green">{{ standings_table.iloc[i][6] }}</td>
-              <td class="{{ theme }}-orange">{{ standings_table.iloc[i][8] }}</td>
-              <td class="{{ theme }}-red">{{ standings_table.iloc[i][7] }}</td>
+              <td>{{ standings_table.iloc[i]['matches'] }}</td>
+              <td>{{ standings_table.iloc[i]['points'] }}</td>
+              <td>{{ (standings_table.iloc[i]['points']/standings_table.iloc[i]['matches'])|round(2) }}</td>
+              <td class="{{ theme }}-green">{{ standings_table.iloc[i]['win'] }}</td>
+              <td class="{{ theme }}-orange">{{ standings_table.iloc[i]['draw'] }}</td>
+              <td class="{{ theme }}-red">{{ standings_table.iloc[i]['loss'] }}</td>
               <td class="{{ theme }}-t-yellow">{{ standings_table.iloc[i]['gd'] }}</td>
             </tr>
             {%endfor%}
