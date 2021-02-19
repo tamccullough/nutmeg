@@ -358,7 +358,10 @@ def power():
 @canples.route('/versus', methods=['GET','POST'])
 def versus():
 
-    get_year()
+    year = current_year
+
+    results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, team_stats, results_brief, matches_predictions, game_form, team_rosters  = load_main_files(year)
+    rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
 
     print('\nON THE PREDICTIONS PAGE\n')
 

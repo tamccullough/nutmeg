@@ -31,7 +31,7 @@
 
 <div class="parent">
   <!-- home team stats -->
-    <div class="box">
+    <div class="boxl">
       <div class="textcenter {{ home_colour }}">
         <table>
           <tr>
@@ -109,15 +109,15 @@
           <br>
         </div>
       </div>
-      <div class="{{ home_colour }} center">
-        <canvas id="homeChart"></canvas>
+      <div class="{{ home_colour }} center" style="height:300px;">
+        <canvas id="homeChart" style="max-width:95%"></canvas>
         <!--img src="static/images/2020/cpl-2020-{{ home_team }}-radar.png" alt="{{ home_team }} Radar" style="max-width:95%"-->
       </div>
     </div>
     <!-- END OF home team stats -->
 
     <!-- away team stats -->
-    <div class="box">
+    <div class="boxl">
       <div class="textcenter {{ away_colour }}">
         <table>
           <tr>
@@ -195,8 +195,8 @@
           <br>
         </div>
       </div>
-      <div class="{{ away_colour }} center">
-        <!--canvas id="awayChart"></canvas-->
+      <div class="{{ away_colour }} center" style="height:300px;">
+        <canvas id="awayChart" style="max-width:95%">></canvas>
         <!--img src="static/images/2020/cpl-2020-{{ away_team }}-radar.png" alt="{{ away_team }} Radar" style="max-width:95%"-->
       </div>
     </div>
