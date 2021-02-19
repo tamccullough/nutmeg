@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 
+{% if year != '2021' %}
+{% set asterisk = '' %}
+{% set NOTE = '' %}
+{% else %}
+{% set asterisk = '**' %}
+{% set NOTE = '**NOTE: Overall, xG & xA are rolling results. Altered after each match played.' %}
+{% endif %}
+
 <!-- header -->
 <form method="POST" action="/roster">
   <div>
@@ -36,17 +44,17 @@
       <tr>
         <td><a><img src="static/images/flags/{{ player_info.iloc[0]['flag'] }}" alt="{{ player_info.iloc[0]['flag'][:-4] }}" style="max-height:30px"><a></td>
         <td>{{ nationality }}</td>
-        <td>{{ stats90.iloc[0]['overall'] }}**</td>
+        <td>O: {{ stats90.iloc[0]['O'] }}{{asterisk}}</td>
       </tr>
       <tr>
         <td>MIN: {{ stats90.iloc[0]['Min'] }}</td>
-        <td>xG: {{ stats.iloc[0]['ExpG'] }}**</td>
-        <td>xA: {{ stats.iloc[0]['ExpA'] }}**</td>
+        <td>xG: {{ stats.iloc[0]['xG'] }}{{asterisk}}</td>
+        <td>xA: {{ stats.iloc[0]['xA'] }}{{asterisk}}</td>
       </tr>
       <tr>
-        <td>Yellows: {{ discipline.iloc[0]['yellow'] }}</td>
-        <td>Reds: {{ discipline.iloc[0]['red'] }}</td>
-        <td>Number: {{ stats.iloc[0]['number'] }}</td>
+        <td>Yellows: {{ discipline.iloc[0]['Yellow'] }}</td>
+        <td>Reds: {{ discipline.iloc[0]['Red'] }}</td>
+        <td>Number: {{ number }}</td>
       </tr>
     </table>
 
@@ -166,30 +174,37 @@
     <div class="box">
       <br>
       <canvas id="playerRadar"></canvas>
-      <!--img src="static/images/{{ year }}/player_graphs/{{ radar }}" alt="player radar" style="max-width:70%"-->
     </div>
     <div class="box">
       <br>
-      <canvas id="playerLine" style="padding: 20px 20px;"></canvas>
-      <!--img src="static/images/{{ year }}/player_graphs/{{ graph }}" alt="player performance" style="max-width:70%"-->
+      <br>
+      <table>
+        <tr>
+          <td><a><img src="static/images/flags/{{ player_info.iloc[0]['flag'] }}" alt="{{ player_info.iloc[0]['flag'][:-4] }}" style="max-height:30px"><a></td>
+          <td colspan="2">{{ nationality }}</td>
+        </tr>
+        <tr>
+          <td>O: {{ stats.iloc[0]['O'] }}{{asterisk}}</td>
+          <td>MIN: {{ stats.iloc[0]['Min']|int }}</td>
+          <td>xG: {{ stats90.iloc[0]['xG'] }}{{asterisk}}</td>
+        </tr>
+        <tr>
+          <td>xA: {{ stats90.iloc[0]['xA'] }}{{asterisk}}</td>
+          <td>Y: {{ discipline.iloc[0]['Yellow'] }}</td>
+          <td>R: {{ discipline.iloc[0]['Red'] }}</td>
+        </tr>
+        <tr>
+          <td>2ndY: {{ discipline.iloc[0]['2ndYellow'] }}</td>
+          <td>#: {{ number }}</td>
+          <td>{{ position }}</td>
+        </tr>
+      </table>
+
     </div>
   </div>
-
-  <table>
-    <tr>
-      <td><a><img src="static/images/flags/{{ player_info.iloc[0]['flag'] }}" alt="{{ player_info.iloc[0]['flag'][:-4] }}" style="max-height:30px"><a></td>
-      <td>{{ nationality }}</td>
-      <td>{{ stats.iloc[0]['overall'] }}**</td>
-      <td>MIN: {{ stats.iloc[0]['Min']|int }}</td>
-      <td>xG: {{ stats90.iloc[0]['ExpG'] }}**</td>
-      <td>xA: {{ stats90.iloc[0]['ExpA'] }}**</td>
-      <td>Y: {{ discipline.iloc[0]['Yellow'] }}</td>
-      <td>R: {{ discipline.iloc[0]['Red'] }}</td>
-      <td>2ndY: {{ discipline.iloc[0]['2ndYellow'] }}</td>
-      <td>#: {{ number }}</td>
-      <td>{{ position }}</td>
-    </tr>
-  </table>
+  <div class="{{ team_colour }}">
+    <canvas id="playerLine" style="height:150px;"></canvas>
+  </div>
 
   <!-- table section -->
     <div class="parent {{ team_colour }}">
@@ -257,10 +272,10 @@
       <a class="text-white button" href="{{ player_info.iloc[0]['link'] }}" target="_blank"><b> Wiki Link</b></a>
     </div>
     <div class="mobile">
-      <a style="font-size:0.7em;">**NOTE: Overall, xG & xA are rolling results. Altered after each match played.</a>
+      <a style="font-size:0.7em;">{{NOTE}}</a>
     </div>
     <div class="desktop">
-      <a style=" padding: 0px 15px;">**NOTE: Overall, xG & xA are rolling results. Altered after each match played.</a>
+      <a style=" padding: 0px 15px;">{{NOTE}}</a>
     </div>
     <div class="spacer"></div>
   </div>
