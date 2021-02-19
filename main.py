@@ -159,9 +159,10 @@ def load_main_files(year):
 
 def load_player_files(year):
     # get all rated player information based on position and calculate and overall score for the individual player
-    rated_goalscorers = pd.read_csv(f'datasets/{year}/cpl-{year}-rated_goalscorers.csv')
-    rated_offenders = pd.read_csv(f'datasets/{year}/cpl-{year}-discipline.csv')
-    rated_assists = pd.read_csv(f'datasets/{year}/cpl-{year}-rated_assists.csv')
+
+    rated_assists = pd.read_csv(f'datasets/{year}/playerstats/{year}-assists.csv')
+    rated_goalscorers = pd.read_csv(f'datasets/{year}/playerstats/{year}-goalscorers.csv')
+    rated_offenders = pd.read_csv(f'datasets/{year}/playerstats/{year}-discipline.csv')
 
     rated_forwards = pd.read_csv(f'datasets/{year}/playerstats/{year}-forwards.csv')
     rated_midfielders = pd.read_csv(f'datasets/{year}/playerstats/{year}-midfielders.csv')
@@ -183,9 +184,6 @@ games_played = {1:28,2:7}
 # set the year - which will change based on user choice
 year = current_year
 
-results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, team_stats, results_brief, matches_predictions, game_form, team_rosters  = load_main_files(year)
-rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
-
 @canples.context_processor
 def inject_user():
 
@@ -195,10 +193,10 @@ def inject_user():
 def index():
     na = 'TBD'
 
-    #year = current_year
     get_year()
 
     results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, team_stats, results_brief, matches_predictions, game_form, team_rosters  = load_main_files(year)
+    rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
 
     championship = pd.read_csv(f'datasets/{year}/league/{year}-championship.csv')
     playoffs = pd.read_csv(f'datasets/{year}/league/{year}-playoffs.csv')
@@ -248,15 +246,16 @@ def index():
     game_week, goals, big_win, top_result, low_result, other_result, assists, yellows, reds = cpl_main.get_weeks_results(year,results,standings,stats,team_ref,team_names)
     assists, yellows, reds = int(assists), int(yellows), int(reds)
 
-    top_forward = rated_forwards.loc[0]
-    top_midfielder = rated_midfielders.loc[0]
-    top_defender = rated_defenders.loc[0]
     top_scorer = rated_goalscorers.loc[0]
     top_scorer['overall'] = player_info[player_info['name'] == top_scorer['name']]['overall'].values[0]
     top_assist = rated_assists.loc[0]
     top_assist['overall'] = player_info[player_info['name'] == top_assist['name']]['overall'].values[0]
+    top_forward = rated_forwards.loc[0]
+    top_midfielder = rated_midfielders.loc[0]
+    top_defender = rated_defenders.loc[0]
     top_keeper = rated_keepers.loc[0]
     top_offender = rated_offenders.loc[0]
+    top_offender['overall'] = player_info[player_info['name'] == top_scorer['name']]['overall'].values[0]
 
     if results.iloc[0]['hr'] == 'E':
         top_team, top_mover, top_dropper, first_crest, top_crest, bot_crest, first_colour = na, na, na, 'CPL-Crest-White.png', 'oneSoccer_nav.png', 'canNat_icon.png', 'w3-indigo'
@@ -727,6 +726,7 @@ def player():
 @canples.route('/goals', methods=['GET','POST'])
 def goals():
     get_year()
+
     #rated_goalscorers = pd.read_csv(f'datasets/{year}/cpl-{year}-rated_goalscorers.csv')
     rated_goalscorers = pd.read_csv(f'datasets/{year}/playerstats/{year}-goalscorers.csv')
     rated_g10 = rated_goalscorers.head(10)
