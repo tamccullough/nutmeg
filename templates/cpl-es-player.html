@@ -60,7 +60,7 @@
           <table style="font-size:0.8em;">
             <tr>
               {% for column in stats.columns[ 2 : col_nums[0] ] %}
-                <td>{{ column[:4] }}</td>
+                <td>{{ column }}</td>
               {% endfor %}
             </tr>
           </table>
@@ -84,7 +84,7 @@
           <table style="font-size:0.8em;">
             <tr>
               {% for column in stats.columns[ col_nums[0] :-2] %}
-                <td>{{ column[:4] }}</td>
+                <td>{{ column }}</td>
               {% endfor %}
             </tr>
           </table>
@@ -93,7 +93,7 @@
           <table style="font-size:0.8em;">
             <tr>
               {% for column in stats.columns[ col_nums[0] :-2] %}
-                {% if (column == 'overall' or column == 'ExpG' or column == 'ExpA')%}
+                {% if (column == 'overall' or column == 'xg' or column == 'xa')%}
                 <td>{{ stats.iloc[0][column] }}</td>
                 {% else %}
                 <td>{{ stats.iloc[0][column]|int }}</td>
@@ -111,7 +111,7 @@
           <table style="font-size:0.8em;">
             <tr>
               {% for column in stats90.columns[ 3 : col_nums[0] ] %}
-                <td>{{ column[:4] }}</td>
+                <td>{{ column }}</td>
               {% endfor %}
             </tr>
           </table>
@@ -135,7 +135,7 @@
           <table style="font-size:0.8em;">
             <tr>
               {% for column in stats90.columns[ col_nums[0] :-2] %}
-                <td>{{ column[:4] }}</td>
+                <td>{{ column }}</td>
               {% endfor %}
             </tr>
           </table>
@@ -201,7 +201,7 @@
           <table style="font-size:0.8em;">
             <tr>
               {% for column in stats.columns[ 3 :-2 ] %}
-                <td>{{ column[:6] }}</td>
+                <td>{{ column }}</td>
               {% endfor %}
             </tr>
           </table>
@@ -210,7 +210,7 @@
           <table>
             <tr>
               {% for column in stats.columns[ 3 :-2 ] %}
-                {% if (column == 'overall' or column == 'ExpG' or column == 'ExpA')%}
+                {% if (column == 'overall' or column == 'xg' or column == 'xa')%}
                 <td>{{ stats.iloc[0][column] }}</td>
                 {% else %}
                 <td>{{ stats.iloc[0][column]|int }}</td>
@@ -228,7 +228,7 @@
           <table style="font-size:0.8em;">
             <tr>
               {% for column in stats90.columns[ 3 :-2] %}
-                <td>{{ column[:6] }}</td>
+                <td>{{ column }}</td>
               {% endfor %}
             </tr>
           </table>

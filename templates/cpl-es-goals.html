@@ -8,15 +8,15 @@
 <!-- page content -->
 <!-- body -->
 <div class="mobile">
-  <div class="parent {{ theme }}-dark">
+  <span><h3><b>Top Goal Scorers</b></h3></span>
+  <div class="parent">
     <!-- table header -->
-    <div class="{{ theme }}-dark">
+    <div>
       <div>
         <table>
           <tr>
             <td><b>rank</b></td>
-            <td style="width:40%;"><b>name</b></td>
-            <td><b>Pos</b></td>
+            <td style="width:50%;"><b>name</b></td>
             <td><b>#</b></td>
             <td><b>MIN</b></td>
             <td><b>G</b></td>
@@ -28,34 +28,34 @@
     <!-- table -->
   </div>
   <div class="parent {{ theme }}-light">
+    <form method="POST" action="/player">
     {%for i in range(0,html_table.shape[0])%}
     <div class="{{ theme }}-light">
       <div>
-        <table>
+        <table style="font-size:0.8em;">
           <tr>
-            <td>{{ html_table.iloc[i][0] }}</td>
-            <td style="width:40%;">{{ ' '.join((html_table.iloc[i][2]).split()[1:]) }}</td>
-            <td>{{ html_table.iloc[i][3] }}</td>
-            <td>{{ html_table.iloc[i][4] }}</td>
-            <td>{{ html_table.iloc[i][5] }}</td>
-            <td class="{{ theme }}-t-blue"><b>{{ html_table.iloc[i][6] }}</b></td>
+            <td>{{ i+1 }}</td>
+            <td style="text-align:left;width:50%;"><input href="{{ url_for('player') }}" class="{{ team_colour }} table-button" type="submit" id="name" name="name" value="{{ html_table.iloc[i]['name'] }}" style="height:10%;"></input></td>
+            <td>{{ html_table.iloc[i]['number'] }}</td>
+            <td>{{ html_table.iloc[i]['Min'] }}</td>
+            <td class="{{ theme }}-t-blue"><b>{{ html_table.iloc[i]['Goal'] }}</b></td>
           </tr>
         </table>
       </div>
     </div>
     {%endfor%}
+    </form>
     <!-- end of table -->
   </div>
-  <span><h3  class="{{ theme }}-dark"><b>Top Assist Makers</b></h3></span>
-  <div class="parent {{ theme }}-dark">
+  <span><h3><b>Top Assist Makers</b></h3></span>
+  <div class="parent">
     <!-- table header -->
-    <div class="{{ theme }}-dark">
+    <div>
       <div>
         <table>
           <tr>
             <td><b>rank</b></td>
-            <td style="width:40%;"><b>name</b></td>
-            <td><b>Pos</b></td>
+            <td style="width:50%;"><b>name</b></td>
             <td><b>#</b></td>
             <td><b>MIN</b></td>
             <td><b>A</b></td>
@@ -67,22 +67,23 @@
     <!-- table -->
   </div>
   <div class="parent {{ theme }}-light">
+    <form method="POST" action="/player">
     {%for i in range(0,assists_table.shape[0])%}
     <div class="{{ theme }}-light">
       <div>
-        <table>
+        <table style="font-size:0.8em;">
           <tr>
-            <td>{{ assists_table.iloc[i][0] }}</td>
-            <td style="width:40%;">{{ ' '.join((assists_table.iloc[i][2]).split()[1:]) }}</td>
-            <td>{{ assists_table.iloc[i][3] }}</td>
-            <td>{{ assists_table.iloc[i][4] }}</td>
-            <td >{{ assists_table.iloc[i][5] }}</td>
-            <td class="{{ theme }}-t-blue"><b>{{ assists_table.iloc[i][6] }}</b></td>
+            <td>{{ i+1 }}</td>
+            <td style="text-align:left;width:50%;"><input href="{{ url_for('player') }}" class="{{ team_colour }} table-button" type="submit" id="name" name="name" value="{{ html_table.iloc[i]['name'] }}" style="height:10%;"></input></td>
+            <td>{{ assists_table.iloc[i]['number'] }}</td>
+            <td >{{ assists_table.iloc[i]['Min'] }}</td>
+            <td class="{{ theme }}-t-blue"><b>{{ assists_table.iloc[i]['Ast'] }}</b></td>
           </tr>
         </table>
       </div>
     </div>
     {%endfor%}
+    </form>
   </div>
   <!-- end of table -->
 </div>
@@ -95,7 +96,7 @@
         <table>
           <tr>
             <td><b>rank / team</b></td>
-            <td style="width:35%;"><b>name</b></td>
+            <td style="width:13vw;"><b>name</b></td>
             <td><b>Pos</b></td>
             <td><b>#</b></td>
             <td><b>MIN</b></td>
@@ -108,22 +109,24 @@
     <!-- table -->
   </div>
   <div class="parent {{ theme }}-light">
+    <form method="POST" action="/player">
     {%for i in range(0,html_table.shape[0])%}
     <div class="{{ theme }}-light">
       <div>
         <table>
           <tr>
-            <td>{{ html_table.iloc[i][0] }} / {{ html_table.iloc[i][1] }}</td>
-            <td style="width:35%;">{{ html_table.iloc[i][2] }}</td>
-            <td>{{ html_table.iloc[i][3] }}</td>
-            <td>{{ html_table.iloc[i][4] }}</td>
-            <td>{{ html_table.iloc[i][5] }}</td>
-            <td class="{{ theme }}-t-blue"><b>{{ html_table.iloc[i][6] }}</b></td>
+            <td style="text-align:left;">{{ i+1 }} / {{ html_table.iloc[i]['team'] }}</td>
+            <td style="text-align:left;width:13vw;"><input href="{{ url_for('player') }}" class="{{ team_colour }} table-button" type="submit" id="name" name="name" value="{{ html_table.iloc[i]['name'] }}" style="height:10%;"></input></td>
+            <td>{{ html_table.iloc[i]['position'] }}</td>
+            <td>{{ html_table.iloc[i]['number'] }}</td>
+            <td>{{ html_table.iloc[i]['Min'] }}</td>
+            <td class="{{ theme }}-t-blue"><b>{{ html_table.iloc[i]['Goal'] }}</b></td>
           </tr>
         </table>
       </div>
     </div>
     {%endfor%}
+    </form>
     <!-- end of table -->
   </div>
   <span><h3  class="{{ theme }}-dark"><b>Top Assist Makers</b></h3></span>
@@ -134,7 +137,7 @@
         <table>
           <tr>
             <td><b>rank / team</b></td>
-            <td style="width:35%;"><b>name</b></td>
+            <td style="width:13vw;"><b>name</b></td>
             <td><b>Pos</b></td>
             <td><b>#</b></td>
             <td><b>MIN</b></td>
@@ -147,22 +150,24 @@
     <!-- table -->
   </div>
   <div class="parent {{ theme }}-light">
+    <form method="POST" action="/player">
     {%for i in range(0,assists_table.shape[0])%}
     <div class="{{ theme }}-light">
       <div>
         <table>
           <tr>
-            <td>{{ assists_table.iloc[i][0] }} / {{ assists_table.iloc[i][1] }}</td>
-            <td style="width:35%;">{{ assists_table.iloc[i][2] }}</td>
-            <td>{{ assists_table.iloc[i][3] }}</td>
-            <td>{{ assists_table.iloc[i][4] }}</td>
-            <td >{{ assists_table.iloc[i][5] }}</td>
-            <td class="{{ theme }}-t-blue"><b>{{ assists_table.iloc[i][6] }}</b></td>
+            <td style="text-align:left;">{{ i+1 }} / {{ assists_table.iloc[i]['team'] }}</td>
+            <td style="text-align:left;width:13vw;"><input href="{{ url_for('player') }}" class="{{ team_colour }} table-button" type="submit" id="name" name="name" value="{{ assists_table.iloc[i]['name'] }}" style="height:10%;"></input></td>
+            <td>{{ assists_table.iloc[i]['position'] }}</td>
+            <td>{{ assists_table.iloc[i]['number'] }}</td>
+            <td >{{ assists_table.iloc[i]['Min'] }}</td>
+            <td class="{{ theme }}-t-blue"><b>{{ assists_table.iloc[i]['Ast'] }}</b></td>
           </tr>
         </table>
       </div>
     </div>
     {%endfor%}
+    </form>
   </div>
   <!-- end of table -->
 </div>

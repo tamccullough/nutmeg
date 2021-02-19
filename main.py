@@ -37,6 +37,71 @@ team_names = {'Atlético Ottawa' : 'ato',
               'York United FC' : 'yor','York United' : 'yor',
               'York9 FC' : 'y9','York9' : 'y9'}
 
+col_check = {'overall':'O',
+            'Aerials':'air',
+            'BgChncFace':'BgChcon',
+            'ChncOpnPl':'Ch-c',
+            'CleanSheet':'CS',
+            'Clrnce':'Clr',
+            'DefTouch':'defTch',
+            'Disposs':'dis',
+            'DuelLs':'DlL',
+            'DuelsW%':'DlW',
+            'ExpA':'xA',
+            'ExpG':'xG',
+            'ExpGAg':'xGc',
+            'FlComA3':'FlA3',
+            'FlSufM3':'Flsuf',
+            'Goal':'G',
+            'GoalCnIBx':'GcBox',
+            'GoalCncd':'Gc',
+            'Int':'int',
+            'Off':'shtTrg',
+            'Pass%':'Pc%',
+            'PsAtt':'Pat',
+            'PsCmpA3':'Pata',
+            'PsCmpM3':'Patm',
+            'PsOnHfFl':'Pfd',
+            'PsOpHfFl':'Pfa',
+            'PsOpHfScs':'Psuca',
+            'Recovery':'Rec',
+            'Saves':'SV',
+            'SucflDuels':'sDl',
+            'SucflTkls':'sTkl',
+            'SvClct':'SVc',
+            'SvDive':'dvS',
+            'SvHands':'hdS',
+            'SvInBox':'SVi',
+            'SvOutBox':'SVo',
+            'SvPrdSaf':'SVps',
+            'SvStand':'SVstn',
+            'TchsA3':'Tcha',
+            'TchsM3':'Tchm',
+            'TouchOpBox':'TchoB',
+            'Touches':'Tch'}
+
+def new_col(data):
+    for col in data.columns:
+        try:
+            print(col)
+            print(col_check[col])
+        except:
+            pass
+        try:
+            data[col_check[col]] = data[col]
+            if col_check[col]:
+                data.pop(col)
+        except:
+            pass
+    for col in data.columns:
+        try:
+            if col in ['display','number']:
+                temp = data.pop(col)
+                data[col] = temp
+        except:
+            pass
+    return data
+
 canples = Flask(__name__)
 
 def convert_num_str(num):
@@ -495,6 +560,18 @@ def roster():
 @canples.route('/player', methods=['POST'])
 def player():
 
+    def norm_line_column(data):
+        return round(data / (data.max()+0.05),2)
+
+    def percentage_check(x):
+        try:
+            if '%' in x:
+                return float(re.sub('%','',x))
+            elif '-' in x:
+                return 0.0
+        except:
+            return x
+
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
     player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
@@ -527,8 +604,12 @@ def player():
     db90 = pd.read_csv(f'datasets/{year}/playerstats/{year}-{position.get(pos)}90.csv')
     discipline = pd.read_csv(f'datasets/{year}/playerstats/{year}-discipline.csv')
 
+    db = new_col(db)
+    db90 = new_col(db)
+
     radar_chart = db.copy()
     radar_chart.pop('display')
+    radar_chart = new_col(radar_chart)
     for col in radar_chart.columns[5:-1]:
         radar_chart[col] = round((radar_chart[col] / (radar_chart[col].max()+0.05)),2)
     radar_chart = radar_chart[radar_chart['name'] == name][radar_chart.columns[6:-1]]
@@ -538,19 +619,8 @@ def player():
     db90 = db90[db90['name'] == name][db90.columns]
     discipline = discipline[discipline['name'] == name]
 
-    def norm_line_column(data):
-        return round(data / (data.max()+0.05),2)
-
-    def percentage_check(x):
-        try:
-            if '%' in x:
-                return float(re.sub('%','',x))
-            elif '-' in x:
-                return 0.0
-        except:
-            return x
-
     player_line_db = pd.read_csv(f'datasets/{year}/playerstats/{year}-{position.get(pos)}-line.csv')
+    player_line_db = new_col(player_line_db)
     print(player_line_db['display'].unique())
     player_line = player_line_db[player_line_db['name'] == name][player_line_db.columns[5:]].copy().T
     line_columns = [x for x in player_line_db.columns[5:]]
@@ -576,6 +646,7 @@ def player():
             player_line[col] = player_line[col].apply(lambda x: percentage_check(x))
             #player_line[col] = norm_line_column(player_line[col])
         player_line = cpl_main.index_reset(player_line).values.tolist()
+
     #chart_team_colour_list = { 'Atlético Ottawa' : '#102f52','Cavalry FC' : '#335525','FC Edmonton' : '#0c2340','Forge FC' : '#53565a',
     #'HFX Wanderers FC' : '#052049','Pacific FC' : '#00b7bd','Valour FC' : '#b9975b','York United FC' : '#003b5c','York9 FC': '#003b5c'}
     #chart_team_colour_list = ['#102f52','#335525','#0c2340','#53565a','#052049','#00b7bd','#b9975b','#003b5c','#003b5c','#102f52','#335525','#0c2340','#53565a','#052049','#00b7bd','#b9975b','#003b5c','#003b5c']
@@ -589,7 +660,6 @@ def player():
     val = ["#ff7b00","#ff8800","#ff9500","#ffa200","#ffaa00","#ffb700","#ffc300","#ffd000","#ffdd00","#ffea00"]
     grays = ["#eaeaea","#c0c1c4","#abadb1","#96989e","#81848b","#6c6f78","#63666f","#535761","#424651"]
     blues2 = ["#0466c8","#0353a4","#023e7d","#002855","#001845","#001233","#33415c","#5c677d","#7d8597","#979dac"]
-
 
     chart_team_colour_list = {
     '#102f52' : ["#03045e","#023e8a","#0077b6","#0096c7","#00b4d8","#48cae4","#90e0ef","#ade8f4","#caf0f8"],
@@ -648,7 +718,6 @@ def player():
     print('*********************************************')
     print('=============================================')
 
-
     return render_template('cpl-es-player.html', name = details['display'], graph = details['graph_image'],
     radar = details['radar_image'], nationality = details['nationality'], team_name = team, player_info = player,
     team_colour = roster_colour, crest = crest, position = position.get(pos)[:-1], number = details['number'], chart_team_colour_list = chart_team_colour_list[colour2]*2,
@@ -658,15 +727,18 @@ def player():
 @canples.route('/goals', methods=['GET','POST'])
 def goals():
     get_year()
-    rated_goalscorers = pd.read_csv(f'datasets/{year}/cpl-{year}-rated_goalscorers.csv')
+    #rated_goalscorers = pd.read_csv(f'datasets/{year}/cpl-{year}-rated_goalscorers.csv')
+    rated_goalscorers = pd.read_csv(f'datasets/{year}/playerstats/{year}-goalscorers.csv')
     rated_g10 = rated_goalscorers.head(10)
-    rated_assists = pd.read_csv(f'datasets/{year}/cpl-{year}-rated_assists.csv')
+    #rated_assists = pd.read_csv(f'datasets/{year}/cpl-{year}-rated_assists.csv')
+    rated_assists = pd.read_csv(f'datasets/{year}/playerstats/{year}-assists.csv')
     rated_a10 = rated_assists.head(10)
+
     columns_g = rated_goalscorers.columns
     columns_a = rated_assists.columns
 
     return render_template('cpl-es-goals.html',columns_g = columns_g, columns_a = columns_a,
-    html_table = rated_g10, assists_table = rated_a10, headline = 'Top Goal Scorers')
+    html_table = rated_g10, assists_table = rated_a10, headline = 'Top 10 Goals / Assists')
 
 @canples.route('/forwards', methods=['GET','POST'])
 def forwards():
@@ -674,6 +746,8 @@ def forwards():
 
     rated_forwards = pd.read_csv(f'datasets/{year}/playerstats/{year}-forwards.csv')
     columns = rated_forwards.columns
+
+    rated_forwards = new_col(rated_forwards)
 
     return render_template('cpl-es-position.html',
     columns = columns,html_table = rated_forwards)
@@ -686,6 +760,8 @@ def forwards_90():
     rated_forwards = rated_forwards_90.sort_values(by='overall',ascending=False)
     columns = rated_forwards.columns
 
+    rated_forwards = new_col(rated_forwards)
+
     return render_template('cpl-es-position.html',
     columns = columns,html_table = rated_forwards)
 
@@ -695,6 +771,8 @@ def midfielders():
 
     rated_midfielders = pd.read_csv(f'datasets/{year}/playerstats/{year}-midfielders.csv')
     columns = rated_midfielders.columns
+
+    rated_midfielders = new_col(rated_midfielders)
 
     return render_template('cpl-es-position.html',
     columns = columns,html_table = rated_midfielders)
@@ -707,6 +785,8 @@ def midfielders_90():
     rated_midfielders = rated_midfielders_90.sort_values(by='overall',ascending=False)
     columns = rated_midfielders.columns
 
+    rated_midfielders = new_col(rated_midfielders)
+
     return render_template('cpl-es-position.html',
     columns = columns,html_table = rated_midfielders)
 
@@ -716,6 +796,8 @@ def defenders():
 
     rated_defenders = pd.read_csv(f'datasets/{year}/playerstats/{year}-defenders.csv')
     columns = rated_defenders.columns
+
+    rated_defenders = new_col(rated_defenders)
 
     return render_template('cpl-es-position.html',
     columns = columns,html_table = rated_defenders)
@@ -728,6 +810,8 @@ def defenders_90():
     rated_defenders = rated_defenders_90.sort_values(by='overall',ascending=False)
     columns = rated_defenders.columns
 
+    rated_defenders = new_col(rated_defenders)
+
     return render_template('cpl-es-position.html',
     columns = columns,html_table = rated_defenders)
 
@@ -737,6 +821,8 @@ def keepers():
 
     rated_keepers = pd.read_csv(f'datasets/{year}/playerstats/{year}-keepers.csv')
     columns = rated_keepers.columns
+
+    rated_keepers = new_col(rated_keepers)
 
     return render_template('cpl-es-position.html',
     columns = columns,html_table = rated_keepers)
@@ -748,6 +834,8 @@ def keepers_90():
     rated_keepers_90 = pd.read_csv(f'datasets/{year}/playerstats/{year}-keepers90.csv')
     rated_keepers = rated_keepers_90.sort_values(by='overall',ascending=False)
     columns = rated_keepers.columns
+
+    rated_keepers = new_col(rated_keepers)
 
     return render_template('cpl-es-position.html',
     columns = columns,html_table = rated_keepers)

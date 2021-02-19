@@ -15,7 +15,7 @@
           <th style="text-align:left;">team</th>
           <th style="width:38%;">name</th>
           {% for col in html_table.columns[2:6] %}
-          <th style="font-size: 0.8em;">{{ col[:4] | lower}}</th>
+          <th style="font-size: 0.8em;">{{ col }}</th>
           {% endfor%}
         </tr>
       </table>
@@ -50,13 +50,14 @@
           <th style="text-align:left;">team</th>
           <th style="width:38%;">name</th>
           {% for col in html_table.columns[2:6] %}
-          <th style="font-size: 0.8em;">{{ col[:4] | lower}}</th>
+          <th style="font-size: 0.8em;">{{ col }}</th>
           {% endfor%}
         </tr>
       </table>
     </div>
   </div>
   <div class="parent {{ theme }}-light">
+    <form method="POST" action="/player">
     <div class="{{ theme }}-light">
       <table>
         {% for i in range(9,html_table.shape[0]) %}
@@ -71,6 +72,7 @@
         {% endfor%}
       </table>
     </div>
+    </form>
   </div>
   <!-- end of position table-->
 </div>
@@ -85,7 +87,7 @@
           <th style="text-align:left;width:3vw;">team</th>
           <th style="width:10vw;">name</th>
           {% for col in html_table.columns[2:-2] %}
-          <th style="font-size: 0.8em;width:2vw;">{{ col[:2] | lower}}</th>
+          <th style="font-size: 0.8em;width:2vw;">{{ col }}</th>
           {% endfor%}
         </tr>
       </table>
@@ -119,7 +121,7 @@
           <th style="text-align:left;width:3vw;">team</th>
           <th style="width:10vw;">name</th>
           {% for col in html_table.columns[2:-2] %}
-          <th style="font-size: 0.8em;width:2vw;">{{ col[:2] | lower}}</th>
+          <th style="font-size: 0.8em;width:2vw;">{{ col }}</th>
           {% endfor%}
         </tr>
       </table>
