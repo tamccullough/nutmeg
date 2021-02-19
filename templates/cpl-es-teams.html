@@ -31,13 +31,13 @@
       <form method="POST" action="/roster">
         <table>
           <tr>
-            <td style="text-align:center;"><img src="static/images/flags/{{ html_table.iloc[i,5] }}" alt="{{ html_table.iloc[i,0] }} Crest" style="max-height:30px"></td>
-            <td style="width:38%;"><a href="{{ roster }}"><input class="{{ theme }}-colour button" type="submit" id="team" name="team" value="{{ html_table.iloc[i,0] }}"/></a></td>
-            <td class="{{ theme }}-green" style="width:8%;">{{ html_table.iloc[i][10] }}</td>
-            <td class="{{ theme }}-orange" style="width:8%;"><a>{{ html_table.iloc[i][12] }}</a></td>
-            <td class="{{ theme }}-red" style="width:8%;"><a>{{ html_table.iloc[i][11] }}</a></td>
-            <td><a class="{{ theme }}-colour button" href="{{ html_table.iloc[i,6] }}" target="_blank">site</a></td>
-            <td><a class="{{ theme }}-colour button" href="{{ html_table.iloc[i,7] }}" target="_blank">wiki</a></td>
+            <td style="text-align:center;"><img src="static/images/flags/{{ html_table.iloc[i]['crest'] }}" alt="{{ html_table.iloc[i]['team'] }} Crest" style="max-height:40px"></td>
+            <td style="width:38%;"><a href="{{ url_for('roster') }}"><input class="{{ theme }}-colour button" type="submit" id="team" name="team" value="{{ html_table.iloc[i]['team'] }}"/></a></td>
+            <td class="{{ theme }}-green" style="width:8%;">{{ html_table.iloc[i]['cw'] }}</td>
+            <td class="{{ theme }}-orange" style="width:8%;"><a>{{ html_table.iloc[i]['cd'] }}</a></td>
+            <td class="{{ theme }}-red" style="width:8%;"><a>{{ html_table.iloc[i]['cl'] }}</a></td>
+            <td><a class="{{ theme }}-colour button" href="{{ html_table.iloc[i]['link'] }}" target="_blank">club site</a></td>
+            <td><a class="{{ theme }}-colour button" href="{{ html_table.iloc[i]['wiki'] }}" target="_blank">wikipedia</a></td>
           </tr>
         </table>
       </form>
@@ -73,14 +73,14 @@
       <form method="POST" action="/roster">
         <table>
           <tr>
-            <td style="width:10%;text-align:center;"><img src="static/images/flags/{{ html_table.iloc[i,5] }}" alt="{{ html_table.iloc[i,0] }} Crest" style="max-height:40px"></td>
-            <td style="width:25%;"><a href="{{ url_for('roster') }}"><input class="{{ theme }}-light button" type="submit" id="team" name="team" value="{{ html_table.iloc[i,0] }}"/></a></td>
-            <td style="width:20%;"><a>{{ html_table.iloc[i][1] }} {{ html_table.iloc[i][2] }}</td>
-              <td class="{{ theme }}-green" style="width:5%;overflow:hidden;">{{ html_table.iloc[i][10] }}</td>
-              <td class="{{ theme }}-orange" style="width:5%;"><a>{{ html_table.iloc[i][12] }}</a></td>
-              <td class="{{ theme }}-red" style="width:5%;"><a>{{ html_table.iloc[i][11] }}</a></td>
-              <td><a class="{{ theme }}-light button" href="{{ html_table.iloc[i,6] }}" target="_blank">club site</a></td>
-              <td><a class="{{ theme }}-light button" href="{{ html_table.iloc[i,7] }}" target="_blank">wikipedia</a></td>
+            <td style="width:10%;text-align:center;"><img src="static/images/flags/{{ html_table.iloc[i]['crest'] }}" alt="{{ html_table.iloc[i]['team'] }} Crest" style="max-height:40px"></td>
+            <td style="width:25%;"><a href="{{ url_for('roster') }}"><input class="{{ theme }}-light button" type="submit" id="team" name="team" value="{{ html_table.iloc[i]['team'] }}"/></a></td>
+            <td style="width:20%;"><a>{{ html_table.iloc[i]['city'] }} {{ html_table.iloc[i]['province'] }}</td>
+            <td class="{{ theme }}-green" style="width:5%;overflow:hidden;">{{ html_table.iloc[i]['cw'] }}</td>
+            <td class="{{ theme }}-orange" style="width:5%;"><a>{{ html_table.iloc[i]['cd'] }}</a></td>
+            <td class="{{ theme }}-red" style="width:5%;"><a>{{ html_table.iloc[i]['cl'] }}</a></td>
+            <td><a class="{{ theme }}-light button" href="{{ html_table.iloc[i]['link'] }}" target="_blank">club site</a></td>
+            <td><a class="{{ theme }}-light button" href="{{ html_table.iloc[i]['wiki'] }}" target="_blank">wikipedia</a></td>
             </tr>
           </table>
         </form>

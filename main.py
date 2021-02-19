@@ -261,7 +261,7 @@ def index():
     if results.iloc[0]['hr'] == 'E':
         top_team, top_mover, top_dropper, first_crest, top_crest, bot_crest, first_colour = na, na, na, 'CPL-Crest-White.png', 'oneSoccer_nav.png', 'canNat_icon.png', 'w3-indigo'
 
-    suspended = 'none'
+    suspended = ['none']
     if championship.empty:
         headline = f'{year} Season Underway'
     else:
