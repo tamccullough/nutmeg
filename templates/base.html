@@ -131,11 +131,12 @@
           {{ (player_line[0] | length) }}
         ],
         datasets: [
-          {% for i in range((player_line | length) -1) %}
+          {% for i in range(player_line_length) %}
+          {% set k = i + 1 %}
           {
             label: '{{line_columns[i]}}',
             data: [
-              {% for x in range(player_line[i] | length -1) %}
+              {% for x in range(player_line[i] | length) %}
               {{ player_line[i][x] | safe }},
               {% endfor %}
               {{ player_line[i][-1] | safe}}
@@ -149,18 +150,18 @@
           },
           {% endfor %}
           {
-            label: 'line_columns[-1]',
+            label: '{{line_columns[player_line_end]}}',
             data: [
-              {% for j in range(player_line[-1] | length -1) %}
-              {{ player_line[-1][j] | safe }},
+              {% for j in range(player_line[player_line_end] | length) %}
+              {{ player_line[player_line_end][j] | safe }},
               {% endfor %}
-              {{ player_line[-1][-1] | safe}}
+              {{ player_line[player_line_end] | safe}}
             ],
             fill: true,
-            borderColor: '{{ chart_team_colour_list[-1] }}',
-            backgroundColor: '{{ chart_team_colour_list[-1] }}'+'33',
+            borderColor: '{{ chart_team_colour_list[player_line_end] }}',
+            backgroundColor: '{{ chart_team_colour_list[player_line_end] }}'+'33',
             pointHoverRadius: 10,
-            pointHoverBackgroundColor: '{{ chart_team_colour_list[-1] }}'
+            pointHoverBackgroundColor: '{{ chart_team_colour_list[player_line_end] }}'
           }
         ],
       },
@@ -219,7 +220,7 @@
           },
           {% endfor %}
           {
-            label: 'line_columns[-1]',
+            label: '{{ line_columns[-1] }}',
             data: [
               {% for j in range(player_line[-1] | length -1) %}
               {{ player_line[-1][j] | safe }},

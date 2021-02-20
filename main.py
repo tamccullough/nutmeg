@@ -6,6 +6,8 @@ import cpl_main
 from datetime import date
 today = date.today()
 this_year = date.today().strftime('%Y')
+current_year = '2020'
+year = current_year
 
 import numpy as np
 import pandas as pd
@@ -80,13 +82,8 @@ col_check = {'overall':'O',
             'TouchOpBox':'TchoB',
             'Touches':'Tch'}
 
-def new_col(data):
+def new_col(data):#,chart=''
     for col in data.columns:
-        try:
-            print(col)
-            print(col_check[col])
-        except:
-            pass
         try:
             data[col_check[col]] = data[col]
             if col_check[col]:
@@ -109,11 +106,13 @@ def convert_num_str(num):
     return num[0:4]
 
 def get_year():
+
     global year
     try:
         year = request.form['year']
     except:
         year = current_year
+
     return year
 
 def load_main_files(year):
@@ -182,7 +181,7 @@ month, day, weekday = cpl_main.get_weekday()
 current_year = '2020'
 games_played = {1:28,2:7}
 # set the year - which will change based on user choice
-year = current_year
+
 
 @canples.context_processor
 def inject_user():
@@ -312,6 +311,7 @@ def standings():
 def eleven():
 
     get_year()
+
     best_eleven = pd.read_csv(f'datasets/{year}/playerstats/{year}-best_eleven.csv')
     #best_eleven = pd.read_csv(f'datasets/{year}/cpl-{year}-best_eleven.csv')
     player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
@@ -494,7 +494,7 @@ def teams():
 def radar():
 
     get_year()
-    page = '/radar'
+
     team_standings = pd.read_csv(f'datasets/{year}/cpl-{year}-standings_current.csv')
     radar = pd.read_csv(f'datasets/{year}/league/{year}-radar.csv')
     team_standings = team_standings.sort_values(by='team')
@@ -622,31 +622,62 @@ def player():
     discipline = discipline[discipline['name'] == name]
 
     player_line_db = pd.read_csv(f'datasets/{year}/playerstats/{year}-{position.get(pos)}-line.csv')
+    try:
+        player_line_db = player_line_db[['name','display','Touches','Goal','PsAtt','PsCmpM3','TchsM3']]
+    except:
+        try:
+            player_line_db = player_line_db[['name','display','Touches','Goal','PsAtt','TchsA3']]
+        except:
+            try:
+                player_line_db = player_line_db[['name','display','Touches','Goal','TchsM3','DefTouch']]
+            except:
+                player_line_db = player_line_db[['name','display','CleanSheet','Saves','SvDive','Recovery','ExpGAg']]
+
     player_line_db = new_col(player_line_db)
-    print(player_line_db['display'].unique())
-    player_line = player_line_db[player_line_db['name'] == name][player_line_db.columns[5:]].copy().T
-    line_columns = [x for x in player_line_db.columns[5:]]
-    for col in player_line.columns:
-        player_line[col] = player_line[col].apply(lambda x: percentage_check(x))
-        #player_line[col] = norm_line_column(player_line[col])
+
+    def get_norm(data):
+        df = data.copy()
+        cols = [x for x in data.columns if x not in ['name','display','G']]
+        for col in cols:
+            df[col] = round(df[col]/ df[col].max() ,2)*2
+        return df
+
+    player_line_db = get_norm(player_line_db)
+
+    def build_player_line(player_line_db,name,string='name'):
+        if string == 'display':
+            name = player_info[player_info['name'] == name]['display'].values[0]
+        else:
+            pass
+        data = player_line_db[player_line_db[string] == name][player_line_db.columns[1:-1]].copy().T
+        print('=============================================')
+        print('*********************************************')
+        print(data.columns[1:-1].values)
+        print('*********************************************')
+        print('=============================================')
+        line_columns = [x for x in player_line_db.columns[1:-1]]
+        for col in data.columns:
+            data[col] = data[col].apply(lambda x: percentage_check(x))
+        return data, line_columns
+
+    player_line, line_columns = build_player_line(player_line_db,name)
     player_line = cpl_main.index_reset(player_line).values.tolist()
+    player_line_length = len(player_line) - 1
+    player_line_end = len(player_line) - 1
 
     if player_line[0]:
         print('Dataset filled')
-        print('=============================================')
-        print('*********************************************')
+        print(len(player_line))
+        for x in range(player_line_length):
+            print(x)
+            print(player_line[x])
+        print(player_line_end)
+        print(player_line[player_line_end])
+        print('+++++++++++++++++++++++++++++++++++')
     else:
         print('Dataset empty')
-        print('=============================================')
-        print('*********************************************')
-
-        display = player_info[player_info['name'] == name]['display'].values[0]
-
-        player_line = player_line_db[player_line_db['display'] == display][player_line_db.columns[5:]].copy().T
-        line_columns = [x for x in player_line_db.columns[5:]]
-        for col in player_line.columns:
-            player_line[col] = player_line[col].apply(lambda x: percentage_check(x))
-            #player_line[col] = norm_line_column(player_line[col])
+        print('-----------------------------------')
+        player_line, line_columns = build_player_line(player_line_db,name,string='display')
         player_line = cpl_main.index_reset(player_line).values.tolist()
 
     #chart_team_colour_list = { 'Atlético Ottawa' : '#102f52','Cavalry FC' : '#335525','FC Edmonton' : '#0c2340','Forge FC' : '#53565a',
@@ -662,6 +693,8 @@ def player():
     val = ["#ff7b00","#ff8800","#ff9500","#ffa200","#ffaa00","#ffb700","#ffc300","#ffd000","#ffdd00","#ffea00"]
     grays = ["#eaeaea","#c0c1c4","#abadb1","#96989e","#81848b","#6c6f78","#63666f","#535761","#424651"]
     blues2 = ["#0466c8","#0353a4","#023e7d","#002855","#001845","#001233","#33415c","#5c677d","#7d8597","#979dac"]
+    geegle = ['#ff9900','#ffff00','#4a86e8','#ff00ff','#4a86e8','#0000ff','#9900ff','#ff00ff']
+    google = ['#df0772','#fe546f','#ff9e7d','#ffd080','#01cbcf','#0188a5','#6450a6']
 
     chart_team_colour_list = {
     '#102f52' : ["#03045e","#023e8a","#0077b6","#0096c7","#00b4d8","#48cae4","#90e0ef","#ade8f4","#caf0f8"],
@@ -687,8 +720,6 @@ def player():
             except:
                 details[word] = player[player['name'] == name][word].values[0]
     #line_back_colour = chart_team_colour_list[details[team]]
-    line_chart_colours = chart_team_colour_list[colour2]
-    line_chart_colours = line_chart_colours*2
 
     print('=============================================')
     print('*********************************************')
@@ -699,7 +730,7 @@ def player():
     print(', '.join([str(x) for x in radar_chart.loc[0]]))
     print('\n')
     print(colour2)
-    print(line_chart_colours)
+    print(geegle)
     if position.get(pos)[:1] == 'f':
         length = len(db.columns)
         half = int(length/2)
@@ -720,14 +751,15 @@ def player():
     print('*********************************************')
     print('=============================================')
 
-    return render_template('cpl-es-player.html', name = details['display'], graph = details['graph_image'],
+    return render_template('cpl-es-player.html', name = details['display'], graph = details['graph_image'], player_line_length = player_line_length, player_line_end = player_line_end,
     radar = details['radar_image'], nationality = details['nationality'], team_name = team, player_info = player,
-    team_colour = roster_colour, crest = crest, position = position.get(pos)[:-1], number = details['number'], chart_team_colour_list = chart_team_colour_list[colour2]*2,
+    team_colour = roster_colour, crest = crest, position = position.get(pos)[:-1], number = details['number'], chart_team_colour_list = geegle,
     stats = db, stats90 = db90, discipline = discipline, radar_chart = radar_chart, radar_chart_cols = radar_chart_cols,
-    colour1 = colour1, colour2 = colour2,col_nums = col_nums, player_line = player_line[:-1],line_columns = line_columns[:-1])
+    colour1 = colour1, colour2 = colour2,col_nums = col_nums, player_line = player_line,line_columns = line_columns)
 
 @canples.route('/goals', methods=['GET','POST'])
 def goals():
+
     get_year()
 
     #rated_goalscorers = pd.read_csv(f'datasets/{year}/cpl-{year}-rated_goalscorers.csv')
@@ -757,6 +789,7 @@ def forwards():
 
 @canples.route('/forwardsP90', methods=['GET','POST'])
 def forwards_90():
+
     get_year()
 
     rated_forwards_90 = pd.read_csv(f'datasets/{year}/playerstats/{year}-forwards90.csv')
@@ -770,6 +803,7 @@ def forwards_90():
 
 @canples.route('/midfielders', methods=['GET','POST'])
 def midfielders():
+
     get_year()
 
     rated_midfielders = pd.read_csv(f'datasets/{year}/playerstats/{year}-midfielders.csv')
@@ -782,6 +816,7 @@ def midfielders():
 
 @canples.route('/midfieldersP90', methods=['GET','POST'])
 def midfielders_90():
+
     get_year()
 
     rated_midfielders_90 = pd.read_csv(f'datasets/{year}/playerstats/{year}-midfielders90.csv')
@@ -795,6 +830,7 @@ def midfielders_90():
 
 @canples.route('/defenders', methods=['GET','POST'])
 def defenders():
+
     get_year()
 
     rated_defenders = pd.read_csv(f'datasets/{year}/playerstats/{year}-defenders.csv')
@@ -807,6 +843,7 @@ def defenders():
 
 @canples.route('/defendersP90', methods=['GET','POST'])
 def defenders_90():
+
     get_year()
 
     rated_defenders_90 = pd.read_csv(f'datasets/{year}/playerstats/{year}-defenders90.csv')
@@ -820,6 +857,7 @@ def defenders_90():
 
 @canples.route('/keepers', methods=['GET','POST'])
 def keepers():
+
     get_year()
 
     rated_keepers = pd.read_csv(f'datasets/{year}/playerstats/{year}-keepers.csv')
@@ -832,6 +870,7 @@ def keepers():
 
 @canples.route('/keepersP90', methods=['GET','POST'])
 def keepers_90():
+
     get_year()
 
     rated_keepers_90 = pd.read_csv(f'datasets/{year}/playerstats/{year}-keepers90.csv')
@@ -845,6 +884,7 @@ def keepers_90():
 
 @canples.route('/discipline', methods=['GET','POST'])
 def discipline():
+
     get_year()
 
     rated_offenders = pd.read_csv(f'datasets/{year}/playerstats/{year}-discipline.csv')
