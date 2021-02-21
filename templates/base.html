@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="static/css/nav.css">
   <link rel="stylesheet" href="static/css/menu.css">
   <link rel="stylesheet" href="static/css/style.css">
-  <link rel="stylesheet" href="static/css/themes.css">
   <link rel="stylesheet" href="static/css/team-colours.css">
   <!--link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet"/-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -35,7 +34,7 @@
 
 </head>
 
-<body id="top" class="{{ theme }}-colour">
+<body id="top" class="{{ theme }}-body">
 
     {% include "nav.html" %}
     {% block body %}{% endblock %}
@@ -62,49 +61,36 @@
 
       <!-- league information container -->
       <div>
-        <div class="parent {{ theme }}-colour">
-          <div class="boxs">
-            <h3 class="bottombar blue-bar">Official Site</h3>
-            <a class="button" href="https://canpl.ca/" target="_blank">Canadian Premier League</a><br>
-            <a>Toronto, Canada</a>
-          </div>
-          <div class="boxs">
-            <h3 class="bottombar pink-bar">Official TV Partner</h3>
-            <a class="button" href="https://onesoccer.ca/" target="_blank">One Soccer</a><br>
-            <a>Toronto, Canada</a>
-          </div>
-          <div class="box">
-            <h3 class="bottombar green-bar">Club Links</h3>
+        <div class="{{ theme }}-body">
+          <div class="spacer"></div>
+            <h4 class="green-bar">links</h4>
             <table>
               <tr>
-                <td class="t-left"><a class="button" href="https://atleticoottawa.canpl.ca/" target="_blank">Atletico Ottawa</a></td>
-                <td class="t-left"><a class="button" href="https://cavalryfc.canpl.ca/" target="_blank">Cavalry FC</a></td>
-              </tr>
-              <tr>
-                <td class="t-left"><a class="button" href="https://fcedmonton.canpl.ca/" target="_blank">FC Edmonton</a></td>
-                <td class="t-left"><a class="button" href="https://forgefc.canpl.ca/" target="_blank">Forge FC</a></td>
-              </tr>
-              <tr>
-                <td class="t-left"><a class="button" href="https://hfxwanderersfc.canpl.ca/" target="_blank">HFX Wanderers FC</a></td>
-                <td class="t-left"><a class="button" href="https://pacificfc.canpl.ca/" target="_blank">Pacific FC</a></td>
-              </tr>
-              <tr>
-                <td class="t-left"><a class="button" href="https://valourfc.canpl.ca/" target="_blank">Valour FC</a></td>
-                <td class="t-left"><a class="button" href="https://yorkunitedfc.canpl.ca/" target="_blank">York United FC</a></td>
+                <td class="t-center"><a class="button" href="https://canpl.ca/" target="_blank"><img style="min-width:30px;width:3vw;margin:-8px;text-align:center;" src="static/images/flags/cpl_logo.png" alt="CPL Crest"></a></td>
+                <td class="t-center"><a class="button" href="https://onesoccer.ca/" target="_blank"><img style="min-width:30px;width:3vw;margin:-8px;text-align:center;" src="static/images/flags/os-logo.svg" alt="One Soccer Crest"></a></td>
+                <td class="t-center"><a class="button" href="https://atleticoottawa.canpl.ca/" target="_blank"><img style="min-width:30px;width:3vw;margin:-8px;text-align:center;" src="static/images/flags/Atletico_Ottawa_nav.png" alt="Atletico Ottawa Crest"></a></td>
+                <td class="t-center"><a class="button" href="https://cavalryfc.canpl.ca/" target="_blank"><img style="min-width:30px;width:3vw;margin:-8px;text-align:center;" src="static/images/flags/cavalry_fc_nav.png" alt="Cavalry FC Crest"></a></td>
+                <td class="t-center"><a class="button" href="https://fcedmonton.canpl.ca/" target="_blank"><img style="min-width:30px;width:3vw;margin:-8px;text-align:center;" src="static/images/flags/FC_Edmonton_nav.png" alt="FC Edmonton Crest"></a></td>
+                <td class="t-center"><a class="button" href="https://forgefc.canpl.ca/" target="_blank"><img style="min-width:25px;width:2.5vw;margin:-8px;text-align:center;" src="static/images/flags/Forge_FC_nav.png" alt="Forge FC Crest"></a></td>
+                <td class="t-center"><a class="button" href="https://hfxwanderersfc.canpl.ca/" target="_blank"><img style="min-width:40px;width:4vw;margin:-8px;text-align:center;" src="static/images/flags/HFX_Wanderers_FC.png" alt="HFX Wanderers FC Crest"></a></td>
+                <td class="t-center"><a class="button" href="https://pacificfc.canpl.ca/" target="_blank"><img style="min-width:20px;width:2vw;margin:-8px;text-align:center;" src="static/images/flags/Pacific_FC_nav.png" alt="Pacific FC Crest"></a></td>
+                <td class="t-center"><a class="button" href="https://valourfc.canpl.ca/" target="_blank"><img style="min-width:30px;width:3vw;margin:-8px;text-align:center;" src="static/images/flags/Valour_FC_nav.png" alt="Valour FC Crest"></a></td>
+                <td class="t-center"><a class="button" href="https://yorkunitedfc.canpl.ca/" target="_blank"><img style="min-width:40px;width:4vw;margin:-8px;text-align:center;" src="static/images/flags/YU_Primary_Nav.png" alt="York United FC Crest"></a></td>
               </tr>
             </table>
-          </div>
         </div>
 
       </div>
       <div class="spacer"></div>
       <!-- Footer -->
       <div class="spacer"></div>
-      <footer class="{{ theme }}-colour">
+      <footer class="{{ theme }}-body">
         <a> Todd McCullough</a>
-        <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{theme}}-colour fa fa-twitter"></i></a>
-        <a href="https://github.com/tamccullough" target="_blank"><i class="{{theme}}-colour fa fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/tamccullough/" target="_blank"><i class="{{theme}}-colour fa fa-linkedin"></i></a>
+        <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{theme}}-body fa fa-twitter"></i></a>
+        <a href="https://github.com/tamccullough" target="_blank"><i class="{{theme}}-body fa fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/tamccullough/" target="_blank"><i class="{{theme}}-body fa fa-linkedin"></i></a>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
       </footer>
 
       <!-- End page content -->
@@ -319,8 +305,8 @@
       },
       options: {
         tooltips: {
-          titleFontSize: 18,
-          bodyFontSize: 18
+          titleFontSize: 10,
+          bodyFontSize: 10
         },
         legend: {
           display: false
@@ -339,7 +325,7 @@
           },
           pointLabels: {
             fontColor: '#fff',
-            fontSize: 14,
+            fontSize: 10,
             fontFamily: "'Lato', sans-serif"
           }
         }

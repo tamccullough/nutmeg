@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="246.36"
+   height="246.36"
+   viewBox="0 0 246.36 246.36"
+   version="1.1"
+   id="svg1094"
+   sodipodi:docname="os-logo.svg"
+   inkscape:version="1.0.1 (3bc2e81, 2020-09-07)">
+  <metadata
+     id="metadata1098">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>logo-v-03</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1016"
+     id="namedview1096"
+     showgrid="false"
+     inkscape:zoom="2.2331096"
+     inkscape:cx="124.34645"
+     inkscape:cy="154.48547"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1094" />
+  <defs
+     id="defs1056">
+    <style
+       id="style1054">.cls-1{fill:#df195b;}.cls-2{fill:#262c6a;}</style>
+  </defs>
+  <title
+     id="title1058">logo-v-03</title>
+  <g
+     id="Layer_1"
+     data-name="Layer 1"
+     transform="translate(-0.03499972,17.700156)">
+    <path
+       class="cls-2"
+       d="m 9.57,157.78 v 0 c 0,0 0,0 0,0 z"
+       id="path1062" />
+    <path
+       class="cls-2"
+       d="M 159.92,161.21 A 63,63 0 0 1 114.65,159 l -81.3,37.17 c 0,0 0,0 0,0 l 50.61,0.06 c 0.36,-0.15 69,-31.47 80.4,-36.67 a 31.85,31.85 0 0 1 -4.44,1.65 z"
+       id="path1082" />
+    <path
+       class="cls-2"
+       d="m 9.57,157.73 v 0 c 0,0 0,0 0,0 z"
+       id="path1084" />
+    <path
+       class="cls-2"
+       d="M 84.92,131.31 A 56.55,56.55 0 0 1 82.1,124.57 L 9.58,157.73 h 36 a 103.82,103.82 0 0 0 8.84,13.12 L 99.94,150 A 57.66,57.66 0 0 1 84.92,131.31 Z"
+       id="path1086" />
+    <path
+       class="cls-2"
+       d="M 85.84,79.05 0,118.28 h 32.7 a 99.8,99.8 0 0 0 2.15,12.15 l 44.31,-20.26 a 58.26,58.26 0 0 1 6.68,-31.12 z"
+       id="path1088" />
+    <path
+       class="cls-1"
+       d="m 33.9,88.05 c 0,0 70.85,-32.71 82.42,-37.57 A 61.82,61.82 0 0 1 140,45.71 c 53.21,0 80.25,63.67 42.32,101.6 a 58,58 0 0 1 -17.86,12.34 c -11.4,5.2 -80,36.51 -80.4,36.67 v 0 a 108.63,108.63 0 0 0 139.19,-26 104.85,104.85 0 0 0 23.18,-65.67 A 103.78,103.78 0 0 0 216,31.23 C 155,-29.8 49.18,3.63 33.9,88.05 Z"
+       id="path1090" />
+  </g>
+</svg>

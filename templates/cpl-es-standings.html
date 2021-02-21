@@ -19,11 +19,11 @@
                 <td style="width: 10%;"><b>team</b></td>
                 <td><b>MP</b></td>
                 <td><b>Pts</b></td>
-                <td><b>PPG</b></td>
                 <td><b>W</b></td>
                 <td><b>D</b></td>
                 <td><b>L</b></td>
-                <td><b>GD</b></td>
+                <td><b>GF</b></td>
+                <td><b>GA</b></td>
               </tr>
               {%for i in range(0,championship_table.shape[0])%}
               <tr>
@@ -31,11 +31,11 @@
                 <td class="t-center"><img style="max-height:30px;margin:-8px;text-align:center;" src="static/images/flags/{{ championship_table.at[i,'crest'] }}" alt="{{ championship_table.at[i,'crest'] }} Crest"></td>
                 <td>{{ championship_table.iloc[i]['matches'] }}</td>
                 <td>{{ championship_table.iloc[i]['points'] }}</td>
-                <td>{{ (championship_table.iloc[i]['points']/championship_table.iloc[i]['matches'])|round(2) }}</td>
                 <td class="{{ theme }}-green">{{ championship_table.iloc[i]['win'] }}</td>
                 <td class="{{ theme }}-orange">{{ championship_table.iloc[i]['draw'] }}</td>
                 <td class="{{ theme }}-red">{{ championship_table.iloc[i]['loss'] }}</td>
-                <td class="{{ theme }}-t-yellow"><b>{{ championship_table.iloc[i]['gd'] }}</td>
+                <td><b>{{ championship_table.iloc[i]['Goal'] }}</td>
+                <td>{{ championship_table.iloc[i]['Goal'] - championship_table.iloc[i]['gd'] }}</td>
               </tr>
               {%endfor%}
             </table>
@@ -60,11 +60,11 @@
                   <td style="width: 10%;"><b>team</b></td>
                   <td><b>MP</b></td>
                   <td><b>Pts</b></td>
-                  <td><b>PPG</b></td>
                   <td><b>W</b></td>
                   <td><b>D</b></td>
                   <td><b>L</b></td>
-                  <td><b>GD</b></td>
+                  <td><b>GF</b></td>
+                  <td><b>GA</b></td>
                 </tr>
                 {%for i in range(0,playoffs_table.shape[0])%}
                 <tr>
@@ -72,11 +72,11 @@
                   <td class="t-center"><img style="max-height:30px;margin:-8px;text-align:center;" src="static/images/flags/{{ playoffs_table.at[i,'crest'] }}" alt="{{ playoffs_table.at[i,'crest'] }} Crest"></td>
                   <td>{{ playoffs_table.iloc[i]['matches'] }}</td>
                   <td>{{ playoffs_table.iloc[i]['points'] }}</td>
-                  <td>{{ (playoffs_table.iloc[i]['points']/playoffs_table.iloc[i]['matches'])|round(2) }}</td>
                   <td class="{{ theme }}-green">{{ playoffs_table.iloc[i]['win'] }}</td>
                   <td class="{{ theme }}-orange">{{ playoffs_table.iloc[i]['draw'] }}</td>
                   <td class="{{ theme }}-red">{{ playoffs_table.iloc[i]['loss'] }}</td>
-                  <td class="{{ theme }}-t-yellow"><b>{{ playoffs_table.iloc[i]['gd'] }}</td>
+                  <td><b>{{ playoffs_table.iloc[i]['Goal'] }}</td>
+                  <td>{{ playoffs_table.iloc[i]['Goal'] - playoffs_table.iloc[i]['gd'] }}</td>
                 </tr>
                 {%endfor%}
               </table>
@@ -99,11 +99,11 @@
               <td style="width: 10%;"><b>team</b></td>
               <td><b>MP</b></td>
               <td><b>Pts</b></td>
-              <td><b>PPG</b></td>
               <td><b>W</b></td>
               <td><b>D</b></td>
               <td><b>L</b></td>
-              <td><b>GD</b></td>
+              <td><b>GF</b></td>
+              <td><b>GA</b></td>
             </tr>
             {%for i in range(0,standings_table.shape[0])%}
             <tr>
@@ -111,11 +111,11 @@
               <td class="t-center"><img style="max-height:30px;margin:-8px;text-align:center;" src="static/images/flags/{{ standings_table.at[i,'crest'] }}" alt="{{ standings_table.at[i,'crest'] }} Crest"></td>
               <td>{{ standings_table.iloc[i]['matches'] }}</td>
               <td>{{ standings_table.iloc[i]['points'] }}</td>
-              <td>{{ (standings_table.iloc[i]['points']/standings_table.iloc[i]['matches'])|round(2) }}</td>
               <td class="{{ theme }}-green">{{ standings_table.iloc[i]['win'] }}</td>
               <td class="{{ theme }}-orange">{{ standings_table.iloc[i]['draw'] }}</td>
               <td class="{{ theme }}-red">{{ standings_table.iloc[i]['loss'] }}</td>
-              <td class="{{ theme }}-t-yellow">{{ standings_table.iloc[i]['gd'] }}</td>
+              <td><b>{{ standings_table.iloc[i]['Goal'] }}</td>
+              <td>{{ standings_table.iloc[i]['Goal'] - standings_table.iloc[i]['gd'] }}</td>
             </tr>
             {%endfor%}
           </table>

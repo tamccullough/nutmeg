@@ -31,22 +31,29 @@
 <!-- profile section including photo -->
 <div class="{{ team_colour }}">
   <div class="mobile">
-    <div class="{{ team_colour }}">
-      <div class="box center">
-        <img src="static/images/players/{{ year }}/{{ player_info.iloc[0]['image'] }}" alt="{{ player_info.iloc[0]['name'] }}" style="max-width:60%;">
-      </div>
-      <div class="textcenter xxfont" style="width:100%;">
-        <a>{{ position }}</a>
+
+    <div class="spacer"></div>
+
+    <div class="textcenter xxfont" style="width:100%;">
+      <a>{{ position }}</a>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="parent {{ team_colour }}">
+      <div class="boxs center">
+        <img src="static/images/players/{{ year }}/{{ player_info.iloc[0]['image'] }}" alt="{{ player_info.iloc[0]['name'] }}" style="width:80%;">
       </div>
       <div class="spacer"></div>
-      <div>
-        <canvas id="playerRadarMobile"></canvas>
+      <div class="box">
+        <canvas id="playerRadarMobile" style="width:95%"></canvas>
         <!--img src="static/images/{{ year }}/player_graphs/{{ radar }}" alt="player radar" style="max-width:50%;float:left"-->
       </div>
-      <div>
-        <canvas id="playerLineMobile"></canvas>
-        <!--img src="static/images/{{ year }}/player_graphs/{{ graph }}" alt="player performance" style="max-width:50%"-->
-      </div>
+    </div>
+
+    <div>
+      <canvas id="playerLineMobile"></canvas>
+      <!--img src="static/images/{{ year }}/player_graphs/{{ graph }}" alt="player performance" style="max-width:50%"-->
     </div>
 
     <table>
@@ -222,10 +229,10 @@
   </div>
 
   <!-- table section -->
+  <div class="{{ team_colour }}-2 indent">
+    <h4>Rolling Statistics</h4>
+  </div>
     <div class="parent {{ team_colour }}">
-      <div  class="{{ team_colour }}-2" style="width:100%;">
-        <h3>Rolling Statistics</h3>
-      </div>
       <div class="parent">
         <div  class="{{ team_colour }}-2">
           <table style="font-size:0.8em;">
@@ -250,8 +257,8 @@
           </table>
         </div>
       </div>
-      <div  class="{{ team_colour }}-2" style="width:100%;">
-        <h3>Rolling Statistics Per 90</h3>
+      <div  class="{{ team_colour }}-2 indent" style="width:100%;">
+        <h4>Rolling Statistics Per 90</h4>
       </div>
       <div class="parent">
         <div class="{{ team_colour }}-2">
