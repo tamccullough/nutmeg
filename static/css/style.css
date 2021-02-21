@@ -561,6 +561,10 @@ td {
   text-decoration: none;
 }
 
+.button:hover {
+  text-decoration: underline;
+}
+
 .link {
   -moz-appearance:none; /* Firefox */
   -webkit-appearance:none; /* Safari and Chrome */
@@ -572,16 +576,13 @@ td {
   text-decoration: none;
 }
 
-
-.button:hover {
-  text-decoration: underline;
-}
-
 .link:hover {
   text-decoration: underline;
 }
 
 .table-button {
+  -moz-appearance:none; /* Firefox */
+  -webkit-appearance:none; /* Safari and Chrome */
   font-size: 1em;
   color: inherit;
   height: 20px;

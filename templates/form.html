@@ -27,25 +27,25 @@
 <br>
 <div class="desktop">
   <form method="post" action="{{ url_for(request.endpoint) }}">
-  <div class="parent">
-    <div class="box">
-      {% if request.endpoint == 'index'%}
-        <h3 style="padding: 10px;"><b>{{ headline }}</b></h3>
-      {% else %}
-        <h3 style="padding: 10px;"><b>{{ headline }} {{ year }}</b></h3>
-      {% endif %}
-    </div>
-    <div class="form box">
-      <select name="year" id="year">
-        <option value="">select year</option>
-        <!--option value="2021">2021</option-->
-        <option value="2020">2020</option>
-        <option value="2019">2019</option>
-      </select>
+    <div class="parent">
+      <div class="box">
+        {% if request.endpoint == 'index'%}
+          <h3 style="padding: 10px;"><b>{{ headline }}</b></h3>
+        {% else %}
+          <h3 style="padding: 10px;"><b>{{ headline }} {{ year }}</b></h3>
+        {% endif %}
       </div>
-    <div class="box {{ theme }}-action">
-      <input class="button" style="dislay: inline;" type="submit" formaction="{{ url_for(request.endpoint) }}" value="submit"/>
+      <div class="form box t-center">
+        <select name="year" id="year">
+          <option value="">select year</option>
+          <!--option value="2021">2021</option-->
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+        </select>
+        </div>
+      <div class="box {{ theme }}-action">
+        <input class="button" style="dislay: inline;" type="submit" formaction="{{ url_for(request.endpoint) }}" value="submit"/>
+      </div>
     </div>
-  </div>
   </form>
 </div>
