@@ -522,6 +522,8 @@ td {
 /* buttons and inputs */
 
 .topbutton {
+  -moz-appearance:none; /* Firefox */
+  -webkit-appearance:none; /* Safari and Chrome */
   decoration:none;
   border:none;
   display: block;
@@ -547,6 +549,8 @@ td {
 }
 
 .button {
+  -moz-appearance:none; /* Firefox */
+  -webkit-appearance:none; /* Safari and Chrome */
   font-size: 1em;
   color: inherit;
   width: 100%;
@@ -557,7 +561,23 @@ td {
   text-decoration: none;
 }
 
+.link {
+  -moz-appearance:none; /* Firefox */
+  -webkit-appearance:none; /* Safari and Chrome */
+  font-size: 1em;
+  color: var(--white);
+  border:none;
+  background-color:inherit;
+  cursor:pointer;
+  text-decoration: none;
+}
+
+
 .button:hover {
+  text-decoration: underline;
+}
+
+.link:hover {
   text-decoration: underline;
 }
 
