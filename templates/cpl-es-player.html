@@ -51,6 +51,12 @@
       </div>
     </div>
 
+    <p>{{ line_chart_colours }}</p>
+    <div class="{{ team_colour }} indent">
+      {% for i in range(chart_team_colour_list | length ) %}
+      <h4 style="display:inline;border-bottom: 0.35rem solid {{ chart_team_colour_list[i] }};">{{ line_columns[i] }}</h4>
+      {% endfor %}
+    </div>
     <div>
       <canvas id="playerLineMobile"></canvas>
       <!--img src="static/images/{{ year }}/player_graphs/{{ graph }}" alt="player performance" style="max-width:50%"-->
