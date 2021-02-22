@@ -16,16 +16,15 @@
   <div class="{{ theme }}-body">
     {% if 'roster' in request.referrer %}
     <form method="POST" action="/roster">
-    <p>back to -> <a href="{{ url_for('roster') }}"><input class="text-white link" type="submit" id="team" name="team" value="{{ player_info.iloc[0]['team']}}"/></a></p>
+    <p>back to -> <a class="text-white button" id="go-back">{{ request.referrer }}</a></p>
     </form>
     {% else%}
     {% if request.referrer.split('/')[-1] %}
-    <p>back to -> <a class="text-white button" href="/{{ request.referrer.split('/')[-1] }}">{{ request.referrer.split('/')[-1] }}</a></p>
+    <p>back to -> <a class="text-white button" id="go-back">{{ request.referrer.split('/')[-1] }}</a></p>
     {% else %}
-    <p>back to -> <a class="text-white button" href="/">index</a></p>
+    <p>back to -> <a class="text-white button" id="go-back">index</a></p>
     {% endif %}
     {% endif %}
-    <input type="hidden" id="year" name="year" value="{{ year }}">
   </div>
 
 <!-- profile section including photo -->

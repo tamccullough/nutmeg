@@ -104,6 +104,9 @@
   {% block javascript %}
   {% if request.endpoint == 'player' %}
   <script type="text/javascript">
+  document.getElementById('go-back').addEventListener('click', () => {
+    history.back();
+  });
     new Chart(document.getElementById('playerLine'), {
       type: 'line',
       data: {
