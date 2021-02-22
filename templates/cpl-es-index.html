@@ -18,10 +18,9 @@
           </tr>
           <tr>
             {% if top_team|length > 12 %}
-            <td><h3 class="xfont"> {{ top_team }}</h3></td>
+            <td class="sfont"><h3><a><input class="table-button" type="submit" id="team" name="team" value="{{ top_team }}"/></a></h3></td>
             {% else %}
-            <!--td><h3><a class="xxfont button staat" href="/teams">{{ top_team }}</a></h3></td-->
-            <td><h3><a><input class="xxxfont table-button staat" type="submit" id="team" name="team" value="{{ top_team }}"/></a></h3></td>
+            <td><h3><a><input class="table-button" type="submit" id="team" name="team" value="{{ top_team }}"/></a></h3></td>
             {% endif %}
           </tr>
         </table>
@@ -34,10 +33,9 @@
           </tr>
           <tr>
             {% if top_mover|length > 12 %}
-            <td><h3 class="xfont"> {{ top_mover }}</h3></td>
+            <td class="sfont"><h3><a><input class="table-button" type="submit" id="team" name="team" value="{{ top_mover }}"/></a></h3></td>
             {% else %}
-            <!--td><h3 class="xxfont"> {{ top_mover }}</h3></td-->
-            <td><h3><a><input class="xxxfont table-button staat" type="submit" id="team" name="team" value="{{ top_mover }}"/></a></h3></td>
+            <td><h3><a><input class="table-button" type="submit" id="team" name="team" value="{{ top_mover }}"/></a></h3></td>
             {% endif %}
           </tr>
         </table>
@@ -50,10 +48,9 @@
           </tr>
           <tr>
             {% if top_dropper|length > 12 %}
-            <td><h3 class="xfont"> {{ top_dropper }}</h3></td>
+            <td class="sfont"><a><input class="table-button" type="submit" id="team" name="team" value="{{ top_dropper }}"/></a></td>
             {% else %}
-            <!--td><h3 class="xxfont"> {{ top_dropper }}</h3></td-->
-            <td><h3><a><input class="xxxfont table-button staat" type="submit" id="team" name="team" value="{{ top_dropper }}"/></a></h3></td>
+            <td><h3><a><input class="table-button" type="submit" id="team" name="team" value="{{ top_dropper }}"/></a></h3></td>
             {% endif %}
           </tr>
         </table>
@@ -73,7 +70,7 @@
     </form>
     <div class="parent">
       <div class="box">
-        <h3>Biggest Win</h3>
+        <a>Biggest Win</a>
         <div class="child">
           {% if big_win.at[0,'hs'] > big_win.at[0,'as'] %}
           <div class="boxs {{ theme }}-green">{{ big_win.iloc[0]['home']}} {{big_win.iloc[0]['hs'].astype('int') }}</div>
@@ -87,7 +84,7 @@
           {% endif %}
         </div>
         <br>
-        <h3>Other Results</h3>
+        <a>Other Results</a>
         <div class="child">
           {% if top_result.at[0,'hs'] > top_result.at[0,'as'] %}
           <div class="boxs {{ theme }}-green">{{ top_result.iloc[0]['home']}} {{top_result.iloc[0]['hs'].astype('int') }}</div>
@@ -114,7 +111,7 @@
           {% endif %}
         </div>
         <br>
-        <h3>Bottom Team Result</h3>
+        <a>Bottom Team Result</a>
         <div class="child">
           {% if low_result.at[0,'hs'] > low_result.at[0,'as'] %}
           <div class="boxs {{ theme }}-green">{{ low_result.iloc[0]['home']}} {{low_result.iloc[0]['hs'].astype('int') }}</div>
@@ -132,7 +129,7 @@
       <br>
       <div class="box">
         <form method="POST" action="/player">
-        <span><h3>Players of the Week</h3></span>
+        <span><a>Players of the Week</a></span>
         <div>
           <table class="table-collapse sfont">
             <tr>
@@ -200,11 +197,11 @@
         <table>
           <tr>
             <td style="width:25%; text-align:center;" rowspan="2"><img src="static/images/flags/{{ first_crest }}" alt="{{ top_team }} Crest" style="max-height:60px"></td>
-            <td style="vertical-align: bottom;"><h2 class="xxfont"> Champions</h2></td>
+            <td style="vertical-align: bottom;"><h3 class="xfont"> Champions</h3></td>
           </tr>
           <tr>
             {% if top_team|length > 12 %}
-            <td><h2><a><input class="xfont table-button staat" type="submit" id="team" name="team" value="{{ top_team }}"/></a></h2></td>
+            <td><h3><a><input class="table-button staat" type="submit" id="team" name="team" value="{{ top_team }}"/></a></h3></td>
             {% else %}
             <!--td><h3><a class="xxfont button staat" href="/teams">{{ top_team }}</a></h3></td-->
             <td><h2><a><input class="xxxfont table-button staat" type="submit" id="team" name="team" value="{{ top_team }}"/></a></h2></td>
@@ -218,11 +215,11 @@
         <table>
           <tr>
             <td style="width:25%; text-align:center;" rowspan="2"><img src="static/images/flags/{{ top_crest }}" alt="{{ top_mover }} Crest" style="max-height:60px"></td>
-            <td style="vertical-align: bottom;"><h2 class="xxfont"> Top Team</h2></td>
+            <td style="vertical-align: bottom;"><h3 class="xfont"> Top Team</h3></td>
           </tr>
           <tr>
             {% if top_mover|length > 12 %}
-            <td><h2><a><input class="xfont table-button staat" type="submit" id="team" name="team" value="{{ top_mover }}"/></a></h2></td>
+            <td><h3><a><input class="table-button staat" type="submit" id="team" name="team" value="{{ top_mover }}"/></a></h3></td>
             {% else %}
             <td><h2><a><input class="xxxfont table-button staat" type="submit" id="team" name="team" value="{{ top_mover }}"/></a></h2></td>
             {% endif %}
@@ -235,11 +232,11 @@
         <table>
           <tr>
             <td style="width:25%; text-align:center;" rowspan="2"><img src="static/images/flags/{{ bot_crest }}" alt="{{ top_dropper }} Crest" style="max-height:60px"></td>
-            <td style="vertical-align: bottom;"><h2 class="xxfont"> Bottom Team</h2></td>
+            <td style="vertical-align: bottom;"><h3 class="xfont"> Bottom Team</h3></td>
           </tr>
           <tr>
             {% if top_dropper|length > 12 %}
-            <td><h2><a><input class="xfont table-button staat" type="submit" id="team" name="team" value="{{ top_dropper }}"/></a></h2></td>
+            <td><h3><a><input class="table-button staat" type="submit" id="team" name="team" value="{{ top_dropper }}"/></a></h3></td>
             {% else %}
             <td><h2><a><input class="xxxfont table-button staat" type="submit" id="team" name="team" value="{{ top_dropper }}"/></a></h2></td>
             {% endif %}
@@ -252,7 +249,7 @@
         <table>
           <tr>
             <td style="width:25%; text-align:center;" rowspan="2"><img src="static/images/flags/CPL-Crest-White.png" alt="{{ top_dropper }} Crest" style="max-height:60px"></td>
-            <td style="vertical-align: bottom;"><h2 class="xxfont"> {{ goals }} G / {{ assists }} A</h2></td>
+            <td style="vertical-align: bottom;"><h3 class="xfont"> {{ goals }} G / {{ assists }} A</h3></td>
           </tr>
           <tr>
             <td><h3 class="xxfont"> {{ yellows }} Y / {{ reds }} R </h3></td>

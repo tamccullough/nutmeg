@@ -1,0 +1,70 @@
+
+<div class="mobile">
+  <form method="post" action="{{ url_for(request.endpoint) }}">
+  <div class="parent">
+    <div class="boxs">
+      <div>
+        <h3><b>{{ name }} - {{ year }}</b></h3>
+      </div>
+      <div>
+        {% if 'roster' in request.referrer %}
+        <form method="POST" action="/roster">
+        <p>back to -> <a href="{{ url_for('roster') }}"><input class="text-white link" type="submit" id="team" name="team" value="{{ player_info.iloc[0]['team']}}"/></a></p>
+        </form>
+        {% else%}
+        {% if request.referrer.split('/')[-1] %}
+        <p>back to -> <a class="text-white button" href="/{{ request.referrer.split('/')[-1] }}">{{ request.referrer.split('/')[-1] }}</a></p>
+        {% else %}
+        <p>back to -> <a class="text-white button" href="/">index</a></p>
+        {% endif %}
+        {% endif %}
+      </div>
+    </div>
+    <div class="form boxs" style="height:30px;">
+      <select name="year" id="year" onchange="this.form.submit();">
+        <option value="">Select Year</option>
+        <!--option value="2021">2021</option-->
+        <option value="2020">2020</option>
+        <option value="2019">2019</option>
+      </select>
+    </div>
+  </div>
+  <input type="hidden" id="name" name="name" value="{{ full_name }}">
+  </form>
+</div>
+
+<div class="desktop">
+  <form method="post" action="{{ url_for(request.endpoint) }}">
+    <div class="parent">
+      <div class="box">
+        <div>
+          <h3><b>{{ name }} - {{ year }}</b></h3>
+        </div>
+        <div>
+          {% if 'roster' in request.referrer %}
+          <form method="POST" action="/roster">
+          <p>back to -> <a href="{{ url_for('roster') }}"><input class="text-white link" type="submit" id="team" name="team" value="{{ player_info.iloc[0]['team']}}"/></a></p>
+          </form>
+          {% else %}
+          {% if 'player' in request.referrer %}
+          <p>back to -> <a class="text-white button" href="/">index</a></p>
+          {% elif request.referrer.split('/')[-1] %}
+          <p>back to -> <a class="text-white button" href="/{{ request.referrer.split('/')[-1] }}">{{ request.referrer.split('/')[-1] }}</a></p>
+          {% else %}
+          <p>back to -> <a class="text-white button" href="/">index</a></p>
+          {% endif %}
+          {% endif %}
+        </div>
+      </div>
+      <div class="form box t-center">
+        <select name="year" id="year" onchange="this.form.submit();">
+          <option value="">select year</option>
+          <!--option value="2021">2021</option-->
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+        </select>
+        </div>
+    </div>
+    <input type="hidden" id="name" name="name" value="{{ full_name }}">
+  </form>
+</div>

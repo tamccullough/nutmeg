@@ -131,16 +131,16 @@ def get_results_brief(results):
             try:
                 db.at[i,'summary'] = db.at[i,'summary'] + ' ' + team_names[db.loc[i,'away']]
             except:
-                print('\nTHIS IS THE TEAM THAT IS AN ISSUE:\n')
-                print(db.loc[i,'away'],'\n')
+                '''print('\nTHIS IS THE TEAM THAT IS AN ISSUE:\n')
+                print(db.loc[i,'away'],'\n')'''
             db.at[i,'summary'] = db.at[i,'summary'][:1] + ' h ' + db.at[i,'summary'][1:]
         for i in range(df.shape[0]):
             df.at[i,'summary'] = ' '.join([str(x) for x in df.loc[i][['ar','hs','as']]])
             try:
                 df.at[i,'summary'] = df.at[i,'summary'] + ' ' + team_names[df.loc[i,'home']]
             except:
-                print('\nTHIS IS THE TEAM THAT IS AN ISSUE:\n')
-                print(db.loc[i,'home'],'\n')
+                '''print('\nTHIS IS THE TEAM THAT IS AN ISSUE:\n')
+                print(db.loc[i,'home'],'\n')'''
             df.at[i,'summary'] = df.at[i,'summary'][:1] + ' a ' + df.at[i,'summary'][1:]
         results_brief = pd.concat([results_brief,db])
         results_brief = pd.concat([results_brief,df])
@@ -297,11 +297,11 @@ def get_weeks_results(year,results,standings,stats,team_ref,team_names):
         goals, assists, yellows, reds = 0,0,0,0
         return game_week,goals,big_win,top_team,low_team,other_team, assists, yellows, reds
     elif results.tail(1)['hr'].values[0] != 'E':
-        print('\n')
+        '''print('\n')
         print('=====================================')
         print('SEASON COMPLETED')
         print('=====================================')
-        print('\n')
+        print('\n')'''
         if year == '2019':
             played_games = results[results['s'] == 2]
         else:
@@ -310,10 +310,10 @@ def get_weeks_results(year,results,standings,stats,team_ref,team_names):
         max_home = played_games[(played_games['hs'] == played_games['hs'].max()) & (played_games['hr'] == "W")]
         max_home = played_games[played_games['as'] == played_games['as'].min()]
         max_home = index_reset(max_home)
-        print('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
+        '''print('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
         print(max_home[['hr','home','hs','away','as','ar']])
         print('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
-        print('\n')
+        print('\n')'''
 
         max_away = played_games[(played_games['as'] == played_games['as'].max()) & (played_games['ar'] == "W")]
         max_away = index_reset(max_away)
@@ -321,10 +321,10 @@ def get_weeks_results(year,results,standings,stats,team_ref,team_names):
             max_away = played_games[played_games['as'] == played_games['as'].max()]
             max_away = index_reset(max_away)
 
-        print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
+        '''print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
         print(max_away[['hr','home','hs','away','as','ar']])
         print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
-        print('\n')
+        print('\n')'''
 
         if max_home.at[0,'hs'] > max_away.at[0,'as']:
             max_home_win = max_home
@@ -355,7 +355,7 @@ def get_weeks_results(year,results,standings,stats,team_ref,team_names):
         other_team = pd.DataFrame(other_team.loc[0][['home','hs','away','as']])
         other_team = other_team.T
 
-        print('************************************')
+        '''print('************************************')
         print('BIG WIN')
         print(big_win)
         print('************************************')
@@ -374,7 +374,7 @@ def get_weeks_results(year,results,standings,stats,team_ref,team_names):
         print('OTHER TEAM')
         print(other_team)
         print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-        print('\n')
+        print('\n')'''
 
 
         goals = standings['Goal'].sum()

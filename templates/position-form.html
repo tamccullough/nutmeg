@@ -30,40 +30,34 @@
 
 <div class="mobile">
   <form method="post" action="{{ url_for(request.endpoint) }}">
-    <div style="width:100%;">
-      <h3><b>{{ TOP }}{{ PAGE[0:1].upper() }}{{ PAGE[1:] }}{{ MIN }} {{ year }}</b></h3>
+    <div class="parent">
+    <div class="boxs sfont" style="width:100%;">
+      <a><b>{{ TOP }}{{ PAGE[0:1].upper() }}{{ PAGE[1:] }}{{ MIN }} {{ year }}</b></a>
     </div>
-  <div class="parent">
     <div class="form boxs">
-      <select name="year" id="year">
+      <select name="year" id="year" onchange="this.form.submit();">
         <option value="">select year</option>
         <option value="2020">2020</option>
         <option value="2019">2019</option>
       </select>
       </div>
-    <div class="boxs {{ theme }}-action ">
-      <input class="button" style="dislay: inline;" type="submit" formaction="{{ url_for(request.endpoint) }}" value="submit"/>
-    </div>
   </div>
   </form>
 </div>
 
 <div class="desktop">
   <form method="post" action="{{ url_for(request.endpoint) }}">
-  <div class="parent">
-    <div class="box">
-      <h3 style="padding: 10px;"><b>{{ TOP }}{{ PAGE[0:1].upper() }}{{ PAGE[1:] }}{{ MIN }} {{ year }}</b></h3>
-    </div>
-    <div class="form box">
-      <select name="year" id="year">
-        <option value="">select year</option>
-        <option value="2020">2020</option>
-        <option value="2019">2019</option>
-      </select>
+    <div class="parent">
+      <div class="box">
+        <h3 style="padding: 10px;"><b>{{ TOP }}{{ PAGE[0:1].upper() }}{{ PAGE[1:] }}{{ MIN }} {{ year }}</b></h3>
       </div>
-    <div class="box {{ theme }}-action ">
-      <input class="button" style="dislay: inline;" type="submit" formaction="{{ url_for(request.endpoint) }}" value="submit"/>
+      <div class="form box">
+        <select name="year" id="year" onchange="this.form.submit();">
+          <option value="">select year</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+        </select>
+        </div>
     </div>
-  </div>
   </form>
 </div>

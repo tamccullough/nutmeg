@@ -1,25 +1,21 @@
 
 <div class="mobile">
   <form method="post" action="{{ url_for(request.endpoint) }}">
-    <div style="width:100%;">
+  <div class="parent">
+    <div class="boxs sfont" style="width:100%;">
       {% if request.endpoint == 'index'%}
-        <h3><b>{{ headline }}</b></h3>
+        <a>{{ headline }}</a>
       {% else %}
-        <h3><b>{{ headline }} {{ year }}</b></h3>
+        <a>{{ headline }} {{ year }}</a>
       {% endif %}
     </div>
-    <br>
-  <div class="parent">
     <div class="form boxs" style="height:30px;">
-      <select name="year" id="year">
+      <select name="year" id="year" onchange="this.form.submit();">
         <option value="">Select Year</option>
         <!--option value="2021">2021</option-->
         <option value="2020">2020</option>
         <option value="2019">2019</option>
       </select>
-      </div>
-    <div class="boxs {{ theme }}-action">
-      <input class="{{ theme }}-action button" style="dislay: inline;" type="submit" formaction="{{ url_for(request.endpoint) }}" value="submit"/>
     </div>
   </div>
   </form>
@@ -36,16 +32,13 @@
         {% endif %}
       </div>
       <div class="form box t-center">
-        <select name="year" id="year">
+        <select name="year" id="year" onchange="this.form.submit();">
           <option value="">select year</option>
           <!--option value="2021">2021</option-->
           <option value="2020">2020</option>
           <option value="2019">2019</option>
         </select>
         </div>
-      <div class="box {{ theme }}-action">
-        <input class="button" style="dislay: inline;" type="submit" formaction="{{ url_for(request.endpoint) }}" value="submit"/>
-      </div>
     </div>
   </form>
 </div>
