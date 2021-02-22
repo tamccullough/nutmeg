@@ -14,16 +14,10 @@
     <h3><b>{{ name }} - {{ year }}</b></h3>
   </div>
   <div class="{{ theme }}-body">
-    {% if 'roster' in request.referrer %}
-    <form method="POST" action="/roster">
-    <p>back to -> <a class="text-white button" id="go-back">{{ request.referrer }}</a></p>
-    </form>
-    {% else%}
     {% if request.referrer.split('/')[-1] %}
     <p>back to -> <a class="text-white button" id="go-back">{{ request.referrer.split('/')[-1] }}</a></p>
     {% else %}
     <p>back to -> <a class="text-white button" id="go-back">index</a></p>
-    {% endif %}
     {% endif %}
   </div>
 
