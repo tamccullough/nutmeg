@@ -541,7 +541,7 @@ def roster():
 @canples.route('/player', methods=['POST'])
 def player():
 
-    #get_year()
+    get_year()
 
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
