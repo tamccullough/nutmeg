@@ -11,12 +11,6 @@ import numpy as np
 import pandas as pd
 import re
 
-import pickle
-classifier = 'models/cpl_MATCH_classifier-08-21-rf1-2.sav' # BEST so far (25.0, 39.29, 35.71)
-cpl_classifier_model = pickle.load(open(classifier, 'rb'))
-regressor = 'models/cpl_score_regressor-07-20-vr---34.sav' # good results somewhat HIGH
-cpl_score_model = pickle.load(open(regressor, 'rb'))
-
 ccd_names = {'Atlético Ottawa' : 'Atlético Ottawa',
             'Cavalry' : 'Cavalry FC',
             'Edmonton' : 'FC Edmonton',
@@ -364,7 +358,13 @@ def power():
 @canples.route('/versus', methods=['GET','POST'])
 def versus():
 
-    year = current_year
+    import pickle
+    classifier = 'models/cpl_MATCH_classifier-08-21-rf1-2.sav' # BEST so far (25.0, 39.29, 35.71)
+    cpl_classifier_model = pickle.load(open(classifier, 'rb'))
+    regressor = 'models/cpl_score_regressor-07-20-vr---34.sav' # good results somewhat HIGH
+    cpl_score_model = pickle.load(open(regressor, 'rb'))
+
+    year = '2020'
 
     results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, team_stats, results_brief, matches_predictions, game_form, team_rosters  = load_main_files(year)
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
