@@ -112,12 +112,12 @@ def convert_num_str(num):
     return num[0:4]
 
 def get_year():
-    current_year = '2020'
     global year
+
     try:
         year = request.form['year']
     except:
-        year = current_year
+        pass
 
     print('YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY')
     print('YEAR:',year)
@@ -190,7 +190,7 @@ canples = Flask(__name__)
 month, day, weekday = cpl_main.get_weekday()
 games_played = {1:28,2:7}
 # set the year - which will change based on user choice
-
+year = '2020'
 
 @canples.context_processor
 def inject_user():
@@ -571,18 +571,6 @@ def player():
     print('LOADINGPLAYERLOADINGPLAYERLOADINGPLAYERLOADINGPLAYER')
     #get_year()
 
-    def norm_line_column(data):
-        return round(data / (data.max()+0.05),2)
-
-    def percentage_check(x):
-        try:
-            if '%' in x:
-                return float(re.sub('%','',x))
-            elif '-' in x:
-                return 0.0
-        except:
-            return x
-
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
     player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
@@ -651,25 +639,37 @@ def player():
 
     def get_norm(data):
         df = data.copy()
-        cols = [x for x in data.columns if x not in ['name','display','G']]
+        cols = [x for x in data.columns if x not in ['name','display','G','CS']]
         for col in cols:
             df[col] = round(df[col]/ df[col].max() ,2)*2
         return df
 
     player_line_db = get_norm(player_line_db)
 
+    def percentage_check(x):
+        try:
+            if '%' in x:
+                return float(re.sub('%','',x))
+            elif '-' in x:
+                return 0.0
+        except:
+            return x
+
     def build_player_line(player_line_db,name,string='name'):
+        if 'G' in player_line_db.columns.values:
+            g = player_line_db.pop('G')
+            player_line_db.insert(1,'G',g)
         if string == 'display':
             name = player_info[player_info['name'] == name]['display'].values[0]
         else:
             pass
         data = player_line_db[player_line_db[string] == name][player_line_db.columns[1:-1]].copy().T
-        print('=============================================')
-        print('*********************************************')
-        print(data.columns[1:-1].values)
-        print('*********************************************')
-        print('=============================================')
         line_columns = [x for x in player_line_db.columns[1:-1]]
+        print('=============================================')
+        print('*********************************************')
+        print(line_columns)
+        print('*********************************************')
+        print('=============================================')
         for col in data.columns:
             data[col] = data[col].apply(lambda x: percentage_check(x))
         return data, line_columns
@@ -708,6 +708,7 @@ def player():
     grays = ["#eaeaea","#c0c1c4","#abadb1","#96989e","#81848b","#6c6f78","#63666f","#535761","#424651"]
     blues2 = ["#0466c8","#0353a4","#023e7d","#002855","#001845","#001233","#33415c","#5c677d","#7d8597","#979dac"]
     geegle = ['#ff9900','#ffff00','#4a86e8','#ff00ff','#4a86e8','#0000ff','#9900ff','#ff00ff']
+    geegle = ['#000','#fff','#ffd700','#ff00ff','#4a86e8','#0000ff','#9900ff','#ff00ff']
     google = ['#df0772','#fe546f','#ff9e7d','#ffd080','#01cbcf','#0188a5','#6450a6']
 
     chart_team_colour_list = {
