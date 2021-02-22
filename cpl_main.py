@@ -48,30 +48,6 @@ def get_weekday():
 def get_shortest_name(team_name):
     return team_names[team_name]
 
-def get_long_name(string,team_names):
-    for key, value in team_names.items():
-        if string in value:
-            print(key)
-            break
-    return key
-
-'''def get_schedule(data):
-    db = data.copy()
-    #db = db[db['s'] <= 1]
-    #db = db.tail(4)
-    db = db[['game','home','away']]
-    db = index_reset(db)
-    #db = db.sort_values(by=['game'])
-    return db'''
-
-'''def fix_db_na(data):
-    db = data.copy()
-    if db['team'].isnull().values.any():
-        for row in range(db.shape[0]):
-            if pd.isna(db.iloc[row]['team']) == True:
-                db.iloc[row]['team'] = get_long_name(db.iloc[row]['team'],data)
-    return db'''
-
 def index_reset(data):
     data = data.reset_index()
     data.pop('index')
@@ -105,14 +81,6 @@ def get_team_brief(results_db,query,df):
         team_brief.loc[i,'summary'] = outcome + ' ' + score +  ' ' + opponent
     team_brief['team'] = query # create team column holding the team's name in all rows
     return team_brief # return the dataframe
-
-'''def get_results_brief(results):
-    db = pd.DataFrame()
-    for team in team_ref['team']:
-        df = get_team_brief(results,team,team_ref)
-        db = pd.concat([db,df])
-    db = index_reset(db)
-    return db'''
 
 def get_results_brief(results,year):
 
@@ -252,7 +220,6 @@ def compare_standings(standings_current,standings_old,team_ref):
         rank1 = standings_old[standings_old['team'] == team] # get team's previous rank
         rank2 = standings_current[standings_current['team'] == team] # get teams current rank
         # calculate the change in team's ranking
-        #print(team,rank1['rank'].values[0],rank2['rank'].values[0])
         if rank1.iloc[0]['rank'] == rank2.iloc[0]['rank']:
             change = 0
         else:
@@ -285,13 +252,9 @@ def clean_team_game(standings,game_week,check):
             db = pd.DataFrame(db)
             db = db.T
         except:
-            print('\n')
-            print('\n')
-            print('ERROR**************************************')
             print(team)
             print('ERROR**************************************')
-            print('\n')
-            print('\n')
+
     return db
 
 def get_weeks_results(year,results,standings,stats,team_ref,team_names):
@@ -301,11 +264,6 @@ def get_weeks_results(year,results,standings,stats,team_ref,team_names):
         goals, assists, yellows, reds = 0,0,0,0
         return game_week,goals,big_win,top_team,low_team,other_team, assists, yellows, reds
     elif results.tail(1)['hr'].values[0] != 'E':
-        '''print('\n')
-        print('=====================================')
-        print('SEASON COMPLETED')
-        print('=====================================')
-        print('\n')'''
         if year == '2019':
             played_games = results[results['s'] == 2]
         else:
@@ -314,21 +272,12 @@ def get_weeks_results(year,results,standings,stats,team_ref,team_names):
         max_home = played_games[(played_games['hs'] == played_games['hs'].max()) & (played_games['hr'] == "W")]
         max_home = played_games[played_games['as'] == played_games['as'].min()]
         max_home = index_reset(max_home)
-        '''print('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
-        print(max_home[['hr','home','hs','away','as','ar']])
-        print('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
-        print('\n')'''
 
         max_away = played_games[(played_games['as'] == played_games['as'].max()) & (played_games['ar'] == "W")]
         max_away = index_reset(max_away)
         if max_away.empty:
             max_away = played_games[played_games['as'] == played_games['as'].max()]
-            max_away = index_reset(max_away)
-
-        '''print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
-        print(max_away[['hr','home','hs','away','as','ar']])
-        print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
-        print('\n')'''
+            max_away = index_reset(max_away)'
 
         if max_home.at[0,'hs'] > max_away.at[0,'as']:
             max_home_win = max_home
@@ -359,28 +308,6 @@ def get_weeks_results(year,results,standings,stats,team_ref,team_names):
         other_team = pd.DataFrame(other_team.loc[0][['home','hs','away','as']])
         other_team = other_team.T
 
-        '''print('************************************')
-        print('BIG WIN')
-        print(big_win)
-        print('************************************')
-        print('\n')
-        print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
-        print('TOP TEAM')
-        print(top_result)
-        print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
-        print('\n')
-        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-        print('LOW TEAM')
-        print(low_result)
-        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-        print('\n')
-        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-        print('OTHER TEAM')
-        print(other_team)
-        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-        print('\n')'''
-
-
         goals = stats['goals']
         assists = stats['assists']
         yellows = stats['yellows']
@@ -388,39 +315,23 @@ def get_weeks_results(year,results,standings,stats,team_ref,team_names):
 
         return played_games, goals, big_win, top_result, low_result, other_team, assists, yellows, reds
     else:
-        print('\n')
-        print('=====================================')
         print('SEASON ONGOING')
         print('=====================================')
-        print('\n')
         if year == '2019':
             played_games = results[results['s'] == 2]
         else:
             played_games = results[results['s'] == 1]
-        print('WEEK-------------------------------')
-        print(played_games['w'].tail(1).values[0])
-        print('WEEK-------------------------------')
-        print('\n')
         game_week = played_games[played_games['w'] == played_games['w'].tail(1).values[0]]
 
         max_home = game_week[(game_week['hs'] == game_week['hs'].max()) & (game_week['hr'] == "W")]
         max_home = max_home[max_home['as'] == max_home['as'].min()]
         max_home = index_reset(max_home)
-        print('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
-        print(max_home[['hr','home','hs','away','as','ar']])
-        print('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
-        print('\n')
 
         max_away = game_week[(game_week['as'] == game_week['as'].max()) & (game_week['ar'] == "W")]
         max_away = index_reset(max_away)
         if max_away.empty:
             max_away = game_week[game_week['as'] == game_week['as'].max()]
             max_away = index_reset(max_away)
-
-        print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
-        print(max_away[['hr','home','hs','away','as','ar']])
-        print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
-        print('\n')
 
         if max_home.at[0,'hs'] > max_away.at[0,'as']:
             max_home_win = max_home
@@ -450,28 +361,6 @@ def get_weeks_results(year,results,standings,stats,team_ref,team_names):
         other_team = index_reset(other_team)
         other_team = pd.DataFrame(other_team.loc[0][['home','hs','away','as']])
         other_team = other_team.T
-
-        print('************************************')
-        print('BIG WIN')
-        print(big_win)
-        print('************************************')
-        print('\n')
-        print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
-        print('TOP TEAM')
-        print(top_result)
-        print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
-        print('\n')
-        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-        print('LOW TEAM')
-        print(low_result)
-        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-        print('\n')
-        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-        print('OTHER TEAM')
-        print(other_team)
-        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-        print('\n')
-
 
         goals = standings['Goal'].sum()
         assists = stats['assists'].sum()
@@ -1021,7 +910,7 @@ def get_player_card(name,stats,stats_seed,player_info):
     if player_stats.empty:
         player_stats = stats_seed[stats_seed['name'] == name].groupby('name').sum()
     player_stats = player_stats.reset_index()
-    print(player_stats)
+
     name = player_stats['name'].values[0]
     player_information = player_info[player_info['name'] == name]
     count = stats[stats['name'] == name].groupby('name').count()
@@ -1356,7 +1245,6 @@ def get_final_game_prediction(model,home_array,home_score,away_score):
 
     #FIX THE SCORE ####
     # adjust score depending on the outcome from the prediction
-    #print('\n CHECK\n',prediction, home_score, away_score)
     if prediction == 'W' and (home_score == away_score) or prediction == 'W' and (home_score < away_score):
         if home_score > 1:
             away_score = random.choice(range(home_score-1))
@@ -1369,8 +1257,6 @@ def get_final_game_prediction(model,home_array,home_score,away_score):
             home_score = 0
     if prediction == 'D':
         home_score, away_score = random_draw(home_score, away_score)
-
-    print(prediction,home_score,away_score,'\n')
 
     return p_w, p_l, p_d, home_score, away_score, prediction
 
@@ -1390,7 +1276,6 @@ def get_power_rankings(standings,standings_old,team_ref,results,previous_ranking
 
         rank1 = standings_old[standings_old['team'] == team]
         rank2 = standings[standings['team'] == team]
-        print(team,rank1.iloc[0]['rank'],rank2.iloc[0]['rank'])
 
         if rank1.iloc[0]['rank'] == 1:
             bonus = 4
@@ -1442,10 +1327,8 @@ def get_power_rankings(standings,standings_old,team_ref,results,previous_ranking
             scoreless = -5
         else:
             scoreless = 0
-        print(team,change,bonus,gd_bonus,ga_nerf,w_bonus,l_nerf,scoreless,lossless)
         goal_bonus = gd_bonus - ga_nerf
         change = change + bonus + goal_bonus + w_bonus - l_nerf + scoreless + lossless
-        print(team,change,goal_bonus)
 
         a.append([team,form,old_rank,change,goal_bonus,w_bonus,crest,colour])
     power_rankings = pd.DataFrame(a,columns = ['team','form','old_rank','change','goal_bonus','w_bonus','crest','colour'])
@@ -1553,10 +1436,10 @@ def get_final_score_prediction(model,q1_roster,q2_roster,home_win_new,away_win_n
     q1_s = score(q1_pred)
     q2_pred = roster_pred(model,q2_roster)
     q2_s = score(q2_pred)
-    #print('CHECK SCORE',q1_s, q2_s,home_win_new,away_win_new)
+
     home_score, away_score = q1_s, q2_s
     home_score, away_score, home_win_new, away_win_new = fix_score(q1_s, q2_s,home_win_new,away_win_new)
-    #print('CHECK SCORE again',q1_s, q2_s,home_win_new,away_win_new)
+
     return home_score,away_score, home_win_new, away_win_new
 
 
