@@ -509,6 +509,8 @@ def radar():
 
     get_year()
 
+    geegle = ['#000','#fff','#ffd700','#ff00ff','#4a86e8','#0000ff','#9900ff','#ff00ff']
+
     team_standings = pd.read_csv(f'datasets/{year}/cpl-{year}-standings_current.csv')
     radar = pd.read_csv(f'datasets/{year}/league/{year}-radar.csv')
     team_standings = team_standings.sort_values(by='team')
@@ -522,6 +524,28 @@ def radar():
     print(team_standings)
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
+
+    team_list = sorted([x for x in team_ref['team'].unique()])
+
+    ### GET TEAM LINE CHARTS
+    team_dict = {}
+    team_stats = {}
+    for team in team_ref['team'].unique():
+        team_stats[team] = []
+        team_dict[team] = pd.read_csv(f'datasets/{year}/league/{year}-{team}-line.csv')
+        print('=============================================')
+        print('*********************************************')
+        print(team_dict[team].columns)
+        print(team_dict[team]['Goal'].sum())
+        print('*********************************************')
+        print('=============================================')
+        team_stats[team].append(team_dict[team].loc[team_dict[team].shape[0]-1]['ExpG'])
+        team_stats[team].append(team_dict[team].loc[team_dict[team].shape[0]-1]['ExpA'])
+        team_stats[team].append(round( team_dict[team]['Goal'].sum() / team_dict[team].shape[0],2))
+        team_dict[team] = team_dict[team][team_dict[team].columns[2:]].T
+        team_dict[team] = cpl_main.index_reset(team_dict[team]).values.tolist()
+    ### COMPLETE THIS
+
     columns = team_ref.columns
 
     print('=============================================')
@@ -533,6 +557,7 @@ def radar():
     print('=============================================')
 
     return render_template('cpl-es-radar.html',columns = columns, html_table = team_ref,
+    team_list = team_list, team_dict = team_dict, team_stats = team_stats,
     stats = team_standings, radar = radar, year = year, headline = 'Radar Charts')
 
 @canples.route('/roster', methods=['GET','POST'])
@@ -564,13 +589,24 @@ def roster():
     colour1 = roster_team_info.iloc[0]['colour1']
     colour2 = roster_team_info.iloc[0]['colour2']
 
+    ### GET TEAM LINE CHARTS
+    team_stats = []
+    for team_name in team_ref['team'].unique():
+        team_line = pd.read_csv(f'datasets/{year}/league/{year}-{team_name}-line.csv')
+        team_stats.append(team_line.loc[team_line.shape[0]-1]['ExpG'])
+        team_stats.append(team_line.loc[team_line.shape[0]-1]['ExpA'])
+        team_stats.append(round( team_line['Goal'].sum() / team_line.shape[0],2))
+        team_line = team_line[team_line.columns[2:]].T
+        team_line = cpl_main.index_reset(team_line).values.tolist()
+    ### COMPLETE THIS
+
     print(roster.columns)
     print(roster)
     print(coach.columns)
     print(coach)
     print('COLOUR:',team_ref[team_ref['team'] == team]['colour'].values[0])
 
-    return render_template('cpl-es-roster.html',team_name = team, coach = coach, radar = radar, year = year,
+    return render_template('cpl-es-roster.html',team_name = team, coach = coach, radar = radar, year = year, team_line = team_line, team_stats = team_stats,
     crest = crest, colour1 = colour1, colour2 = colour2, html_table = roster, team_colour = roster_colour)
 
 @canples.route('/player', methods=['POST'])

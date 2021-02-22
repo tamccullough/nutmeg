@@ -27,6 +27,14 @@
     font-family: 'Lato', sans-serif;
   }
 
+  .chartcontainer {
+    position:relative;
+    min-height:auto;
+    width:100%;
+    display: flex;
+    flex-grow:1;
+  }
+
   </style>
 
 </head>
@@ -96,6 +104,8 @@
   <script src="static/css/app.js"></script>
   <script src="static/css/top.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+  {% set team_chart_columns = ['Goal', 'BgChnc', 'Chance', 'CleanSheet', 'GoalCncd', 'BgChncFace'] %}
+  {% set geegle = ['#000','#fff','#ffd700','#ff00ff','#4a86e8','#0000ff','#9900ff','#ff00ff'] %}
   {% if year != '2019' %}
   {% set check = 0 %}
   {% else %}
@@ -129,10 +139,10 @@
 
             ],
             fill: true,
-            borderColor: '{{ chart_team_colour_list[i] }}',
-            backgroundColor: '{{ chart_team_colour_list[i] }}'+'33',
+            borderColor: '{{ geegle[i] }}',
+            backgroundColor: '{{ geegle[i] }}'+'33',
             pointHoverRadius: 10,
-            pointHoverBackgroundColor: '{{ chart_team_colour_list[i] }}'
+            pointHoverBackgroundColor: '{{ geegle[i] }}'
           },
           {% endfor %}
           {
@@ -144,10 +154,10 @@
               {{ player_line[player_line_end] | safe}}
             ],
             fill: true,
-            borderColor: '{{ chart_team_colour_list[player_line_end] }}',
-            backgroundColor: '{{ chart_team_colour_list[player_line_end] }}'+'33',
+            borderColor: '{{ geegle[player_line_end] }}',
+            backgroundColor: '{{ geegle[player_line_end] }}'+'33',
             pointHoverRadius: 10,
-            pointHoverBackgroundColor: '{{ chart_team_colour_list[player_line_end] }}'
+            pointHoverBackgroundColor: '{{ geegle[player_line_end] }}'
           }
         ],
       },
@@ -199,10 +209,10 @@
 
             ],
             fill: true,
-            borderColor: '{{ chart_team_colour_list[i] }}',
-            backgroundColor: '{{ chart_team_colour_list[i] }}'+'33',
+            borderColor: '{{ geegle[i] }}',
+            backgroundColor: '{{ geegle[i] }}'+'33',
             pointHoverRadius: 10,
-            pointHoverBackgroundColor: '{{ chart_team_colour_list[i] }}'
+            pointHoverBackgroundColor: '{{ geegle[i] }}'
           },
           {% endfor %}
           {
@@ -214,10 +224,10 @@
               {{ player_line[-1][-1] | safe}}
             ],
             fill: true,
-            borderColor: '{{ chart_team_colour_list[-1] }}',
-            backgroundColor: '{{ chart_team_colour_list[-1] }}'+'33',
+            borderColor: '{{ geegle[-1] }}',
+            backgroundColor: '{{ geegle[-1] }}'+'33',
             pointHoverRadius: 10,
-            pointHoverBackgroundColor: '{{ chart_team_colour_list[-1] }}'
+            pointHoverBackgroundColor: '{{ geegle[-1] }}'
           }
         ],
       },
@@ -336,6 +346,146 @@
   </script>
   {% elif request.endpoint == 'roster' %}
   <script type="text/javascript">
+  new Chart(document.getElementById('teamLine'), {
+    type: 'line',
+    data: {
+      labels: [
+        {% for x in range(1,(team_line[0] | length)-1) %}
+        {{ x }},
+        {% endfor %}
+        {{ (team_line[0] | length) }}
+      ],
+      datasets: [
+        {% for i in range((team_line | length) -1) %}
+        {
+          label: '{{ team_chart_columns[i] }}',
+          data: [
+            {% for x in range(team_line[i] | length -1) %}
+            {{ team_line[i][x] | safe }},
+            {% endfor %}
+            {{ team_line[i][-1] | safe}}
+
+          ],
+          fill: true,
+          borderColor: '{{ geegle[i] }}',
+          backgroundColor: '{{ geegle[i] }}'+'33',
+          pointHoverRadius: 10,
+          pointHoverBackgroundColor: '{{ geegle[i] }}'
+        },
+        {% endfor %}
+        {
+          label: '-',
+          data: [
+            {% for j in range(team_line[-1] | length -1) %}
+            {{ team_line[-1][j] | safe }},
+            {% endfor %}
+            {{ team_line[-1][-1] | safe}}
+          ],
+          fill: true,
+          borderColor: '{{ geegle[-1] }}',
+          backgroundColor: '{{ geegle[-1] }}'+'33',
+          pointHoverRadius: 10,
+          pointHoverBackgroundColor: '{{ geegle[-1] }}'
+        }
+      ],
+    },
+    options: {
+      maintainAspectRatio: false,
+      tooltips: {
+        titleFontSize: 18,
+        bodyFontSize: 18
+      },
+      legend: {
+          display: false,
+      },
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              fontColor: '#fff'
+            }
+          }
+        ],
+        xAxes: [
+          {
+            ticks: {
+              fontColor: '#fff'
+            }
+          }
+        ]
+      }
+    }
+  });
+  new Chart(document.getElementById('teamLineMobile'), {
+    type: 'line',
+    data: {
+      labels: [
+        {% for x in range(1,(team_line[0] | length)-1) %}
+        {{ x }},
+        {% endfor %}
+        {{ (team_line[0] | length) }}
+      ],
+      datasets: [
+        {% for i in range((team_line | length) -1) %}
+        {
+          label: '{{ team_chart_columns[i] }}',
+          data: [
+            {% for x in range(team_line[i] | length -1) %}
+            {{ team_line[i][x] | safe }},
+            {% endfor %}
+            {{ team_line[i][-1] | safe}}
+
+          ],
+          fill: true,
+          borderColor: '{{ geegle[i] }}',
+          backgroundColor: '{{ geegle[i] }}'+'33',
+          pointHoverRadius: 10,
+          pointHoverBackgroundColor: '{{ geegle[i] }}'
+        },
+        {% endfor %}
+        {
+          label: '-',
+          data: [
+            {% for j in range(team_line[-1] | length -1) %}
+            {{ team_line[-1][j] | safe }},
+            {% endfor %}
+            {{ team_line[-1][-1] | safe}}
+          ],
+          fill: true,
+          borderColor: '{{ geegle[-1] }}',
+          backgroundColor: '{{ geegle[-1] }}'+'33',
+          pointHoverRadius: 10,
+          pointHoverBackgroundColor: '{{ geegle[-1] }}'
+        }
+      ],
+    },
+    options: {
+      maintainAspectRatio: true,
+      tooltips: {
+        titleFontSize: 18,
+        bodyFontSize: 18
+      },
+      legend: {
+          display: false,
+      },
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              fontColor: '#fff'
+            }
+          }
+        ],
+        xAxes: [
+          {
+            ticks: {
+              fontColor: '#fff'
+            }
+          }
+        ]
+      }
+    }
+  });
     new Chart(document.getElementById('teamRadar'), {
       type: 'radar',
       data: {
@@ -519,12 +669,84 @@
   </script>
   {% elif request.endpoint == 'radar' and year != '2019' %}
     <script type="text/javascript">
-      new Chart(document.getElementById('Atlético Ottawa'), {
+    new Chart(document.getElementById('Atlético Ottawa Line'), {
+      type: 'line',
+      data: {
+        labels: [
+          {% for x in range(1,(team_dict['Atlético Ottawa'][0] | length)-1) %}
+          {{ x }},
+          {% endfor %}
+          {{ (team_dict['Atlético Ottawa'][0] | length) }}
+        ],
+        datasets: [
+          {% for i in range((team_dict['Atlético Ottawa'] | length) -1) %}
+          {
+            label: '{{ team_chart_columns[i] }}',
+            data: [
+              {% for x in range(team_dict['Atlético Ottawa'][i] | length -1) %}
+              {{ team_dict['Atlético Ottawa'][i][x] | safe }},
+              {% endfor %}
+              {{ team_dict['Atlético Ottawa'][i][-1] | safe}}
+
+            ],
+            fill: true,
+            borderColor: '{{ geegle[i] }}',
+            backgroundColor: '{{ geegle[i] }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ geegle[i] }}'
+          },
+          {% endfor %}
+          {
+            label: '-',
+            data: [
+              {% for j in range(team_dict['Atlético Ottawa'][-1] | length -1) %}
+              {{ team_dict['Atlético Ottawa'][-1][j] | safe }},
+              {% endfor %}
+              {{ team_dict['Atlético Ottawa'][-1][-1] | safe}}
+            ],
+            fill: true,
+            borderColor: '{{ geegle[5] }}',
+            backgroundColor: '{{ geegle[5] }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ geegle[5] }}'
+          }
+        ],
+      },
+      options: {
+        maintainAspectRatio: false,
+        tooltips: {
+          titleFontSize: 18,
+          bodyFontSize: 18
+        },
+        legend: {
+            display: false,
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                fontColor: '#fff'
+              }
+            }
+          ],
+          xAxes: [
+            {
+              ticks: {
+                fontColor: '#fff'
+              }
+            }
+          ]
+        }
+      }
+    });
+    </script>
+    <script type="text/javascript">
+      new Chart(document.getElementById('Atlético Ottawa Radar'), {
         type: 'radar',
         data: {
           labels: ['finish','def','att','mid','net','big','save','goals'],
           datasets: [{
-            data: [{{ radar.loc[0].values[1:]|join(', ') }}],
+            data: [{{ radar.loc[0].values[1:] | join(', ') }}],
             fill: true,
             backgroundColor: '#102f52'+'BF',
             borderColor: '#102f52',
@@ -561,7 +783,7 @@
           }
         }
       });
-      new Chart(document.getElementById('Atlético Ottawa Mobile'), {
+      new Chart(document.getElementById('Atlético Ottawa Radar Mobile'), {
         type: 'radar',
         data: {
           labels: ['finish','def','att','mid','net','big','save','goals'],
@@ -608,7 +830,499 @@
     {% endif %}
     {% if request.endpoint == 'radar' %}
     <script type="text/javascript">
-    new Chart(document.getElementById('Cavalry FC'), {
+    new Chart(document.getElementById('Cavalry FC Line'), {
+      type: 'line',
+      data: {
+        labels: [
+          {% for x in range(1,(team_dict['Cavalry FC'][0] | length)-1) %}
+          {{ x }},
+          {% endfor %}
+          {{ (team_dict['Cavalry FC'][0] | length) }}
+        ],
+        datasets: [
+          {% for i in range((team_dict['Cavalry FC'] | length) -1) %}
+          {
+            label: '-',
+            data: [
+              {% for x in range(team_dict['Cavalry FC'][i] | length -1) %}
+              {{ team_dict['Cavalry FC'][i][x] | safe }},
+              {% endfor %}
+              {{ team_dict['Cavalry FC'][i][-1] | safe}}
+
+            ],
+            fill: true,
+            borderColor: '{{ geegle[i] }}',
+            backgroundColor: '{{ geegle[i] }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ geegle[i] }}'
+          },
+          {% endfor %}
+          {
+            label: '-',
+            data: [
+              {% for j in range(team_dict['Cavalry FC'][-1] | length -1) %}
+              {{ team_dict['Cavalry FC'][-1][j] | safe }},
+              {% endfor %}
+              {{ team_dict['Cavalry FC'][-1][-1] | safe}}
+            ],
+            fill: true,
+            borderColor: '{{ geegle[-1] }}',
+            backgroundColor: '{{ geegle[-1] }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ geegle[-1] }}'
+          }
+        ],
+      },
+      options: {
+        maintainAspectRatio: false,
+        tooltips: {
+          titleFontSize: 18,
+          bodyFontSize: 18
+        },
+        legend: {
+            display: false,
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                fontColor: '#fff'
+              }
+            }
+          ],
+          xAxes: [
+            {
+              ticks: {
+                fontColor: '#fff'
+              }
+            }
+          ]
+        }
+      }
+    });
+    new Chart(document.getElementById('FC Edmonton Line'), {
+      type: 'line',
+      data: {
+        labels: [
+          {% for x in range(1,(team_dict['FC Edmonton'][0] | length)-1) %}
+          {{ x }},
+          {% endfor %}
+          {{ (team_dict['FC Edmonton'][0] | length) }}
+        ],
+        datasets: [
+          {% for i in range((team_dict['FC Edmonton'] | length) -1) %}
+          {
+            label: '-',
+            data: [
+              {% for x in range(team_dict['FC Edmonton'][i] | length -1) %}
+              {{ team_dict['FC Edmonton'][i][x] | safe }},
+              {% endfor %}
+              {{ team_dict['FC Edmonton'][i][-1] | safe}}
+
+            ],
+            fill: true,
+            borderColor: '{{ geegle[i] }}',
+            backgroundColor: '{{ geegle[i] }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ geegle[i] }}'
+          },
+          {% endfor %}
+          {
+            label: '-',
+            data: [
+              {% for j in range(team_dict['FC Edmonton'][-1] | length -1) %}
+              {{ team_dict['FC Edmonton'][-1][j] | safe }},
+              {% endfor %}
+              {{ team_dict['FC Edmonton'][-1][-1] | safe}}
+            ],
+            fill: true,
+            borderColor: '{{ geegle[-1] }}',
+            backgroundColor: '{{ geegle[-1] }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ geegle[-1] }}'
+          }
+        ],
+      },
+      options: {
+        maintainAspectRatio: false,
+        tooltips: {
+          titleFontSize: 18,
+          bodyFontSize: 18
+        },
+        legend: {
+            display: false,
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                fontColor: '#fff'
+              }
+            }
+          ],
+          xAxes: [
+            {
+              ticks: {
+                fontColor: '#fff'
+              }
+            }
+          ]
+        }
+      }
+    });
+    new Chart(document.getElementById('Forge FC Line'), {
+      type: 'line',
+      data: {
+        labels: [
+          {% for x in range(1,(team_dict['Forge FC'][0] | length)-1) %}
+          {{ x }},
+          {% endfor %}
+          {{ (team_dict['Forge FC'][0] | length) }}
+        ],
+        datasets: [
+          {% for i in range((team_dict['Forge FC'] | length) -1) %}
+          {
+            label: '-',
+            data: [
+              {% for x in range(team_dict['Forge FC'][i] | length -1) %}
+              {{ team_dict['Forge FC'][i][x] | safe }},
+              {% endfor %}
+              {{ team_dict['Forge FC'][i][-1] | safe}}
+
+            ],
+            fill: true,
+            borderColor: '{{ geegle[i] }}',
+            backgroundColor: '{{ geegle[i] }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ geegle[i] }}'
+          },
+          {% endfor %}
+          {
+            label: '-',
+            data: [
+              {% for j in range(team_dict['Forge FC'][-1] | length -1) %}
+              {{ team_dict['Forge FC'][-1][j] | safe }},
+              {% endfor %}
+              {{ team_dict['Forge FC'][-1][-1] | safe}}
+            ],
+            fill: true,
+            borderColor: '{{ geegle[-1] }}',
+            backgroundColor: '{{ geegle[-1] }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ geegle[-1] }}'
+          }
+        ],
+      },
+      options: {
+        maintainAspectRatio: false,
+        tooltips: {
+          titleFontSize: 18,
+          bodyFontSize: 18
+        },
+        legend: {
+            display: false,
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                fontColor: '#fff'
+              }
+            }
+          ],
+          xAxes: [
+            {
+              ticks: {
+                fontColor: '#fff'
+              }
+            }
+          ]
+        }
+      }
+    });
+    new Chart(document.getElementById('HFX Wanderers FC Line'), {
+      type: 'line',
+      data: {
+        labels: [
+          {% for x in range(1,(team_dict['HFX Wanderers FC'][0] | length)-1) %}
+          {{ x }},
+          {% endfor %}
+          {{ (team_dict['HFX Wanderers FC'][0] | length) }}
+        ],
+        datasets: [
+          {% for i in range((team_dict['HFX Wanderers FC'] | length) -1) %}
+          {
+            label: '-',
+            data: [
+              {% for x in range(team_dict['HFX Wanderers FC'][i] | length -1) %}
+              {{ team_dict['HFX Wanderers FC'][i][x] | safe }},
+              {% endfor %}
+              {{ team_dict['HFX Wanderers FC'][i][-1] | safe}}
+
+            ],
+            fill: true,
+            borderColor: '{{ geegle[i] }}',
+            backgroundColor: '{{ geegle[i] }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ geegle[i] }}'
+          },
+          {% endfor %}
+          {
+            label: '-',
+            data: [
+              {% for j in range(team_dict['HFX Wanderers FC'][-1] | length -1) %}
+              {{ team_dict['HFX Wanderers FC'][-1][j] | safe }},
+              {% endfor %}
+              {{ team_dict['HFX Wanderers FC'][-1][-1] | safe}}
+            ],
+            fill: true,
+            borderColor: '{{ geegle[-1] }}',
+            backgroundColor: '{{ geegle[-1] }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ geegle[-1] }}'
+          }
+        ],
+      },
+      options: {
+        maintainAspectRatio: false,
+        tooltips: {
+          titleFontSize: 18,
+          bodyFontSize: 18
+        },
+        legend: {
+            display: false,
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                fontColor: '#fff'
+              }
+            }
+          ],
+          xAxes: [
+            {
+              ticks: {
+                fontColor: '#fff'
+              }
+            }
+          ]
+        }
+      }
+    });
+    new Chart(document.getElementById('Pacific FC Line'), {
+      type: 'line',
+      data: {
+        labels: [
+          {% for x in range(1,(team_dict['Pacific FC'][0] | length)-1) %}
+          {{ x }},
+          {% endfor %}
+          {{ (team_dict['Pacific FC'][0] | length) }}
+        ],
+        datasets: [
+          {% for i in range((team_dict['Pacific FC'] | length) -1) %}
+          {
+            label: '-',
+            data: [
+              {% for x in range(team_dict['Pacific FC'][i] | length -1) %}
+              {{ team_dict['Pacific FC'][i][x] | safe }},
+              {% endfor %}
+              {{ team_dict['Pacific FC'][i][-1] | safe}}
+
+            ],
+            fill: true,
+            borderColor: '{{ geegle[i] }}',
+            backgroundColor: '{{ geegle[i] }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ geegle[i] }}'
+          },
+          {% endfor %}
+          {
+            label: '-',
+            data: [
+              {% for j in range(team_dict['Pacific FC'][-1] | length -1) %}
+              {{ team_dict['Pacific FC'][-1][j] | safe }},
+              {% endfor %}
+              {{ team_dict['Pacific FC'][-1][-1] | safe}}
+            ],
+            fill: true,
+            borderColor: '{{ geegle[-1] }}',
+            backgroundColor: '{{ geegle[-1] }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ geegle[-1] }}'
+          }
+        ],
+      },
+      options: {
+        maintainAspectRatio: false,
+        tooltips: {
+          titleFontSize: 18,
+          bodyFontSize: 18
+        },
+        legend: {
+            display: false,
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                fontColor: '#fff'
+              }
+            }
+          ],
+          xAxes: [
+            {
+              ticks: {
+                fontColor: '#fff'
+              }
+            }
+          ]
+        }
+      }
+    });
+    new Chart(document.getElementById('Valour FC Line'), {
+      type: 'line',
+      data: {
+        labels: [
+          {% for x in range(1,(team_dict['Valour FC'][0] | length)-1) %}
+          {{ x }},
+          {% endfor %}
+          {{ (team_dict['Valour FC'][0] | length) }}
+        ],
+        datasets: [
+          {% for i in range((team_dict['Valour FC'] | length) -1) %}
+          {
+            label: '-',
+            data: [
+              {% for x in range(team_dict['Valour FC'][i] | length -1) %}
+              {{ team_dict['Valour FC'][i][x] | safe }},
+              {% endfor %}
+              {{ team_dict['Valour FC'][i][-1] | safe}}
+
+            ],
+            fill: true,
+            borderColor: '{{ geegle[i] }}',
+            backgroundColor: '{{ geegle[i] }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ geegle[i] }}'
+          },
+          {% endfor %}
+          {
+            label: '-',
+            data: [
+              {% for j in range(team_dict['Cavalry FC'][-1] | length -1) %}
+              {{ team_dict['Valour FC'][-1][j] | safe }},
+              {% endfor %}
+              {{ team_dict['Valour FC'][-1][-1] | safe}}
+            ],
+            fill: true,
+            borderColor: '{{ geegle[-1] }}',
+            backgroundColor: '{{ geegle[-1] }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ geegle[-1] }}'
+          }
+        ],
+      },
+      options: {
+        maintainAspectRatio: false,
+        tooltips: {
+          titleFontSize: 18,
+          bodyFontSize: 18
+        },
+        legend: {
+            display: false,
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                fontColor: '#fff'
+              }
+            }
+          ],
+          xAxes: [
+            {
+              ticks: {
+                fontColor: '#fff'
+              }
+            }
+          ]
+        }
+      }
+    });
+    new Chart(document.getElementById('York9 FC Line'), {
+      type: 'line',
+      data: {
+        labels: [
+          {% for x in range(1,(team_dict['York9 FC'][0] | length)-1) %}
+          {{ x }},
+          {% endfor %}
+          {{ (team_dict['York9 FC'][0] | length) }}
+        ],
+        datasets: [
+          {% for i in range((team_dict['York9 FC'] | length) -1) %}
+          {
+            label: '-',
+            data: [
+              {% for x in range(team_dict['York9 FC'][i] | length -1) %}
+              {{ team_dict['York9 FC'][i][x] | safe }},
+              {% endfor %}
+              {{ team_dict['York9 FC'][i][-1] | safe}}
+
+            ],
+            fill: true,
+            borderColor: '{{ geegle[i] }}',
+            backgroundColor: '{{ geegle[i] }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ geegle[i] }}'
+          },
+          {% endfor %}
+          {
+            label: '-',
+            data: [
+              {% for j in range(team_dict['York9 FC'][-1] | length -1) %}
+              {{ team_dict['York9 FC'][-1][j] | safe }},
+              {% endfor %}
+              {{ team_dict['York9 FC'][-1][-1] | safe}}
+            ],
+            fill: true,
+            borderColor: '{{ geegle[-1] }}',
+            backgroundColor: '{{ geegle[-1] }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ geegle[-1] }}'
+          }
+        ],
+      },
+      options: {
+        maintainAspectRatio: false,
+        tooltips: {
+          titleFontSize: 18,
+          bodyFontSize: 18
+        },
+        legend: {
+            display: false,
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                fontColor: '#fff'
+              }
+            }
+          ],
+          xAxes: [
+            {
+              ticks: {
+                fontColor: '#fff'
+              }
+            }
+          ]
+        }
+      }
+    });
+    </script>
+    <script type="text/javascript">
+    new Chart(document.getElementById('Cavalry FC Radar'), {
       type: 'radar',
       data: {
         labels: ['finish','def','att','mid','net','big','save','goals'],
@@ -651,7 +1365,7 @@
       }
     });
 
-    new Chart(document.getElementById('FC Edmonton'), {
+    new Chart(document.getElementById('FC Edmonton Radar'), {
       type: 'radar',
       data: {
         labels: ['finish','def','att','mid','net','big','save','goals'],
@@ -694,7 +1408,7 @@
       }
     });
 
-    new Chart(document.getElementById('Forge FC'), {
+    new Chart(document.getElementById('Forge FC Radar'), {
       type: 'radar',
       data: {
         labels: ['finish','def','att','mid','net','big','save','goals'],
@@ -737,7 +1451,7 @@
       }
     });
 
-    new Chart(document.getElementById('HFX Wanderers FC'), {
+    new Chart(document.getElementById('HFX Wanderers FC Radar'), {
       type: 'radar',
       data: {
         labels: ['finish','def','att','mid','net','big','save','goals'],
@@ -780,7 +1494,7 @@
       }
     });
 
-    new Chart(document.getElementById('Pacific FC'), {
+    new Chart(document.getElementById('Pacific FC Radar'), {
       type: 'radar',
       data: {
         labels: ['finish','def','att','mid','net','big','save','goals'],
@@ -823,7 +1537,7 @@
       }
     });
 
-    new Chart(document.getElementById('Valour FC'), {
+    new Chart(document.getElementById('Valour FC Radar'), {
       type: 'radar',
       data: {
         labels: ['finish','def','att','mid','net','big','save','goals'],
@@ -866,7 +1580,7 @@
       }
     });
 
-    new Chart(document.getElementById('York9 FC'), {
+    new Chart(document.getElementById('York9 FC Radar'), {
       type: 'radar',
       data: {
         labels: ['finish','def','att','mid','net','big','save','goals'],
@@ -909,7 +1623,7 @@
       }
     });
 
-  new Chart(document.getElementById('Cavalry FC Mobile'), {
+  new Chart(document.getElementById('Cavalry FC Radar Mobile'), {
     type: 'radar',
     data: {
       labels: ['finish','def','att','mid','net','big','save','goals'],
@@ -952,7 +1666,7 @@
     }
   });
 
-  new Chart(document.getElementById('FC Edmonton Mobile'), {
+  new Chart(document.getElementById('FC Edmonton Radar Mobile'), {
     type: 'radar',
     data: {
       labels: ['finish','def','att','mid','net','big','save','goals'],
@@ -995,7 +1709,7 @@
     }
   });
 
-  new Chart(document.getElementById('Forge FC Mobile'), {
+  new Chart(document.getElementById('Forge FC Radar Mobile'), {
     type: 'radar',
     data: {
       labels: ['finish','def','att','mid','net','big','save','goals'],
@@ -1038,7 +1752,7 @@
     }
   });
 
-  new Chart(document.getElementById('HFX Wanderers FC Mobile'), {
+  new Chart(document.getElementById('HFX Wanderers FC Radar Mobile'), {
     type: 'radar',
     data: {
       labels: ['finish','def','att','mid','net','big','save','goals'],
@@ -1081,7 +1795,7 @@
     }
   });
 
-  new Chart(document.getElementById('Pacific FC Mobile'), {
+  new Chart(document.getElementById('Pacific FC Radar Mobile'), {
     type: 'radar',
     data: {
       labels: ['finish','def','att','mid','net','big','save','goals'],
@@ -1124,7 +1838,7 @@
     }
   });
 
-  new Chart(document.getElementById('Valour FC Mobile'), {
+  new Chart(document.getElementById('Valour FC Radar Mobile'), {
     type: 'radar',
     data: {
       labels: ['finish','def','att','mid','net','big','save','goals'],
@@ -1167,7 +1881,7 @@
     }
   });
 
-  new Chart(document.getElementById('York9 FC Mobile'), {
+  new Chart(document.getElementById('York9 FC Radar Mobile'), {
     type: 'radar',
     data: {
       labels: ['finish','def','att','mid','net','big','save','goals'],

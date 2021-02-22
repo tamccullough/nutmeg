@@ -8,90 +8,51 @@
 <!-- page content -->
   <!-- body -->
   <div class="mobile">
-    <div class="parent">
-      {% if year == '2020' %}
-        {% for name in ['Atlético Ottawa','Cavalry FC','FC Edmonton','Forge FC','HFX Wanderers FC','Pacific FC','Valour FC','York9 FC']%}
-          <span><h3>{{ name }}</h3></span>
-            <div class="child {{ html_table[html_table['team'] == name ]['colour'] }}">
-              <div class="box center">
-                <canvas id="{{ name }} Mobile"></canvas>
-                <!-- img src="static/images/{{ year }}/cpl-{{ year }}-{{ name }}-radar.png" alt="{{ name }} Radar" style="max-height:190px" -->
-              </div>
+        {% for name in team_list %}
+          <div class="parent {{ html_table[html_table['team'] == name ]['colour'] }}">
+            <span><h3 class="indent">{{ name }}</h3></span>
+                <div class="box center chartcontainer">
+                  <canvas id="{{ name }} Radar Mobile"></canvas>
+                </div>
 
-              <div class="box">
-                <div class="spacer"></div>
-                <div class="spacer"></div>
-                <div class="spacer"></div>
-                  <table>
-                    <tr>
-                      <td colspan="3"><h3>Rolling Expected</h3></td>
-                    </tr>
-                    <tr>
-                      <td><h3>xG: {{ stats[stats['team'] == name]['xg'].values[0] }}</h3></td>
-                      <td style="text-indent: -10px;"><h3>xPPG: {{ stats[stats['team'] == name]['xp'].values[0] }}</h3></td>
-                      <td><h3> xPTS: {{ stats[stats['team'] == name]['xt'].values[0] }}</h3></td>
-                    </tr>
-                  </table>
-
-               <div class="box center">
-                 <img src="static/images/{{ year }}/cpl-2020-{{ name }}-overall-graph.png" alt="team performance" style="max-width:98%">
-               </div>
-              </div>
+                <div class="box">
+                    <table>
+                      <tr>
+                        <td><a>Rolling X</a></td>
+                        <td><a>xG: {{ stats[stats['team'] == name]['xg'].values[0] }}</a></td>
+                        <td><a>xPPG: {{ stats[stats['team'] == name]['xp'].values[0] }}</a></td>
+                        <td><a> xPTS: {{ stats[stats['team'] == name]['xt'].values[0] }}</a></td>
+                      </tr>
+                    </table>
+                </div>
+             <div class="box chartcontainer">
+               <canvas id="{{ name }} Line Mobile"></canvas>
+             </div>
            </div>
+           <br>
            {% endfor %}
-        {% else %}
-          {% for name in ['Cavalry FC','FC Edmonton','Forge FC','HFX Wanderers FC','Pacific FC','Valour FC','York9 FC']%}
-              <div class="box {{ html_table[html_table['team'] == name ]['colour'] }}">
-                <span><h3>{{ name }}</h3></span>
-                <canvas id="{{ name }} Mobile"></canvas>
-                <!--img class="center" src="static/images/{{ year }}/cpl-{{ year }}-{{ name }}-radar.png" alt="{{ name }} Radar" style="max-width:300px"-->
-              </div>
-          {% endfor %}
-        {% endif %}
     </div>
-  </div>
 
 <div class="desktop">
   <div class="parent">
-    {% if year == '2019' %}
-      {% for name in ['Cavalry FC','FC Edmonton','Forge FC','HFX Wanderers FC','Pacific FC','Valour FC','York9 FC']%}
-          <div class="boxs {{ html_table[html_table['team'] == name ]['colour'] }}">
-            <span><h3>{{ name }}</h3></span>
-            <canvas id="{{ name }}"></canvas>
-            <!--img class="center" src="static/images/{{ year }}/cpl-{{ year }}-{{ name }}-radar.png" alt="{{ name }} Radar" style="max-width:300px"-->
-          </div>
-      {% endfor %}
-    {% else %}
-      {% for name in ['Atlético Ottawa','Cavalry FC','FC Edmonton','Forge FC','HFX Wanderers FC','Pacific FC','Valour FC','York9 FC']%}
-        <span><h3>{{ name }}</h3></span>
+      {% for name in team_list %}
+        <span><h3 class="indent">{{ name }}</h3></span>
           <div class="child {{ html_table[html_table['team'] == name ]['colour'] }}">
-            <div class="box center">
-              <canvas id="{{ name }}"></canvas>
-              <!--div id="{{ name }}" style="background:black;width: 100%;padding: 20px"></div-->
-              <!--img src="static/images/{{ year }}/cpl-{{ year }}-{{ name }}-radar.png" alt="{{ name }} Radar" style="max-width:60%"-->
+            <table>
+              <tr>
+                <td style="text-align:right;"><h3> expect Goals: </h3></td><td><h3> {{ team_stats[ name ][0] }}</h3></td>
+                <td style="text-align:right;"><h3> expected Assists: </h3></td><td><h3> {{ team_stats[ name ][1] }}</h3></td>
+                <td style="text-align:right;"><h3> expected Points: </h3></td><td><h3> {{ team_stats[ name ][2] }}</h3></td>
+              </tr>
+            </table>
+            <div class="boxs center chartcontainer">
+              <canvas id="{{ name }} Radar"></canvas>
             </div>
-
-            <div class="box">
-              <div class="spacer"></div>
-              <div class="spacer"></div>
-                <table>
-                  <tr>
-                    <td colspan="3"><h3>Rolling Expected</h3></td>
-                  </tr>
-                  <tr>
-                    <td style="text-align:right;"><h3> xG: </h3></td><td><h3> {{ stats[stats['team'] == name]['xg'].values[0] }}</h3></td>
-                    <td style="text-align:right;"><h3> xPPG: </h3></td><td><h3> {{ stats[stats['team'] == name]['xp'].values[0] }}</h3></td>
-                    <td style="text-align:right;"><h3> xPTS: </h3></td><td><h3> {{ stats[stats['team'] == name]['xt'].values[0] }}</h3></td>
-                  </tr>
-                </table>
-
-             <div class="box center">
-               <img src="static/images/{{ year }}/cpl-2020-{{ name }}-overall-graph.png" alt="team performance" style="max-width:98%">
-             </div>
+            <div class="boxl chartcontainer">
+               <canvas id="{{ name }} Line"></canvas>
             </div>
          </div>
          {% endfor %}
-    {% endif %}
   </div>
 </div>
 

@@ -13,6 +13,18 @@
       <a>{{ year }} Roster (click name to view)</a>
     </div>
   </div>
+  <div class="{{ team_colour }} center">
+    <table>
+      <tr>
+        <td><a> xG: {{ team_stats[0] }}</a></td>
+        <td><a> xA: {{ team_stats[1] }}</a></td>
+        <td><a> xPts: {{ team_stats[2] }}</a></td>
+      </tr>
+    </table>
+  </div>
+  <div class="{{ team_colour }} chartcontainer">
+    <canvas id="teamLineMobile"></canvas>
+  </div>
   <!-- body -->
   <!-- team information section -->
   <div class="parent">
@@ -97,13 +109,25 @@
     </div>
     <div class="boxl">
       <br>
-      <h2 style="display:inline;"><b>{{ team_name }} </b></h2>
+      <h1 style="display:inline;"><b>{{ team_name }} </b></h1>
       <a style="display:inline;padding:25px;"> {{ year }} team info / roster (click name to view)</a>
     </div>
   </div>
+  <div class="{{ team_colour }} center">
+    <table>
+      <tr>
+        <td style="text-align:right;"><h3> expected Goals: </h3></td><td><h3> {{ team_stats[0] }}</h3></td>
+        <td style="text-align:right;"><h3> expected Assists: </h3></td><td><h3> {{ team_stats[1] }}</h3></td>
+        <td style="text-align:right;"><h3> expected Points: </h3></td><td><h3> {{ team_stats[2] }}</h3></td>
+      </tr>
+    </table>
+  </div>
+  <div class="{{ team_colour }} chartcontainer">
+    <canvas id="teamLine"></canvas>
+  </div>
   <!-- team information section -->
   <div class="parent">
-      <div class="boxs {{ team_colour }}">
+      <div class="boxs {{ team_colour }} chartcontainer">
         <canvas id="teamRadar"></canvas>
       </div>
 
