@@ -122,6 +122,7 @@ def get_year():
 def load_main_files(year):
 
     results = pd.read_csv(f'datasets/{year}/league/{year}-results.csv')
+
     try:
         week = results[results['hr'] == 'E']['w'].head(1).values[0]
         schedule = results[results['w'] == week].copy()
@@ -129,55 +130,42 @@ def load_main_files(year):
     except:
         week = results['w'].tail(1).values[0]
         schedule = results[results['w'] == week].copy()
+
     stats = pd.read_csv(f'datasets/{year}/cpl-{year}-stats.csv')
     stats_seed = pd.read_csv(f'datasets/{year}/cpl-{year}-stats-seed.csv')
+
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
     player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
 
     results_old = results[results['hr'] != 'E'].copy()
     results_diff = pd.concat([results, results_old]).drop_duplicates(keep=False)
+
     if results_diff.empty:
         results_diff = results_old.tail(1)
 
-    team_stats = pd.read_csv(f'datasets/{year}/cpl-{year}-team_stats.csv')
     colours = team_ref['colour']
 
-    results_brief = cpl_main.get_results_brief(results)
-    try:
-        matches_predictions = pd.read_csv(f'datasets/{year}/cpl-{year}-match_predictions.csv')
-    except:
-        matches_predictions = pd.DataFrame()
-    try:
-        game_form = pd.read_csv(f'datasets/{year}/cpl-{year}-game_form.csv')
-    except:
-        game_form = pd.DataFrame()
-    try:
-        team_rosters = pd.read_csv(f'datasets/{year}/cpl-{year}-team_rosters.csv')
-    except:
-        team_rosters = pd.DataFrame()
+    results_brief = cpl_main.get_results_brief(results,year)
 
-    return results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, team_stats, results_brief, matches_predictions, game_form, team_rosters
+    return results, team_ref, player_info, results_old, results_diff, schedule, results_brief
 
 
 def load_player_files(year):
-    # get all rated player information based on position and calculate and overall score for the individual player
 
+    # get all rated player information based on position and calculate and overall score for the individual player
     rated_assists = pd.read_csv(f'datasets/{year}/playerstats/{year}-assists.csv')
     rated_goalscorers = pd.read_csv(f'datasets/{year}/playerstats/{year}-goalscorers.csv')
     rated_offenders = pd.read_csv(f'datasets/{year}/playerstats/{year}-discipline.csv')
+
+    stats = {'goals' : rated_goalscorers['Goal'].sum(),'assists' : rated_assists['Ast'].sum(),'yellows' : rated_offenders['Yellow'].sum(),'reds' : rated_offenders['Red'].sum()}
 
     rated_forwards = pd.read_csv(f'datasets/{year}/playerstats/{year}-forwards.csv')
     rated_midfielders = pd.read_csv(f'datasets/{year}/playerstats/{year}-midfielders.csv')
     rated_defenders = pd.read_csv(f'datasets/{year}/playerstats/{year}-defenders.csv')
     rated_keepers = pd.read_csv(f'datasets/{year}/playerstats/{year}-keepers.csv')
 
-    rated_forwards_90 = pd.read_csv(f'datasets/{year}/playerstats/{year}-forwards.csv')
-    rated_midfielders_90 = pd.read_csv(f'datasets/{year}/playerstats/{year}-midfielders.csv')
-    rated_defenders_90 = pd.read_csv(f'datasets/{year}/playerstats/{year}-defenders.csv')
-    rated_keepers_90 = pd.read_csv(f'datasets/{year}/playerstats/{year}-forwards.csv')
-
-    return rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists
+    return rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists, stats
 
 canples = Flask(__name__)
 # get current day and set time variables
@@ -197,8 +185,8 @@ def index():
 
     get_year()
 
-    results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, team_stats, results_brief, matches_predictions, game_form, team_rosters  = load_main_files(year)
-    rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
+    results, team_ref, player_info, results_old, results_diff, schedule, results_brief = load_main_files(year)
+    rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists, stats = load_player_files(year)
 
     championship = pd.read_csv(f'datasets/{year}/league/{year}-championship.csv')
     playoffs = pd.read_csv(f'datasets/{year}/league/{year}-playoffs.csv')
@@ -366,10 +354,26 @@ def versus():
 
     year = '2020'
 
-    results, stats, stats_seed, team_ref, player_info, results_old, results_diff, schedule, team_stats, results_brief, matches_predictions, game_form, team_rosters  = load_main_files(year)
-    rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists = load_player_files(year)
+    try:
+        matches_predictions = pd.read_csv(f'datasets/{year}/cpl-{year}-match_predictions.csv')
+    except:
+        matches_predictions = pd.DataFrame()
+    try:
+        game_form = pd.read_csv(f'datasets/{year}/cpl-{year}-game_form.csv')
+    except:
+        game_form = pd.DataFrame()
+    '''try:
+        team_rosters = pd.read_csv(f'datasets/{year}/cpl-{year}-team_rosters.csv')
+    except:
+        team_rosters = pd.DataFrame()'''
+
+    results, team_ref, player_info, results_old, results_diff, schedule, results_brief = load_main_files(year)
+    rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists, stats = load_player_files(year)
 
     print('\nON THE PREDICTIONS PAGE\n')
+
+    stats_season = pd.read_csv(f'datasets/{year}/cpl-{year}-stats.csv')
+    stats_seed = pd.read_csv(f'datasets/{year}/cpl-{year}-stats-seed.csv')
 
     results_old = pd.read_csv(f'datasets/{year}/cpl-{year}-results_old.csv')
     stats_old = pd.read_csv(f'datasets/{year}/cpl-{year}-stats_old.csv')
@@ -398,14 +402,18 @@ def versus():
     home_form = game_form[q1]
     away_form = game_form[q2]
 
-    home_roster = cpl_main.best_roster(q1,results,results_old,stats,stats_old,stats_seed,player_info,rated_forwards)
-    away_roster = cpl_main.best_roster(q2,results,results_old,stats,stats_old,stats_seed,player_info,rated_forwards)
+    '''home_roster = cpl_main.best_roster(q1,results,results_old,stats_season,stats_old,stats_seed,player_info,rated_forwards)
+    away_roster = cpl_main.best_roster(q2,results,results_old,stats_season,stats_old,stats_seed,player_info,rated_forwards)'''
+
+    home_roster = cpl_main.best_roster(q1, rated_keepers, rated_defenders, rated_midfielders, rated_forwards, player_info)
+    away_roster = cpl_main.best_roster(q2, rated_keepers, rated_defenders, rated_midfielders, rated_forwards, player_info)
+
     home_score = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['hs'].values[0]
     away_score = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['as'].values[0]
 
     # THIS IS OLD HERE BELOW
-    results_brief = cpl_main.get_results_brief(results)
-    results_brief_old = cpl_main.get_results_brief(results_old)
+    results_brief = cpl_main.get_results_brief(results,year)
+    results_brief_old = cpl_main.get_results_brief(results_old,year)
     results_brief = pd.concat([results_brief,results_brief_old])
     print('*********************************************')
     print(results_brief)

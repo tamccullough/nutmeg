@@ -114,7 +114,18 @@ def get_team_brief(results_db,query,df):
     db = index_reset(db)
     return db'''
 
-def get_results_brief(results):
+def get_results_brief(results,year):
+
+    team_change = {'Atlético Ottawa' : 'ATO',
+              'Cavalry FC' : 'CAV','Cavalry' : 'CAV',
+              'FC Edmonton' : 'EDM','Edmonton' : 'EDM',
+              'Forge FC' : 'FOR','Forge' : 'FOR',
+              'HFX Wanderers FC' : 'HFX','HFX Wanderers' : 'HFX',
+              'Pacific FC' : 'PAC','Pacific' : 'PAC',
+              'Valour FC' : 'VAL','Valour' : 'VAL',
+              'York United FC' : 'YOR','York United' : 'YOR',
+              'York9 FC' : 'YK9','York9' : 'YK9'}
+
     results_brief = pd.DataFrame()
     temp = results[['d','m','hs','as','home','hr','away','ar']]
     for team in sorted(results['home'].unique()):
@@ -126,24 +137,17 @@ def get_results_brief(results):
         df = index_reset(df)
         df['summary'] = ''
         df['team'] = team
-        for i in range(db.shape[0]):
-            db.at[i,'summary'] = ' '.join([str(x) for x in db.loc[i][['hr','hs','as']]])
-            try:
-                db.at[i,'summary'] = db.at[i,'summary'] + ' ' + team_names[db.loc[i,'away']]
-            except:
-                '''print('\nTHIS IS THE TEAM THAT IS AN ISSUE:\n')
-                print(db.loc[i,'away'],'\n')'''
-            db.at[i,'summary'] = db.at[i,'summary'][:1] + ' h ' + db.at[i,'summary'][1:]
-        for i in range(df.shape[0]):
-            df.at[i,'summary'] = ' '.join([str(x) for x in df.loc[i][['ar','hs','as']]])
-            try:
-                df.at[i,'summary'] = df.at[i,'summary'] + ' ' + team_names[df.loc[i,'home']]
-            except:
-                '''print('\nTHIS IS THE TEAM THAT IS AN ISSUE:\n')
-                print(db.loc[i,'home'],'\n')'''
-            df.at[i,'summary'] = df.at[i,'summary'][:1] + ' a ' + df.at[i,'summary'][1:]
+
+        db['summary'] = db['hr'] + ' h '+ db['hs'].apply(lambda x:str(x)) + ' ' + db['as'].apply(lambda x: str(x)) + ' ' + db['away'].apply(lambda x: team_change[x])
+        df['summary'] = df['ar'] + ' h '+ df['hs'].apply(lambda x:str(x)) + ' ' + df['as'].apply(lambda x: str(x)) + ' '+ df['home'].apply(lambda x: team_change[x])
+
         results_brief = pd.concat([results_brief,db])
         results_brief = pd.concat([results_brief,df])
+
+    results_brief['scatter'] = results_brief['home'].apply(lambda x: team_change[x]) + ' vs '+ results_brief['away'].apply(lambda x: team_change[x]) + f' ({year}' + results_brief['m'].apply(lambda x: '-'+str(x) if len(str(x)) > 1 else '-0'+str(x)) + results_brief['d'].apply(lambda x: '-'+str(x)+")" if len(str(x)) > 1 else '-0'+str(x)+")")
+
+    results_brief['result'] = results_brief['summary'].apply(lambda x: x[:1])
+
     return results_brief
 
 def get_club_statistics(team_results,query):
@@ -377,10 +381,10 @@ def get_weeks_results(year,results,standings,stats,team_ref,team_names):
         print('\n')'''
 
 
-        goals = standings['Goal'].sum()
-        assists = stats['assists'].sum()
-        yellows = stats['yellow'].sum()
-        reds = stats['red'].sum()
+        goals = stats['goals']
+        assists = stats['assists']
+        yellows = stats['yellows']
+        reds = stats['reds']
 
         return played_games, goals, big_win, top_result, low_result, other_team, assists, yellows, reds
     else:
@@ -789,7 +793,45 @@ def get_form_results(data,dc):
     db = db.reset_index()
     return db
 
-def best_roster(query,results,results_old,stats,stats_old,stats_seed,player_info,rated_forwards):
+def best_roster(team_name, rated_keepers, rated_defenders, rated_midfielders, rated_forwards, player_info):
+
+    team_names = {'Atlético Ottawa' : 'ato',
+              'Cavalry FC' : 'cav','Cavalry' : 'cav',
+              'FC Edmonton' : 'fce','Edmonton' : 'fce',
+              'Forge FC' : 'for','Forge' : 'for',
+              'HFX Wanderers FC' : 'hfx','HFX Wanderers' : 'hfx',
+              'Pacific FC' : 'pac','Pacific' : 'pac',
+              'Valour FC' : 'val','Valour' : 'val',
+              'York United FC' : 'yor','York United' : 'yor',
+              'York9 FC' : 'y9','York9' : 'y9'}
+
+    name_conversion = {'ato':'Atlético Ottawa',
+              'cav':'Cavalry FC',
+              'fce':'FC Edmonton',
+              'for':'Forge FC',
+              'hfx':'HFX Wanderers FC',
+              'pac':'Pacific FC',
+              'val':'Valour FC',
+              'yor':'York9 FC'}
+
+    query = team_names[team_name]
+
+    formation = [3,4,3,1]
+
+    rated_forwards = rated_forwards[rated_forwards['team'] == query][['name','number','overall']].head(formation[0])
+    rated_midfielders = rated_midfielders[rated_midfielders['team'] == query][['name','number','overall']].head(formation[1])
+    rated_defenders = rated_defenders[rated_defenders['team'] == query][['name','number','overall']].head(formation[2])
+    rated_keepers = rated_keepers[rated_keepers['team'] == query][['name','number','overall']].head(formation[3])
+
+    roster = pd.concat([rated_keepers,rated_defenders,rated_midfielders,rated_forwards])
+    roster = roster.reset_index()
+    roster.pop('index')
+    roster.insert(2,'position','-')
+    for i in range(roster.shape[0]):
+        roster.at[i,'position'] = player_info[player_info['name'] == roster.at[i,'name']]['position'].values[0]
+    return roster
+
+'''def best_roster(query,results,results_old,stats,stats_old,stats_seed,player_info,rated_forwards):
     # some players or clubs may have yet to play a match
     # insert missing values for this situation
     def sort_players(data,players,indx,position):
@@ -964,7 +1006,7 @@ def best_roster(query,results,results_old,stats,stats_old,stats_seed,player_info
         game_roster = game_roster.reset_index()
         game_roster.pop('index')
 
-    return game_roster
+    return game_roster'''
 
 def get_roster(query,stats,team_ref): # use team stats to get the player information
     roster = get_stats_all(stats,team_ref)
