@@ -277,7 +277,7 @@ def get_weeks_results(year,results,standings,stats,team_ref,team_names):
         max_away = index_reset(max_away)
         if max_away.empty:
             max_away = played_games[played_games['as'] == played_games['as'].max()]
-            max_away = index_reset(max_away)'
+            max_away = index_reset(max_away)
 
         if max_home.at[0,'hs'] > max_away.at[0,'as']:
             max_home_win = max_home
