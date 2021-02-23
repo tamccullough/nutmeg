@@ -790,7 +790,7 @@ def player():
         full = int(len(db.columns) - 2)
         col_nums = [half,full]
 
-    return render_template('cpl-es-player.html', name = details['display'], player_line_length = player_line_length, player_line_end = player_line_end,
+    return render_template('cpl-es-player.html', name = details['display'], player_line_length = len(player_line)-1, player_line_end = player_line_end,
     nationality = details['nationality'], team_name = team, player_info = player, full_name = name, year = year,
     team_colour = roster_colour, crest = crest, position = position.get(pos)[:-1], number = details['number'], chart_team_colour_list = geegle,
     stats = db, stats90 = db90, discipline = discipline, radar_chart = radar_chart, radar_chart_cols = radar_chart_cols,

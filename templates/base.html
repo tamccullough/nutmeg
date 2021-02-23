@@ -126,7 +126,7 @@
           {% for i in range(player_line_length) %}
           {% set k = i + 1 %}
           {
-            label: '{{line_columns[i]}}',
+            label: '{{geegle[i]}}',
             data: [
               {% for x in range(player_line[i] | length) %}
               {{ player_line[i][x] | safe }},
@@ -142,7 +142,7 @@
           },
           {% endfor %}
           {
-            label: '{{line_columns[player_line_end]}}',
+            label: '{{geegle[player_line_end]}}',
             data: [
               {% for j in range(player_line[player_line_end] | length) %}
               {{ player_line[player_line_end][j] | safe }},
@@ -150,10 +150,10 @@
               {{ player_line[player_line_end] | safe}}
             ],
             fill: true,
-            borderColor: '{{ geegle[-1] }}',
-            backgroundColor: '{{ geegle[-1] }}'+'33',
+            borderColor: '{{ geegle[player_line_length] }}',
+            backgroundColor: '{{ geegle[player_line_length] }}'+'33',
             pointHoverRadius: 10,
-            pointHoverBackgroundColor: '{{ geegle[-1] }}'
+            pointHoverBackgroundColor: '{{ geegle[player_line_length] }}'
           }
         ],
       },
