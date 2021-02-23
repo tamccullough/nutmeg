@@ -624,3 +624,30 @@ td {
 .bottombar {
   border-bottom:6px solid inherit;
 }
+
+/* tooltips */
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 300px;
+  background-color: var(--darkblue);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px 10px;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 0.5vh;
+  left: 5vw;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

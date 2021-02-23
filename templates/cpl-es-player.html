@@ -87,6 +87,14 @@
 
 <!-- LINE chart -->
 <div class="{{ team_colour }}">
+  <div class="tooltip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Column Tooltip
+    <p class="tooltiptext">
+      {% for x in column_names[:-1] %}
+      {{ x }}<br>
+      {% endfor %}
+      {{ column_names[-1]}}
+    </p>
+  </div>
   <div class="{{ team_colour }} indent">
     {% for i in range(chart_team_colour_list | length ) %}
     <h4 style="display:inline;border-bottom: 0.35rem solid {{ chart_team_colour_list[i] }};">{{ line_columns[i] }}</h4>

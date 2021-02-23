@@ -799,8 +799,23 @@ def player():
         full = int(len(db.columns) - 2)
         col_nums = [half,full]
 
+
+    col_change = {'CS':'Clean Sheet',
+                'defTch':'Defensive Touches',
+                'G':'Goals',
+                'xGc':'Expected Goals Against',
+                'Pat':'Passes Attempted',
+                'Patm':'Passes Completed Middle 3rd',
+                'Rec':'Recoveries',
+                'dvS':'Diving Saves',
+                'SV':'Saves',
+                'Tcha':'Touches Attacking 3rd',
+                'Tchm':'Touches Middle 3rd',
+                'Tch':'Touches'}
+    column_names = [col_change[x] for x in line_columns]
+
     return render_template('cpl-es-player.html', name = details['display'], player_line_length = len(player_line)-1, player_line_end = player_line_end,
-    nationality = details['nationality'], team_name = team, player_info = player, full_name = name, year = year,
+    nationality = details['nationality'], team_name = team, player_info = player, full_name = name, year = year, column_names = column_names,
     team_colour = roster_colour, crest = crest, position = position.get(pos)[:-1], number = details['number'], chart_team_colour_list = geegle,
     stats = db, stats90 = db90, discipline = discipline, radar_chart = radar_chart, radar_chart_cols = radar_chart_cols,
     colour1 = colour1, colour2 = colour2, colour3 = colour3, col_nums = col_nums, player_line = player_line,line_columns = line_columns)
