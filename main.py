@@ -715,21 +715,18 @@ def player():
                 player_line_db = player_line_db[['name','display','CleanSheet','Saves','SvDive','Recovery','ExpGAg']]
 
     if name in player_line_db['name'].unique():
-            print('NAME: found')
+        print('NAME: found')
+        player_line_df = player_line_db[player_line_db['name'] == name].copy()
+        player_line_df = new_col(player_line_df)
     else:
         print('NAME: not found')
         if display in player_line_db['name'].unique():
             print('DISPLAY NAME: found')
+            player_line_df = player_line_db[player_line_db['name'] == display].copy()
+            player_line_df = new_col(player_line_df)
+
         else:
             print('DISPLAY: not found')
-
-    player_line_df = player_line_db[player_line_db['name'] == name]
-    player_line_df = new_col(player_line_df)
-
-    if player_line_df.empty:
-        print('LINE: empty')
-        player_line_df = player_line_db[player_line_db['name'] == display]
-        player_line_df = new_col(player_line_df)
 
     def get_norm(data):
         df = data.copy()
