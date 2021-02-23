@@ -554,7 +554,11 @@ def player():
         pass
     else:
         print('NAME not present')
-        name = player_info[player_info['display'] == name]['name'].values[0]
+        try:
+            name = player_info[player_info['name'] == name]['name'].values[0]
+        except Exception as e:
+            print(e)
+            name = player_info[player_info['display'] == name]['name'].values[0]
 
     player = player_info[player_info['name'] == name]
     team = player['team'].values[0]
