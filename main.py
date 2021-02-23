@@ -726,7 +726,15 @@ def player():
             player_line_df = new_col(player_line_df)
 
         else:
-            print('DISPLAY: not found')
+            try:
+                print('DISPLAY NAME: search by last name')
+                player_line_df = player_line_db[player_line_db['name'].str.contains(display.split(' ')[-1])].copy()
+                player_line_df = new_col(player_line_df)
+            except:
+                print('DISPLAY: not found')
+                player_line_df = pd.DataFrame([[name,0,0,0,0,0,display],
+                                               [name,0,0,0,0,0,display],
+                                               [name,0,0,0,0,0,display]],columns=(['name','tch','b','c','d','e','display']))
 
     def get_norm(data):
         df = data.copy()
@@ -746,22 +754,23 @@ def player():
         except:
             return x
 
-    def build_player_line(data,name,display):
-        data = cpl_main.index_reset(data)
-        if 'G' in data.columns.values:
-            g = data.pop('G')
-            data.insert(1,'G',g)
-        df = data[data['name'] == name][data.columns[1:-1]].copy().T
-        if df.empty:
-            df = data[data['name'] == display][data.columns[1:-1]].copy().T
+    def build_player_line(data,display):
+        df = cpl_main.index_reset(data).copy()
+        if 'G' in df.columns.values:
+            g = df.pop('G')
+            df.insert(1,'G',g)
+        # get the columns headers
         line_columns = [x for x in data.columns[1:-1]]
-
+        # pop out the name related columns
+        for col in ['name','display']:
+            df.pop(col)
+        # get rid of any string symbols such as % and convert to float if needed
         for col in df.columns:
             df[col] = df[col].apply(lambda x: percentage_check(x))
 
-        return df, line_columns
+        return df.T, line_columns
 
-    player_line, line_columns = build_player_line(player_line_df,name,display)
+    player_line, line_columns = build_player_line(player_line_df,display)
     player_line = player_line.values.tolist()
     player_line_length = len(player_line) - 1
     player_line_end = len(player_line) - 1
