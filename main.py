@@ -342,10 +342,6 @@ def versus():
         game_form = pd.read_csv(f'datasets/{year}/cpl-{year}-game_form.csv')
     except:
         game_form = pd.DataFrame()
-    '''try:
-        team_rosters = pd.read_csv(f'datasets/{year}/cpl-{year}-team_rosters.csv')
-    except:
-        team_rosters = pd.DataFrame()'''
 
     results, team_ref, player_info, results_old, results_diff, schedule, results_brief = load_main_files(year)
     rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists, stats = load_player_files(year)
@@ -560,7 +556,7 @@ def player():
             name = player_info[player_info['name'] == name]['name'].values[0]
         except Exception as e:
             print(e)
-            sleep(2)
+            sleep(1)
             name = player_info[player_info['display'] == name]['name'].values[0]
 
     player = player_info[player_info['name'] == name]
@@ -679,17 +675,12 @@ def player():
     }
 
     details = {}
-    for word in ['display','number','nationality','graph','radar','team']:
-        if word in ['graph','radar']:
-            try:
-                details[word+'_image'] = player[player['display'] == name][word].values[0]
-            except:
-                details[word+'_image'] = ''
-        else:
-            try:
-                details[word] = player[player['display'] == name][word].values[0]
-            except:
-                details[word] = player[player['name'] == name][word].values[0]
+    for word in ['display','number','nationality','team']:
+        try:
+            details[word] = player[player['display'] == name][word].values[0]
+        except:
+            sleep(1)
+            details[word] = player[player['name'] == name][word].values[0]
     #line_back_colour = chart_team_colour_list[details[team]]
 
     if position.get(pos)[:1] == 'f':
@@ -703,8 +694,8 @@ def player():
         full = int(len(db.columns) - 2)
         col_nums = [half,full]
 
-    return render_template('cpl-es-player.html', name = details['display'], graph = details['graph_image'], player_line_length = player_line_length, player_line_end = player_line_end,
-    radar = details['radar_image'], nationality = details['nationality'], team_name = team, player_info = player, full_name = name, year = year,
+    return render_template('cpl-es-player.html', name = details['display'], player_line_length = player_line_length, player_line_end = player_line_end,
+    nationality = details['nationality'], team_name = team, player_info = player, full_name = name, year = year,
     team_colour = roster_colour, crest = crest, position = position.get(pos)[:-1], number = details['number'], chart_team_colour_list = geegle,
     stats = db, stats90 = db90, discipline = discipline, radar_chart = radar_chart, radar_chart_cols = radar_chart_cols,
     colour1 = colour1, colour2 = colour2, colour3 = colour3, col_nums = col_nums, player_line = player_line,line_columns = line_columns)
