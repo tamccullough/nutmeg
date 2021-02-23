@@ -84,7 +84,7 @@
   <div class="parent {{ theme }}-dark">
 
     <div class="{{ theme }}-dark">
-      <table class="sfont">
+      <table class="table-collapse sfont">
         <tr>
           <th style="text-align:left;width:3vw;">team</th>
           <th style="width:10vw;">name</th>
@@ -98,7 +98,7 @@
   <div class="parent {{ theme }}-light">
     <form method="POST" action="/player">
     <div class="{{ theme }}-light">
-      <table>
+      <table class="table-collapse sfont">
         {% for i in range(0,9) %}
         <tr>
             <td style="text-align:left;width:3vw;">{{ html_table.iloc[i]['team'] }}</td>
@@ -119,7 +119,7 @@
   <span><h4 class="{{ theme }}-dark indent"><b>rest of the table</b></h4></span>
   <div class="parent {{ theme }}-dark">
     <div class="{{ theme }}-dark">
-      <table class="sfont">
+      <table class="table-collapse sfont">
         <tr>
           <th style="text-align:left;width:3vw;">team</th>
           <th style="width:10vw;">name</th>
@@ -133,7 +133,7 @@
   <div class="parent {{ theme }}-light">
     <form method="POST" action="/player">
     <div class="{{ theme }}-light">
-      <table>
+      <table class="table-collapse sfont">
         {% for i in range(9,html_table.shape[0]) %}
         <tr>
             <td style="text-align:left;width:3vw;">{{ html_table.iloc[i]['team'] }}</td>
