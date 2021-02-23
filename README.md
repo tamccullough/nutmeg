@@ -1,6 +1,6 @@
 ![CANPL](https://pbs.twimg.com/profile_images/1191405045788676097/vk_lsh7F_200x200.jpg)
 
-[CANPLES Heroku App LINK](https://canples.herokuapp.com/)
+[CANPLES Heroku App LINK](https://canpl.herokuapp.com/)
 
 ## canpl-es
 CanPL Fan Site | analyse the satistics & results of the Canadian Premier League
