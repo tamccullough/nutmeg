@@ -580,10 +580,19 @@ def player():
     else:
         print('NAME not present')
         try:
-            name = player_info[player_info['name'] == name]['name'].values[0]
+            for i in range(0,4):
+                try:
+                    e = None
+                    print('TRYING TO FIND PLAYER')
+                    name = player_info[player_info['display'] == name]['name'].values[0]
+                except Exception as e:
+                    pass
+                if e:
+                    sleep(2)
+                else:
+                    break
         except Exception as e:
-            sleep(2)
-            name = player_info[player_info['display'] == name]['name'].values[0]
+            print(e)
 
     player = player_info[player_info['name'] == name]
     team = player['team'].values[0]
