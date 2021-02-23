@@ -7,6 +7,8 @@ from datetime import date
 today = date.today()
 this_year = date.today().strftime('%Y')
 
+from time import sleep
+
 import numpy as np
 import pandas as pd
 import re
@@ -558,6 +560,7 @@ def player():
             name = player_info[player_info['name'] == name]['name'].values[0]
         except Exception as e:
             print(e)
+            sleep(2)
             name = player_info[player_info['display'] == name]['name'].values[0]
 
     player = player_info[player_info['name'] == name]
