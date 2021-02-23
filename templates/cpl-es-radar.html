@@ -6,54 +6,44 @@
 {% block body %}{% endblock %}
 
 <!-- page content -->
-  <!-- body -->
-  <div class="mobile">
-        {% for name in team_list %}
-          <div class="parent {{ html_table[html_table['team'] == name ]['colour'] }}">
-            <span><h3 class="indent">{{ name }}</h3></span>
-                <div class="box center chartcontainer">
-                  <canvas id="{{ name }} Radar Mobile"></canvas>
-                </div>
 
-                <div class="box">
-                    <table>
-                      <tr>
-                        <td><a>Rolling X</a></td>
-                        <td><a>xG: {{ stats[stats['team'] == name]['xg'].values[0] }}</a></td>
-                        <td><a>xPPG: {{ stats[stats['team'] == name]['xp'].values[0] }}</a></td>
-                        <td><a> xPTS: {{ stats[stats['team'] == name]['xt'].values[0] }}</a></td>
-                      </tr>
-                    </table>
-                </div>
-             <div class="box chartcontainer">
-               <canvas id="{{ name }} Line Mobile"></canvas>
-             </div>
-           </div>
-           <br>
-           {% endfor %}
+<div>
+  {% for name in team_list %}
+  <div class="mobile">
+    <br>
+    <span><h3 class="indent">{{ name }}</h3></span>
+    <div class="{{ html_table[html_table['team'] == name ]['colour'] }}">
+      <table>
+        <tr>
+          <td><a> xG: {{ team_stats[ name ][0] }}</a></td>
+          <td><a> xA: {{ team_stats[ name ][1] }}</a></td>
+          <td><a> xPts: {{ team_stats[ name ][2] }}</a></td>
+        </tr>
+      </table>
     </div>
 
-<div class="desktop">
-  <div class="parent">
-      {% for name in team_list %}
-        <span><h3 class="indent">{{ name }}</h3></span>
-          <div class="child {{ html_table[html_table['team'] == name ]['colour'] }}">
-            <table>
-              <tr>
-                <td style="text-align:right;"><h3> expect Goals: </h3></td><td><h3> {{ team_stats[ name ][0] }}</h3></td>
-                <td style="text-align:right;"><h3> expected Assists: </h3></td><td><h3> {{ team_stats[ name ][1] }}</h3></td>
-                <td style="text-align:right;"><h3> expected Points: </h3></td><td><h3> {{ team_stats[ name ][2] }}</h3></td>
-              </tr>
-            </table>
-            <div class="boxs center chartcontainer">
-              <canvas id="{{ name }} Radar"></canvas>
-            </div>
-            <div class="boxl chartcontainer">
-               <canvas id="{{ name }} Line"></canvas>
-            </div>
-         </div>
-         {% endfor %}
   </div>
+  <div class="desktop">
+    <span><h3 class="indent">{{ name }}</h3></span>
+    <div class="{{ html_table[html_table['team'] == name ]['colour'] }}">
+      <table>
+        <tr>
+          <td style="text-align:right;"><h3> expect Goals: </h3></td><td><h3> {{ team_stats[ name ][0] }}</h3></td>
+          <td style="text-align:right;"><h3> expected Assists: </h3></td><td><h3> {{ team_stats[ name ][1] }}</h3></td>
+          <td style="text-align:right;"><h3> expected Points: </h3></td><td><h3> {{ team_stats[ name ][2] }}</h3></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="parent {{ html_table[html_table['team'] == name ]['colour'] }}">
+    <div class="boxs center chartcontainer">
+      <canvas id="{{ name }} Radar"></canvas>
+    </div>
+    <div class="boxl chartcontainer">
+      <canvas id="{{ name }} Line"></canvas>
+    </div>
+  </div>
+  {% endfor %}
 </div>
 
 {% endblock %}

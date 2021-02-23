@@ -1,0 +1,55 @@
+
+{% if request.endpoint == 'todate' %}
+{% set button1 = 'action' %}
+{% set button2 = 'dark' %}
+{% set style = 'display:none;' %}
+{% else %}
+{% set button1 = 'dark' %}
+{% set button2 = 'action' %}
+{% set style = 'display:block;' %}
+{% endif %}
+
+
+<div class="parent">
+  <div class="boxs center {{ theme }}-{{ button1 }}">
+    <a class="{{ theme }}-{{ button1 }} button" href="/standings">Standings</a>
+  </div>
+  <div class="boxs center {{ theme }}-{{ button2 }}">
+    <a class="{{ theme }}-{{ button2 }} button" href="/todate" >Year to Date</a>
+  </div>
+</div>
+
+
+<div class="mobile">
+  <form method="post" action="{{ url_for(request.endpoint) }}">
+    <div class="parent">
+    <div class="boxs sfont" style="width:100%;">
+      <a><b>{{ headline }} {{ year }}</b></a>
+    </div>
+    <div class="form boxs">
+      <select style="{{ style }}" name="year" id="year" onchange="this.form.submit();">
+        <option value="">select year</option>
+        <option value="2020">2020</option>
+        <option value="2019">2019</option>
+      </select>
+      </div>
+  </div>
+  </form>
+</div>
+
+<div class="desktop">
+  <form method="post" action="{{ url_for(request.endpoint) }}">
+    <div class="parent">
+      <div class="box">
+        <h3 style="padding: 10px;"><b>{{ headline }} {{ year }}</b></h3>
+      </div>
+      <div class="form box">
+        <select style="{{ style }}" name="year" id="year" onchange="this.form.submit();">
+          <option value="">select year</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+        </select>
+        </div>
+    </div>
+  </form>
+</div>

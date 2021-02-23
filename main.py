@@ -252,6 +252,30 @@ def index():
     first_crest = first_crest, first_colour = first_colour, top_crest = top_crest, bot_crest = bot_crest,
     headline = headline)
 
+@canples.route('/todate', methods=['GET','POST'])
+def todate():
+
+    season_totals_19 = pd.read_csv('datasets/2019/league/2019-season_totals.csv')
+    season_totals_20 = pd.read_csv('datasets/2020/league/2020-season_totals.csv')
+    yeartodate_season_total = pd.read_csv('datasets/2021/league/2021-yeartodate_season_totals.csv')
+
+    team_form_results = pd.read_csv(f'datasets/{year}/cpl-{year}-team_form.csv')
+    team_ref = pd.read_csv(f'datasets/teams.csv')
+    team_ref = team_ref[team_ref['year'] == int(year)]
+
+    def get_crest(data,column):
+        data['crest'] = '-'
+        for i in range(data.shape[0]):
+            data.at[i,'crest'] = team_ref[team_ref['team'] == data.at[i,column]]['crest'].values[0]
+        return data
+
+    columns = yeartodate_season_total.columns
+
+    return render_template('cpl-es-todate.html',columns = columns,
+    championship_table = yeartodate_season_total, standings_table = season_totals_19, playoffs_table = season_totals_20,
+    form_table = team_form_results, year = this_year,
+    headline = 'Year to Date')
+
 @canples.route('/standings', methods=['GET','POST'])
 def standings():
 
@@ -555,8 +579,7 @@ def player():
         try:
             name = player_info[player_info['name'] == name]['name'].values[0]
         except Exception as e:
-            print(e)
-            sleep(1)
+            sleep(2)
             name = player_info[player_info['display'] == name]['name'].values[0]
 
     player = player_info[player_info['name'] == name]
@@ -585,6 +608,43 @@ def player():
     radar_chart = cpl_main .index_reset(radar_chart)
     radar_chart_cols = "'"+"', '".join(radar_chart.columns)+"'"
     db = db[db['name'] == name][db.columns]
+    if db.empty:
+        print('Stats Empty')
+
+        db = pd.read_csv(f'datasets/{year}/playerstats/{year}-{position.get(pos)}.csv')
+        db = db.min()
+        db = cpl_main.index_reset(db)
+        for col in db.select_dtypes(include=np.number).columns:
+            db[col] = 0
+        db['Min'] = 0
+
+        radar_chart = db.copy()
+        radar_chart = radar_chart[radar_chart.columns[6:-1]]
+        radar_chart_cols = "'"+"', '".join(radar_chart.columns)+"'"
+
+        discipline = pd.read_csv(f'datasets/{year}/playerstats/{year}-discipline.csv')
+        discipline = discipline.min()
+        discipline = cpl_main.index_reset(discipline)
+        for col in discipline.select_dtypes(include=np.number).columns:
+            db[col] = 0
+
+        details = {}
+        for word in ['display','number','nationality','team']:
+            try:
+                details[word] = player[player['display'] == name][word].values[0]
+            except:
+                sleep(1)
+                details[word] = player[player['name'] == name][word].values[0]
+
+        player_line = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+        geegle = ['#000','#fff','#ffd700','#ff00ff','#4a86e8','#0000ff','#9900ff','#ff00ff']
+
+        return render_template('cpl-es-player.html', name = details['display'], player_line_length = 1, player_line_end = 1,
+        nationality = details['nationality'], team_name = team, player_info = player, full_name = name, year = year,
+        team_colour = roster_colour, crest = crest, position = position.get(pos)[:-1], number = details['number'], chart_team_colour_list = geegle,
+        stats = db, stats90 = db, discipline = discipline, radar_chart = radar_chart, radar_chart_cols = radar_chart_cols,
+        colour1 = colour1, colour2 = colour2, colour3 = colour3, col_nums = [0,5], player_line = player_line,line_columns = ['NA','NA','NA','NA','NA','NA'])
+
     db90 = db90[db90['name'] == name][db90.columns]
     discipline = discipline[discipline['name'] == name]
 
@@ -626,8 +686,6 @@ def player():
             player_line_db.insert(1,'G',g)
         if string == 'display':
             name = player_info[player_info['name'] == name]['display'].values[0]
-        else:
-            pass
         data = player_line_db[player_line_db[string] == name][player_line_db.columns[1:-1]].copy().T
         line_columns = [x for x in player_line_db.columns[1:-1]]
 
@@ -649,30 +707,7 @@ def player():
         player_line, line_columns = build_player_line(player_line_db,name,string='display')
         player_line = cpl_main.index_reset(player_line).values.tolist()
 
-    chart_team_colour_list = ['#fa5252','#ffa64a','#88de62','#67bccf','#508ceb','#5199db','#6c51bd','#bf5c90']*2
-    cav = ["#007f5f","#2b9348","#55a630","#80b918","#aacc00","#bfd200","#d4d700","#dddf00","#eeef20","#ffff3f"]
-    ato = ["#03045e","#023e8a","#0077b6","#0096c7","#00b4d8","#48cae4","#90e0ef","#ade8f4","#caf0f8"]
-    forge = ["#03071e","#370617","#6a040f","#9d0208","#d00000","#dc2f02","#e85d04","#f48c06","#faa307","#ffba08"]
-    pastels = ["#7400b8","#6930c3","#5e60ce","#5390d9","#4ea8de","#48bfe3","#56cfe1","#64dfdf","#72efdd","#80ffdb"]
-    pastels2 = ["#f72585","#b5179e","#7209b7","#560bad","#480ca8","#3a0ca3","#3f37c9","#4361ee","#4895ef","#4cc9f0"]
-    oranges = ["#ff4800","#ff5400","#ff6000","#ff6d00","#ff7900","#ff8500","#ff9100","#ff9e00","#ffaa00","#ffb600"]
-    val = ["#ff7b00","#ff8800","#ff9500","#ffa200","#ffaa00","#ffb700","#ffc300","#ffd000","#ffdd00","#ffea00"]
-    grays = ["#eaeaea","#c0c1c4","#abadb1","#96989e","#81848b","#6c6f78","#63666f","#535761","#424651"]
-    blues2 = ["#0466c8","#0353a4","#023e7d","#002855","#001845","#001233","#33415c","#5c677d","#7d8597","#979dac"]
-    geegle = ['#ff9900','#ffff00','#4a86e8','#ff00ff','#4a86e8','#0000ff','#9900ff','#ff00ff']
     geegle = ['#000','#fff','#ffd700','#ff00ff','#4a86e8','#0000ff','#9900ff','#ff00ff']
-    google = ['#df0772','#fe546f','#ff9e7d','#ffd080','#01cbcf','#0188a5','#6450a6']
-
-    chart_team_colour_list = {
-    '#102f52' : ["#03045e","#023e8a","#0077b6","#0096c7","#00b4d8","#48cae4","#90e0ef","#ade8f4","#caf0f8"],
-    '#335525' : ["#007f5f","#2b9348","#55a630","#80b918","#aacc00","#bfd200","#d4d700","#dddf00","#eeef20","#ffff3f"],
-    '#0c2340' : ["#0466c8","#0353a4","#023e7d","#002855","#001845","#001233","#33415c","#5c677d","#7d8597","#979dac"],
-    '#53565a' : ["#eaeaea","#c0c1c4","#abadb1","#96989e","#81848b","#6c6f78","#63666f","#535761","#424651"],
-    '#052049' : ['#006666','#3300CC','#3333FF','#0033CC','#003399','#006699','#006666','#3399CC'],
-    '#00b7bd' : ["#7400b8","#6930c3","#5e60ce","#5390d9","#4ea8de","#48bfe3","#56cfe1","#64dfdf","#72efdd","#80ffdb"],
-    '#b9975b' : ["#ff7b00","#ff8800","#ff9500","#ffa200","#ffaa00","#ffb700","#ffc300","#ffd000","#ffdd00","#ffea00"],
-    '#003b5c' : ["#03045e","#023e8a","#0077b6","#0096c7","#00b4d8","#48cae4","#90e0ef","#ade8f4","#caf0f8"]
-    }
 
     details = {}
     for word in ['display','number','nationality','team']:
@@ -681,7 +716,6 @@ def player():
         except:
             sleep(1)
             details[word] = player[player['name'] == name][word].values[0]
-    #line_back_colour = chart_team_colour_list[details[team]]
 
     if position.get(pos)[:1] == 'f':
         length = len(db.columns)

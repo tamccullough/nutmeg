@@ -2,130 +2,59 @@
 {% block content %}
 
 <!-- page content -->
-<div class="mobile">
-  <div class="parent">
-    <div class="boxs center">
-      <img src="static/images/flags/{{ crest }}" alt="{{ team_name }} Crest" style="max-height:60px">
-    </div>
-    <div class="boxs">
-      <br>
-      <h3><b>{{ team_name }}</b></h3>
-      <a>{{ year }} Roster (click name to view)</a>
-    </div>
-  </div>
-  <div class="{{ team_colour }} center">
-    <table>
-      <tr>
-        <td><a> xG: {{ team_stats[0] }}</a></td>
-        <td><a> xA: {{ team_stats[1] }}</a></td>
-        <td><a> xPts: {{ team_stats[2] }}</a></td>
-      </tr>
-    </table>
-  </div>
-  <div class="{{ team_colour }} chartcontainer">
-    <canvas id="teamLineMobile"></canvas>
-  </div>
-  <!-- body -->
-  <!-- team information section -->
-  <div class="parent">
-      <div class="boxs {{ team_colour }}">
-        <canvas id="teamRadarMobile"></canvas>
-      </div>
-
-      <!-- COACH section -->
-      <div class="boxs {{ team_colour }}">
-        <div class="parent">
-          <div class="boxs">
-            <div class="center" style="width:100%;">
-              <a><img src="static/images/flags/{{ coach['country'].values[0] }}" alt="{{ coach['country'].values[0][:-4] }}" style="max-height:20px"></a>
-            </div>
-            <table>
-              <tr>
-                <th><b>Club</b></th>
-                <th><b>Coach</b></th>
-              </tr>
-              <tr>
-                <td>Wins: <b>{{ coach['w'].values[0]}}</b></td>
-                <td>Wins: <b>{{ coach['cw'].values[0]}}</b></td>
-              </tr>
-              <tr>
-                <td>Draws: <b>{{ coach['d'].values[0] }}</b></td>
-                <td>Draws: <b>{{ coach['cd'].values[0] }}</b></td>
-              </tr>
-              <tr>
-                <td>Losses: <b>{{ coach['l'].values[0] }}</b></td>
-                <td>Losses: <b>{{ coach['cl'].values[0] }}</b></td>
-              </tr>
-            </table>
-          </div>
-          <div class="boxs">
-            <span><h3 style="text-indent: 50px;">{{ coach['coach'].values[0] }}</h3><span>
-            <div class="center">
-                <a><img src="static/images/players/{{ year }}/{{ coach['image'].values[0] }}" alt="photo of {{ coach['coach'].values[0] }}" style="max-height:100px"></a><br>
-            </div>
-          </div>
-        </div>
-        </div>
-      <!-- END OF COACH section -->
-  </div>
-  <!-- end of team information section -->
-  <div class="parent">
-      {%for i in range(0,html_table.shape[0])%}
-      <div class="boxs {{ team_colour }}">
-        <form method="POST" action="/player">
-          <span><a href="{{ url_for('player') }}"><input class="{{ team_colour }} button" type="submit" id="name" name="name" value="{{ html_table.iloc[i]['name'] }}" style="width:100%;"></a><span>
-          <div  style="text-align: center;">
-            <img src="static/images/players/{{ year }}/{{ html_table.iloc[i]['image'] }}" alt="photo of {{ html_table.iloc[i]['name'] }}" style="max-height:100px">
-          </div>
-          <table>
-            <tr>
-              <td style="text-align: center;"><img src="static/images/flags/{{ html_table.iloc[i]['flag'] }}" alt="{{ html_table.iloc[i]['flag'] }}" style="max-height:30px"></td>
-              <td style="text-align: center;"><h3>{{ html_table.iloc[i]['number'] }}</h3></td>
-            </tr>
-            <tr>
-              {% if html_table.iloc[i]['position'] == 'f' %}
-                  <td style="text-align: center;"><a>Attacker</a></td>
-              {% elif html_table.iloc[i]['position'] == 'm' %}
-                  <td style="text-align: center;"><a>Midfielder</a></td>
-              {% elif html_table.iloc[i]['position'] == 'd' %}
-                  <td style="text-align: center;"><a>Defender</a></td>
-              {% else %}
-                  <td style="text-align: center;"><a>Goalkeeper</a></td>
-              {% endif %}
-              <td style="text-align: center;"><a>Ovrl: {{ html_table.iloc[i]['overall'] }}</a></td>
-            </tr>
-          </table>
-        </form>
-      </div>
-      {%endfor%}
-  </div>
-</div>
-<!-- end of mobile section -->
 <!-- desktop section -->
-<div class="desktop">
+<div>
+  <div class="mobile">
+    <div class="parent">
+      <div class="boxs center">
+        <img src="static/images/flags/{{ crest }}" alt="{{ team_name }} Crest" style="max-height:60px">
+      </div>
+      <div class="boxm">
+        <h3 style="display:inline;"><b>{{ team_name }} </b></h3>
+        <p> {{ year }} team info / roster</p>
+        <p>(click name to view)</p>
+      </div>
+    </div>
+    <div class="center">
+      <table>
+        <tr>
+          <td style="text-align:right;"><h3> xG: {{ team_stats[0] }}</h3></td>
+          <td style="text-align:right;"><h3> xA: {{ team_stats[1] }}</h3></td>
+          <td style="text-align:right;"><h3> xPts: {{ team_stats[2] }}</h3></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="desktop">
+    <div class="parent">
+      <div class="boxs center">
+        <img src="static/images/flags/{{ crest }}" alt="{{ team_name }} Crest" style="max-height:80px">
+      </div>
+      <div class="boxl">
+        <br>
+        <h1 style="display:inline;"><b>{{ team_name }} </b></h1>
+        <a style="display:inline;padding:25px;"> {{ year }} team info / roster (click name to view)</a>
+      </div>
+    </div>
+    <div class="{{ team_colour }} center">
+      <table>
+        <tr>
+          <td style="text-align:right;"><h3> expected Goals: </h3></td><td><h3> {{ team_stats[0] }}</h3></td>
+          <td style="text-align:right;"><h3> expected Assists: </h3></td><td><h3> {{ team_stats[1] }}</h3></td>
+          <td style="text-align:right;"><h3> expected Points: </h3></td><td><h3> {{ team_stats[2] }}</h3></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
   <div class="parent">
-    <div class="boxs center">
-      <img src="static/images/flags/{{ crest }}" alt="{{ team_name }} Crest" style="max-height:80px">
+    <div class="{{ team_colour }} chartcontainer">
+      <canvas id="teamLine"></canvas>
     </div>
-    <div class="boxl">
-      <br>
-      <h1 style="display:inline;"><b>{{ team_name }} </b></h1>
-      <a style="display:inline;padding:25px;"> {{ year }} team info / roster (click name to view)</a>
-    </div>
-  </div>
-  <div class="{{ team_colour }} center">
-    <table>
-      <tr>
-        <td style="text-align:right;"><h3> expected Goals: </h3></td><td><h3> {{ team_stats[0] }}</h3></td>
-        <td style="text-align:right;"><h3> expected Assists: </h3></td><td><h3> {{ team_stats[1] }}</h3></td>
-        <td style="text-align:right;"><h3> expected Points: </h3></td><td><h3> {{ team_stats[2] }}</h3></td>
-      </tr>
-    </table>
-  </div>
-  <div class="{{ team_colour }} chartcontainer">
-    <canvas id="teamLine"></canvas>
   </div>
   <!-- team information section -->
+
   <div class="parent">
       <div class="boxs {{ team_colour }} chartcontainer">
         <canvas id="teamRadar"></canvas>

@@ -5,6 +5,11 @@
 {% include "standings-form.html" %}
 {% block body %}{% endblock %}
 
+<!--div class="parent">
+  <div>
+      <h3 style="padding: 10px;"><b>{{ headline }} {{ year }}</b></h3>
+  </div>
+</div-->
 <!-- page content -->
   <!-- body -->
 <div class="mobile">
@@ -151,8 +156,7 @@
 
   <!-- championship -->
 <div class="desktop">
-  {% if championship_table is defined %}
-  <span><h3 class="{{ theme }}-dark indent"><b>Championship</b></h3></span>
+  <span><h3 class="{{ theme }}-dark indent"><b>Complete Table</b></h3></span>
   <div class="{{ theme }}-dark">
       <div class="{{ theme }}-dark">
         <table>
@@ -193,15 +197,9 @@
       </div>
     </div>
     <!-- end of championship-->
-    {% else %}
-    {% endif %}
 
-    {% if playoffs_table is defined %}
-    {% if year == '2019' %}
-    <span><h3 class="{{ theme }}-dark indent"><b>Summer Season</b></h3></span>
-    {% else %}
-    <span><h3 class="{{ theme }}-dark indent"><b>Playoffs</b></h3></span>
-    {% endif %}
+    <span><h3 class="{{ theme }}-dark indent"><b>2020 Season</b></h3></span>
+
     <!-- playoffs -->
     <div class="{{ theme }}-dark">
       <div class="{{ theme }}-dark">
@@ -243,14 +241,8 @@
       </div>
     </div>
       <!-- end of playoffs -->
-    {% else %}
-    {% endif %}
 
-    {% if year == '2019' %}
-    <span><h3 class="{{ theme }}-dark indent"><b>Spring Season</b></h3></span>
-    {% else %}
-    <span><h3 class="{{ theme }}-dark indent"><b>Regular Season</b></h3></span>
-    {% endif %}
+    <span><h3 class="{{ theme }}-dark indent"><b>2019 Season</b></h3></span>
     <!-- regular season -->
     <div class="{{ theme }}-dark">
       <div class="{{ theme }}-dark">
@@ -292,33 +284,6 @@
       </div>
     </div>
       <!-- end of regular season-->
-      <!-- form -->
-      <span><h3 class="{{ theme }}-dark"><b>Form</b></h3></span>
-        <div>
-          <div class="parent {{ theme }}-dark">
-            <div class="t-center" style="display:inline;width:15%;"><a>club</a></div>
-            <div class="t-center" style="display:inline;width:85%;"><a>game</a></div>
-          </div>
-          <div class="{{ theme }}-light">
-            <table>
-              <tr>
-                <td style="width:15%;"><b>team </b></td>
-                {% for i in range(1,form_table.shape[1]-1) %}
-                <td class="t-center">{{ i }}</td>
-                {% endfor %}
-              </tr>
-              {%for i in range(0,form_table.shape[0])%}
-              <tr class="{{ theme }}-light">
-                <td class="t-left" style="width:15%;">{{ form_table.iloc[i][0] }}</td>
-                {%for j in range(1,form_table.shape[1]-1)%}
-                <td class="{{ theme }}-{{'green' if form_table.iloc[i][j][0] == 'W' else 'red' if form_table.iloc[i][j][0] == 'L' else 'orange' if form_table.iloc[i][j][0] == 'D' else '{{ theme }}-m'}}" style="text-align:center;padding: 15px 5px;">{{ form_table.iloc[i][j][0] }}</td>
-                {%endfor%}
-              </tr>
-              {%endfor%}
-            </table>
-            <br>
-          </div>
-        </div>
 </div>
 
 

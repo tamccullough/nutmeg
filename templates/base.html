@@ -29,8 +29,7 @@
 
   .chartcontainer {
     position:relative;
-    min-height:auto;
-    width:100%;
+    max-height:250px;
     display: flex;
     flex-grow:1;
   }
@@ -71,8 +70,6 @@
             <h4 class="green-bar">links</h4>
             <table>
               <tr>
-                <td class="t-center"><a class="button" href="https://canpl.ca/" target="_blank"><img style="min-width:30px;width:3vw;margin:-8px;text-align:center;" src="static/images/flags/cpl_logo.png" alt="CPL Crest"></a></td>
-                <td class="t-center"><a class="button" href="https://onesoccer.ca/" target="_blank"><img style="min-width:30px;width:3vw;margin:-8px;text-align:center;" src="static/images/flags/os-logo.svg" alt="One Soccer Crest"></a></td>
                 <td class="t-center"><a class="button" href="https://atleticoottawa.canpl.ca/" target="_blank"><img style="min-width:30px;width:3vw;margin:-8px;text-align:center;" src="static/images/flags/Atletico_Ottawa_nav.png" alt="Atletico Ottawa Crest"></a></td>
                 <td class="t-center"><a class="button" href="https://cavalryfc.canpl.ca/" target="_blank"><img style="min-width:30px;width:3vw;margin:-8px;text-align:center;" src="static/images/flags/cavalry_fc_nav.png" alt="Cavalry FC Crest"></a></td>
                 <td class="t-center"><a class="button" href="https://fcedmonton.canpl.ca/" target="_blank"><img style="min-width:30px;width:3vw;margin:-8px;text-align:center;" src="static/images/flags/FC_Edmonton_nav.png" alt="FC Edmonton Crest"></a></td>
@@ -154,76 +151,6 @@
               {{ player_line[player_line_end] | safe}}
             ],
             fill: true,
-            borderColor: '{{ geegle[player_line_end] }}',
-            backgroundColor: '{{ geegle[player_line_end] }}'+'33',
-            pointHoverRadius: 10,
-            pointHoverBackgroundColor: '{{ geegle[player_line_end] }}'
-          }
-        ],
-      },
-      options: {
-        maintainAspectRatio: false,
-        tooltips: {
-          titleFontSize: 18,
-          bodyFontSize: 18
-        },
-        legend: {
-            display: false,
-        },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                fontColor: '{{ colour3 }}'
-              }
-            }
-          ],
-          xAxes: [
-            {
-              ticks: {
-                fontColor: '{{ colour3 }}'
-              }
-            }
-          ]
-        }
-      }
-    });
-    new Chart(document.getElementById('playerLineMobile'), {
-      type: 'line',
-      data: {
-        labels: [
-          {% for x in range(1,(player_line[0] | length)-1) %}
-          {{ x }},
-          {% endfor %}
-          {{ (player_line[0] | length) }}
-        ],
-        datasets: [
-          {% for i in range((player_line | length) -1) %}
-          {
-            label: '{{line_columns[i]}}',
-            data: [
-              {% for x in range(player_line[i] | length -1) %}
-              {{ player_line[i][x] | safe }},
-              {% endfor %}
-              {{ player_line[i][-1] | safe}}
-
-            ],
-            fill: true,
-            borderColor: '{{ geegle[i] }}',
-            backgroundColor: '{{ geegle[i] }}'+'33',
-            pointHoverRadius: 10,
-            pointHoverBackgroundColor: '{{ geegle[i] }}'
-          },
-          {% endfor %}
-          {
-            label: '{{ line_columns[-1] }}',
-            data: [
-              {% for j in range(player_line[-1] | length -1) %}
-              {{ player_line[-1][j] | safe }},
-              {% endfor %}
-              {{ player_line[-1][-1] | safe}}
-            ],
-            fill: true,
             borderColor: '{{ geegle[-1] }}',
             backgroundColor: '{{ geegle[-1] }}'+'33',
             pointHoverRadius: 10,
@@ -273,6 +200,7 @@
         }]
       },
       options: {
+        maintainAspectRatio: false,
         tooltips: {
           titleFontSize: 18,
           bodyFontSize: 18
@@ -295,49 +223,6 @@
           pointLabels: {
             fontColor: '{{ colour3 }}',
             fontSize: 14,
-            fontFamily: "'Lato', sans-serif"
-          }
-        }
-      }
-    });
-    new Chart(document.getElementById('playerRadarMobile'), {
-      type: 'radar',
-      data: {
-        labels: [{{ radar_chart_cols | safe }}],
-        datasets: [{
-          data: [{{ radar_chart.loc[0].values[:]|join(',') }}],
-          fill: true,
-          backgroundColor: '{{ colour2 }}'+'BF',
-          borderColor: '{{ colour2 }}',
-          pointHoverRadius: 10,
-          pointHoverBackgroundColor: "#fff",
-          pointBackgroundColor: '{{ colour2 }}'
-        }]
-      },
-      options: {
-        maintainAspectRatio: false,
-        tooltips: {
-          titleFontSize: 10,
-          bodyFontSize: 10
-        },
-        legend: {
-          display: false
-        },
-        borderWidth: 10,
-        scale: {
-          ticks: {
-            display: false,
-            beginAtZero: true,
-            maxTicksLimit: 10,
-            max: 1
-          },
-          gridLines: {
-            lineWidth: 0.5,
-            color: '#fff'
-          },
-          pointLabels: {
-            fontColor: '{{ colour3 }}',
-            fontSize: 10,
             fontFamily: "'Lato', sans-serif"
           }
         }
@@ -416,76 +301,6 @@
       }
     }
   });
-  new Chart(document.getElementById('teamLineMobile'), {
-    type: 'line',
-    data: {
-      labels: [
-        {% for x in range(1,(team_line[0] | length)-1) %}
-        {{ x }},
-        {% endfor %}
-        {{ (team_line[0] | length) }}
-      ],
-      datasets: [
-        {% for i in range((team_line | length) -1) %}
-        {
-          label: '{{ team_chart_columns[i] }}',
-          data: [
-            {% for x in range(team_line[i] | length -1) %}
-            {{ team_line[i][x] | safe }},
-            {% endfor %}
-            {{ team_line[i][-1] | safe}}
-
-          ],
-          fill: true,
-          borderColor: '{{ geegle[i] }}',
-          backgroundColor: '{{ geegle[i] }}'+'33',
-          pointHoverRadius: 10,
-          pointHoverBackgroundColor: '{{ geegle[i] }}'
-        },
-        {% endfor %}
-        {
-          label: '-',
-          data: [
-            {% for j in range(team_line[-1] | length -1) %}
-            {{ team_line[-1][j] | safe }},
-            {% endfor %}
-            {{ team_line[-1][-1] | safe}}
-          ],
-          fill: true,
-          borderColor: '{{ geegle[-1] }}',
-          backgroundColor: '{{ geegle[-1] }}'+'33',
-          pointHoverRadius: 10,
-          pointHoverBackgroundColor: '{{ geegle[-1] }}'
-        }
-      ],
-    },
-    options: {
-      maintainAspectRatio: true,
-      tooltips: {
-        titleFontSize: 18,
-        bodyFontSize: 18
-      },
-      legend: {
-          display: false,
-      },
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              fontColor: '#fff'
-            }
-          }
-        ],
-        xAxes: [
-          {
-            ticks: {
-              fontColor: '#fff'
-            }
-          }
-        ]
-      }
-    }
-  });
     new Chart(document.getElementById('teamRadar'), {
       type: 'radar',
       data: {
@@ -501,48 +316,7 @@
         }]
       },
       options: {
-        tooltips: {
-          titleFontSize: 18,
-          bodyFontSize: 18
-        },
-        legend: {
-          display: false
-        },
-        borderWidth: 10,
-        scale: {
-          ticks: {
-            display: false,
-            beginAtZero: true,
-            maxTicksLimit: 10,
-            max: 1
-          },
-          gridLines: {
-            lineWidth: 0.5,
-            color: '#fff'
-          },
-          pointLabels: {
-            fontColor: '#fff',
-            fontSize: 16,
-            fontFamily: "'Lato', sans-serif"
-          }
-        }
-      }
-    });
-    new Chart(document.getElementById('teamRadarMobile'), {
-      type: 'radar',
-      data: {
-        labels: ['finish','def','att','mid','net','big','save','goals'],
-        datasets: [{
-          data: [{{ radar.loc[0].values[1:] | join(', ') | safe }}],
-          fill: true,
-          backgroundColor: '{{ colour2 }}'+'BF',
-          borderColor: '{{ colour2 }}',
-          pointHoverRadius: 10,
-          pointHoverBackgroundColor: "#fff",
-          pointBackgroundColor: '{{ colour2 }}'
-        }]
-      },
-      options: {
+        maintainAspectRatio: false,
         tooltips: {
           titleFontSize: 18,
           bodyFontSize: 18
@@ -756,48 +530,7 @@
           }]
         },
         options: {
-          tooltips: {
-            titleFontSize: 18,
-            bodyFontSize: 18
-          },
-          legend: {
-            display: false
-          },
-          borderWidth: 10,
-          scale: {
-            ticks: {
-              display: false,
-              beginAtZero: true,
-              maxTicksLimit: 10,
-              max: 1
-            },
-            gridLines: {
-              lineWidth: 0.5,
-              color: '#fff'
-            },
-            pointLabels: {
-              fontColor: '#fff',
-              fontSize: 16,
-              fontFamily: "'Lato', sans-serif"
-            }
-          }
-        }
-      });
-      new Chart(document.getElementById('Atlético Ottawa Radar Mobile'), {
-        type: 'radar',
-        data: {
-          labels: ['finish','def','att','mid','net','big','save','goals'],
-          datasets: [{
-            data: [{{ radar.loc[0].values[1:]|join(', ') }}],
-            fill: true,
-            backgroundColor: '#102f52'+'BF',
-            borderColor: '#102f52',
-            pointHoverRadius: 10,
-            pointHoverBackgroundColor: '#102f52',
-            pointBackgroundColor: '#102f52'
-          }]
-        },
-        options: {
+          maintainAspectRatio: false,
           tooltips: {
             titleFontSize: 18,
             bodyFontSize: 18
@@ -1337,6 +1070,7 @@
         }]
       },
       options: {
+        maintainAspectRatio: false,
         tooltips: {
           titleFontSize: 18,
           bodyFontSize: 18
@@ -1380,6 +1114,7 @@
         }]
       },
       options: {
+        maintainAspectRatio: false,
         tooltips: {
           titleFontSize: 18,
           bodyFontSize: 18
@@ -1423,6 +1158,7 @@
         }]
       },
       options: {
+        maintainAspectRatio: false,
         tooltips: {
           titleFontSize: 18,
           bodyFontSize: 18
@@ -1466,6 +1202,7 @@
         }]
       },
       options: {
+        maintainAspectRatio: false,
         tooltips: {
           titleFontSize: 18,
           bodyFontSize: 18
@@ -1509,6 +1246,7 @@
         }]
       },
       options: {
+        maintainAspectRatio: false,
         tooltips: {
           titleFontSize: 18,
           bodyFontSize: 18
@@ -1552,6 +1290,7 @@
         }]
       },
       options: {
+        maintainAspectRatio: false,
         tooltips: {
           titleFontSize: 18,
           bodyFontSize: 18
@@ -1595,6 +1334,7 @@
         }]
       },
       options: {
+        maintainAspectRatio: false,
         tooltips: {
           titleFontSize: 18,
           bodyFontSize: 18
@@ -1622,308 +1362,6 @@
         }
       }
     });
-
-  new Chart(document.getElementById('Cavalry FC Radar Mobile'), {
-    type: 'radar',
-    data: {
-      labels: ['finish','def','att','mid','net','big','save','goals'],
-      datasets: [{
-        data: [{{ radar.loc[1-check].values[1:]|join(', ') }}],
-        fill: true,
-        backgroundColor: '#335525'+'BF',
-        borderColor: '#335525',
-        pointHoverRadius: 10,
-        pointHoverBackgroundColor: "#fff",
-        pointBackgroundColor: '#335525'
-      }]
-    },
-    options: {
-      tooltips: {
-        titleFontSize: 18,
-        bodyFontSize: 18
-      },
-      legend: {
-        display: false
-      },
-      borderWidth: 10,
-      scale: {
-        ticks: {
-          display: false,
-          beginAtZero: true,
-          maxTicksLimit: 10,
-          max: 1
-        },
-        gridLines: {
-          lineWidth: 0.5,
-          color: '#fff'
-        },
-        pointLabels: {
-          fontColor: '#fff',
-          fontSize: 16,
-          fontFamily: "'Lato', sans-serif"
-        }
-      }
-    }
-  });
-
-  new Chart(document.getElementById('FC Edmonton Radar Mobile'), {
-    type: 'radar',
-    data: {
-      labels: ['finish','def','att','mid','net','big','save','goals'],
-      datasets: [{
-        data: [{{ radar.loc[2-check].values[1:]|join(', ') }}],
-        fill: true,
-        backgroundColor: '#0c2340'+'BF',
-        borderColor: '#0c2340',
-        pointHoverRadius: 10,
-        pointHoverBackgroundColor: "#fff",
-        pointBackgroundColor: '#0c2340'
-      }]
-    },
-    options: {
-      tooltips: {
-        titleFontSize: 18,
-        bodyFontSize: 18
-      },
-      legend: {
-        display: false
-      },
-      borderWidth: 10,
-      scale: {
-        ticks: {
-          display: false,
-          beginAtZero: true,
-          maxTicksLimit: 10,
-          max: 1
-        },
-        gridLines: {
-          lineWidth: 0.5,
-          color: '#fff'
-        },
-        pointLabels: {
-          fontColor: '#fff',
-          fontSize: 16,
-          fontFamily: "'Lato', sans-serif"
-        }
-      }
-    }
-  });
-
-  new Chart(document.getElementById('Forge FC Radar Mobile'), {
-    type: 'radar',
-    data: {
-      labels: ['finish','def','att','mid','net','big','save','goals'],
-      datasets: [{
-        data: [{{ radar.loc[3-check].values[1:]|join(', ') }}],
-        fill: true,
-        backgroundColor: '#53565a'+'BF',
-        borderColor: '#53565a',
-        pointHoverRadius: 10,
-        pointHoverBackgroundColor: "#fff",
-        pointBackgroundColor: '#53565a'
-      }]
-    },
-    options: {
-      tooltips: {
-        titleFontSize: 18,
-        bodyFontSize: 18
-      },
-      legend: {
-        display: false
-      },
-      borderWidth: 10,
-      scale: {
-        ticks: {
-          display: false,
-          beginAtZero: true,
-          maxTicksLimit: 10,
-          max: 1
-        },
-        gridLines: {
-          lineWidth: 0.5,
-          color: '#fff'
-        },
-        pointLabels: {
-          fontColor: '#fff',
-          fontSize: 16,
-          fontFamily: "'Lato', sans-serif"
-        }
-      }
-    }
-  });
-
-  new Chart(document.getElementById('HFX Wanderers FC Radar Mobile'), {
-    type: 'radar',
-    data: {
-      labels: ['finish','def','att','mid','net','big','save','goals'],
-      datasets: [{
-        data: [{{ radar.loc[4-check].values[1:]|join(', ') }}],
-        fill: true,
-        backgroundColor: '#052049'+'BF',
-        borderColor: '#052049',
-        pointHoverRadius: 10,
-        pointHoverBackgroundColor: "#fff",
-        pointBackgroundColor: '#052049'
-      }]
-    },
-    options: {
-      tooltips: {
-        titleFontSize: 18,
-        bodyFontSize: 18
-      },
-      legend: {
-        display: false
-      },
-      borderWidth: 10,
-      scale: {
-        ticks: {
-          display: false,
-          beginAtZero: true,
-          maxTicksLimit: 10,
-          max: 1
-        },
-        gridLines: {
-          lineWidth: 0.5,
-          color: '#fff'
-        },
-        pointLabels: {
-          fontColor: '#302117',
-          fontSize: 16,
-          fontFamily: "'Lato', sans-serif"
-        }
-      }
-    }
-  });
-
-  new Chart(document.getElementById('Pacific FC Radar Mobile'), {
-    type: 'radar',
-    data: {
-      labels: ['finish','def','att','mid','net','big','save','goals'],
-      datasets: [{
-        data: [{{ radar.loc[5-check].values[1:]|join(', ') }}],
-        fill: true,
-        backgroundColor: '#00b7bd'+'BF',
-        borderColor: '#00b7bd',
-        pointHoverRadius: 10,
-        pointHoverBackgroundColor: "#fff",
-        pointBackgroundColor: '#00b7bd'
-      }]
-    },
-    options: {
-      tooltips: {
-        titleFontSize: 18,
-        bodyFontSize: 18
-      },
-      legend: {
-        display: false
-      },
-      borderWidth: 10,
-      scale: {
-        ticks: {
-          display: false,
-          beginAtZero: true,
-          maxTicksLimit: 10,
-          max: 1
-        },
-        gridLines: {
-          lineWidth: 0.5,
-          color: '#fff'
-        },
-        pointLabels: {
-          fontColor: '#fff',
-          fontSize: 16,
-          fontFamily: "'Lato', sans-serif"
-        }
-      }
-    }
-  });
-
-  new Chart(document.getElementById('Valour FC Radar Mobile'), {
-    type: 'radar',
-    data: {
-      labels: ['finish','def','att','mid','net','big','save','goals'],
-      datasets: [{
-        data: [{{ radar.loc[6-check].values[1:]|join(', ') }}],
-        fill: true,
-        backgroundColor: '#b9975b'+'BF',
-        borderColor: '#b9975b',
-        pointHoverRadius: 10,
-        pointHoverBackgroundColor: "#fff",
-        pointBackgroundColor: '#b9975b'
-      }]
-    },
-    options: {
-      tooltips: {
-        titleFontSize: 18,
-        bodyFontSize: 18
-      },
-      legend: {
-        display: false
-      },
-      borderWidth: 10,
-      scale: {
-        ticks: {
-          display: false,
-          beginAtZero: true,
-          maxTicksLimit: 10,
-          max: 1
-        },
-        gridLines: {
-          lineWidth: 0.5,
-          color: '#fff'
-        },
-        pointLabels: {
-          fontColor: '#fff',
-          fontSize: 16,
-          fontFamily: "'Lato', sans-serif"
-        }
-      }
-    }
-  });
-
-  new Chart(document.getElementById('York9 FC Radar Mobile'), {
-    type: 'radar',
-    data: {
-      labels: ['finish','def','att','mid','net','big','save','goals'],
-      datasets: [{
-        data: [{{ radar.loc[7-check].values[1:]|join(', ') }}],
-        fill: true,
-        backgroundColor: '#003b5c'+'BF',
-        borderColor: '#003b5c',
-        pointHoverRadius: 10,
-        pointHoverBackgroundColor: "#fff",
-        pointBackgroundColor: '#003b5c'
-      }]
-    },
-    options: {
-      tooltips: {
-        titleFontSize: 18,
-        bodyFontSize: 18
-      },
-      legend: {
-        display: false
-      },
-      borderWidth: 10,
-      scale: {
-        ticks: {
-          display: false,
-          beginAtZero: true,
-          maxTicksLimit: 10,
-          max: 1
-        },
-        gridLines: {
-          lineWidth: 0.5,
-          color: '#fff'
-        },
-        pointLabels: {
-          fontColor: '#fff',
-          fontSize: 16,
-          fontFamily: "'Lato', sans-serif"
-        }
-      }
-    }
-  });
-
   </script>
     {% else %}
     {% endif %}

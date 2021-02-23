@@ -14,7 +14,7 @@ Pacific FC,Noah Verhoeven,173,0,0,0,2,Noah Verhoeven,pac
 HFX Wanderers FC,Jason Beaulieu,360,0,0,1,2,Jason Beaulieu,hfx
 FC Edmonton,Duran Lee,122,0,0,1,1,Duran Lee,fce
 HFX Wanderers FC,Daniel Kinumbe,208,0,0,0,1,Daniel Kinumbe,hfx
-York9 FC,Álvaro Rivero Sánchez,359,0,0,0,5,Álvaro Rivero,y9
+York United FC,Álvaro Rivero Sánchez,359,0,0,0,5,Álvaro Rivero,yor
 Pacific FC,Josh Heard,218,0,0,1,8,Josh Heard,pac
 Forge FC,Montther Mohsen,208,0,0,0,0,Monti Mohsen,for
 FC Edmonton,Prince Amanda,145,0,0,0,1,Prince Amanda,fce
@@ -27,9 +27,9 @@ HFX Wanderers FC,Alex De Carolis,371,0,0,1,6,Alex De Carolis,hfx
 HFX Wanderers FC,Alessandro Riggi,471,0,0,0,7,Alessandro Riggi,hfx
 FC Edmonton,Hanson Boakai,309,0,0,0,5,Hanson Boakai,fce
 Cavalry FC,Marcus Haber,507,0,0,1,17,Marcus Haber,cav
-York9 FC,Kyle Porter,372,0,0,0,4,Kyle Porter,y9
+York United FC,Kyle Porter,372,0,0,0,4,Kyle Porter,yor
 FC Edmonton,Connor James,540,0,0,0,0,Connor James,fce
-York9 FC,Nathan Ingham,540,0,0,0,0,Nathan Ingham,y9
+York United FC,Nathan Ingham,540,0,0,0,0,Nathan Ingham,yor
 Cavalry FC,Oliver Minatel,454,0,0,0,10,Oliver Minatel,cav
 Valour FC,Dylan Carreiro,333,0,0,1,0,Dylan Carreiro,val
 Valour FC,Mastanabal Kacher,360,0,0,1,2,Masta Kacher,val
@@ -42,34 +42,34 @@ FC Edmonton,Yong-Chan Son,303,0,0,0,8,Yong-Chan Son,fce
 Forge FC,Jordan Dunstan,254,0,0,0,7,Jordan Dunstan,for
 Forge FC,Anthony Joseph Novak,381,0,0,0,4,Anthony Novak,for
 Atlético Ottawa,Ajay Khabra,308,0,0,1,12,Ajay Khabra,ato
-York9 FC,Ijah Halley,157,0,0,0,5,Ijah Halley,y9
+York United FC,Ijah Halley,157,0,0,0,5,Ijah Halley,yor
 Forge FC,Daniel Krutzen,961,0,0,2,14,Daniel Krutzen,for
 Pacific FC,Abdoulaye Samake,89,0,0,0,2,Abdou Samake,pac
 Cavalry FC,Oluwatofarati Fakunle,7,0,0,0,0,Tofa Fakunle,cav
 Atlético Ottawa,Antoine Coupland,97,0,0,1,4,Antoine Coupland,ato
-York9 FC,Gabriel Monteiro Vasconcelos,87,0,0,0,1,Gabriel Vasconcelos,y9
+York United FC,Gabriel Monteiro Vasconcelos,87,0,0,0,1,Gabriel Vasconcelos,yor
 FC Edmonton,David Doe,54,0,0,0,2,David Doe,fce
-York9 FC,Ezequiel Carrasco,90,0,0,0,0,Ezequiel Carrasco,y9
+York United FC,Ezequiel Carrasco,90,0,0,0,0,Ezequiel Carrasco,yor
 Atlético Ottawa,Maksym Kowal,51,0,0,0,1,Maksym Kowal,ato
 Valour FC,Raphaël Garcia,26,0,0,0,0,Raphaël Garcia,val
-York9 FC,Isaiah Johnston,18,0,0,0,1,Isaiah Johnston,y9
-York9 FC,Jace Kotsopoulos,28,0,0,0,0,Jace Kotsopoulos,y9
+York United FC,Isaiah Johnston,18,0,0,0,1,Isaiah Johnston,yor
+York United FC,Jace Kotsopoulos,28,0,0,0,0,Jace Kotsopoulos,yor
 Atlético Ottawa,Michel Djaozandry,6,0,0,0,0,Michel Djaozandry,ato
 Cavalry FC,Nikolaos Giantsopoulos,90,0,0,0,0,Niko Giantsopoulos,cav
 Forge FC,Klaidi Cela,3,0,0,1,1,Klaidi Cela,for
 HFX Wanderers FC,Jan-Michael Williams,0,0,0,0,0,Jan-Michael Williams,hfx
 Pacific FC,Mark Village,0,0,0,0,0,Mark Village,pac
 Atlético Ottawa,Matteo de Brienne,0,0,0,0,0,Matteo  de Brienne,ato
-York9 FC,Julian Altobelli,0,0,0,0,0,Julian Altobelli,y9
+York United FC,Julian Altobelli,0,0,0,0,0,Julian Altobelli,yor
 Valour FC,Matthew Silva,0,0,0,0,0,Matthew Silva,val
 Atlético Ottawa,Horace Patient Sobze Zemo,0,0,0,0,0,Horace Patient Sobze Zemo,ato
 Atlético Ottawa,Richard Soares Gomes,0,0,0,0,0,Richard Soares Gomes,ato
 Valour FC,Chakib Hocine,66,0,0,0,3,Chakib Hocine,val
-York9 FC,Matthew Arnone,62,0,0,0,1,Matthew Arnone,y9
+York United FC,Matthew Arnone,62,0,0,0,1,Matthew Arnone,yor
 HFX Wanderers FC,Scott Firth,98,0,0,0,0,Scott Firth,hfx
 HFX Wanderers FC,Luke Green,90,0,0,0,0,Luke Green,hfx
 FC Edmonton,Samuel Gardner,82,0,0,1,3,Sam Gardner,fce
-York9 FC,Chris Mannella,100,0,0,1,3,Chris Mannella,y9
+York United FC,Chris Mannella,100,0,0,1,3,Chris Mannella,yor
 Valour FC,Shaan Hundal,232,0,0,1,7,Shaan Hundal,val
 Forge FC,Gabriel Wiethaeuper-Balbinotti,203,0,0,1,8,Gabriel Balbinotti,for
 Valour FC,Daryl Fordyce,164,0,0,0,5,Daryl Fordyce,val
@@ -81,12 +81,12 @@ Cavalry FC,Jair Ayrton Córdova Carpio,71,0,0,0,0,Jair Córdova,cav
 Forge FC,Baj Maan,90,0,0,0,0,Baj Maan,for
 Valour FC,Yohan Le Bourhis,90,0,0,0,2,Yohan Le Bourhis,val
 Valour FC,Solomon Kojo Antwi,80,0,0,0,3,Solomon Kojo Antwi,val
-York9 FC,Michael Petrasso,130,0,0,0,1,Michael Petrasso,y9
+York United FC,Michael Petrasso,130,0,0,0,1,Michael Petrasso,yor
 Cavalry FC,Aribim Pepple,67,0,0,0,2,Aribim Pepple,cav
 FC Edmonton,Dylon Powley,90,0,0,0,0,Dylon Powley,fce
-York9 FC,Lowell Wright,128,0,0,0,2,Lowell Wright,y9
+York United FC,Lowell Wright,128,0,0,0,2,Lowell Wright,yor
 Valour FC,Arnold Bouka Moutou,70,0,0,0,1,Arnold Bouka Moutou,val
-York9 FC,Max Ferrari,159,0,0,1,8,Max Ferrari,y9
+York United FC,Max Ferrari,159,0,0,1,8,Max Ferrari,yor
 Pacific FC,Alessandro Hojabrpour,385,0,0,0,5,Alessandro Hojabrpour,pac
 Cavalry FC,Dominick Zator,900,0,0,0,9,Dominick Zator,cav
 HFX Wanderers FC,Mateo Restrepo,626,0,0,1,14,Mateo Restrepo,hfx
@@ -98,18 +98,18 @@ Forge FC,Alexander Börje Achinioti-Jönsson,792,0,0,1,12,Alexander Achinioti-J�
 Pacific FC,Jordan Haynes,465,0,0,2,5,Jordan Haynes,pac
 Atlético Ottawa,Malyk Hamilton,630,0,0,0,10,Malyk Hamilton,ato
 Pacific FC,Marcel de Jong,442,0,0,0,3,Marcel de Jong,pac
-York9 FC,Luca Gasparotto,630,0,0,2,5,Luca Gasparotto,y9
+York United FC,Luca Gasparotto,630,0,0,2,5,Luca Gasparotto,yor
 HFX Wanderers FC,Jems Geffrard,945,0,0,1,8,Jems Geffrard,hfx
 Cavalry FC,Robert Boskovic,479,0,0,2,7,Robert Boskovic,cav
-York9 FC,Joseph Di Chiara,540,0,0,5,15,Joseph Di Chiara,y9
+York United FC,Joseph Di Chiara,540,0,0,5,15,Joseph Di Chiara,yor
 Valour FC,Diego Gutiérrez,489,0,0,1,10,Diego Gutiérrez,val
 Atlético Ottawa,Mohamed Kourouma,617,0,0,1,12,Mohamed Kourouma,ato
-York9 FC,Manuel Aparicio,530,0,0,2,14,Manny Aparicio,y9
+York United FC,Manuel Aparicio,530,0,0,2,14,Manny Aparicio,yor
 Valour FC,Julian Dunn-Johnson,630,0,0,0,8,Julian Dunn,val
 Forge FC,Triston Henry,900,0,0,0,0,Triston Henry,for
 Forge FC,Elimane Oumar Cissé,539,0,0,0,10,Elimane Cissé,for
-York9 FC,Roger Thompson,630,0,0,0,5,Roger Thompson,y9
-York9 FC,Morey Doner,630,0,0,0,4,Morey Doner,y9
+York United FC,Roger Thompson,630,0,0,0,5,Roger Thompson,yor
+York United FC,Morey Doner,630,0,0,0,4,Morey Doner,yor
 Pacific FC,Terran Campbell,480,0,0,0,13,Terran Campbell,pac
 HFX Wanderers FC,Peter Schaale,900,0,0,3,9,Peter Schaale,hfx
 Pacific FC,Thomas Meilleur-Giguère,900,0,0,1,4,Thomas Meilleur-Giguère,pac
@@ -144,7 +144,7 @@ Pacific FC,Alejandro Díaz Liceága,609,0,0,0,4,Alejandro Diaz,pac
 HFX Wanderers FC,Akeem Garcia,758,0,0,0,17,Akeem Garcia,hfx
 Cavalry FC,Bruno Zebie,480,0,0,0,10,Bruno Zebie,cav
 FC Edmonton,Keven Steven Alemán Bustos,537,0,0,1,6,Keven Alemán,fce
-York9 FC,Wataru Murofushi,329,0,0,0,8,Wataru Murofushi,y9
+York United FC,Wataru Murofushi,329,0,0,0,8,Wataru Murofushi,yor
 Atlético Ottawa,Malcolm Isaiah Shaw,595,0,0,0,17,Malcolm Shaw,ato
 HFX Wanderers FC,Jake Ruby,312,0,0,1,5,Jake Ruby,hfx
 Cavalry FC,Dean Northover,355,0,0,0,8,Dean Northover,cav
@@ -152,7 +152,7 @@ HFX Wanderers FC,Cory Bent,500,0,0,0,9,Cory Bent,hfx
 Valour FC,James Pantemis,630,0,0,0,0,James Pantemis,val
 HFX Wanderers FC,Omar Kreim,372,0,0,0,3,Omar Kreim,hfx
 Forge FC,Molham Babouli,455,0,0,0,9,Mo Babouli,for
-York9 FC,Fugo Segawa,353,0,0,1,6,Fugo Segawa,y9
+York United FC,Fugo Segawa,353,0,0,1,6,Fugo Segawa,yor
 FC Edmonton,Allan Zebie,412,0,0,1,2,Allan Zebie,fce
 Forge FC,Maxim Tissot,394,0,0,1,4,Maxim Tissot,for
 Atlético Ottawa,Milovan Kapor,495,0,1,2,8,Milovan Kapor,ato
@@ -162,15 +162,15 @@ Cavalry FC,Jonathan Wheeldon,459,0,1,2,10,Jay Wheeldon,cav
 Atlético Ottawa,Víctor Martínez Manrique,540,0,0,2,12,Viti Martínez,ato
 Atlético Ottawa,Ignacio Zabal Almazán,630,0,0,0,0,Nacho Zabal,ato
 Cavalry FC,Nico Pasquotti,537,0,0,0,6,Nico Pasquotti,cav
-York9 FC,Ryan Telfer,620,0,0,3,10,Ryan Telfer,y9
+York United FC,Ryan Telfer,620,0,0,3,10,Ryan Telfer,yor
 Atlético Ottawa,Evan Brandon John,618,0,0,2,11,Brandon John,ato
 Valour FC,Stefan Cebara,458,0,0,1,6,Stefan Cebara,val
 HFX Wanderers FC,Alex Marshall,583,0,0,1,14,Alex Marshall,hfx
 Pacific FC,Callum Irving,540,0,0,1,0,Callum Irving,pac
-York9 FC,Diyaeddine Abzi,438,0,0,0,5,Diyaeddine Abzi,y9
+York United FC,Diyaeddine Abzi,438,0,0,0,5,Diyaeddine Abzi,yor
 Forge FC,David Choinière,598,0,0,0,6,David Choinière,for
 Valour FC,Brett Levis,383,0,0,1,9,Brett Levis,val
 Atlético Ottawa,Ben McKendry,408,0,0,2,9,Ben McKendry,ato
 Atlético Ottawa,Ben Fisk,601,0,0,1,4,Ben Fisk,ato
 Valour FC,Andrew Jean-Baptiste,462,0,0,0,8,Andrew Jean-Baptiste,val
-York9 FC,Evan Couturier,0,0,0,0,0,Evan Couturier,y9
+York United FC,Evan Couturier,0,0,0,0,0,Evan Couturier,yor

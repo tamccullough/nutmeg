@@ -22,58 +22,87 @@
   </div>
 
 <!-- profile section including photo -->
+<!-- IMAGE RADAR SMALL stats table -->
+<div class="parent {{ team_colour }}">
+  <div class="boxs center">
+    <br>
+      <img src="static/images/players/{{ year }}/{{ player_info.iloc[0]['image'] }}" alt="{{ player_info.iloc[0]['name'] }}" style="max-width:60%">
+  </div>
+
+  <div class="box">
+    <br>
+    <div class="mobile">
+      <table>
+        <tr>
+          <td><a><img src="static/images/flags/{{ player_info.iloc[0]['flag'] }}" alt="{{ player_info.iloc[0]['flag'][:-4] }}" style="max-height:30px"><a></td>
+          <td>{{ nationality }}</td>
+          <td>O: {{ stats90.iloc[0]['O'] }}{{asterisk}}</td>
+        </tr>
+        <tr>
+          <td>M: {{ stats90.iloc[0]['Min'] }}</td>
+          <td>xG: {{ stats.iloc[0]['xG'] }}{{asterisk}}</td>
+          <td>xA: {{ stats.iloc[0]['xA'] }}{{asterisk}}</td>
+        </tr>
+        <tr>
+          <td>Y: {{ discipline.iloc[0]['Yellow'] }}</td>
+          <td>R: {{ discipline.iloc[0]['Red'] }}</td>
+          <td>#: {{ number }}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="desktop">
+      <br>
+      <table>
+        <tr>
+          <td><a><img src="static/images/flags/{{ player_info.iloc[0]['flag'] }}" alt="{{ player_info.iloc[0]['flag'][:-4] }}" style="max-height:30px"><a></td>
+          <td colspan="2">{{ nationality }}</td>
+        </tr>
+        <tr>
+          <td>O: {{ stats.iloc[0]['O'] }}{{asterisk}}</td>
+          <td>MIN: {{ stats.iloc[0]['Min']|int }}</td>
+          <td>xG: {{ stats90.iloc[0]['xG'] }}{{asterisk}}</td>
+        </tr>
+        <tr>
+          <td>xA: {{ stats90.iloc[0]['xA'] }}{{asterisk}}</td>
+          <td>Y: {{ discipline.iloc[0]['Yellow'] }}</td>
+          <td>R: {{ discipline.iloc[0]['Red'] }}</td>
+        </tr>
+        <tr>
+          <td>2ndY: {{ discipline.iloc[0]['2ndYellow'] }}</td>
+          <td>#: {{ number }}</td>
+          <td>{{ position }}</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="box chartcontainer">
+    <canvas id="playerRadar"></canvas>
+  </div>
+
+</div>
+<!-- end of IMAGE RADAR SMALL stats table -->
+
+<!-- LINE chart -->
 <div class="{{ team_colour }}">
-  <div class="mobile">
+  <div class="{{ team_colour }} indent">
+    {% for i in range(chart_team_colour_list | length ) %}
+    <h4 style="display:inline;border-bottom: 0.35rem solid {{ chart_team_colour_list[i] }};">{{ line_columns[i] }}</h4>
+    {% endfor %}
+  </div>
+  <br>
+  <div class="{{ team_colour }} chartcontainer">
+    <canvas id="playerLine"></canvas>
+  </div>
+</div>
+<!-- end of LINE chart -->
 
-    <div class="spacer"></div>
+<!-- TABLE versions -->
 
-    <div class="textcenter xxfont" style="width:100%;">
-      <a>{{ position }}</a>
-    </div>
-
-    <div class="spacer"></div>
-
-    <div class="parent {{ team_colour }}">
-      <div class="boxs center">
-        <img src="static/images/players/{{ year }}/{{ player_info.iloc[0]['image'] }}" alt="{{ player_info.iloc[0]['name'] }}" style="width:80%;">
-      </div>
-      <div class="spacer"></div>
-      <div class="box">
-        <canvas id="playerRadarMobile" style="width:95%"></canvas>
-        <!--img src="static/images/{{ year }}/player_graphs/{{ radar }}" alt="player radar" style="max-width:50%;float:left"-->
-      </div>
-    </div>
-
-    <p>{{ line_chart_colours }}</p>
-    <div class="{{ team_colour }} indent">
-      {% for i in range(chart_team_colour_list | length ) %}
-      <h4 style="display:inline;border-bottom: 0.35rem solid {{ chart_team_colour_list[i] }};">{{ line_columns[i] }}</h4>
-      {% endfor %}
-    </div>
-    <div>
-      <canvas id="playerLineMobile" style="height:125px"></canvas>
-      <!--img src="static/images/{{ year }}/player_graphs/{{ graph }}" alt="player performance" style="max-width:50%"-->
-    </div>
-
-    <table>
-      <tr>
-        <td><a><img src="static/images/flags/{{ player_info.iloc[0]['flag'] }}" alt="{{ player_info.iloc[0]['flag'][:-4] }}" style="max-height:30px"><a></td>
-        <td>{{ nationality }}</td>
-        <td>O: {{ stats90.iloc[0]['O'] }}{{asterisk}}</td>
-      </tr>
-      <tr>
-        <td>MIN: {{ stats90.iloc[0]['Min'] }}</td>
-        <td>xG: {{ stats.iloc[0]['xG'] }}{{asterisk}}</td>
-        <td>xA: {{ stats.iloc[0]['xA'] }}{{asterisk}}</td>
-      </tr>
-      <tr>
-        <td>Yellows: {{ discipline.iloc[0]['Yellow'] }}</td>
-        <td>Reds: {{ discipline.iloc[0]['Red'] }}</td>
-        <td>Number: {{ number }}</td>
-      </tr>
-    </table>
-
-  <!-- table section -->
+<!-- mobile TABLE version -->
+<div class="mobile">
     <div class="parent">
       <div class="{{ team_colour }}-2 indent" style="width:100%;">
         <a>Rolling Statistics</a>
@@ -178,56 +207,10 @@
         </div>
       </div>
     </div>
-  <!-- END table section -->
 </div>
-
+<!-- end of MOBILE table version -->
+<!-- desktop TABLE version -->
 <div class="desktop">
-  <div class="parent {{ team_colour }}">
-    <div class="boxs center">
-      <img src="static/images/players/{{ year }}/{{ player_info.iloc[0]['image'] }}" alt="{{ player_info.iloc[0]['name'] }}" style="max-width:60%">
-    </div>
-    <div class="box">
-      <br>
-      <canvas id="playerRadar"></canvas>
-    </div>
-    <div class="box">
-      <br>
-      <br>
-      <table>
-        <tr>
-          <td><a><img src="static/images/flags/{{ player_info.iloc[0]['flag'] }}" alt="{{ player_info.iloc[0]['flag'][:-4] }}" style="max-height:30px"><a></td>
-          <td colspan="2">{{ nationality }}</td>
-        </tr>
-        <tr>
-          <td>O: {{ stats.iloc[0]['O'] }}{{asterisk}}</td>
-          <td>MIN: {{ stats.iloc[0]['Min']|int }}</td>
-          <td>xG: {{ stats90.iloc[0]['xG'] }}{{asterisk}}</td>
-        </tr>
-        <tr>
-          <td>xA: {{ stats90.iloc[0]['xA'] }}{{asterisk}}</td>
-          <td>Y: {{ discipline.iloc[0]['Yellow'] }}</td>
-          <td>R: {{ discipline.iloc[0]['Red'] }}</td>
-        </tr>
-        <tr>
-          <td>2ndY: {{ discipline.iloc[0]['2ndYellow'] }}</td>
-          <td>#: {{ number }}</td>
-          <td>{{ position }}</td>
-        </tr>
-      </table>
-
-    </div>
-  </div>
-  <p>{{ line_chart_colours }}</p>
-  <div class="{{ team_colour }} indent">
-    {% for i in range(chart_team_colour_list | length ) %}
-    <h4 style="display:inline;border-bottom: 0.35rem solid {{ chart_team_colour_list[i] }};">{{ line_columns[i] }}</h4>
-    {% endfor %}
-  </div>
-  <div class="{{ team_colour }}">
-    <canvas id="playerLine" style="height:150px;"></canvas>
-  </div>
-
-  <!-- table section -->
   <div class="{{ team_colour }}-2 indent">
     <h4>Rolling Statistics</h4>
   </div>
@@ -284,8 +267,10 @@
         </div>
       </div>
     </div>
-  <!-- END table section -->
 </div>
+<!-- end of DESKTOP table section -->
+
+<!-- end of TABLE versions -->
 
   <div class=" {{ team_colour }}" style="width:100%;">
     <div class="spacer"></div>
