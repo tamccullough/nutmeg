@@ -6,6 +6,7 @@ import cpl_main
 from datetime import date
 today = date.today()
 this_year = date.today().strftime('%Y')
+current_year = '2020'
 
 from time import sleep
 
@@ -356,7 +357,7 @@ def versus():
     regressor = 'models/cpl_score_regressor-07-20-vr---34.sav' # good results somewhat HIGH
     cpl_score_model = pickle.load(open(regressor, 'rb'))
 
-    year = '2020'
+    year = current_year
 
     try:
         matches_predictions = pd.read_csv(f'datasets/{year}/cpl-{year}-match_predictions.csv')
@@ -475,6 +476,7 @@ def versus():
 def teams():
 
     get_year()
+
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
     columns = team_ref.columns
@@ -527,6 +529,7 @@ def radar():
 @canples.route('/roster', methods=['GET','POST'])
 def roster():
 
+    get_year()
     team = request.form['team']
 
     radar = pd.read_csv(f'datasets/{year}/league/{year}-radar.csv')
@@ -560,7 +563,7 @@ def roster():
     return render_template('cpl-es-roster.html',team_name = team, coach = coach, radar = radar, year = year, team_line = team_line, team_stats = team_stats,
     crest = crest, colour1 = colour1, colour2 = colour2, html_table = roster, team_colour = roster_colour)
 
-@canples.route('/player', methods=['POST'])
+@canples.route('/player', methods=['GET','POST'])
 def player():
 
     get_year()
@@ -754,6 +757,7 @@ def goals():
 
 @canples.route('/forwards', methods=['GET','POST'])
 def forwards():
+
     get_year()
 
     rated_forwards = pd.read_csv(f'datasets/{year}/playerstats/{year}-forwards.csv')
@@ -865,6 +869,8 @@ def discipline():
     get_year()
 
     rated_offenders = pd.read_csv(f'datasets/{year}/playerstats/{year}-discipline.csv')
+    rated_offenders = rated_offenders[(rated_offenders['Yellow'] > 0) | (rated_offenders['Red'] > 0)]
+    rated_offenders = rated_offenders.sort_values(by=['Red','2ndYellow','Yellow'], ascending = False)
     columns = rated_offenders.columns
 
     return render_template('cpl-es-discipline.html',columns = columns,
