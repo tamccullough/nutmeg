@@ -14,6 +14,16 @@ import numpy as np
 import pandas as pd
 import re
 
+player_info_19 = pd.read_csv(f'datasets/2019/player-2019-info.csv')
+player_info_19['year'] = '2019'
+player_info_20 = pd.read_csv(f'datasets/2020/player-2020-info.csv')
+player_info_20['year'] = '2020'
+player_info = pd.concat([ player_info_19, player_info_20 ])
+
+player_names = pd.concat([ player_info_19[['name','display']] , player_info_20[['name','display']] ])
+player_names = player_names.sort_values(by='name')
+player_names = player_names.drop_duplicates()
+
 ccd_names = {'Atlético Ottawa' : 'Atlético Ottawa',
             'Cavalry' : 'Cavalry FC',
             'Edmonton' : 'FC Edmonton',
@@ -87,6 +97,8 @@ col_check = {'overall':'O',
             'TouchOpBox':'TchoB',
             'Touches':'Tch'}
 
+geegle = ['#000','#fff','#ffd700','#ff00ff','#4a86e8','#0000ff','#9900ff','#ff00ff']
+
 def new_col(data):#,chart=''
     for col in data.columns:
         try:
@@ -110,7 +122,6 @@ def convert_num_str(num):
 
 def get_year():
     global year
-
     try:
         year = request.form['year']
     except:
@@ -138,7 +149,7 @@ def load_main_files(year):
     player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
 
     results_old = results[results['hr'] != 'E'].copy()
-    results_diff = pd.concat([results, results_old]).drop_duplicates(keep=False)
+    results_diff = pd.concat([results, results_old]).drop_duplicates()
 
     if results_diff.empty:
         results_diff = results_old.tail(1)
@@ -174,9 +185,9 @@ games_played = {1:28,2:7}
 year = '2020'
 
 @canples.context_processor
-def inject_user():
+def inject_basic():
 
-    return dict(today = today, day = day, weekday = weekday, month = month, theme = 'mono')
+    return dict(today = today, day = day, weekday = weekday, month = month, theme = 'mono', year = '2020')
 
 @canples.route('/', methods=['GET','POST'])
 def index():
@@ -489,8 +500,6 @@ def radar():
 
     get_year()
 
-    geegle = ['#000','#fff','#ffd700','#ff00ff','#4a86e8','#0000ff','#9900ff','#ff00ff']
-
     team_standings = pd.read_csv(f'datasets/{year}/cpl-{year}-standings_current.csv')
     radar = pd.read_csv(f'datasets/{year}/league/{year}-radar.csv')
     team_standings = team_standings.sort_values(by='team')
@@ -566,35 +575,51 @@ def roster():
 @canples.route('/player', methods=['GET','POST'])
 def player():
 
-    get_year()
-
+    try:
+        year = request.form['year']
+    except:
+        pass
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
-    player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
 
     name = request.form['name']
 
-    if name in player_info['name'].unique():
-        print('NAME present')
-        pass
-    else:
-        print('NAME not present')
+    if name in player_names['name'].unique():
+        print('NAME: present',name)
         try:
-            for i in range(0,4):
-                try:
-                    e = None
-                    print('TRYING TO FIND PLAYER')
-                    name = player_info[player_info['display'] == name]['name'].values[0]
-                except Exception as e:
-                    pass
-                if e:
-                    sleep(2)
-                else:
-                    break
+            display = player_names[player_names['name'] == name]['display'].values[0]
+            print('DISPLAY: ',display)
         except Exception as e:
-            print(e)
+            print('DISPLAY: not found')
+            print('ERROR: ',e)
+    elif name in player_names['display'].unique():
+        print('NAME: not present DISPLAY: ',name)
+        display = name
+        try:
+            name = player_names[player_names['display'] == display]['name'].values[0]
+            print('NAME: found',name)
+        except Exception as e:
+            print('DISPLAY: not found')
+            print('ERROR: ',e)
+    else:
+        print('ERROR')
+        print(player_names['name'].unique())
 
-    player = player_info[player_info['name'] == name]
+    year_list = ['2019','2020','2021']
+    k = year_list.index(year)
+    print('SEARCHING YEAR: ',year)
+    player = player_info[(player_info['name'] == name) & (player_info['year'] == year)]
+    if player.empty:
+        year_list_trim = year_list.copy()
+        del year_list_trim[k]
+        print('SEARCHING YEAR: ',year_list_trim[0])
+        year = year_list_trim[0]
+        player = player_info[(player_info['name'] == name) & (player_info['year'] == year_list_trim[0])]
+        if player.empty:
+            print('SEARCHING YEAR: ',yyear_list_trim[1])
+            year = year_list_trim[1]
+            player = player_info[(player_info['name'] == name) & (player_info['year'] == year_list_trim[1])]
+
     team = player['team'].values[0]
     colour3 = team_colour[team]
     roster_team_info = team_ref[team_ref['team'] == team]
@@ -608,6 +633,23 @@ def player():
     db90 = pd.read_csv(f'datasets/{year}/playerstats/{year}-{position.get(pos)}90.csv')
     discipline = pd.read_csv(f'datasets/{year}/playerstats/{year}-discipline.csv')
 
+    def new_col(data):
+        for col in data.columns:
+            try:
+                data[col_check[col]] = data[col]
+                if col_check[col]:
+                    data.pop(col)
+            except:
+                pass
+        for col in data.columns:
+            try:
+                if col in ['display','number']:
+                    temp = data.pop(col)
+                    data[col] = temp
+            except:
+                pass
+        return data
+
     db = new_col(db)
     db90 = new_col(db)
 
@@ -617,9 +659,13 @@ def player():
     for col in radar_chart.columns[5:-1]:
         radar_chart[col] = round((radar_chart[col] / (radar_chart[col].max()+0.05)),2)
     radar_chart = radar_chart[radar_chart['name'] == name][radar_chart.columns[6:-1]]
-    radar_chart = cpl_main .index_reset(radar_chart)
+    radar_chart = cpl_main.index_reset(radar_chart)
     radar_chart_cols = "'"+"', '".join(radar_chart.columns)+"'"
+
     db = db[db['name'] == name][db.columns]
+    db90 = db90[db90['name'] == name][db90.columns]
+    discipline = discipline[discipline['name'] == name]
+
     if db.empty:
         print('Stats Empty')
 
@@ -649,16 +695,12 @@ def player():
                 details[word] = player[player['name'] == name][word].values[0]
 
         player_line = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
-        geegle = ['#000','#fff','#ffd700','#ff00ff','#4a86e8','#0000ff','#9900ff','#ff00ff']
 
         return render_template('cpl-es-player.html', name = details['display'], player_line_length = 1, player_line_end = 1,
         nationality = details['nationality'], team_name = team, player_info = player, full_name = name, year = year,
         team_colour = roster_colour, crest = crest, position = position.get(pos)[:-1], number = details['number'], chart_team_colour_list = geegle,
         stats = db, stats90 = db, discipline = discipline, radar_chart = radar_chart, radar_chart_cols = radar_chart_cols,
         colour1 = colour1, colour2 = colour2, colour3 = colour3, col_nums = [0,5], player_line = player_line,line_columns = ['NA','NA','NA','NA','NA','NA'])
-
-    db90 = db90[db90['name'] == name][db90.columns]
-    discipline = discipline[discipline['name'] == name]
 
     player_line_db = pd.read_csv(f'datasets/{year}/playerstats/{year}-{position.get(pos)}-line.csv')
     try:
@@ -672,7 +714,22 @@ def player():
             except:
                 player_line_db = player_line_db[['name','display','CleanSheet','Saves','SvDive','Recovery','ExpGAg']]
 
-    player_line_db = new_col(player_line_db)
+    if name in player_line_db['name'].unique():
+            print('NAME: found')
+    else:
+        print('NAME: not found')
+        if display in player_line_db['name'].unique():
+            print('DISPLAY NAME: found')
+        else:
+            print('DISPLAY: not found')
+
+    player_line_df = player_line_db[player_line_db['name'] == name]
+    player_line_df = new_col(player_line_df)
+
+    if player_line_df.empty:
+        print('LINE: empty')
+        player_line_df = player_line_db[player_line_db['name'] == display]
+        player_line_df = new_col(player_line_df)
 
     def get_norm(data):
         df = data.copy()
@@ -681,7 +738,7 @@ def player():
             df[col] = round(df[col]/ df[col].max() ,2)*2
         return df
 
-    player_line_db = get_norm(player_line_db)
+    player_line_df = get_norm(player_line_df)
 
     def percentage_check(x):
         try:
@@ -692,41 +749,37 @@ def player():
         except:
             return x
 
-    def build_player_line(player_line_db,name,string='name'):
-        if 'G' in player_line_db.columns.values:
-            g = player_line_db.pop('G')
-            player_line_db.insert(1,'G',g)
-        if string == 'display':
-            name = player_info[player_info['name'] == name]['display'].values[0]
-        data = player_line_db[player_line_db[string] == name][player_line_db.columns[1:-1]].copy().T
-        line_columns = [x for x in player_line_db.columns[1:-1]]
+    def build_player_line(data,name,display):
+        data = cpl_main.index_reset(data)
+        if 'G' in data.columns.values:
+            g = data.pop('G')
+            data.insert(1,'G',g)
+        df = data[data['name'] == name][data.columns[1:-1]].copy().T
+        if df.empty:
+            df = data[data['name'] == display][data.columns[1:-1]].copy().T
+        line_columns = [x for x in data.columns[1:-1]]
 
-        for col in data.columns:
-            data[col] = data[col].apply(lambda x: percentage_check(x))
-        return data, line_columns
+        for col in df.columns:
+            df[col] = df[col].apply(lambda x: percentage_check(x))
 
-    player_line, line_columns = build_player_line(player_line_db,name)
-    player_line = cpl_main.index_reset(player_line).values.tolist()
+        return df, line_columns
+
+    player_line, line_columns = build_player_line(player_line_df,name,display)
+    player_line = player_line.values.tolist()
     player_line_length = len(player_line) - 1
     player_line_end = len(player_line) - 1
 
     if player_line[0]:
-        print('Dataset filled')
-        print('+++++++++++++++++++++++++++++++++++')
+        print('DATASET: filled')
     else:
-        print('Dataset empty')
-        print('-----------------------------------')
-        player_line, line_columns = build_player_line(player_line_db,name,string='display')
-        player_line = cpl_main.index_reset(player_line).values.tolist()
-
-    geegle = ['#000','#fff','#ffd700','#ff00ff','#4a86e8','#0000ff','#9900ff','#ff00ff']
+        print('ERROR:')
+        print('DATASET: empty')
 
     details = {}
     for word in ['display','number','nationality','team']:
         try:
             details[word] = player[player['display'] == name][word].values[0]
         except:
-            sleep(1)
             details[word] = player[player['name'] == name][word].values[0]
 
     if position.get(pos)[:1] == 'f':
