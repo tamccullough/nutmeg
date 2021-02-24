@@ -6,43 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="Todd McCullough">
   <meta name="description" content="Canadian Premier League Stats for league fans. CanPL stats. Standings, team and roster information, data analysis and data visualization for football and Soccer fans of the Canadian Premier League.">
-  <link rel="stylesheet" href="static/css/style.css">
-  <link rel="stylesheet" href="static/css/team-colours.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- google fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Lato&family=Staatliches&display=swap" rel="stylesheet">
-
-  <style>
-
-  html,h1,h2 {
-    font-family: 'Staatliches', cursive;
-  }
-
-  .staat {
-    font-family: 'Staatliches', cursive;
-  }
-
-  body,h3,h4,h5,a {
-    font-family: 'Lato', sans-serif;
-  }
-
-  .chartcontainer {
-    position:relative;
-    max-height:250px;
-    display: flex;
-    flex-grow:1;
-  }
-
-  </style>
-
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="static/css/team-colours.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-
 <body id="top" class="{{ theme }}-body">
-
+<div>
+  <div class="container {{ theme }}-dark">
     {% include "nav.html" %}
-    {% block body %}{% endblock %}
-
+  </div>
   <div class="desktop">
     <div class="page80">
       <div style="text-align:left">
@@ -51,17 +26,14 @@
     </div>
   </div>
   <!-- Top container -->
-
   <div class="container">
     <div class="page80">
-
       <button id="backToTop" class="topbutton {{ theme }}-action textcenter">
         <a class="button text-white" href="#top">top</a>
       </button>
+  {% block content %}
 
-  {% block content %}{% endblock %}
-
-
+  {% endblock %}
       <!-- league information container -->
       <div>
         <div class="{{ theme }}-body">
@@ -80,30 +52,22 @@
               </tr>
             </table>
         </div>
-
       </div>
       <div class="spacer"></div>
       <!-- Footer -->
       <div class="spacer"></div>
-      <footer class="{{ theme }}-body">
-        <a> Todd McCullough</a>
-        <a href="https://twitter.com/tamccullough" target="_blank"><i class="{{theme}}-body fa fa-twitter"></i></a>
-        <a href="https://github.com/tamccullough" target="_blank"><i class="{{theme}}-body fa fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/tamccullough/" target="_blank"><i class="{{theme}}-body fa fa-linkedin"></i></a>
-        <div class="spacer"></div>
-        <div class="spacer"></div>
-      </footer>
-
-      <!-- End page content -->
     </div>
-  </div>
+   </div>
+<!-- Footer -->
+<!-- End page content -->
+</div>
+{% include "footer.html" %}
   <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SCCY1VM6E9"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-SCCY1VM6E9');
 </script>
 <script src="static/css/app.js"></script>

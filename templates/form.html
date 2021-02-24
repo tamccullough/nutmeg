@@ -1,31 +1,15 @@
 
-<div class="mobile">
-  <form method="post" action="{{ url_for(request.endpoint) }}">
-  <div class="parent">
-    <div class="boxs sfont" style="width:100%;">
-      {% if request.endpoint == 'index'%}
-        <a>{{ headline }}</a>
-      {% else %}
-        <a>{{ headline }} {{ year }}</a>
-      {% endif %}
-    </div>
-    <div class="form boxs" style="height:30px;">
-      <select name="year" id="year" onchange="this.form.submit();">
-        <option value="{{ year }}">Select Year</option>
-        <!--option value="2021">2021</option-->
-        <option value="2020">2020</option>
-        <option value="2019">2019</option>
-      </select>
-    </div>
-    <input type="hidden" name="year" value="2020">
-  </div>
-  </form>
-</div>
-<br>
-<div class="desktop">
+<div>
   <form method="post" action="{{ url_for(request.endpoint) }}">
     <div class="parent">
-      <div class="box">
+      <div class="mobile boxs sfont" style="width:100%;">
+        {% if request.endpoint == 'index'%}
+          <a>{{ headline }}</a>
+        {% else %}
+          <a>{{ headline }} {{ year }}</a>
+        {% endif %}
+      </div>
+      <div class="desktop box">
         {% if request.endpoint == 'index'%}
           <h3 style="padding: 10px;"><b>{{ headline }}</b></h3>
         {% else %}

@@ -20,6 +20,29 @@
   --yellow: #f0c808;
 }
 
+/*body and scrollbar*/
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+a:link:hover {
+  text-decoration: underline;
+}
+
+/* fonts */
+
+.coiny {
+  font-family: 'Coiny', cursive;
+  font-weight: 400;
+  font-size: 2em;
+  letter-spacing: -3px;
+  vertical-align: center;
+}
+
 /* The emerging W3C standard
    that is currently Firefox-only */
 * {
@@ -45,6 +68,30 @@
   padding: 0px;
   box-sizing: border-box;
 }
+
+html,body{
+  height:100%;
+}
+
+html,h1,h2 {
+  font-family: 'Staatliches', cursive;
+}
+
+.staat {
+  font-family: 'Staatliches', cursive;
+}
+
+body,h3,h4,h5,a {
+  font-family: 'Lato', sans-serif;
+}
+
+.chartcontainer {
+  position:relative;
+  max-height:250px;
+  display: flex;
+  flex-grow:1;
+}
+
 .text-black {color:#000000;}
 .text-white {color:var(--white);}
 
@@ -78,12 +125,36 @@
 .mono-orange {color:var(--white); background-color:var(--orange);}
 .mono-yellow {color:var(--purple); background-color:var(--yellow);}
 
+.position {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 4vh;
+  color: var(--lightblue);
+}
+
+.position li {
+  display: flex;
+  justify-content: space-around;
+  width: 70%;
+  list-style: none;
+}
+
+.position a {
+  color: inherit;
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+
 nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
   min-height: 8vh;
-  color: white;
+  color: var(--white);
   background-color: var(--darkblue);
 }
 
@@ -98,7 +169,7 @@ nav {
 .nav-links {
   display: flex;
   justify-content: space-around;
-  width: 80%;
+  width: 70%;
 }
 
 .nav-links li {
@@ -135,6 +206,9 @@ nav {
   body {
     overflow-x: hidden;
     position: relative;
+  }
+  .position {
+    color: var(--darkblue);
   }
   nav {
     background-color: inherit;
@@ -182,30 +256,6 @@ nav {
   transform: rotate(45deg) translate(-5px,-6px);
 }
 
-
-/*body and scrollbar*/
-
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  overflow-x: hidden;
-}
-
-a:link:hover {
-  text-decoration: underline;
-}
-
-/* fonts */
-
-.coiny {
-  font-family: 'Coiny', cursive;
-  font-weight: 400;
-  font-size: 2em;
-  letter-spacing: -3px;
-  vertical-align: center;
-}
-
 /*mobile - desktop settings*/
 
 .mobile{
@@ -247,6 +297,11 @@ a:link:hover {
 
 .container {
   width: 100vw;
+}
+
+.page90 {
+  width: 80%;
+  margin: 0 auto;
 }
 
 .page80 {

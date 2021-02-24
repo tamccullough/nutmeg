@@ -1,6 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="mobile">
+  <a>{{ year }} Stats</a>
+  <ul class="position">
+    <li><a href="/defenders">def</a></li>
+    <li><a href="/forwards">atck</a></li>
+    <li><a href="/keepers">keep</a></li>
+    <li><a href="/midfielders">mid</a></li>
+    <li><a href="/goals">g / a</a></li>
+  </ul>
+  <br>
+</div>
 
+<div class="desktop">
+  <ul class="position">
+    <li><a href="/defenders">defenders</a></li>
+    <li><a href="/forwards">forwards</a></li>
+    <li><a href="/keepers">keepers</a></li>
+    <li><a href="/midfielders">midfielders</a></li>
+    <li><a href="/goals">goals/assists</a></li>
+  </ul>
+</div>
 <!-- header -->
 {% include "form.html" %}
 {% block body %}{% endblock %}
