@@ -14,8 +14,8 @@
   <!-- body -->
 <div class="mobile">
   <!-- championship -->
-  {% if championship_table is defined %}
-  <div><a class="indent"><b>Championship</b></a></div>
+  {% if yeartodate_table is defined %}
+  <div><a class="indent"><b>Complete Table</b></a></div>
     <div>
       <div>
             <table>
@@ -30,20 +30,24 @@
                 <td><b>GF</b></td>
                 <td><b>GA</b></td>
               </tr>
-              {%for i in range(0,championship_table.shape[0])%}
+              {%for i in range(0,yeartodate_table.shape[0])%}
               <tr>
                 <td>{{ i+1 }}</td>
-                <td class="t-center"><img style="max-height:30px;margin:-8px;text-align:center;" src="static/images/flags/{{ championship_table.at[i,'crest'] }}" alt="{{ championship_table.at[i,'crest'] }} Crest"></td>
-                <td>{{ championship_table.iloc[i]['matches'] }}</td>
-                <td>{{ championship_table.iloc[i]['points'] }}</td>
-                <td class="{{ theme }}-green">{{ championship_table.iloc[i]['win'] }}</td>
-                <td class="{{ theme }}-orange">{{ championship_table.iloc[i]['draw'] }}</td>
-                <td class="{{ theme }}-red">{{ championship_table.iloc[i]['loss'] }}</td>
-                <td><b>{{ championship_table.iloc[i]['Goal'] }}</td>
-                <td>{{ championship_table.iloc[i]['Goal'] - championship_table.iloc[i]['gd'] }}</td>
+                <td class="t-center"><img style="max-height:30px;margin:-8px;text-align:center;" src="static/images/flags/{{ yeartodate_table.at[i,'crest'] }}" alt="{{ yeartodate_table.at[i,'crest'] }} Crest"></td>
+                <td>{{ yeartodate_table.iloc[i]['matches'] }}</td>
+                <td>{{ yeartodate_table.iloc[i]['points'] }}</td>
+                <td class="{{ theme }}-green">{{ yeartodate_table.iloc[i]['win'] }}</td>
+                <td class="{{ theme }}-orange">{{ yeartodate_table.iloc[i]['draw'] }}</td>
+                <td class="{{ theme }}-red">{{ yeartodate_table.iloc[i]['loss'] }}</td>
+                <td class="{{ theme }}-t-blue">{{ yeartodate_table.iloc[i]['Goal'] }}</td>
+                <td class="{{ theme }}-t-blue">{{ yeartodate_table.iloc[i]['Goal'] - yeartodate_table.iloc[i]['gd'] }}</td>
               </tr>
               {%endfor%}
             </table>
+
+
+
+
           </div>
       </div>
       <!-- end of championship-->
@@ -51,12 +55,7 @@
     {% endif %}
 
     <!-- playoffs -->
-    {% if championship_table is defined %}
-    {% if year == '2019' %}
-    <div><a class="indent"><b>Summer Season</b></a></div>
-    {% else %}
-    <div><a class="indent"><b>Playoffs</b></a></div>
-    {% endif %}
+    <div><a class="indent"><b>2020 Season</b></a></div>
       <div>
         <div>
               <table>
@@ -88,15 +87,9 @@
             </div>
         </div>
         <!-- end of championship-->
-      {% else %}
-      {% endif %}
 
       <!-- regular season -->
-      {% if year == '2019' %}
-      <div><a class="indent"><b>Spring Season</b></a></div>
-      {% else %}
-      <div><a class="indent"><b>Regular Season</b></a></div>
-      {% endif %}
+      <div><a class="indent"><b>2019 Season</b></a></div>
       <div>
           <table>
             <tr style="font-size:0.8em;">
@@ -126,32 +119,6 @@
           </table>
       </div>
         <!-- end of regular season-->
-        <!-- form -->
-        <div><h3><b>Form</b></h3></div>
-          <div>
-            <div class="parent">
-              <div class="t-center" style="display:inline;width:15%;"><a>club</a></div>
-              <div class="t-center" style="display:inline;width:85%;"><a>game</a></div>
-            </div>
-            <div>
-              <table style="width:100%;">
-                <tr>
-                  <td style="width:10%;"><b></b></td>
-                  {% for i in range(1,form_table.shape[1]-1) %}
-                  <td class="t-left" style="font-size:0.5em;">{{ i }}</td>
-                  {% endfor %}
-                </tr>
-                {%for i in range(0,form_table.shape[0])%}
-                <tr>
-                  <td class="t-center"><img style="max-height:30px;margin:-8px;text-align:center;" src="static/images/flags/{{ form_table.at[i,'crest'] }}" alt="{{ form_table.at[i,'crest'] }} Crest"></td>
-                  {%for j in range(1,form_table.shape[1]-1)%}
-                  <td class="t-center {{ theme }}-{{'green' if form_table.iloc[i][j][0] == 'W' else 'red' if form_table.iloc[i][j][0] == 'L' else 'orange' if form_table.iloc[i][j][0] == 'D' else '{{ theme }}-m'}}" style="font-size:10px;padding: 0px 0px;">{{ form_table.iloc[i][j][0] }}</td>
-                  {%endfor%}
-                </tr>
-                {%endfor%}
-              </table>
-            </div>
-          </div>
   </div>
 
   <!-- championship -->
@@ -177,19 +144,19 @@
       </div>
       <div class="{{ theme }}-light">
         <table>
-          {%for i in range(0,championship_table.shape[0])%}
+          {%for i in range(0,yeartodate_table.shape[0])%}
           <tr class="{{ theme }}-light">
             <td>{{ i+1 }}</td>
-            <td class="t-left" style="width: 20%;">{{ championship_table.iloc[i]['team'] }}</td>
-            <td>{{ championship_table.iloc[i]['matches'] }}</td>
-            <td>{{ championship_table.iloc[i]['points'] }}</td>
-            <td>{{ (championship_table.iloc[i]['points']/championship_table.iloc[i]['matches'])|round(2) }}</td>
-            <td class="{{ theme }}-green">{{ championship_table.iloc[i]['win'] }}</td>
-            <td class="{{ theme }}-orange">{{ championship_table.iloc[i]['draw'] }}</td>
-            <td class="{{ theme }}-red">{{ championship_table.iloc[i]['loss'] }}</td>
-            <td class="{{ theme }}">{{ championship_table.iloc[i]['gd'] }}</td>
-            <td class="{{ theme }}-t-blue">{{ championship_table.iloc[i]['Goal'] }}</td>
-            <td class="{{ theme }}-t-blue">{{ championship_table.iloc[i]['Goal'] - championship_table.iloc[i]['gd'] }}</td>
+            <td class="t-left" style="width: 20%;">{{ yeartodate_table.iloc[i]['team'] }}</td>
+            <td>{{ yeartodate_table.iloc[i]['matches'] }}</td>
+            <td>{{ yeartodate_table.iloc[i]['points'] }}</td>
+            <td>{{ (yeartodate_table.iloc[i]['points']/yeartodate_table.iloc[i]['matches'])|round(2) }}</td>
+            <td class="{{ theme }}-green">{{ yeartodate_table.iloc[i]['win'] }}</td>
+            <td class="{{ theme }}-orange">{{ yeartodate_table.iloc[i]['draw'] }}</td>
+            <td class="{{ theme }}-red">{{ yeartodate_table.iloc[i]['loss'] }}</td>
+            <td class="{{ theme }}">{{ yeartodate_table.iloc[i]['gd'] }}</td>
+            <td class="{{ theme }}-t-blue">{{ yeartodate_table.iloc[i]['Goal'] }}</td>
+            <td class="{{ theme }}-t-blue">{{ yeartodate_table.iloc[i]['Goal'] - yeartodate_table.iloc[i]['gd'] }}</td>
           </tr>
           {%endfor%}
         </table>

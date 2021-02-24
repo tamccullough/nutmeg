@@ -271,20 +271,33 @@ def todate():
     season_totals_20 = pd.read_csv('datasets/2020/league/2020-season_totals.csv')
     yeartodate_season_total = pd.read_csv('datasets/2021/league/2021-yeartodate_season_totals.csv')
 
+    yeartodate_season_total = yeartodate_season_total.sort_values(by=['points','gd','win'],ascending = False)
+    yeartodate_season_total = cpl_main.index_reset(yeartodate_season_total)
+
+    season_totals_20 = season_totals_20.sort_values(by=['points','gd','win'],ascending = False)
+    season_totals_20 = cpl_main.index_reset(season_totals_20)
+
+    season_totals_19 = season_totals_19.sort_values(by=['points','gd','win'],ascending = False)
+    season_totals_19 = cpl_main.index_reset(season_totals_19)
+
     team_form_results = pd.read_csv(f'datasets/{year}/cpl-{year}-team_form.csv')
     team_ref = pd.read_csv(f'datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
 
-    def get_crest(data,column):
+    def get_crest(data):
         data['crest'] = '-'
         for i in range(data.shape[0]):
-            data.at[i,'crest'] = team_ref[team_ref['team'] == data.at[i,column]]['crest'].values[0]
+            data.at[i,'crest'] = team_ref[team_ref['team'] == data.at[i,'team']]['crest'].values[0]
         return data
+
+    yeartodate_season_total = get_crest(yeartodate_season_total)
+    season_totals_20 = get_crest(season_totals_20)
+    season_totals_19 = get_crest(season_totals_19)
 
     columns = yeartodate_season_total.columns
 
     return render_template('cpl-es-todate.html',columns = columns,
-    championship_table = yeartodate_season_total, standings_table = season_totals_19, playoffs_table = season_totals_20,
+    yeartodate_table = yeartodate_season_total, standings_table = season_totals_19, playoffs_table = season_totals_20,
     form_table = team_form_results, year = this_year,
     headline = 'Year to Date')
 
@@ -296,6 +309,15 @@ def standings():
     championship = pd.read_csv(f'datasets/{year}/league/{year}-championship.csv')
     playoffs = pd.read_csv(f'datasets/{year}/league/{year}-playoffs.csv')
     standings = pd.read_csv(f'datasets/{year}/league/{year}-regular-standings.csv')
+
+    championship = championship.sort_values(by=['points','gd','win'],ascending = False)
+    championship = cpl_main.index_reset(championship)
+
+    playoffs = playoffs.sort_values(by=['points','gd','win'],ascending = False)
+    playoffs = cpl_main.index_reset(playoffs)
+
+    standings = standings.sort_values(by=['points','gd','win'],ascending = False)
+    standings = cpl_main.index_reset(standings)
 
     team_form_results = pd.read_csv(f'datasets/{year}/cpl-{year}-team_form.csv')
     team_ref = pd.read_csv(f'datasets/teams.csv')
