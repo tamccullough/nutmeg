@@ -187,7 +187,7 @@ year = '2020'
 @canples.context_processor
 def inject_basic():
 
-    return dict(today = today, day = day, weekday = weekday, month = month, theme = 'mono', year = '2020')
+    return dict(today = today, day = day, weekday = weekday, month = month, theme = 'mono', year = '2020', current_year = current_year)
 
 @canples.route('/', methods=['GET','POST'])
 def index():
