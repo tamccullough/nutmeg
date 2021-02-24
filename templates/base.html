@@ -97,9 +97,18 @@
       <!-- End page content -->
     </div>
   </div>
-  <script src="static/css/app.js"></script>
-  <script src="static/css/top.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SCCY1VM6E9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SCCY1VM6E9');
+</script>
+<script src="static/css/app.js"></script>
+<script src="static/css/top.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
   {% set team_chart_columns = ['Goal', 'BgChnc', 'Chance', 'CleanSheet', 'GoalCncd', 'BgChncFace'] %}
   {% set geegle = ['#000','#fff','#ffd700','#ff00ff','#4a86e8','#0000ff','#9900ff','#ff00ff'] %}
   {% if year != '2019' %}
@@ -109,7 +118,7 @@
   {% endif %}
   {% block javascript %}
   {% if request.endpoint == 'player' %}
-  <script type="text/javascript">
+<script type="text/javascript">
   document.getElementById('go-back').addEventListener('click', () => {
     history.back();
   });
