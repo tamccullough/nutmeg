@@ -1,1 +1,1 @@
-web: gunicorn main:canples
+web: gunicorn main:canpl

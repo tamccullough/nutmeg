@@ -1,8 +1,8 @@
 ![CANPL](https://pbs.twimg.com/profile_images/1191405045788676097/vk_lsh7F_200x200.jpg)
 
-[CANPLES Heroku App LINK](https://canpl.herokuapp.com/)
+[CANPL Heroku App LINK](https://canpl.herokuapp.com/)
 
-## canpl-es
+## Canpl
 CanPL Fan Site | analyse the satistics & results of the Canadian Premier League
 
 Currently using MultinomialNB(), RandomForestRegressor() and RandomForestClassifier() to make the match predictions between teams as games are listed in the schedule.
