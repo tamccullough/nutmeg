@@ -782,13 +782,15 @@ def player():
             g = df.pop('G')
             df.insert(1,'G',g)
         # get the columns headers
-        line_columns = [x for x in data.columns[1:-1]]
+
         # pop out the name related columns
         for col in ['name','display']:
             df.pop(col)
         # get rid of any string symbols such as % and convert to float if needed
         for col in df.columns:
             df[col] = df[col].apply(lambda x: percentage_check(x))
+
+        line_columns = [x for x in df.columns]
 
         return df.T, line_columns
 
