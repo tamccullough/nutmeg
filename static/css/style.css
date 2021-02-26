@@ -85,13 +85,6 @@ body,h3,h4,h5,a {
   font-family: 'Lato', sans-serif;
 }
 
-.chartcontainer {
-  position:relative;
-  max-height:250px;
-  display: flex;
-  flex-grow:1;
-}
-
 .text-black {color:#000000;}
 .text-white {color:var(--white);}
 
@@ -158,6 +151,10 @@ nav {
   background-color: var(--darkblue);
 }
 
+.navbox {
+  background-color: var(--darkblue);
+}
+
 .logo {
   color: var(--white);
   /*text-transform: uppercase;*/
@@ -210,9 +207,6 @@ nav {
   .position {
     color: var(--darkblue);
   }
-  nav {
-    background-color: inherit;
-  }
   .nav-links {
     position: absolute;
     right: 0px;
@@ -220,7 +214,6 @@ nav {
     height: 75vh;
     top: 8.25vh;
     color: transparent;
-    background-color: inherit;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -233,6 +226,12 @@ nav {
 }
 
 @media only screen and (max-width: 768px) {
+  nav {
+    background-color: var(--lightblue);
+  }
+  .navbox {
+    background-color: var(--lightblue);
+  }
   .mono-body{color:var(--darkblue); background-color:var(--lightblue);}
   .logo {color: var(--darkblue);}
   .burger div {background-color: var(--darkblue);}
@@ -369,6 +368,40 @@ nav {
   flex: 1 1 150px;
   margin: 2px;
   padding: 2px 2px;
+}
+
+.boxcs {
+  position:relative;
+  max-width:30vw;
+  max-height:250px;
+  display: flex;
+  flex-grow:1;
+  place-items: center;
+  border-radius: 0.2rem 0.2rem;
+  flex: 1 1 100px;
+  margin: 2px;
+  padding: 2px 2px;
+}
+.boxcl {
+  position:relative;
+  max-width:50vw;
+  max-height:250px;
+  display: flex;
+  flex-grow:1;
+  place-items: center;
+  border-radius: 0.2rem 0.2rem;
+  flex: 1 1 150px;
+  margin: 2px;
+  padding: 2px 2px;
+}
+
+@media screen and (max-width: 1024px) {
+  .boxcs {
+    max-width:75vw;
+  }
+  .boxcl {
+    max-width:75vw;
+  }
 }
 
 /* assorted divs might be removed*/
