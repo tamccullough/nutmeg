@@ -132,12 +132,12 @@ def get_year():
     except KeyError as error:
         session['year'] = '2020'
         return session.get('year'), error # if "year" hasn't been set yet, return None'''
-    global year
-    try:
-        year = request.form['year']
-    except:
-        pass
-    return year , ''
+    error = None
+    if request.method == 'POST':
+        print('REQUESTING YEAR: ',request.form['year'])
+        return request.form['year'], error
+    else:
+        return '2020' , error
 
 def load_main_files(year):
 
@@ -195,12 +195,31 @@ year = '2020'
 error = ''
 
 @canpl.context_processor
-def inject_basic():
+def inject_user():
 
-    return dict(today = today, day = day, weekday = weekday, month = month, theme = 'mono', year = year, current_year = current_year, error = error)
+    return dict(today = today, day = day, weekday = weekday, month = month, theme = 'mono', current_year = current_year, error = error)
+
+@canpl.route('/setsession')
+def setsession():
+    session['Username'] = 'Admin'
+    return f"The session has been Set"
+
+@canpl.route('/getsession')
+def getsession():
+    if 'Username' in session:
+        Username = session['Username']
+        return f"Welcome {Username}"
+    else:
+        return "Welcome Anonymous"
+
+@canpl.route('/popsession')
+def popsession():
+    session.pop('Username',None)
+    return "Session Deleted"
 
 @canpl.route('/', methods=['GET','POST'])
 def index():
+
     na = 'TBD'
     session['year'] = '2020'
     year, error = get_year()
@@ -265,7 +284,7 @@ def index():
     else:
         headline = f"{year} Season Completed"
 
-    return render_template('cpl-es-index.html',top_mover = top_mover, top_dropper = top_dropper,
+    return render_template('cpl-es-index.html', year = year, top_mover = top_mover, top_dropper = top_dropper,
     goals = goals,  assists = assists, yellows = yellows, reds = reds,
     big_win = big_win, top_result = top_result, low_result = low_result, other_result = other_result,
     top_team = top_team, top_keeper = top_keeper,top_forward = top_forward,
@@ -389,7 +408,7 @@ def power():
         power.at[i,'crest'] = team_ref[team_ref['team'] == power.at[i,'team']]['crest'].values[0]
         power.at[i,'colour'] = team_ref[team_ref['team'] == power.at[i,'team']]['colour'].values[0]
 
-    return render_template('cpl-es-power.html',html_table = power, headline = headline)
+    return render_template('cpl-es-power.html', year = year, html_table = power, headline = headline)
 
 @canpl.route('/versus', methods=['GET','POST'])
 def versus():
@@ -510,7 +529,7 @@ def versus():
     away_team = q2, away_table = away_roster.head(11), away_win = away_win, away_history = q2_r,
     away_crest = away_crest, away_colour = away_colour, away_fill = away_fill, away_radar = away_radar,
     draw = draw, home_form = home_form, away_form = away_form,
-    headline = headline, year = year,
+    headline = headline,
     home_score = home_score, away_score = away_score,
     team1 = team1, team2 = team2, team3 = team3, team4 = team4, team5 = team5, team6 = team6, team7 = team7, team8 = team8,
     group1 = group1, group2 = group2, group3 = group3, group4 = group4)
@@ -519,12 +538,13 @@ def versus():
 def teams():
 
     year, error = get_year()
+    print('SEARCHING YEAR: ',year)
 
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
     columns = team_ref.columns
 
-    return render_template('cpl-es-teams.html',columns = columns, headline = 'Club Information',
+    return render_template('cpl-es-teams.html', year = year, columns = columns, headline = 'Club Information',
     html_table = team_ref, roster = roster)
 
 @canpl.route('/radar', methods=['GET','POST'])
@@ -564,13 +584,14 @@ def radar():
     columns = team_ref.columns
 
     return render_template('cpl-es-radar.html',columns = columns, html_table = team_ref,
-    team_list = team_list, team_dict = team_dict, team_stats = team_stats,
+    team_list = team_list, team_dict = team_dict, team_stats = team_stats, year = year,
     stats = team_standings, radar = radar, headline = 'Radar Charts')
 
 @canpl.route('/roster', methods=['GET','POST'])
 def roster():
 
     year, error = get_year()
+    print('SEARCHING YEAR: ',year)
     team = request.form['team']
 
     radar = pd.read_csv(f'datasets/{year}/league/{year}-radar.csv')
@@ -601,7 +622,7 @@ def roster():
         team_line = cpl_main.index_reset(team_line).values.tolist()
     ### COMPLETE THIS
 
-    return render_template('cpl-es-roster.html',team_name = team, coach = coach, radar = radar, team_line = team_line, team_stats = team_stats,
+    return render_template('cpl-es-roster.html', year = year, team_name = team, coach = coach, radar = radar, team_line = team_line, team_stats = team_stats,
     crest = crest, colour1 = colour1, colour2 = colour2, html_table = roster, team_colour = roster_colour)
 
 @canpl.route('/player', methods=['GET','POST'])
@@ -729,7 +750,7 @@ def player():
 
         player_line = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
 
-        return render_template('cpl-es-player.html', name = details['display'], player_line_length = 1, player_line_end = 1,
+        return render_template('cpl-es-player.html', year = year, name = details['display'], player_line_length = 1, player_line_end = 1,
         nationality = details['nationality'], team_name = team, player_info = player, full_name = name,
         team_colour = roster_colour, crest = crest, position = position.get(pos)[:-1], number = details['number'], chart_team_colour_list = geegle,
         stats = db, stats90 = db, discipline = discipline, radar_chart = radar_chart, radar_chart_cols = radar_chart_cols,
@@ -849,7 +870,9 @@ def player():
                 'Tch':'Touches'}
     column_names = [col_change[x] for x in line_columns]
 
-    return render_template('cpl-es-player.html', name = details['display'], player_line_length = len(player_line)-1, player_line_end = player_line_end,
+    display_year = year
+
+    return render_template('cpl-es-player.html', year = year, name = details['display'], player_line_length = len(player_line)-1, player_line_end = player_line_end,
     nationality = details['nationality'], team_name = team, player_info = player, full_name = name, column_names = column_names,
     team_colour = roster_colour, crest = crest, position = position.get(pos)[:-1], number = details['number'], chart_team_colour_list = geegle,
     stats = db, stats90 = db90, discipline = discipline, radar_chart = radar_chart, radar_chart_cols = radar_chart_cols,
@@ -991,7 +1014,7 @@ def discipline():
     rated_offenders = rated_offenders.sort_values(by=['Red','2ndYellow','Yellow'], ascending = False)
     columns = rated_offenders.columns
 
-    return render_template('cpl-es-discipline.html',columns = columns,
+    return render_template('cpl-es-discipline.html',columns = columns, year = year,
     html_table = rated_offenders, headline = 'Discipline')
 
 @canpl.route('/hell')

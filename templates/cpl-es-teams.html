@@ -40,6 +40,7 @@
             <td><a class="table-button" href="{{ html_table.iloc[i]['wiki'] }}" target="_blank">wiki</a></td>
           </tr>
         </table>
+        <input type="hidden" id="year" name="year" value="{{ year }}">
       </form>
     </div>
     {%endfor%}
@@ -83,6 +84,7 @@
             <td><a class="{{ theme }}-light table-button" href="{{ html_table.iloc[i]['wiki'] }}" target="_blank">wikipedia</a></td>
             </tr>
           </table>
+          <input type="hidden" id="year" name="year" value="{{ year }}">
         </form>
       </div>
       {%endfor%}
