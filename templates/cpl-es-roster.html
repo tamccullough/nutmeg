@@ -48,53 +48,52 @@
     </div>
   </div>
 
-  <div class="borderc {{ team_colour }}">
+  <div class="{{ team_colour }}">
       <canvas id="teamLine"></canvas>
   </div>
   <!-- team information section -->
+  <div class="{{ team_colour }}">
+    <div class="parent">
+        <div class="box">
+          <canvas id="teamRadar"></canvas>
+        </div>
 
-  <div class="parent">
-      <div class="boxl {{ team_colour }}">
-        <canvas id="teamRadar"></canvas>
-      </div>
+        <!-- COACH section -->
+        <div class="boxs">
+          <br>
+          <table>
+            <tr>
+              <th colspan="2"  style="text-align:center;"><a><img src="static/images/flags/{{ coach['country'].values[0] }}" alt="{{ coach['country'].values[0][:-4] }}" style="max-height:30px"></a></th>
+            </tr>
+            <tr>
+              <th><b>Club</b></th>
+              <th><b>Coach</b></th>
+            </tr>
+            <tr>
+              <td>Wins: <b>{{ coach['w'].values[0]}}</b></td>
+              <td>Wins: <b>{{ coach['cw'].values[0]}}</b></td>
+            </tr>
+            <tr>
+              <td>Draws: <b>{{ coach['d'].values[0] }}</b></td>
+              <td>Draws: <b>{{ coach['cd'].values[0] }}</b></td>
+            </tr>
+            <tr>
+              <td>Losses: <b>{{ coach['l'].values[0] }}</b></td>
+              <td>Losses: <b>{{ coach['cl'].values[0] }}</b></td>
+            </tr>
+          </table>
+        </div>
 
-      <!-- COACH section -->
-      <div class="boxs {{ team_colour }}">
-        <div class="parent">
-          <div class="boxs">
-            <br>
-            <table>
-              <tr>
-                <th colspan="2"  style="text-align:center;"><a><img src="static/images/flags/{{ coach['country'].values[0] }}" alt="{{ coach['country'].values[0][:-4] }}" style="max-height:30px"></a></th>
-              </tr>
-              <tr>
-                <th><b>Club</b></th>
-                <th><b>Coach</b></th>
-              </tr>
-              <tr>
-                <td>Wins: <b>{{ coach['w'].values[0]}}</b></td>
-                <td>Wins: <b>{{ coach['cw'].values[0]}}</b></td>
-              </tr>
-              <tr>
-                <td>Draws: <b>{{ coach['d'].values[0] }}</b></td>
-                <td>Draws: <b>{{ coach['cd'].values[0] }}</b></td>
-              </tr>
-              <tr>
-                <td>Losses: <b>{{ coach['l'].values[0] }}</b></td>
-                <td>Losses: <b>{{ coach['cl'].values[0] }}</b></td>
-              </tr>
-            </table>
-          </div>
-          <div class="boxm">
-            <span><h3 style="text-indent: 50px;">{{ coach['coach'].values[0] }}</h3><span>
-            <div class="center">
-                <a><img src="static/images/players/{{ year }}/{{ coach['image'].values[0] }}" alt="photo of {{ coach['coach'].values[0] }}" style="max-height:200px"></a>
-            </div>
+        <div class="box center">
+            <a class="mobile">{{ coach['coach'].values[0] }}</a>
+            <h3 class="desktop">{{ coach['coach'].values[0] }}</h3>
+          <div class="center">
+              <a><img src="static/images/players/{{ year }}/{{ coach['image'].values[0] }}" alt="photo of {{ coach['coach'].values[0] }}" style="max-height:200px"></a>
           </div>
         </div>
-        </div>
-      <!-- END OF COACH section -->
+    </div>
   </div>
+  <!-- END OF COACH section -->
   <!-- end of team information section -->
 
   <!-- player CARD Section -->
