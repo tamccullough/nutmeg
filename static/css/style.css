@@ -372,6 +372,7 @@ nav {
 
 .boxcs {
   position:relative;
+  border-radius: 0.2rem 0.2rem;
   max-width:30vw;
   max-height:250px;
   display: flex;
@@ -384,6 +385,7 @@ nav {
 }
 .boxcl {
   position:relative;
+  border-radius: 0.2rem 0.2rem;
   max-width:50vw;
   max-height:250px;
   display: flex;
@@ -698,7 +700,7 @@ td {
 /* decoration */
 
 .borderc {
-  border-radius: 1rem;
+  border-radius: 0.2rem;
 }
 
 .borderh {
