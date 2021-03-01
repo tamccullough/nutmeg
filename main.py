@@ -19,9 +19,9 @@ canpl = Flask(__name__)
 # Set the secret key to some random bytes. Keep this really secret!
 canpl.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
-player_info_19 = pd.read_csv(f'datasets/2019/player-2019-info.csv')
+player_info_19 = pd.read_csv(f'datasets/2019/league/2019-player-info.csv')
 player_info_19['year'] = '2019'
-player_info_20 = pd.read_csv(f'datasets/2020/player-2020-info.csv')
+player_info_20 = pd.read_csv(f'datasets/2020/league/2020-player-info.csv')
 player_info_20['year'] = '2020'
 player_info = pd.concat([ player_info_19, player_info_20 ])
 
@@ -156,7 +156,7 @@ def load_main_files(year):
 
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
-    player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
+    player_info = pd.read_csv(f'datasets/{year}/league/{year}-player-info.csv')
 
     results_old = results[results['hr'] != 'E'].copy()
     results_diff = pd.concat([results, results_old]).drop_duplicates()
@@ -284,7 +284,7 @@ def index():
     else:
         headline = f"{year} Season Completed"
 
-    return render_template('cpl-es-index.html', year = year, top_mover = top_mover, top_dropper = top_dropper,
+    return render_template('index.html', year = year, top_mover = top_mover, top_dropper = top_dropper,
     goals = goals,  assists = assists, yellows = yellows, reds = reds,
     big_win = big_win, top_result = top_result, low_result = low_result, other_result = other_result,
     top_team = top_team, top_keeper = top_keeper,top_forward = top_forward,
@@ -325,7 +325,7 @@ def todate():
 
     columns = yeartodate_season_total.columns
 
-    return render_template('cpl-es-todate.html',columns = columns,
+    return render_template('todate.html',columns = columns,
     yeartodate_table = yeartodate_season_total, standings_table = season_totals_19, playoffs_table = season_totals_20,
     form_table = team_form_results, year = this_year,
     headline = 'Year to Date')
@@ -365,7 +365,7 @@ def standings():
 
     columns = standings.columns
 
-    return render_template('cpl-es-standings.html',columns = columns,
+    return render_template('standings.html',columns = columns,
     championship_table = championship, standings_table = standings, playoffs_table = playoffs,
     form_table = team_form_results, year = year,
     headline = 'Standings')
@@ -377,7 +377,7 @@ def eleven():
 
     best_eleven = pd.read_csv(f'datasets/{year}/playerstats/{year}-best_eleven.csv')
     #best_eleven = pd.read_csv(f'datasets/{year}/cpl-{year}-best_eleven.csv')
-    player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
+    player_info = pd.read_csv(f'datasets/{year}/league/{year}-player-info.csv')
 
     attackers = best_eleven[best_eleven['position'] == 'f']
     midfield = best_eleven[best_eleven['position'] == 'm']
@@ -385,7 +385,7 @@ def eleven():
     defenders = best_eleven[best_eleven['position'] == 'd']
     keeper = best_eleven[best_eleven['position'] == 'g']
 
-    return render_template('cpl-es-best_eleven.html',
+    return render_template('eleven.html',
     html_table = best_eleven,  headline = 'Best Eleven', year = year,
     attackers = attackers, defenders = defenders, midfield = midfield, keeper = keeper)
 
@@ -408,7 +408,7 @@ def power():
         power.at[i,'crest'] = team_ref[team_ref['team'] == power.at[i,'team']]['crest'].values[0]
         power.at[i,'colour'] = team_ref[team_ref['team'] == power.at[i,'team']]['colour'].values[0]
 
-    return render_template('cpl-es-power.html', year = year, html_table = power, headline = headline)
+    return render_template('power.html', year = year, html_table = power, headline = headline)
 
 @canpl.route('/versus', methods=['GET','POST'])
 def versus():
@@ -523,7 +523,7 @@ def versus():
         #headline = f'Week {game_week} Matches:'
         headline = f'Week __ Matches:'
 
-    return render_template('cpl-es-comparison.html',
+    return render_template('comparison.html',
     home_team = q1, home_table = home_roster.head(11), home_win = home_win, home_history = q1_r,
     home_crest = home_crest, home_colour = home_colour, home_fill = home_fill, home_radar = home_radar,
     away_team = q2, away_table = away_roster.head(11), away_win = away_win, away_history = q2_r,
@@ -544,7 +544,7 @@ def teams():
     team_ref = team_ref[team_ref['year'] == int(year)]
     columns = team_ref.columns
 
-    return render_template('cpl-es-teams.html', year = year, columns = columns, headline = 'Club Information',
+    return render_template('teams.html', year = year, columns = columns, headline = 'Club Information',
     html_table = team_ref, roster = roster)
 
 @canpl.route('/radar', methods=['GET','POST'])
@@ -583,7 +583,7 @@ def radar():
 
     columns = team_ref.columns
 
-    return render_template('cpl-es-radar.html',columns = columns, html_table = team_ref,
+    return render_template('radar.html',columns = columns, html_table = team_ref,
     team_list = team_list, team_dict = team_dict, team_stats = team_stats, year = year,
     stats = team_standings, radar = radar, headline = 'Radar Charts')
 
@@ -598,7 +598,7 @@ def roster():
     radar = radar[radar['team'] == team]
     radar = cpl_main.index_reset(radar)
 
-    player_info = pd.read_csv(f'datasets/{year}/player-{year}-info.csv')
+    player_info = pd.read_csv(f'datasets/{year}/league/{year}-player-info.csv')
     roster = player_info[player_info['team'] == team][['name','image','position','number','flag','overall','link']]
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
@@ -622,7 +622,7 @@ def roster():
         team_line = cpl_main.index_reset(team_line).values.tolist()
     ### COMPLETE THIS
 
-    return render_template('cpl-es-roster.html', year = year, team_name = team, coach = coach, radar = radar, team_line = team_line, team_stats = team_stats,
+    return render_template('roster.html', year = year, team_name = team, coach = coach, radar = radar, team_line = team_line, team_stats = team_stats,
     crest = crest, colour1 = colour1, colour2 = colour2, html_table = roster, team_colour = roster_colour)
 
 @canpl.route('/player', methods=['GET','POST'])
@@ -750,7 +750,7 @@ def player():
 
         player_line = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
 
-        return render_template('cpl-es-player.html', year = year, name = details['display'], player_line_length = 1, player_line_end = 1,
+        return render_template('player.html', year = year, name = details['display'], player_line_length = 1, player_line_end = 1,
         nationality = details['nationality'], team_name = team, player_info = player, full_name = name,
         team_colour = roster_colour, crest = crest, position = position.get(pos)[:-1], number = details['number'], chart_team_colour_list = geegle,
         stats = db, stats90 = db, discipline = discipline, radar_chart = radar_chart, radar_chart_cols = radar_chart_cols,
@@ -872,7 +872,7 @@ def player():
 
     display_year = year
 
-    return render_template('cpl-es-player.html', year = year, name = details['display'], player_line_length = len(player_line)-1, player_line_end = player_line_end,
+    return render_template('player.html', year = year, name = details['display'], player_line_length = len(player_line)-1, player_line_end = player_line_end,
     nationality = details['nationality'], team_name = team, player_info = player, full_name = name, column_names = column_names,
     team_colour = roster_colour, crest = crest, position = position.get(pos)[:-1], number = details['number'], chart_team_colour_list = geegle,
     stats = db, stats90 = db90, discipline = discipline, radar_chart = radar_chart, radar_chart_cols = radar_chart_cols,
@@ -893,7 +893,7 @@ def goals():
     columns_g = rated_goalscorers.columns
     columns_a = rated_assists.columns
 
-    return render_template('cpl-es-goals.html',columns_g = columns_g, columns_a = columns_a, year = year,
+    return render_template('goals.html',columns_g = columns_g, columns_a = columns_a, year = year,
     html_table = rated_g10, assists_table = rated_a10, headline = 'Top 10 Goals / Assists')
 
 @canpl.route('/forwards', methods=['GET','POST'])
@@ -906,7 +906,7 @@ def forwards():
 
     rated_forwards = new_col(rated_forwards)
 
-    return render_template('cpl-es-position.html', year = year,
+    return render_template('position.html', year = year,
     columns = columns,html_table = rated_forwards)
 
 @canpl.route('/forwardsP90', methods=['GET','POST'])
@@ -920,7 +920,7 @@ def forwards_90():
 
     rated_forwards = new_col(rated_forwards)
 
-    return render_template('cpl-es-position.html', year = year,
+    return render_template('position.html', year = year,
     columns = columns,html_table = rated_forwards)
 
 @canpl.route('/midfielders', methods=['GET','POST'])
@@ -933,7 +933,7 @@ def midfielders():
 
     rated_midfielders = new_col(rated_midfielders)
 
-    return render_template('cpl-es-position.html', year = year,
+    return render_template('position.html', year = year,
     columns = columns,html_table = rated_midfielders)
 
 @canpl.route('/midfieldersP90', methods=['GET','POST'])
@@ -947,7 +947,7 @@ def midfielders_90():
 
     rated_midfielders = new_col(rated_midfielders)
 
-    return render_template('cpl-es-position.html', year = year,
+    return render_template('position.html', year = year,
     columns = columns,html_table = rated_midfielders)
 
 @canpl.route('/defenders', methods=['GET','POST'])
@@ -960,7 +960,7 @@ def defenders():
 
     rated_defenders = new_col(rated_defenders)
 
-    return render_template('cpl-es-position.html', year = year,
+    return render_template('position.html', year = year,
     columns = columns,html_table = rated_defenders)
 
 @canpl.route('/defendersP90', methods=['GET','POST'])
@@ -974,7 +974,7 @@ def defenders_90():
 
     rated_defenders = new_col(rated_defenders)
 
-    return render_template('cpl-es-position.html', year = year,
+    return render_template('position.html', year = year,
     columns = columns,html_table = rated_defenders)
 
 @canpl.route('/keepers', methods=['GET','POST'])
@@ -987,7 +987,7 @@ def keepers():
 
     rated_keepers = new_col(rated_keepers)
 
-    return render_template('cpl-es-position.html', year = year,
+    return render_template('position.html', year = year,
     columns = columns,html_table = rated_keepers)
 
 @canpl.route('/keepersP90', methods=['GET','POST'])
@@ -1001,7 +1001,7 @@ def keepers_90():
 
     rated_keepers = new_col(rated_keepers)
 
-    return render_template('cpl-es-position.html', year = year,
+    return render_template('position.html', year = year,
     columns = columns,html_table = rated_keepers)
 
 @canpl.route('/discipline', methods=['GET','POST'])
@@ -1014,7 +1014,7 @@ def discipline():
     rated_offenders = rated_offenders.sort_values(by=['Red','2ndYellow','Yellow'], ascending = False)
     columns = rated_offenders.columns
 
-    return render_template('cpl-es-discipline.html',columns = columns, year = year,
+    return render_template('discipline.html',columns = columns, year = year,
     html_table = rated_offenders, headline = 'Discipline')
 
 @canpl.route('/hell')

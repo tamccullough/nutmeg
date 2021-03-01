@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- LINE chart -->
+<div class="{{ theme }}-dark">
+  <h3> Comparing {{ stat }} between {{ column_names[0] }} & {{ column_names[1] }} {{ stat_year }}</h3>
+  <div class="tooltip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Column Tooltip
+    <p class="tooltiptext">
+      {% for x in column_names[:-1] %}
+      {{ x }}<br>
+      {% endfor %}
+      {{ column_names[-1]}}
+    </p>
+  </div>
+  <div class="{{ team_colour }} indent">
+    {% for i in range(chart_team_colour_list | length ) %}
+    <h4 style="display:inline;border-bottom: 0.35rem solid {{ chart_team_colour_list[i] }};">{{ line_columns[i] }}</h4>
+    {% endfor %}
+  </div>
+  <br>
+  <div class="{{ theme }}-red chartcontainer">
+    <canvas id="playerLine"></canvas>
+  </div>
+</div>
+<!-- end of LINE chart -->
+{% endblock %}

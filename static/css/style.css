@@ -510,7 +510,7 @@ select {
 }
 
 .red {
-   background: red;
+   background: var(--red);
 }
 
 /* image related */
@@ -700,15 +700,17 @@ td {
 /* decoration */
 
 .borderc {
-  border-radius: 0.2rem;
+  border-radius: 0.5rem 0.5rem;
+  margin: 2px;
+  padding: 2px 2px;
 }
 
 .borderh {
-  border-radius: 0.5rem;
+  border-radius: 0.2rem 0.2rem;
 }
 
 .borderq {
-  border-radius: 0.15rem;
+  border-radius: 0.15rem 0.15rem;
 }
 
 .bottombar {
