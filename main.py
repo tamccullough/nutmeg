@@ -134,8 +134,13 @@ def get_year():
         return session.get('year'), error # if "year" hasn't been set yet, return None'''
     error = None
     if request.method == 'POST':
-        print('REQUESTING YEAR: ',request.form['year'])
-        return request.form['year'], error
+        try:
+            print('REQUESTING YEAR: ')
+            print(request.form['year'])
+            return request.form['year'], error
+        except Exception as error:
+            print(error)
+            return '2020' , error
     else:
         return '2020' , error
 
@@ -370,7 +375,7 @@ def standings():
     form_table = team_form_results, year = year,
     headline = 'Standings')
 
-@canpl.route('/best11', methods=['GET','POST'])
+@canpl.route('/eleven', methods=['GET','POST'])
 def eleven():
 
     year, error = get_year()
@@ -628,10 +633,8 @@ def roster():
 @canpl.route('/player', methods=['GET','POST'])
 def player():
 
-    try:
-        year = request.form['year']
-    except:
-        year, error = get_year()
+    year, error = get_year()
+    print('SEARCHING YEAR: ',year)
 
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
