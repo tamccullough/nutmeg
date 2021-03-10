@@ -1020,6 +1020,10 @@ def discipline():
     return render_template('discipline.html',columns = columns, year = year,
     html_table = rated_offenders, headline = 'Discipline')
 
+@canpl.route('googledaf818200d6bdf9d.html')
+def google():
+    return render_template('googledaf818200d6bdf9d.html')
+
 @canpl.route('/hell')
 def hello():
     return 'Welcome to HELL world!'
