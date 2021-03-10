@@ -528,7 +528,7 @@ def versus():
         #headline = f'Week {game_week} Matches:'
         headline = f'Week __ Matches:'
 
-    return render_template('comparison.html',
+    return render_template('versus.html',
     home_team = q1, home_table = home_roster.head(11), home_win = home_win, home_history = q1_r,
     home_crest = home_crest, home_colour = home_colour, home_fill = home_fill, home_radar = home_radar,
     away_team = q2, away_table = away_roster.head(11), away_win = away_win, away_history = q2_r,
@@ -588,7 +588,7 @@ def radar():
 
     columns = team_ref.columns
 
-    return render_template('radar.html',columns = columns, html_table = team_ref,
+    return render_template('charts.html',columns = columns, html_table = team_ref,
     team_list = team_list, team_dict = team_dict, team_stats = team_stats, year = year,
     stats = team_standings, radar = radar, headline = 'Radar Charts')
 
