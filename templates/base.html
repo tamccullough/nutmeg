@@ -67,7 +67,7 @@
   {% endif %}
   {% block javascript %}
   {% if request.endpoint == 'player' %}
-<script type="text/javascript">
+<script>
   document.getElementById('go-back').addEventListener('click', () => {
     history.back();
   });
@@ -89,7 +89,7 @@
               {% for x in range(player_line[i] | length) %}
               {{ player_line[i][x] | safe }},
               {% endfor %}
-              {{ player_line[i][-1] | safe}}
+              {{ player_line[i][-1] | safe }}
 
             ],
             fill: true,
@@ -105,7 +105,7 @@
               {% for j in range(player_line[player_line_end] | length) %}
               {{ player_line[player_line_end][j] | safe }},
               {% endfor %}
-              {{ player_line[player_line_end] | safe}}
+              {{ player_line[player_line_end] | safe }}
             ],
             fill: true,
             borderColor: '{{ geegle[player_line_length] }}',
@@ -189,7 +189,7 @@
     });
   </script>
   {% elif request.endpoint == 'roster' %}
-  <script type="text/javascript">
+  <script>
   new Chart(document.getElementById('teamLine'), {
     type: 'line',
     data: {
@@ -307,7 +307,7 @@
     });
   </script>
   {% elif request.endpoint == 'versus'%}
-  <script type="text/javascript">
+  <script>
     new Chart(document.getElementById('homeChart'), {
       type: 'radar',
       data: {
@@ -358,7 +358,7 @@
     {% else %}
     {% set away_text = '#fff' %}
     {% endif %}
-    <script type="text/javascript">
+    <script>
     new Chart(document.getElementById('awayChart'), {
       type: 'radar',
       data: {
@@ -404,8 +404,8 @@
       }
     });
   </script>
-  {% elif request.endpoint == 'radar' and year != '2019' %}
-    <script type="text/javascript">
+  {% elif request.endpoint == 'charts' and year != '2019' %}
+    <script>
     new Chart(document.getElementById('Atlético Ottawa Line'), {
       type: 'line',
       data: {
@@ -478,7 +478,7 @@
       }
     });
     </script>
-    <script type="text/javascript">
+    <script>
       new Chart(document.getElementById('Atlético Ottawa Radar'), {
         type: 'radar',
         data: {
@@ -526,8 +526,8 @@
     </script>
     {% else %}
     {% endif %}
-    {% if request.endpoint == 'radar' %}
-    <script type="text/javascript">
+    {% if request.endpoint == 'charts' %}
+    <script>
     new Chart(document.getElementById('Cavalry FC Line'), {
       type: 'line',
       data: {
@@ -1026,7 +1026,7 @@
       }
     });
     </script>
-    <script type="text/javascript">
+    <script>
     new Chart(document.getElementById('Cavalry FC Radar'), {
       type: 'radar',
       data: {
