@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>Nutmeg CanPL Player Comparison</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Todd McCullough">
+  <meta name="description" content="Canadian Premier League (CanPL) select two different players to view their individual stats during the selected year.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="static/images/favicon.png" />
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="static/css/team-colours.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Staatliches&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+{% extends 't-base.html' %}
+{% block content %}
+
+<!-- page content -->
+{% include "player-compare-form.html" %}
+<a href="/compare">REFRESH</a>
+<div class="parent">
+  <!-- home team stats -->
+    <div class="boxl {{ player1_colour }}">
+      <div class="textcenter">
+        <table>
+          <tr>
+            <td style="width:30%;" rowspan="2"><img src="static/images/players/{{ p1_year }}/{{ player1_image }}" alt="{{ column_names[0] }} photo" style="max-height:100px"></td>
+            <td class="xfont"><h2>{{ p1_year }}</h2></td>
+          </tr>
+          <tr>
+            <td><h4 class="xxfont">{{ column_names[0] }}</h4></td>
+          </tr>
+        </table>
+
+      <div style="width:33%;height:35px;float:left;">
+        <td><a><img src="static/images/flags/{{ player1_flag }}" alt="{{ player1_flag[:-4] }} national flag" style="max-height:30px"><a></td>
+      </div>
+      <div style="width:33%;height:35px;float:left;">
+        <h4 style="margin-top: 5px;">{{ player1_pos }}</h4>
+      </div>
+      <div style="width:33%;height:35px;float:right;">
+        <h4 style="margin-top: 5px;">{{ player1_num }}</h4>
+      </div>
+
+          <div class="spacer"></div>
+          <a>Information</a>
+          <div class="spacer"></div>
+          <div class="parent">
+            <div class="boxs textcenter" style="height:35px;">
+              <h4 style="margin-top: 5px;">xG:0</h4>
+            </div>
+            <div class="boxs textcenter" style="height:35px;">
+              <h4 style="margin-top: 5px;">XA:0</h4>
+            </div>
+            <div class="boxs textcenter" style="height:35px;">
+              <h4 style="margin-top: 5px;">Min:90</h4>
+            </div>
+          </div>
+      </div>
+    </div>
+    <!-- END OF home team stats -->
+
+    <!-- away team stats -->
+    <div class="boxl {{ player2_colour }}">
+      <div class="textcenter">
+        <table>
+          <tr>
+            <td style="width:30%;" rowspan="2"><img src="static/images/players/{{ p2_year }}/{{ player2_image }}" alt="{{ column_names[1] }} photo" style="max-height:100px"></td>
+            <td class="xfont"><h2>{{ p2_year }}</h2></td>
+          </tr>
+          <tr>
+            <td><h4 class="xxfont">{{ column_names[1] }}</h4></td>
+          </tr>
+        </table>
+
+        <div style="width:33%;height:35px;float:left;">
+          <td><a><img src="static/images/flags/{{ player2_flag }}" alt="{{ player2_flag[:-4] }} national flag" style="max-height:30px"><a></td>
+        </div>
+        <div style="width:33%;height:35px;float:left;">
+          <h4 style="margin-top: 5px;">{{ player2_pos }}</h4>
+        </div>
+        <div style="width:33%;height:35px;float:right;">
+          <h4 style="margin-top: 5px;">{{ player2_num }}</h4>
+        </div>
+
+          <div class="spacer"></div>
+          <a>Information</a>
+          <div class="spacer"></div>
+          <div class="parent">
+            <div class="boxs textcenter" style="height:35px;">
+              <h4 style="margin-top: 5px;">xG:0</h4>
+            </div>
+            <div class="boxs textcenter" style="height:35px;">
+              <h4 style="margin-top: 5px;">XA:0</h4>
+            </div>
+            <div class="boxs textcenter" style="height:35px;">
+              <h4 style="margin-top: 5px;">Min:90</h4>
+            </div>
+          </div>
+      </div>
+    </div>
+    <!-- END OF away team stats -->
+</div>
+
+<div class="{{ theme }}-green">
+  <div class="tooltip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;legend
+    <p class="tooltiptext">
+      {% for x in column_names[:-1] %}
+      {{ x }}<br>
+      {% endfor %}
+      {{ column_names[-1]}}
+    </p>
+  </div>
+  <div class="{{ theme }}-green indent">
+    {% for i in range(chart_team_colour_list | length ) %}
+    <h4 style="display:inline;border-bottom: 0.35rem solid {{ chart_team_colour_list[i] }};">{{ line_columns[i] }}</h4>
+    {% endfor %}
+  </div>
+  <br>
+  <div class="{{ theme }}-green chartcontainer">
+    <canvas id="testing"></canvas>
+  </div>
+</div>
+
+<div class="{{ theme }}-yellow">
+  <div class="tooltip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;legend
+    <p class="tooltiptext">
+      {% for x in column_names[:-1] %}
+      {{ x }}<br>
+      {% endfor %}
+      {{ column_names[-1]}}
+    </p>
+  </div>
+  <div class="{{ theme }}-yellow indent">
+    {% for i in range(chart_team_colour_list | length ) %}
+    <h4 style="display:inline;border-bottom: 0.35rem solid {{ chart_team_colour_list[i] }};">{{ line_columns[i] }}</h4>
+    {% endfor %}
+  </div>
+  <br>
+  <div class="{{ theme }}-yellow chartcontainer">
+    <canvas id="testing2"></canvas>
+  </div>
+</div>
+
+<div class="{{ theme }}-red">
+  <div class="tooltip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;legend
+    <p class="tooltiptext">
+      {% for x in column_names[:-1] %}
+      {{ x }}<br>
+      {% endfor %}
+      {{ column_names[-1]}}
+    </p>
+  </div>
+  <div class="{{ theme }}-red indent">
+    {% for i in range(chart_team_colour_list | length ) %}
+    <h4 style="display:inline;border-bottom: 0.35rem solid {{ chart_team_colour_list[i] }};">{{ line_columns[i] }}</h4>
+    {% endfor %}
+  </div>
+  <br>
+  <div class="{{ theme }}-red chartcontainer">
+    <canvas id="testing3"></canvas>
+  </div>
+</div>
+
+<div class="{{ theme }}-blue">
+  <div class="tooltip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;legend
+    <p class="tooltiptext">
+      {% for x in column_names[:-1] %}
+      {{ x }}<br>
+      {% endfor %}
+      {{ column_names[-1]}}
+    </p>
+  </div>
+  <div class="{{ theme }}-blue indent">
+    {% for i in range(chart_team_colour_list | length ) %}
+    <h4 style="display:inline;border-bottom: 0.35rem solid {{ chart_team_colour_list[i] }};">{{ line_columns[i] }}</h4>
+    {% endfor %}
+  </div>
+  <br>
+  <div class="{{ theme }}-blue chartcontainer">
+    <canvas id="testing4"></canvas>
+  </div>
+</div>
+
+{% endblock %}

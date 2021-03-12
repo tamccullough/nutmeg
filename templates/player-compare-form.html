@@ -1,0 +1,88 @@
+
+{% set button1 = 'dark' %}
+{% set button2 = 'action' %}
+
+
+<!--div class="parent">
+  <div class="boxs center {{ theme }}-{{ button1 }}">
+    <a class="{{ theme }}-{{ button1 }} button" href="/compare">player 1 select</a>
+  </div>
+  <div class="boxs center {{ theme }}-{{ button2 }}">
+    <a class="{{ theme }}-{{ button2 }} button" href="/compare" >player 2 select</a>
+  </div>
+</div-->
+
+
+<div>
+  <form method="post" action="{{ url_for(request.endpoint) }}">
+    <div class="parent">
+      <div class="form boxs">
+        <select name="position1" id="position1" onchange="this.form.submit();">
+          <option value="{{ player1_pos }}s">{{ player1_pos }}s</option>
+          <option value="defenders">defenders</option>
+          <option value="forwards">forwards</option>
+          <option value="keepers">keepers</option>
+          <option value="midfielders">midfielders</option>
+        </select>
+      </div>
+      <div class="form boxs">
+        <select name="player1" id="player1" onchange="this.form.submit();">
+          <option value="">select player 1</option>
+          {% for name in player1_select_list %}
+          <option value="{{ name }}">{{ name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form boxs">
+        <select name="player1YR" id="player1YR" onchange="this.form.submit();">
+          <option value="">select player 1 year</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+        </select>
+      </div>
+      <!--div class="boxs {{ theme }}-action">
+        <input class="button" style="width: 100%;height:100%;dislay: inline;" type="submit" formaction="/compare" value="submit"/>
+      </div-->
+    </div>
+    <input type="hidden" id="player1YR" name="player1YR" value="{{ p1_year }}">
+    <input type="hidden" id="player2" name="player2" value="{{ column_names[1] }}">
+    <input type="hidden" id="player2YR" name="player2YR" value="{{ p2_year }}">
+  </form>
+</div>
+
+<div>
+  <form method="post" action="{{ url_for(request.endpoint) }}">
+    <div class="parent">
+      <div class="form boxs">
+        <select name="position2" id="position2" onchange="this.form.submit();">
+          <option value="{{ player2_pos }}s">{{ player2_pos }}s</option>
+          <option value="defenders">defenders</option>
+          <option value="forwards">forwards</option>
+          <option value="keepers">keepers</option>
+          <option value="midfielders">midfielders</option>
+        </select>
+      </div>
+      <div class="form boxs">
+        <select name="player2" id="player2" onchange="this.form.submit();">
+          <option value="">select player 2</option>
+          {% for name in player2_select_list %}
+          <option value="{{ name }}">{{ name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form boxs">
+        <select name="player2YR" id="player2YR" onchange="this.form.submit();">
+          <option value="">select player 2 year</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+        </select>
+      </div>
+      <!--div class="boxs {{ theme }}-action">
+        <input class="button" style="width: 100%;height:100%;dislay: inline;" type="submit" formaction="/compare" value="submit"/>
+      </div-->
+    </div>
+    <input type="hidden" id="player2YR" name="player2YR" value="{{ p2_year }}">
+    <input type="hidden" id="player1" name="player1" value="{{ column_names[0] }}">
+    <input type="hidden" id="player1YR" name="player1YR" value="{{ p1_year }}">
+  </form>
+</div>

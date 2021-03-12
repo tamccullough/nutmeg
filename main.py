@@ -102,7 +102,7 @@ col_check = {'overall':'O',
             'TouchOpBox':'TchoB',
             'Touches':'Tch'}
 
-geegle = ['#000','#fff','#ffd700','#ff00ff','#4a86e8','#0000ff','#9900ff','#ff00ff']
+geegle = ['#000000','#ffffff','#ffd700','#ff00ff','#4a86e8','#0000ff','#9900ff','#ff00ff']
 
 def new_col(data):#,chart=''
     for col in data.columns:
@@ -629,6 +629,168 @@ def roster():
 
     return render_template('roster.html', year = year, team_name = team, coach = coach, radar = radar, team_line = team_line, team_stats = team_stats,
     crest = crest, colour1 = colour1, colour2 = colour2, html_table = roster, team_colour = roster_colour)
+
+@canpl.route('/compare', methods=['GET','POST'])
+def compare():
+
+    error = None
+    if request.method == 'POST':
+        try:
+            p1_year = request.form['player1YR']
+            if p1_year:
+                pass
+            else:
+                p1_year = '2020'
+        except:
+            p1_year = '2020'
+    else:
+        p1_year = '2020'
+
+    current_year = 2021
+    begun = {'no':0,'yes':1}
+    year = '2020'
+    best_eleven = pd.read_csv(f'datasets/{year}/playerstats/{year}-best_eleven.csv')
+
+    def get_form_request(query,extra,skip=0):
+        # dict to get the default player for each position if player not selected
+        get_name = {'defenders':2,'forwards':10,'keepers':0,'midfielders':5}
+        # extra is used to get the default player value from the dict if a player is not yet selected
+        if extra:
+            num = get_name[extra]
+        else:
+            num = get_name['forwards']
+
+        # get default TOP players
+        get_query = {'position1':'forwards','position2':'forwards','player1':best_eleven.at[num,'name'],'player2':best_eleven.at[num+1,'name'],'player1YR':2019,'player2YR':2019}
+        if skip > 0:
+            return get_query[query]
+        else:
+            try:
+                requested_variable = request.form[query]
+                print(f'\nrequest for {query} received')
+            except Exception as e:
+                print('ERROR: ',e)
+                requested_variable = ''
+                pass
+        if requested_variable:
+            print(f'\nrequested variable contents: {requested_variable}')
+            return requested_variable
+        else:
+            print(f'\nfailed to get {query} from form: loading default')
+            return get_query[query]
+
+    selected_position = get_form_request('position1','').lower()
+
+    stat_lists = {}
+    stat_lines = {}
+    player_info = {}
+    for pos in ['defenders','forwards','keepers','midfielders']:
+        for yr in range(2019,current_year+begun['no']):
+            stat_lists[pos[:1]+'_'+str(yr)[2:]] = pd.read_csv(f'datasets/{yr}/playerstats/{yr}-{pos}.csv')
+            stat_lines[pos[:1]+'_'+str(yr)[2:]+'_l'] = pd.read_csv(f'datasets/{yr}/playerstats/{yr}-{pos}-line.csv')
+            player_info[str(yr)[2:]] = pd.read_csv(f'datasets/{yr}/player-{yr}-info.csv')
+            player_info[str(yr)[2:]]['year'] = str(yr)
+
+    player1_select_list = stat_lists[f'{selected_position[:1].lower()}_{p1_year[2:]}']['name'].unique().tolist()
+
+    player1 = get_form_request('player1',selected_position)
+
+    if player1 in player1_select_list:
+        player1_select_list.remove(player1)
+
+    player2_select_list = stat_lists[f'{selected_position[:1].lower()}_{p1_year[2:]}']['name'].unique().tolist()
+
+    player2 = get_form_request('player2',selected_position)
+
+    if player2 in player2_select_list:
+        player2_select_list.remove(player2)
+
+    player_info = pd.read_csv(f'datasets/{p1_year}/league/{p1_year}-player-info.csv')
+
+    def get_player_information(name):
+
+        get_pos = {'d':'defender','f':'forward','g':'keeper','m':'midfielder'}
+        get_colour = {'Atlético Ottawa' : 'cpl-ao',
+                    'Cavalry FC' : 'cpl-cfc',
+                    'FC Edmonton' : 'cpl-fce',
+                    'Forge FC' : 'cpl-ffc',
+                    'HFX Wanderers FC' : 'cpl-hfx',
+                    'Pacific FC' : 'cpl-pfc',
+                    'Valour FC' : 'cpl-vfc',
+                    'York United FC' : 'cpl-y9',
+                    'York9 FC' : 'cpl-y9'}
+
+        player_information = {}
+        try:
+            player_information['flag'] = player_info[player_info['name'] == name]['flag'].values[0]
+            player_information['image'] = player_info[player_info['name'] == name]['image'].values[0]
+            player_information['position'] = get_pos[player_info[player_info['name'] == name]['position'].values[0]].lower()
+            player_information['number'] = player_info[player_info['name'] == name]['number'].values[0]
+            player_information['team'] = player_info[player_info['name'] == name]['team'].values[0]
+            player_information['colour'] = get_colour[player_information['team']]
+        except:
+            player_information['flag'] = player_info[player_info['display'] == name]['flag'].values[0]
+            player_information['image'] = player_info[player_info['display'] == name]['image'].values[0]
+            player_information['position'] = get_pos[player_info[player_info['display'] == name]['position'].values[0]].lower()
+            player_information['number'] = player_info[player_info['display'] == name]['number'].values[0]
+            player_information['team'] = player_info[player_info['display'] == name]['team'].values[0]
+            player_information['colour'] = get_colour[player_information['team']]
+        if player_information['position'] in ['goal keeper','goal keepers']:
+            player_information['position'] = 'keeper'
+        return player_information
+
+
+    player1_information = get_player_information(player1)
+    player2_information = get_player_information(player2)
+
+    if player1_information['position'].lower() in ['goal keeper','goal keepers']:
+        replace_position1 = 'keepers'
+    else:
+        replace_position1 = player1_information['position'].lower()+'s'
+
+    if ((player1_information['position'].lower() == 'defender') | (player1_information['position'].lower() == 'keeper')) & (player1_information['position'].lower() != player2_information['position'].lower()):
+        player2 = get_form_request('player2',replace_position1,1)
+        player2_information = get_player_information(player2)
+    elif ((player1_information['position'].lower() == 'forward') | (player1_information['position'].lower() == 'midfielder')) & (player2_information['position'].lower() not in ['forward','midfield']):
+        replace_position2 = replace_position1
+        player2 = get_form_request('player2',replace_position2,1)
+        player2_information = get_player_information(player2)
+    else:
+        pass
+
+    if player2_information['position'].lower() in ['goal keeper','goal keepers']:
+        replace_position2 = 'keepers'
+    else:
+        replace_position2 = player1_information['position'].lower()+'s'
+
+    player_line = [[0.0, 1.0, 0.0, 1.0, 0.0, 1.0], [2.0, 1.78, 1.66, 1.2, 0.62, 0.62]]
+
+    headline = f'Player Comparison Testing'
+    stat = 'Goals'
+
+    print(player1_information['position'].lower(),replace_position1)
+    print(player2_information['position'].lower(),replace_position2)
+
+    player1_select_list = stat_lists[f'{replace_position1[:1]}_{p1_year[2:]}']['name'].unique().tolist()
+
+    if player1 in player1_select_list:
+        player1_select_list.remove(player1)
+
+    player2_select_list = stat_lists[f'{replace_position2[:1]}_{p1_year[2:]}']['name'].unique().tolist()
+
+    if player2 in player2_select_list:
+        player2_select_list.remove(player2)
+
+    return render_template('player-compare.html', stat = stat, geegle = geegle, headline= headline,
+    player1_select_list = player1_select_list, player2_select_list = player2_select_list,
+    player1_team = player1_information['team'], player1_colour = player1_information['colour'],
+    player1_flag = player1_information['flag'], player1_image = player1_information['image'],player1_num = player1_information['number'], player1_pos = player1_information['position'],
+    player2_team = player2_information['team'], player2_colour = player2_information['colour'],
+    player2_flag = player2_information['flag'], player2_image = player2_information['image'],player2_num = player2_information['number'], player2_pos = player2_information['position'],
+    player_line_length = len(player_line), player_line_end = -1,
+    p1_year = p1_year, p2_year = p1_year, column_names = [player1,player2], chart_team_colour_list = geegle,
+    player_line = player_line,line_columns = [player1,player2],
+    colour1 = geegle[4],colour2 = geegle[5],colour3 = geegle[2])
 
 @canpl.route('/player', methods=['GET','POST'])
 def player():
