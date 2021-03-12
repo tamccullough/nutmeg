@@ -656,7 +656,10 @@ def compare():
         get_name = {'defenders':2,'forwards':10,'keepers':0,'midfielders':5}
         # extra is used to get the default player value from the dict if a player is not yet selected
         if extra:
-            num = get_name[extra]
+            if extra[-1:] == 's':
+                num = get_name[extra]
+            else:
+                num = get_name[extra+'s']
         else:
             num = get_name['forwards']
 
