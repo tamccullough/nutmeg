@@ -552,8 +552,8 @@ def teams():
     return render_template('teams.html', year = year, columns = columns, headline = 'Club Information',
     html_table = team_ref, roster = roster)
 
-@canpl.route('/radar', methods=['GET','POST'])
-def radar():
+@canpl.route('/charts', methods=['GET','POST'])
+def charts():
 
     year, error = get_year()
 
