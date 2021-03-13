@@ -633,22 +633,19 @@ def roster():
 @canpl.route('/compare', methods=['GET','POST'])
 def compare():
 
-    error = None
-    if request.method == 'POST':
+    stat_values = {}
+    for x in ['player1_pos','player1','player1YR','player2_pos','player2','player2YR','']:
         try:
-            p1_year = request.form['player1YR']
-            if p1_year:
-                pass
-            else:
-                p1_year = '2020'
+            stat_values[x] = request.form[x]
         except:
-            p1_year = '2020'
-    else:
-        p1_year = '2020'
+            stat_values[x] = ''
+
+    print(stat_values)
+    get_name = {'defenders':2,'forwards':10,'keepers':0,'midfielders':5}
+    error = None
 
     current_year = 2021
     begun = {'no':0,'yes':1}
-    year = '2020'
     best_eleven = pd.read_csv(f'datasets/{year}/playerstats/{year}-best_eleven.csv')
 
     def get_form_request(query,extra,skip=0):
@@ -664,7 +661,7 @@ def compare():
             num = get_name['forwards']
 
         # get default TOP players
-        get_query = {'position1':'forwards','position2':'forwards','player1':best_eleven.at[num,'name'],'player2':best_eleven.at[num+1,'name'],'player1YR':2019,'player2YR':2019}
+        get_query = {'player1_pos':'forwards','player2_pos':'forwards','player1':best_eleven.at[num,'name'],'player2':best_eleven.at[num+1,'name'],'player1YR':2019,'player2YR':2019}
         if skip > 0:
             return get_query[query]
         else:
@@ -682,7 +679,22 @@ def compare():
             #print(f'\nfailed to get {query} from form: loading default')
             return get_query[query]
 
-    selected_position = get_form_request('position1','').lower()
+    # check player 1 stats have been chosen. If NOT select defaults
+    ###############################################################
+    if stat_values['player1_pos']:
+        pass
+    else:
+        stat_values['player1_pos'] = 'forwards'
+
+    if stat_values['player1']:
+        pass
+    else:
+        stat_values['player1'] = best_eleven.at[get_name[stat_values['player1_pos']],'name']
+
+    if stat_values['player1YR']:
+        pass
+    else:
+        stat_values['player1YR'] = '2020'
 
     stat_lists = {}
     stat_lines = {}
@@ -694,21 +706,53 @@ def compare():
             player_info[str(yr)[2:]] = pd.read_csv(f'datasets/{yr}/player-{yr}-info.csv')
             player_info[str(yr)[2:]]['year'] = str(yr)
 
-    player1_select_list = stat_lists[f'{selected_position[:1].lower()}_{p1_year[2:]}']['name'].unique().tolist()
+    player1_select_list = stat_lists[f'{stat_values["player1_pos"][:1].lower()}_{stat_values["player1YR"][2:]}']['name'].unique().tolist()
 
-    player1 = get_form_request('player1',selected_position)
+    if stat_values['player1'] in player1_select_list:
+        player1_select_list.remove(stat_values['player1'])
 
-    if player1 in player1_select_list:
-        player1_select_list.remove(player1)
+    # check player 2 stats have been chosen. If NOT select defaults, while getting requirements to view player 1
+    ###############################################################
+    if stat_values['player2YR']:
+        pass
+    else:
+        stat_values['player2YR'] = '2020'
 
-    player2_select_list = stat_lists[f'{selected_position[:1].lower()}_{p1_year[2:]}']['name'].unique().tolist()
+    if stat_values['player2_pos']:
+        print(f'PLAYER 2 POSITION FOUND - creating new stat list {stat_values["player2_pos"]}')
+        stat_values['player2'] = best_eleven.at[get_name[stat_values['player2_pos']]+1,'name']
+        if stat_values['player2_pos'] != stat_values['player1_pos']:
+            print('AND POSITIONS are not a match')
+            stat_lists = {}
+            stat_lines = {}
+            player_info = {}
+            for pos in ['defenders','forwards','keepers','midfielders']:
+                for yr in range(2019,current_year+begun['no']):
+                    stat_lists[pos[:1]+'_'+str(yr)[2:]] = pd.read_csv(f'datasets/{yr}/playerstats/{yr}-{pos}.csv')
+                    stat_lines[pos[:1]+'_'+str(yr)[2:]+'_l'] = pd.read_csv(f'datasets/{yr}/playerstats/{yr}-{pos}-line.csv')
+                    player_info[str(yr)[2:]] = pd.read_csv(f'datasets/{yr}/player-{yr}-info.csv')
+                    player_info[str(yr)[2:]]['year'] = str(yr)
+            try:
+                print('TRYING FOR NEW LIST')
+                player2_select_list = stat_lists[f'{stat_values["player2_pos"][:1].lower()}_{stat_values["player2YR"][2:]}']['name'].unique().tolist()
+                print('GOT NEW LIST')
+            except:
+                print('FAILED TO GET NEW LIST')
+                player2_select_list = stat_lists[f'{stat_values["player2_pos"][:1].lower()}_20']['name'].unique().tolist()
+        else:
+            player2_select_list = stat_lists[f'{stat_values["player2_pos"][:1].lower()}_{stat_values["player1YR"][2:]}']['name'].unique().tolist()
+    else:
+        stat_values['player2_pos'] = 'forwards'
+        if stat_values['player2']:
+            pass
+        else:
+            stat_values['player2'] = best_eleven.at[get_name[stat_values['player2_pos']]+1,'name']
+        player2_select_list = stat_lists[f'{stat_values["player1_pos"][:1].lower()}_{stat_values["player1YR"][2:]}']['name'].unique().tolist()
 
-    player2 = get_form_request('player2',selected_position)
+    if stat_values['player2'] in player2_select_list:
+        player2_select_list.remove(stat_values['player2'])
 
-    if player2 in player2_select_list:
-        player2_select_list.remove(player2)
-
-    player_info = pd.read_csv(f'datasets/{p1_year}/league/{p1_year}-player-info.csv')
+    player_info = pd.read_csv(f'datasets/{stat_values["player1YR"]}/league/{stat_values["player1YR"]}-player-info.csv')
 
     def get_player_information(name):
 
@@ -743,14 +787,15 @@ def compare():
         return player_information
 
 
-    player1_information = get_player_information(player1)
-    player2_information = get_player_information(player2)
+    player1_information = get_player_information(stat_values['player1'])
+    player2_information = get_player_information(stat_values['player2'])
 
     if player1_information['position'].lower() in ['goal keeper','goal keepers']:
         replace_position1 = 'keepers'
     else:
         replace_position1 = player1_information['position'].lower()+'s'
 
+    ## MAY NO LONGER NEED THIS AT ALL
     print(player1_information['position'].lower() ,player2_information['position'].lower())
 
     if ((player1_information['position'].lower() == 'defender') | (player1_information['position'].lower() == 'keeper')) & (player1_information['position'].lower() != player2_information['position'].lower()):
@@ -775,15 +820,17 @@ def compare():
     headline = f'Player Comparison Testing'
     stat = 'Goals'
 
-    player1_select_list = stat_lists[f'{replace_position1[:1]}_{p1_year[2:]}']['name'].unique().tolist()
+    '''player1_select_list = stat_lists[f'{replace_position1[:1]}_{stat_values["player1YR"][2:]}']['name'].unique().tolist()
 
-    if player1 in player1_select_list:
-        player1_select_list.remove(player1)
+    if stat_values['player1'] in player1_select_list:
+        player1_select_list.remove(stat_values['player1'])
 
-    player2_select_list = stat_lists[f'{replace_position2[:1]}_{p1_year[2:]}']['name'].unique().tolist()
+    player2_select_list = stat_lists[f'{replace_position2[:1]}_{stat_values["player1YR"][2:]}']['name'].unique().tolist()
 
-    if player2 in player2_select_list:
-        player2_select_list.remove(player2)
+    if stat_values['player2'] in player2_select_list:
+        player2_select_list.remove(stat_values['player2'])'''
+
+    print(stat_values)
 
     return render_template('player-compare.html', stat = stat, geegle = geegle, headline= headline,
     player1_select_list = player1_select_list, player2_select_list = player2_select_list,
@@ -792,8 +839,8 @@ def compare():
     player2_team = player2_information['team'], player2_colour = player2_information['colour'],
     player2_flag = player2_information['flag'], player2_image = player2_information['image'],player2_num = player2_information['number'], player2_pos = player2_information['position'],
     player_line_length = len(player_line), player_line_end = -1,
-    p1_year = p1_year, p2_year = p1_year, column_names = [player1,player2], chart_team_colour_list = geegle,
-    player_line = player_line,line_columns = [player1,player2],
+    p1_year = stat_values['player1YR'], p2_year = stat_values['player2YR'], column_names = [stat_values['player1'],stat_values['player2']], chart_team_colour_list = geegle,
+    player_line = player_line,line_columns = [stat_values['player1'],stat_values['player2']],
     colour1 = geegle[4],colour2 = geegle[5],colour3 = geegle[2])
 
 @canpl.route('/player', methods=['GET','POST'])

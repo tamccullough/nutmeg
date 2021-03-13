@@ -17,7 +17,7 @@
   <form method="post" action="{{ url_for(request.endpoint) }}">
     <div class="parent">
       <div class="form boxs">
-        <select name="position1" id="position1" onchange="this.form.submit();">
+        <select name="player1_pos" id="player1_pos" onchange="this.form.submit();">
           <option value="">{{ player1_pos }}</option>
           <option value="defenders">defenders</option>
           <option value="forwards">forwards</option>
@@ -44,7 +44,7 @@
         <input class="button" style="width: 100%;height:100%;dislay: inline;" type="submit" formaction="/compare" value="submit"/>
       </div-->
     </div>
-    <input type="hidden" id="position2" name="position2" value="{{ player2_pos }}">
+    <input type="hidden" id="player2_pos" name="player2_pos" value="{{ player2_pos }}">
     <input type="hidden" id="player2" name="player2" value="{{ column_names[1] }}">
     <input type="hidden" id="player2YR" name="player2YR" value="{{ p2_year }}">
   </form>
@@ -58,7 +58,7 @@
       </div>
       {% else %}
       <div class="form boxs">
-        <select name="position2" id="position2" onchange="this.form.submit();">
+        <select name="player2_pos" id="player2_pos" onchange="this.form.submit();">
           <option value="">{{ player2_pos }}</option>
           <option value="defenders">defenders</option>
           <option value="forwards">forwards</option>
@@ -86,7 +86,7 @@
         <input class="button" style="width: 100%;height:100%;dislay: inline;" type="submit" formaction="/compare" value="submit"/>
       </div-->
     </div>
-    <input type="hidden" id="position1" name="position1" value="{{ player1_pos }}">
+    <input type="hidden" id="player1_pos" name="player1_pos" value="{{ player1_pos }}">
     <input type="hidden" id="player1" name="player1" value="{{ column_names[0] }}">
     <input type="hidden" id="player1YR" name="player1YR" value="{{ p1_year }}">
   </form>
