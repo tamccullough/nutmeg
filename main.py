@@ -812,42 +812,6 @@ def compare():
     if multiplier == 0:
         multiplier = 1
 
-    '''############## get line function
-    def get_line(data,name,pos='f'):
-
-        def get_norm(data):
-            df = data.copy()
-            cols = [x for x in data.columns if x not in ['name','display','Goal','CS']]
-            for col in cols:
-                df[col] = round(df[col]/ df[col].max() ,2)*multiplier
-            return df
-
-        col_values = {'d':['name','Goal','Clrnce','Int','SucflTkls','Touches'],
-                      'f':['name','Goal','TchsA3','PsOpHfFl','PsCmpA3','Touches'],
-                      'g':['name','CleanSheet','BgChncFace','Saves','SvDive','Recovery','ExpGAg'],
-                      'm':['name','Goal','TchsA3','PsOpHfFl','PsCmpA3','Touches']}
-
-        try:
-            df = data[col_values[pos]]
-        except Exception as e:
-            print(e)
-
-        db = df[df['name'] == name]
-        if db.empty:
-            db = df[df['name'].str.contains(name.split(' ')[-1])]
-        if db.empty:
-            db = df[df['name'].str.contains(name.split(' ')[-2])]
-        return get_norm(db)
-    ############## END OF get line function
-
-    player_line_1 = get_line(player_1_line,stat_values['player1'],pos=player1_information['position'][:1])
-    player_line_2 = get_line(player_2_line,stat_values['player2'],pos=player2_information['position'][:1])
-
-    if player_line_1.shape[0] > player_line_2.shape[0]:
-        cut = player_line_2.shape[0]
-    else:
-        cut = player_line_1.shape[0]'''
-
     player_lines, line_columns = [], []
     for x in results:
         line_columns.append(x)
@@ -856,8 +820,35 @@ def compare():
     headline = f'Player Comparison Testing'
     stat = 'Goals'
 
-    print(player1_information,'\n',player2_information)
-    print(player1_select_list,'\n',player2_select_list)
+    colour_dict = { 'cpl-ao':'#E4002B','cpl-cfc':'#DA291C','cpl-fce':'#004C97','cpl-ffc':'#DE4405','cpl-hfx':'#41B6E6','cpl-pfc':'#582C83','cpl-vfc':'#7C2529','cpl-y9':'#046a38'}
+
+    colour1 = colour_dict[player1_information['colour']]
+    colour2 = colour_dict[player2_information['colour']]
+
+    def change_hex(col, amt):
+        vals = tuple(int(col.lstrip('#')[i:i+2], 16) for i in (0, 2, 4))
+        g,b,r = vals[0]+amt, vals[1]+amt, vals[2]+int(amt/2)
+        new_col = '#%02x%02x%02x' % (g,r,b)
+        return str(new_col)
+
+    if colour1 == colour2:
+        colour2 = change_hex(colour2,40)
+        if len(colour2) > 7:
+            colour2 = colour2[:7]
+
+    col_change = {'CleanSheet':'Clean Sheets',
+                'BgChncFace':'Big Chances Faced',
+                'Goal':'Goals',
+                'PsCmpA3':'Passes Completed Attacking 3rd',
+                'Clrnce':'Clearances',
+                'Int':'Interceptions',
+                'SucflTkls':'Successful Tackles',
+                'PsOpHfFl':'Successful Passes Opponents Half',
+                'Saves':'Saves',
+                'SvDive': 'Diving Saves',
+                'TchsA3':'Touches Attacking 3rd'}
+
+    line_columns = [col_change[x] for x in line_columns]
 
     return render_template('player-compare.html', stat = stat, geegle = geegle, headline= headline,
     player1_select_list = player1_select_list, player2_select_list = player2_select_list,
@@ -868,10 +859,10 @@ def compare():
     player2_flag = player2_information['flag'], player2_image = player2_information['image'],
     player2_num = player2_information['number'], player2_pos = player2_information['position'],
     p1_year = stat_values['player1YR'], p2_year = stat_values['player2YR'],
-    player_names = [stat_values['player1'],stat_values['player2']], chart_team_colour_list = geegle,
+    player_names = [stat_values['player1'],stat_values['player2']], chart_team_colour_list = [colour_dict[player1_information['colour']], colour_dict[player2_information['colour']] ],
     player_line = player_lines[0],line_columns = line_columns,
     player_line_2 = player_lines[1],player_line_3 = player_lines[2],player_line_4 = player_lines[3],
-    colour1 = geegle[4],colour2 = geegle[5],colour3 = geegle[2])
+    colour1 = colour1,colour2 = colour2,colour3 = geegle[2])
 
 @canpl.route('/player', methods=['GET','POST'])
 def player():
@@ -1114,6 +1105,7 @@ def player():
                 'Tcha':'Touches Attacking 3rd',
                 'Tchm':'Touches Middle 3rd',
                 'Tch':'Touches'}
+
     column_names = [col_change[x] for x in line_columns]
 
     display_year = year

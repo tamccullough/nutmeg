@@ -69,37 +69,33 @@ new Chart(document.getElementById('testing'), {
       {{ (player_line[0] | length) }}
     ],
     datasets: [
-      {% for i in range(player_line | length ) %}
-      {% set k = i + 1 %}
       {
-        label: '{{geegle[i]}}',
+        label: '{{ colour1 }}',
         data: [
-          {% for x in range(player_line[i] | length) %}
-          {{ player_line[i][x] | safe }},
+          {% for j in range(player_line[0] | length) %}
+          {{ player_line[0][j] | safe }},
           {% endfor %}
-          {{ player_line[i][-1] | safe }}
-
+          {{ player_line[0][-1] | safe }}
         ],
         fill: true,
-        borderColor: '{{ geegle[i] }}',
-        backgroundColor: '{{ geegle[i] }}'+'33',
+        borderColor: '{{ colour1 }}',
+        backgroundColor: '{{ colour1 }}'+'33',
         pointHoverRadius: 10,
-        pointHoverBackgroundColor: '{{ geegle[i] }}'
+        pointHoverBackgroundColor: '{{ colour1 }}'
       },
-      {% endfor %}
       {
         label: '{{geegle[-1]}}',
         data: [
-          {% for j in range(player_line[-1] | length) %}
-          {{ player_line[-1][j] | safe }},
+          {% for j in range(player_line[1] | length) %}
+          {{ player_line[1][j] | safe }},
           {% endfor %}
-          {{ player_line[-1] | safe }}
+          {{ player_line[1][-1] | safe }}
         ],
         fill: true,
-        borderColor: '{{ geegle[( player_line | length )] }}',
-        backgroundColor: '{{ geegle[( player_line | length )] }}'+'33',
+        borderColor: '{{ colour2 }}',
+        backgroundColor: '{{ colour2 }}'+'33',
         pointHoverRadius: 10,
-        pointHoverBackgroundColor: '{{ geegle[( player_line | length )] }}'
+        pointHoverBackgroundColor: '{{ colour2 }}'
       }
     ],
   },
@@ -143,37 +139,33 @@ new Chart(document.getElementById('testing'), {
         {{ (player_line_2[0] | length) }}
       ],
       datasets: [
-        {% for i in range(player_line_2 | length ) %}
-        {% set k = i + 1 %}
         {
-          label: '{{geegle[i]}}',
+          label: '{{ colour1 }}',
           data: [
-            {% for x in range(player_line_2[i] | length) %}
-            {{ player_line_2[i][x] | safe }},
+            {% for j in range(player_line_2[0] | length) %}
+            {{ player_line_2[0][j] | safe }},
             {% endfor %}
-            {{ player_line_2[i][-1] | safe }}
-
+            {{ player_line_2[0][-1] | safe }}
           ],
           fill: true,
-          borderColor: '{{ geegle[i] }}',
-          backgroundColor: '{{ geegle[i] }}'+'33',
+          borderColor: '{{ colour1 }}',
+          backgroundColor: '{{ colour1 }}'+'33',
           pointHoverRadius: 10,
-          pointHoverBackgroundColor: '{{ geegle[i] }}'
+          pointHoverBackgroundColor: '{{ colour1 }}'
         },
-        {% endfor %}
         {
           label: '{{geegle[-1]}}',
           data: [
-            {% for j in range(player_line_2[-1] | length) %}
-            {{ player_line_2[-1][j] | safe }},
+            {% for j in range(player_line_2[1] | length) %}
+            {{ player_line_2[1][j] | safe }},
             {% endfor %}
-            {{ player_line_2[-1] | safe }}
+            {{ player_line_2[1][-1] | safe }}
           ],
           fill: true,
-          borderColor: '{{ geegle[( player_line_2 | length )] }}',
-          backgroundColor: '{{ geegle[( player_line_2 | length )] }}'+'33',
+          borderColor: '{{ colour2 }}',
+          backgroundColor: '{{ colour2 }}'+'33',
           pointHoverRadius: 10,
-          pointHoverBackgroundColor: '{{ geegle[( player_line_2 | length )] }}'
+          pointHoverBackgroundColor: '{{ colour2 }}'
         }
       ],
     },
@@ -217,37 +209,33 @@ new Chart(document.getElementById('testing'), {
           {{ (player_line_3[0] | length) }}
         ],
         datasets: [
-          {% for i in range(player_line_3 | length ) %}
-          {% set k = i + 1 %}
-          {
-            label: '{{geegle[i]}}',
-            data: [
-              {% for x in range(player_line_3[i] | length) %}
-              {{ player_line_3[i][x] | safe }},
-              {% endfor %}
-              {{ player_line_3[i][-1] | safe }}
-
-            ],
-            fill: true,
-            borderColor: '{{ geegle[i] }}',
-            backgroundColor: '{{ geegle[i] }}'+'33',
-            pointHoverRadius: 10,
-            pointHoverBackgroundColor: '{{ geegle[i] }}'
-          },
-          {% endfor %}
+        {
+          label: '{{ colour1 }}',
+          data: [
+            {% for j in range(player_line_3[0] | length) %}
+            {{ player_line_3[0][j] | safe }},
+            {% endfor %}
+            {{ player_line_3[0][-1] | safe }}
+          ],
+          fill: true,
+          borderColor: '{{ colour1 }}',
+          backgroundColor: '{{ colour1 }}'+'33',
+          pointHoverRadius: 10,
+          pointHoverBackgroundColor: '{{ colour1 }}'
+        },
           {
             label: '{{geegle[-1]}}',
             data: [
-              {% for j in range(player_line_3[-1] | length) %}
-              {{ player_line_3[-1][j] | safe }},
+              {% for j in range(player_line_3[1] | length) %}
+              {{ player_line_3[1][j] | safe }},
               {% endfor %}
-              {{ player_line_3[-1] | safe }}
+              {{ player_line_3[1][-1] | safe }}
             ],
             fill: true,
-            borderColor: '{{ geegle[( player_line_3 | length )] }}',
-            backgroundColor: '{{ geegle[( player_line_3 | length )] }}'+'33',
+            borderColor: '{{ colour2 }}',
+            backgroundColor: '{{ colour2 }}'+'33',
             pointHoverRadius: 10,
-            pointHoverBackgroundColor: '{{ geegle[( player_line_3 | length )] }}'
+            pointHoverBackgroundColor: '{{ colour2 }}'
           }
         ],
       },
@@ -291,37 +279,33 @@ new Chart(document.getElementById('testing'), {
             {{ (player_line_4[0] | length) }}
           ],
           datasets: [
-            {% for i in range(player_line_4 | length ) %}
-            {% set k = i + 1 %}
-            {
-              label: '{{geegle[i]}}',
-              data: [
-                {% for x in range(player_line_4[i] | length) %}
-                {{ player_line_4[i][x] | safe }},
-                {% endfor %}
-                {{ player_line_4[i][-1] | safe }}
-
-              ],
-              fill: true,
-              borderColor: '{{ geegle[i] }}',
-              backgroundColor: '{{ geegle[i] }}'+'33',
-              pointHoverRadius: 10,
-              pointHoverBackgroundColor: '{{ geegle[i] }}'
-            },
-            {% endfor %}
+          {
+            label: '{{ colour1 }}',
+            data: [
+              {% for j in range(player_line_4[0] | length) %}
+              {{ player_line_4[0][j] | safe }},
+              {% endfor %}
+              {{ player_line_4[0][-1] | safe }}
+            ],
+            fill: true,
+            borderColor: '{{ colour1 }}',
+            backgroundColor: '{{ colour1 }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ colour1 }}'
+          },
             {
               label: '{{geegle[-1]}}',
               data: [
-                {% for j in range(player_line_4[-1] | length) %}
-                {{ player_line_4[-1][j] | safe }},
+                {% for j in range(player_line_4[1] | length) %}
+                {{ player_line_4[1][j] | safe }},
                 {% endfor %}
-                {{ player_line_4[-1] | safe }}
+                {{ player_line_4[1][-1] | safe }}
               ],
               fill: true,
-              borderColor: '{{ geegle[( player_line_4 | length )] }}',
-              backgroundColor: '{{ geegle[( player_line_4 | length )] }}'+'33',
+              borderColor: '{{ colour2 }}',
+              backgroundColor: '{{ colour2 }}'+'33',
               pointHoverRadius: 10,
-              pointHoverBackgroundColor: '{{ geegle[( player_line_4 | length )] }}'
+              pointHoverBackgroundColor: '{{ colour2 }}'
             }
           ],
         },

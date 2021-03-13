@@ -112,29 +112,10 @@
       </div>
       <!-- END OF away team stats -->
     </div>
-
-    <div class="{{ theme }}-dark">
-      <div class="tooltip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ line_columns[0] }}
-        <p class="tooltiptext">
-          {% for x in player_names[:-1] %}
-          {{ x }}<br>
-          {% endfor %}
-          {{ player_names[-1]}}
-        </p>
-      </div>
-      <div class="{{ theme }}-dark indent">
-        {% for i in range(chart_team_colour_list | length ) %}
-        <h4 style="display:inline;border-bottom: 0.35rem solid {{ chart_team_colour_list[i] }};">{{ player_names[i] }}</h4>
-        {% endfor %}
-      </div>
-      <br>
-      <div class="chartcontainer">
-        <canvas id="testing"></canvas>
-      </div>
-    </div>
-
-    <div class="{{ theme }}-dark">
-      <div class="tooltip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ line_columns[1] }}
+    {% set i = 0 %}
+    {% for word in ['testing','testing2','testing3','testing4']%}
+    <div class="{{ theme }}-colour">
+      <div class="tooltip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ line_columns[loop.index-1] }}
         <p class="tooltiptext">
           {% for x in player_names[:-1] %}
           {{ x }}<br>
@@ -149,48 +130,11 @@
       </div>
       <br>
       <div class="chartcontainer">
-        <canvas id="testing2"></canvas>
+        <canvas id="{{ word }}"></canvas>
       </div>
     </div>
+    {% endfor %}
 
-    <div class="{{ theme }}-dark">
-      <div class="tooltip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ line_columns[2] }}
-        <p class="tooltiptext">
-          {% for x in player_names[:-1] %}
-          {{ x }}<br>
-          {% endfor %}
-          {{ player_names[-1]}}
-        </p>
-      </div>
-      <div class="indent">
-        {% for i in range(chart_team_colour_list | length ) %}
-        <h4 style="display:inline;border-bottom: 0.35rem solid {{ chart_team_colour_list[i] }};">{{ player_names[i] }}</h4>
-        {% endfor %}
-      </div>
-      <br>
-      <div class="chartcontainer">
-        <canvas id="testing3"></canvas>
-      </div>
-    </div>
 
-    <div class="{{ theme }}-dark">
-      <div class="tooltip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ line_columns[3] }}
-        <p class="tooltiptext">
-          {% for x in player_names[:-1] %}
-          {{ x }}<br>
-          {% endfor %}
-          {{ player_names[-1]}}
-        </p>
-      </div>
-      <div class="indent">
-        {% for i in range(chart_team_colour_list | length ) %}
-        <h4 style="display:inline;border-bottom: 0.35rem solid {{ chart_team_colour_list[i] }};">{{ player_names[i] }}</h4>
-        {% endfor %}
-      </div>
-      <br>
-      <div class="chartcontainer">
-        <canvas id="testing4"></canvas>
-      </div>
-    </div>
 
     {% endblock %}
