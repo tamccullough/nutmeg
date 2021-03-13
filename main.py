@@ -803,7 +803,6 @@ def compare():
     results = {}
     for x in plot_values[player1_information['position'][:1]]:
         results[x] = compare_two(stat_values['player1'],player_1_line,stat_values['player2'],player_2_line,column=x)
-        results[x].plot()
 
     if player_1_line[plot_values[player1_information['position'][:1]][0]].max() > player_2_line[plot_values[player1_information['position'][:1]][0]].max():
         multiplier = player_1_line[plot_values[player1_information['position'][:1]][0]].max()
