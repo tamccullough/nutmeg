@@ -670,16 +670,16 @@ def compare():
         else:
             try:
                 requested_variable = request.form[query]
-                print(f'\nrequest for {query} received')
+                print(f'\nrequest for {query} received -> {requested_variable}')
             except Exception as e:
-                print('ERROR: ',e)
+                #print('ERROR: ',e)
                 requested_variable = ''
                 pass
         if requested_variable:
-            print(f'\nrequested variable contents: {requested_variable}')
+            #print(f'\nrequested variable contents: {requested_variable}')
             return requested_variable
         else:
-            print(f'\nfailed to get {query} from form: loading default')
+            #print(f'\nfailed to get {query} from form: loading default')
             return get_query[query]
 
     selected_position = get_form_request('position1','').lower()
@@ -751,15 +751,19 @@ def compare():
     else:
         replace_position1 = player1_information['position'].lower()+'s'
 
+    print(player1_information['position'].lower() ,player2_information['position'].lower())
+
     if ((player1_information['position'].lower() == 'defender') | (player1_information['position'].lower() == 'keeper')) & (player1_information['position'].lower() != player2_information['position'].lower()):
         player2 = get_form_request('player2',replace_position1,1)
         player2_information = get_player_information(player2)
-    elif ((player1_information['position'].lower() == 'forward') | (player1_information['position'].lower() == 'midfielder')) & (player2_information['position'].lower() not in ['forward','midfield']):
+    elif ((player1_information['position'].lower() == 'forward') | (player1_information['position'].lower() == 'midfielder')) & (player2_information['position'].lower() not in ['forward','midfielder']):
         replace_position2 = replace_position1
         player2 = get_form_request('player2',replace_position2,1)
         player2_information = get_player_information(player2)
     else:
         pass
+
+    print(player1_information['position'].lower() ,player2_information['position'].lower())
 
     if player2_information['position'].lower() in ['goal keeper','goal keepers']:
         replace_position2 = 'keepers'
@@ -770,9 +774,6 @@ def compare():
 
     headline = f'Player Comparison Testing'
     stat = 'Goals'
-
-    print(player1_information['position'].lower(),replace_position1)
-    print(player2_information['position'].lower(),replace_position2)
 
     player1_select_list = stat_lists[f'{replace_position1[:1]}_{p1_year[2:]}']['name'].unique().tolist()
 

@@ -18,7 +18,7 @@
     <div class="parent">
       <div class="form boxs">
         <select name="position1" id="position1" onchange="this.form.submit();">
-          <option value="{{ player1_pos }}s">{{ player1_pos }}s</option>
+          <option value="">{{ player1_pos }}</option>
           <option value="defenders">defenders</option>
           <option value="forwards">forwards</option>
           <option value="keepers">keepers</option>
@@ -35,7 +35,7 @@
       </div>
       <div class="form boxs">
         <select name="player1YR" id="player1YR" onchange="this.form.submit();">
-          <option value="">select player 1 year</option>
+          <option value="">{{ p1_year }}</option>
           <option value="2020">2020</option>
           <option value="2019">2019</option>
         </select>
@@ -44,7 +44,7 @@
         <input class="button" style="width: 100%;height:100%;dislay: inline;" type="submit" formaction="/compare" value="submit"/>
       </div-->
     </div>
-    <input type="hidden" id="player1YR" name="player1YR" value="{{ p1_year }}">
+    <input type="hidden" id="position2" name="position2" value="{{ player2_pos }}">
     <input type="hidden" id="player2" name="player2" value="{{ column_names[1] }}">
     <input type="hidden" id="player2YR" name="player2YR" value="{{ p2_year }}">
   </form>
@@ -53,15 +53,20 @@
 <div>
   <form method="post" action="{{ url_for(request.endpoint) }}">
     <div class="parent">
+      {% if (player1_pos == 'defender') or (player1_pos == 'keeper') %}
+      <div class="boxs textcenter">
+      </div>
+      {% else %}
       <div class="form boxs">
         <select name="position2" id="position2" onchange="this.form.submit();">
-          <option value="{{ player2_pos }}s">{{ player2_pos }}s</option>
+          <option value="">{{ player2_pos }}</option>
           <option value="defenders">defenders</option>
           <option value="forwards">forwards</option>
           <option value="keepers">keepers</option>
           <option value="midfielders">midfielders</option>
         </select>
       </div>
+      {% endif %}
       <div class="form boxs">
         <select name="player2" id="player2" onchange="this.form.submit();">
           <option value="">select player 2</option>
@@ -72,7 +77,7 @@
       </div>
       <div class="form boxs">
         <select name="player2YR" id="player2YR" onchange="this.form.submit();">
-          <option value="">select player 2 year</option>
+          <option value="">{{ p2_year }}</option>
           <option value="2020">2020</option>
           <option value="2019">2019</option>
         </select>
@@ -81,7 +86,7 @@
         <input class="button" style="width: 100%;height:100%;dislay: inline;" type="submit" formaction="/compare" value="submit"/>
       </div-->
     </div>
-    <input type="hidden" id="player2YR" name="player2YR" value="{{ p2_year }}">
+    <input type="hidden" id="position1" name="position1" value="{{ player1_pos }}">
     <input type="hidden" id="player1" name="player1" value="{{ column_names[0] }}">
     <input type="hidden" id="player1YR" name="player1YR" value="{{ p1_year }}">
   </form>

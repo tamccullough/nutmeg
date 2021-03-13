@@ -17,10 +17,18 @@
 
 {% extends 't-base.html' %}
 {% block content %}
-
+<div>
+  <div class="parent">
+    <div class="boxs">
+      <a class="button" href="/compare">refresh</a>
+    </div>
+    <div class="boxs textright">
+      <a>{{ headline }}-{{ player1_pos | title }}s</a>
+    </div>
+  </div>
+</div>
 <!-- page content -->
 {% include "player-compare-form.html" %}
-<a href="/compare">REFRESH</a>
 <div class="parent">
   <!-- home team stats -->
     <div class="boxl {{ player1_colour }}">
@@ -105,7 +113,7 @@
     <!-- END OF away team stats -->
 </div>
 
-<div class="{{ theme }}-green">
+<div class="{{ theme }}-dark">
   <div class="tooltip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;legend
     <p class="tooltiptext">
       {% for x in column_names[:-1] %}
@@ -114,18 +122,18 @@
       {{ column_names[-1]}}
     </p>
   </div>
-  <div class="{{ theme }}-green indent">
+  <div class="{{ theme }}-dark indent">
     {% for i in range(chart_team_colour_list | length ) %}
     <h4 style="display:inline;border-bottom: 0.35rem solid {{ chart_team_colour_list[i] }};">{{ line_columns[i] }}</h4>
     {% endfor %}
   </div>
   <br>
-  <div class="{{ theme }}-green chartcontainer">
+  <div class="chartcontainer">
     <canvas id="testing"></canvas>
   </div>
 </div>
 
-<div class="{{ theme }}-yellow">
+<div class="{{ theme }}-dark">
   <div class="tooltip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;legend
     <p class="tooltiptext">
       {% for x in column_names[:-1] %}
@@ -134,18 +142,18 @@
       {{ column_names[-1]}}
     </p>
   </div>
-  <div class="{{ theme }}-yellow indent">
+  <div class="indent">
     {% for i in range(chart_team_colour_list | length ) %}
     <h4 style="display:inline;border-bottom: 0.35rem solid {{ chart_team_colour_list[i] }};">{{ line_columns[i] }}</h4>
     {% endfor %}
   </div>
   <br>
-  <div class="{{ theme }}-yellow chartcontainer">
+  <div class="chartcontainer">
     <canvas id="testing2"></canvas>
   </div>
 </div>
 
-<div class="{{ theme }}-red">
+<div class="{{ theme }}-dark">
   <div class="tooltip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;legend
     <p class="tooltiptext">
       {% for x in column_names[:-1] %}
@@ -154,18 +162,18 @@
       {{ column_names[-1]}}
     </p>
   </div>
-  <div class="{{ theme }}-red indent">
+  <div class="indent">
     {% for i in range(chart_team_colour_list | length ) %}
     <h4 style="display:inline;border-bottom: 0.35rem solid {{ chart_team_colour_list[i] }};">{{ line_columns[i] }}</h4>
     {% endfor %}
   </div>
   <br>
-  <div class="{{ theme }}-red chartcontainer">
+  <div class="chartcontainer">
     <canvas id="testing3"></canvas>
   </div>
 </div>
 
-<div class="{{ theme }}-blue">
+<div class="{{ theme }}-dark">
   <div class="tooltip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;legend
     <p class="tooltiptext">
       {% for x in column_names[:-1] %}
@@ -174,13 +182,13 @@
       {{ column_names[-1]}}
     </p>
   </div>
-  <div class="{{ theme }}-blue indent">
+  <div class="indent">
     {% for i in range(chart_team_colour_list | length ) %}
     <h4 style="display:inline;border-bottom: 0.35rem solid {{ chart_team_colour_list[i] }};">{{ line_columns[i] }}</h4>
     {% endfor %}
   </div>
   <br>
-  <div class="{{ theme }}-blue chartcontainer">
+  <div class="chartcontainer">
     <canvas id="testing4"></canvas>
   </div>
 </div>
