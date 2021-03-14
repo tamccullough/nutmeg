@@ -633,6 +633,8 @@ def roster():
 @canpl.route('/compare', methods=['GET','POST'])
 def compare():
 
+    ## request ALL values in request.form create BLANKS if not received
+    ###############################################################
     stat_values = {}
     for x in ['player1_pos','player1','player1YR','player2_pos','player2','player2YR']:
         try:
@@ -640,9 +642,9 @@ def compare():
         except:
             stat_values[x] = ''
 
-    print(stat_values)
+    print('\n',stat_values,'\n')
+
     get_name = {'defenders':2,'forwards':10,'keepers':0,'midfielders':5}
-    error = None
 
     current_year = 2021
     begun = {'no':0,'yes':1}
@@ -665,7 +667,10 @@ def compare():
     if stat_values['player1_pos']:
         pass
     else:
-        stat_values['player1_pos'] = 'forwards'
+        if stat_values['player2_pos'] in ['defenders','keepers']:
+            stat_values['player1_pos'] = stat_values['player2_pos']
+        else:
+            stat_values['player1_pos'] = 'forwards'
 
     if stat_values['player1']:
         pass
@@ -673,48 +678,163 @@ def compare():
         stat_values['player1'] = best_eleven.at[get_name[stat_values['player1_pos']],'name']
 
     if stat_values['player1YR']:
-        pass
-    else:
-        stat_values['player1YR'] = '2020'
-
-    yr_check = stat_values['player1YR'][2:]
-    #print(player_info[yr_check][(player_info[yr_check]['year'] == stat_values['player1YR'])&(player_info[yr_check]['name'] == stat_values['player1'])])
-    # check player 2 stats have been chosen. If NOT select defaults, while getting requirements to view player 1
-    ###############################################################
-    if stat_values['player2_pos']:
-        pass
-    else:
-        stat_values['player2_pos'] = 'forwards'
-
-    if (stat_values['player1_pos'] == 'defenders') | (stat_values['player1_pos'] == 'keepers'):
-        stat_values['player2_pos'] = stat_values['player1_pos']
-        stat_values['player2'] = best_eleven.at[get_name[stat_values['player2_pos']]+1,'name']
-    else:
-        if stat_values['player2']:
-            pass
+        if stat_values['player1']:
+            try:
+                try:
+                    player_info['19'][player_info['19']['name'] == stat_values['player1']]['position'].values[0]
+                    stat_values['player1YR'] = '2019'
+                except:
+                    player_info['19'][player_info['19']['display'] == stat_values['player1']]['position'].values[0]
+                    stat_values['player1YR'] = '2019'
+            except:
+                try:
+                    player_info['20'][player_info['20']['name'] == stat_values['player1']]['position'].values[0]
+                    stat_values['player1YR'] = '2019'
+                except:
+                    player_info['20'][player_info['20']['display'] == stat_values['player1']]['position'].values[0]
+                    stat_values['player1YR'] = '2020'
         else:
-            stat_values['player2'] = best_eleven.at[get_name[stat_values['player2_pos']]+1,'name']
-
-    if stat_values['player2YR']:
-        pass
+            pass
     else:
-        stat_values['player2YR'] = '2020'
+        if stat_values['player1']:
+            try:
+                try:
+                    player_info['19'][player_info['19']['name'] == stat_values['player1']]['position'].values[0]
+                    stat_values['player1YR'] = '2019'
+                except:
+                    player_info['19'][player_info['19']['display'] == stat_values['player1']]['position'].values[0]
+                    stat_values['player1YR'] = '2019'
+            except:
+                try:
+                    player_info['20'][player_info['20']['name'] == stat_values['player1']]['position'].values[0]
+                    stat_values['player1YR'] = '2019'
+                except:
+                    player_info['20'][player_info['20']['display'] == stat_values['player1']]['position'].values[0]
+                    stat_values['player1YR'] = '2020'
+        else:
+            stat_values['player1YR'] = '2020'
 
-    yr_check = stat_values['player2YR'][2:]
-    #print(player_info[yr_check][(player_info[yr_check]['year'] == stat_values['player2YR'])&(player_info[yr_check]['name'] == stat_values['player2'])])
-
-    # Get player lists for selected positions
+    # Get player 1 lists for selected positions
     player1_select_list = stat_lists[f'{stat_values["player1_pos"][:1].lower()}_{stat_values["player1YR"][2:]}']['name'].unique().tolist()
     if stat_values['player1'] in player1_select_list:
         player1_select_list.remove(stat_values['player1'])
+    else:
+        pass
+
+    # check player 2 stats have been chosen. If NOT select defaults, while getting requirements to view player 1
+    ###############################################################
+    if stat_values['player2_pos']:
+        # check if player 1 is selected as defender or keepers - those groups are only compared to one another
+        if stat_values['player1_pos'] in ['defenders','keepers']:
+            stat_values['player2_pos'] = stat_values['player1_pos']
+            if stat_values['player2']:
+                if stat_values['player2'] in player1_select_list:
+                    player2_check = 0
+                    pass
+                else:
+                    player2_check = 1
+                    stat_values['player2'] = best_eleven.at[get_name[stat_values['player1_pos']]+1,'name']
+            else:
+                stat_values['player2'] = best_eleven.at[get_name[stat_values['player1_pos']]+1,'name']
+        # check if player 1 is selected as midfielder - forwards and midfielders can be compared - stay as forward if selected or vice versa
+        else:
+            if stat_values['player2_pos'] in ['forwards','midfielders']:
+                if stat_values['player2']:
+                    if (stat_values['player2'] in player1_select_list) & (stat_values['player1_pos'] != stat_values['player2_pos']):
+                        player2_check = 0
+                        stat_values['player2'] = best_eleven.at[get_name[stat_values['player2_pos']]+1,'name']
+                    else:
+                        player2_check = 1
+                        stat_values['player2'] = best_eleven.at[get_name[stat_values['player2_pos']]+1,'name']
+                else:
+                    stat_values['player2'] = best_eleven.at[get_name[stat_values['player2_pos']]+1,'name']
+    else:
+        if stat_values['player1_pos'] in ['defenders','keepers']:
+            stat_values['player2_pos'] = stat_values['player1_pos']
+            if stat_values['player2']:
+                if stat_values['player2'] in player1_select_list:
+                    player2_check = 0
+                    pass
+                else:
+                    player2_check = 1
+                    stat_values['player2'] = best_eleven.at[get_name[stat_values['player1_pos']]+1,'name']
+            else:
+                stat_values['player2'] = best_eleven.at[get_name[stat_values['player2_pos']]+1,'name']
+        else:
+            if stat_values['player2']:
+                get_pos = {'d':'defenders','f':'forwards','g':'keepers','m':'midfielders'}
+                try:
+                    try:
+                        stat_values['player2_pos'] = get_pos[player_info['19'][player_info['19']['name'] == stat_values['player2']]['position'].values[0]]
+                    except:
+                        stat_values['player2_pos'] = get_pos[player_info['19'][player_info['19']['display'] == stat_values['player2']]['position'].values[0]]
+                except:
+                    try:
+                        stat_values['player2_pos'] = get_pos[player_info['20'][player_info['20']['name'] == stat_values['player2']]['position'].values[0]]
+                    except:
+                        stat_values['player2_pos'] =get_pos[player_info['20'][player_info['20']['display'] == stat_values['player2']]['position'].values[0]]
+            else:
+                stat_values['player2_pos'] = stat_values['player1_pos']
+                stat_values['player2'] = best_eleven.at[get_name[stat_values['player1_pos']]+1,'name']
+
+    if stat_values['player2']:
+        try:
+            print(f"\nCHECKING YEAR FOR player {stat_values['player2']}")
+            if player_info['19'][player_info['19']['name'] == stat_values['player2']]['position'].values[0]:
+                print('\n2019\n')
+        except:
+            print(f"FAILED {stat_values['player2']}\n")
+
+    if stat_values['player2YR']:
+        if stat_values['player2']:
+            try:
+                try:
+                    player_info['19'][player_info['19']['name'] == stat_values['player2']]['position'].values[0]
+                    stat_values['player2YR'] = '2019'
+                except:
+                    player_info['19'][player_info['19']['display'] == stat_values['player2']]['position'].values[0]
+                    stat_values['player2YR'] = '2019'
+            except:
+                try:
+                    player_info['20'][player_info['20']['name'] == stat_values['player2']]['position'].values[0]
+                    stat_values['player2YR'] = '2019'
+                except:
+                    player_info['20'][player_info['20']['display'] == stat_values['player2']]['position'].values[0]
+                    stat_values['player2YR'] = '2020'
+        else:
+            pass
+    else:
+        if stat_values['player2']:
+            try:
+                try:
+                    player_info['19'][player_info['19']['name'] == stat_values['player2']]['position'].values[0]
+                    stat_values['player2YR'] = '2019'
+                except:
+                    player_info['19'][player_info['19']['display'] == stat_values['player2']]['position'].values[0]
+                    stat_values['player2YR'] = '2019'
+            except:
+                try:
+                    player_info['20'][player_info['20']['name'] == stat_values['player2']]['position'].values[0]
+                    stat_values['player2YR'] = '2019'
+                except:
+                    player_info['20'][player_info['20']['display'] == stat_values['player2']]['position'].values[0]
+                    stat_values['player2YR'] = '2020'
+        else:
+            stat_values['player2YR'] = '2020'
 
     player2_select_list = stat_lists[f'{stat_values["player2_pos"][:1].lower()}_{stat_values["player2YR"][2:]}']['name'].unique().tolist()
     if stat_values['player2'] in player2_select_list:
         player2_select_list.remove(stat_values['player2'])
+    else:
+        #if (player2_pos_check == 1) & (stat_values['player2_pos'] == 'forwards'):
+        #    stat_values['player2'] = best_eleven.at[get_name[stat_values['player2_pos']]+1,'name']
+        #    stat_values['player2YR'] = '2020'
+        print('\nHOUSTON WE HAVE A PROBLEM')
+        print(stat_values['player2_pos'],stat_values['player2'],stat_values['player2YR'],'\n')
 
     def get_player_information(name,year):
 
-        get_pos = {'d':'defender','f':'forward','g':'keeper','m':'midfielder'}
+        get_pos = {'d':'defenders','f':'forwards','g':'keepers','m':'midfielders'}
         get_colour = {'Atlético Ottawa' : 'cpl-ao',
                     'Cavalry FC' : 'cpl-cfc',
                     'FC Edmonton' : 'cpl-fce',
