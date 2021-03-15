@@ -633,6 +633,8 @@ def roster():
 @canpl.route('/compare', methods=['GET','POST'])
 def compare():
 
+    headline = f'Player Comparison WIP *BUGGY*'
+
     variable_list = ['player1_pos','player1','player1YR','player2_pos','player2','player2YR']
     print('\n')
     default_values = {}
@@ -679,6 +681,7 @@ def compare():
 
     # check player 1 stats have been chosen. If NOT select defaults
     ###############################################################
+    player1_pos_fix = 0
     if stat_values['player1_pos']:
         # check if the page has been reloaded -> ensure default values
         if refresh_check == 0:
@@ -687,7 +690,14 @@ def compare():
         else:
             pass
     else:
-        stat_values['player1_pos'] = 'forwards'
+        if stat_values['player1YR']:
+            print('POS YEAR IS PRESENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            if stat_values['player1_pos'] != default_values['player1_pos']:
+                print('stat POS is default POS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+                player1_pos_fix = 1
+                stat_values['player1_pos'] = default_values['player1_pos']
+        else:
+            stat_values['player1_pos'] = 'forwards'
 
     if stat_values['player1']:
         # check if the page has been reloaded -> ensure default values
@@ -697,7 +707,10 @@ def compare():
         else:
             pass
     else:
-        stat_values['player1'] = best_eleven.at[get_name[stat_values['player1_pos']],'name']
+        if player1_pos_fix:
+            stat_values['player1'] = default_values['player1']
+        else:
+            stat_values['player1'] = best_eleven.at[get_name[stat_values['player1_pos']],'name']
 
     if stat_values['player1YR']:
         # check if the page has been reloaded -> ensure default values
@@ -758,7 +771,15 @@ def compare():
             session['player2'] = best_eleven.at[get_name[stat_values['player1_pos']]+1,'name']
             stat_values['player2'] = best_eleven.at[get_name[stat_values['player1_pos']]+1,'name']
         else:
-            pass
+            if stat_values['player2YR']:
+                print('YEAR IS PRESENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+                if stat_values['player2YR'] != default_values['player2YR']:
+                    print('stat YEAR is not default YEAR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+                    stat_values['player2'] = default_values['player2']
+                else:
+                    pass
+            else:
+                pass
     else:
         stat_values['player2'] = best_eleven.at[get_name[stat_values['player2_pos']]+1,'name']
 
@@ -886,9 +907,6 @@ def compare():
         line_columns.append(x)
         player_lines.append(results[x].T.values.tolist())
 
-    headline = f'Player Comparison Testing'
-    stat = 'Goals'
-
     colour_dict = { 'cpl-ao':'#E4002B','cpl-cfc':'#DA291C','cpl-fce':'#004C97','cpl-ffc':'#DE4405','cpl-hfx':'#41B6E6','cpl-pfc':'#582C83','cpl-vfc':'#7C2529','cpl-y9':'#046a38'}
 
     colour1 = colour_dict[player1_information['colour']]
@@ -930,7 +948,7 @@ def compare():
         print(x,session[x])
     print('\n')
 
-    return render_template('player-compare.html', stat = stat, geegle = geegle, headline= headline,
+    return render_template('player-compare.html', geegle = geegle, headline= headline,
     player1_select_list = player1_select_list, player2_select_list = player2_select_list,
     player1_team = player1_information['team'], player1_colour = player1_information['colour'],
     player1_flag = player1_information['flag'], player1_image = player1_information['image'],
