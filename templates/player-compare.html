@@ -17,13 +17,37 @@
 
 {% extends 't-base.html' %}
 {% block content %}
+
+<div class="mobile">
+  <a>{{ year }} Stats</a>
+  <ul class="position">
+    <li><a href="/goals">g / a</a></li>
+    <li><a href="/defenders">def</a></li>
+    <li><a href="/forwards">atck</a></li>
+    <li><a href="/keepers">keep</a></li>
+    <li><a href="/midfielders">mid</a></li>
+  </ul>
+  <br>
+</div>
+
+<div class="desktop">
+  <ul class="position">
+    <li><a href="/compare">compare-2</a></li>
+    <li><a href="/goals">goals/assists</a></li>
+    <li><a href="/defenders">defenders</a></li>
+    <li><a href="/forwards">forwards</a></li>
+    <li><a href="/keepers">keepers</a></li>
+    <li><a href="/midfielders">midfielders</a></li>
+  </ul>
+</div>
+
 <div>
   <div class="parent">
     <div class="boxs">
-      <a class="button" href="/compare">refresh</a>
+      <a>{{ headline }}</a>
     </div>
     <div class="boxs textright">
-      <a>{{ headline }}-{{ player1_pos | title }}s</a>
+      <a class="button" href="/compare">refresh</a>
     </div>
   </div>
 </div>
@@ -42,31 +66,21 @@
           <td><h4 class="xxfont">{{ player_names[0] }}</h4></td>
         </tr>
       </table>
+        <table>
+          <tr>
+            <td><a><img src="static/images/flags/{{ player1_flag }}" alt="{{ player1_flag[:-4] }} national flag" style="max-height:30px"><a></td>
+            <td><h4 style="margin-top: 5px;">{{ player1_pos[:-1] }}</h4></td>
+            <td><h4 style="margin-top: 5px;">{{ player1_num }}</h4></td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td><h4 style="margin-top: 5px;">xG:0</h4></td>
+            <td><h4 style="margin-top: 5px;">XA:0</h4></td>
+            <td><h4 style="margin-top: 5px;">Min:90</h4></td>
+          </tr>
+        </table>
 
-      <div style="width:33%;height:35px;float:left;">
-        <td><a><img src="static/images/flags/{{ player1_flag }}" alt="{{ player1_flag[:-4] }} national flag" style="max-height:30px"><a></td>
-        </div>
-        <div style="width:33%;height:35px;float:left;">
-          <h4 style="margin-top: 5px;">{{ player1_pos }}</h4>
-        </div>
-        <div style="width:33%;height:35px;float:right;">
-          <h4 style="margin-top: 5px;">{{ player1_num }}</h4>
-        </div>
-
-        <div class="spacer"></div>
-        <a>Information</a>
-        <div class="spacer"></div>
-        <div class="parent">
-          <div class="boxs textcenter" style="height:35px;">
-            <h4 style="margin-top: 5px;">xG:0</h4>
-          </div>
-          <div class="boxs textcenter" style="height:35px;">
-            <h4 style="margin-top: 5px;">XA:0</h4>
-          </div>
-          <div class="boxs textcenter" style="height:35px;">
-            <h4 style="margin-top: 5px;">Min:90</h4>
-          </div>
-        </div>
       </div>
     </div>
     <!-- END OF home team stats -->
@@ -84,37 +98,28 @@
           </tr>
         </table>
 
-        <div style="width:33%;height:35px;float:left;">
-          <td><a><img src="static/images/flags/{{ player2_flag }}" alt="{{ player2_flag[:-4] }} national flag" style="max-height:30px"><a></td>
-          </div>
-          <div style="width:33%;height:35px;float:left;">
-            <h4 style="margin-top: 5px;">{{ player2_pos }}</h4>
-          </div>
-          <div style="width:33%;height:35px;float:right;">
-            <h4 style="margin-top: 5px;">{{ player2_num }}</h4>
-          </div>
+        <table>
+          <tr>
+            <td><a><img src="static/images/flags/{{ player2_flag }}" alt="{{ player2_flag[:-4] }} national flag" style="max-height:30px"><a></td>
+            <td><h4 style="margin-top: 5px;">{{ player2_pos[:-1] }}</h4></td>
+            <td><h4 style="margin-top: 5px;">{{ player2_num }}</h4></td>
+          </tr>
+        </table>
 
-          <div class="spacer"></div>
-          <a>Information</a>
-          <div class="spacer"></div>
-          <div class="parent">
-            <div class="boxs textcenter" style="height:35px;">
-              <h4 style="margin-top: 5px;">xG:0</h4>
-            </div>
-            <div class="boxs textcenter" style="height:35px;">
-              <h4 style="margin-top: 5px;">XA:0</h4>
-            </div>
-            <div class="boxs textcenter" style="height:35px;">
-              <h4 style="margin-top: 5px;">Min:90</h4>
-            </div>
-          </div>
+        <table>
+          <tr>
+            <td><h4 style="margin-top: 5px;">xG:0</h4></td>
+            <td><h4 style="margin-top: 5px;">XA:0</h4></td>
+            <td><h4 style="margin-top: 5px;">Min:90</h4></td>
+          </tr>
+        </table>
         </div>
       </div>
       <!-- END OF away team stats -->
     </div>
     {% set i = 0 %}
     {% for word in ['testing','testing2','testing3','testing4']%}
-    <div class="{{ theme }}-colour">
+    <div class="{{ theme }}-grey">
       <div class="tooltip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ line_columns[loop.index-1] }}
         <p class="tooltiptext">
           {% for x in player_names[:-1] %}

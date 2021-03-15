@@ -819,7 +819,7 @@ def compare():
                     'Pacific FC' : 'cpl-pfc',
                     'Valour FC' : 'cpl-vfc',
                     'York United FC' : 'cpl-y9',
-                    'York9 FC' : 'cpl-y9'}
+                    'York9 FC' : 'cpl-y9-old'}
 
         def get_player_details(year,col):
             flag = player_info[year][player_info[year][col] == name]['flag'].values[0]
@@ -934,10 +934,19 @@ def compare():
         line_columns.append(x)
         player_lines.append(results[x].T.values.tolist())
 
-    colour_dict = { 'cpl-ao':'#E4002B','cpl-cfc':'#DA291C','cpl-fce':'#004C97','cpl-ffc':'#DE4405','cpl-hfx':'#41B6E6','cpl-pfc':'#582C83','cpl-vfc':'#7C2529','cpl-y9':'#046a38'}
+    colour_dict = { 'cpl-ao':'#102f52','cpl-cfc':'#3b7324','cpl-fce':'#004C97','cpl-ffc':'#DE4405','cpl-hfx':'#41B6E6','cpl-pfc':'#582C83','cpl-vfc':'#b9975b','cpl-y9':'#046a38','cpl-y9-old':'#78BE20'}
 
     colour1 = colour_dict[player1_information['colour']]
     colour2 = colour_dict[player2_information['colour']]
+
+    if (colour1 == '#3b7324') | (colour2 == '#78BE20'):
+        colour1 = '#DA291C'
+    elif (colour2 == '#78BE20') | (colour2 == '#3b7324'):
+        colour2 = '#DA291C'
+    elif (colour1 == '#102f52') | (colour2 == '#004C97'):
+        colour1 = '#E4002B'
+    elif (colour2 == '#004C97') | (colour2 == '#102f52'):
+        colour2 = '#E4002B'
 
     def change_hex(col, amt):
         vals = tuple(int(col.lstrip('#')[i:i+2], 16) for i in (0, 2, 4))
@@ -984,7 +993,7 @@ def compare():
     player2_flag = player2_information['flag'], player2_image = player2_information['image'],
     player2_num = player2_information['number'], player2_pos = player2_information['position'],
     p1_year = stat_values['player1YR'], p2_year = stat_values['player2YR'],
-    player_names = [stat_values['player1'],stat_values['player2']], chart_team_colour_list = [colour_dict[player1_information['colour']], colour_dict[player2_information['colour']] ],
+    player_names = [stat_values['player1'],stat_values['player2']], chart_team_colour_list = [colour1, colour2],
     player_line = player_lines[0],line_columns = line_columns,
     player_line_2 = player_lines[1],player_line_3 = player_lines[2],player_line_4 = player_lines[3],
     colour1 = colour1,colour2 = colour2,colour3 = geegle[2])

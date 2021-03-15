@@ -9,7 +9,7 @@
   --offwhite: #fff1d0;
   --lightblue: #caf0f8;
   --lightgrey: #ebebeb;
-  --grey: #9eb3c2;
+  --grey: #54545c;
   --blue: #118ab2;
   --paleblue: #3a6ea5;
   --darkblue: #004e98;
@@ -104,6 +104,7 @@ body,h3,h4,h5,a {
 .mono {color:var(--darkblue); background-color:var(--grey);}
 .mono-light {color:var(--darkblue); background-color:var(--lightgrey);}
 .mono-dark {color:var(--offwhite); background-color:var(--darkblue);}
+.mono-grey {color:var(--offwhite); background-color:var(--grey);}
 .mono-action {color:var(--offwhite); background-color:var(--orange);}
 .mono-colour {color:var(--lightblue); background-color:var(--paleblue);}
 .mono-t {color:var(--lightblue);}
@@ -123,7 +124,7 @@ body,h3,h4,h5,a {
   justify-content: space-around;
   align-items: center;
   min-height: 4vh;
-  color: var(--lightblue);
+  color: var(--white);
 }
 
 .position li {
@@ -139,6 +140,7 @@ body,h3,h4,h5,a {
   letter-spacing: 3px;
   font-weight: bold;
   font-size: 14px;
+
 }
 
 
@@ -204,9 +206,6 @@ nav {
     overflow-x: hidden;
     position: relative;
   }
-  .position {
-    color: var(--darkblue);
-  }
   .nav-links {
     position: absolute;
     right: 0px;
@@ -231,6 +230,9 @@ nav {
   }
   .navbox {
     background-color: var(--lightblue);
+  }
+  .position {
+    color: var(--darkblue);
   }
   .mono-body{color:var(--darkblue); background-color:var(--lightblue);}
   .logo {color: var(--darkblue);}

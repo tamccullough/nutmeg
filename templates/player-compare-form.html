@@ -44,6 +44,9 @@
         <input class="button" style="width: 100%;height:100%;dislay: inline;" type="submit" formaction="/compare" value="submit"/>
       </div-->
     </div>
+    <input type="hidden" id="player1_pos" name="player1_pos" value="{{ player1_pos }}">
+    <input type="hidden" id="player1" name="player1" value="{{ player_names[0] }}">
+    <input type="hidden" id="player1YR" name="player1YR" value="{{ p1_year }}">
     <input type="hidden" id="player2_pos" name="player2_pos" value="{{ player2_pos }}">
     <input type="hidden" id="player2" name="player2" value="{{ player_names[1] }}">
     <input type="hidden" id="player2YR" name="player2YR" value="{{ p2_year }}">
@@ -53,16 +56,14 @@
 <div>
   <form method="post" action="{{ url_for(request.endpoint) }}">
     <div class="parent">
-      {% if (player1_pos == 'defender') or (player1_pos == 'keeper') %}
+      {% if (player1_pos == 'defenders') or (player1_pos == 'keepers') %}
       <div class="boxs textcenter">
       </div>
       {% else %}
       <div class="form boxs">
         <select name="player2_pos" id="player2_pos" onchange="this.form.submit();">
           <option value="">{{ player2_pos }}</option>
-          <option value="defenders">defenders</option>
           <option value="forwards">forwards</option>
-          <option value="keepers">keepers</option>
           <option value="midfielders">midfielders</option>
         </select>
       </div>
@@ -89,5 +90,8 @@
     <input type="hidden" id="player1_pos" name="player1_pos" value="{{ player1_pos }}">
     <input type="hidden" id="player1" name="player1" value="{{ player_names[0] }}">
     <input type="hidden" id="player1YR" name="player1YR" value="{{ p1_year }}">
+    <input type="hidden" id="player2_pos" name="player2_pos" value="{{ player2_pos }}">
+    <input type="hidden" id="player2" name="player2" value="{{ player_names[1] }}">
+    <input type="hidden" id="player2YR" name="player2YR" value="{{ p2_year }}">
   </form>
 </div>
