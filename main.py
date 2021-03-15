@@ -639,7 +639,11 @@ def compare():
     print('\n')
     default_values = {}
     for x in variable_list:
-        default_values[x] = session[x]
+        try:
+            default_values[x] = session[x]
+        except:
+            session[x] = ''
+            default_values[x] = session[x]
         print(x,default_values[x])
     print('\n')
 
