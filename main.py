@@ -681,7 +681,13 @@ def compare():
 
     # check player 1 stats have been chosen. If NOT select defaults
     ###############################################################
+    if (stat_values['player1'] != '') & ((stat_values['player1_pos'] == '') & (stat_values['player1YR'] == '')):
+        player1_name_fix = 1
+    else:
+        player1_name_fix = 0
+
     player1_pos_fix = 0
+
     if stat_values['player1_pos']:
         # check if the page has been reloaded -> ensure default values
         if refresh_check == 0:
@@ -690,10 +696,12 @@ def compare():
         else:
             pass
     else:
+        if player1_name_fix:
+            stat_values['player1_pos'] = default_values['player1_pos']
+        else:
+            pass
         if stat_values['player1YR']:
-            print('POS YEAR IS PRESENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
             if stat_values['player1_pos'] != default_values['player1_pos']:
-                print('stat POS is default POS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
                 player1_pos_fix = 1
                 stat_values['player1_pos'] = default_values['player1_pos']
         else:
@@ -720,7 +728,10 @@ def compare():
         else:
             pass
     else:
-        stat_values['player1YR'] = '2020'
+        if player1_name_fix:
+            stat_values['player1YR'] = default_values['player1YR']
+        else:
+            stat_values['player1YR'] = '2020'
 
     # Get player 1 lists for selected positions
     player1_select_list = stat_lists[f'{stat_values["player1_pos"][:1].lower()}_{stat_values["player1YR"][2:]}']['name'].unique().tolist()
@@ -731,6 +742,11 @@ def compare():
 
     # check player 2 stats have been chosen. If NOT select defaults, while getting requirements to view player 1
     ###############################################################
+    if (stat_values['player2'] != '') & ((stat_values['player2_pos'] == '') & (stat_values['player2YR'] == '')):
+        player2_name_fix = 1
+    else:
+        player2_name_fix = 0
+
     if stat_values['player2_pos']:
         # check if the page has been reloaded -> ensure default values
         if refresh_check == 0:
@@ -763,7 +779,14 @@ def compare():
                 else:
                     stat_values['player2'] = best_eleven.at[get_name[stat_values['player2_pos']]+1,'name']
     else:
-        stat_values['player2_pos'] = stat_values['player1_pos']
+        if player2_name_fix:
+            get_pos = {'d':'defenders','f':'forwards','g':'keepers','m':'midfielders'}
+            try:
+                stat_values['player2_pos'] = get_pos[player_info[default_values['player2YR'][2:]][player_info[default_values['player2YR'][2:]]['name'] == stat_values['player2']]['position'].values[0]].lower()
+            except:
+                stat_values['player2_pos'] = get_pos[player_info[default_values['player2YR'][2:]][player_info[default_values['player2YR'][2:]]['display'] == stat_values['player2']]['position'].values[0]].lower()
+        else:
+            stat_values['player2_pos'] = stat_values['player1_pos']
 
     if stat_values['player2']:
         # check if the page has been reloaded -> ensure default values
@@ -772,9 +795,7 @@ def compare():
             stat_values['player2'] = best_eleven.at[get_name[stat_values['player1_pos']]+1,'name']
         else:
             if stat_values['player2YR']:
-                print('YEAR IS PRESENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
                 if stat_values['player2YR'] != default_values['player2YR']:
-                    print('stat YEAR is not default YEAR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
                     stat_values['player2'] = default_values['player2']
                 else:
                     pass
@@ -791,6 +812,10 @@ def compare():
         else:
             pass
     else:
+        if player2_name_fix:
+            stat_values['player2YR'] = default_values['player2YR']
+        else:
+            pass
         if default_values['player2YR']:
             if refresh_check == 0:
                 session['player2YR'] = '2020'
@@ -799,12 +824,6 @@ def compare():
                 stat_values['player2YR'] = default_values['player2YR']
         else:
             stat_values['player2YR'] = '2020'
-
-    player2_select_list = stat_lists[f'{stat_values["player2_pos"][:1].lower()}_{stat_values["player2YR"][2:]}']['name'].unique().tolist()
-    if stat_values['player2'] in player2_select_list:
-        player2_select_list.remove(stat_values['player2'])
-    else:
-        pass
 
     # Generate player profile date for the player info boxes
     ###################################################################
@@ -860,6 +879,7 @@ def compare():
     player1_information,check = get_player_information(stat_values['player1'],stat_values['player1YR'][2:])
     if check:
         stat_values['player1YR'] = '20'+check
+
     player2_information,check = get_player_information(stat_values['player2'],stat_values['player2YR'][2:])
     if check:
         stat_values['player2YR'] = '20'+check
@@ -939,13 +959,13 @@ def compare():
     colour1 = colour_dict[player1_information['colour']]
     colour2 = colour_dict[player2_information['colour']]
 
-    if (colour1 == '#3b7324') | (colour2 == '#78BE20'):
+    if (colour1 == '#3b7324') & (colour2 == '#78BE20'):
         colour1 = '#DA291C'
-    elif (colour2 == '#78BE20') | (colour2 == '#3b7324'):
+    if (colour2 == '#78BE20') & (colour2 == '#3b7324'):
         colour2 = '#DA291C'
-    elif (colour1 == '#102f52') | (colour2 == '#004C97'):
+    if (colour1 == '#102f52') & (colour2 == '#004C97'):
         colour1 = '#E4002B'
-    elif (colour2 == '#004C97') | (colour2 == '#102f52'):
+    if (colour2 == '#004C97') & (colour2 == '#102f52'):
         colour2 = '#E4002B'
 
     def change_hex(col, amt):
@@ -984,12 +1004,24 @@ def compare():
         print(x,session[x])
     print('\n')
 
+    player1_select_list = stat_lists[f'{stat_values["player1_pos"][:1].lower()}_{stat_values["player1YR"][2:]}']['name'].unique().tolist().copy()
+    if stat_values['player1'] in player1_select_list:
+        player1_select_list.remove(stat_values['player1'])
+    else:
+        pass
+
+    player2_select_list = stat_lists[f'{stat_values["player2_pos"][:1].lower()}_{stat_values["player2YR"][2:]}']['name'].unique().tolist().copy()
+    if stat_values['player2'] in player2_select_list:
+        player2_select_list.remove(stat_values['player2'])
+    else:
+        pass
+
     return render_template('player-compare.html', geegle = geegle, headline= headline,
     player1_select_list = player1_select_list, player2_select_list = player2_select_list,
     player1_team = player1_information['team'], player1_colour = player1_information['colour'],
     player1_flag = player1_information['flag'], player1_image = player1_information['image'],
     player1_num = player1_information['number'], player1_pos = player1_information['position'],
-    player2_team = player2_information['team'], player2_colour = player2_information['colour'],
+    player2_team = player2_information['team'], player2_colour =player2_information['colour'],
     player2_flag = player2_information['flag'], player2_image = player2_information['image'],
     player2_num = player2_information['number'], player2_pos = player2_information['position'],
     p1_year = stat_values['player1YR'], p2_year = stat_values['player2YR'],
