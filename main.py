@@ -851,15 +851,16 @@ def compare():
             number = player_info[year][player_info[year][col] == name]['number'].values[0]
             team = player_info[year][player_info[year][col] == name]['team'].values[0]
             colour = get_colour[team]
-            return flag,image,position,number,team,colour
+            display = player_info[year][player_info[year][col] == name]['display'].values[0]
+            return flag,image,position,number,team,colour,display
 
 
         player_information = {}
         try:
-            player_information['flag'],player_information['image'],player_information['position'],player_information['number'],player_information['team'],player_information['colour'] = get_player_details(year,'name')
+            player_information['flag'],player_information['image'],player_information['position'],player_information['number'],player_information['team'],player_information['colour'],player_information['display'] = get_player_details(year,'name')
         except:
             try:
-                player_information['flag'],player_information['image'],player_information['position'],player_information['number'],player_information['team'],player_information['colour'] = get_player_details(year,'display')
+                player_information['flag'],player_information['image'],player_information['position'],player_information['number'],player_information['team'],player_information['colour'],player_information['display'] = get_player_details(year,'display')
             except:
                 # maybe the player didn't play that year, otherwise try the next year
                 if year == '20':
@@ -1029,7 +1030,7 @@ def compare():
     player2_flag = player2_information['flag'], player2_image = player2_information['image'],
     player2_num = player2_information['number'], player2_pos = player2_information['position'],
     p1_year = stat_values['player1YR'], p2_year = stat_values['player2YR'],
-    player_names = [stat_values['player1'],stat_values['player2']], chart_team_colour_list = [colour1, colour2],
+    player_names = [player1_information['display'],player2_information['display']], chart_team_colour_list = [colour1, colour2],
     player_line = player_lines[0],line_columns = line_columns,
     player_line_2 = player_lines[1],player_line_3 = player_lines[2],player_line_4 = player_lines[3],
     colour1 = colour1,colour2 = colour2,colour3 = geegle[2])
