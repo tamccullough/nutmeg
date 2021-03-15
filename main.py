@@ -791,7 +791,14 @@ def compare():
         else:
             pass
     else:
-        stat_values['player2YR'] = '2020'
+        if default_values['player2YR']:
+            if refresh_check == 0:
+                session['player2YR'] = '2020'
+                stat_values['player2YR'] = '2020'
+            else:
+                stat_values['player2YR'] = default_values['player2YR']
+        else:
+            stat_values['player2YR'] = '2020'
 
     player2_select_list = stat_lists[f'{stat_values["player2_pos"][:1].lower()}_{stat_values["player2YR"][2:]}']['name'].unique().tolist()
     if stat_values['player2'] in player2_select_list:
@@ -802,7 +809,7 @@ def compare():
     # Generate player profile date for the player info boxes
     ###################################################################
     def get_player_information(name,year):
-
+        check = 0
         get_pos = {'d':'defenders','f':'forwards','g':'keepers','m':'midfielders'}
         get_colour = {'Atlético Ottawa' : 'cpl-ao',
                     'Cavalry FC' : 'cpl-cfc',
@@ -814,28 +821,48 @@ def compare():
                     'York United FC' : 'cpl-y9',
                     'York9 FC' : 'cpl-y9'}
 
+        def get_player_details(year,col):
+            flag = player_info[year][player_info[year][col] == name]['flag'].values[0]
+            image = player_info[year][player_info[year][col] == name]['image'].values[0]
+            position = get_pos[player_info[year][player_info[year][col] == name]['position'].values[0]].lower()
+            number = player_info[year][player_info[year][col] == name]['number'].values[0]
+            team = player_info[year][player_info[year][col] == name]['team'].values[0]
+            colour = get_colour[team]
+            return flag,image,position,number,team,colour
+
+
         player_information = {}
         try:
-            player_information['flag'] = player_info[year][player_info[year]['name'] == name]['flag'].values[0]
-            player_information['image'] = player_info[year][player_info[year]['name'] == name]['image'].values[0]
-            player_information['position'] = get_pos[player_info[year][player_info[year]['name'] == name]['position'].values[0]].lower()
-            player_information['number'] = player_info[year][player_info[year]['name'] == name]['number'].values[0]
-            player_information['team'] = player_info[year][player_info[year]['name'] == name]['team'].values[0]
-            player_information['colour'] = get_colour[player_information['team']]
+            player_information['flag'],player_information['image'],player_information['position'],player_information['number'],player_information['team'],player_information['colour'] = get_player_details(year,'name')
         except:
-            player_information['flag'] = player_info[year][player_info[year]['display'] == name]['flag'].values[0]
-            player_information['image'] = player_info[year][player_info[year]['display'] == name]['image'].values[0]
-            player_information['position'] = get_pos[player_info[year][player_info[year]['display'] == name]['position'].values[0]].lower()
-            player_information['number'] = player_info[year][player_info[year]['display'] == name]['number'].values[0]
-            player_information['team'] = player_info[year][player_info[year]['display'] == name]['team'].values[0]
-            player_information['colour'] = get_colour[player_information['team']]
+            try:
+                player_information['flag'],player_information['image'],player_information['position'],player_information['number'],player_information['team'],player_information['colour'] = get_player_details(year,'display')
+            except:
+                # maybe the player didn't play that year, otherwise try the next year
+                if year == '20':
+                    year = '19'
+                else:
+                    year = '20'
+                try:
+                    player_information['flag'],player_information['image'],player_information['position'],player_information['number'],player_information['team'],player_information['colour'] = get_player_details(year,'name')
+                    print('!!!!!!!!!!!!!!!!!!!!!!PLAYER PLAYED IN THIS YEAR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+                    check = year
+                except:
+                    player_information['flag'],player_information['image'],player_information['position'],player_information['number'],player_information['team'],player_information['colour'] = get_player_details(year,'display')
+                    print('!!!!!!!!!!!!!!!!!!!!!!PLAYER PLAYED IN THIS YEAR & DISPLAY NAME !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+                    check = year
+
         if player_information['position'] in ['goal keeper','goal keepers']:
             player_information['position'] = 'keeper'
-        return player_information
+        return player_information, check
 
 
-    player1_information = get_player_information(stat_values['player1'],stat_values['player1YR'][2:])
-    player2_information = get_player_information(stat_values['player2'],stat_values['player2YR'][2:])
+    player1_information,check = get_player_information(stat_values['player1'],stat_values['player1YR'][2:])
+    if check:
+        stat_values['player1YR'] = '20'+check
+    player2_information,check = get_player_information(stat_values['player2'],stat_values['player2YR'][2:])
+    if check:
+        stat_values['player2YR'] = '20'+check
 
     ############## get position line function
     def get_position_line(data,year=current_year,position='defenders',name=''):
