@@ -694,18 +694,19 @@ def teamcompare():
 
     # ENSURE that if ATO is selected, 2019 is not selected
     year_correct = {'Atlético Ottawa':'2020','York United FC':'2021'}
-
-    if (stat_values['team1'] == 'Atlético Ottawa') & (year1 == '2019'):
+    print('ARE THESE ATO and 2019?',default_values['team1'],year1)
+    if (default_values['team1'] == 'Atlético Ottawa') & (year1 == '2019'):
+        print('CHANGING TO DEFAULT')
         year1 = year_correct['Atlético Ottawa']
 
-    if (stat_values['team2'] == 'Atlético Ottawa') & (year2 == '2019'):
-        year1 = year_correct['Atlético Ottawa']
+    if (default_values['team2'] == 'Atlético Ottawa') & (year2 == '2019'):
+        year2 = year_correct['Atlético Ottawa']
 
-    if (stat_values['team1'] == 'York United FC') & (year1 in ['2019','2020']):
+    if (default_values['team1'] == 'York United FC') & (year1 in ['2019','2020']):
         year1 = year_correct['York United FC']
 
-    if (stat_values['team2'] == 'York United FC') & (year2 in ['2019','2020']):
-        year1 = year_correct['York United FC']
+    if (default_values['team2'] == 'York United FC') & (year2 in ['2019','2020']):
+        year2 = year_correct['York United FC']
 
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref1 = team_ref[team_ref['year'] == int(year1)].copy()
@@ -715,14 +716,27 @@ def teamcompare():
 
     team1_select_list = team_ref1.team.unique().tolist()
     team2_select_list = team_ref2.team.unique().tolist()
-    '''if '2021' != year1:
-        team1_select_list.remove('York United FC')
-        if '2020' != year1:
+
+    if year1 == '2020':
+        try:
+            team1_select_list.remove('York United FC')
+        except:
+            pass
+    if year1 == '2019':
+        try:
             team1_select_list.remove('Atlético Ottawa')
-    if '2021' != year2:
-        team2_select_list.remove('York United FC')
-        if '2020' != year2:
-            team2_select_list.remove('Atlético Ottawa')'''
+        except:
+            pass
+    if year2 == '2020':
+        try:
+            team2_select_list.remove('York United FC')
+        except:
+            pass
+    if year2 == '2019':
+        try:
+            team2_select_list.remove('Atlético Ottawa')
+        except:
+            pass
 
     # Get the selected team for the first choice
     duplicate = 0
