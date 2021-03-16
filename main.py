@@ -834,7 +834,7 @@ def teamcompare():
     ############## END OF compare_two lines function
 
     results = {}
-    for x in ['Goal','BgChnc','Chance','CleanSheet','GoalCncd']:
+    for x in ['Goal','GoalCncd','CleanSheet','BgChnc','Chance']:
         results[x] = compare_two(team1,team1_line,team2,team2_line,column=x)
 
     team_lines, line_columns = [], []
@@ -886,7 +886,7 @@ def teamcompare():
 @canpl.route('/compare', methods=['GET','POST'])
 def compare():
 
-    headline = f'Player Comparison WIP *BUGGY*'
+    headline = f'Player Comparison WIP *Bugs*'
 
     variable_list = ['player1_pos','player1','player1YR','player2_pos','player2','player2YR']
     print('\n')
@@ -922,8 +922,6 @@ def compare():
     year = '2020'
     best_eleven = pd.read_csv(f'datasets/{year}/playerstats/{year}-best_eleven.csv')
 
-    print(f'\nREFRESH CHECK: {refresh_check}\n')
-
     ## GET player list for Position
     ###############################################################
     stat_lists = {}
@@ -935,7 +933,7 @@ def compare():
             stat_lines[pos[:1]+'_'+str(yr)[2:]+'_l'] = pd.read_csv(f'datasets/{yr}/playerstats/{yr}-{pos}-line.csv')
             player_info[str(yr)[2:]] = pd.read_csv(f'datasets/{yr}/player-{yr}-info.csv')
             player_info[str(yr)[2:]]['year'] = str(yr)
-    print('\n',stat_lists.keys(),'\n')
+
     get_pos = {'d':'defenders','f':'forwards','g':'keepers','m':'midfielders'}
     # check player 1 stats have been chosen. If NOT select defaults
     ###############################################################
@@ -1099,7 +1097,6 @@ def compare():
     # Generate player profile date for the player info boxes
     ###################################################################
     def get_player_information(name,year,position):
-        print(name,year,position,'\n')
         player_stat_list = stat_lists[position[:1]+'_'+str(year)][stat_lists[position[:1]+'_'+str(year)]['name'] == name]
         try:
             player_stat_list['overall'].values[0]
@@ -1118,7 +1115,6 @@ def compare():
                     'York9 FC' : 'cpl-y9-old'}
 
         def get_player_details(year,col):
-            print(name,year,col)
             flag = player_info[year][player_info[year][col] == name]['flag'].values[0]
             image = player_info[year][player_info[year][col] == name]['image'].values[0]
             position = get_pos[player_info[year][player_info[year][col] == name]['position'].values[0]].lower()
@@ -1159,11 +1155,9 @@ def compare():
                     year = '20'
                 try:
                     player_information['flag'],player_information['image'],player_information['position'],player_information['number'],player_information['team'],player_information['colour'],player_information['display'],player_information['overall'],player_information['min'],player_information['special1'],player_information['special2'] = get_player_details(year,'name')
-                    print('!!!!!!!!!!!!!!!!!!!!!!PLAYER PLAYED IN THIS YEAR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
                     check = year
                 except:
                     player_information['flag'],player_information['image'],player_information['position'],player_information['number'],player_information['team'],player_information['colour'],player_information['display'],player_information['overall'],player_information['min'],player_information['special1'],player_information['special2'] = get_player_details(year,'display')
-                    print('!!!!!!!!!!!!!!!!!!!!!!PLAYER PLAYED IN THIS YEAR & DISPLAY NAME !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
                     check = year
 
         if player_information['position'] in ['goal keeper','goal keepers']:
