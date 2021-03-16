@@ -2,17 +2,6 @@
 {% set button1 = 'dark' %}
 {% set button2 = 'action' %}
 
-
-<!--div class="parent">
-  <div class="boxs center {{ theme }}-{{ button1 }}">
-    <a class="{{ theme }}-{{ button1 }} button" href="/compare">player 1 select</a>
-  </div>
-  <div class="boxs center {{ theme }}-{{ button2 }}">
-    <a class="{{ theme }}-{{ button2 }} button" href="/compare" >player 2 select</a>
-  </div>
-</div-->
-
-
 <div>
   <form method="post" action="{{ url_for(request.endpoint) }}">
     <div class="parent">
@@ -40,9 +29,6 @@
           <option value="2019">2019</option>
         </select>
       </div>
-      <!--div class="boxs {{ theme }}-action">
-        <input class="button" style="width: 100%;height:100%;dislay: inline;" type="submit" formaction="/compare" value="submit"/>
-      </div-->
     </div>
     <input type="hidden" id="player1_pos" name="player1_pos" value="{{ player1_pos }}">
     <input type="hidden" id="player1" name="player1" value="{{ player_names[0] }}">
@@ -83,9 +69,6 @@
           <option value="2019">2019</option>
         </select>
       </div>
-      <!--div class="boxs {{ theme }}-action">
-        <input class="button" style="width: 100%;height:100%;dislay: inline;" type="submit" formaction="/compare" value="submit"/>
-      </div-->
     </div>
     <input type="hidden" id="player1_pos" name="player1_pos" value="{{ player1_pos }}">
     <input type="hidden" id="player1" name="player1" value="{{ player_names[0] }}">

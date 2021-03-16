@@ -1,0 +1,55 @@
+
+{% set button1 = 'dark' %}
+{% set button2 = 'action' %}
+
+<div>
+  <form method="post" action="/team-compare">
+    <div class="parent">
+      <div class="form box">
+        <select name="team1" id="team1" onchange="this.form.submit();">
+          <option value="">select team 1</option>
+          {% for team in team_select_list %}
+          <option value="{{ team }}">{{ team }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form box">
+        <select name="team2" id="team2" onchange="this.form.submit();">
+          <option value="">select team 2</option>
+          {% for team in team_select_list %}
+          <option value="{{ team }}">{{ team }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    <input type="hidden" id="team1" name="team1" value="{{ team_names[0] }}">
+    <input type="hidden" id="team1YR" name="team1YR" value="{{ year1 }}">
+    <input type="hidden" id="team2" name="team2" value="{{ team_names[1] }}">
+    <input type="hidden" id="team2YR" name="team2YR" value="{{ year2 }}">
+  </form>
+</div>
+
+<div>
+  <form method="post" action="{{ url_for(request.endpoint) }}">
+    <div class="parent">
+      <div class="form box">
+        <select name="team1YR" id="team1YR" onchange="this.form.submit();">
+          <option value="">{{ year1 }}</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+        </select>
+      </div>
+      <div class="form box">
+        <select name="team2YR" id="team2YR" onchange="this.form.submit();">
+          <option value="">{{ year2 }}</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+        </select>
+      </div>
+    </div>
+    <input type="hidden" id="team1" name="team1" value="{{ team_names[0] }}">
+    <input type="hidden" id="team1YR" name="team1YR" value="{{ year1 }}">
+    <input type="hidden" id="team2" name="team2" value="{{ team_names[1] }}">
+    <input type="hidden" id="team2YR" name="team2YR" value="{{ year2 }}">
+  </form>
+</div>

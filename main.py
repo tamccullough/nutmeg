@@ -630,6 +630,209 @@ def roster():
     return render_template('roster.html', year = year, team_name = team, coach = coach, radar = radar, team_line = team_line, team_stats = team_stats,
     crest = crest, colour1 = colour1, colour2 = colour2, html_table = roster, team_colour = roster_colour)
 
+@canpl.route('/team-compare', methods=['GET','POST'])
+def teamcompare():
+
+    headline = f'Team Comparison WIP *BUGGY*'
+
+    variable_list = ['team1','team1YR','team2','team2YR']
+    print('\nDEFAULT')
+    default_values = {}
+    for x in variable_list:
+        try:
+            default_values[x] = session[x]
+        except:
+            session[x] = ''
+            default_values[x] = session[x]
+        print(x,default_values[x])
+
+    ## request ALL values in request.form create BLANKS if not received
+    ###############################################################
+    stat_values = {}
+    refresh_check = 0
+    print('\nSTAT')
+    for x in variable_list:
+        try:
+            stat_values[x] = request.form[x]
+            refresh_check+=1
+            print(x,stat_values[x])
+        except:
+            refresh_check=0
+            print(x,'none')
+            stat_values[x] = ''
+
+    # Get the selected year for the first choice
+    if stat_values['team1YR']:
+        pass
+    else:
+        if default_values['team1YR']:
+            stat_values['team1YR'] = default_values['team1YR']
+        else:
+            stat_values['team1YR'] = '2020'
+
+    # Get the selected year for the team 2 choice
+    if stat_values['team2YR']:
+        pass
+    else:
+        if default_values['team2YR']:
+            stat_values['team2YR'] = default_values['team2YR']
+        else:
+            stat_values['team2YR'] = '2020'
+
+    year1 = stat_values['team1YR']
+    year2 = stat_values['team2YR']
+
+    # ENSURE that if ATO is selected, 2019 is not selected
+    if (stat_values['team1'] == 'Atlético Ottawa') & (year1 == '2019'):
+        year1 = '2020'
+
+    if (stat_values['team2'] == 'Atlético Ottawa') & (year2 == '2019'):
+        year2 = '2020'
+
+    team_ref = pd.read_csv('datasets/teams.csv')
+    team_ref1 = team_ref[team_ref['year'] == int(year1)]
+    team_ref1 = cpl_main.index_reset(team_ref1)
+    team_ref2 = team_ref[team_ref['year'] == int(year2)]
+
+    # Get the selected team for the first choice
+    duplicate = 0
+    if stat_values['team1']:
+        if refresh_check == 0:
+            stat_values['team1'] = team_ref1.at[0,'team']
+        else:
+            pass
+    else:
+        if (default_values['team1'] != '') & (stat_values['team1YR'] != ''):
+            stat_values['team1'] = default_values['team1']
+        if default_values['team1'] == stat_values['team2']:
+            duplicate = 1
+            stat_values['team1'] == stat_values['team2']
+        if (default_values['team1'] != '') & (stat_values['team2'] != ''):
+            stat_values['team1'] == default_values['team1']
+        else:
+            stat_values['team1'] = team_ref1.at[0,'team']
+
+    # Get the selected team for the team 2 choice
+    if stat_values['team2']:
+        if duplicate:
+            stat_values['team2'] = stat_values['team1']
+        if refresh_check == 0:
+            stat_values['team1'] = team_ref1.at[1,'team']
+    else:
+        if (default_values['team2'] != '') & (stat_values['team2YR'] != ''):
+            stat_values['team2'] = default_values['team2']
+        if default_values['team1'] == stat_values['team1']:
+            stat_values['team2'] == stat_values['team1']
+        if (default_values['team2'] != '') & (stat_values['team1'] != ''):
+            stat_values['team2'] == default_values['team2']
+        else:
+            stat_values['team2'] = team_ref1.at[1,'team']
+
+    team1 = stat_values['team1']
+    team2 = stat_values['team2']
+
+    print(year1,team1,year2,team2)
+
+    def get_team_details(data,team):
+        crest = data[data['team'] == team]['crest'].values[0]
+        colour = data[data['team'] == team]['colour'].values[0]
+        colour1 = data[data['team'] == team]['colour1'].values[0]
+        cw = data[data['team'] == team]['cw'].values[0]
+        cd = data[data['team'] == team]['cd'].values[0]
+        cl = data[data['team'] == team]['cl'].values[0]
+        coach = data[data['team'] == team]['coach'].values[0]
+        return crest,colour,colour1,cw,cd,cl,coach
+
+    team1_information = {}
+    team1_information['crest'],team1_information['colour'],team1_information['colour2'],team1_information['cw'],team1_information['cd'],team1_information['cl'],team1_information['coach'] = get_team_details(team_ref1,team1)
+
+    team1_line = pd.read_csv(f'datasets/{year1}/league/{year1}-{team1}-line.csv')
+
+    team2_information = {}
+    team2_information['crest'],team2_information['colour'],team2_information['colour2'],team2_information['cw'],team2_information['cd'],team2_information['cl'],team2_information['coach'] = get_team_details(team_ref2,team2)
+
+    team2_line = pd.read_csv(f'datasets/{year2}/league/{year2}-{team2}-line.csv')
+
+    def compare_two(q1,db,q2,df,column='ExpG'):
+
+        if q1==q2:
+            q1='t1'
+            q2='t2'
+
+        def get_norm(data):
+            df = data.copy()
+            cols = [x for x in data.columns if x not in ['Goal','GoalCncd']]
+            for col in cols:
+                df[col] = round(df[col]/ df[col].max() ,2)
+            return df
+
+        # compare the shapes of the dataframes - require similar length
+        # take the shortest one
+        compare = pd.DataFrame()
+        if db.shape[0] > df.shape[0]:
+            c = df.shape[0]
+        else:
+            c = db.shape[0]
+
+        db = get_norm(db)
+        df = get_norm(df)
+
+        compare[q1] = db[column].head(c).tolist() # played one more game that season
+        compare[q2] = df[column].head(c).tolist()
+
+        return compare
+    ############## END OF compare_two lines function
+
+    results = {}
+    for x in ['Goal','BgChnc','Chance','CleanSheet','GoalCncd']:
+        results[x] = compare_two(team1,team1_line,team2,team2_line,column=x)
+
+    team_lines, line_columns = [], []
+    for x in results:
+        line_columns.append(x)
+        team_lines.append(results[x].T.values.tolist())
+
+    colour1, colour2 = team1_information['colour2'],team2_information['colour2']
+
+    print(colour1,colour2)
+
+    if (colour1 == '#3b7324') & (colour2 == '#78BE20'):
+        colour1 = '#DA291C'
+    if (colour2 == '#78BE20') & (colour2 == '#3b7324'):
+        colour2 = '#DA291C'
+    if (colour1 == '#102f52') & (colour2 == '#004C97'):
+        colour1 = '#E4002B'
+    if (colour2 == '#004C97') & (colour2 == '#102f52'):
+        colour2 = '#E4002B'
+
+    def change_hex(col, amt):
+        vals = tuple(int(col.lstrip('#')[i:i+2], 16) for i in (0, 2, 4))
+        g,b,r = vals[0]+amt, vals[1]+amt, vals[2]+int(amt/2)
+        new_col = '#%02x%02x%02x' % (g,r,b)
+        return str(new_col)
+
+    if colour1 == colour2:
+        colour2 = change_hex(colour2,60)
+        if len(colour2) > 7:
+            colour2 = colour2[:7]
+
+    session['team1'] = team1
+    session['team1YR'] = year1
+    session['team2'] = team2
+    session['team2YR'] = year2
+
+    return render_template('team-compare.html', geegle = geegle, headline= headline,
+    team_select_list = team_ref.team.unique(),
+    team1_colour = team1_information['colour'],team1_crest = team1_information['crest'], team1_cw = team1_information['cw'],
+    team1_cd = team1_information['cd'],team1_cl = team1_information['cl'], team1_coach = team1_information['coach'],
+    team2_colour = team2_information['colour'],team2_crest = team2_information['crest'], team2_cw = team2_information['cw'],
+    team2_cd = team2_information['cd'],team2_cl = team2_information['cl'], team2_coach = team2_information['coach'],
+    year1 = year1, year2 = year2,
+    team_names = [team1,team2], chart_team_colour_list = [colour1, colour2],
+    team_line = team_lines[0],line_columns = line_columns,team_line_2 = team_lines[1],
+    team_line_3 = team_lines[2],team_line_4 = team_lines[3],team_line_5 = team_lines[4],
+    colour1 = colour1, colour2 = colour2,colour3 = geegle[2])
+
 @canpl.route('/compare', methods=['GET','POST'])
 def compare():
 
@@ -912,6 +1115,11 @@ def compare():
     ##################################################################################################################
     ############## compare_two lines function
     def compare_two(q1,db,q2,df,column='Goal'):
+
+        if q1==q2:
+            q1='t1'
+            q2='t2'
+
         def get_norm(data):
             df = data.copy()
             cols = [x for x in data.columns if x not in ['team','name','display','Goal']]

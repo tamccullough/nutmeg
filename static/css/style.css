@@ -677,9 +677,9 @@ td {
   -webkit-appearance:none; /* Safari and Chrome */
   font-size: 1em;
   color: inherit;
+  background-color:inherit;
   height: 20px;
   border:none;
-  background-color:inherit;
   cursor:pointer;
   text-decoration: none;
 }

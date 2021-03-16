@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>Nutmeg CanPL Team Comparison</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Todd McCullough">
+  <meta name="description" content="Canadian Premier League (CanPL) select two different teams to view its individual stats during the selected year.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="static/images/favicon.png" />
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="static/css/team-colours.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Staatliches&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+{% extends 'tc-base.html' %}
+{% block content %}
+
+<div class="mobile">
+  <a>{{ year }} Stats</a>
+  <ul class="position">
+    <li><a href="/teams">team information</a></li>
+    <li><a href="/team-compare">team comparison</a></li>
+  </ul>
+  <br>
+</div>
+
+<div class="desktop">
+  <ul class="position">
+    <li><a href="/teams">team information</a></li>
+    <li><a href="/team-compare">team comparison</a></li>
+  </ul>
+</div>
+
+<div>
+  <div class="parent">
+    <div class="boxs">
+      <a>{{ headline }}</a>
+    </div>
+    <div class="boxs textright">
+      <a class="button" href="/team-compare">refresh</a>
+    </div>
+  </div>
+</div>
+<!-- page content -->
+{% include "team-compare-form.html" %}
+<div class="parent">
+  <!-- player 1 stats -->
+  <div class="boxl {{ team1_colour }}">
+    <div class="textcenter">
+      <table>
+        <tr>
+          <td style="width:30%;" rowspan="2"><img src="static/images/flags/{{ team1_crest }}" alt="{{ team_names[0] }} photo" style="max-height:100px"></td>
+          <td class="xfont"><h2>{{ year1 }}</h2></td>
+        </tr>
+        <tr>
+          <td><h4 class="xxfont">{{ team_names[0] }}</h4></td>
+        </tr>
+      </table>
+        <table>
+          <tr>
+            <td rowspan="3"><h4 style="margin-top: 5px;">{{ team1_coach }}</h4></td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td><h4 style="margin-top: 5px;">{{ team1_cw }}</h4></td>
+            <td><h4 style="margin-top: 5px;">{{ team1_cd }}</h4></td>
+            <td><h4 style="margin-top: 5px;">{{ team1_cl }}</h4></td>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+    <!-- END OF home team stats -->
+
+    <!-- player 2 stats -->
+    <div class="boxl {{ team2_colour }}">
+      <div class="textcenter">
+        <table>
+          <tr>
+            <td style="width:30%;" rowspan="2"><img src="static/images/flags/{{ team2_crest }}" alt="{{ team_names[1] }} photo" style="max-height:100px"></td>
+            <td class="xfont"><h2>{{ year2 }}</h2></td>
+          </tr>
+          <tr>
+            <td><h4 class="xxfont">{{ team_names[1] }}</h4></td>
+          </tr>
+        </table>
+          <table>
+            <tr>
+              <td rowspan="3"><h4 style="margin-top: 5px;">{{ team2_coach }}</h4></td>
+            </tr>
+          </table>
+          <table>
+            <tr>
+              <td><h4 style="margin-top: 5px;">{{ team2_cw }}</h4></td>
+              <td><h4 style="margin-top: 5px;">{{ team2_cd }}</h4></td>
+              <td><h4 style="margin-top: 5px;">{{ team2_cl }}</h4></td>
+            </tr>
+          </table>
+
+        </div>
+      </div>
+      <!-- END OF away team stats -->
+    </div>
+    {% set i = 0 %}
+    {% for word in ['testing','testing2','testing3','testing4','testing5']%}
+    <div class="{{ theme }}-grey">
+      <div class="tooltip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ line_columns[loop.index-1] }}
+        <p class="tooltiptext">
+          {% for x in team_names[:-1] %}
+          {{ x }}<br>
+          {% endfor %}
+          {{ team_names[-1]}}
+        </p>
+      </div>
+      <div class="indent">
+        {% for i in range(chart_team_colour_list | length ) %}
+        <h4 style="display:inline;border-bottom: 0.35rem solid {{ chart_team_colour_list[i] }};">{{ team_names[i] }}</h4>
+        {% endfor %}
+      </div>
+      <br>
+      <div class="chartcontainer">
+        <canvas id="{{ word }}"></canvas>
+      </div>
+    </div>
+    {% endfor %}
+
+
+
+    {% endblock %}
