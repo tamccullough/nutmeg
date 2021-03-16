@@ -665,16 +665,26 @@ def teamcompare():
     if stat_values['team1YR']:
         pass
     else:
-        if default_values['team1YR']:
+        if refresh_check == 0:
+            stat_values['team1YR'] = '2020'
+            session['team1YR'] = stat_values['team1YR']
+        elif default_values['team1YR']:
             stat_values['team1YR'] = default_values['team1YR']
         else:
             stat_values['team1YR'] = '2020'
 
     # Get the selected year for the team 2 choice
     if stat_values['team2YR']:
-        pass
+        if refresh_check == 0:
+            stat_values['team2YR'] = '2020'
+            session['team2YR'] = stat_values['team2YR']
+        else:
+            pass
     else:
-        if default_values['team2YR']:
+        if refresh_check == 0:
+            stat_values['team2YR'] = '2020'
+            session['team2YR'] = stat_values['team2YR']
+        elif default_values['team1YR']:
             stat_values['team2YR'] = default_values['team2YR']
         else:
             stat_values['team2YR'] = '2020'
@@ -683,31 +693,55 @@ def teamcompare():
     year2 = stat_values['team2YR']
 
     # ENSURE that if ATO is selected, 2019 is not selected
+    year_correct = {'Atlético Ottawa':'2020','York United FC':'2021'}
+
     if (stat_values['team1'] == 'Atlético Ottawa') & (year1 == '2019'):
-        year1 = '2020'
+        year1 = year_correct['Atlético Ottawa']
 
     if (stat_values['team2'] == 'Atlético Ottawa') & (year2 == '2019'):
-        year2 = '2020'
+        year1 = year_correct['Atlético Ottawa']
+
+    if (stat_values['team1'] == 'York United FC') & (year1 in ['2019','2020']):
+        year1 = year_correct['York United FC']
+
+    if (stat_values['team2'] == 'York United FC') & (year2 in ['2019','2020']):
+        year1 = year_correct['York United FC']
 
     team_ref = pd.read_csv('datasets/teams.csv')
-    team_ref1 = team_ref[team_ref['year'] == int(year1)]
+    team_ref1 = team_ref[team_ref['year'] == int(year1)].copy()
     team_ref1 = cpl_main.index_reset(team_ref1)
-    team_ref2 = team_ref[team_ref['year'] == int(year2)]
+    team_ref2 = team_ref[team_ref['year'] == int(year2)].copy()
+    team_ref2 = cpl_main.index_reset(team_ref2)
+
+    team1_select_list = team_ref1.team.unique().tolist()
+    team2_select_list = team_ref2.team.unique().tolist()
+    '''if '2021' != year1:
+        team1_select_list.remove('York United FC')
+        if '2020' != year1:
+            team1_select_list.remove('Atlético Ottawa')
+    if '2021' != year2:
+        team2_select_list.remove('York United FC')
+        if '2020' != year2:
+            team2_select_list.remove('Atlético Ottawa')'''
 
     # Get the selected team for the first choice
     duplicate = 0
     if stat_values['team1']:
         if refresh_check == 0:
             stat_values['team1'] = team_ref1.at[0,'team']
+            session['team1'] = stat_values['team1']
         else:
             pass
     else:
-        if (default_values['team1'] != '') & (stat_values['team1YR'] != ''):
+        if refresh_check == 0:
+            stat_values['team1'] = team_ref1.at[0,'team']
+            session['team1'] = stat_values['team1']
+        elif (default_values['team1'] != '') & (stat_values['team1YR'] != ''):
             stat_values['team1'] = default_values['team1']
-        if default_values['team1'] == stat_values['team2']:
+        elif default_values['team1'] == stat_values['team2']:
             duplicate = 1
             stat_values['team1'] == stat_values['team2']
-        if (default_values['team1'] != '') & (stat_values['team2'] != ''):
+        elif (default_values['team1'] != '') & (stat_values['team2'] != ''):
             stat_values['team1'] == default_values['team1']
         else:
             stat_values['team1'] = team_ref1.at[0,'team']
@@ -717,21 +751,23 @@ def teamcompare():
         if duplicate:
             stat_values['team2'] = stat_values['team1']
         if refresh_check == 0:
-            stat_values['team1'] = team_ref1.at[1,'team']
+            stat_values['team2'] = team_ref1.at[1,'team']
+            session['team2'] = stat_values['team2']
     else:
-        if (default_values['team2'] != '') & (stat_values['team2YR'] != ''):
+        if refresh_check == 0:
+            stat_values['team2'] = team_ref1.at[1,'team']
+            session['team2'] = stat_values['team2']
+        elif (default_values['team2'] != '') & (stat_values['team2YR'] != ''):
             stat_values['team2'] = default_values['team2']
-        if default_values['team1'] == stat_values['team1']:
+        elif default_values['team1'] == stat_values['team1']:
             stat_values['team2'] == stat_values['team1']
-        if (default_values['team2'] != '') & (stat_values['team1'] != ''):
+        elif (default_values['team2'] != '') & (stat_values['team1'] != ''):
             stat_values['team2'] == default_values['team2']
         else:
             stat_values['team2'] = team_ref1.at[1,'team']
 
     team1 = stat_values['team1']
     team2 = stat_values['team2']
-
-    print(year1,team1,year2,team2)
 
     def get_team_details(data,team):
         crest = data[data['team'] == team]['crest'].values[0]
@@ -822,7 +858,7 @@ def teamcompare():
     session['team2YR'] = year2
 
     return render_template('team-compare.html', geegle = geegle, headline= headline,
-    team_select_list = team_ref.team.unique(),
+    team1_select_list = team1_select_list,team2_select_list = team2_select_list,
     team1_colour = team1_information['colour'],team1_crest = team1_information['crest'], team1_cw = team1_information['cw'],
     team1_cd = team1_information['cd'],team1_cl = team1_information['cl'], team1_coach = team1_information['coach'],
     team2_colour = team2_information['colour'],team2_crest = team2_information['crest'], team2_cw = team2_information['cw'],

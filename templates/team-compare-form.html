@@ -8,7 +8,7 @@
       <div class="form box">
         <select name="team1" id="team1" onchange="this.form.submit();">
           <option value="">select team 1</option>
-          {% for team in team_select_list %}
+          {% for team in team1_select_list %}
           <option value="{{ team }}">{{ team }}</option>
           {% endfor %}
         </select>
@@ -16,7 +16,7 @@
       <div class="form box">
         <select name="team2" id="team2" onchange="this.form.submit();">
           <option value="">select team 2</option>
-          {% for team in team_select_list %}
+          {% for team in team2_select_list %}
           <option value="{{ team }}">{{ team }}</option>
           {% endfor %}
         </select>
