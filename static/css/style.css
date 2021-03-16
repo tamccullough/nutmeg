@@ -33,6 +33,12 @@ a:link:hover {
   text-decoration: underline;
 }
 
+hr {
+  border: none;
+  background: inherit;
+  height: 10px;
+}
+
 /* fonts */
 
 .coiny {
@@ -503,12 +509,16 @@ select {
   height: 100%;
   display: flex;
   flex-direction: column;
-  border: 3px solid var(--darkblue);
+  border: none;
   border-radius: 0.2rem;
   text-align: center;
   color: inherit;
   background-color: inherit;
   cursor: pointer;
+}
+
+select:hover {
+  background: var(--orange);
 }
 
 .red {

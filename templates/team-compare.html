@@ -45,69 +45,120 @@
   </div>
 </div>
 <!-- page content -->
-{% include "team-compare-form.html" %}
 <div class="parent">
   <!-- player 1 stats -->
   <div class="boxl {{ team1_colour }}">
+    <hr>
+    <form method="post" action="/team-compare">
+      <div class="parent">
+        <div class="form box">
+          <select name="team1" id="team1" onchange="this.form.submit();">
+            <option value="">select team 1</option>
+            {% for team in team1_select_list %}
+            <option value="{{ team }}">{{ team }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form box">
+          <select name="team1YR" id="team1YR" onchange="this.form.submit();">
+            <option value="">select year</option>
+            <option value="2020">2020</option>
+            <option value="2019">2019</option>
+          </select>
+        </div>
+      </div>
+      <input type="hidden" id="team1" name="team1" value="{{ team_names[0] }}">
+      <input type="hidden" id="team1YR" name="team1YR" value="{{ year1 }}">
+      <input type="hidden" id="team2" name="team2" value="{{ team_names[1] }}">
+      <input type="hidden" id="team2YR" name="team2YR" value="{{ year2 }}">
+    </form>
+    <hr>
     <div class="textcenter">
       <table>
         <tr>
           <td style="width:30%;" rowspan="2"><img src="static/images/flags/{{ team1_crest }}" alt="{{ team_names[0] }} photo" style="max-height:100px"></td>
-          <td class="xfont"><h2>{{ year1 }}</h2></td>
+          <td class="xfont" style="text-align:left;"><h2>{{ year1 }}</h2></td>
         </tr>
         <tr>
-          <td><h4 class="xxfont">{{ team_names[0] }}</h4></td>
+          <td><h3 class="xxxfont" style="text-align:left;">{{ team_names[0] }}</h3></td>
         </tr>
       </table>
         <table>
           <tr>
-            <td rowspan="3"><h4 style="margin-top: 5px;">{{ team1_coach }}</h4></td>
+            <td rowspan="3"><h4 style="margin-top: 5px;">Coach: {{ team1_coach }}</h4></td>
           </tr>
         </table>
         <table>
           <tr>
-            <td><h4 style="margin-top: 5px;">{{ team1_cw }}</h4></td>
-            <td><h4 style="margin-top: 5px;">{{ team1_cd }}</h4></td>
-            <td><h4 style="margin-top: 5px;">{{ team1_cl }}</h4></td>
+            <td><h4 style="margin-top: 5px;">W: {{ team1_cw }}</h4></td>
+            <td><h4 style="margin-top: 5px;">D: {{ team1_cd }}</h4></td>
+            <td><h4 style="margin-top: 5px;">L: {{ team1_cl }}</h4></td>
           </tr>
         </table>
 
       </div>
+      <hr>
     </div>
     <!-- END OF home team stats -->
 
     <!-- player 2 stats -->
     <div class="boxl {{ team2_colour }}">
+      <hr>
+      <form method="post" action="/team-compare">
+        <div class="parent">
+          <div class="form box">
+            <select name="team2" id="team2" onchange="this.form.submit();">
+              <option value="">select team 2</option>
+              {% for team in team2_select_list %}
+              <option value="{{ team }}">{{ team }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form box">
+            <select name="team2YR" id="team2YR" onchange="this.form.submit();">
+              <option value="">select year</option>
+              <option value="2020">2020</option>
+              <option value="2019">2019</option>
+            </select>
+          </div>
+        </div>
+        <input type="hidden" id="team1" name="team1" value="{{ team_names[0] }}">
+        <input type="hidden" id="team1YR" name="team1YR" value="{{ year1 }}">
+        <input type="hidden" id="team2" name="team2" value="{{ team_names[1] }}">
+        <input type="hidden" id="team2YR" name="team2YR" value="{{ year2 }}">
+      </form>
+      <hr>
       <div class="textcenter">
         <table>
           <tr>
             <td style="width:30%;" rowspan="2"><img src="static/images/flags/{{ team2_crest }}" alt="{{ team_names[1] }} photo" style="max-height:100px"></td>
-            <td class="xfont"><h2>{{ year2 }}</h2></td>
+            <td class="xfont" style="text-align:left;"><h2>{{ year2 }}</h2></td>
           </tr>
           <tr>
-            <td><h4 class="xxfont">{{ team_names[1] }}</h4></td>
+            <td><h3 class="xxxfont" style="text-align:left;">{{ team_names[1] }}</h3></td>
           </tr>
         </table>
           <table>
             <tr>
-              <td rowspan="3"><h4 style="margin-top: 5px;">{{ team2_coach }}</h4></td>
+              <td rowspan="3"><h4 style="margin-top: 5px;">Coach: {{ team2_coach }}</h4></td>
             </tr>
           </table>
           <table>
             <tr>
-              <td><h4 style="margin-top: 5px;">{{ team2_cw }}</h4></td>
-              <td><h4 style="margin-top: 5px;">{{ team2_cd }}</h4></td>
-              <td><h4 style="margin-top: 5px;">{{ team2_cl }}</h4></td>
+              <td><h4 style="margin-top: 5px;">W: {{ team2_cw }}</h4></td>
+              <td><h4 style="margin-top: 5px;">D: {{ team2_cd }}</h4></td>
+              <td><h4 style="margin-top: 5px;">L: {{ team2_cl }}</h4></td>
             </tr>
           </table>
 
         </div>
+        <hr>
       </div>
       <!-- END OF away team stats -->
     </div>
     {% set i = 0 %}
     {% for word in ['testing','testing2','testing3','testing4','testing5']%}
-    <div class="{{ theme }}-grey">
+    <div class="{{ theme }}-grey" style="padding: 10px 10px;">
       <div class="tooltip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ line_columns[loop.index-1] }}
         <p class="tooltiptext">
           {% for x in team_names[:-1] %}

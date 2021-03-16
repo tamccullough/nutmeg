@@ -633,7 +633,7 @@ def roster():
 @canpl.route('/team-compare', methods=['GET','POST'])
 def teamcompare():
 
-    headline = f'Team Comparison WIP *BUGGY*'
+    headline = f'Team Comparison'
 
     variable_list = ['team1','team1YR','team2','team2YR']
     print('\nDEFAULT')
@@ -921,7 +921,8 @@ def compare():
             stat_lines[pos[:1]+'_'+str(yr)[2:]+'_l'] = pd.read_csv(f'datasets/{yr}/playerstats/{yr}-{pos}-line.csv')
             player_info[str(yr)[2:]] = pd.read_csv(f'datasets/{yr}/player-{yr}-info.csv')
             player_info[str(yr)[2:]]['year'] = str(yr)
-
+    print('\n',stat_lists.keys(),'\n')
+    get_pos = {'d':'defenders','f':'forwards','g':'keepers','m':'midfielders'}
     # check player 1 stats have been chosen. If NOT select defaults
     ###############################################################
     if (stat_values['player1'] != '') & ((stat_values['player1_pos'] == '') & (stat_values['player1YR'] == '')):
@@ -931,6 +932,7 @@ def compare():
 
     player1_pos_fix = 0
 
+    # get the values for the positon of player 1
     if stat_values['player1_pos']:
         # check if the page has been reloaded -> ensure default values
         if refresh_check == 0:
@@ -941,12 +943,15 @@ def compare():
     else:
         if player1_name_fix:
             stat_values['player1_pos'] = default_values['player1_pos']
-        else:
-            pass
-        if stat_values['player1YR']:
-            if stat_values['player1_pos'] != default_values['player1_pos']:
+        elif stat_values['player1YR']:
+            if (default_values['player1'] != '') & (stat_values['player1'] == ''):
+                player1_pos_fix = 1
+                stat_values['player1_pos'] = get_pos[player_info[str(stat_values['player1YR'])[2:]][player_info[str(stat_values['player1YR'])[2:]]['name'] == default_values['player1']]['position'].values[0]].lower()
+            elif stat_values['player1_pos'] != default_values['player1_pos']:
                 player1_pos_fix = 1
                 stat_values['player1_pos'] = default_values['player1_pos']
+            else:
+                pass
         else:
             stat_values['player1_pos'] = 'forwards'
 
@@ -990,6 +995,8 @@ def compare():
     else:
         player2_name_fix = 0
 
+    # get details for player 2
+    player2_pos_fix = 0
     if stat_values['player2_pos']:
         # check if the page has been reloaded -> ensure default values
         if refresh_check == 0:
@@ -1023,11 +1030,15 @@ def compare():
                     stat_values['player2'] = best_eleven.at[get_name[stat_values['player2_pos']]+1,'name']
     else:
         if player2_name_fix:
-            get_pos = {'d':'defenders','f':'forwards','g':'keepers','m':'midfielders'}
             try:
                 stat_values['player2_pos'] = get_pos[player_info[default_values['player2YR'][2:]][player_info[default_values['player2YR'][2:]]['name'] == stat_values['player2']]['position'].values[0]].lower()
             except:
                 stat_values['player2_pos'] = get_pos[player_info[default_values['player2YR'][2:]][player_info[default_values['player2YR'][2:]]['display'] == stat_values['player2']]['position'].values[0]].lower()
+        elif stat_values['player2YR']:
+            if (default_values['player2'] != '') & (stat_values['player2'] == ''):
+                player2_pos_fix = 1
+                stat_values['player2_pos'] = get_pos[player_info[str(stat_values['player2YR'])[2:]][player_info[str(stat_values['player2YR'])[2:]]['name'] == default_values['player2']]['position'].values[0]].lower()
+
         else:
             stat_values['player2_pos'] = stat_values['player1_pos']
 
@@ -1045,7 +1056,10 @@ def compare():
             else:
                 pass
     else:
-        stat_values['player2'] = best_eleven.at[get_name[stat_values['player2_pos']]+1,'name']
+        if player2_pos_fix:
+            stat_values['player2'] = default_values['player2']
+        else:
+            stat_values['player2'] = best_eleven.at[get_name[stat_values['player2_pos']]+1,'name']
 
     if stat_values['player2YR']:
         # check if the page has been reloaded -> ensure default values
@@ -1070,7 +1084,13 @@ def compare():
 
     # Generate player profile date for the player info boxes
     ###################################################################
-    def get_player_information(name,year):
+    def get_player_information(name,year,position):
+        print(name,year,position,'\n')
+        player_stat_list = stat_lists[position[:1]+'_'+str(year)][stat_lists[position[:1]+'_'+str(year)]['name'] == name]
+        try:
+            player_stat_list['overall'].values[0]
+        except:
+            player_stat_list = stat_lists[position[:1]+'_'+str(year)][stat_lists[position[:1]+'_'+str(year)]['display'] == name]
         check = 0
         get_pos = {'d':'defenders','f':'forwards','g':'keepers','m':'midfielders'}
         get_colour = {'Atlético Ottawa' : 'cpl-ao',
@@ -1084,6 +1104,7 @@ def compare():
                     'York9 FC' : 'cpl-y9-old'}
 
         def get_player_details(year,col):
+            print(name,year,col)
             flag = player_info[year][player_info[year][col] == name]['flag'].values[0]
             image = player_info[year][player_info[year][col] == name]['image'].values[0]
             position = get_pos[player_info[year][player_info[year][col] == name]['position'].values[0]].lower()
@@ -1091,15 +1112,31 @@ def compare():
             team = player_info[year][player_info[year][col] == name]['team'].values[0]
             colour = get_colour[team]
             display = player_info[year][player_info[year][col] == name]['display'].values[0]
-            return flag,image,position,number,team,colour,display
+            overall = player_stat_list['overall'].values[0]
+            min = player_stat_list['Min'].values[0]
+            try:
+                special1 = player_stat_list['Int'].values[0]
+            except:
+                try:
+                    special1 = player_stat_list['CleanSheet'].values[0]
+                except:
+                    special1 = player_stat_list['ExpG'].values[0]
+            try:
+                special2 = player_stat_list['Clrnce'].values[0]
+            except:
+                try:
+                    special2 = player_stat_list['Saves'].values[0]
+                except:
+                    special2 = player_stat_list['ExpA'].values[0]
+            return flag,image,position,number,team,colour,display,overall,min,special1,special2
 
 
         player_information = {}
         try:
-            player_information['flag'],player_information['image'],player_information['position'],player_information['number'],player_information['team'],player_information['colour'],player_information['display'] = get_player_details(year,'name')
+            player_information['flag'],player_information['image'],player_information['position'],player_information['number'],player_information['team'],player_information['colour'],player_information['display'],player_information['overall'],player_information['min'],player_information['special1'],player_information['special2'] = get_player_details(year,'name')
         except:
             try:
-                player_information['flag'],player_information['image'],player_information['position'],player_information['number'],player_information['team'],player_information['colour'],player_information['display'] = get_player_details(year,'display')
+                player_information['flag'],player_information['image'],player_information['position'],player_information['number'],player_information['team'],player_information['colour'],player_information['display'],player_information['overall'],player_information['min'],player_information['special1'],player_information['special2'] = get_player_details(year,'display')
             except:
                 # maybe the player didn't play that year, otherwise try the next year
                 if year == '20':
@@ -1107,11 +1144,11 @@ def compare():
                 else:
                     year = '20'
                 try:
-                    player_information['flag'],player_information['image'],player_information['position'],player_information['number'],player_information['team'],player_information['colour'] = get_player_details(year,'name')
+                    player_information['flag'],player_information['image'],player_information['position'],player_information['number'],player_information['team'],player_information['colour'],player_information['display'],player_information['overall'],player_information['min'],player_information['special1'],player_information['special2'] = get_player_details(year,'name')
                     print('!!!!!!!!!!!!!!!!!!!!!!PLAYER PLAYED IN THIS YEAR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
                     check = year
                 except:
-                    player_information['flag'],player_information['image'],player_information['position'],player_information['number'],player_information['team'],player_information['colour'] = get_player_details(year,'display')
+                    player_information['flag'],player_information['image'],player_information['position'],player_information['number'],player_information['team'],player_information['colour'],player_information['display'],player_information['overall'],player_information['min'],player_information['special1'],player_information['special2'] = get_player_details(year,'display')
                     print('!!!!!!!!!!!!!!!!!!!!!!PLAYER PLAYED IN THIS YEAR & DISPLAY NAME !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
                     check = year
 
@@ -1120,11 +1157,11 @@ def compare():
         return player_information, check
 
 
-    player1_information,check = get_player_information(stat_values['player1'],stat_values['player1YR'][2:])
+    player1_information,check = get_player_information(stat_values['player1'],stat_values['player1YR'][2:],stat_values['player1_pos'])
     if check:
         stat_values['player1YR'] = '20'+check
 
-    player2_information,check = get_player_information(stat_values['player2'],stat_values['player2YR'][2:])
+    player2_information,check = get_player_information(stat_values['player2'],stat_values['player2YR'][2:],stat_values['player2_pos'])
     if check:
         stat_values['player2YR'] = '20'+check
 
@@ -1270,9 +1307,13 @@ def compare():
     player1_team = player1_information['team'], player1_colour = player1_information['colour'],
     player1_flag = player1_information['flag'], player1_image = player1_information['image'],
     player1_num = player1_information['number'], player1_pos = player1_information['position'],
+    player1_min = player1_information['min'], player1_over = player1_information['overall'],
+    player1_special1 = player1_information['special1'], player1_special2 = player1_information['special2'],
     player2_team = player2_information['team'], player2_colour =player2_information['colour'],
     player2_flag = player2_information['flag'], player2_image = player2_information['image'],
     player2_num = player2_information['number'], player2_pos = player2_information['position'],
+    player2_min = player1_information['min'], player2_over = player2_information['overall'],
+    player2_special1 = player1_information['special1'], player2_special2 = player2_information['special2'],
     p1_year = stat_values['player1YR'], p2_year = stat_values['player2YR'],
     player_names = [player1_information['display'],player2_information['display']], chart_team_colour_list = [colour1, colour2],
     player_line = player_lines[0],line_columns = line_columns,
