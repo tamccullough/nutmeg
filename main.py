@@ -1180,32 +1180,33 @@ def compare():
                 year = str(year)
             string = f'{position[:1]}_{year[2:]}_l'
             df = data[string][data[string]['name']== name]
+            min_div = round(stat_lists[string[:4]][stat_lists[string[:4]]['name']== name]['Min'].values[0]/90,2)
             if df.empty:
                 df = data[string][data[string]['name'].str.contains(name.split(' ')[-1])]
             if df.empty:
                 df = data[string][data[string]['name'].str.contains(name.split(' ')[-2])]
-            return df
+            return df, min_div
         else:
             print('ERROR: requires name=<player name>')
     ############## END OF get position line function
 
-    player_1_line = get_position_line(stat_lines,year=stat_values['player1YR'],position=player1_information['position']+'s',name=stat_values['player1'])
-    player_2_line = get_position_line(stat_lines,year=stat_values['player2YR'],position=player2_information['position']+'s',name=stat_values['player2'])
-
+    player_1_line,min_div1 = get_position_line(stat_lines,year=stat_values['player1YR'],position=player1_information['position']+'s',name=stat_values['player1'])
+    player_2_line,min_div2 = get_position_line(stat_lines,year=stat_values['player2YR'],position=player2_information['position']+'s',name=stat_values['player2'])
+    print(f'\n {min_div1} \n')
     #### Can't currently Compare player to himself!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     ##################################################################################################################
     ############## compare_two lines function
-    def compare_two(q1,db,q2,df,column='Goal'):
+    def compare_two(q1,min1,db,q2,min2,df,column='Goal'):
 
         if q1==q2:
             q1='t1'
             q2='t2'
 
-        def get_norm(data):
+        def get_norm(data,min_d):
             df = data.copy()
-            cols = [x for x in data.columns if x not in ['team','name','display','Goal']]
+            cols = [x for x in data.columns if x not in ['team','name','display','Goal','CleanSheet']]
             for col in cols:
-                df[col] = round(df[col]/ df[col].max() ,2)
+                df[col] = round(df[col]/ min_d ,2)
             return df
 
         # compare the shapes of the dataframes - require similar length
@@ -1216,8 +1217,8 @@ def compare():
         else:
             c = db.shape[0]
 
-        db = get_norm(db)
-        df = get_norm(df)
+        db = get_norm(db,min1)
+        df = get_norm(df,min2)
 
         compare[q1] = db[column].head(c).tolist() # played one more game that season
         compare[q2] = df[column].head(c).tolist()
@@ -1234,7 +1235,7 @@ def compare():
 
     results = {}
     for x in plot_values[player1_information['position'][:1]]:
-        results[x] = compare_two(stat_values['player1'],player_1_line,stat_values['player2'],player_2_line,column=x)
+        results[x] = compare_two(stat_values['player1'],min_div1,player_1_line,stat_values['player2'],min_div1,player_2_line,column=x)
 
     if player_1_line[plot_values[player1_information['position'][:1]][0]].max() > player_2_line[plot_values[player1_information['position'][:1]][0]].max():
         multiplier = player_1_line[plot_values[player1_information['position'][:1]][0]].max()
@@ -1385,6 +1386,7 @@ def player():
     pos = player['position'].values[0]
     position = {'d':'defenders','f':'forwards','g':'keepers','m':'midfielders'}
     db = pd.read_csv(f'datasets/{year}/playerstats/{year}-{position.get(pos)}.csv')
+    min_divisor = round(db['Min'].values[0]/90,2)
     db90 = pd.read_csv(f'datasets/{year}/playerstats/{year}-{position.get(pos)}90.csv')
     discipline = pd.read_csv(f'datasets/{year}/playerstats/{year}-discipline.csv')
 
@@ -1495,7 +1497,10 @@ def player():
         df = data.copy()
         cols = [x for x in data.columns if x not in ['name','display','G','CS']]
         for col in cols:
-            df[col] = round(df[col]/ df[col].max() ,2)*2
+            df[col] = round(df[col]/ min_divisor ,2)
+        if 'CS' in data.columns:
+            mod = [df['SV'].max(),df['Rec'].max()]
+            df['CS'] = df['CS'] * max(mod)
         return df
 
     player_line_df = get_norm(player_line_df)
@@ -1721,10 +1726,7 @@ def discipline():
 
 @canpl.route('/feed', methods=['GET','POST'])
 def feed():
-
     year, error = get_year()
-
-
     return render_template('feed.html')
 
 @canpl.route('/googledaf818200d6bdf9d.html')
