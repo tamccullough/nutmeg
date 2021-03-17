@@ -1719,6 +1719,14 @@ def discipline():
     return render_template('discipline.html',columns = columns, year = year,
     html_table = rated_offenders, headline = 'Discipline')
 
+@canpl.route('/feed', methods=['GET','POST'])
+def feed():
+
+    year, error = get_year()
+
+
+    return render_template('feed.html')
+
 @canpl.route('/googledaf818200d6bdf9d.html')
 def google():
     return render_template('googledaf818200d6bdf9d.html')
