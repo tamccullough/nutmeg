@@ -1050,7 +1050,6 @@ def compare():
             if (default_values['player2'] != '') & (stat_values['player2'] == ''):
                 player2_pos_fix = 1
                 stat_values['player2_pos'] = get_pos[player_info[str(stat_values['player2YR'])[2:]][player_info[str(stat_values['player2YR'])[2:]]['name'] == default_values['player2']]['position'].values[0]].lower()
-
         else:
             stat_values['player2_pos'] = stat_values['player1_pos']
 
@@ -1176,11 +1175,15 @@ def compare():
     ############## get position line function
     def get_position_line(data,year=current_year,position='defenders',name=''):
         if name:
+            print(f'\n{name}\n')
             if type(year) != str:
                 year = str(year)
             string = f'{position[:1]}_{year[2:]}_l'
             df = data[string][data[string]['name']== name]
-            min_div = round(stat_lists[string[:4]][stat_lists[string[:4]]['name']== name]['Min'].values[0]/90,2)
+            try:
+                min_div = round(stat_lists[string[:4]][stat_lists[string[:4]]['name']== name]['Min'].values[0]/90,2)
+            except:
+                min_div = round(stat_lists[string[:4]][stat_lists[string[:4]]['display']== name]['Min'].values[0]/90,2)
             if df.empty:
                 df = data[string][data[string]['name'].str.contains(name.split(' ')[-1])]
             if df.empty:

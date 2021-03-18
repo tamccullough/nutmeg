@@ -34,12 +34,16 @@
       <h3><b>{{ name }} - {{ year }}</b></h3>
     </div>
     <div class="box textright">
-      <p>years active
+      {% if (active_years | length) == 1 %}
+      <p>Player was only active during the {{ active_years[0] }} season</p>
+      {% else %}
+      <p>Select season from years active;
         {% for x in range( active_years | length -1 ) %}
         <a><input href="{{ url_for('player') }}" class="table-button" type="submit" id="year" name="year" value="{{ active_years[x] }}"></input></a>,
       {% endfor %}
         <a><input href="{{ url_for('player') }}" class="table-button" type="submit" id="year" name="year" value="{{ active_years[-1] }}"></input></a>
       </p>
+      {% endif %}
     </div>
   </div>
   <input type="hidden" id="name" name="name" value="{{ player_info.iloc[0]['name'] }}">

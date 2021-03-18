@@ -60,6 +60,5 @@ The final output predicts the home teams probability and result label
 [Wikipedia Article](https://en.wikipedia.org/wiki/Canadian_Premier_League)
 
 ### The Beautiful Game in Canada
-The intention here is to make a robust useable system, built with python to replace this [CPL Data - Google Spreadsheet](https://docs.google.com/spreadsheets/d/1B2ZqJczaT9k8b9ik3MUnKWIDggo_oX5M1O5lkf9d0bw/edit#gid=780793363)
-
+I hope this becomes a great resource for the fans of the CanPL.
 I hope to incorporate Machine Learning and provide a great resource for Canadian fans of the beautiful game.
