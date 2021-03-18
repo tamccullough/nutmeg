@@ -3,7 +3,7 @@
 [CANPL Heroku App LINK](https://canpl.herokuapp.com/)
 
 ## Canpl
-CanPL Fan Site | analyse the satistics & results of the Canadian Premier League
+Nutmeg is a CanPL Fan Site designed to provide stat tables and charts based on user input
 
 Currently using MultinomialNB(), RandomForestRegressor() and RandomForestClassifier() to make the match predictions between teams as games are listed in the schedule.
 
