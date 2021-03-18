@@ -1361,7 +1361,18 @@ def player():
         print('ERROR')
         print(player_names['name'].unique())
 
-    year_list = ['2019','2020','2021']
+    year_list = player_info['year'].unique().tolist()
+    active_years = []
+    for yr in year_list:
+        check = 0
+        df = player_info[(player_info['name'] == name) & (player_info['year'] == yr)]
+        if df.empty:
+            pass
+        else:
+            check = 1
+        print(check,yr)
+        if check:
+            active_years.append(yr)
     k = year_list.index(year)
     print('SEARCHING YEAR: ',year)
     player = player_info[(player_info['name'] == name) & (player_info['year'] == year)]
@@ -1453,7 +1464,7 @@ def player():
 
         player_line = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
 
-        return render_template('player.html', year = year, name = details['display'], player_line_length = 1, player_line_end = 1,
+        return render_template('player.html', year = year, name = details['display'], player_line_length = 1, player_line_end = 1,active_years = active_years,
         nationality = details['nationality'], team_name = team, player_info = player, full_name = name,
         team_colour = roster_colour, crest = crest, position = position.get(pos)[:-1], number = details['number'], chart_team_colour_list = geegle,
         stats = db, stats90 = db, discipline = discipline, radar_chart = radar_chart, radar_chart_cols = radar_chart_cols,
@@ -1580,7 +1591,7 @@ def player():
     display_year = year
 
     return render_template('player.html', year = year, name = details['display'], player_line_length = len(player_line)-1, player_line_end = player_line_end,
-    nationality = details['nationality'], team_name = team, player_info = player, full_name = name, column_names = column_names,
+    nationality = details['nationality'], team_name = team, player_info = player, full_name = name, column_names = column_names,active_years = active_years,
     team_colour = roster_colour, crest = crest, position = position.get(pos)[:-1], number = details['number'], chart_team_colour_list = geegle,
     stats = db, stats90 = db90, discipline = discipline, radar_chart = radar_chart, radar_chart_cols = radar_chart_cols,
     colour1 = colour1, colour2 = colour2, colour3 = colour3, col_nums = col_nums, player_line = player_line,line_columns = line_columns)
