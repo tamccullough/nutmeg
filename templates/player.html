@@ -19,10 +19,8 @@
 {% block content %}
 
 {% if year != '2021' %}
-{% set asterisk = '' %}
-{% set NOTE = '' %}
+{% set NOTE ='**NOTE: Overall, xG & xA are final season results.' %}
 {% else %}
-{% set asterisk = '**' %}
 {% set NOTE = '**NOTE: Overall, xG & xA are rolling results. Altered after each match played.' %}
 {% endif %}
 
@@ -87,11 +85,14 @@
     </div>
 
     <div class="desktop">
-      <br>
       <table>
         <tr>
           <td><a><img src="static/images/flags/{{ player_info.iloc[0]['flag'] }}" alt="{{ player_info.iloc[0]['flag'][:-4] }}" style="max-height:30px"><a></td>
           <td colspan="2">{{ nationality }}</td>
+        </tr>
+        <tr>
+          <th>Current Age:</th>
+          <th>{{ age }}</th>
         </tr>
         <tr>
           <td>O: {{ stats.iloc[0]['O'] }}{{asterisk}}</td>
@@ -317,8 +318,13 @@
 
   <div class=" {{ team_colour }}" style="width:100%;">
     <div class="spacer"></div>
-    <div style="text-align:right; padding: 0px 15px;">
-      <a class="text-white button" href="{{ player_info.iloc[0]['link'] }}" target="_blank"><b> Wiki Link</b></a>
+    <div class="parent">
+      <div class="box" style="text-align:left; padding: 0px 15px;">
+        <a class="text-white button" href="{{ player_info.iloc[0]['link'] }}" target="_blank"><b>Wiki Link</b></a>
+      </div>
+      <div class="box" style="text-align:right; padding: 0px 15px;">
+        <a class="text-white button" href="https://www.youtube.com/results?search_query={{ name.split(' ')[0] }}+{{ name.split(' ')[1:]|map('title')|join(' ') }}+highlights" target="_blank"><b>Youtube Highlights</b></a>
+      </div>
     </div>
     <div class="mobile">
       <a style="font-size:0.7em;">{{NOTE}}</a>
@@ -329,6 +335,11 @@
     <div class="spacer"></div>
   </div>
   <!-- end of graph and table section -->
+  <!--div class="{{ team_colour }} center" style="width:100%;">
+    <iframe id="ytplayer" type="text/html" width="640" height="360"
+  src="https://www.youtube.com/results?search_query={{ name.split(' ')[0] }}+{{ name.split(' ')[1:]|map('title')|join(' ') }}+highlights"
+  frameborder="0"></iframe>
+</div-->
 
 
 

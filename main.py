@@ -3,6 +3,7 @@ from flask import Flask, Blueprint, flash, g, redirect, render_template, request
 
 ## GETTING DATE AND TIME
 from datetime import date
+from dateutil.relativedelta import relativedelta
 today = date.today()
 this_year = date.today().strftime('%Y')
 current_year = '2020'
@@ -1391,6 +1392,11 @@ def player():
             player = player_info[(player_info['name'] == name) & (player_info['year'] == year_list_trim[1])]
 
     team = player['team'].values[0]
+    def AgeTest(dob):
+        dobnew = tuple(map(int, dob.split('-')))
+        age = relativedelta(date.today(), date(*dobnew))
+        return age.years
+    age = AgeTest(player['dob'].values[0])
     colour3 = team_colour[team]
     roster_team_info = team_ref[team_ref['team'] == team]
     roster_colour = roster_team_info.iloc[0][4]
@@ -1467,7 +1473,7 @@ def player():
 
         player_line = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
 
-        return render_template('player.html', year = year, name = details['display'], player_line_length = 1, player_line_end = 1,active_years = active_years,
+        return render_template('player.html', year = year, age = age, name = details['display'], player_line_length = 1, player_line_end = 1,active_years = active_years,
         nationality = details['nationality'], team_name = team, player_info = player, full_name = name,
         team_colour = roster_colour, crest = crest, position = position.get(pos)[:-1], number = details['number'], chart_team_colour_list = geegle,
         stats = db, stats90 = db, discipline = discipline, radar_chart = radar_chart, radar_chart_cols = radar_chart_cols,
@@ -1593,7 +1599,7 @@ def player():
 
     display_year = year
 
-    return render_template('player.html', year = year, name = details['display'], player_line_length = len(player_line)-1, player_line_end = player_line_end,
+    return render_template('player.html', year = year, age = age, name = details['display'], player_line_length = len(player_line)-1, player_line_end = player_line_end,
     nationality = details['nationality'], team_name = team, player_info = player, full_name = name, column_names = column_names,active_years = active_years,
     team_colour = roster_colour, crest = crest, position = position.get(pos)[:-1], number = details['number'], chart_team_colour_list = geegle,
     stats = db, stats90 = db90, discipline = discipline, radar_chart = radar_chart, radar_chart_cols = radar_chart_cols,
