@@ -47,194 +47,343 @@
     <div class="boxs">
       <a>{{ headline }}</a>
       <p> **Some load issues due to a top player being different positions in two seaons<p>
-    </div>
-    <div class="boxs textright">
-      <a class="button" href="/compare">refresh</a>
+      </div>
+      <div class="boxs textright">
+        <a class="button" href="/compare">refresh</a>
+      </div>
     </div>
   </div>
-</div>
-<!-- page content -->
-<div class="parent">
-  <!-- player 1 stats -->
-  <div class="boxl {{ player1_colour }}">
-    <hr>
-    <form method="post" action="{{ url_for(request.endpoint) }}">
-      <div class="parent">
-        <div class="form boxs">
-          <select name="player1_pos" id="player1_pos" onchange="this.form.submit();">
-            <option value="">{{ player1_pos }}</option>
-            <option value="defenders">defenders</option>
-            <option value="forwards">forwards</option>
-            <option value="keepers">keepers</option>
-            <option value="midfielders">midfielders</option>
-          </select>
-        </div>
-        <div class="form boxs">
-          <select name="player1" id="player1" onchange="this.form.submit();">
-            <option value="">select player 1</option>
-            {% for name in player1_select_list %}
-            <option value="{{ name }}">{{ name }}</option>
-            {% endfor %}
-          </select>
-        </div>
-        <div class="form boxs">
-          <select name="player1YR" id="player1YR" onchange="this.form.submit();">
-            <option value="">{{ p1_year }}</option>
-            <option value="2020">2020</option>
-            <option value="2019">2019</option>
-          </select>
-        </div>
-      </div>
-      <input type="hidden" id="player1_pos" name="player1_pos" value="{{ player1_pos }}">
-      <input type="hidden" id="player1" name="player1" value="{{ player_names[0] }}">
-      <input type="hidden" id="player1YR" name="player1YR" value="{{ p1_year }}">
-      <input type="hidden" id="player2_pos" name="player2_pos" value="{{ player2_pos }}">
-      <input type="hidden" id="player2" name="player2" value="{{ player_names[1] }}">
-      <input type="hidden" id="player2YR" name="player2YR" value="{{ p2_year }}">
-    </form>
-    <div class="textcenter">
-      <table>
-        <tr>
-          <td style="width:30%;" rowspan="2"><img src="static/images/players/{{ p1_year }}/{{ player1_image }}" alt="{{ player_names[0] }} photo" style="max-height:100px"></td>
-          <td class="xfont"><h2>{{ p1_year }}</h2></td>
-        </tr>
-        <tr>
-          <td><h4 class="xxfont">{{ player_names[0] }}</h4></td>
-        </tr>
-      </table>
-        <table>
-          <tr>
-            <td><a><img src="static/images/flags/{{ player1_flag }}" alt="{{ player1_flag[:-4] }} national flag" style="max-height:30px"><a></td>
-            <td><h4 style="margin-top: 5px;">{{ player1_pos[:-1] }}</h4></td>
-            <td><h4 style="margin-top: 5px;">{{ player1_num }}</h4></td>
-          </tr>
-        </table>
-        <table>
-          <tr>
-            <td><h4 style="margin-top: 5px;">O: {{ player1_over }}</h4></td>
-            {% if player1_pos == 'defenders'%}
-            <td><h4 style="margin-top: 5px;">Int: {{ player1_special1 }}</h4></td>
-            <td><h4 style="margin-top: 5px;">Clr: {{ player1_special2 }}</h4></td>
-            {% elif player1_pos == 'keepers' %}
-            <td><h4 style="margin-top: 5px;">CS: {{ player1_special1 }}</h4></td>
-            <td><h4 style="margin-top: 5px;">Saves: {{ player1_special2 }}</h4></td>
-            {% else %}
-            <td><h4 style="margin-top: 5px;">xG: {{ player1_special1 }}</h4></td>
-            <td><h4 style="margin-top: 5px;">XA: {{ player1_special2 }}</h4></td>
-            {% endif %}
-            <td><h4 style="margin-top: 5px;">Min: {{ player1_min }}</h4></td>
-          </tr>
-        </table>
-
-      </div>
-      <hr>
-    </div>
-    <!-- END OF home team stats -->
-
-    <!-- player 2 stats -->
-    <div class="boxl {{ player2_colour }}">
-      <hr>
-      <form method="post" action="{{ url_for(request.endpoint) }}">
-        <div class="parent">
-          {% if (player1_pos == 'defenders') or (player1_pos == 'keepers') %}
-          <div class="boxs textcenter">
-          </div>
-          {% else %}
-          <div class="form boxs">
-            <select name="player2_pos" id="player2_pos" onchange="this.form.submit();">
-              <option value="">{{ player2_pos }}</option>
-              <option value="forwards">forwards</option>
-              <option value="midfielders">midfielders</option>
-            </select>
-          </div>
-          {% endif %}
-          <div class="form boxs">
-            <select name="player2" id="player2" onchange="this.form.submit();">
-              <option value="">select player 2</option>
-              {% for name in player2_select_list %}
-              <option value="{{ name }}">{{ name }}</option>
-              {% endfor %}
-            </select>
-          </div>
-          <div class="form boxs">
-            <select name="player2YR" id="player2YR" onchange="this.form.submit();">
-              <option value="">{{ p2_year }}</option>
-              <option value="2020">2020</option>
-              <option value="2019">2019</option>
-            </select>
-          </div>
-        </div>
-        <input type="hidden" id="player1_pos" name="player1_pos" value="{{ player1_pos }}">
-        <input type="hidden" id="player1" name="player1" value="{{ player_names[0] }}">
-        <input type="hidden" id="player1YR" name="player1YR" value="{{ p1_year }}">
-        <input type="hidden" id="player2_pos" name="player2_pos" value="{{ player2_pos }}">
-        <input type="hidden" id="player2" name="player2" value="{{ player_names[1] }}">
-        <input type="hidden" id="player2YR" name="player2YR" value="{{ p2_year }}">
-      </form>
-      <div class="textcenter">
-        <table>
-          <tr>
-            <td style="width:30%;" rowspan="2"><img src="static/images/players/{{ p2_year }}/{{ player2_image }}" alt="{{ player_names[1] }} photo" style="max-height:100px"></td>
-            <td class="xfont"><h2>{{ p2_year }}</h2></td>
-          </tr>
-          <tr>
-            <td><h4 class="xxfont">{{ player_names[1] }}</h4></td>
-          </tr>
-        </table>
-
-        <table>
-          <tr>
-            <td><a><img src="static/images/flags/{{ player2_flag }}" alt="{{ player2_flag[:-4] }} national flag" style="max-height:30px"><a></td>
-            <td><h4 style="margin-top: 5px;">{{ player2_pos[:-1] }}</h4></td>
-            <td><h4 style="margin-top: 5px;">{{ player2_num }}</h4></td>
-          </tr>
-        </table>
-
-        <table>
-          <tr>
-            <td><h4 style="margin-top: 5px;">O: {{ player2_over }}</h4></td>
-            {% if player2_pos == 'defenders'%}
-            <td><h4 style="margin-top: 5px;">Int: {{ player2_special1 }}</h4></td>
-            <td><h4 style="margin-top: 5px;">Clr: {{ player2_special2 }}</h4></td>
-            {% elif player2_pos == 'keepers' %}
-            <td><h4 style="margin-top: 5px;">CS: {{ player2_special1 }}</h4></td>
-            <td><h4 style="margin-top: 5px;">Saves: {{ player2_special2 }}</h4></td>
-            {% else %}
-            <td><h4 style="margin-top: 5px;">xG: {{ player2_special1 }}</h4></td>
-            <td><h4 style="margin-top: 5px;">XA: {{ player2_special2 }}</h4></td>
-            {% endif %}
-            <td><h4 style="margin-top: 5px;">Min: {{ player2_min }}</h4></td>
-          </tr>
-        </table>
-        </div>
+  <!-- page content -->
+  <div class="mobile">
+    <div class="parent">
+      <!-- player 1 stats -->
+      <div class="boxs {{ player1_colour }}">
         <hr>
+        <form method="post" action="{{ url_for(request.endpoint) }}">
+          <div class="parent">
+            <div class="form boxs">
+              <select name="player1_pos" id="player1_pos" onchange="this.form.submit();">
+                <option value="">{{ player1_pos }}</option>
+                <option value="defenders">defenders</option>
+                <option value="forwards">forwards</option>
+                <option value="keepers">keepers</option>
+                <option value="midfielders">midfielders</option>
+              </select>
+            </div>
+            <div class="form boxs">
+              <select name="player1" id="player1" onchange="this.form.submit();">
+                <option value="">select player 1</option>
+                {% for name in player1_select_list %}
+                <option value="{{ name }}">{{ name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="form boxs">
+              <select name="player1YR" id="player1YR" onchange="this.form.submit();">
+                <option value="">{{ p1_year }}</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+              </select>
+            </div>
+          </div>
+          <input type="hidden" id="player1_pos" name="player1_pos" value="{{ player1_pos }}">
+          <input type="hidden" id="player1" name="player1" value="{{ player_names[0] }}">
+          <input type="hidden" id="player1YR" name="player1YR" value="{{ p1_year }}">
+          <input type="hidden" id="player2_pos" name="player2_pos" value="{{ player2_pos }}">
+          <input type="hidden" id="player2" name="player2" value="{{ player_names[1] }}">
+          <input type="hidden" id="player2YR" name="player2YR" value="{{ p2_year }}">
+        </form>
+        <div class="textcenter">
+          <h4>{{ player_names[0] }}</h4>
+          <img src="static/images/players/{{ p1_year }}/{{ player1_image }}" alt="{{ player_names[0] }} photo" style="max-height:100px">
+          <table>
+            <tr>
+              <td><a><img src="static/images/flags/{{ player1_flag }}" alt="{{ player1_flag[:-4] }} national flag" style="max-height:30px"><a></td>
+                <td><h4 style="margin-top: 5px;">{{ player1_pos[:-1] }}</h4></td>
+                <td><h4 style="margin-top: 5px;">{{ player1_num }}</h4></td>
+              </tr>
+            </table>
+            <table>
+              <tr>
+                <td>O: {{ player1_over }}</td>
+                <td>Min: {{ player1_min }}</td>
+              </tr>
+              <tr>
+                {% if player1_pos == 'defenders'%}
+                <td>Int: {{ player1_special1 }}</td>
+                <td>Clr: {{ player1_special2 }}</td>
+                {% elif player1_pos == 'keepers' %}
+                <td>CS: {{ player1_special1 }}</td>
+                <td>Saves: {{ player1_special2 }}</td>
+                {% else %}
+                <td>xG: {{ player1_special1 }}</td>
+                <td>XA: {{ player1_special2 }}</td>
+                {% endif %}
+              </tr>
+            </table>
+          </div>
+          <hr>
+        </div>
+        <!-- END OF home team stats -->
+
+        <!-- player 2 stats -->
+        <div class="boxs {{ player2_colour }}">
+          <hr>
+          <form method="post" action="{{ url_for(request.endpoint) }}">
+            <div class="parent">
+              {% if (player1_pos == 'defenders') or (player1_pos == 'keepers') %}
+              <div class="boxs textcenter">
+              </div>
+              {% else %}
+              <div class="form boxs">
+                <select name="player2_pos" id="player2_pos" onchange="this.form.submit();">
+                  <option value="">{{ player2_pos }}</option>
+                  <option value="forwards">forwards</option>
+                  <option value="midfielders">midfielders</option>
+                </select>
+              </div>
+              {% endif %}
+              <div class="form boxs">
+                <select name="player2" id="player2" onchange="this.form.submit();">
+                  <option value="">select player 2</option>
+                  {% for name in player2_select_list %}
+                  <option value="{{ name }}">{{ name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="form boxs">
+                <select name="player2YR" id="player2YR" onchange="this.form.submit();">
+                  <option value="">{{ p2_year }}</option>
+                  <option value="2020">2020</option>
+                  <option value="2019">2019</option>
+                </select>
+              </div>
+            </div>
+            <input type="hidden" id="player1_pos" name="player1_pos" value="{{ player1_pos }}">
+            <input type="hidden" id="player1" name="player1" value="{{ player_names[0] }}">
+            <input type="hidden" id="player1YR" name="player1YR" value="{{ p1_year }}">
+            <input type="hidden" id="player2_pos" name="player2_pos" value="{{ player2_pos }}">
+            <input type="hidden" id="player2" name="player2" value="{{ player_names[1] }}">
+            <input type="hidden" id="player2YR" name="player2YR" value="{{ p2_year }}">
+          </form>
+          <div class="textcenter">
+            <h4>{{ player_names[1] }}</h4>
+            <img src="static/images/players/{{ p2_year }}/{{ player2_image }}" alt="{{ player_names[1] }} photo" style="max-height:100px">
+
+            <table>
+              <tr>
+                <td><a><img src="static/images/flags/{{ player2_flag }}" alt="{{ player2_flag[:-4] }} national flag" style="max-height:30px"><a></td>
+                  <td><h4 style="margin-top: 5px;">{{ player2_pos[:-1] }}</h4></td>
+                  <td><h4 style="margin-top: 5px;">{{ player2_num }}</h4></td>
+                </tr>
+              </table>
+
+              <table>
+                <tr>
+                  <td>O: {{ player2_over }}</td>
+                  <td>Min: {{ player2_min }}</td>
+                </tr>
+                <tr>
+                  {% if player2_pos == 'defenders'%}
+                  <td>Int: {{ player2_special1 }}</td>
+                  <td>Clr: {{ player2_special2 }}</td>
+                  {% elif player2_pos == 'keepers' %}
+                  <td>CS: {{ player2_special1 }}</td>
+                  <td>Saves: {{ player2_special2 }}</td>
+                  {% else %}
+                  <td>xG: {{ player2_special1 }}</td>
+                  <td>XA: {{ player2_special2 }}</td>
+                  {% endif %}
+                </tr>
+              </table>
+            </div>
+            <hr>
+          </div>
+          <!-- END OF away team stats -->
+        </div>
       </div>
-      <!-- END OF away team stats -->
-    </div>
-    <p>**All stats are Per90 except;  Clean Sheets and Goals for clarity</p>
-    {% set i = 0 %}
-    {% for word in ['testing','testing2','testing3','testing4']%}
-    <div class="{{ theme }}-grey">
-      <div class="tooltip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ line_columns[loop.index-1] }}
-        <p class="tooltiptext">
-          {% for x in player_names[:-1] %}
-          {{ x }}<br>
+  <div class="desktop">
+    <div class="parent">
+      <!-- player 1 stats -->
+      <div class="boxl {{ player1_colour }}">
+        <hr>
+        <form method="post" action="{{ url_for(request.endpoint) }}">
+          <div class="parent">
+            <div class="form boxs">
+              <select name="player1_pos" id="player1_pos" onchange="this.form.submit();">
+                <option value="">{{ player1_pos }}</option>
+                <option value="defenders">defenders</option>
+                <option value="forwards">forwards</option>
+                <option value="keepers">keepers</option>
+                <option value="midfielders">midfielders</option>
+              </select>
+            </div>
+            <div class="form boxs">
+              <select name="player1" id="player1" onchange="this.form.submit();">
+                <option value="">select player 1</option>
+                {% for name in player1_select_list %}
+                <option value="{{ name }}">{{ name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="form boxs">
+              <select name="player1YR" id="player1YR" onchange="this.form.submit();">
+                <option value="">{{ p1_year }}</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+              </select>
+            </div>
+          </div>
+          <input type="hidden" id="player1_pos" name="player1_pos" value="{{ player1_pos }}">
+          <input type="hidden" id="player1" name="player1" value="{{ player_names[0] }}">
+          <input type="hidden" id="player1YR" name="player1YR" value="{{ p1_year }}">
+          <input type="hidden" id="player2_pos" name="player2_pos" value="{{ player2_pos }}">
+          <input type="hidden" id="player2" name="player2" value="{{ player_names[1] }}">
+          <input type="hidden" id="player2YR" name="player2YR" value="{{ p2_year }}">
+        </form>
+        <div class="textcenter">
+          <table>
+            <tr>
+              <td style="width:30%;" rowspan="2"><img src="static/images/players/{{ p1_year }}/{{ player1_image }}" alt="{{ player_names[0] }} photo" style="max-height:100px"></td>
+              <td class="xfont"><h2>{{ p1_year }}</h2></td>
+            </tr>
+            <tr>
+              <td><h4 class="xxfont">{{ player_names[0] }}</h4></td>
+            </tr>
+          </table>
+          <table>
+            <tr>
+              <td><a><img src="static/images/flags/{{ player1_flag }}" alt="{{ player1_flag[:-4] }} national flag" style="max-height:30px"><a></td>
+                <td><h4 style="margin-top: 5px;">{{ player1_pos[:-1] }}</h4></td>
+                <td><h4 style="margin-top: 5px;">{{ player1_num }}</h4></td>
+              </tr>
+            </table>
+            <table>
+              <tr>
+                <td><h4 style="margin-top: 5px;">O: {{ player1_over }}</h4></td>
+                {% if player1_pos == 'defenders'%}
+                <td><h4 style="margin-top: 5px;">Int: {{ player1_special1 }}</h4></td>
+                <td><h4 style="margin-top: 5px;">Clr: {{ player1_special2 }}</h4></td>
+                {% elif player1_pos == 'keepers' %}
+                <td><h4 style="margin-top: 5px;">CS: {{ player1_special1 }}</h4></td>
+                <td><h4 style="margin-top: 5px;">Saves: {{ player1_special2 }}</h4></td>
+                {% else %}
+                <td><h4 style="margin-top: 5px;">xG: {{ player1_special1 }}</h4></td>
+                <td><h4 style="margin-top: 5px;">XA: {{ player1_special2 }}</h4></td>
+                {% endif %}
+                <td><h4 style="margin-top: 5px;">Min: {{ player1_min }}</h4></td>
+              </tr>
+            </table>
+          </div>
+          <hr>
+        </div>
+        <!-- END OF home team stats -->
+
+        <!-- player 2 stats -->
+        <div class="boxl {{ player2_colour }}">
+          <hr>
+          <form method="post" action="{{ url_for(request.endpoint) }}">
+            <div class="parent">
+              {% if (player1_pos == 'defenders') or (player1_pos == 'keepers') %}
+              <div class="boxs textcenter">
+              </div>
+              {% else %}
+              <div class="form boxs">
+                <select name="player2_pos" id="player2_pos" onchange="this.form.submit();">
+                  <option value="">{{ player2_pos }}</option>
+                  <option value="forwards">forwards</option>
+                  <option value="midfielders">midfielders</option>
+                </select>
+              </div>
+              {% endif %}
+              <div class="form boxs">
+                <select name="player2" id="player2" onchange="this.form.submit();">
+                  <option value="">select player 2</option>
+                  {% for name in player2_select_list %}
+                  <option value="{{ name }}">{{ name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="form boxs">
+                <select name="player2YR" id="player2YR" onchange="this.form.submit();">
+                  <option value="">{{ p2_year }}</option>
+                  <option value="2020">2020</option>
+                  <option value="2019">2019</option>
+                </select>
+              </div>
+            </div>
+            <input type="hidden" id="player1_pos" name="player1_pos" value="{{ player1_pos }}">
+            <input type="hidden" id="player1" name="player1" value="{{ player_names[0] }}">
+            <input type="hidden" id="player1YR" name="player1YR" value="{{ p1_year }}">
+            <input type="hidden" id="player2_pos" name="player2_pos" value="{{ player2_pos }}">
+            <input type="hidden" id="player2" name="player2" value="{{ player_names[1] }}">
+            <input type="hidden" id="player2YR" name="player2YR" value="{{ p2_year }}">
+          </form>
+          <div class="textcenter">
+            <table>
+              <tr>
+                <td style="width:30%;" rowspan="2"><img src="static/images/players/{{ p2_year }}/{{ player2_image }}" alt="{{ player_names[1] }} photo" style="max-height:100px"></td>
+                <td class="xfont"><h2>{{ p2_year }}</h2></td>
+              </tr>
+              <tr>
+                <td><h4 class="xxfont">{{ player_names[1] }}</h4></td>
+              </tr>
+            </table>
+
+            <table>
+              <tr>
+                <td><a><img src="static/images/flags/{{ player2_flag }}" alt="{{ player2_flag[:-4] }} national flag" style="max-height:30px"><a></td>
+                  <td><h4 style="margin-top: 5px;">{{ player2_pos[:-1] }}</h4></td>
+                  <td><h4 style="margin-top: 5px;">{{ player2_num }}</h4></td>
+                </tr>
+              </table>
+
+              <table>
+                <tr>
+                  <td><h4 style="margin-top: 5px;">O: {{ player2_over }}</h4></td>
+                  {% if player2_pos == 'defenders'%}
+                  <td><h4 style="margin-top: 5px;">Int: {{ player2_special1 }}</h4></td>
+                  <td><h4 style="margin-top: 5px;">Clr: {{ player2_special2 }}</h4></td>
+                  {% elif player2_pos == 'keepers' %}
+                  <td><h4 style="margin-top: 5px;">CS: {{ player2_special1 }}</h4></td>
+                  <td><h4 style="margin-top: 5px;">Saves: {{ player2_special2 }}</h4></td>
+                  {% else %}
+                  <td><h4 style="margin-top: 5px;">xG: {{ player2_special1 }}</h4></td>
+                  <td><h4 style="margin-top: 5px;">XA: {{ player2_special2 }}</h4></td>
+                  {% endif %}
+                  <td><h4 style="margin-top: 5px;">Min: {{ player2_min }}</h4></td>
+                </tr>
+              </table>
+            </div>
+            <hr>
+          </div>
+          <!-- END OF away team stats -->
+        </div>
+      </div>
+      <p>**Stats are Per90 except;  Clean Sheets & Goals for clarity</p>
+      {% set i = 0 %}
+      {% for word in ['testing','testing2','testing3','testing4']%}
+      <div class="{{ theme }}-grey">
+        <div class="tooltip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ line_columns[loop.index-1] }}
+          <p class="tooltiptext">
+            {% for x in player_names[:-1] %}
+            {{ x }}<br>
+            {% endfor %}
+            {{ player_names[-1]}}
+          </p>
+        </div>
+        <div class="indent">
+          {% for i in range(chart_team_colour_list | length ) %}
+          <h4 style="display:inline;border-bottom: 0.35rem solid {{ chart_team_colour_list[i] }};">{{ player_names[i] }}</h4>
           {% endfor %}
-          {{ player_names[-1]}}
-        </p>
+        </div>
+        <br>
+        <div class="chartcontainer">
+          <canvas id="{{ word }}"></canvas>
+        </div>
       </div>
-      <div class="indent">
-        {% for i in range(chart_team_colour_list | length ) %}
-        <h4 style="display:inline;border-bottom: 0.35rem solid {{ chart_team_colour_list[i] }};">{{ player_names[i] }}</h4>
-        {% endfor %}
-      </div>
-      <br>
-      <div class="chartcontainer">
-        <canvas id="{{ word }}"></canvas>
-      </div>
-    </div>
-    {% endfor %}
+      {% endfor %}
 
 
 
-    {% endblock %}
+      {% endblock %}

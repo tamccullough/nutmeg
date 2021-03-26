@@ -69,6 +69,10 @@
         <tr>
           <td><a><img src="static/images/flags/{{ player_info.iloc[0]['flag'] }}" alt="{{ player_info.iloc[0]['flag'][:-4] }}" style="max-height:30px"><a></td>
           <td>{{ nationality }}</td>
+        </tr>
+        <tr>
+          <td>Current Age:</td>
+          <td>{{ age }}</td>
           <td>O: {{ stats90.iloc[0]['O'] }}{{asterisk}}</td>
         </tr>
         <tr>
@@ -91,7 +95,7 @@
           <td colspan="2">{{ nationality }}</td>
         </tr>
         <tr>
-          <th>Current Age:</th>
+          <th style="text-indent:15px;">Current Age:</th>
           <th>{{ age }}</th>
         </tr>
         <tr>
@@ -123,7 +127,9 @@
 
 <!-- LINE chart -->
 <div class="{{ team_colour }}">
-  <div class="tooltip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hover here for stat explanation. **All stats are Per90 except;  Clean Sheets*maxSavesper90, Goals for clarity
+  <div class="tooltip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hover here for stat explanation. <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**All stats are Per90 except;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Clean Sheets*maxSavesper90, Goals for clarity
     <p class="tooltiptext">
       {% for x in column_names[:-1] %}
       {{ x }}<br>
