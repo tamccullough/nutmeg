@@ -890,7 +890,7 @@ def compare():
     headline = f'Player Comparison'
 
     variable_list = ['player1_pos','player1','player1YR','player2_pos','player2','player2YR']
-    #print('\n')
+    print('\n')
     default_values = {}
     for x in variable_list:
         try:
@@ -898,8 +898,8 @@ def compare():
         except:
             session[x] = ''
             default_values[x] = session[x]
-        #print('default: ',x,default_values[x])
-    #print('\n')
+        print('default: ',x,default_values[x])
+    print('\n')
 
     ## request ALL values in request.form create BLANKS if not received
     ###############################################################
@@ -910,11 +910,12 @@ def compare():
             stat_values[x] = request.form[x]
             session[x] = request.form[x]
             refresh_check+=1
-            #print('stat: ',x,stat_values[x])
+            print('stat: ',x,stat_values[x])
         except:
             refresh_check=0
-            #print('stat: ',x,'none')
+            print('stat: ',x,'none')
             stat_values[x] = ''
+    print('\n')
 
     get_name = {'defenders':2,'forwards':10,'keepers':0,'midfielders':5}
 
@@ -974,7 +975,16 @@ def compare():
         elif stat_values['player1YR']:
             if (default_values['player1'] != '') & (stat_values['player1'] == ''):
                 player1_pos_fix = 1
-                stat_values['player1_pos'] = get_pos[player_info[str(stat_values['player1YR'])[2:]][player_info[str(stat_values['player1YR'])[2:]]['name'] == default_values['player1']]['position'].values[0]].lower()
+                check_yr = int(stat_values['player1YR'])
+                try:
+                    stat_values['player1_pos'] = get_pos[player_info[str(check_yr)[2:]][player_info[str(check_yr)[2:]]['name'] == default_values['player1']]['position'].values[0]].lower()
+                except:
+                    if check_yr >= 2020:
+                        stat_values['player1YR'] = str(check_yr+1)
+                        stat_values['player1_pos'] = get_pos[player_info[str(check_yr-1)[2:]][player_info[str(check_yr-1)[2:]]['name'] == default_values['player1']]['position'].values[0]].lower()
+                    else:
+                        stat_values['player1YR'] = str(check_yr+1)
+                        stat_values['player1_pos'] = get_pos[player_info[str(check_yr+1)[2:]][player_info[str(check_yr+1)[2:]]['name'] == default_values['player1']]['position'].values[0]].lower()
             elif stat_values['player1_pos'] != default_values['player1_pos']:
                 player1_pos_fix = 1
                 stat_values['player1_pos'] = default_values['player1_pos']
@@ -993,6 +1003,10 @@ def compare():
     else:
         if player1_pos_fix:
             stat_values['player1'] = default_values['player1']
+            #check if player played in selected year
+            if stat_values['player1YR']:
+                if stat_values['player1'] in player_info[stat_values['player1YR'][2:]]['display'].unique():
+                    print('\nYES\n')
         else:
             stat_values['player1'] = best_eleven.at[get_name[stat_values['player1_pos']],'name']
 
