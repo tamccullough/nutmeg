@@ -887,7 +887,7 @@ def teamcompare():
 @canpl.route('/compare', methods=['GET','POST'])
 def compare():
 
-    headline = f'Player Comparison WIP *Bugs*'
+    headline = f'Player Comparison'
 
     variable_list = ['player1_pos','player1','player1YR','player2_pos','player2','player2YR']
     print('\n')
@@ -898,7 +898,7 @@ def compare():
         except:
             session[x] = ''
             default_values[x] = session[x]
-        print(x,default_values[x])
+        print('default: ',x,default_values[x])
     print('\n')
 
     ## request ALL values in request.form create BLANKS if not received
@@ -910,7 +910,7 @@ def compare():
             stat_values[x] = request.form[x]
             session[x] = request.form[x]
             refresh_check+=1
-            print(x,stat_values[x])
+            print('stat: ',x,stat_values[x])
         except:
             refresh_check=0
             print(x,'none')
@@ -944,6 +944,13 @@ def compare():
         player1_name_fix = 0
 
     player1_pos_fix = 0
+
+    # check player 2 stats have been chosen. If NOT select defaults, while getting requirements to view player 1
+    ###############################################################
+    if (stat_values['player2'] != '') & ((stat_values['player2_pos'] == '') & (stat_values['player2YR'] == '')):
+        player2_name_fix = 1
+    else:
+        player2_name_fix = 0
 
     # get the values for the positon of player 1
     if stat_values['player1_pos']:
@@ -1001,13 +1008,6 @@ def compare():
     else:
         pass
 
-    # check player 2 stats have been chosen. If NOT select defaults, while getting requirements to view player 1
-    ###############################################################
-    if (stat_values['player2'] != '') & ((stat_values['player2_pos'] == '') & (stat_values['player2YR'] == '')):
-        player2_name_fix = 1
-    else:
-        player2_name_fix = 0
-
     # get details for player 2
     player2_pos_fix = 0
     if stat_values['player2_pos']:
@@ -1059,6 +1059,10 @@ def compare():
         if refresh_check == 0:
             session['player2'] = best_eleven.at[get_name[stat_values['player1_pos']]+1,'name']
             stat_values['player2'] = best_eleven.at[get_name[stat_values['player1_pos']]+1,'name']
+        elif stat_values['player2'][-1] in default_values['player2']:
+            #FIX THIS ISSUE
+            print('\n',stat_values['player2'],'TAKE PREVIOUS NAME')
+            pass
         else:
             if stat_values['player2YR']:
                 if stat_values['player2YR'] != default_values['player2YR']:
@@ -1196,7 +1200,7 @@ def compare():
 
     player_1_line,min_div1 = get_position_line(stat_lines,year=stat_values['player1YR'],position=player1_information['position']+'s',name=stat_values['player1'])
     player_2_line,min_div2 = get_position_line(stat_lines,year=stat_values['player2YR'],position=player2_information['position']+'s',name=stat_values['player2'])
-    print(f'\n {min_div1} \n')
+
     #### Can't currently Compare player to himself!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     ##################################################################################################################
     ############## compare_two lines function
@@ -1298,10 +1302,6 @@ def compare():
     session['player2_pos'] = stat_values['player2_pos']
     session['player2'] = stat_values['player2']
     session['player2YR'] = stat_values['player2YR']
-    print('\n')
-    for x in variable_list:
-        print(x,session[x])
-    print('\n')
 
     player1_select_list = stat_lists[f'{stat_values["player1_pos"][:1].lower()}_{stat_values["player1YR"][2:]}']['name'].unique().tolist().copy()
     if stat_values['player1'] in player1_select_list:
