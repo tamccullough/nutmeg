@@ -49,6 +49,10 @@ hr {
   vertical-align: center;
 }
 
+.font-s {
+  font-size: 0.7em;
+}
+
 /* The emerging W3C standard
    that is currently Firefox-only */
 * {

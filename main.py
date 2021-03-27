@@ -270,15 +270,15 @@ def index():
     game_week, goals, big_win, top_result, low_result, other_result, assists, yellows, reds = cpl_main.get_weeks_results(year,results,standings,stats,team_ref,team_names)
     assists, yellows, reds = int(assists), int(yellows), int(reds)
 
-    top_scorer = rated_goalscorers.loc[0]
+    top_scorer = rated_goalscorers.loc[0].copy()
     top_scorer['overall'] = player_info[player_info['name'] == top_scorer['name']]['overall'].values[0]
-    top_assist = rated_assists.loc[0]
+    top_assist = rated_assists.loc[0].copy()
     top_assist['overall'] = player_info[player_info['name'] == top_assist['name']]['overall'].values[0]
     top_forward = rated_forwards.loc[0]
     top_midfielder = rated_midfielders.loc[0]
     top_defender = rated_defenders.loc[0]
     top_keeper = rated_keepers.loc[0]
-    top_offender = rated_offenders.loc[0]
+    top_offender = rated_offenders.loc[0].copy()
     top_offender['overall'] = player_info[player_info['name'] == top_scorer['name']]['overall'].values[0]
 
     if results.iloc[0]['hr'] == 'E':
@@ -890,7 +890,7 @@ def compare():
     headline = f'Player Comparison'
 
     variable_list = ['player1_pos','player1','player1YR','player2_pos','player2','player2YR']
-    print('\n')
+    #print('\n')
     default_values = {}
     for x in variable_list:
         try:
@@ -898,8 +898,8 @@ def compare():
         except:
             session[x] = ''
             default_values[x] = session[x]
-        print('default: ',x,default_values[x])
-    print('\n')
+        #print('default: ',x,default_values[x])
+    #print('\n')
 
     ## request ALL values in request.form create BLANKS if not received
     ###############################################################
@@ -910,10 +910,10 @@ def compare():
             stat_values[x] = request.form[x]
             session[x] = request.form[x]
             refresh_check+=1
-            print('stat: ',x,stat_values[x])
+            #print('stat: ',x,stat_values[x])
         except:
             refresh_check=0
-            print(x,'none')
+            #print('stat: ',x,'none')
             stat_values[x] = ''
 
     get_name = {'defenders':2,'forwards':10,'keepers':0,'midfielders':5}
@@ -934,6 +934,14 @@ def compare():
             stat_lines[pos[:1]+'_'+str(yr)[2:]+'_l'] = pd.read_csv(f'datasets/{yr}/playerstats/{yr}-{pos}-line.csv')
             player_info[str(yr)[2:]] = pd.read_csv(f'datasets/{yr}/player-{yr}-info.csv')
             player_info[str(yr)[2:]]['year'] = str(yr)
+
+    if stat_values['player1YR']:
+            dyr = stat_values['player1YR'][-2:]
+    else:
+        dyr = year[-2:]
+    display_names = {}
+    for c,r in player_info[dyr].iterrows():
+        display_names[r['name']] = r['display']
 
     get_pos = {'d':'defenders','f':'forwards','g':'keepers','m':'midfielders'}
     # check player 1 stats have been chosen. If NOT select defaults
@@ -1033,9 +1041,16 @@ def compare():
         else:
             if stat_values['player2_pos'] in ['forwards','midfielders']:
                 if stat_values['player2']:
+                    try:
+                        stat_values['player2'] = display_names[stat_values['player2']]
+                    except:
+                        stat_values['player2'] = display_names[default_values['player2']]
+                        default_values['player2'] = stat_values['player2']
                     if (stat_values['player2'] in player1_select_list) & (stat_values['player1_pos'] != stat_values['player2_pos']):
                         player2_check = 0
                         stat_values['player2'] = best_eleven.at[get_name[stat_values['player2_pos']]+1,'name']
+                    elif (stat_values['player2'] == default_values['player2']) & (stat_values['player2_pos'] == default_values['player2_pos']) & (stat_values['player2YR'] == default_values['player2YR']):
+                        pass
                     else:
                         player2_check = 1
                         stat_values['player2'] = best_eleven.at[get_name[stat_values['player2_pos']]+1,'name']
@@ -1060,8 +1075,6 @@ def compare():
             session['player2'] = best_eleven.at[get_name[stat_values['player1_pos']]+1,'name']
             stat_values['player2'] = best_eleven.at[get_name[stat_values['player1_pos']]+1,'name']
         elif stat_values['player2'][-1] in default_values['player2']:
-            #FIX THIS ISSUE
-            print('\n',stat_values['player2'],'TAKE PREVIOUS NAME')
             pass
         else:
             if stat_values['player2YR']:
@@ -1180,7 +1193,6 @@ def compare():
     ############## get position line function
     def get_position_line(data,year=current_year,position='defenders',name=''):
         if name:
-            print(f'\n{name}\n')
             if type(year) != str:
                 year = str(year)
             string = f'{position[:1]}_{year[2:]}_l'
