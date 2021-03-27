@@ -345,6 +345,11 @@ nav {
   justify-content: center;
 }
 
+.picture-box {
+  display: flex;
+  height:110px;
+}
+
 .box {
   place-items: center;
   /*border-radius: 0.5rem;*/
@@ -754,4 +759,29 @@ td {
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+.flt-l {
+  float: left;
+}
+
+.flt-r {
+  float: right;
+}
+
+.flt-30-l {
+  width: 30%;
+  height:100%;
+  float: left;
+}
+
+.flt-70-r {
+  width: 70%;
+  height:100%;
+  float: right;
+  text-indent: 10px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
 }

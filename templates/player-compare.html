@@ -207,76 +207,78 @@
       <!-- player 1 stats -->
       <div class="boxl {{ player1_colour }}">
         <hr>
-        <form method="post" action="{{ url_for(request.endpoint) }}">
-          <div class="parent">
-            <div class="form boxs">
-              <select name="player1_pos" id="player1_pos" onchange="this.form.submit();">
-                <option value="">{{ player1_pos }}</option>
-                <option value="defenders">defenders</option>
-                <option value="forwards">forwards</option>
-                <option value="keepers">keepers</option>
-                <option value="midfielders">midfielders</option>
-              </select>
+        <div>
+          <form method="post" action="{{ url_for(request.endpoint) }}">
+            <div class="parent">
+              <div class="form boxs">
+                <select name="player1_pos" id="player1_pos" onchange="this.form.submit();">
+                  <option value="">{{ player1_pos }}</option>
+                  <option value="defenders">defenders</option>
+                  <option value="forwards">forwards</option>
+                  <option value="keepers">keepers</option>
+                  <option value="midfielders">midfielders</option>
+                </select>
+              </div>
+              <div class="form boxs">
+                <select name="player1" id="player1" onchange="this.form.submit();">
+                  <option value="">select player 1</option>
+                  {% for name in player1_select_list %}
+                  <option value="{{ name }}">{{ name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="form boxs">
+                <select name="player1YR" id="player1YR" onchange="this.form.submit();">
+                  <option value="">{{ p1_year }}</option>
+                  <option value="2020">2020</option>
+                  <option value="2019">2019</option>
+                </select>
+              </div>
             </div>
-            <div class="form boxs">
-              <select name="player1" id="player1" onchange="this.form.submit();">
-                <option value="">select player 1</option>
-                {% for name in player1_select_list %}
-                <option value="{{ name }}">{{ name }}</option>
-                {% endfor %}
-              </select>
-            </div>
-            <div class="form boxs">
-              <select name="player1YR" id="player1YR" onchange="this.form.submit();">
-                <option value="">{{ p1_year }}</option>
-                <option value="2020">2020</option>
-                <option value="2019">2019</option>
-              </select>
-            </div>
+            <input type="hidden" id="player1_pos" name="player1_pos" value="{{ player1_pos }}">
+            <input type="hidden" id="player1" name="player1" value="{{ player_names[0] }}">
+            <input type="hidden" id="player1YR" name="player1YR" value="{{ p1_year }}">
+            <input type="hidden" id="player2_pos" name="player2_pos" value="{{ player2_pos }}">
+            <input type="hidden" id="player2" name="player2" value="{{ player_names[1] }}">
+            <input type="hidden" id="player2YR" name="player2YR" value="{{ p2_year }}">
+          </form>
+        </div>
+        <hr>
+        <div class="picture-box">
+          <div class="flt-30-l">
+            <img class="flt-r" src="static/images/players/{{ p1_year }}/{{ player1_image }}" alt="{{ player_names[0] }} photo" style="max-height:100px">
           </div>
-          <input type="hidden" id="player1_pos" name="player1_pos" value="{{ player1_pos }}">
-          <input type="hidden" id="player1" name="player1" value="{{ player_names[0] }}">
-          <input type="hidden" id="player1YR" name="player1YR" value="{{ p1_year }}">
-          <input type="hidden" id="player2_pos" name="player2_pos" value="{{ player2_pos }}">
-          <input type="hidden" id="player2" name="player2" value="{{ player_names[1] }}">
-          <input type="hidden" id="player2YR" name="player2YR" value="{{ p2_year }}">
-        </form>
+          <div class="flt-70-r">
+            <p class="xxfont flt-l">{{ player_names[0] }}</p>
+          </div>
+        </div>
         <div class="textcenter">
           <table>
             <tr>
-              <td style="width:30%;" rowspan="2"><img src="static/images/players/{{ p1_year }}/{{ player1_image }}" alt="{{ player_names[0] }} photo" style="max-height:100px"></td>
-              <td class="xfont"><h2>{{ p1_year }}</h2></td>
-            </tr>
-            <tr>
-              <td><h4 class="xxfont">{{ player_names[0] }}</h4></td>
+              <td><a><img src="static/images/flags/{{ player1_flag }}" alt="{{ player1_flag[:-4] }} national flag" style="max-height:30px"><a></td>
+              <td><h4 style="margin-top: 5px;">{{ player1_pos[:-1] }}</h4></td>
+              <td><h4 style="margin-top: 5px;">{{ player1_num }}</h4></td>
             </tr>
           </table>
           <table>
             <tr>
-              <td><a><img src="static/images/flags/{{ player1_flag }}" alt="{{ player1_flag[:-4] }} national flag" style="max-height:30px"><a></td>
-                <td><h4 style="margin-top: 5px;">{{ player1_pos[:-1] }}</h4></td>
-                <td><h4 style="margin-top: 5px;">{{ player1_num }}</h4></td>
-              </tr>
-            </table>
-            <table>
-              <tr>
-                <td><h4 style="margin-top: 5px;">O: {{ player1_over }}</h4></td>
-                {% if player1_pos == 'defenders'%}
-                <td><h4 style="margin-top: 5px;">Int: {{ player1_special1 }}</h4></td>
-                <td><h4 style="margin-top: 5px;">Clr: {{ player1_special2 }}</h4></td>
-                {% elif player1_pos == 'keepers' %}
-                <td><h4 style="margin-top: 5px;">CS: {{ player1_special1 }}</h4></td>
-                <td><h4 style="margin-top: 5px;">Saves: {{ player1_special2 }}</h4></td>
-                {% else %}
-                <td><h4 style="margin-top: 5px;">xG: {{ player1_special1 }}</h4></td>
-                <td><h4 style="margin-top: 5px;">XA: {{ player1_special2 }}</h4></td>
-                {% endif %}
-                <td><h4 style="margin-top: 5px;">Min: {{ player1_min }}</h4></td>
-              </tr>
-            </table>
-          </div>
-          <hr>
+              <td><h4 style="margin-top: 5px;">O: {{ player1_over }}</h4></td>
+              {% if player1_pos == 'defenders'%}
+              <td><h4 style="margin-top: 5px;">Int: {{ player1_special1 }}</h4></td>
+              <td><h4 style="margin-top: 5px;">Clr: {{ player1_special2 }}</h4></td>
+              {% elif player1_pos == 'keepers' %}
+              <td><h4 style="margin-top: 5px;">CS: {{ player1_special1 }}</h4></td>
+              <td><h4 style="margin-top: 5px;">Saves: {{ player1_special2 }}</h4></td>
+              {% else %}
+              <td><h4 style="margin-top: 5px;">xG: {{ player1_special1 }}</h4></td>
+              <td><h4 style="margin-top: 5px;">XA: {{ player1_special2 }}</h4></td>
+              {% endif %}
+              <td><h4 style="margin-top: 5px;">Min: {{ player1_min }}</h4></td>
+            </tr>
+          </table>
         </div>
+        <hr>
+      </div>
         <!-- END OF home team stats -->
 
         <!-- player 2 stats -->
@@ -319,17 +321,15 @@
             <input type="hidden" id="player2" name="player2" value="{{ player_names[1] }}">
             <input type="hidden" id="player2YR" name="player2YR" value="{{ p2_year }}">
           </form>
+          <div class="picture-box">
+            <div class="flt-30-l">
+              <img class="flt-r" src="static/images/players/{{ p2_year }}/{{ player2_image }}" alt="{{ player_names[1] }} photo" style="max-height:100px">
+            </div>
+            <div class="flt-70-r">
+              <p class="xxfont flt-l">{{ player_names[1] }}</p>
+            </div>
+          </div>
           <div class="textcenter">
-            <table>
-              <tr>
-                <td style="width:30%;" rowspan="2"><img src="static/images/players/{{ p2_year }}/{{ player2_image }}" alt="{{ player_names[1] }} photo" style="max-height:100px"></td>
-                <td class="xfont"><h2>{{ p2_year }}</h2></td>
-              </tr>
-              <tr>
-                <td><h4 class="xxfont">{{ player_names[1] }}</h4></td>
-              </tr>
-            </table>
-
             <table>
               <tr>
                 <td><a><img src="static/images/flags/{{ player2_flag }}" alt="{{ player2_flag[:-4] }} national flag" style="max-height:30px"><a></td>
