@@ -1314,26 +1314,26 @@ def player():
 
     name = request.form['name']
 
-    if name in player_names['name'].unique():
+    if name in player_names_df['name'].unique():
         print('NAME: present',name)
         try:
-            display = player_names[player_names['name'] == name]['display'].values[0]
+            display = player_names_df[player_names_df['name'] == name]['display'].values[0]
             print('DISPLAY: ',display)
         except Exception as e:
             print('DISPLAY: not found')
             print('ERROR: ',e)
-    elif name in player_names['display'].unique():
+    elif name in player_names_df['display'].unique():
         print('NAME: not present DISPLAY: ',name)
         display = name
         try:
-            name = player_names[player_names['display'] == display]['name'].values[0]
+            name = player_names_df[player_names_df['display'] == display]['name'].values[0]
             print('NAME: found',name)
         except Exception as e:
             print('DISPLAY: not found')
             print('ERROR: ',e)
     else:
         print('ERROR')
-        print(player_names['name'].unique())
+        print(player_names_df['name'].unique())
 
     year_list = player_info['year'].unique().tolist()
     active_years = []
