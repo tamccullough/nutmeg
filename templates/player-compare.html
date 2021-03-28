@@ -249,7 +249,11 @@
             <img class="flt-r" src="static/images/players/{{ p1_year }}/{{ player1_image }}" alt="{{ player_names[0] }} photo" style="max-height:100px">
           </div>
           <div class="flt-70-r">
+            {% if (player_names[0] | length) > 20 %}
+            <p class="xfont flt-l">{{ player_names[0] }}</p>
+            {% else %}
             <p class="xxfont flt-l">{{ player_names[0] }}</p>
+            {% endif %}
           </div>
         </div>
         <div class="textcenter">
@@ -326,7 +330,11 @@
               <img class="flt-r" src="static/images/players/{{ p2_year }}/{{ player2_image }}" alt="{{ player_names[1] }} photo" style="max-height:100px">
             </div>
             <div class="flt-70-r">
+              {% if (player_names[1] | length) > 20 %}
+              <p class="xfont flt-l">{{ player_names[1] }}</p>
+              {% else %}
               <p class="xxfont flt-l">{{ player_names[1] }}</p>
+              {% endif %}
             </div>
           </div>
           <div class="textcenter">
