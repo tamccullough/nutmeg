@@ -943,7 +943,7 @@ def compare():
     print('\nSTART P1 VALUES: ',stat_values['player1'],stat_values['player1_pos'],stat_values['player1YR'])
     print('START P2 VALUES: ',stat_values['player2'],stat_values['player2_pos'],stat_values['player2YR'],'\n')
 
-    ### REWRITING HOW WE GET THE DATA
+    ### get user selection and apply it to existing data
     ##################################
 
     def confirm_position(name,position,year):
@@ -1014,15 +1014,18 @@ def compare():
         if n == '1':
             # check if user selects defender or keeper; if so switch players to only that selected position
             if (position.lower() in ['forwards','midfielders']) & (refresh_check == 1):
-                stat_values['player1_pos'] = position
-                stat_values['player1YR'] =  default_values['player1YR']#str(current_year-1)
-                stat_values['player1'] = get_best_eleven(position,n=0)
-                if stat_values['player2_pos'] in ['defenders','keepers']:
-                    stat_values['player2_pos'] = position
-                    stat_values['player2YR'] = str(current_year-1)
-                    stat_values['player2'] = get_best_eleven(position,n=1)
-                else:
+                if ([name,position,year]) == ([default_values['player1'],default_values['player1_pos'],default_values['player1YR']]):
                     pass
+                else:
+                    stat_values['player1_pos'] = position
+                    stat_values['player1YR'] =  default_values['player1YR']#str(current_year-1)
+                    stat_values['player1'] = get_best_eleven(position,n=0)
+                    if stat_values['player2_pos'] in ['defenders','keepers']:
+                        stat_values['player2_pos'] = position
+                        stat_values['player2YR'] = str(current_year-1)
+                        stat_values['player2'] = get_best_eleven(position,n=1)
+                    else:
+                        pass
             elif (position.lower() in ['defenders','keepers']) & (position != stat_values['player2_pos']):
                 stat_values['player1_pos'] = position
                 stat_values['player1YR'] = str(current_year-1)
@@ -1034,19 +1037,24 @@ def compare():
                 loop_data(name,position,year)
         else:
             if (position.lower() in ['forwards','midfielders']) & (refresh_check == 1):
-                print(f"HERE WE ARE TRYING TO GET A NEW POSITION {stat_values['player2'],stat_values['player2_pos'],stat_values['player2YR']}")
-                stat_values['player2_pos'] = position
-                stat_values['player2YR'] = str(current_year-1)
-                stat_values['player2'] = get_best_eleven(position,n=1)
+                if ([name,position,year]) == ([default_values['player2'],default_values['player2_pos'],default_values['player2YR']]):
+                    pass
+                else:
+                    print(f"HERE WE ARE TRYING TO GET A NEW POSITION {stat_values['player2'],stat_values['player2_pos'],stat_values['player2YR']}")
+                    stat_values['player2_pos'] = position
+                    stat_values['player2YR'] = str(current_year-1)
+                    stat_values['player2'] = get_best_eleven(position,n=1)
             else:
                 loop_data(name,position,year)
 
     if [stat_values['player1'],stat_values['player1_pos'],stat_values['player1YR']] == [default_values['player1'],default_values['player1_pos'],default_values['player1YR']]:
+        print(f'P1 == DEFAULT & RC: {refresh_check}')
         check_choice(stat_values['player1'],stat_values['player1_pos'],stat_values['player1YR'])
     else:
         check_choice(stat_values['player1'],stat_values['player1_pos'],stat_values['player1YR'])
 
     if [stat_values['player2'],stat_values['player2_pos'],stat_values['player2YR']] == [default_values['player2'],default_values['player2_pos'],default_values['player2YR']]:
+        print(f'P2 == DEFAULT & RC: {refresh_check}')
         check_choice(stat_values['player2'],stat_values['player2_pos'],stat_values['player2YR'],n='2')
     else:
         check_choice(stat_values['player2'],stat_values['player2_pos'],stat_values['player2YR'],n='2')
@@ -1059,9 +1067,6 @@ def compare():
 
     print('\nFINAL P1 VALUES: ',stat_values['player1'],stat_values['player1_pos'],stat_values['player1YR'])
     print('FINAL P2 VALUES: ',stat_values['player2'],stat_values['player2_pos'],stat_values['player2YR'],'\n')
-
-    #### END OF REWRITE
-    ##################################
 
     # Generate player profile date for the player info boxes
     ###################################################################
