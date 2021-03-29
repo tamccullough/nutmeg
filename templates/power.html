@@ -27,6 +27,7 @@
     {%for i in range(0,html_table.shape[0])%}
     <div class="boxs {{ html_table.at[i,'colour'] }}">
       <div>
+        <hr>
         <table>
           <tr>
             <td colspan="2" class="xfont"><h3 class="center">{{ html_table.at[i,'team'] }}</h3></td>
@@ -44,6 +45,7 @@
             <td><a class="center">{{ html_table.at[i,'form'] }}</a></td>
           </tr>
           </table>
+          <hr>
         </div>
       </div>
     {%endfor%}
@@ -54,8 +56,10 @@
   <div class="parent">
     {%for i in range(0,html_table.shape[0])%}
     <div class="boxl {{ html_table.at[i,'colour'] }}">
-      <div>
         <table>
+          <tr>
+            <td></td>
+          </tr>
           <tr>
             <td colspan="2" class="xxfont"><h3 class="center">{{ html_table.at[i,'team'] }}</h3></td>
           </tr>
@@ -71,8 +75,10 @@
           <tr>
             <td class="xfont"><h4>Form: {{ html_table.at[i,'form'] }}</h4></td>
           </tr>
+          <tr>
+            <td></td>
+          </tr>
           </table>
-        </div>
       </div>
     {%endfor%}
     </div>
