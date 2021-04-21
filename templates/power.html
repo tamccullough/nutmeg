@@ -26,27 +26,29 @@
   <div class="parent">
     {%for i in range(0,html_table.shape[0])%}
     <div class="boxs {{ html_table.at[i,'colour'] }}">
-      <div>
-        <hr>
-        <table>
-          <tr>
-            <td colspan="2" class="xfont"><h3 class="center">{{ html_table.at[i,'team'] }}</h3></td>
-          </tr>
-          <tr>
-            <td style="text-align:center;" rowspan="4"><img src="static/images/flags/{{ html_table.at[i,'crest'] }}" alt="{{ html_table.at[i,'team'] }} Crest" style="max-height:60px;"></td>
-          </tr>
-          <tr>
-            <td><h1 class="center">{{ html_table.at[i,'rank'] }}</h1></td>
-          </tr>
-          <tr>
-            <td><a class="center">Move: {{ html_table.at[i,'move'] }}</a></td>
-          </tr>
-          <tr>
-            <td><a class="center">{{ html_table.at[i,'form'] }}</a></td>
-          </tr>
-          </table>
+      <form method="POST" action="/roster">
+        <div>
           <hr>
-        </div>
+          <table>
+            <tr>
+              <td colspan="2"><a><input class="center table-button-mobile" type="submit" id="team" name="team" value="{{ html_table.at[i,'team'] }}"/></a></td>
+            </tr>
+            <tr>
+              <td style="text-align:center;" rowspan="4"><img src="static/images/flags/{{ html_table.at[i,'crest'] }}" alt="{{ html_table.at[i,'team'] }} Crest" style="max-height:60px;"></td>
+            </tr>
+            <tr>
+              <td><h1 class="center">{{ html_table.at[i,'rank'] }}</h1></td>
+            </tr>
+            <tr>
+              <td><a class="center">Move: {{ html_table.at[i,'move'] }}</a></td>
+            </tr>
+            <tr>
+              <td><a class="center">{{ html_table.at[i,'form'] }}</a></td>
+            </tr>
+            </table>
+            <hr>
+          </div>
+      </form>
       </div>
     {%endfor%}
     </div>
@@ -56,12 +58,11 @@
   <div class="parent">
     {%for i in range(0,html_table.shape[0])%}
     <div class="boxl {{ html_table.at[i,'colour'] }}">
+      <form method="POST" action="/roster">
         <table>
           <tr>
-            <td></td>
-          </tr>
-          <tr>
-            <td colspan="2" class="xxfont"><h3 class="center">{{ html_table.at[i,'team'] }}</h3></td>
+            <!--td colspan="2" class="xxfont"><h3 class="center">{{ html_table.at[i,'team'] }}</h3></td-->
+            <td colspan="2"><a><input class="center table-button-large" type="submit" id="team" name="team" value="{{ html_table.at[i,'team'] }}"/></a></td>
           </tr>
           <tr>
             <td style="text-align:center;" rowspan="4"><img src="static/images/flags/{{ html_table.at[i,'crest'] }}" alt="{{ html_table.at[i,'team'] }} Crest" style="max-height:100px"></td>
@@ -79,6 +80,7 @@
             <td></td>
           </tr>
           </table>
+        </form>
       </div>
     {%endfor%}
     </div>
