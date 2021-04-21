@@ -303,6 +303,14 @@ nav {
   font-size:.8em;
 }
 
+.xfont_link{
+  -moz-appearance:none; /* Firefox */
+  -webkit-appearance:none; /* Safari and Chrome */
+  decoration:none;
+  font-size: 1.5em;
+  line-height: 0px;
+}
+
 /* main containers and page layouts */
 /*assorted container sizes*/
 
@@ -702,9 +710,48 @@ td {
   cursor:pointer;
   text-decoration: none;
 }
-
 .table-button:hover {
   text-decoration: underline;
+}
+
+.table-button-large {
+  -moz-appearance:none; /* Firefox */
+  -webkit-appearance:none; /* Safari and Chrome */
+  text-decoration: none;
+  display: block;
+  position: relative;
+  top: 0px;
+  font-size: 2.2em;
+  color: inherit;
+  background-color:inherit;
+  border: none;
+  cursor: pointer;
+}
+.table-button-large:hover {
+  text-decoration: underline;
+}
+.table-button-large:visited {
+  text-decoration: none;
+}
+
+.table-button-mobile {
+  -moz-appearance:none; /* Firefox */
+  -webkit-appearance:none; /* Safari and Chrome */
+  text-decoration: none;
+  display: block;
+  position: relative;
+  top: 0px;
+  font-size: 1em;
+  color: inherit;
+  background-color:inherit;
+  border: none;
+  cursor: pointer;
+}
+.table-button-mobile:hover {
+  text-decoration: underline;
+}
+.table-button-mobile:visited {
+  text-decoration: none;
 }
 
 .card3{
