@@ -111,6 +111,18 @@
         <div class="{{ theme }}-light">
           <br>
           <table>
+            <tr>
+              <th style="width:60%;text-align: left;">Overall</th>
+              <th></th>
+              <th></th>
+              <th>{{ home_table['overall'].sum() | round(2) }}</th>
+            </tr>
+            <tr>
+              <th style="width:60%;text-align: left;">name</th>
+              <th>num</th>
+              <th>pos</th>
+              <th>overall</th>
+            </tr>
             {%for i in range(0,home_table.shape[0])%}
             <tr>
                 {%for r in range(home_table.shape[1])%}
@@ -126,9 +138,13 @@
           <br>
         </div>
       </div>
-      <div class="{{ home_colour }} center" style="height:300px;">
-        <canvas id="homeChart" style="max-width:95%"></canvas>
-        <!--img src="static/images/2020/cpl-2020-{{ home_team }}-radar.png" alt="{{ home_team }} Radar" style="max-width:95%"-->
+      <div class="{{ home_colour }}">
+        <hr>
+        <div class="center" style="height:300px;">
+          <canvas id="homeChart" style="max-width:95%">></canvas>
+          <!--img src="static/images/2020/cpl-2020-{{ away_team }}-radar.png" alt="{{ away_team }} Radar" style="max-width:95%"-->
+        </div>
+        <hr>
       </div>
     </div>
     <!-- END OF home team stats -->
@@ -197,6 +213,18 @@
         <div class="{{ theme }}-light">
           <br>
           <table>
+            <tr>
+              <th style="width:60%;text-align: left;">Overall</th>
+              <th></th>
+              <th></th>
+              <th>{{ away_table['overall'].sum() | round(2) }}</th>
+            </tr>
+            <tr>
+              <th style="width:60%;text-align: left;">name</th>
+              <th>num</th>
+              <th>pos</th>
+              <th>overall</th>
+            </tr>
             {%for i in range(0,away_table.shape[0])%}
             <tr>
                 {%for r in range(away_table.shape[1])%}
@@ -212,9 +240,13 @@
           <br>
         </div>
       </div>
-      <div class="{{ away_colour }} center" style="height:300px;">
-        <canvas id="awayChart" style="max-width:95%">></canvas>
-        <!--img src="static/images/2020/cpl-2020-{{ away_team }}-radar.png" alt="{{ away_team }} Radar" style="max-width:95%"-->
+      <div class="{{ away_colour }}">
+        <hr>
+        <div class="center" style="height:300px;">
+          <canvas id="awayChart" style="max-width:95%">></canvas>
+          <!--img src="static/images/2020/cpl-2020-{{ away_team }}-radar.png" alt="{{ away_team }} Radar" style="max-width:95%"-->
+        </div>
+        <hr>
       </div>
     </div>
     <!-- END OF away team stats -->
