@@ -450,11 +450,14 @@ def versus():
     results_old = pd.read_csv(f'datasets/{year}/cpl-{year}-results_old.csv')
     stats_old = pd.read_csv(f'datasets/{year}/cpl-{year}-stats_old.csv')
 
+    team_colours_dict = {}
+
     # home side
     q1 = matches_predictions.iloc[0]['home']
     home_team_info = team_ref[team_ref['team'] == q1]
     home_colour = home_team_info.iloc[0]['colour']
     home_fill = home_team_info.iloc[0]['colour2']
+    home_text = team_colour[q1]
     home_crest = home_team_info.iloc[0]['crest']
 
     game_info = schedule[schedule['home'] == q1]
@@ -465,6 +468,7 @@ def versus():
     away_team_info = team_ref[team_ref['team'] == q2]
     away_colour = away_team_info.iloc[0]['colour']
     away_fill = away_team_info.iloc[0]['colour2']
+    away_text = team_colour[q2]
     away_crest = away_team_info.iloc[0]['crest']
 
     home_win = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['home_p'].values[0]
@@ -535,9 +539,9 @@ def versus():
 
     return render_template('versus.html',
     home_team = q1, home_table = home_roster.head(11), home_win = home_win, home_history = q1_r,
-    home_crest = home_crest, home_colour = home_colour, home_fill = home_fill, home_radar = home_radar,
+    home_crest = home_crest, home_colour = home_colour, home_fill = home_fill, home_radar = home_radar, home_text = home_text,
     away_team = q2, away_table = away_roster.head(11), away_win = away_win, away_history = q2_r,
-    away_crest = away_crest, away_colour = away_colour, away_fill = away_fill, away_radar = away_radar,
+    away_crest = away_crest, away_colour = away_colour, away_fill = away_fill, away_radar = away_radar, away_text = away_text,
     draw = draw, home_form = home_form, away_form = away_form,
     headline = headline,
     home_score = home_score, away_score = away_score,
