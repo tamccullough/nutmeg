@@ -49,8 +49,7 @@ def get_shortest_name(team_name):
     return team_names[team_name]
 
 def index_reset(data):
-    data = data.reset_index()
-    data.pop('index')
+    data = data.reset_index(drop=True)
     return data
 
 def get_team_results(results_db,query): # get all the games played by the specific team
@@ -432,8 +431,7 @@ def top_tracked(team_stats,tracked):
     player_information = team_stats.copy()
     tracked_player_stat = player_information[cols]
     tracked_player_stat = tracked_player_stat.sort_values(by=[tracked],ascending=False)
-    tracked_player_stat = tracked_player_stat.reset_index()
-    tracked_player_stat.pop('index')
+    tracked_player_stat = tracked_player_stat.reset_index(drop=True)
     team = tracked_player_stat.pop('team')
     tracked_player_stat.insert(0,'team',team)
     tracked_player_stat = tracked_player_stat[tracked_player_stat[tracked] >= 1]
@@ -542,8 +540,7 @@ def top_offenders(data):  # get the offences handed out in the league
     top_offenders = player_information[cols]
     top_offenders = get_evaluation(top_offenders,player_information)
     top_offenders = top_offenders.sort_values(by=['red','yellow'],ascending=False)
-    top_offenders = top_offenders.reset_index()
-    top_offenders.pop('index')
+    top_offenders = top_offenders.reset_index(drop=True)
     team = top_offenders.pop('team')
     top_offenders.insert(0,'team',team)
 
@@ -601,13 +598,11 @@ def get_NB_data(data,query):
 def get_team_comparison(data,q1,q2):
     # getting games with q1 in both home or away
     db = data[data['team'] == q1]
-    db = db.reset_index()
-    db.pop('index')
+    db = db.reset_index(drop=True)
     # filering down more to get only the games against q2
     db = db.sort_values(by=['m','d'])
     db = db[(db['home'] == q2) | (db['away'] == q2)]
-    db = db.reset_index()
-    db.pop('index')
+    db = db.reset_index(drop=True)
     if db.empty == True:
         db = pd.DataFrame([(0,0,0,0,q1,'D',q2,'D','empty',q1)],columns=['d','m','hs','as','home','hr','away','ar','summary','team'])
     return db
@@ -713,8 +708,7 @@ def best_roster(team_name, rated_keepers, rated_defenders, rated_midfielders, ra
     rated_keepers = rated_keepers[rated_keepers['team'] == query][['name','number','overall']].head(formation[3])
 
     roster = pd.concat([rated_keepers,rated_defenders,rated_midfielders,rated_forwards])
-    roster = roster.reset_index()
-    roster.pop('index')
+    roster = roster.reset_index(drop=True)
     roster.insert(2,'position','-')
     for i in range(roster.shape[0]):
         roster.at[i,'position'] = player_info[player_info['name'] == roster.at[i,'name']]['position'].values[0]
@@ -737,8 +731,7 @@ def best_roster(team_name, rated_keepers, rated_defenders, rated_midfielders, ra
 
         df = pd.DataFrame(a,columns=['name','position','number','overall'])
         df = df.sort_values(by='overall',ascending=False)
-        df = df.reset_index()
-        df.pop('index')
+        df = df.reset_index(drop=True)
         df = df[['name','position']]
         df['count'] = 0
         return df.head(diff)
@@ -833,8 +826,7 @@ def best_roster(team_name, rated_keepers, rated_defenders, rated_midfielders, ra
     else:
         game_roster = pd.concat([game_roster,db[db['position'] == 'f'].head(formation[2])])
 
-    game_roster = game_roster.reset_index()
-    game_roster.pop('index')
+    game_roster = game_roster.reset_index(drop=True)
 
     # if a 4,5,1 formation get the leading team goal scorer
     if formation == [4,5,1]:
@@ -879,7 +871,7 @@ def best_roster(team_name, rated_keepers, rated_defenders, rated_midfielders, ra
     game_roster.insert(1,'number',number_list)
     game_roster['overall'] = overall_list
     game_roster.pop('count')
-    game_roster = game_roster.reset_index()
+    game_roster = game_roster.reset_index(drop=True)
     game_roster.pop('index')
 
     # OTTAWA doesn't have a full and complete roster with a balanced group of players
@@ -892,8 +884,7 @@ def best_roster(team_name, rated_keepers, rated_defenders, rated_midfielders, ra
         missing_players = missing_players[missing_players['position'] != 'g']
         final_diff = 16 - game_roster.shape[0]
         game_roster = pd.concat([game_roster,missing_players.head(final_diff)])
-        game_roster = game_roster.reset_index()
-        game_roster.pop('index')
+        game_roster = game_roster.reset_index(drop=True)
 
     return game_roster'''
 

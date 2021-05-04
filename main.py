@@ -520,11 +520,9 @@ def versus():
     homet = max(q1.split(' '), key=len)
     awayt = max(q2.split(' '), key=len)
     home_radar = radar[radar['team'].str.contains(homet)]
-    home_radar = home_radar.reset_index()
-    home_radar.pop('index')
+    home_radar = home_radar.reset_index(drop=True)
     away_radar = radar[radar['team'].str.contains(awayt)]
-    away_radar = away_radar.reset_index()
-    away_radar.pop('index')
+    away_radar = away_radar.reset_index(drop=True)
 
     home_sum = home_roster['overall'].sum()
     away_sum = away_roster['overall'].sum()
@@ -574,8 +572,7 @@ def charts():
     team_standings['xt'] = team_standings['xp'] * 7
     team_standings['xg'] = team_standings['xg'].astype('int')
     team_standings['xt'] = team_standings['xt'].astype('int')
-    team_standings = team_standings.reset_index()
-    team_standings.pop('index')
+    team_standings = team_standings.reset_index(drop=True)
 
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
