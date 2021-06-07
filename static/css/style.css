@@ -124,6 +124,7 @@ body,h3,h4,h5,a {
 .mono-t-red {color:var(--red);}
 .mono-t-yellow {color:var(--yellow);}
 .mono-blue {color:var(--white); background-color:var(--blue);}
+.mono-darkblue {color:var(--white); background-color:var(--darkblue);}
 .mono-green {color:var(--white); background-color:var(--green);}
 .mono-red {color:var(--white); background-color:var(--red);}
 .mono-orange {color:var(--white); background-color:var(--orange);}

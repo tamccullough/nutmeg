@@ -259,7 +259,7 @@ def clean_team_game(standings,game_week,check):
 def get_weeks_results(year,results,standings,stats,team_ref,team_names):
     if results.iloc[0]['hr'] == 'E':
         game_week = pd.DataFrame([('TBD',0,'TBD',0)],columns=['home','hs','away','as'])
-        big_win, top_team, low_team,other_team = db,db,db,db
+        big_win, top_team, low_team,other_team = game_week,game_week,game_week,game_week
         goals, assists, yellows, reds = 0,0,0,0
         return game_week,goals,big_win,top_team,low_team,other_team, assists, yellows, reds
     elif results.tail(1)['hr'].values[0] != 'E':
