@@ -19,7 +19,7 @@ import re
 
 canpl = Flask(__name__)
 # Set the secret key to some random bytes. Keep this really secret!
-canpl.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+canpl.secret_key = 'testing'
 
 player_info_19 = pd.read_csv(f'datasets/2019/league/2019-player-info.csv')
 player_info_19['year'] = '2019'
@@ -134,12 +134,6 @@ def convert_num_str(num):
     return num[0:4]
 
 def get_year():
-    '''try:
-        session['year'] = request.form['year']
-        return session.get('year'), ''
-    except KeyError as error:
-        session['year'] = '2020'
-        return session.get('year'), error # if "year" hasn't been set yet, return None'''
     error = None
     if request.method == 'POST':
         try:
@@ -1769,22 +1763,6 @@ def discipline():
 def feed():
     year, error = get_year()
     return render_template('feed.html')
-
-@canpl.errorhandler(werkzeug.exceptions.BadRequest)
-def handle_bad_request(e):
-    return 'bad request!', 400
-
-@canpl.route('/error')
-def error():
-    return render_template('error.html')
-
-@canpl.route('/googledaf818200d6bdf9d.html')
-def google():
-    return render_template('googledaf818200d6bdf9d.html')
-
-@canpl.route('/hell')
-def hello():
-    return 'Welcome to HELL world!'
 
 if __name__ == "__main__":
     canpl.run()
