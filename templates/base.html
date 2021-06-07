@@ -954,24 +954,24 @@
         }
       }
     });
-    new Chart(document.getElementById('York9 FC Line'), {
+    new Chart(document.getElementById('{{ team_list[-1] }} Line'), {
       type: 'line',
       data: {
         labels: [
-          {% for x in range(1,(team_dict['York9 FC'][0] | length)-1) %}
+          {% for x in range(1,(team_dict[team_list[-1]][0] | length)-1) %}
           {{ x }},
           {% endfor %}
-          {{ (team_dict['York9 FC'][0] | length) }}
+          {{ (team_dict[team_list[-1]][0] | length) }}
         ],
         datasets: [
-          {% for i in range((team_dict['York9 FC'] | length) -1) %}
+          {% for i in range((team_dict[team_list[-1]] | length) -1) %}
           {
             label: '-',
             data: [
-              {% for x in range(team_dict['York9 FC'][i] | length -1) %}
-              {{ team_dict['York9 FC'][i][x] | safe }},
+              {% for x in range(team_dict[team_list[-1]][i] | length -1) %}
+              {{ team_dict[team_list[-1]][i][x] | safe }},
               {% endfor %}
-              {{ team_dict['York9 FC'][i][-1] | safe}}
+              {{ team_dict[team_list[-1]][i][-1] | safe}}
 
             ],
             fill: true,
@@ -984,10 +984,10 @@
           {
             label: '-',
             data: [
-              {% for j in range(team_dict['York9 FC'][-1] | length -1) %}
-              {{ team_dict['York9 FC'][-1][j] | safe }},
+              {% for j in range(team_dict[team_list[-1]][-1] | length -1) %}
+              {{ team_dict[team_list[-1]][-1][j] | safe }},
               {% endfor %}
-              {{ team_dict['York9 FC'][-1][-1] | safe}}
+              {{ team_dict[team_list[-1]][-1][-1] | safe}}
             ],
             fill: true,
             borderColor: '{{ geegle[-1] }}',
@@ -1298,7 +1298,7 @@
       }
     });
 
-    new Chart(document.getElementById('York9 FC Radar'), {
+    new Chart(document.getElementById('{{ team_list[-1] }} Radar'), {
       type: 'radar',
       data: {
         labels: ['finish','def','att','mid','net','big','save','goals'],

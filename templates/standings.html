@@ -295,7 +295,11 @@
             <td class="t-left" style="width: 20%;">{{ standings_table.iloc[i]['team'] }}</td>
             <td>{{ standings_table.iloc[i]['matches'] }}</td>
             <td>{{ standings_table.iloc[i]['points'] }}</td>
+            {% if standings_table['points'].max() == 0 %}
+            <td>0.00</td>
+            {% else %}
             <td>{{ (standings_table.iloc[i]['points']/standings_table.iloc[i]['matches'])|round(2) }}</td>
+            {% endif %}
             <td class="{{ theme }}-green">{{ standings_table.iloc[i]['win'] }}</td>
             <td class="{{ theme }}-orange">{{ standings_table.iloc[i]['draw'] }}</td>
             <td class="{{ theme }}-red">{{ standings_table.iloc[i]['loss'] }}</td>
@@ -310,7 +314,7 @@
     </div>
       <!-- end of regular season-->
       <!-- form -->
-      <span><h3 class="{{ theme }}-dark"><b>Form</b></h3></span>
+      <span><h3 class="{{ theme }}-dark indent"><b>Form</b></h3></span>
         <div>
           <div class="parent {{ theme }}-dark">
             <div class="t-center" style="display:inline;width:15%;"><a>club</a></div>

@@ -1,6 +1,6 @@
 
 <div>
-  <h1>{{ error }}</h1>
+  <!--h1>{{ error }}</h1-->
   <form method="post" action="{{ url_for(request.endpoint) }}">
     <div class="parent">
       <div class="mobile boxs sfont" style="width:100%;">
@@ -20,7 +20,7 @@
       <div class="form box t-center">
         <select name="year" id="year" onchange="this.form.submit();">
           <option value="{{ year }}">select year</option>
-          <!--option value="2021">2021</option-->
+          <option value="2021">2021</option>
           <option value="2020">2020</option>
           <option value="2019">2019</option>
         </select>

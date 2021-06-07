@@ -1,4 +1,5 @@
 from flask import Flask, Blueprint, flash, g, redirect, render_template, request, session, url_for
+import werkzeug
 #from flask_session.__init__ import Session
 
 ## GETTING DATE AND TIME
@@ -627,7 +628,6 @@ def charts():
     for team in team_ref['team'].unique():
         team_stats[team] = []
         team_dict[team] = pd.read_csv(f'datasets/{year}/league/{year}-{team}-line.csv')
-
         team_stats[team].append(team_dict[team].loc[team_dict[team].shape[0]-1]['ExpG'])
         team_stats[team].append(team_dict[team].loc[team_dict[team].shape[0]-1]['ExpA'])
         team_stats[team].append(round( team_dict[team]['Goal'].sum() / team_dict[team].shape[0],2))
@@ -645,7 +645,14 @@ def roster():
 
     year, error = get_year()
     print('SEARCHING YEAR: ',year)
-    team = request.form['team']
+    try:
+        team = request.form['team']
+    except:
+        team = session['team']
+        if year != '2021' and team == 'York United FC':
+            team = 'York9 FC'
+        if team == 'York9 FC' and year == '2021':
+            team = 'York United FC'
 
     radar = pd.read_csv(f'datasets/{year}/league/{year}-radar.csv')
     radar = radar[radar['team'] == team]
@@ -658,25 +665,24 @@ def roster():
     coach = team_ref[team_ref['team'] == team][['cw','cl','cd','coach','country','image','w','l','d','year']]
 
     roster_team_info = team_ref[team_ref['team'] == team].copy()
-    roster_team_info = cpl_main.index_reset(roster_team_info)
+    roster_team_info = roster_team_info.reset_index(drop=True)
     roster_colour = roster_team_info.iloc[0]['colour']
     crest = roster_team_info.iloc[0]['crest']
     colour1 = roster_team_info.iloc[0]['colour1']
     colour2 = roster_team_info.iloc[0]['colour2']
 
-    ### GET TEAM LINE CHARTS
     team_stats = []
-    for team_name in team_ref['team'].unique():
-        team_line = pd.read_csv(f'datasets/{year}/league/{year}-{team_name}-line.csv')
-        team_stats.append(team_line.loc[team_line.shape[0]-1]['ExpG'])
-        team_stats.append(team_line.loc[team_line.shape[0]-1]['ExpA'])
-        team_stats.append(round( team_line['Goal'].sum() / team_line.shape[0],2))
-        team_line = team_line[team_line.columns[2:]].T
-        team_line = cpl_main.index_reset(team_line).values.tolist()
-    ### COMPLETE THIS
+    team_line = pd.read_csv(f'datasets/{year}/league/{year}-{team}-line.csv')
+    team_stats.append(team_line.loc[team_line.shape[0]-1]['ExpG'])
+    team_stats.append(team_line.loc[team_line.shape[0]-1]['ExpA'])
+    team_stats.append(round( team_line['Goal'].sum() / team_line.shape[0],2))
+    team_line = team_line[team_line.columns[2:]].T
+    team_line = cpl_main.index_reset(team_line).values.tolist()
+
+    session['team'] = team
 
     return render_template('roster.html', year = year, team_name = team, coach = coach, radar = radar, team_line = team_line, team_stats = team_stats,
-    crest = crest, colour1 = colour1, colour2 = colour2, html_table = roster, team_colour = roster_colour)
+    crest = crest, colour1 = colour1, colour2 = colour2, html_table = roster, team_colour = roster_colour, headline = 'Roster Info')
 
 @canpl.route('/team-compare', methods=['GET','POST'])
 def teamcompare():
@@ -1763,6 +1769,14 @@ def discipline():
 def feed():
     year, error = get_year()
     return render_template('feed.html')
+
+@canpl.errorhandler(werkzeug.exceptions.BadRequest)
+def handle_bad_request(e):
+    return 'bad request!', 400
+
+@canpl.route('/error')
+def error():
+    return render_template('error.html')
 
 @canpl.route('/googledaf818200d6bdf9d.html')
 def google():
