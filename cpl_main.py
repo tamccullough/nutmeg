@@ -52,6 +52,15 @@ def index_reset(data):
     data = data.reset_index(drop=True)
     return data
 
+def get_schedule(data):
+    db = data.copy()
+    #db = db[db['s'] <= 1]
+    #db = db.tail(4)
+    db = db[['game','home','away']]
+    db = index_reset(db)
+    #db = db.sort_values(by=['game'])
+    return db
+
 def get_team_results(results_db,query): # get all the games played by the specific team
     home_games = results_db[results_db['home'] == query] # all home games
     away_games = results_db[results_db['away'] == query] # all away games
@@ -80,6 +89,23 @@ def get_team_brief(results_db,query,df):
         team_brief.loc[i,'summary'] = outcome + ' ' + score +  ' ' + opponent
     team_brief['team'] = query # create team column holding the team's name in all rows
     return team_brief # return the dataframe
+
+def power_rankings(standings,standings_old,prev_rankings,results,team_ref):
+    # apply the sum aggregate to the gd values of the dataframe
+    agg_func_math = {'gd':'sum'}
+    # compare current standings to previous standings to see team results change
+    compare = pd.concat([standings,standings_old]).groupby(['team']).agg(agg_func_math).round(2)
+    compare['gd'] = compare['gd'].apply(lambda x: round((x + abs(min(compare['gd'])))/(abs(min(compare['gd']))+abs(max(compare['gd']))),2))
+    values = []
+    for c,r in compare.sort_values(by='gd',ascending=False).iterrows():
+        values.append([c,r['gd'].item()])
+    power = pd.DataFrame(values,columns=['team','rank'])
+    power['rank'] = power.index+1
+    def f(x):
+        return prev_rankings[prev_rankings['team'] == x['team']]['rank'].values[0] - x['rank']
+    power['move'] = power.apply(f,axis=1)
+    power['form'] = power['team'].apply(lambda x: '-'.join([str(i) for i in get_five_game_form(results,x,0).T.values[0]]))
+    return power
 
 def get_results_brief(results,year):
 
@@ -307,12 +333,12 @@ def get_weeks_results(year,results,standings,stats,team_ref,team_names):
         other_team = pd.DataFrame(other_team.loc[0][['home','hs','away','as']])
         other_team = other_team.T
 
-        goals = stats['goals']
-        assists = stats['assists']
-        yellows = stats['yellows']
-        reds = stats['reds']
+        goals = standings['Goal'].sum()
+        assists = stats['assists'].sum()
+        yellows = stats['yellow'].sum()
+        reds = stats['red'].sum()
 
-        return played_games, goals, big_win, top_result, low_result, other_team, assists, yellows, reds
+        return played_games, goals, big_win, top_result, low_result, other_team, int(assists), int(yellows), int(reds)
     else:
         print('SEASON ONGOING')
         print('=====================================')
@@ -597,7 +623,7 @@ def get_NB_data(data,query):
 
 def get_team_comparison(data,q1,q2):
     # getting games with q1 in both home or away
-    db = data[data['team'] == q1]
+    db = data[(data['home'] == q1)|(data['away'] == q1)]#data[data['team'] == q1]
     db = db.reset_index(drop=True)
     # filering down more to get only the games against q2
     db = db.sort_values(by=['m','d'])
@@ -710,183 +736,12 @@ def best_roster(team_name, rated_keepers, rated_defenders, rated_midfielders, ra
     roster = pd.concat([rated_keepers,rated_defenders,rated_midfielders,rated_forwards])
     roster = roster.reset_index(drop=True)
     roster.insert(2,'position','-')
-    for i in range(roster.shape[0]):
-        roster.at[i,'position'] = player_info[player_info['name'] == roster.at[i,'name']]['position'].values[0]
+    for c,r in roster.iterrows():
+        try:
+            roster.at[c,'position'] = player_info[player_info['name'] == r['name']]['position'].values[0]
+        except:
+            roster.at[c,'position'] = 'm'
     return roster
-
-'''def best_roster(query,results,results_old,stats,stats_old,stats_seed,player_info,rated_forwards):
-    # some players or clubs may have yet to play a match
-    # insert missing values for this situation
-    def sort_players(data,players,indx,position):
-        diff = indx - data[data['position'] == position].head(indx).shape[0]
-        position_list = data[data['position'] == position].head(indx)
-        name_list = position_list['name'].tolist()
-        other_players = players[players['position'] == position]
-        other_players = other_players.loc[~other_players['name'].isin(name_list)]
-
-        a = []
-        for name in other_players.name.unique():
-            player_stats = player_info[player_info['name'] == name][['name','position','number','overall']]
-            a.append(player_stats.values[0])
-
-        df = pd.DataFrame(a,columns=['name','position','number','overall'])
-        df = df.sort_values(by='overall',ascending=False)
-        df = df.reset_index(drop=True)
-        df = df[['name','position']]
-        df['count'] = 0
-        return df.head(diff)
-
-    # find all games won by the team
-    all_results = pd.concat([results,results_old])
-    all_results = all_results[['game','d', 'm', 'hs', 'as', 'home', 'hr', 'away', 'ar']]
-    winning_games = all_results[(((all_results['home'] == query) & (all_results['hr'] == 'W')) | ((all_results['away'] == query) & (all_results['ar'] == 'W')))]['game'].values
-
-    # find players who have played in those winning games
-    all_stats = pd.concat([stats,stats_old])
-    check = all_stats.loc[all_stats['game'].isin(winning_games)]
-    check = check[check['team'] == query]
-
-    # get the current players on the team
-    players = stats_seed[stats_seed['team'] == query][['name','position','number']]
-    names = players['name'].values
-
-    # create a list of players based on winning games that they have played in
-    roster_list = [[name,check[check['name']==name]['position'].values[0],check.name.str.count(name).sum()] for name in check.name.unique()]
-
-    top_players = []
-    for i in range(len(roster_list)):
-        if roster_list[i][0] in names:
-            top_players.append(roster_list[i])
-
-    db = pd.DataFrame(top_players,columns=['name','position','count'])
-    db = db.sort_values(by=['position','count'],ascending=False)
-
-    # generate a score for positions that have had the most impact on a winning game
-    form_check = [round(db[db['position'] == p].mean().values[0],2) for p in ['d','f','m']]
-    form_check = pd.Series(form_check).fillna(0).tolist()
-
-    # assess which formation is best suited to the team's results
-    if ((form_check[0] > form_check[1]) & (form_check[0] > form_check[2])): # strong defense
-        if form_check[2] > form_check[1]: # midfield stronger than attack
-            formation = [4,5,1]
-        else:
-            formation = [4,3,3]
-    if ((form_check[1] > form_check[0]) & (form_check[1] > form_check[2])): # strong attack
-        if form_check[2] > form_check[0]: # midfield stronger than defense
-            formation = [3,4,3]
-        else:
-            formation = [3,5,2]
-    if ((form_check[2] > form_check[1]) & (form_check[2] > form_check[0])): # strong midfield
-        if form_check[1] > form_check[0]: # attack stronger than defense
-            formation = [3,5,2]
-        else:
-            formation = [4,4,2]
-    else:
-        formation = [3,4,3]
-
-    game_roster = db[db['position'] == 'g'].head(1)
-    if db[db['position'] == 'g'].head(1).empty:
-        keeper = sort_players(db,players,1,'g')
-        game_roster = pd.concat([game_roster,keeper])
-    else:
-        game_roster = db[db['position'] == 'g'].head(1)
-    #getting defenders
-    if db[db['position'] == 'd'].head(formation[0]).shape[0] < formation[0]:
-        check_position = db[db['position'] == 'd'].head(formation[0])
-        if check_position.empty:
-            game_roster = pd.concat([game_roster,db[db['position'] == 'd'].head(formation[0])])
-        else:
-            defender_diff = sort_players(db,players,formation[0],'d')
-            game_roster = pd.concat([game_roster,db[db['position'] == 'd'].head(formation[0])])
-            game_roster = pd.concat([game_roster,defender_diff])
-    else:
-        game_roster = pd.concat([game_roster,db[db['position'] == 'd'].head(formation[0])])
-
-    # getting midfielders
-    if db[db['position'] == 'm'].head(formation[1]).shape[0] < formation[1]:
-        check_position = db[db['position'] == 'm'].head(formation[1])
-        if check_position.empty:
-            game_roster = pd.concat([game_roster,db[db['position'] == 'm'].head(formation[1])])
-        else:
-            midfielder_diff = sort_players(db,players,formation[1],'m')
-            game_roster = pd.concat([game_roster,db[db['position'] == 'm'].head(formation[1])])
-            game_roster = pd.concat([game_roster,midfielder_diff])
-    else:
-        game_roster = pd.concat([game_roster,db[db['position'] == 'm'].head(formation[1])])
-
-    # getting attackers
-    if db[db['position'] == 'f'].head(formation[2]).shape[0] < formation[2]:
-        check_position = db[db['position'] == 'f'].head(formation[2])
-        if check_position.empty:
-            game_roster = pd.concat([game_roster,db[db['position'] == 'f'].head(formation[2])])
-        else:
-            attacker_diff = sort_players(db,players,formation[2],'f')
-            game_roster = pd.concat([game_roster,db[db['position'] == 'f'].head(formation[2])])
-            game_roster = pd.concat([game_roster,attacker_diff])
-    else:
-        game_roster = pd.concat([game_roster,db[db['position'] == 'f'].head(formation[2])])
-
-    game_roster = game_roster.reset_index(drop=True)
-
-    # if a 4,5,1 formation get the leading team goal scorer
-    if formation == [4,5,1]:
-        forward = rated_forwards[rated_forwards['name'].isin(db.name.unique())].sort_values(by='goals',ascending = False)
-        forward = forward[['name','position','overall']].values[0]
-        game_roster.at[10] = forward
-
-
-    # for prediction
-    subs = db[~db['name'].isin(game_roster.name.unique())]
-    subs = subs[subs['position'] != 'g']
-    if subs.empty:
-        subs = players[~players['name'].isin(game_roster.name.unique())][['name','position']]
-        subs['count'] = 0
-        subs = subs[subs['position'] != 'g']
-    else:
-        rest_of_roster = players[~players['name'].isin(game_roster.name.unique()) & ~players['name'].isin(subs.name.unique())][['name','position']]
-        rest_of_roster['count'] = 0
-        rest_of_roster= rest_of_roster[rest_of_roster['position'] != 'g']
-        subs = pd.concat([subs,rest_of_roster])
-
-    if np.isnan(subs['count'].mean()):
-        subs_count_min = 0
-    else:
-        subs_count_min = subs['count'].min()
-
-    subs = subs[subs['count'] >= subs_count_min]
-    game_roster = pd.concat([game_roster,subs.head(5)])
-
-    overall_list, number_list = [],[]
-    for name in game_roster.name.unique():
-        try:
-            overall_list.append(player_info[player_info['name'] == name]['overall'].values[0])
-        except:
-            overall_list.append(0.0)
-
-        try:
-            number_list.append(player_info[player_info['name'] == name]['number'].values[0])
-        except:
-            number_list.append(0)
-
-    game_roster.insert(1,'number',number_list)
-    game_roster['overall'] = overall_list
-    game_roster.pop('count')
-    game_roster = game_roster.reset_index(drop=True)
-    game_roster.pop('index')
-
-    # OTTAWA doesn't have a full and complete roster with a balanced group of players
-    # TEMPORARY FIX
-    if game_roster.shape[0] < 16:
-        missing_players = players[~players['name'].isin(game_roster.name.unique())][['name','position']]
-        player_info[player_info['name'] == name]['number']
-        missing_players['number'] = [player_info[player_info['name'] == name]['number'].values[0] for name in missing_players.name.unique()]
-        missing_players['overall'] = 0.0
-        missing_players = missing_players[missing_players['position'] != 'g']
-        final_diff = 16 - game_roster.shape[0]
-        game_roster = pd.concat([game_roster,missing_players.head(final_diff)])
-        game_roster = game_roster.reset_index(drop=True)
-
-    return game_roster'''
 
 def get_roster(query,stats,team_ref): # use team stats to get the player information
     roster = get_stats_all(stats,team_ref)
@@ -1089,35 +944,26 @@ def get_compare_roster(results,query,stats,team_ref,rated_forwards,rated_midfiel
     db = index_reset(db)
     return db
 
-def get_team_history(results,query):
+def get_team_history(results,query,period = 0):
     away = results[results['away'] == query].copy()
     away = away[['d','m','as','hs','away','ar','home','hr']]
     away = away.rename(columns={'as':'hs','hs':'as','away':'home','ar':'hr','home':'away','hr':'ar'})
     home = results[results['home'] == query].copy()
     home = home[['d','m','hs','as','home','hr','away','ar']]
-    home = pd.concat([home,away])
-    home = home#.tail(5)
-    home = home.sort_values(by=['m','d'],ascending=False)
-    return home
+    if period == 0:
+        return pd.concat([home,away]).sort_values(by=['m','d']).tail()
+    else:
+        return pd.concat([home,away]).sort_values(by=['m','d'])
 
-def get_five_game_form(results,query):
-    team_form = get_team_history(results,query)
+def get_five_game_form(results,query,period):
+    team_form = get_team_history(results,query,period)
     team_form = team_form.pop('hr')
+    convert = {'W':[1,0,0],'L':[0,1,0],'D':[0,0,1]}
     a = []
     for i in team_form:
-        if i == 'W':
-            j = [1,0,0]
-            a.append(j)
-        if i == 'L':
-            j = [0,1,0]
-            a.append(j)
-        if i == 'D':
-            j = [0,0,1]
-            a.append(j)
+        a.append(convert[i])
     form = pd.DataFrame(a,columns=['w','l','d'])
-    form = pd.DataFrame(form.sum())
-    form = form.astype('int')
-    return form
+    return pd.DataFrame(form.sum()).astype('int')
 
 def get_overall_roster(game_roster,player_info):
     b = []
@@ -1126,11 +972,17 @@ def get_overall_roster(game_roster,player_info):
         try:
             overall = player_info[player_info['name']==name]['overall'].values[0]
         except:
-            overall = player_info[player_info['display']==name]['overall'].values[0]
+            try:
+                overall = player_info[player_info['display']==name]['overall'].values[0]
+            except:
+                overall = 0.00
         try:
             position = player_info[player_info['name']==name]['position'].values[0]
         except:
-            position = player_info[player_info['display']==name]['position'].values[0]
+            try:
+                position = player_info[player_info['display']==name]['position'].values[0]
+            except:
+                position = 'm'
         if position == 'f':
             overall = round(overall,2) + 4
         elif position == 'm':
@@ -1251,7 +1103,7 @@ def get_final_game_prediction(model,home_array,home_score,away_score):
 
     return p_w, p_l, p_d, home_score, away_score, prediction
 
-def get_power_rankings(standings,standings_old,team_ref,results,previous_rankings):
+'''def get_power_rankings(standings,standings_old,team_ref,results,previous_rankings):
     a = []
     for team in team_ref['team']:
         old_rank = previous_rankings[previous_rankings['team'] == team]
@@ -1265,8 +1117,10 @@ def get_power_rankings(standings,standings_old,team_ref,results,previous_ranking
         crest = crest['crest'].values
         crest = crest[0]
 
-        rank1 = standings_old[standings_old['team'] == team]
-        rank2 = standings[standings['team'] == team]
+        rank1 = standings_old[standings_old['team'] == team].copy()
+        rank1['ga'] = rank1['Goal'] - rank1['gd']
+        rank2 = standings[standings['team'] == team].copy()
+        rank2['ga'] = rank2['Goal']-rank2['gd']
 
         if rank1.iloc[0]['rank'] == 1:
             bonus = 4
@@ -1277,7 +1131,7 @@ def get_power_rankings(standings,standings_old,team_ref,results,previous_ranking
         else:
             bonus =0
 
-        if standings.iloc[0]['gp'] == 0:
+        if standings.iloc[0]['matches'] == 0:
             bonus = 0
 
         if rank1.iloc[0]['rank'] == rank2.iloc[0]['rank']:
@@ -1299,22 +1153,22 @@ def get_power_rankings(standings,standings_old,team_ref,results,previous_ranking
         else:
             ga_nerf = (rank1.iloc[0]['ga'] - rank2.iloc[0]['ga']) #* - 1
 
-        if rank1.iloc[0]['w'] == rank2.iloc[0]['w']:
+        if rank1.iloc[0]['win'] == rank2.iloc[0]['win']:
             w_bonus = 0
         else:
-            w_bonus = (rank1.iloc[0]['w'] - rank2.iloc[0]['w']) * - 1
+            w_bonus = (rank1.iloc[0]['win'] - rank2.iloc[0]['win']) * - 1
 
-        if rank1.iloc[0]['l'] == rank2.iloc[0]['l']:
+        if rank1.iloc[0]['loss'] == rank2.iloc[0]['loss']:
             l_nerf = 0
         else:
-            l_nerf = rank1.iloc[0]['l'] - rank2.iloc[0]['l']
+            l_nerf = rank1.iloc[0]['loss'] - rank2.iloc[0]['loss']
 
-        if (rank1.iloc[0]['l'] == 0) & (rank1.iloc[0]['gp'] >= 2):
+        if (rank1.iloc[0]['loss'] == 0) & (rank1.iloc[0]['matches'] >= 2):
             lossless = 1
         else:
             lossless = 0
 
-        if (rank1.iloc[0]['pts'] == 0) & (rank1.iloc[0]['gp'] >= 2):
+        if (rank1.iloc[0]['points'] == 0) & (rank1.iloc[0]['matches'] >= 2):
             scoreless = -5
         else:
             scoreless = 0
@@ -1328,7 +1182,7 @@ def get_power_rankings(standings,standings_old,team_ref,results,previous_ranking
     rank = power_rankings.index + 1
     power_rankings.insert(0,'rank',rank)
     power_rankings['previous'] = (power_rankings['rank'] - power_rankings['old_rank'])*-1
-    return power_rankings
+    return power_rankings'''
 
 def get_best_eleven(team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info):
 
