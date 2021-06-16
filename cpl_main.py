@@ -10,7 +10,7 @@ import random
 import re
 
 #Import Gaussian Naive Bayes model
-from sklearn.naive_bayes import GaussianNB, BernoulliNB, MultinomialNB
+from sklearn.naive_bayes import MultinomialNB
 import statistics
 
 ccd_names = {'Atlético Ottawa' : 'Atlético Ottawa',
@@ -703,37 +703,22 @@ def get_form_results(data,dc):
     db = db.reset_index()
     return db
 
-def best_roster(team_name, rated_keepers, rated_defenders, rated_midfielders, rated_forwards, player_info):
+def best_roster(team_name, player_info):
 
-    team_names = {'Atlético Ottawa' : 'ato',
-              'Cavalry FC' : 'cav','Cavalry' : 'cav',
-              'FC Edmonton' : 'fce','Edmonton' : 'fce',
-              'Forge FC' : 'for','Forge' : 'for',
-              'HFX Wanderers FC' : 'hfx','HFX Wanderers' : 'hfx',
-              'Pacific FC' : 'pac','Pacific' : 'pac',
-              'Valour FC' : 'val','Valour' : 'val',
-              'York United FC' : 'yor','York United' : 'yor',
-              'York9 FC' : 'y9','York9' : 'y9'}
+    formation = {'d':3,'m':4,'f':3,'g':1}
 
-    name_conversion = {'ato':'Atlético Ottawa',
-              'cav':'Cavalry FC',
-              'fce':'FC Edmonton',
-              'for':'Forge FC',
-              'hfx':'HFX Wanderers FC',
-              'pac':'Pacific FC',
-              'val':'Valour FC',
-              'yor':'York9 FC'}
+    positions = {}
+    for pos in ['d','f','g','m']:
+        positions[pos] = player_info[(player_info['team'] == team_name)&(player_info['position'] == pos)][['display','number','overall']].sort_values(by=['overall'],ascending=False).head(formation[pos])
 
-    query = team_names[team_name]
+    for k in ['d','f','m']:
+        if len(positions[k]) < formation[k]:
+            change = formation[k] - len(positions[k])
+            positions['m'] = player_info[(player_info['team'] == team_name)&(player_info['position'] == 'm')][['display','number','overall']].sort_values(by=['overall'],ascending=False).head(formation['m']+change)
+        else:
+            pass
 
-    formation = [3,4,3,1]
-
-    rated_forwards = rated_forwards[rated_forwards['team'] == query][['name','number','overall']].head(formation[0])
-    rated_midfielders = rated_midfielders[rated_midfielders['team'] == query][['name','number','overall']].head(formation[1])
-    rated_defenders = rated_defenders[rated_defenders['team'] == query][['name','number','overall']].head(formation[2])
-    rated_keepers = rated_keepers[rated_keepers['team'] == query][['name','number','overall']].head(formation[3])
-
-    roster = pd.concat([rated_keepers,rated_defenders,rated_midfielders,rated_forwards])
+    roster = pd.concat([positions['g'],positions['d'],positions['m'],positions['f']])
     roster = roster.reset_index(drop=True)
     roster.insert(2,'position','-')
     for c,r in roster.iterrows():
@@ -1102,87 +1087,6 @@ def get_final_game_prediction(model,home_array,home_score,away_score):
         home_score, away_score = random_draw(home_score, away_score)
 
     return p_w, p_l, p_d, home_score, away_score, prediction
-
-'''def get_power_rankings(standings,standings_old,team_ref,results,previous_rankings):
-    a = []
-    for team in team_ref['team']:
-        old_rank = previous_rankings[previous_rankings['team'] == team]
-        old_rank = old_rank['rank'].values
-        old_rank = old_rank[0]
-        form = get_five_game_form(results,team)
-        form = str(round(form.at['w',0],1))+'-'+str(form.at['l',0])+'-'+str(form.at['d',0])
-        crest = team_ref[team_ref['team'] == team]
-        colour = crest['colour'].values
-        colour = colour[0]
-        crest = crest['crest'].values
-        crest = crest[0]
-
-        rank1 = standings_old[standings_old['team'] == team].copy()
-        rank1['ga'] = rank1['Goal'] - rank1['gd']
-        rank2 = standings[standings['team'] == team].copy()
-        rank2['ga'] = rank2['Goal']-rank2['gd']
-
-        if rank1.iloc[0]['rank'] == 1:
-            bonus = 4
-        elif rank1.iloc[0]['rank'] == 2:
-            bonus = 3
-        elif rank1.iloc[0]['rank'] == 3:
-            bonus = 2
-        else:
-            bonus =0
-
-        if standings.iloc[0]['matches'] == 0:
-            bonus = 0
-
-        if rank1.iloc[0]['rank'] == rank2.iloc[0]['rank']:
-            change = 0
-            if rank1.iloc[0]['rank'] >= 7:
-                change = -2
-            if rank1.iloc[0]['rank'] <= 2:
-                change = 2
-        else:
-            change = (rank1.iloc[0]['rank'] - rank2.iloc[0]['rank']) #* - 1
-
-        if rank1.iloc[0]['gd'] == rank2.iloc[0]['gd']:
-            gd_bonus = 0
-        else:
-            gd_bonus = (rank1.iloc[0]['gd'] - rank2.iloc[0]['gd']) * - 1
-
-        if rank1.iloc[0]['ga'] == rank2.iloc[0]['ga']:
-            ga_nerf = 0
-        else:
-            ga_nerf = (rank1.iloc[0]['ga'] - rank2.iloc[0]['ga']) #* - 1
-
-        if rank1.iloc[0]['win'] == rank2.iloc[0]['win']:
-            w_bonus = 0
-        else:
-            w_bonus = (rank1.iloc[0]['win'] - rank2.iloc[0]['win']) * - 1
-
-        if rank1.iloc[0]['loss'] == rank2.iloc[0]['loss']:
-            l_nerf = 0
-        else:
-            l_nerf = rank1.iloc[0]['loss'] - rank2.iloc[0]['loss']
-
-        if (rank1.iloc[0]['loss'] == 0) & (rank1.iloc[0]['matches'] >= 2):
-            lossless = 1
-        else:
-            lossless = 0
-
-        if (rank1.iloc[0]['points'] == 0) & (rank1.iloc[0]['matches'] >= 2):
-            scoreless = -5
-        else:
-            scoreless = 0
-        goal_bonus = gd_bonus - ga_nerf
-        change = change + bonus + goal_bonus + w_bonus - l_nerf + scoreless + lossless
-
-        a.append([team,form,old_rank,change,goal_bonus,w_bonus,crest,colour])
-    power_rankings = pd.DataFrame(a,columns = ['team','form','old_rank','change','goal_bonus','w_bonus','crest','colour'])
-    power_rankings = power_rankings.sort_values(by=['change'],ascending=False)
-    power_rankings = index_reset(power_rankings)
-    rank = power_rankings.index + 1
-    power_rankings.insert(0,'rank',rank)
-    power_rankings['previous'] = (power_rankings['rank'] - power_rankings['old_rank'])*-1
-    return power_rankings'''
 
 def get_best_eleven(team_ref,rated_forwards,rated_midfielders,rated_defenders,rated_keepers,player_info):
 
