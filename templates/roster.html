@@ -28,7 +28,7 @@
         <img src="static/images/flags/{{ crest }}" alt="{{ team_name }} Crest" style="max-height:60px">
       </div>
       <div class="boxm">
-        <h3 style="display:inline;"><b>{{ team_name }} </b></h3>
+        <h3 style="display:inline;">{{ team_name }} </h3>
         <p> {{ year }} team info / roster</p>
         <p>(click name to view)</p>
       </div>
@@ -51,7 +51,7 @@
       </div>
       <div class="boxl">
         <br>
-        <h1 style="display:inline;"><b>{{ team_name }} </b></h1>
+        <h1 style="display:inline;">{{ team_name }} </h1>
         <a style="display:inline;padding:25px;"> {{ year }} team info / roster (click name to view)</a>
       </div>
     </div>
@@ -84,20 +84,20 @@
               <th colspan="2"  style="text-align:center;"><a><img src="static/images/flags/{{ coach['country'].values[0] }}" alt="{{ coach['country'].values[0][:-4] }}" style="max-height:30px"></a></th>
             </tr>
             <tr>
-              <th><b>Club</b></th>
-              <th><b>Coach</b></th>
+              <th>Club</th>
+              <th>Coach</th>
             </tr>
             <tr>
-              <td>Wins: <b>{{ coach['w'].values[0]}}</b></td>
-              <td>Wins: <b>{{ coach['cw'].values[0]}}</b></td>
+              <td>Wins: {{ coach['w'].values[0]}}</td>
+              <td>Wins: {{ coach['cw'].values[0]}}</td>
             </tr>
             <tr>
-              <td>Draws: <b>{{ coach['d'].values[0] }}</b></td>
-              <td>Draws: <b>{{ coach['cd'].values[0] }}</b></td>
+              <td>Draws: {{ coach['d'].values[0] }}</td>
+              <td>Draws: {{ coach['cd'].values[0] }}</td>
             </tr>
             <tr>
-              <td>Losses: <b>{{ coach['l'].values[0] }}</b></td>
-              <td>Losses: <b>{{ coach['cl'].values[0] }}</b></td>
+              <td>Losses: {{ coach['l'].values[0] }}</td>
+              <td>Losses: {{ coach['cl'].values[0] }}</td>
             </tr>
           </table>
         </div>

@@ -20,7 +20,12 @@
 
 <!-- page content -->
 <br>
-<h4><b>{{ headline }} - {{ year }}</b></h4>
+<div class="mobile">
+  <p>{{ headline }}</p>
+</div>
+<div class="desktop">
+  <h3>{{ headline }}</h3>
+</div>
 <br>
   <div>
     <form method="POST" action="{{ url_for(request.endpoint) }}">
@@ -63,12 +68,19 @@
       {% if home_win > away_win %}
       {% set HRC = 'green' %}
       {% set HRT = 'Win' %}
+      {% set score_check = 0 %}
       {% elif home_win == away_win %}
       {% set HRC = 'orange' %}
       {% set HRT = 'Draw' %}
+      {% set score_check = 1%}
       {% else %}
       {% set HRC = 'red' %}
       {% set HRT = 'Loss' %}
+      {% set score_check = 0 %}
+      {% endif %}
+      {% if score_check == 1 and home_score != away_score %}
+      {% set home_score = ([home_score,away_score]|max) %}
+      {% set away_score = ([home_score,away_score]|max) %}
       {% endif %}
       <div class="{{ theme }}-{{ HRC }}" style="width:50%;height:35px;float:left;">
         <h4 style="margin-top: 5px;">{{ home_win }}% {{ HRT }}</h4>
@@ -121,7 +133,7 @@
               <th style="width:60%;text-align: left;">name</th>
               <th>num</th>
               <th>pos</th>
-              <th>overall</th>
+              <th>ovrl</th>
             </tr>
             {%for i in range(0,home_table.shape[0])%}
             <tr>
@@ -169,13 +181,13 @@
         {% set ARC = 'orange' %}
         {% set ART = 'Draw' %}
         {% else %}
-        {% set HRC = 'green' %}
-        {% set HRT = 'Win' %}
+        {% set ARC = 'green' %}
+        {% set ART = 'Win' %}
         {% endif %}
-        <div class="textcenter {{ theme }}-{{ HRC }}" style="width:50%;height:35px;float:left;">
-          <h4 style="margin-top: 5px;">{{ away_win }}% {{ HRT }}</h4>
+        <div class="textcenter {{ theme }}-{{ ARC }}" style="width:50%;height:35px;float:left;">
+          <h4 style="margin-top: 5px;">{{ away_win }}% {{ ART }}</h4>
         </div>
-        <div class="textcenter {{ theme }}-{{ HRC }}" style="width:50%;height:35px;float:right;">
+        <div class="textcenter {{ theme }}-{{ ARC }}" style="width:50%;height:35px;float:right;">
           <h4 style="margin-top: 5px;">Score: {{away_score}}</h4>
         </div>
 
@@ -223,7 +235,7 @@
               <th style="width:60%;text-align: left;">name</th>
               <th>num</th>
               <th>pos</th>
-              <th>overall</th>
+              <th>ovrl</th>
             </tr>
             {%for i in range(0,away_table.shape[0])%}
             <tr>

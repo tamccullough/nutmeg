@@ -27,190 +27,36 @@
   <!-- body -->
 <div class="parent">
   <!-- FORWARDS -->
-  <div style="text-indent: 10px;"><h3><b>Attackers</b></h3></div>
   <div class="parent">
-    {%for i in range(attackers.shape[0])%}
-    <div class="boxm {{ attackers.iloc[i]['colour'] }}">
+    {% for c,r in html_table.iterrows() %}
+    <div class="boxm {{ r['colour'] }}">
       <form method="POST" action="/player">
-        <div class="{{ attackers.iloc[i]['colour'] }}">
+        <div class="{{ r['colour'] }}">
           <table>
             <tr>
-              <td rowspan="3" style="width:40%"><a href="{{ attackers.iloc[i]['link'] }}" target="_blank" class="center">
-                <img src="static/images/players/{{ year }}/{{ attackers.iloc[i]['image'] }}" alt="photo of{{ attackers.iloc[i]['name'] }}" style="max-width:78%">
+              <td rowspan="3" style="width:40%"><a href="{{ r['link'] }}" target="_blank" class="center">
+                <img src="static/images/players/{{ year }}/{{ r['image'] }}" alt="photo of{{ r['name'] }}" style="max-width:78%">
               </a>
             </td>
           </tr>
           <tr>
-            <td><p class="center"><img src="static/images/flags/{{ attackers.iloc[i]['flag'] }}" alt="flag of {{ attackers.iloc[i]['flag'][:-4] }}" style="max-width:100%"></p></td>
-            <td class="xfont"><p>{{ attackers.iloc[i]['number'] }}</p></td>
-            <td class="xfont" style="text-indent:-10px;"><p>{{ attackers.iloc[i]['overall'] }}</p></td>
+            <td class="xfont"><p>#{{ r['number'] | int }}</p></td>
+            <td><p class="center"><img src="static/images/flags/{{ r['flag'] }}" alt="flag of {{ r['flag'][:-4] }}" style="max-width:100%"></p></td>
+            <td class="xfont" style="text-indent:-10px;"><p>{{ r['overall'] }}</p></td>
           </tr>
           <tr>
-            <td colspan="3" class="xxfont"><p>Attacker</p></td>
+            <td colspan="3"><p>{{ r['pos#'] }}</p></td>
           </tr>
           <tr>
-            <td colspan="4"><h2 href="{{ url_for('player') }}"><input class="{{ attackers.iloc[i]['colour'] }} button" type="submit" id="name" name="name" value="{{ attackers.iloc[i]['name'] }}"></h2></td>
+            <td colspan="4"><h2 href="{{ url_for('player') }}"><input class="{{ r['colour'] }} button" type="submit" id="name" name="name" value="{{ r['display'] }}"></h2></td>
           </tr>
         </table>
       </div>
       <input type="hidden" id="year" name="year" value="{{ year }}">
     </form>
   </div>
-  {%endfor%}
-</div>
-
-<!-- MIDFILED 1-->
-<span style="text-indent: 20px;"><h3 class="{{ theme }}-t"><b>Midfielders</b></h3></span>
-<div class="parent">
-  {%for i in range(0,2)%}
-  <div class="boxm {{ midfield.iloc[i]['colour'] }}">
-    <form method="POST" action="/player">
-      <div class="{{ midfield.iloc[i]['colour'] }}">
-        <table>
-          <tr>
-            <td rowspan="3" style="width:40%"><a href="{{ midfield.iloc[i]['link'] }}" target="_blank" class="center">
-              <img src="static/images/players/{{ year }}/{{ midfield.iloc[i]['image'] }}" alt="photo of {{ midfield.iloc[i]['name'] }}" style="max-width:78%">
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td><p class="center"><img src="static/images/flags/{{ midfield.iloc[i]['flag'] }}" alt="{{ midfield.iloc[i]['flag'][:-4] }}" style="max-width:100%"></p></td>
-          <td class="xfont"><p>{{ midfield.iloc[i]['number'] }}</p></td>
-          <td class="xfont" style="text-indent:-10px;"><p>{{ midfield.iloc[i]['overall'] }}</p></td>
-        </tr>
-        <tr>
-          <td colspan="3" class="xxfont"><p>Midfielder</p></td>
-        </tr>
-        <tr>
-          <td colspan="4"><h2 href="{{ url_for('player') }}"><input class="{{ midfield.iloc[i]['colour'] }} button" type="submit" id="name" name="name" value="{{ midfield.iloc[i]['name'] }}"></h2></td>
-        </tr>
-      </table>
-    </div>
-    <input type="hidden" id="year" name="year" value="{{ year }}">
-  </form>
-</div>
-{%endfor%}
-</div>
-
-<!-- MIDFILED 2 -->
-<div class="parent">
-  {%for i in range(2,5)%}
-  <div class="boxm {{ midfield.iloc[i]['colour'] }}">
-    <form method="POST" action="/player">
-      <div class="{{ midfield.iloc[i]['colour'] }}">
-        <table>
-          <tr>
-            <td rowspan="3" style="width:40%"><a href="{{ midfield.iloc[i]['link'] }}" target="_blank" class="center">
-              <img src="static/images/players/{{ year }}/{{ midfield.iloc[i]['image'] }}" alt="photo of {{ midfield.iloc[i]['name'] }}" style="max-width:78%">
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td><p class="center"><img src="static/images/flags/{{ midfield.iloc[i]['flag'] }}" alt="{{ midfield.iloc[i]['flag'][:-4] }}" style="max-width:100%"></p></td>
-          <td class="xfont"><p>{{ midfield.iloc[i]['number'] }}</p></td>
-          <td class="xfont" style="text-indent:-10px;"><p>{{ midfield.iloc[i]['overall'] }}</p></td>
-        </tr>
-        <tr>
-          <td colspan="3" class="xxfont"><p>Midfielder</p></td>
-        </tr>
-        <tr>
-          <td colspan="4"><h2 href="{{ url_for('player') }}"><input class="{{ midfield.iloc[i]['colour'] }} button" type="submit" id="name" name="name" value="{{ midfield.iloc[i]['name'] }}"></h2></td>
-        </tr>
-      </table>
-    </div>
-    <input type="hidden" id="year" name="year" value="{{ year }}">
-  </form>
-</div>
-{%endfor%}
-</div>
-
-<!-- DEFENSE -->
-<span style="text-indent: 20px;"><h3><b>Defenders</b></h3></span>
-<div class="parent">
-  {%for i in range(defenders.shape[0])%}
-  <div class="boxm {{ defenders.iloc[i]['colour'] }}">
-    <form method="POST" action="/player">
-      <div class="{{ defenders.iloc[i]['colour'] }}">
-        <table>
-          <tr>
-            <td rowspan="3" style="width:40%"><a href="{{ defenders.iloc[i]['link'] }}" target="_blank" class="center">
-              <img src="static/images/players/{{ year }}/{{ defenders.iloc[i]['image'] }}" alt="photo of {{ defenders.iloc[i]['name'] }}" style="max-width:78%">
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td><p class="center"><img src="static/images/flags/{{ defenders.iloc[i]['flag'] }}" alt="{{ defenders.iloc[i]['flag'][:-4] }}" style="max-width:100%"></p></td>
-          <td class="xfont"><p>{{ defenders.iloc[i]['number'] }}</p></td>
-          <td class="xfont" style="text-indent:-10px;"><p>{{ defenders.iloc[i]['overall'] }}</p></td>
-        </tr>
-        <tr>
-          <td colspan="3" class="xxfont"><p>Defender</p></td>
-        </tr>
-        <tr>
-          <td colspan="4"><h2 href="{{ url_for('player') }}"><input class="{{ defenders.iloc[i]['colour'] }} button" type="submit" id="name" name="name" value="{{ defenders.iloc[i]['name'] }}"></h2></td>
-        </tr>
-      </table>
-    </div>
-    <input type="hidden" id="year" name="year" value="{{ year }}">
-  </form>
-</div>
-{%endfor%}
-</div>
-<!-- GOALKEEPER -->
-<span style="text-indent: 20px;"><h3><b>Goal Keeper</b></h3></span>
-<div class="parent">
-  <div class="boxm {{ keeper.iloc[0]['colour'] }}">
-    <form method="POST" action="/player">
-      <!-- mobile -->
-      <div class="mobile {{ keeper.iloc[0]['colour'] }}">
-        <table>
-          <tr>
-            <td rowspan="3" style="width:40%"><a href="{{ keeper.iloc[0]['link'] }}" target="_blank" class="center">
-              <img src="static/images/players/{{ year }}/{{ keeper.iloc[0]['image'] }}" alt="{{ keeper.iloc[0]['name'] }}" style="max-width:78%">
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td><p class="center"><img src="static/images/flags/{{ keeper.iloc[0]['flag'] }}" alt="{{ keeper.iloc[0]['flag'] }}" style="max-width:100%"></p></td>
-          <td class="xxfont"><p>{{ keeper.iloc[0]['number'] }}</p></td>
-          <td class="xxfont" style="text-indent:-10px;"><p>{{ keeper.iloc[0]['overall'] }}</p></td>
-        </tr>
-        <tr>
-          <td colspan="3" class="xxfont"><p>Goalkeeper</p></td>
-        </tr>
-        <tr>
-          <td colspan="4"><h2 class="xxfont" href="{{ url_for('player') }}"><input class="{{ keeper.iloc[0]['colour'] }} button" type="submit" id="name" name="name" value="{{ keeper.iloc[0]['name'] }}"></h2></td>
-        </tr>
-      </table>
-    </div>
-    <!-- end of mobile -->
-      <!-- desktop -->
-      <div class="desktop {{ keeper.iloc[0]['colour'] }}">
-        <table>
-          <tr>
-            <td rowspan="4" style="width:40%"><a href="{{ keeper.iloc[0]['link'] }}" target="_blank" class="center">
-              <img src="static/images/players/{{ year }}/{{ keeper.iloc[0]['image'] }}" alt="photo of {{ keeper.iloc[0]['name'] }}" style="max-width:78%">
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td><p class="center"><img src="static/images/flags/{{ keeper.iloc[0]['flag'] }}" alt="flag of {{ keeper.iloc[0]['flag'][:-4] }}" style="max-width:100%"></p></td>
-          <td class="xxfont"><p>{{ keeper.iloc[0]['number'] }}</p></td>
-          <td class="xxfont" style="text-indent:-10px;"><p>{{ keeper.iloc[0]['overall'] }}</p></td>
-        </tr>
-        <tr>
-          <td colspan="3" class="xxfont"><p>Goalkeeper</p></td>
-        </tr>
-        <tr>
-          <td colspan="3"><h2 class="xxfont" href="{{ url_for('player') }}"><input class="{{ keeper.iloc[0]['colour'] }} button" type="submit" id="name" name="name" value="{{ keeper.iloc[0]['name'] }}"></h2></td>
-        </tr>
-      </table>
-    </div>
-    <!-- end of desktop -->
-    <input type="hidden" id="year" name="year" value="{{ year }}">
-  </form>
-</div>
-</div>
+  {% endfor %}
+  </div>
 </div>
 
 {% endblock %}

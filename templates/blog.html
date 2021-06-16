@@ -17,14 +17,23 @@
 
 {% extends 'base.html' %}
 {% block content %}
-
-<div class="page80 center">
-  <a class="twitter-timeline"
-  href="https://twitter.com/NutmegFan"
-  data-aria-polite="assertive">
-  Tweets by @NutmegFan</a>
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
-  </script>
+<div class="mobile sfont" style="width:100%;">
+  <a>{{ headline }} {{ year }}</a>
 </div>
-
+<div class="desktop">
+  <h3 style="padding: 10px;">{{ headline }} {{ year }}</h3>
+</div>
+<!-- page content -->
+{% for key in articles.keys() %}
+<div class="blog">
+  <div class="cpl-{{ key[-10:-7] }}">
+    <br>
+    <h2><a href="/article_{{ articles[key]['title'] }}">{{ articles[key]['title'] }}</a></h2>
+    <h3>- {{ articles[key]['author'] | title }} - {{ articles[key]['date'] }}</h3>
+    <br>
+  </div>
+</div>
+<div class="spacer"></div>
+{% endfor %}
+<!-- end of page content-->
 {% endblock %}

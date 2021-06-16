@@ -12,12 +12,12 @@
       </div>
       <div class="desktop box">
         {% if request.endpoint == 'index'%}
-          <h3 style="padding: 10px;"><b>{{ headline }}</b></h3>
+          <h3 style="padding: 10px;">{{ headline }}</h3>
         {% else %}
-          <h3 style="padding: 10px;"><b>{{ headline }} {{ year }}</b></h3>
+          <h3 style="padding: 10px;">{{ headline }} {{ year }}</h3>
         {% endif %}
       </div>
-      <div class="form box t-center">
+      <div class="form boxs t-center">
         <select name="year" id="year" onchange="this.form.submit();">
           <option value="{{ year }}">select year</option>
           <option value="2021">2021</option>

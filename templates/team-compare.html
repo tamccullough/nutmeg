@@ -18,21 +18,7 @@
 {% extends 'tc-base.html' %}
 {% block content %}
 
-<div class="mobile">
-  <a>{{ year }} Stats</a>
-  <ul class="position">
-    <li><a href="/teams">team information</a></li>
-    <li><a href="/team-compare">team comparison</a></li>
-  </ul>
-  <br>
-</div>
-
-<div class="desktop">
-  <ul class="position">
-    <li><a href="/teams">team information</a></li>
-    <li><a href="/team-compare">team comparison</a></li>
-  </ul>
-</div>
+{% include "teams_nav.html" %}
 
 <div>
   <div class="parent">

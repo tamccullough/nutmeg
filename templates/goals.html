@@ -47,18 +47,18 @@
 <!-- page content -->
 <!-- body -->
 <div class="mobile">
-  <span><h4><b>Top Goal Scorers</b></h4></span>
+  <span><h4>Top Goal Scorers</h4></span>
   <div class="parent">
     <!-- table header -->
-    <div>
+    <div class="{{ theme }}-dark">
       <div>
         <table>
           <tr>
-            <td><b>rank</b></td>
-            <td style="width:50%;"><b>name</b></td>
-            <td><b>#</b></td>
-            <td><b>MIN</b></td>
-            <td><b>G</b></td>
+            <td>rank</td>
+            <td style="width:50%;">name</td>
+            <td>#</td>
+            <td>MIN</td>
+            <td>G</td>
           </tr>
         </table>
       </div>
@@ -87,18 +87,18 @@
     </form>
     <!-- end of table -->
   </div>
-  <span><h4><b>Top Assist Makers</b></h4></span>
+  <span><h4>Top Assist Makers</h4></span>
   <div class="parent">
     <!-- table header -->
-    <div>
+    <div class="{{ theme }}-dark">
       <div>
         <table>
           <tr>
-            <td><b>rank</b></td>
-            <td style="width:50%;"><b>name</b></td>
-            <td><b>#</b></td>
-            <td><b>MIN</b></td>
-            <td><b>A</b></td>
+            <td>rank</td>
+            <td style="width:50%;">name</td>
+            <td>#</td>
+            <td>MIN</td>
+            <td>A</td>
           </tr>
         </table>
       </div>
@@ -130,19 +130,19 @@
 </div>
 
 <div class="desktop">
-  <span><h3  class="indent"><b>Top Goal Scorers</b></h3></span>
+  <span><h3  class="indent">Top Goal Scorers</h3></span>
   <div class="parent {{ theme }}-dark">
     <!-- table header -->
     <div class="{{ theme }}-dark">
       <div>
         <table>
           <tr>
-            <td><b>rank / team</b></td>
-            <td style="width:13vw;"><b>name</b></td>
-            <td><b>Pos</b></td>
-            <td><b>#</b></td>
-            <td><b>MIN</b></td>
-            <td><b>G</b></td>
+            <td>rank / team</td>
+            <td style="width:13vw;">name</td>
+            <td>Pos</td>
+            <td>#</td>
+            <td>MIN</td>
+            <td>G</td>
           </tr>
         </table>
       </div>
@@ -155,7 +155,7 @@
     {%for i in range(0,html_table.shape[0])%}
     <div class="{{ theme }}-light">
       <div>
-        <table>
+        <table class="sfont">
           <tr>
             <td style="text-align:left;">{{ i+1 }} / {{ html_table.iloc[i]['team'] }}</td>
             <td style="text-align:left;width:13vw;"><input href="{{ url_for('player') }}" class="{{ team_colour }} table-button" type="submit" id="name" name="name" value="{{ html_table.iloc[i]['name'] }}"></input></td>
@@ -172,19 +172,19 @@
     </form>
     <!-- end of table -->
   </div>
-  <span><h3  class="indent"><b>Top Assist Makers</b></h3></span>
+  <span><h3  class="indent">Top Assist Makers</h3></span>
   <div class="parent {{ theme }}-dark">
     <!-- table header -->
     <div class="{{ theme }}-dark">
       <div>
         <table>
           <tr>
-            <td><b>rank / team</b></td>
-            <td style="width:13vw;"><b>name</b></td>
-            <td><b>Pos</b></td>
-            <td><b>#</b></td>
-            <td><b>MIN</b></td>
-            <td><b>A</b></td>
+            <td>rank / team</td>
+            <td style="width:13vw;">name</td>
+            <td>Pos</td>
+            <td>#</td>
+            <td>MIN</td>
+            <td>A</td>
           </tr>
         </table>
       </div>
@@ -197,7 +197,7 @@
     {%for i in range(0,assists_table.shape[0])%}
     <div class="{{ theme }}-light">
       <div>
-        <table>
+        <table class="sfont">
           <tr>
             <td style="text-align:left;">{{ i+1 }} / {{ assists_table.iloc[i]['team'] }}</td>
             <td style="text-align:left;width:13vw;"><input href="{{ url_for('player') }}" class="{{ team_colour }} table-button" type="submit" id="name" name="name" value="{{ assists_table.iloc[i]['name'] }}"></input></td>

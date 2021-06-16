@@ -18,13 +18,38 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="page80 center">
-  <a class="twitter-timeline"
-  href="https://twitter.com/NutmegFan"
-  data-aria-polite="assertive">
-  Tweets by @NutmegFan</a>
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
-  </script>
+<div class="parent">
+  <div class="blog-box">
+    <a class="button" href="/blog">index</a>
+  </div>
+  <div class="blog-box t-center">
+    <a class="button" href="/{{ previous }}">previous</a>
+  </div>
+  <div class="blog-box t-right">
+    <a class="button" href="/{{ next }}">next</a>
+  </div>
 </div>
 
+<div class="mobile sfont" style="width:100%;">
+  <a>{{ headline }} {{ year }}</a>
+</div>
+<div class="desktop">
+  <h3 style="padding: 10px;">{{ headline }} {{ year }}</h3>
+</div>
+<!-- page content -->
+<div class="blog">
+  <div class="cpl-{{ team }}">
+    <br>
+    <h2><a href="/article/{{ article['title'] }}">{{ article['title'] }}</a></h2>
+    <h3>- {{ article['author'] }} - {{ article['date'] }}</h3>
+    <br>
+  </div>
+  <div>
+    <div class="spacer"></div>
+    <p>{{ article['article'] | safe }}</p>
+    <div class="spacer"></div>
+  </div>
+</div>
+<div class="spacer"></div>
+<!-- end of page content-->
 {% endblock %}

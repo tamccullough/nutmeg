@@ -1,38 +1,42 @@
 
-{% if request.endpoint[-3:] == '_90' %}
-{% set PAGE = request.endpoint[:-3] %}
+{% if check == 1%}
+{% set Amendment = 'Previous Season' %}
+{% else %}
+{% set Amendment = '' %}
+{% endif %}
+{% if request.endpoint[-2:] == '90' %}
+{% set PAGE = '90' %}
 {% set MIN = ' per 90' %}
 {% set button1 = 'action' %}
 {% set button2 = 'dark' %}
 {% else %}
-{% set PAGE = request.endpoint %}
+{% set PAGE = '' %}
 {% set MIN = '' %}
 {% set button1 = 'dark' %}
 {% set button2 = 'action' %}
 {% endif %}
 
-{% if PAGE == 'keepers' %}
-{% set TOP = 'rated ' %}
+{% if position_link == 'keepers' %}
+{% set TOP = 'Rated ' %}
 {% else %}
-{% set TOP = 'top ' %}
+{% set TOP = 'Top ' %}
 {% endif %}
-
 
 <div class="parent">
   <div class="boxs center {{ theme }}-{{ button1 }}">
-    <a class="{{ theme }}-{{ button1 }} button" href="/{{ PAGE }}">{{ PAGE }} Total</a>
+    <a class="{{ theme }}-{{ button1 }} button" href="/{{ position_link }}">{{ position_link }} Total</a>
   </div>
   <div class="boxs center {{ theme }}-{{ button2 }}">
-    <a class="{{ theme }}-{{ button2 }} button" href="/{{ PAGE }}P90" >{{ PAGE }} Per 90</a>
+    <a class="{{ theme }}-{{ button2 }} button" href="/{{ position_link }}P90" >{{ position_link }} Per 90</a>
   </div>
 </div>
 
 
 <div class="mobile">
-  <form method="post" action="{{ url_for(request.endpoint) }}">
+  <form method="post" action="/{{ position_link }}{{ PAGE }}">
     <div class="parent">
     <div class="boxs sfont" style="width:100%;">
-      <a><b>{{ TOP }}{{ PAGE[0:1].upper() }}{{ PAGE[1:] }}{{ MIN }} {{ year }}</b></a>
+      <a>{{ Amendment }} {{ TOP }}{{ position_link[0:1].upper() }}{{ position_link[1:] }}{{ MIN }} {{ year }}</a>
     </div>
     <div class="form boxs">
       <select name="year" id="year" onchange="this.form.submit();">
@@ -47,10 +51,10 @@
 </div>
 
 <div class="desktop">
-  <form method="post" action="{{ url_for(request.endpoint) }}">
+  <form method="post" action="/{{ position_link }}{{ PAGE }}">
     <div class="parent">
       <div class="box">
-        <h3 style="padding: 10px;"><b>{{ TOP }}{{ PAGE[0:1].upper() }}{{ PAGE[1:] }}{{ MIN }} {{ year }}</b></h3>
+        <h3 style="padding: 10px;">{{ Amendment}} {{ TOP }}{{ position_link[0:1].upper() }}{{ position_link[1:] }}{{ MIN }} {{ year }}</h3>
       </div>
       <div class="form box">
         <select name="year" id="year" onchange="this.form.submit();">

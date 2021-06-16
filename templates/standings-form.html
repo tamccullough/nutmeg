@@ -24,7 +24,7 @@
   <form method="post" action="{{ url_for(request.endpoint) }}">
     <div class="parent">
     <div class="boxs sfont" style="width:100%;">
-      <a><b>{{ headline }} {{ year }}</b></a>
+      <a>{{ headline }} {{ year }}</a>
     </div>
     <div class="form boxs">
       <select style="{{ style }}" name="year" id="year" onchange="this.form.submit();">
@@ -42,7 +42,7 @@
   <form method="post" action="{{ url_for(request.endpoint) }}">
     <div class="parent">
       <div class="box">
-        <h3 style="padding: 10px;"><b>{{ headline }} {{ year }}</b></h3>
+        <h3 style="padding: 10px;">{{ headline }} {{ year }}</h3>
       </div>
       <div class="form box">
         <select style="{{ style }}" name="year" id="year" onchange="this.form.submit();">

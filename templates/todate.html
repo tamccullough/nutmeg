@@ -24,7 +24,7 @@
 
 <!--div class="parent">
   <div>
-      <h3 style="padding: 10px;"><b>{{ headline }} {{ year }}</b></h3>
+      <h3 style="padding: 10px;">{{ headline }} {{ year }}</h3>
   </div>
 </div-->
 <!-- page content -->
@@ -32,20 +32,20 @@
 <div class="mobile">
   <!-- championship -->
   {% if yeartodate_table is defined %}
-  <div><a class="indent"><b>Complete Table</b></a></div>
+  <div><a class="indent">Complete Table</a></div>
     <div>
-      <div>
-            <table>
+      <div class="{{ theme }}-dark">
+            <table class="{{ theme }}-light">
               <tr style="font-size:0.8em;">
-                <td><b>rank</b></td>
-                <td style="width: 10%;"><b>team</b></td>
-                <td><b>MP</b></td>
-                <td><b>Pts</b></td>
-                <td><b>W</b></td>
-                <td><b>D</b></td>
-                <td><b>L</b></td>
-                <td><b>GF</b></td>
-                <td><b>GA</b></td>
+                <td>rank</td>
+                <td style="width: 10%;">team</td>
+                <td>MP</td>
+                <td>Pts</td>
+                <td>W</td>
+                <td>D</td>
+                <td>L</td>
+                <td>GF</td>
+                <td>GA</td>
               </tr>
               {%for i in range(0,yeartodate_table.shape[0])%}
               <tr>
@@ -60,10 +60,10 @@
                 <td class="{{ theme }}-t-blue">{{ yeartodate_table.iloc[i]['Goal'] - yeartodate_table.iloc[i]['gd'] }}</td>
               </tr>
               {%endfor%}
+              <tr>
+                <td></td>
+              </tr>
             </table>
-
-
-
 
           </div>
       </div>
@@ -71,91 +71,64 @@
     {% else %}
     {% endif %}
 
-    <!-- playoffs -->
-    <div><a class="indent"><b>2020 Season</b></a></div>
+    <!-- season tables -->
+    {% for k in season_tables.keys() | reverse %}
+    <div><a class="indent">{{ k }} Season</a></div>
       <div>
-        <div>
-              <table>
+        <div class="{{ theme }}-dark">
+              <table class="{{ theme }}-light">
                 <tr style="font-size:0.8em;">
-                  <td><b>rank</b></td>
-                  <td style="width: 10%;"><b>team</b></td>
-                  <td><b>MP</b></td>
-                  <td><b>Pts</b></td>
-                  <td><b>W</b></td>
-                  <td><b>D</b></td>
-                  <td><b>L</b></td>
-                  <td><b>GF</b></td>
-                  <td><b>GA</b></td>
+                  <td>rank</td>
+                  <td style="width: 10%;">team</td>
+                  <td>MP</td>
+                  <td>Pts</td>
+                  <td>W</td>
+                  <td>D</td>
+                  <td>L</td>
+                  <td>GF</td>
+                  <td>GA</td>
                 </tr>
-                {%for i in range(0,playoffs_table.shape[0])%}
+                {%for i in range(0,season_tables[k].shape[0])%}
                 <tr>
                   <td>{{ i+1 }}</td>
-                  <td class="t-center"><img style="max-height:30px;margin:-8px;text-align:center;" src="static/images/flags/{{ playoffs_table.at[i,'crest'] }}" alt="{{ playoffs_table.at[i,'crest'] }} Crest"></td>
-                  <td>{{ playoffs_table.iloc[i]['matches'] }}</td>
-                  <td>{{ playoffs_table.iloc[i]['points'] }}</td>
-                  <td class="{{ theme }}-green">{{ playoffs_table.iloc[i]['win'] }}</td>
-                  <td class="{{ theme }}-orange">{{ playoffs_table.iloc[i]['draw'] }}</td>
-                  <td class="{{ theme }}-red">{{ playoffs_table.iloc[i]['loss'] }}</td>
-                  <td><b>{{ playoffs_table.iloc[i]['Goal'] }}</td>
-                  <td>{{ playoffs_table.iloc[i]['Goal'] - playoffs_table.iloc[i]['gd'] }}</td>
+                  <td class="t-center"><img style="max-height:30px;margin:-8px;text-align:center;" src="static/images/flags/{{ season_tables[k].at[i,'crest'] }}" alt="{{ season_tables[k].at[i,'crest'] }} Crest"></td>
+                  <td>{{ season_tables[k].iloc[i]['matches'] }}</td>
+                  <td>{{ season_tables[k].iloc[i]['points'] }}</td>
+                  <td class="{{ theme }}-green">{{ season_tables[k].iloc[i]['win'] }}</td>
+                  <td class="{{ theme }}-orange">{{ season_tables[k].iloc[i]['draw'] }}</td>
+                  <td class="{{ theme }}-red">{{ season_tables[k].iloc[i]['loss'] }}</td>
+                  <td>{{ season_tables[k].iloc[i]['Goal'] }}</td>
+                  <td>{{ season_tables[k].iloc[i]['Goal'] - season_tables[k].iloc[i]['gd'] }}</td>
                 </tr>
                 {%endfor%}
+                <tr>
+                  <td></td>
+                </tr>
               </table>
             </div>
         </div>
-        <!-- end of championship-->
-
-      <!-- regular season -->
-      <div><a class="indent"><b>2019 Season</b></a></div>
-      <div>
-          <table>
-            <tr style="font-size:0.8em;">
-              <td><b>rank</b></td>
-              <td style="width: 10%;"><b>team</b></td>
-              <td><b>MP</b></td>
-              <td><b>Pts</b></td>
-              <td><b>W</b></td>
-              <td><b>D</b></td>
-              <td><b>L</b></td>
-              <td><b>GF</b></td>
-              <td><b>GA</b></td>
-            </tr>
-            {%for i in range(0,standings_table.shape[0])%}
-            <tr>
-              <td>{{ i+1 }}</td>
-              <td class="t-center"><img style="max-height:30px;margin:-8px;text-align:center;" src="static/images/flags/{{ standings_table.at[i,'crest'] }}" alt="{{ standings_table.at[i,'crest'] }} Crest"></td>
-              <td>{{ standings_table.iloc[i]['matches'] }}</td>
-              <td>{{ standings_table.iloc[i]['points'] }}</td>
-              <td class="{{ theme }}-green">{{ standings_table.iloc[i]['win'] }}</td>
-              <td class="{{ theme }}-orange">{{ standings_table.iloc[i]['draw'] }}</td>
-              <td class="{{ theme }}-red">{{ standings_table.iloc[i]['loss'] }}</td>
-              <td><b>{{ standings_table.iloc[i]['Goal'] }}</td>
-              <td>{{ standings_table.iloc[i]['Goal'] - standings_table.iloc[i]['gd'] }}</td>
-            </tr>
-            {%endfor%}
-          </table>
-      </div>
-        <!-- end of regular season-->
+      {% endfor %}
+      <!-- end of season tables-->
   </div>
 
   <!-- championship -->
 <div class="desktop">
-  <span><h3 class="{{ theme }}-dark indent"><b>Complete Table</b></h3></span>
+  <span><h3 class="{{ theme }}-dark indent">Complete Table</h3></span>
   <div class="{{ theme }}-dark">
       <div class="{{ theme }}-dark">
         <table>
           <tr>
-            <td><b>rank</b></td>
-            <td style="width: 20%;"><b>team</b></td>
-            <td><b>MP</b></td>
-            <td><b>Pts</b></td>
-            <td><b>PPG</b></td>
-            <td><b>W</b></td>
-            <td><b>D</b></td>
-            <td><b>L</b></td>
-            <td><b>GD</b></td>
-            <td><b>GF</b></td>
-            <td><b>GA</b></td>
+            <td>rank</td>
+            <td style="width: 20%;">team</td>
+            <td>MP</td>
+            <td>Pts</td>
+            <td>PPG</td>
+            <td>W</td>
+            <td>D</td>
+            <td>L</td>
+            <td>GD</td>
+            <td>GF</td>
+            <td>GA</td>
           </tr>
         </table>
       </div>
@@ -181,93 +154,51 @@
       </div>
     </div>
     <!-- end of championship-->
-
-    <span><h3 class="{{ theme }}-dark indent"><b>2020 Season</b></h3></span>
+    {% for k in season_tables.keys() | reverse %}
+    <span><h3 class="{{ theme }}-dark indent">{{ k }} Season</h3></span>
 
     <!-- playoffs -->
     <div class="{{ theme }}-dark">
       <div class="{{ theme }}-dark">
         <table>
           <tr>
-            <td><b>rank</b></td>
-            <td style="width: 20%;"><b>team</b></td>
-            <td><b>MP</b></td>
-            <td><b>Pts</b></td>
-            <td><b>PPG</b></td>
-            <td><b>W</b></td>
-            <td><b>D</b></td>
-            <td><b>L</b></td>
-            <td><b>GD</b></td>
-            <td><b>GF</b></td>
-            <td><b>GA</b></td>
+            <td>rank</td>
+            <td style="width: 20%;">team</td>
+            <td>MP</td>
+            <td>Pts</td>
+            <td>PPG</td>
+            <td>W</td>
+            <td>D</td>
+            <td>L</td>
+            <td>GD</td>
+            <td>GF</td>
+            <td>GA</td>
           </tr>
         </table>
       </div>
       <div class="{{ theme }}-light">
         <table>
-          {%for i in range(0,playoffs_table.shape[0])%}
+          {%for i in range(0,season_tables[k].shape[0])%}
           <tr class="{{ theme }}-light">
             <td>{{ i+1 }}</td>
-            <td class="t-left" style="width: 20%;">{{ playoffs_table.iloc[i]['team'] }}</td>
-            <td>{{ playoffs_table.iloc[i]['matches'] }}</td>
-            <td>{{ playoffs_table.iloc[i]['points'] }}</td>
-            <td>{{ (playoffs_table.iloc[i]['points']/playoffs_table.iloc[i]['matches'])|round(2) }}</td>
-            <td class="{{ theme }}-green">{{ playoffs_table.iloc[i]['win'] }}</td>
-            <td class="{{ theme }}-orange">{{ playoffs_table.iloc[i]['draw'] }}</td>
-            <td class="{{ theme }}-red">{{ playoffs_table.iloc[i]['loss'] }}</td>
-            <td class="{{ theme }}">{{ playoffs_table.iloc[i]['gd'] }}</td>
-            <td class="{{ theme }}-t-blue">{{ playoffs_table.iloc[i]['Goal'] }}</td>
-            <td class="{{ theme }}-t-blue">{{ playoffs_table.iloc[i]['Goal'] - playoffs_table.iloc[i]['gd'] }}</td>
+            <td class="t-left" style="width: 20%;">{{ season_tables[k].iloc[i]['team'] }}</td>
+            <td>{{ season_tables[k].iloc[i]['matches'] }}</td>
+            <td>{{ season_tables[k].iloc[i]['points'] }}</td>
+            <td>{{ (season_tables[k].iloc[i]['points']/season_tables[k].iloc[i]['matches'])|round(2) }}</td>
+            <td class="{{ theme }}-green">{{ season_tables[k].iloc[i]['win'] }}</td>
+            <td class="{{ theme }}-orange">{{ season_tables[k].iloc[i]['draw'] }}</td>
+            <td class="{{ theme }}-red">{{ season_tables[k].iloc[i]['loss'] }}</td>
+            <td class="{{ theme }}">{{ season_tables[k].iloc[i]['gd'] }}</td>
+            <td class="{{ theme }}-t-blue">{{ season_tables[k].iloc[i]['Goal'] }}</td>
+            <td class="{{ theme }}-t-blue">{{ season_tables[k].iloc[i]['Goal'] - season_tables[k].iloc[i]['gd'] }}</td>
           </tr>
           {%endfor%}
         </table>
         <br>
       </div>
     </div>
-      <!-- end of playoffs -->
+    {% endfor %}
 
-    <span><h3 class="{{ theme }}-dark indent"><b>2019 Season</b></h3></span>
-    <!-- regular season -->
-    <div class="{{ theme }}-dark">
-      <div class="{{ theme }}-dark">
-        <table>
-          <tr>
-            <td><b>rank</b></td>
-            <td style="width: 20%;"><b>team</b></td>
-            <td><b>MP</b></td>
-            <td><b>Pts</b></td>
-            <td><b>PPG</b></td>
-            <td><b>W</b></td>
-            <td><b>D</b></td>
-            <td><b>L</b></td>
-            <td><b>GD</b></td>
-            <td><b>GF</b></td>
-            <td><b>GA</b></td>
-          </tr>
-        </table>
-      </div>
-      <div class="{{ theme }}-light">
-        <table>
-          {%for i in range(0,standings_table.shape[0])%}
-          <tr class="{{ theme }}-light">
-            <td>{{ i+1 }}</td>
-            <td class="t-left" style="width: 20%;">{{ standings_table.iloc[i]['team'] }}</td>
-            <td>{{ standings_table.iloc[i]['matches'] }}</td>
-            <td>{{ standings_table.iloc[i]['points'] }}</td>
-            <td>{{ (standings_table.iloc[i]['points']/standings_table.iloc[i]['matches'])|round(2) }}</td>
-            <td class="{{ theme }}-green">{{ standings_table.iloc[i]['win'] }}</td>
-            <td class="{{ theme }}-orange">{{ standings_table.iloc[i]['draw'] }}</td>
-            <td class="{{ theme }}-red">{{ standings_table.iloc[i]['loss'] }}</td>
-            <td class="{{ theme }}">{{ standings_table.iloc[i]['gd'] }}</td>
-            <td class="{{ theme }}-t-blue">{{ standings_table.iloc[i]['Goal'] }}</td>
-            <td class="{{ theme }}-t-blue">{{ standings_table.iloc[i]['Goal'] - standings_table.iloc[i]['gd'] }}</td>
-          </tr>
-          {%endfor%}
-        </table>
-        <br>
-      </div>
-    </div>
-      <!-- end of regular season-->
 </div>
 
 

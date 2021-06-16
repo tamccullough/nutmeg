@@ -20,22 +20,30 @@
 
 {% if year != '2021' %}
 {% set NOTE ='**NOTE: Overall, xG & xA are final season results.' %}
+{% set age_diff = 2021 - (year | int) %}
 {% else %}
 {% set NOTE = '**NOTE: Overall, xG & xA are rolling results. Altered after each match played.' %}
+{% set age_diff = 0 %}
 {% endif %}
-
+{% if position == 'keeper' %}
+{% set CHECK = 0 %}
+{% elif position == 'defender' %}
+{% set CHECK = 1 %}
+{% else %}
+{% set CHECK = 2 %}
+{% endif %}
+{% set mult90 = stats90.iloc[0]['Min'] / 90 %}
 <!-- header -->
-<h1>{{ error }}</h1>
   <form method="post" action="/player">
   <div class="parent">
     <div class="box">
-      <h3><b>{{ name }} - {{ year }}</b></h3>
+      <h3>{{ name }} - {{ year }}</h3>
     </div>
     <div class="box textright">
       {% if (active_years | length) == 1 %}
-      <p>Player was only active during the {{ active_years[0] }} season</p>
+      <p>Active in {{ active_years[0] }} only</p>
       {% else %}
-      <p>Select season from years active;
+      <p>Active during;
         {% for x in range( active_years | length -1 ) %}
         <a><input href="{{ url_for('player') }}" class="table-button" type="submit" id="year" name="year" value="{{ active_years[x] }}"></input></a>,
       {% endfor %}
@@ -71,12 +79,17 @@
           <td>{{ nationality }}</td>
         </tr>
         <tr>
-          <td>Current Age:</td>
-          <td>{{ age }}</td>
-          <td>O: {{ stats90.iloc[0]['O'] }}{{asterisk}}</td>
+          <td>Age:</td>
+          {% if age_diff != 0 %}
+          <th>Age|{{ year }}:</th>
+          {% else %}
+          <td>Age:</td>
+          {% endif %}
+          <td>{{ (age | int ) - age_diff }}</td>
+          <td>O: {{ stats.iloc[0]['O'] }}{{asterisk}}</td>
         </tr>
         <tr>
-          <td>M: {{ stats90.iloc[0]['Min'] }}</td>
+          <td>M: {{ stats.iloc[0]['Min'] }}</td>
           <td>xG: {{ stats.iloc[0]['xG'] }}{{asterisk}}</td>
           <td>xA: {{ stats.iloc[0]['xA'] }}{{asterisk}}</td>
         </tr>
@@ -95,16 +108,28 @@
           <td colspan="2">{{ nationality }}</td>
         </tr>
         <tr>
-          <th style="text-indent:15px;">Current Age:</th>
-          <th>{{ age }}</th>
+          {% if age_diff != 0 %}
+          <th style="text-indent:15px;">Age|{{ year }}:</th>
+          {% else %}
+          <th style="text-indent:15px;">Age:</th>
+          {% endif %}
+          <th>{{ (age | int ) - age_diff }}</th>
         </tr>
         <tr>
           <td>O: {{ stats.iloc[0]['O'] }}{{asterisk}}</td>
-          <td>MIN: {{ stats.iloc[0]['Min']|int }}</td>
-          <td>xG: {{ stats90.iloc[0]['xG'] }}{{asterisk}}</td>
+          {% if CHECK == 0 %}
+          <td>xCS: {{ ((stats.iloc[0]['Min']/90) * stats90.iloc[0]['CS']) | round(2) }}{{asterisk}}</td>
+          <td>xSV: {{ ((stats.iloc[0]['Min']/90) * stats90.iloc[0]['SV']) | round(2) }}{{asterisk}}</td>
+          {% elif CHECK == 1 %}
+          <td>xInt: {{ ((stats.iloc[0]['Min']/90) * stats90.iloc[0]['int']) | round(2) }}{{asterisk}}</td>
+          <td>xsTkl: {{ ((stats.iloc[0]['Min']/90) * stats90.iloc[0]['sTkl']) | round(2) }}{{asterisk}}</td>
+          {% else %}
+          <td>xG: {{ ((stats.iloc[0]['Min']/90) * stats90.iloc[0]['xG']) | round(2) }}{{asterisk}}</td>
+          <td>xA: {{ ((stats.iloc[0]['Min']/90) * stats90.iloc[0]['xA']) | round(2) }}{{asterisk}}</td>
+          {% endif %}
         </tr>
         <tr>
-          <td>xA: {{ stats90.iloc[0]['xA'] }}{{asterisk}}</td>
+          <td>MIN: {{ stats.iloc[0]['Min']|int }}</td>
           <td>Y: {{ discipline.iloc[0]['Yellow'] }}</td>
           <td>R: {{ discipline.iloc[0]['Red'] }}</td>
         </tr>
@@ -118,7 +143,7 @@
 
   </div>
 
-  <div class="box chartcontainer">
+  <div class="box">
     <canvas id="playerRadar"></canvas>
   </div>
 
@@ -141,7 +166,7 @@
     {% endfor %}
   </div>
   <br>
-  <div class="{{ team_colour }} chartcontainer">
+  <div class="{{ team_colour }}">
     <canvas id="playerLine"></canvas>
   </div>
 </div>
@@ -169,8 +194,8 @@
           <table class="sfont">
             <tr>
               {% for column in stats.columns[ 3 : col_nums[0] ] %}
-                {% if (column == 'overall' or column == 'ExpG' or column == 'ExpA')%}
-                <td>{{ stats.iloc[0][column] }}</td>
+                {% if column in ['O','xG','xA'] %}
+                <td>{{ stats90.iloc[0][column] }}</td>
                 {% else %}
                 <td>{{ stats.iloc[0][column]|int }}</td>
                 {% endif %}
@@ -193,8 +218,8 @@
           <table class="sfont">
             <tr>
               {% for column in stats.columns[ col_nums[0] :-2] %}
-                {% if (column == 'overall' or column == 'xg' or column == 'xa')%}
-                <td>{{ stats.iloc[0][column] }}</td>
+                {% if column in ['O','xG','xA'] %}
+                <td>{{ stats90.iloc[0][column] }}</td>
                 {% else %}
                 <td>{{ stats.iloc[0][column]|int }}</td>
                 {% endif %}
@@ -277,8 +302,12 @@
           <table>
             <tr>
               {% for column in stats.columns[ 3 :-2 ] %}
-                {% if (column == 'overall' or column == 'xg' or column == 'xa')%}
-                <td>{{ stats.iloc[0][column] }}</td>
+                {% if column in ['O','xG','xA'] %}
+                  {% if column in ['xG','xA'] %}
+                  <td>{{ ((stats.iloc[0]['Min']/90) * stats90.iloc[0][column]) | round(2) }}</td>
+                  {% else %}
+                  <td>{{ stats90.iloc[0][column] }}</td>
+                  {% endif %}
                 {% else %}
                 <td>{{ stats.iloc[0][column]|int }}</td>
                 {% endif %}
@@ -324,10 +353,10 @@
     <div class="spacer"></div>
     <div class="parent">
       <div class="box" style="text-align:left; padding: 0px 15px;">
-        <a class="text-white button" href="{{ player_info.iloc[0]['link'] }}" target="_blank"><b>Wiki Link</b></a>
+        <a class="text-white button" href="{{ player_info.iloc[0]['link'] }}" target="_blank">Wiki Link</a>
       </div>
       <div class="box" style="text-align:right; padding: 0px 15px;">
-        <a class="text-white button" href="https://www.youtube.com/results?search_query={{ name.split(' ')[0] }}+{{ name.split(' ')[1:]|map('title')|join(' ') }}+highlights" target="_blank"><b>Youtube Highlights</b></a>
+        <a class="text-white button" href="https://www.youtube.com/results?search_query={{ name.split(' ')[0] }}+{{ name.split(' ')[1:]|map('title')|join(' ') }}+highlights" target="_blank">Youtube Highlights</a>
       </div>
     </div>
     <div class="mobile">

@@ -36,7 +36,7 @@
   <div class="mobile">
     <form method="POST" action="/roster">
     <div class="parent">
-      {% if timeframe == 'Previous Season' %}
+      {% if timeframe == 0 %}
       <div class="boxs {{ theme }}-darkblue">
       {% else %}
       <div class="boxs {{ first_colour }}">
@@ -100,8 +100,8 @@
     <input type="hidden" id="year" name="year" value="{{ year }}">
     </form>
     <div class="parent">
-      <div class="box">
-        <a>Top Results of the {{ timeframe }}</a>
+      <div class="box {{ theme }}-light">
+        <a>{{ results_headline }}</a>
         <br>
         <a>Biggest Win</a>
         <div class="child">
@@ -160,46 +160,48 @@
         <div class="spacer"></div>
       </div>
       <br>
-      <div class="box">
+      <div class="box {{ theme }}-light">
         <form method="POST" action="/player">
-        <span><a>Players of the {{ timeframe }}</a></span>
+        <span><a>{{ players_headline }}</a></span>
         <div>
           <table class="table-collapse sfont">
             <tr>
               <td class="t-left">Top Scorer</td>
-              <td class="t-left" style="width: 45%;"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_scorer['name']}}"></input></td>
-              <td>{{top_scorer['overall']}}</td>
+              <td class="t-left" style="width: 45%;"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_scorer.at[0,'name']}}"></input></td>
+              <td>{{top_scorer.at[0,'overall']}}</td>
             </tr>
             <tr>
               <td class="t-left">Most Assists</td>
-              <td class="t-left"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_assist['name']}}"></input></td>
-              <td>{{top_assist['overall']}}</td>
+              <td class="t-left"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_assist.at[0,'name']}}"></input></td>
+              <td>{{top_assist.at[0,'overall']}}</td>
             </tr>
             <tr>
               <td class="t-left">Top Forward</td>
-              <td class="t-left"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_forward['name']}}"></input></td>
-              <td>{{top_forward['overall']}}</td>
+              <td class="t-left"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_forward.at[0,'name']}}"></input></td>
+              <td>{{top_forward.at[0,'overall']}}</td>
             </tr>
             <tr>
               <td class="t-left">Top Midfielder</td>
-              <td class="t-left"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_midfielder['name']}}"></input></td>
-              <td>{{top_midfielder['overall']}}</td>
+              <td class="t-left"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_midfielder.at[0,'name']}}"></input></td>
+              <td>{{top_midfielder.at[0,'overall']}}</td>
             </tr>
             <tr>
               <td class="t-left">Top Defender</td>
-              <td class="t-left"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_defender['name']}}"></input></td>
-              <td>{{top_defender['overall']}}</td>
+              <td class="t-left"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_defender.at[0,'name']}}"></input></td>
+              <td>{{top_defender.at[0,'overall']}}</td>
             </tr>
             <tr>
               <td class="t-left">Top Keeper</td>
-              <td class="t-left"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_keeper['name']}}"></input></td>
-              <td>{{top_keeper['overall']}}</td>
+              <td class="t-left"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_keeper.at[0,'name']}}"></input></td>
+              <td>{{top_keeper.at[0,'overall']}}</td>
             </tr>
             <tr>
               <td class="t-left">Top Offender</td>
-              <td class="t-left"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_offender['name']}}"></input></td>
-              <td>{{top_offender['overall']}}</td>
+              <td class="t-left"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_offender.at[0,'name']}}"></input></td>
+              <td>{{top_offender.at[0,'overall']}}</td>
             </tr>
+            {% if (year | int) in [2019,2020] %}
+            {% else %}
             {% for sus_name in suspended %}
             {% if sus_name == 'none' %}
             <tr>
@@ -213,6 +215,7 @@
             </tr>
             {% endif %}
             {% endfor %}
+            {% endif %}
           </table>
         </div>
         <input type="hidden" id="year" name="year" value="{{ year }}">
@@ -226,7 +229,7 @@
   <div class="desktop">
     <form method="POST" action="/roster">
     <div class="parent">
-      {% if timeframe == 'Previous Season' %}
+      {% if timeframe == 0 %}
       <div class="box {{ theme }}-darkblue">
       {% else %}
       <div class="box {{ first_colour }}">
@@ -300,10 +303,10 @@
     </form>
   <div class="parent">
     <div class="box">
-      <h3>Top Results of the {{ timeframe }}</h3>
+      <h3>{{ results_headline }}</h3>
     </div>
     <div class="box">
-      <h3>Players of the {{ timeframe }}</h3>
+      <h3>{{ players_headline }}</h3>
     </div>
   </div>
   <div class="parent">
@@ -367,6 +370,8 @@
         <div class="spacer"></div>
         <form method="POST" action="/player">
         <table  class="table-collapse">
+          {% if (year | int) in [2019,2020] %}
+          {% else %}
           {% for sus_name in suspended %}
           {% if sus_name == 'none' %}
           <tr>
@@ -380,6 +385,7 @@
           </tr>
           {% endif %}
           {% endfor %}
+          {% endif %}
         </table>
         </form>
       </div>
@@ -391,38 +397,38 @@
           <table class="table-collapse">
             <tr>
               <td class="t-left">Top Scorer</td>
-              <td class="t-left" style="width:50%;"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_scorer['name']}}"></input></td>
-              <td>{{top_scorer['overall']}}</td>
+              <td class="t-left" style="width:50%;"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_scorer.at[0,'name']}}"></input></td>
+              <td>{{top_scorer.at[0,'overall']}}</td>
             </tr>
             <tr>
               <td class="t-left">Most Assists</td>
-              <td class="t-left" style="width:50%;"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_assist['name']}}"></input></td>
-              <td>{{top_assist['overall']}}</td>
+              <td class="t-left" style="width:50%;"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_assist.at[0,'name']}}"></input></td>
+              <td>{{top_assist.at[0,'overall']}}</td>
             </tr>
             <tr>
               <td class="t-left">Top Forward</td>
-              <td class="t-left" style="width:50%;"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_forward['name']}}"></input></td>
-              <td>{{top_forward['overall']}}</td>
+              <td class="t-left" style="width:50%;"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_forward.at[0,'name']}}"></input></td>
+              <td>{{top_forward.at[0,'overall']}}</td>
             </tr>
             <tr>
               <td class="t-left">Top Midfielder</td>
-              <td class="t-left" style="width:50%;"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_midfielder['name']}}"></input></td>
-              <td>{{top_midfielder['overall']}}</td>
+              <td class="t-left" style="width:50%;"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_midfielder.at[0,'name']}}"></input></td>
+              <td>{{top_midfielder.at[0,'overall']}}</td>
             </tr>
             <tr>
               <td class="t-left">Top Defender</td>
-              <td class="t-left" style="width:50%;"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_defender['name']}}"></input></td>
-              <td>{{top_defender['overall']}}</td>
+              <td class="t-left" style="width:50%;"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_defender.at[0,'name']}}"></input></td>
+              <td>{{top_defender.at[0,'overall']}}</td>
             </tr>
             <tr>
               <td class="t-left">Top Keeper</td>
-              <td class="t-left" style="width:50%;"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_keeper['name']}}"></input></td>
-              <td style=";width:10%;">{{top_keeper['overall']}}</td>
+              <td class="t-left" style="width:50%;"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_keeper.at[0,'name']}}"></input></td>
+              <td style=";width:10%;">{{top_keeper.at[0,'overall']}}</td>
             </tr>
             <tr>
               <td class="t-left">Top Offender</td>
-              <td class="t-left" style="width:50%;"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_offender['name']}}"></input></td>
-              <td>{{top_offender['overall']}}</td>
+              <td class="t-left" style="width:50%;"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{top_offender.at[0,'name']}}"></input></td>
+              <td>{{top_offender.at[0,'overall']}}</td>
             </tr>
           </table>
           </div>

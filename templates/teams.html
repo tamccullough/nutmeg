@@ -18,21 +18,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="mobile">
-  <a>{{ year }} Stats</a>
-  <ul class="position">
-    <li><a href="/teams">team information</a></li>
-    <li><a href="/team-compare">team comparison</a></li>
-  </ul>
-  <br>
-</div>
-
-<div class="desktop">
-  <ul class="position">
-    <li><a href="/teams">team information</a></li>
-    <li><a href="/team-compare">team comparison</a></li>
-  </ul>
-</div>
+{% include "teams_nav.html" %}
 <!-- header -->
 {% include "form.html" %}
 {% block body %}{% endblock %}
@@ -45,13 +31,13 @@
     <div>
       <table>
         <tr>
-          <td><b>crest</b></td>
-          <td style="width:38%;"><b>team</b></td>
-          <td style="width:8%;"><b>W</b></td>
-          <td style="width:8%;"><b>D</b></td>
-          <td style="width:8%;"><b>L</b></td>
-          <td><b>{{ columns[6] }}</b></td>
-          <td><b>{{ columns[7] }}</b></td>
+          <td>crest</td>
+          <td style="width:38%;">team</td>
+          <td style="width:8%;">W</td>
+          <td style="width:8%;">D</td>
+          <td style="width:8%;">L</td>
+          <td>{{ columns[6] }}</td>
+          <td>{{ columns[7] }}</td>
         </tr>
       </table>
     </div>
@@ -86,14 +72,14 @@
     <div class="{{ theme }}-dark">
       <table>
         <tr>
-          <td style="width:10%;"><b>crest</b></td>
-          <td style="width:25%;"><b> team</b></td>
-          <td style="width:20%;"><b> city/prov</b></td>
-          <td style="width:5%;"><b>w</b></td>
-          <td style="width:5%;"><b>d</b></td>
-          <td style="width:5%;"><b>l</b></td>
-          <td><b>{{ columns[6] }}</b></td>
-          <td><b>{{ columns[7] }}</b></td>
+          <td style="width:10%;">crest</td>
+          <td style="width:25%;"> team</td>
+          <td style="width:20%;"> city/prov</td>
+          <td style="width:5%;">w</td>
+          <td style="width:5%;">d</td>
+          <td style="width:5%;">l</td>
+          <td>{{ columns[6] }}</td>
+          <td>{{ columns[7] }}</td>
         </tr>
       </table>
     </div>
