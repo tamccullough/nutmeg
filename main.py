@@ -114,6 +114,12 @@ col_check = {'overall':'O',
             'TouchOpBox':'TchoB',
             'Touches':'Tch'}
 
+contributors = {
+    'tam':'Todd McCullough',
+    'bot':'Match Bot',
+    'lab':'The Cook Book',
+}
+
 geegle = ['#000000','#ffffff','#ffd700','#ff00ff','#4a86e8','#0000ff','#9900ff','#ff00ff']
 
 def new_col(data):#,chart=''
@@ -168,8 +174,8 @@ def load_main_files(year):
         week = results['w'].tail(1).values[0]
         schedule = results[results['w'] == week].copy()
 
-    stats = pd.read_csv(f'datasets/{year}/cpl-{year}-stats.csv')
-    stats_seed = pd.read_csv(f'datasets/{year}/cpl-{year}-stats-seed.csv')
+    stats = pd.read_csv(f'datasets/{year}/playerstats/{year}-stats.csv')
+    stats_seed = pd.read_csv(f'datasets/{year}/playerstats/{year}-stats-seed.csv')
 
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
@@ -196,7 +202,7 @@ def check_dataframe(data,file,column,year):
         data
     return data
 
-def load_player_files(year):
+def load_player_files(year,check=1):
 
     # get all rated player information based on position and calculate and overall score for the individual player
     rated_assists = pd.read_csv(f'datasets/{year}/playerstats/{year}-assists.csv')
@@ -206,6 +212,9 @@ def load_player_files(year):
     rated_offenders = pd.read_csv(f'datasets/{year}/playerstats/{year}-discipline.csv')
 
     stats = {'goals' : rated_goalscorers['Goal'].sum(),'assists' : rated_assists['Ast'].sum(),'yellow' : rated_offenders['Yellow'].sum(),'red' : rated_offenders['Red'].sum()}
+
+    if check == 0:
+        return stats
 
     rated_forwards = pd.read_csv(f'datasets/{year}/playerstats/{year}-forwards.csv')
     rated_forwards = check_dataframe(rated_forwards,'forwards','name',year)
@@ -256,7 +265,7 @@ def index():
     year, error = get_year()
 
     results, team_ref, player_info, results_old, results_diff, schedule, results_brief = load_main_files(year)
-    rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists, stats = load_player_files(year)
+    stats = load_player_files(year,check=0)
 
     championship = pd.read_csv(f'datasets/{year}/league/{year}-championship.csv')
     playoffs = pd.read_csv(f'datasets/{year}/league/{year}-playoffs.csv')
@@ -327,25 +336,11 @@ def index():
     top_defender = player_info[player_info['p'] == 2 ][['name','overall']].copy().reset_index(drop=True)
     top_keeper = player_info[player_info['p'] == 1 ][['name','overall']].copy().reset_index(drop=True)
     top_offender = player_info[player_info['ol'] == 1 ][['name','overall']].copy().reset_index(drop=True)
-    print(top_scorer)
-
-    '''top_scorer = rated_goalscorers.loc[0].copy()
-    top_scorer['overall'] = player_info[player_info['name'] == top_scorer['name']]['overall'].values[0]
-    top_assist = rated_assists.loc[0].copy()
-    top_assist['overall'] = player_info[player_info['name'] == top_assist['name']]['overall'].values[0]
-    top_forward = rated_forwards.loc[0]
-    top_midfielder = rated_midfielders.loc[0]
-    top_defender = rated_defenders.loc[0]
-    top_keeper = rated_keepers.loc[0]
-    top_offender = rated_offenders.loc[0].copy()
-    top_offender['overall'] = player_info[player_info['name'] == top_scorer['name']]['overall'].values[0]'''
 
     if results.iloc[0]['hr'] == 'E':
         top_team, top_mover, top_dropper, first_crest, top_crest, bot_crest, first_colour = na, na, na, 'CPL-Crest-White.png', 'oneSoccer_nav.png', 'canNat_icon.png', 'w3-indigo'
 
     suspended = ['none']
-
-
 
     return render_template('index.html', year = year, top_mover = top_mover, top_dropper = top_dropper,
     goals = goals,  assists = assists, yellows = yellows, reds = reds,
@@ -568,16 +563,17 @@ def versus():
         game_form = pd.read_csv(f'datasets/{year}/league/{year}-game_form.csv')
 
     results, team_ref, player_info, results_old, results_diff, schedule, results_brief = load_main_files(year)
-    rated_forwards, rated_midfielders, rated_defenders, rated_keepers, rated_offenders, rated_goalscorers, rated_assists, stats = load_player_files(year)
 
-
-    #stats_season = pd.read_csv(f'datasets/{year}/cpl-{year}-stats.csv')
-    #stats_seed = pd.read_csv(f'datasets/{year}/cpl-{year}-stats-seed.csv')
-
-    results_old = pd.read_csv(f'datasets/{year}/cpl-{year}-results_old.csv')
-    stats_old = pd.read_csv(f'datasets/{year}/cpl-{year}-stats_old.csv')
+    results_old, stats_old = pd.DataFrame(), pd.DataFrame()
+    for yr in range(2019,int(year)):
+        prev_results = pd.read_csv(f'datasets/{year}/league/{year}-results.csv')
+        prev_stats = pd.read_csv(f'datasets/{year}/playerstats/{year}-stats.csv')
+        results_old = pd.concat([prev_results,results_old])
+        stats_old = pd.concat([prev_stats,stats_old])
 
     team_colours_dict = {}
+
+    print(matches_predictions)
 
     team_names = {
     'Atlético Ottawa' : 'ato',
@@ -626,9 +622,6 @@ def versus():
 
     home_roster = cpl_main.best_roster(q1, player_info)
     away_roster = cpl_main.best_roster(q2, player_info)
-
-    #home_roster = cpl_main.best_roster(q1, rated_keepers, rated_defenders, rated_midfielders, rated_forwards, player_info)
-    #away_roster = cpl_main.best_roster(q2, rated_keepers, rated_defenders, rated_midfielders, rated_forwards, player_info)
 
     home_score = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['hs'].values[0]
     away_score = matches_predictions[(matches_predictions['home'] == q1) & (matches_predictions['away'] == q2)]['as'].values[0]
@@ -777,6 +770,8 @@ def roster():
 
     player_info = pd.read_csv(f'datasets/{year}/league/{year}-player-info.csv')
     roster = player_info[player_info['team'] == team][['name','image','position','number','flag','overall','link']]
+    for c,r in roster.iterrows():
+        print(r['image'])
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
     coach = team_ref[team_ref['team'] == team][['cw','cl','cd','coach','country','image','w','l','d','year']]
@@ -1780,6 +1775,7 @@ def position(pos):
     check = 0
     # import the csv file and read as a pandas dataframe
     rated_position = pd.read_csv(f'datasets/{year}/playerstats/{year}-{pos}.csv')
+    print(rated_position.columns)
     # check if the dataframe has relevant data that can be used
     # if not, load previous years data
     if rated_position.at[0,'team'] == 'tbd':
@@ -1839,10 +1835,7 @@ def blog():
     # directory to search for sub directories and files
     path ='datasets/blog/2021/'
     # dictionary to store all the files found
-    contributors = {
-    'tam':'testing author',
-    'lab':'The Cook Book',
-    }
+
     with os.scandir(path) as files:
         gathered = {}
         for file in files:
@@ -1857,7 +1850,7 @@ def blog():
 
     articles = {}
 
-    for k in sorted(gathered.keys()):
+    for k in reversed(sorted(gathered.keys())):
         articles[k] = gathered[k]
 
     return render_template('blog.html',headline = 'Contributors Blog',year = year,articles = articles)
@@ -1867,11 +1860,7 @@ def article(title):
     year, error = get_year()
     # directory to search for sub directories and files
     path ='datasets/blog/2021/'
-    # dictionary to store all the files found
-    contributors = {
-    'tam':'testing author',
-    'lab':'The Cook Book',
-    }
+
     with os.scandir(path) as files:
         articles = {}
         for file in files:

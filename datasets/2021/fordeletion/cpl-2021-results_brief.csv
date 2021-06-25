@@ -1,0 +1,71 @@
+d,m,hs,as,home,hr,away,ar,summary,team
+15,8,2.0,2.0,York9 FC,D,Atlético Ottawa,D,D A 2.0 - 2.0 Y9,Atlético Ottawa
+19,8,0.0,4.0,Atlético Ottawa,L,Valour FC,W,L H 0.0 - 4.0 VFC,Atlético Ottawa
+23,8,2.0,2.0,Atlético Ottawa,D,FC Edmonton,D,D H 2.0 - 2.0 FCE,Atlético Ottawa
+27,8,2.0,0.0,Atlético Ottawa,W,Cavalry FC,L,W H 2.0 - 0.0 CFC,Atlético Ottawa
+30,8,0.0,2.0,Atlético Ottawa,L,Forge FC,W,L H 0.0 - 2.0 FFC,Atlético Ottawa
+2,9,0.0,1.0,Pacific FC,L,Atlético Ottawa,W,W A 0.0 - 1.0 PFC,Atlético Ottawa
+6,9,2.0,0.0,HFX Wanderers FC,W,Atlético Ottawa,L,L A 2.0 - 0.0 HFX,Atlético Ottawa
+13,8,2.0,2.0,Forge FC,D,Cavalry FC,D,D A 2.0 - 2.0 FFC,Cavalry FC
+16,8,0.0,2.0,Valour FC,L,Cavalry FC,W,W A 0.0 - 2.0 VFC,Cavalry FC
+20,8,0.0,2.0,FC Edmonton,L,Cavalry FC,W,W A 0.0 - 2.0 FCE,Cavalry FC
+23,8,2.0,1.0,Cavalry FC,W,HFX Wanderers FC,L,W H 2.0 - 1.0 HFX,Cavalry FC
+27,8,2.0,0.0,Atlético Ottawa,W,Cavalry FC,L,L A 2.0 - 0.0 ATO,Cavalry FC
+30,8,1.0,2.0,Cavalry FC,L,Pacific FC,W,L H 1.0 - 2.0 PFC,Cavalry FC
+5,9,1.0,0.0,Cavalry FC,W,York9 FC,L,W H 1.0 - 0.0 Y9,Cavalry FC
+9,9,3.0,1.0,Cavalry FC,W,Pacific FC,L,W H 3.0 - 1.0 PFC,Cavalry FC
+12,9,1.0,2.0,Cavalry FC,L,HFX Wanderers FC,W,L H 1.0 - 2.0 HFX,Cavalry FC
+15,9,0.0,1.0,Cavalry FC,L,Forge FC,W,L H 0.0 - 1.0 FFC,Cavalry FC
+16,8,2.0,0.0,Forge FC,W,FC Edmonton,L,L A 2.0 - 0.0 FFC,FC Edmonton
+20,8,0.0,2.0,FC Edmonton,L,Cavalry FC,W,L H 0.0 - 2.0 CFC,FC Edmonton
+23,8,2.0,2.0,Atlético Ottawa,D,FC Edmonton,D,D A 2.0 - 2.0 ATO,FC Edmonton
+26,8,1.0,3.0,FC Edmonton,L,HFX Wanderers FC,W,L H 1.0 - 3.0 HFX,FC Edmonton
+29,8,2.0,1.0,Valour FC,W,FC Edmonton,L,L A 2.0 - 1.0 VFC,FC Edmonton
+1,9,0.0,1.0,FC Edmonton,L,York9 FC,W,L H 0.0 - 1.0 Y9,FC Edmonton
+6,9,2.0,1.0,Pacific FC,W,FC Edmonton,L,L A 2.0 - 1.0 PFC,FC Edmonton
+13,8,2.0,2.0,Forge FC,D,Cavalry FC,D,D H 2.0 - 2.0 CFC,Forge FC
+16,8,2.0,0.0,Forge FC,W,FC Edmonton,L,W H 2.0 - 0.0 FCE,Forge FC
+19,8,1.0,1.0,HFX Wanderers FC,D,Forge FC,D,D A 1.0 - 1.0 HFX,Forge FC
+22,8,2.0,1.0,Forge FC,W,Pacific FC,L,W H 2.0 - 1.0 PFC,Forge FC
+26,8,3.0,2.0,York9 FC,W,Forge FC,L,L A 3.0 - 2.0 Y9,Forge FC
+30,8,0.0,2.0,Atlético Ottawa,L,Forge FC,W,W A 0.0 - 2.0 ATO,Forge FC
+5,9,2.0,2.0,Forge FC,D,Valour FC,D,D H 2.0 - 2.0 VFC,Forge FC
+9,9,1.0,1.0,HFX Wanderers FC,D,Forge FC,D,D A 1.0 - 1.0 HFX,Forge FC
+12,9,2.0,0.0,Forge FC,W,Pacific FC,L,W H 2.0 - 0.0 PFC,Forge FC
+15,9,0.0,1.0,Cavalry FC,L,Forge FC,W,W A 0.0 - 1.0 CFC,Forge FC
+19,9,,,Forge FC,E,HFX Wanderers FC,E,E H nan - nan HFX,Forge FC
+15,8,2.0,2.0,HFX Wanderers FC,D,Pacific FC,D,D H 2.0 - 2.0 PFC,HFX Wanderers FC
+19,8,1.0,1.0,HFX Wanderers FC,D,Forge FC,D,D H 1.0 - 1.0 FFC,HFX Wanderers FC
+23,8,2.0,1.0,Cavalry FC,W,HFX Wanderers FC,L,L A 2.0 - 1.0 CFC,HFX Wanderers FC
+26,8,1.0,3.0,FC Edmonton,L,HFX Wanderers FC,W,W A 1.0 - 3.0 FCE,HFX Wanderers FC
+29,8,1.0,1.0,HFX Wanderers FC,D,York9 FC,D,D H 1.0 - 1.0 Y9,HFX Wanderers FC
+2,9,0.0,2.0,Valour FC,L,HFX Wanderers FC,W,W A 0.0 - 2.0 VFC,HFX Wanderers FC
+6,9,2.0,0.0,HFX Wanderers FC,W,Atlético Ottawa,L,W H 2.0 - 0.0 ATO,HFX Wanderers FC
+9,9,1.0,1.0,HFX Wanderers FC,D,Forge FC,D,D H 1.0 - 1.0 FFC,HFX Wanderers FC
+12,9,1.0,2.0,Cavalry FC,L,HFX Wanderers FC,W,W A 1.0 - 2.0 CFC,HFX Wanderers FC
+15,9,0.0,5.0,HFX Wanderers FC,L,Pacific FC,W,L H 0.0 - 5.0 PFC,HFX Wanderers FC
+19,9,,,Forge FC,E,HFX Wanderers FC,E,E A nan - nan FFC,HFX Wanderers FC
+15,8,2.0,2.0,HFX Wanderers FC,D,Pacific FC,D,D A 2.0 - 2.0 HFX,Pacific FC
+18,8,1.0,1.0,Pacific FC,D,York9 FC,D,D H 1.0 - 1.0 Y9,Pacific FC
+22,8,2.0,1.0,Forge FC,W,Pacific FC,L,L A 2.0 - 1.0 FFC,Pacific FC
+25,8,2.0,0.0,Pacific FC,W,Valour FC,L,W H 2.0 - 0.0 VFC,Pacific FC
+30,8,1.0,2.0,Cavalry FC,L,Pacific FC,W,W A 1.0 - 2.0 CFC,Pacific FC
+2,9,0.0,1.0,Pacific FC,L,Atlético Ottawa,W,L H 0.0 - 1.0 ATO,Pacific FC
+6,9,2.0,1.0,Pacific FC,W,FC Edmonton,L,W H 2.0 - 1.0 FCE,Pacific FC
+9,9,3.0,1.0,Cavalry FC,W,Pacific FC,L,L A 3.0 - 1.0 CFC,Pacific FC
+12,9,2.0,0.0,Forge FC,W,Pacific FC,L,L A 2.0 - 0.0 FFC,Pacific FC
+15,9,0.0,5.0,HFX Wanderers FC,L,Pacific FC,W,W A 0.0 - 5.0 HFX,Pacific FC
+16,8,0.0,2.0,Valour FC,L,Cavalry FC,W,L H 0.0 - 2.0 CFC,Valour FC
+19,8,0.0,4.0,Atlético Ottawa,L,Valour FC,W,W A 0.0 - 4.0 ATO,Valour FC
+22,8,0.0,0.0,York9 FC,D,Valour FC,D,D A 0.0 - 0.0 Y9,Valour FC
+25,8,2.0,0.0,Pacific FC,W,Valour FC,L,L A 2.0 - 0.0 PFC,Valour FC
+29,8,2.0,1.0,Valour FC,W,FC Edmonton,L,W H 2.0 - 1.0 FCE,Valour FC
+2,9,0.0,2.0,Valour FC,L,HFX Wanderers FC,W,L H 0.0 - 2.0 HFX,Valour FC
+5,9,2.0,2.0,Forge FC,D,Valour FC,D,D A 2.0 - 2.0 FFC,Valour FC
+15,8,2.0,2.0,York9 FC,D,Atlético Ottawa,D,D H 2.0 - 2.0 ATO,York9 FC
+18,8,1.0,1.0,Pacific FC,D,York9 FC,D,D A 1.0 - 1.0 PFC,York9 FC
+22,8,0.0,0.0,York9 FC,D,Valour FC,D,D H 0.0 - 0.0 VFC,York9 FC
+26,8,3.0,2.0,York9 FC,W,Forge FC,L,W H 3.0 - 2.0 FFC,York9 FC
+29,8,1.0,1.0,HFX Wanderers FC,D,York9 FC,D,D A 1.0 - 1.0 HFX,York9 FC
+1,9,0.0,1.0,FC Edmonton,L,York9 FC,W,W A 0.0 - 1.0 FCE,York9 FC
+5,9,1.0,0.0,Cavalry FC,W,York9 FC,L,L A 1.0 - 0.0 CFC,York9 FC

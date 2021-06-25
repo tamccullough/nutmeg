@@ -1,5 +1,5 @@
-hs,as,home,hr,away,ar,home_p,away_p,draw_p
-3,1,FC Edmonton,W,Atlético Ottawa,L,0.4125,0.275,0.3125
-3,0,Pacific FC,W,HFX Wanderers FC,L,0.375,0.3,0.325
-4,0,Forge FC,W,Valour FC,L,0.5625,0.175,0.2625
-3,0,Cavalry FC,W,York United FC,L,0.475,0.1875,0.3375
+hs,as,home,hr,away,ar,home_p,away_p,draw_p,std
+2,2,FC Edmonton,D,Atlético Ottawa,D,0.29,0.28,0.36,0.01
+2,1,Pacific FC,W,HFX Wanderers FC,L,0.43,0.3,0.27,0.09
+1,0,Forge FC,W,Valour FC,L,0.42,0.29,0.29,0.09
+2,2,Cavalry FC,D,York United FC,D,0.3,0.32,0.35,0.01

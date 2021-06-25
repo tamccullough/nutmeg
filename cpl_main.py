@@ -706,27 +706,49 @@ def get_form_results(data,dc):
 def best_roster(team_name, player_info):
 
     formation = {'d':3,'m':4,'f':3,'g':1}
-
+    # cycle through the positions and get the appropriate number for each position
+    # get the appropriate number from the formation that the coach typically uses
+    #**** the above needs to be implemented ****
     positions = {}
     for pos in ['d','f','g','m']:
-        positions[pos] = player_info[(player_info['team'] == team_name)&(player_info['position'] == pos)][['display','number','overall']].sort_values(by=['overall'],ascending=False).head(formation[pos])
-
+        positions[pos] = player_info[(player_info['team'] == team_name)&(player_info['position'] == pos)][['display','number','position','overall']].sort_values(by=['overall'],ascending=False).head(formation[pos])
     for k in ['d','f','m']:
         if len(positions[k]) < formation[k]:
             change = formation[k] - len(positions[k])
-            positions['m'] = player_info[(player_info['team'] == team_name)&(player_info['position'] == 'm')][['display','number','overall']].sort_values(by=['overall'],ascending=False).head(formation['m']+change)
+            positions['m'] = player_info[(player_info['team'] == team_name)&(player_info['position'] == 'm')][['display','number','position','overall']].sort_values(by=['overall'],ascending=False).head(formation['m']+change)
         else:
             pass
-
+    # once we have all 11 players combine them and return the dataframe
     roster = pd.concat([positions['g'],positions['d'],positions['m'],positions['f']])
     roster = roster.reset_index(drop=True)
-    roster.insert(2,'position','-')
-    for c,r in roster.iterrows():
-        try:
-            roster.at[c,'position'] = player_info[player_info['name'] == r['name']]['position'].values[0]
-        except:
-            roster.at[c,'position'] = 'm'
     return roster
+
+def prediction_roster(team_name,player_info):
+    # the prediction needs more players to work with than just the best_roster
+    # add players to it
+    # get the best roster
+    roster = best_roster(team_name,player_info)
+    formation = {'d':1,'m':1,'f':1}
+    # get best_roster player names
+    current_players = [x for x in roster['display'].unique()]
+    # grab appropriate number of remaining players
+    # check to make sure they are not in the existing best_roster
+    positions = {}
+    for pos in ['d','m','f']:
+        positions[pos] = player_info[(~player_info['display'].isin(current_players))&(player_info['team'] == team_name)&(player_info['position'] == pos)][['display','number','position','overall']].sort_values(by=['overall'],ascending=False).head(1)
+        # check if potentially the dataframe is empty
+        # grab players from other positions if so
+        if positions[pos].empty:
+            lst = ['d','m','f']
+            lst.remove(pos)
+            new_pos = random.choice(lst)
+            positions[pos] = player_info[(~player_info['display'].isin(current_players))&(player_info['team'] == team_name)&(player_info['position'] == new_pos)][['display','number','position','overall']].sort_values(by=['overall'],ascending=False).head(1)
+        else:
+            new_names = [x for x in positions[pos]['display'].unique()]
+            current_players = current_players+new_names
+    roster = pd.concat([roster,positions['d'],positions['m'],positions['f']])
+
+    return roster.reset_index(drop=True)
 
 def get_roster(query,stats,team_ref): # use team stats to get the player information
     roster = get_stats_all(stats,team_ref)
@@ -1046,7 +1068,7 @@ def get_final_game_prediction(model,home_array,home_score,away_score):
     ###### need to be sure of the order of these probabilities
 
     def roster_pred(model,array):
-        prediction = model.predict([array.values[0]]).flatten()
+        prediction = model.predict([array]).flatten()
         if prediction == 0:
             outcome = 'L'
         elif prediction == 1:
@@ -1056,7 +1078,7 @@ def get_final_game_prediction(model,home_array,home_score,away_score):
         return outcome
 
     def roster_prob(model,array):
-        probability = model.predict_proba([array.values[0]]).flatten()
+        probability = model.predict_proba([array]).flatten()
         return probability
 
     def norm(x,y,z):
@@ -1064,10 +1086,13 @@ def get_final_game_prediction(model,home_array,home_score,away_score):
         x, y, z = round(x / norm,2), round(y / norm,2), round(z / norm,2)
         return x, y, z
 
+    def round_results(lst):
+        return [round(x,2) for x in lst]
 
     # get the prediction from the classification model
     prediction = roster_pred(model,home_array)
     probability = roster_prob(model,home_array)
+    probability = round_results(probability)
 
     p_l, p_d, p_w = probability[0],probability[1],probability[2]#norm(q1_w, q1_l, q1_d)
 
@@ -1155,42 +1180,33 @@ def roster_regressor_pred(model,array):
     df = pd.DataFrame(prediction)
     return df
 
-def get_final_score_prediction(model,q1_roster,q2_roster,home_win_new,away_win_new):
-
+def get_final_score_prediction(model,home_roster,away_roster,home_win,away_win):
+    # get a prediction for the amount of goals that the team will score
     def roster_pred(model,array):
-        prediction = model.predict([array.values[0]]).flatten()
-        return prediction[0]
+        return int(model.predict([array]).flatten()[0])
 
-    def fix_score(home_score,away_score,home_win_new,away_win_new):
-        if home_win_new > away_win_new and home_score < away_score: # fix the score prediction - if the probability of home win > away win and score doesn't reflect it
+    def fix_score(home_score,away_score,home_win,away_win):
+        if home_win > away_win and home_score < away_score: # fix the score prediction - if the probability of home win > away win and score doesn't reflect it
             home_score, away_score = away_score, home_score # change the predicted score to reflect that
-            return home_score,away_score,home_win_new,away_win_new
-        elif home_win_new < away_win_new and home_score > away_score: # else the probability of home win < away win
+            return home_score,away_score,home_win,away_win
+        elif home_win < away_win and home_score > away_score: # else the probability of home win < away win
             home_score, away_score =  away_score, home_score # change the predicted score to reflect that
-            return home_score,away_score,home_win_new,away_win_new
-        elif home_win_new < away_win_new and home_score == away_score:
-            home_win_new = away_win_new
-            return home_score,away_score,home_win_new,away_win_new
-        elif home_win_new > away_win_new and home_score == away_score:
-            home_win_new = away_win_new
-            return home_score,away_score,home_win_new,away_win_new
+            return home_score,away_score,home_win,away_win
+        elif home_win < away_win and home_score == away_score:
+            home_win = away_win
+            return home_score,away_score,home_win,away_win
+        elif home_win > away_win and home_score == away_score:
+            home_win = away_win
+            return home_score,away_score,home_win,away_win
         else:
-            return home_score,away_score,home_win_new,away_win_new
+            return home_score,away_score,home_win,away_win
 
-    def score(num): #improve this later for greater predictions
-        new_score = int(round(num,0)) # convert the float value to int and round it
-        return new_score
+    home_score = roster_pred(model,home_roster)
+    away_score = roster_pred(model,away_roster)
 
-    q1_pred = roster_pred(model,q1_roster)
-    q1_s = score(q1_pred)
-    q2_pred = roster_pred(model,q2_roster)
-    q2_s = score(q2_pred)
-
-    home_score, away_score = q1_s, q2_s
-    home_score, away_score, home_win_new, away_win_new = fix_score(q1_s, q2_s,home_win_new,away_win_new)
+    home_score, away_score, home_win_new, away_win_new = fix_score(home_score, away_score,home_win,away_win)
 
     return home_score,away_score, home_win_new, away_win_new
-
 
 def get_game_roster_prediction(get_games,results,stats,team_ref,player_info):
     a = []
