@@ -2,12 +2,18 @@
 
 [CANPL Heroku App LINK](https://canpl.herokuapp.com/)
 
+## WOW. That's Different
+
+It may not seem like much to you. But the main.py file and the accompanying cpl_main.py file have both gone through some incredible clean ups. Why? Because I've gotten better. You learn and you progress, and you should always go back and clean up bad code.
+
 ## Canpl
+
 Nutmeg is a CanPL Fan Site designed to provide stat tables and charts based on user input
 
 Currently using MultinomialNB(), RandomForestRegressor() and RandomForestClassifier() to make the match predictions between teams as games are listed in the schedule.
 
 ### How Match Prediction is Deployed
+
 This app is using the following models for predictions;
 - [Multinomial Naive Bayes](https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html)
 - [Random Forest Classifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)
