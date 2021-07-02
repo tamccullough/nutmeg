@@ -1,35 +1,30 @@
-
+{% set columns = ['Min', 'G', 'xG', 'O'] %}
 {% if request.endpoint[-3:] == '_90' %}
 {% set PAGE = request.endpoint[:-3] %}
 {% else %}
 {% set PAGE = request.endpoint %}
 {% endif %}
-
-{% if PAGE == 'keepers' %}
+{% if position_link == 'midfielders' %}
+{% set columns = ['Min', 'Pc%', 'Tcha', 'O'] %}
+{% endif %}
+{% if position_link == 'defenders' %}
+{% set columns = ['Min', 'int', 'Clr', 'O'] %}
+{% endif %}
+{% if position_link == 'keepers' %}
 {% set PAGE = 'goal keepers ' %}
+{% set columns = ['Min', 'CS', 'SV', 'O'] %}
 {% else %}
 {% endif %}
 
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-  <title>Nutmeg CanPL All {{ PAGE | title }} Player Statistics</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="Todd McCullough">
-  <meta name="description" content="Canadian Premier League (CanPL) statistics for all players playing in the {{ PAGE[:-1] }} position.">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/png" href="static/images/favicon.png" />
-  <link rel="stylesheet" href="static/css/style.css">
-  <link rel="stylesheet" href="static/css/team-colours.css">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Staatliches&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>{{ year }} Ranked {{ position_link | title }} Table</title>
+  <meta name="description" content="Canadian Premier League Statistics, top defenders, forwards, goalkeepers and midfielders.">
 </head>
 
 {% extends 'base.html' %}
 {% block content %}
-
 <div class="mobile">
   <a>{{ year }} Stats</a>
   <ul class="position">
@@ -59,6 +54,7 @@
 
 <!-- body -->
 <div class="mobile">
+  <h4>NOTE: Mobile version shows only a slice of criteria</h4>
   <!-- top position table -->
   <div class="parent {{ theme }}-dark">
     <div class="{{ theme }}-dark">
@@ -66,8 +62,13 @@
         <tr>
           <th style="text-align:left;">rank/team</th>
           <th style="width:38%;">name</th>
-          {% for col in html_table.columns[2:6] %}
-          <th>{{ col }}</th>
+          {% for col in columns %}
+          <th>
+            <div class="table-tooltip">
+              <p class="table-tooltiptext">{{ tooltip[col] }}</p>
+              {{ col }}
+            </div>
+          </th>
           {% endfor%}
         </tr>
       </table>
@@ -77,7 +78,12 @@
     <form method="POST" action="/player">
     <div class="{{ theme }}-light">
       <table class="sfont">
-        {% for i in range(0,10) %}
+        {% if 10 > html_table.shape[0] %}
+        {% set table_range = html_table.shape[0] %}
+        {% else %}
+        {% set table_range = 10 %}
+        {% endif %}
+        {% for i in range(0,table_range) %}
         <tr>
             <td>{{ i + 1 }}/{{ html_table.iloc[i]['team'] }}</td>
             {% if (html_table.iloc[i]['display'] | length) > 20 %}
@@ -85,7 +91,7 @@
             {% else %}
             <td style="text-align:left;width:38%;"><input href="{{ url_for('player') }}" class="{{ team_colour }} table-button" type="submit" id="name" name="name" value="{{ html_table.iloc[i]['display'] }}"></input></td>
             {% endif %}
-            {% for col in html_table.columns[2:6] %}
+            {% for col in columns %}
             <td>{{ html_table.iloc[i][col] }}</td>
             {% endfor%}
         </tr>
@@ -97,6 +103,8 @@
   </div>
   <!-- end of top position table-->
   <!-- position table -->
+  {% if 10 > html_table.shape[0] %}
+  {% else %}
   <span><h4 class="{{ theme }}-dark indent">rest of the table</h4></span>
   <div class="parent {{ theme }}-dark">
 
@@ -105,7 +113,7 @@
         <tr>
           <th style="text-align:left;">team</th>
           <th style="text-align:left;width:38%;">name</th>
-          {% for col in html_table.columns[2:6] %}
+          {% for col in columns %}
           <th>{{ col }}</th>
           {% endfor%}
         </tr>
@@ -120,7 +128,7 @@
         <tr>
             <td>{{ i + 1 }}/{{ html_table.iloc[i]['team'] }}</td>
             <td style="text-align:left;width:38%;"><input href="{{ url_for('player') }}" class="table-button" type="submit" id="name" name="name" value="{{ html_table.iloc[i]['display'] }}"></input></td>
-            {% for col in html_table.columns[2:6] %}
+            {% for col in columns %}
             <td>{{ html_table.iloc[i][col] }}</td>
             {% endfor%}
         </tr>
@@ -130,6 +138,7 @@
     <input type="hidden" id="year" name="year" value="{{ year }}">
     </form>
   </div>
+  {% endif %}
   <!-- end of position table-->
 </div>
 
@@ -143,7 +152,12 @@
           <th style="text-align:left;width:3vw;">rank/team</th>
           <th style="width:10vw;">name</th>
           {% for col in html_table.columns[2:-2] %}
-          <th style="width:2vw;">{{ t }}{{ col }}</th>
+          <th style="width:2vw;">
+            <div class="table-tooltip">
+              <p class="table-tooltiptext">{{ tooltip[col] }}</p>
+              {{ col }}
+            </div>
+          </th>
           {% endfor%}
         </tr>
       </table>
@@ -153,7 +167,12 @@
     <form method="POST" action="/player">
     <div class="{{ theme }}-light">
       <table class="table-collapse sfont">
-        {% for i in range(0,10) %}
+        {% if 10 > html_table.shape[0] %}
+        {% set table_range = html_table.shape[0] %}
+        {% else %}
+        {% set table_range = 10 %}
+        {% endif %}
+        {% for i in range(0,table_range) %}
         <tr>
             <td style="text-align:left;width:3vw;">{{ i + 1 }} / {{ html_table.iloc[i]['team'] }}</td>
             <td style="text-align:left;width:10vw;"><input href="{{ url_for('player') }}" class="{{ team_colour }} table-button" type="submit" id="name" name="name" value="{{ html_table.iloc[i]['display'] }}"></input></td>
@@ -169,6 +188,8 @@
   </div>
   <!-- end of top position table-->
   <!-- position table -->
+  {% if 10 > html_table.shape[0] %}
+  {% else %}
   <span><h4 class="{{ theme }}-dark indent">rest of the table</h4></span>
   <div class="parent {{ theme }}-dark">
     <div class="{{ theme }}-dark">
@@ -201,6 +222,7 @@
     <input type="hidden" id="year" name="year" value="{{ year }}">
     </form>
   </div>
+  {% endif %}
   <!-- end of position table-->
 </div>
 

@@ -1,18 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-  <title>Nutmeg CanPL Power Rankings</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="Todd McCullough">
-  <meta name="description" content="Canadian Premier League (CanPL) automated power rankings. Weekly or year ending generated power rankings.">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/png" href="static/images/favicon.png" />
-  <link rel="stylesheet" href="static/css/style.css">
-  <link rel="stylesheet" href="static/css/team-colours.css">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Staatliches&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Power Rankings</title>
+  <meta name="description" content="Canadian Premier League automated power rankings. Weekly or year ending generated power rankings.">
 </head>
 
 {% extends 'base.html' %}
@@ -24,26 +14,30 @@
 <!-- page content -->
 <div class="mobile">
   <div class="parent">
-    {%for i in range(0,html_table.shape[0])%}
-    <div class="boxs {{ html_table.at[i,'colour'] }}">
+    {% for c,r in html_table.iterrows() %}
+    <div class="boxs {{ r['colour'] }}">
       <form method="POST" action="/roster">
         <div>
           <hr>
           <table>
             <tr>
-              <td colspan="2"><a><input class="center table-button-mobile" type="submit" id="team" name="team" value="{{ html_table.at[i,'team'] }}"/></a></td>
+              <td colspan="2"><a><input class="center table-button-mobile" type="submit" id="team" name="team" value="{{ r['team'] }}"/></a></td>
             </tr>
             <tr>
-              <td style="text-align:center;" rowspan="4"><img src="static/images/flags/{{ html_table.at[i,'crest'] }}" alt="{{ html_table.at[i,'team'] }} Crest" style="max-height:60px;"></td>
+              <td style="text-align:center;" rowspan="4"><img src="static/images/flags/{{ r['crest'] }}" alt="{{ r['team'] }} Crest" style="max-height:60px;"></td>
             </tr>
             <tr>
-              <td><h1 class="center">{{ html_table.at[i,'rank'] }}</h1></td>
+              <td><h1 class="center">{{ r['rank'] }}</h1></td>
             </tr>
             <tr>
-              <td><a class="center">Move: {{ html_table.at[i,'move'] }}</a></td>
+              {% if r['move'] > 0 %}
+              <td><a class="center">Move: +{{ r['move'] }}</a></td>
+              {% else %}
+              <td><a class="center">Move: {{ r['move'] }}</a></td>
+              {% endif %}
             </tr>
             <tr>
-              <td><a class="center">{{ html_table.at[i,'form'] }}</a></td>
+              <td><a class="center">{{ r['form'] }}</a></td>
             </tr>
             </table>
             <hr>
@@ -56,25 +50,29 @@
 
 <div class="desktop">
   <div class="parent">
-    {%for i in range(0,html_table.shape[0])%}
-    <div class="boxl {{ html_table.at[i,'colour'] }}">
+    {% for c,r in html_table.iterrows() %}
+    <div class="boxl {{ r['colour'] }}">
       <form method="POST" action="/roster">
         <table>
           <tr>
-            <!--td colspan="2" class="xxfont"><h3 class="center">{{ html_table.at[i,'team'] }}</h3></td-->
-            <td colspan="2"><a><input class="center table-button-large" type="submit" id="team" name="team" value="{{ html_table.at[i,'team'] }}"/></a></td>
+            <!--td colspan="2" class="xxfont"><h3 class="center">{{ r['team'] }}</h3></td-->
+            <td colspan="2"><a><input class="center table-button-large" type="submit" id="team" name="team" value="{{ r['team'] }}"/></a></td>
           </tr>
           <tr>
-            <td style="text-align:center;" rowspan="4"><img src="static/images/flags/{{ html_table.at[i,'crest'] }}" alt="{{ html_table.at[i,'team'] }} Crest" style="max-height:100px"></td>
+            <td style="text-align:center;" rowspan="4"><img src="static/images/flags/{{ r['crest'] }}" alt="{{ r['team'] }} Crest" style="max-height:100px"></td>
           </tr>
           <tr>
-            <td><h1>{{ html_table.at[i,'rank'] }}</h1></td>
+            <td><h1>{{ r['rank'] }}</h1></td>
           </tr>
           <tr>
-            <td class="xfont"><h4>Movement: {{ html_table.at[i,'move'] }}</h4></td>
+            {% if r['move'] > 0 %}
+            <td class="xfont"><h4>Movement: +{{ r['move'] }}</h4></td>
+            {% else %}
+            <td class="xfont"><h4>Movement: {{ r['move'] }}</h4></td>
+            {% endif %}
           </tr>
           <tr>
-            <td class="xfont"><h4>Form: {{ html_table.at[i,'form'] }}</h4></td>
+            <td class="xfont"><h4>Form: {{ r['form'] }}</h4></td>
           </tr>
           <tr>
             <td></td>

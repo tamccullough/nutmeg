@@ -1,0 +1,342 @@
+<script type="text/javascript">
+new Chart(document.getElementById('chart1'), {
+  type: 'line',
+  data: {
+    labels: [
+      {% for x in range(1,(team_line[0] | length)-1) %}
+      {{ x }},
+      {% endfor %}
+      {{ (team_line[0] | length) }}
+    ],
+    datasets: [
+      {
+        label: '{{ colour1 }}',
+        data: [
+          {% for j in range(team_line[0] | length) %}
+          {{ team_line[0][j] | safe }},
+          {% endfor %}
+          {{ team_line[0][-1] | safe }}
+        ],
+        fill: true,
+        borderColor: '{{ colour1 }}',
+        backgroundColor: '{{ colour1 }}'+'33',
+        pointHoverRadius: 10,
+        pointHoverBackgroundColor: '{{ colour1 }}'
+      },
+      {
+        label: '{{geegle[-1]}}',
+        data: [
+          {% for j in range(team_line[1] | length) %}
+          {{ team_line[1][j] | safe }},
+          {% endfor %}
+          {{ team_line[1][-1] | safe }}
+        ],
+        fill: true,
+        borderColor: '{{ colour2 }}',
+        backgroundColor: '{{ colour2 }}'+'33',
+        pointHoverRadius: 10,
+        pointHoverBackgroundColor: '{{ colour2 }}'
+      }
+    ],
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    tooltips: {
+      titleFontSize: 18,
+      bodyFontSize: 18
+    },
+    legend: {
+        display: false,
+    },
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            fontColor: '#ffffff'
+          }
+        }
+      ],
+      xAxes: [
+        {
+          ticks: {
+            fontColor: '#ffffff'
+          }
+        }
+      ]
+    }
+  }
+});
+  new Chart(document.getElementById('chart2'), {
+    type: 'line',
+    data: {
+      labels: [
+        {% for x in range(1,(team_line_2[0] | length)-1) %}
+        {{ x }},
+        {% endfor %}
+        {{ (team_line_2[0] | length) }}
+      ],
+      datasets: [
+        {
+          label: '{{ colour1 }}',
+          data: [
+            {% for j in range(team_line_2[0] | length) %}
+            {{ team_line_2[0][j] | safe }},
+            {% endfor %}
+            {{ team_line_2[0][-1] | safe }}
+          ],
+          fill: true,
+          borderColor: '{{ colour1 }}',
+          backgroundColor: '{{ colour1 }}'+'33',
+          pointHoverRadius: 10,
+          pointHoverBackgroundColor: '{{ colour1 }}'
+        },
+        {
+          label: '{{geegle[-1]}}',
+          data: [
+            {% for j in range(team_line_2[1] | length) %}
+            {{ team_line_2[1][j] | safe }},
+            {% endfor %}
+            {{ team_line_2[1][-1] | safe }}
+          ],
+          fill: true,
+          borderColor: '{{ colour2 }}',
+          backgroundColor: '{{ colour2 }}'+'33',
+          pointHoverRadius: 10,
+          pointHoverBackgroundColor: '{{ colour2 }}'
+        }
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      tooltips: {
+        titleFontSize: 18,
+        bodyFontSize: 18
+      },
+      legend: {
+          display: false,
+      },
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              fontColor: '#ffffff'
+            }
+          }
+        ],
+        xAxes: [
+          {
+            ticks: {
+              fontColor: '#ffffff'
+            }
+          }
+        ]
+      }
+    }
+  });
+    new Chart(document.getElementById('chart3'), {
+      type: 'line',
+      data: {
+        labels: [
+          {% for x in range(1,(team_line_3[0] | length)-1) %}
+          {{ x }},
+          {% endfor %}
+          {{ (team_line_3[0] | length) }}
+        ],
+        datasets: [
+        {
+          label: '{{ colour1 }}',
+          data: [
+            {% for j in range(team_line_3[0] | length) %}
+            {{ team_line_3[0][j] | safe }},
+            {% endfor %}
+            {{ team_line_3[0][-1] | safe }}
+          ],
+          fill: true,
+          borderColor: '{{ colour1 }}',
+          backgroundColor: '{{ colour1 }}'+'33',
+          pointHoverRadius: 10,
+          pointHoverBackgroundColor: '{{ colour1 }}'
+        },
+          {
+            label: '{{geegle[-1]}}',
+            data: [
+              {% for j in range(team_line_3[1] | length) %}
+              {{ team_line_3[1][j] | safe }},
+              {% endfor %}
+              {{ team_line_3[1][-1] | safe }}
+            ],
+            fill: true,
+            borderColor: '{{ colour2 }}',
+            backgroundColor: '{{ colour2 }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ colour2 }}'
+          }
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        tooltips: {
+          titleFontSize: 18,
+          bodyFontSize: 18
+        },
+        legend: {
+            display: false,
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                fontColor: '#ffffff'
+              }
+            }
+          ],
+          xAxes: [
+            {
+              ticks: {
+                fontColor: '#ffffff'
+              }
+            }
+          ]
+        }
+      }
+    });
+      new Chart(document.getElementById('chart4'), {
+        type: 'line',
+        data: {
+          labels: [
+            {% for x in range(1,(team_line_4[0] | length)-1) %}
+            {{ x }},
+            {% endfor %}
+            {{ (team_line_4[0] | length) }}
+          ],
+          datasets: [
+          {
+            label: '{{ colour1 }}',
+            data: [
+              {% for j in range(team_line_4[0] | length) %}
+              {{ team_line_4[0][j] | safe }},
+              {% endfor %}
+              {{ team_line_4[0][-1] | safe }}
+            ],
+            fill: true,
+            borderColor: '{{ colour1 }}',
+            backgroundColor: '{{ colour1 }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ colour1 }}'
+          },
+            {
+              label: '{{geegle[-1]}}',
+              data: [
+                {% for j in range(team_line_4[1] | length) %}
+                {{ team_line_4[1][j] | safe }},
+                {% endfor %}
+                {{ team_line_4[1][-1] | safe }}
+              ],
+              fill: true,
+              borderColor: '{{ colour2 }}',
+              backgroundColor: '{{ colour2 }}'+'33',
+              pointHoverRadius: 10,
+              pointHoverBackgroundColor: '{{ colour2 }}'
+            }
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          tooltips: {
+            titleFontSize: 18,
+            bodyFontSize: 18
+          },
+          legend: {
+              display: false,
+          },
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  fontColor: '#ffffff'
+                }
+              }
+            ],
+            xAxes: [
+              {
+                ticks: {
+                  fontColor: '#ffffff'
+                }
+              }
+            ]
+          }
+        }
+      });
+      new Chart(document.getElementById('chart5'), {
+        type: 'line',
+        data: {
+          labels: [
+            {% for x in range(1,(team_line_5[0] | length)-1) %}
+            {{ x }},
+            {% endfor %}
+            {{ (team_line_5[0] | length) }}
+          ],
+          datasets: [
+          {
+            label: '{{ colour1 }}',
+            data: [
+              {% for j in range(team_line_5[0] | length) %}
+              {{ team_line_5[0][j] | safe }},
+              {% endfor %}
+              {{ team_line_5[0][-1] | safe }}
+            ],
+            fill: true,
+            borderColor: '{{ colour1 }}',
+            backgroundColor: '{{ colour1 }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ colour1 }}'
+          },
+            {
+              label: '{{geegle[-1]}}',
+              data: [
+                {% for j in range(team_line_5[1] | length) %}
+                {{ team_line_5[1][j] | safe }},
+                {% endfor %}
+                {{ team_line_5[1][-1] | safe }}
+              ],
+              fill: true,
+              borderColor: '{{ colour2 }}',
+              backgroundColor: '{{ colour2 }}'+'33',
+              pointHoverRadius: 10,
+              pointHoverBackgroundColor: '{{ colour2 }}'
+            }
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          tooltips: {
+            titleFontSize: 18,
+            bodyFontSize: 18
+          },
+          legend: {
+              display: false,
+          },
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  fontColor: '#ffffff'
+                }
+              }
+            ],
+            xAxes: [
+              {
+                ticks: {
+                  fontColor: '#ffffff'
+                }
+              }
+            ]
+          }
+        }
+      });
+      </script>

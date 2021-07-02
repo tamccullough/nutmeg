@@ -1,21 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-  <title>Nutmeg CanPL Player Comparison</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="Todd McCullough">
+  <title>Player Comparison</title>
   <meta name="description" content="Canadian Premier League (CanPL) select two different players to view their individual stats during the selected year.">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/png" href="static/images/favicon.png" />
-  <link rel="stylesheet" href="static/css/style.css">
-  <link rel="stylesheet" href="static/css/team-colours.css">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Staatliches&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-{% extends 't-base.html' %}
+{% extends 'base.html' %}
 {% block content %}
 
 <div class="mobile">
@@ -80,6 +70,7 @@
             <div class="form boxs">
               <select name="player1YR" id="player1YR" onchange="this.form.submit();">
                 <option value="">{{ p1_year }}</option>
+                <option value="2021">2021</option>
                 <option value="2020">2020</option>
                 <option value="2019">2019</option>
               </select>
@@ -154,6 +145,7 @@
               <div class="form boxs">
                 <select name="player2YR" id="player2YR" onchange="this.form.submit();">
                   <option value="">{{ p2_year }}</option>
+                  <option value="2021">2021</option>
                   <option value="2020">2020</option>
                   <option value="2019">2019</option>
                 </select>
@@ -230,6 +222,7 @@
               <div class="form boxs">
                 <select name="player1YR" id="player1YR" onchange="this.form.submit();">
                   <option value="">{{ p1_year }}</option>
+                  <option value="2021">2021</option>
                   <option value="2020">2020</option>
                   <option value="2019">2019</option>
                 </select>
@@ -313,6 +306,7 @@
               <div class="form boxs">
                 <select name="player2YR" id="player2YR" onchange="this.form.submit();">
                   <option value="">{{ p2_year }}</option>
+                  <option value="2021">2021</option>
                   <option value="2020">2020</option>
                   <option value="2019">2019</option>
                 </select>
@@ -370,8 +364,8 @@
       </div>
       <p class="font-s">**Stats are Per90 except;  Clean Sheets & Goals for clarity</p>
       {% set i = 0 %}
-      {% for word in ['testing','testing2','testing3','testing4']%}
-      <div class="{{ theme }}-grey">
+      {% for word in ['chart1','chart2','chart3','chart4']%}
+      <div class="{{ theme }}-darkblue">
         <div class="tooltip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ line_columns[loop.index-1] }}
           <p class="tooltiptext">
             {% for x in player_names[:-1] %}

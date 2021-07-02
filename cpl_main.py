@@ -13,6 +13,8 @@ import re
 from sklearn.naive_bayes import MultinomialNB
 import statistics
 
+current_year = date.today().strftime('%Y')
+
 ccd_names = {'Atlético Ottawa' : 'Atlético Ottawa',
             'Cavalry' : 'Cavalry FC',
             'Edmonton' : 'FC Edmonton',
@@ -116,25 +118,22 @@ def get_results_brief(results,year):
               'HFX Wanderers FC' : 'HFX','HFX Wanderers' : 'HFX',
               'Pacific FC' : 'PAC','Pacific' : 'PAC',
               'Valour FC' : 'VAL','Valour' : 'VAL',
-              'York United FC' : 'YOR','York United' : 'YOR',
-              'York9 FC' : 'YK9','York9' : 'YK9'}
+              'York United FC' : 'YOR','York United' : 'YOR'}
 
     results_brief = pd.DataFrame()
     temp = results[['d','m','hs','as','home','hr','away','ar']]
     for team in sorted(results['home'].unique()):
-        db = temp[temp['home'] == team]
-        db = index_reset(db)
+        db = temp[temp['home'] == team].reset_index(drop=True)
         db['summary'] = ''
         db['team'] = team
-        df = temp[temp['away'] == team]
-        df = index_reset(df)
+        db['summary'] = db['hr'] + ' h '+ db['hs'].apply(lambda x:str(x)) + ' ' + db['as'].apply(lambda x: str(x)) + ' ' + db['away'].apply(lambda x: team_change[x])
+        results_brief = pd.concat([results_brief,db])
+
+    for team in sorted(results['away'].unique()):
+        df = temp[temp['away'] == team].reset_index(drop=True)
         df['summary'] = ''
         df['team'] = team
-
-        db['summary'] = db['hr'] + ' h '+ db['hs'].apply(lambda x:str(x)) + ' ' + db['as'].apply(lambda x: str(x)) + ' ' + db['away'].apply(lambda x: team_change[x])
         df['summary'] = df['ar'] + ' h '+ df['hs'].apply(lambda x:str(x)) + ' ' + df['as'].apply(lambda x: str(x)) + ' '+ df['home'].apply(lambda x: team_change[x])
-
-        results_brief = pd.concat([results_brief,db])
         results_brief = pd.concat([results_brief,df])
 
     results_brief['scatter'] = results_brief['home'].apply(lambda x: team_change[x]) + ' vs '+ results_brief['away'].apply(lambda x: team_change[x]) + f' ({year}' + results_brief['m'].apply(lambda x: '-'+str(x) if len(str(x)) > 1 else '-0'+str(x)) + results_brief['d'].apply(lambda x: '-'+str(x)+")" if len(str(x)) > 1 else '-0'+str(x)+")")
@@ -283,7 +282,7 @@ def clean_team_game(standings,game_week,check):
     return db
 
 def get_weeks_results(year,results,standings,stats,team_ref,team_names):
-    if results.iloc[0]['hr'] == 'E':
+    if results.at[0,'hr'] == 'E':
         game_week = pd.DataFrame([('TBD',0,'TBD',0)],columns=['home','hs','away','as'])
         big_win, top_team, low_team,other_team = game_week,game_week,game_week,game_week
         goals, assists, yellows, reds = 0,0,0,0
@@ -345,18 +344,32 @@ def get_weeks_results(year,results,standings,stats,team_ref,team_names):
         if year == '2019':
             played_games = results[results['s'] == 2]
         else:
-            played_games = results[results['s'] == 1]
-        game_week = played_games[played_games['w'] == played_games['w'].tail(1).values[0]]
+            played_games = results[(results['s'] == 1)&(results['hr']!='E')]
+        if year == current_year:
+            w = played_games['w'].tail(1).values[0]
+            game_week = played_games[played_games['w'] == w]
+        else:
+            game_week = played_games[played_games['w'] == played_games['w'].tail(1).values[0]]
+
+        game_week = game_week.sort_values(by='hs',ascending=False)
+        game_week = game_week.reset_index(drop=True)
+
+        print(game_week)
 
         max_home = game_week[(game_week['hs'] == game_week['hs'].max()) & (game_week['hr'] == "W")]
+        if max_home.empty:
+            max_home = game_week[(game_week['hs'] == game_week['hs'].max()) & ((game_week['hr'] == "D")|(game_week['hr'] == "L"))]
+
         max_home = max_home[max_home['as'] == max_home['as'].min()]
-        max_home = index_reset(max_home)
+        max_home = max_home.reset_index(drop=True)
 
         max_away = game_week[(game_week['as'] == game_week['as'].max()) & (game_week['ar'] == "W")]
-        max_away = index_reset(max_away)
+        if max_home.empty:
+            max_away = game_week[(game_week['as'] == game_week['as'].max()) & ((game_week['ar'] == "D")|(game_week['ar'] == "L"))]
+        max_away = max_away.reset_index(drop=True)
         if max_away.empty:
             max_away = game_week[game_week['as'] == game_week['as'].max()]
-            max_away = index_reset(max_away)
+            max_away = max_away.reset_index(drop=True)
 
         if max_home.at[0,'hs'] > max_away.at[0,'as']:
             max_home_win = max_home
@@ -364,26 +377,43 @@ def get_weeks_results(year,results,standings,stats,team_ref,team_names):
             max_home_win = max_away
 
         big_win = max_home_win[['home','hs','away','as']]
-        big_win = index_reset(big_win)
+        big_win = big_win.reset_index(drop=True)
         big_win = pd.DataFrame(big_win.loc[0])
         big_win = big_win.T
 
-        top_result = game_week[(game_week['home'] == standings.iloc[0]['team']) | (game_week['away'] == standings.iloc[0]['team'])][['home','hs','away','as']]#clean_team_game(standings,game_week,0) # finding top team
-        top_result = top_result[(top_result['hs'] == top_result['hs'].min()) | (top_result['as'] == top_result['as'].min())]
+        top_result = game_week[(game_week['home'] == standings.iloc[0]['team']) | (game_week['away'] == standings.iloc[0]['team'])][['home','hr','hs','away','ar','as']]#clean_team_game(standings,game_week,0) # finding top team
+        try:
+            top_result = top_result[(top_result['hs'] == top_result['hs'].min()) | (top_result['as'] == top_result['as'].min())]
+        except:
+            top_result = top_result[(top_result['hs'] >= 0) | (top_result['as'] >= 0)]
+        top_result = top_result[((top_result['hr'] == "W") & (top_result['home'] == standings.iloc[0]['team'])) | ((top_result['ar'] == "W") & (top_result['away'] == standings.iloc[0]['team']))]
+        if top_result.empty:
+            top_result = game_week[((game_week['hr'] == "W") | (game_week['ar'] == "W"))][['home','hr','hs','away','ar','as']]
         top_result['abs'] = abs(top_result['hs'] - top_result['as'])
         top_result = top_result[(top_result['abs'] == top_result['abs'].max())]
-        top_result = top_result[((top_result['hr'] == "W") & (top_result['home'] == standings.iloc[0]['team'])) | ((top_result['ar'] == "W") & (top_result['away'] == standings.iloc[0]['team']))]
-        top_result = index_reset(top_result)
+        top_result = top_result.reset_index(drop=True)
 
-        low_result = game_week[(game_week['home'] == standings.iloc[-1]['team']) | (game_week['away'] == standings.iloc[-1]['team'])][['home','hs','away','as']]#clean_team_game(standings,game_week,1) # finding bottom team
+        low_result = game_week[(game_week['home'] == standings.iloc[-1]['team']) | (game_week['away'] == standings.iloc[-1]['team'])][['home','hr','hs','away','ar','as']]#clean_team_game(standings,game_week,1) # finding bottom team
+        if low_result.empty:
+            temp_standings = standings[standings['matches'] > 0]
+            low_result = game_week[(game_week['home'] == temp_standings.iloc[-1]['team']) | (game_week['away'] == temp_standings.iloc[-1]['team'])][['home','hr','hs','away','ar','as']]
         low_result = low_result[(low_result['hs'] == low_result['hs'].min()) | (low_result['as'] == low_result['as'].min())]
         low_result['abs'] = abs(low_result['hs'] - low_result['as'])
         low_result = low_result[(low_result['abs'] == low_result['abs'].max())]
-        low_result = index_reset(low_result)
+        low_result = low_result.reset_index(drop=True)
 
-        teams_in = pd.concat([big_win,top_result,low_result,team_ref])#get_longest_name(big_win,top_team,low_team,team_ref)
+        teams_in = []
+        for x in [big_win,top_result,low_result]:
+            for i in x[['home','away']].values[0]:
+                teams_in.append(i)
+        teams_in = set(teams_in)
+
         other_team = game_week[(~game_week['home'].isin(teams_in)) | (~game_week['away'].isin(teams_in))]
-        other_team = index_reset(other_team)
+        if other_team.empty:
+            manual_standings = pd.read_csv(f'datasets/{year}/league/{year}-regular-standings-manual.csv')
+            bt = manual_standings.at[7,'team']
+            other_team = played_games[(played_games['w'] == w-1)&((played_games['home']==bt)|(played_games['away']==bt))]
+        other_team = other_team.reset_index(drop=True)
         other_team = pd.DataFrame(other_team.loc[0][['home','hs','away','as']])
         other_team = other_team.T
 
@@ -684,17 +714,18 @@ def get_nb_match_prediction(q1,q2,x1,y1,x2,y2):
     return home_win_new, draw_new, away_win_new
 
 def get_team_form(data,query):
-    db = data[data['team'] == query]
+    db = data[data['team'] == query].sort_values(by=['m','d'])
     db = pd.DataFrame(db['summary'])
     return db
 
-def get_form_results(data,dc):
+def get_form_results(data,team_ref):
     db = pd.DataFrame()
-    form = get_results_brief(data[data['s'] <= 1],dc)
-    teams = dc['team']
+    form = get_results_brief(data[data['s'] <= 1],team_ref)
+    teams = team_ref['team'].unique()
     for team in teams:
         df = get_team_form(form,team)
         db[team] = pd.Series(df['summary'].values)
+    db = db.fillna('-')
     for col in db.columns:
         for i in range(db.shape[0]):
             if 'nan' in db.at[i,col]:
@@ -965,7 +996,7 @@ def get_team_history(results,query,period = 0):
 def get_five_game_form(results,query,period):
     team_form = get_team_history(results,query,period)
     team_form = team_form.pop('hr')
-    convert = {'W':[1,0,0],'L':[0,1,0],'D':[0,0,1]}
+    convert = {'W':[1,0,0],'L':[0,0,1],'D':[0,1,0]}
     a = []
     for i in team_form:
         a.append(convert[i])

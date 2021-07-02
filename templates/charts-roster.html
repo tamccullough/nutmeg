@@ -1,0 +1,117 @@
+<script type="text/javascript">
+new Chart(document.getElementById('teamLine'), {
+  type: 'line',
+  data: {
+    labels: [
+      {% for x in range(1,(team_line[0] | length)-1) %}
+      {{ x }},
+      {% endfor %}
+      {{ (team_line[0] | length) }}
+    ],
+    datasets: [
+      {% for i in range((team_line | length) -1) %}
+      {
+        label: '{{ team_chart_columns[i] }}',
+        data: [
+          {% for x in range(team_line[i] | length -1) %}
+          {{ team_line[i][x] | safe }},
+          {% endfor %}
+          {{ team_line[i][-1] | safe}}
+
+        ],
+        fill: true,
+        borderColor: '{{ geegle[i] }}',
+        backgroundColor: '{{ geegle[i] }}'+'33',
+        pointHoverRadius: 10,
+        pointHoverBackgroundColor: '{{ geegle[i] }}'
+      },
+      {% endfor %}
+      {
+        label: '-',
+        data: [
+          {% for j in range(team_line[-1] | length -1) %}
+          {{ team_line[-1][j] | safe }},
+          {% endfor %}
+          {{ team_line[-1][-1] | safe}}
+        ],
+        fill: true,
+        borderColor: '{{ geegle[-1] }}',
+        backgroundColor: '{{ geegle[-1] }}'+'33',
+        pointHoverRadius: 10,
+        pointHoverBackgroundColor: '{{ geegle[-1] }}'
+      }
+    ],
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    tooltips: {
+      titleFontSize: 18,
+      bodyFontSize: 18
+    },
+    legend: {
+        display: false,
+    },
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            fontColor: '#fff'
+          }
+        }
+      ],
+      xAxes: [
+        {
+          ticks: {
+            fontColor: '#fff'
+          }
+        }
+      ]
+    }
+  }
+});
+  new Chart(document.getElementById('teamRadar'), {
+    type: 'radar',
+    data: {
+      labels: ['finish','def','att','mid','net','big','save','goals'],
+      datasets: [{
+        data: [{{ radar.loc[0].values[1:] | join(', ') | safe }}],
+        fill: true,
+        backgroundColor: '{{ colour2 }}'+'BF',
+        borderColor: '{{ colour2 }}',
+        pointHoverRadius: 10,
+        pointHoverBackgroundColor: "#fff",
+        pointBackgroundColor: '{{ colour2 }}'
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      tooltips: {
+        titleFontSize: 18,
+        bodyFontSize: 18
+      },
+      legend: {
+        display: false
+      },
+      borderWidth: 10,
+      scale: {
+        ticks: {
+          display: false,
+          beginAtZero: true,
+          maxTicksLimit: 10,
+          max: 1
+        },
+        gridLines: {
+          lineWidth: 0.5,
+          color: '#fff'
+        },
+        pointLabels: {
+          fontColor: '#fff',
+          fontSize: 16,
+          fontFamily: "'Lato', sans-serif"
+        }
+      }
+    }
+  });
+</script>

@@ -1,18 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-  <title>Nutmeg CanPL Team Comparison</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="Todd McCullough">
-  <meta name="description" content="Canadian Premier League (CanPL) select two different teams to view its individual stats during the selected year.">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/png" href="static/images/favicon.png" />
-  <link rel="stylesheet" href="static/css/style.css">
-  <link rel="stylesheet" href="static/css/team-colours.css">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Staatliches&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>XGXA CanPL Team Comparison</title>
+  <meta name="description" content="Canadian Premier League select two different teams to view its individual statistics during the selected year.">
 </head>
 
 {% extends 'tc-base.html' %}
@@ -23,7 +13,7 @@
 <div>
   <div class="parent">
     <div class="boxs">
-      <p>{{ headline }}</p>
+      <p>{{ headline }}{{ message }}</p>
     </div>
     <div class="boxs textright">
       <a class="button" href="/team-compare">refresh</a>
@@ -48,6 +38,7 @@
         <div class="form box">
           <select name="team1YR" id="team1YR" onchange="this.form.submit();">
             <option value="">select year</option>
+            <option value="2021">2021</option>
             <option value="2020">2020</option>
             <option value="2019">2019</option>
           </select>
@@ -103,6 +94,7 @@
           <div class="form box">
             <select name="team2YR" id="team2YR" onchange="this.form.submit();">
               <option value="">select year</option>
+              <option value="2021">2021</option>
               <option value="2020">2020</option>
               <option value="2019">2019</option>
             </select>
@@ -143,8 +135,8 @@
       <!-- END OF away team stats -->
     </div>
     {% set i = 0 %}
-    {% for word in ['testing','testing2','testing3','testing4','testing5']%}
-    <div class="{{ theme }}-grey" style="padding: 10px 10px;">
+    {% for word in ['chart1','chart2','chart3','chart4','chart5']%}
+    <div class="{{ theme }}-darkblue" style="padding: 10px 10px;">
       <div class="tooltip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ line_columns[loop.index-1] }}
         <p class="tooltiptext">
           {% for x in team_names[:-1] %}

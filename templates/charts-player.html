@@ -1,0 +1,121 @@
+<script type="text/javascript">
+  document.getElementById('go-back').addEventListener('click', () => {
+    history.back();
+  });
+    new Chart(document.getElementById('playerLine'), {
+      type: 'line',
+      data: {
+        labels: [
+          {% for x in range(1,(player_line[0] | length)-1) %}
+          {{ x }},
+          {% endfor %}
+          {{ (player_line[0] | length) }}
+        ],
+        datasets: [
+          {% for i in range(player_line_length) %}
+          {% set k = i + 1 %}
+          {
+            label: '{{geegle[i]}}',
+            data: [
+              {% for x in range(player_line[i] | length) %}
+              {{ player_line[i][x] | safe }},
+              {% endfor %}
+              {{ player_line[i][-1] | safe }}
+
+            ],
+            fill: true,
+            borderColor: '{{ geegle[i] }}',
+            backgroundColor: '{{ geegle[i] }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ geegle[i] }}'
+          },
+          {% endfor %}
+          {
+            label: '{{geegle[player_line_end]}}',
+            data: [
+              {% for j in range(player_line[player_line_end] | length) %}
+              {{ player_line[player_line_end][j] | safe }},
+              {% endfor %}
+              {{ player_line[player_line_end] | safe }}
+            ],
+            fill: true,
+            borderColor: '{{ geegle[player_line_length] }}',
+            backgroundColor: '{{ geegle[player_line_length] }}'+'33',
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '{{ geegle[player_line_length] }}'
+          }
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        tooltips: {
+          titleFontSize: 18,
+          bodyFontSize: 18
+        },
+        legend: {
+            display: false,
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                fontColor: '{{ colour3 }}'
+              }
+            }
+          ],
+          xAxes: [
+            {
+              ticks: {
+                fontColor: '{{ colour3 }}'
+              }
+            }
+          ]
+        }
+      }
+    });
+    new Chart(document.getElementById('playerRadar'), {
+      type: 'radar',
+      data: {
+        labels: [{{ radar_chart_cols | safe }}],
+        datasets: [{
+          data: [{{ radar_chart.loc[0].values[:]|join(',') }}],
+          fill: true,
+          backgroundColor: '{{ colour2 }}'+'BF',
+          borderColor: '{{ colour2 }}',
+          pointHoverRadius: 10,
+          pointHoverBackgroundColor: '{{ colour2 }}',
+          pointBackgroundColor: '{{ colour2 }}'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        tooltips: {
+          titleFontSize: 18,
+          bodyFontSize: 18
+        },
+        legend: {
+          display: false
+        },
+        borderWidth: 10,
+        scale: {
+          ticks: {
+            display: false,
+            beginAtZero: true,
+            maxTicksLimit: 10,
+            max: 1
+          },
+          gridLines: {
+            lineWidth: 0.5,
+            color: '#fff'
+          },
+          pointLabels: {
+            fontColor: '{{ colour3 }}',
+            fontSize: 14,
+            fontFamily: "'Lato', sans-serif"
+          }
+        }
+      }
+    });
+  </script>

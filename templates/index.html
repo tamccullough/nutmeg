@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-  <title>Nutmeg Canadian Premier League Stats for Teams & Players</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="Todd McCullough">
-  <meta name="description" content="Canadian Premier League (CanPL) stats, standings, team and roster information, data analysis and data visualization for football and Soccer fans of the League.">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/png" href="static/images/favicon.png" />
-  <link rel="stylesheet" href="static/css/style.css">
-  <link rel="stylesheet" href="static/css/team-colours.css">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Staatliches&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>XGXA Canadian Premier League Stats for Teams & Players</title>
+  <meta name="description" content="Canadian Premier League statistics, standings, team and roster information, data analysis and data visualization for football and soccer fans of the League.">
 </head>
 
 {% extends 'base.html' %}
 {% block content %}
 
+<div class="center">
+  <p>***CPL Data has altered the full names of some players. Might cause some bugs***</p>
+</div>
 <!-- header -->
 {% include "form.html" %}
 <!-- page content -->
@@ -100,7 +93,7 @@
     <input type="hidden" id="year" name="year" value="{{ year }}">
     </form>
     <div class="parent">
-      <div class="box {{ theme }}-light">
+      <div class="boxm {{ theme }}-light">
         <a>{{ results_headline }}</a>
         <br>
         <a>Biggest Win</a>
@@ -160,7 +153,7 @@
         <div class="spacer"></div>
       </div>
       <br>
-      <div class="box {{ theme }}-light">
+      <div class="boxm {{ theme }}-light">
         <form method="POST" action="/player">
         <span><a>{{ players_headline }}</a></span>
         <div>

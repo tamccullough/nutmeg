@@ -1,35 +1,44 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-  <title>Nutmeg CanPL Standings</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="Todd McCullough">
-  <meta name="description" content="Canadian Premier League (CanPL) standings table information. Providing access to past and present club standings.">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/png" href="static/images/favicon.png" />
-  <link rel="stylesheet" href="static/css/style.css">
-  <link rel="stylesheet" href="static/css/team-colours.css">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Staatliches&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>CanPL {{ year }} Standings</title>
+  <meta name="description" content="Canadian Premier League standings. Providing access to past and present club standings.">
 </head>
 
 {% extends 'base.html' %}
 {% block content %}
 
+{% if request.endpoint == 'todate' %}
+{% set button1 = 'action' %}
+{% set button2 = 'dark' %}
+{% set style = 'display:none;' %}
+{% else %}
+{% set button1 = 'dark' %}
+{% set button2 = 'action' %}
+{% set style = 'display:block;' %}
+{% endif %}
+
+
+<div class="parent">
+  <div class="boxs center {{ theme }}-{{ button1 }}">
+    <a class="{{ theme }}-{{ button1 }} button" href="/standings">Standings</a>
+  </div>
+  <div class="boxs center {{ theme }}-{{ button2 }}">
+    <a class="{{ theme }}-{{ button2 }} button" href="/todate" >Year to Date</a>
+  </div>
+</div>
+
 <!-- header -->
-{% include "standings-form.html" %}
-{% block body %}{% endblock %}
+{% include "form.html" %}
 
 <!-- page content -->
   <!-- body -->
 <div class="mobile">
   <!-- championship -->
   {% if championship_table is defined %}
-  <div><a class="indent">Championship</a></div>
+  <div class="{{ theme }}-dark indent"><a>Championship</a></div>
     <div>
-      <div>
+      <div class="{{ theme }}-dark">
             <table>
               <tr style="font-size:0.8em;">
                 <td>rank</td>
@@ -42,6 +51,10 @@
                 <td>GF</td>
                 <td>GA</td>
               </tr>
+            </table>
+          </div>
+          <div  class="{{ theme }}-light">
+            <table>
               {%for i in range(0,championship_table.shape[0])%}
               <tr>
                 <td>{{ i+1 }}</td>
@@ -65,12 +78,12 @@
     <!-- playoffs -->
     {% if championship_table is defined %}
     {% if year == '2019' %}
-    <div><a class="indent">Summer Season</a></div>
+    <div class="{{ theme }}-dark indent"><a>Summer Season</a></div>
     {% else %}
-    <div><a class="indent">Playoffs</a></div>
+    <div class="{{ theme }}-dark indent"><a>Playoffs</a></div>
     {% endif %}
       <div>
-        <div>
+        <div class="{{ theme }}-dark">
               <table>
                 <tr style="font-size:0.8em;">
                   <td>rank</td>
@@ -83,6 +96,10 @@
                   <td>GF</td>
                   <td>GA</td>
                 </tr>
+              </table>
+        </div>
+        <div  class="{{ theme }}-light">
+          <table>
                 {%for i in range(0,playoffs_table.shape[0])%}
                 <tr>
                   <td>{{ i+1 }}</td>
@@ -105,11 +122,11 @@
 
       <!-- regular season -->
       {% if year == '2019' %}
-      <div><a class="indent">Spring Season</a></div>
+      <div class="{{ theme }}-dark indent"><a class="indent">Spring Season</a></div>
       {% else %}
-      <div><a class="indent">Regular Season</a></div>
+      <div class="{{ theme }}-dark indent"><a class="indent">Regular Season</a></div>
       {% endif %}
-      <div>
+      <div class="{{ theme }}-dark">
           <table>
             <tr style="font-size:0.8em;">
               <td>rank</td>
@@ -122,6 +139,10 @@
               <td>GF</td>
               <td>GA</td>
             </tr>
+          </table>
+      </div>
+      <div class="{{ theme }}-light">
+        <table>
             {%for i in range(0,standings_table.shape[0])%}
             <tr>
               <td>{{ i+1 }}</td>
@@ -139,8 +160,8 @@
       </div>
         <!-- end of regular season-->
         <!-- form -->
-        <div><h3>Form</h3></div>
-          <div>
+        <div class="{{ theme }}-dark indent"><h3>Form</h3></div>
+          <div  class="{{ theme }}-dark">
             <div class="parent">
               <div class="t-center" style="display:inline;width:15%;"><a>club</a></div>
               <div class="t-center" style="display:inline;width:85%;"><a>game</a></div>
@@ -153,6 +174,10 @@
                   <td class="t-left" style="font-size:0.5em;">{{ i }}</td>
                   {% endfor %}
                 </tr>
+              </table>
+            </div>
+            <div class="{{ theme }}-light">
+              <table>
                 {%for i in range(0,form_table.shape[0])%}
                 <tr>
                   <td class="t-center"><img style="max-height:30px;margin:-8px;text-align:center;" src="static/images/flags/{{ form_table.at[i,'crest'] }}" alt="{{ form_table.at[i,'crest'] }} Crest"></td>

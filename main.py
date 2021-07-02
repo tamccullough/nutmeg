@@ -33,7 +33,7 @@ player_info = pd.concat([ player_info_19, player_info_20, player_info_21 ])
 
 # get all player names and store these in one dataframe
 # create a dictionary for better retrieval of the names
-player_names_df = pd.concat([ player_info_19[['name','display']] , player_info_20[['name','display']] ])# , player_info_21[['name','display']] ])
+player_names_df = pd.concat([ player_info_19[['name','display']] , player_info_20[['name','display']], player_info_21[['name','display']] ])
 player_names_df = player_names_df.sort_values(by='name')
 player_names_df = player_names_df.drop_duplicates()
 player_names = {}
@@ -113,6 +113,50 @@ col_check = {'overall':'O',
             'TchsM3':'Tchm',
             'TouchOpBox':'TchoB',
             'Touches':'Tch'}
+
+tooltip = {'O':'Overall Score',
+            'air':'Aerials Duels Won',
+            'BgChF':'Big Chances Faced',
+            'Ch-c':'Chances Created from Open Play',
+            'CS':'Clean Sheets',
+            'Clr':'Clearances',
+            'defTch':'Defensive Touches',
+            'dis':'Dispossed',
+            'DlL':'Duels Lost',
+            'DlW':'Successful Duels',
+            'xA':'Expected Assists',
+            'xG':'Expected Goals',
+            'xGc':'Expected Goals Conceded',
+            'FlA3':'Fouls Committed in the Attacking Third',
+            'Flsuf':'Fouls Suffered in the Middle Third',
+            'G':'Goals',
+            'GcBox':'Goals Condeded from Inside the Box',
+            'Gc':'Goals Conceded',
+            'int':'Interceptions',
+            'shtTrg':'Shots Off Target',
+            'Pc%':'Pass Completion Percentage',
+            'Pat':'Passes Attempted',
+            'Pata':'Passes Completed from the Attacking Third',
+            'Patm':'Passes Completed from the Middle Third',
+            'Pfd':'Failed Passed in Own Half',
+            'Pfa':'Failed Passes in Opponents Half',
+            'Psuca':'Successful Passes in Opponents Half',
+            'Rec':'Recoveries',
+            'SV':'Saves',
+            'sDl':'Successful Duels',
+            'sTkl':'Successful Tackles',
+            'SVc':'Saves Collected',
+            'dvS':'Diving Saves',
+            'hdS':'Saves with the Hands',
+            'SVi':'Saves from shots Inside the Box',
+            'SVo':'Saves from shots Outside the Boix',
+            'SVps':'Saves Parried into Safety',
+            'SVstn':'Saves while Standing',
+            'Tcha':'Touches in the Attacking Third',
+            'Tchm':'Touches in the Middle Third',
+            'TchoB':'Touches in the Opponents Box',
+            'Tch':'Touches',
+            'Min':'Minutes Played',}
 
 contributors = {
     'tam':'Todd McCullough',
@@ -361,7 +405,6 @@ def todate():
         except:
             pass
 
-    team_form_results = pd.read_csv(f'datasets/{year}/league/{year}-team_form.csv')
     team_ref = pd.read_csv(f'datasets/teams.csv')
 
     def get_crest(data,yr):
@@ -392,7 +435,7 @@ def todate():
 
     return render_template('todate.html',columns = columns,
     yeartodate_table = yeartodate_season_total, season_tables = season_tables,
-    form_table = team_form_results, year = this_year,
+    year = this_year,
     headline = 'Year to Date')
 
 @canpl.route('/standings', methods=['GET','POST'])
@@ -484,12 +527,19 @@ def eleven():
 
     best_eleven_t['tp'] = 0
     for c,r in best_eleven_t.iterrows():
-        best_eleven_t.at[c,'tp'] = player_info[player_info['name'] == r['name']]['tp'].values[0]
-
-    print('FIVE')
-    print(best_eleven_t[best_eleven_t['tp'] == 5])
-    print('FOUR')
-    print(best_eleven_t[best_eleven_t['tp'] == 4])
+        try:
+            best_eleven_t.at[c,'tp'] = player_info[player_info['name'] == r['name']]['tp'].values[0]
+        except:
+            try:
+                best_eleven_t.at[c,'tp'] = player_info[player_info['display'] == r['name']]['tp'].values[0]
+            except:
+                try:
+                    best_eleven_t.at[c,'tp'] = player_info[player_info['name'].str.contains(r['name'].split(' ')[-1])]['tp'].values[0]
+                except:
+                    try:
+                        best_eleven_t.at[c,'tp'] = player_info[player_info['display'].str.contains(r['name'].split(' ')[-1])]['tp'].values[0]
+                    except:
+                        print(f"{r['name']} missing info")
 
     best_eleven = pd.DataFrame()
     pos_dict= {
@@ -497,7 +547,7 @@ def eleven():
         5:'Lt Center Back',6:'Defensive Mid',7:'Right Winger',
         8:'Box-to-Box Mid',9:'Striker',10:'Playmaker',11:'Left Winger',
     }
-    num_list = [1,4,5,2,3,6,8,10,7,9,11]
+    num_list = [4,1,5,2,6,8,3,7,10,9,11]
     team_colour = {'Atlético Ottawa' : 'cpl-ato',
                   'Cavalry FC' : 'cpl-cfc',
                   'FC Edmonton' : 'cpl-fce',
@@ -510,10 +560,8 @@ def eleven():
 
     for i in num_list:
         try:
-            print(best_eleven_t[best_eleven_t['tp'] == i].head(1)['display'].values[0])
             name = best_eleven_t[best_eleven_t['tp'] == i].head(1)['name'].values[0]
         except:
-            print(name)
             name = best_eleven_t[best_eleven_t['tp'] == 4].head(2)['name'].values[1]
         db = player_info[player_info['name'] == name][['team','image','name','display','number','flag','overall','position','link','tp']].copy().reset_index(drop=True)
         db['colour'] = team_colour[db['team'].values[0]]
@@ -527,11 +575,13 @@ def eleven():
 def power():
 
     year, error = get_year()
-
+    print(year)
     team_ref = pd.read_csv('datasets/teams.csv')
     power = pd.read_csv(f'datasets/{year}/league/{year}-power_rankings.csv')
+    standings = pd.read_csv(f'datasets/{year}/league/{year}-regular-standings.csv')
 
-    if power['move'].max() == 0:
+    if power['move'].max() == 0 and standings.at[0,'matches'] == 0:
+        print("BROKEN",standings.at[0,'matches'])
         year = str(int(year)-1)
         team_ref = team_ref[team_ref['year'] == int(year)]
         headline = f'Previous Season Power Rankings of '
@@ -563,9 +613,12 @@ def versus():
         game_form = pd.read_csv(f'datasets/{year}/league/{year}-game_form.csv')
 
     results, team_ref, player_info, results_old, results_diff, schedule, results_brief = load_main_files(year)
+    player_info = pd.read_csv(f'datasets/{year}/league/{year}-player-info.csv')
+    schedule = pd.read_csv(f'datasets/{year}/league/{year}-results.csv')
+    schedule = schedule[schedule['hr']=='E']
 
     results_old, stats_old = pd.DataFrame(), pd.DataFrame()
-    for yr in range(2019,int(year)):
+    for yr in range(2019,int(year)+1):
         prev_results = pd.read_csv(f'datasets/{year}/league/{year}-results.csv')
         prev_stats = pd.read_csv(f'datasets/{year}/playerstats/{year}-stats.csv')
         results_old = pd.concat([prev_results,results_old])
@@ -646,6 +699,7 @@ def versus():
 
 
     team1, team2, team3, team4, team5, team6, team7, team8 = cpl_main.get_team_files(schedule,team_ref)
+    print(team1, team2, team3, team4, team5, team6, team7, team8)
 
     if (home_win < draw) and (away_win < draw):
         home_win, away_win = draw, draw
@@ -718,11 +772,14 @@ def charts():
 
     year, error = get_year()
 
-    team_standings = pd.read_csv(f'datasets/{year}/cpl-{year}-standings_current.csv')
+    team_standings = pd.read_csv(f'datasets/{year}/league/{year}-regular-standings.csv')
+    if team_standings.at[0,'matches'] == 0:
+        team_standings = pd.read_csv(f'datasets/{int(year)-1}/league/{int(year)-1}-regular-standings.csv')
     radar = pd.read_csv(f'datasets/{year}/league/{year}-radar.csv')
     team_standings = team_standings.sort_values(by='team')
-    team_standings['xg'] = round((team_standings['gf'] / team_standings['gp'])*7,2)
-    team_standings['xp'] = round(team_standings['pts'] / team_standings['gp'],2)
+    team_standings['xg'] = round((team_standings['Goal'] / team_standings['matches'])*7,2)
+    team_standings['xp'] = round(team_standings['points'] / team_standings['matches'],2)
+    print(team_standings)
     team_standings['xt'] = team_standings['xp'] * 7
     team_standings['xg'] = team_standings['xg'].astype('int')
     team_standings['xt'] = team_standings['xt'].astype('int')
@@ -747,9 +804,11 @@ def charts():
 
     columns = team_ref.columns
 
-    return render_template('charts.html',columns = columns, html_table = team_ref,
-    team_list = team_list, team_dict = team_dict, team_stats = team_stats, year = year,
-    stats = team_standings, radar = radar, headline = 'Radar Charts')
+    stat_cols = ['ExpG','ExpA','Goal','BgChnc','Chance','CleanSheet','GoalCncd','BgChncFace']
+
+    return render_template('charts.html',columns = columns, html_table = team_ref, stat_cols = stat_cols[2:],
+    team_list = team_list, team_dict = team_dict, team_stats = team_stats, year = year, geegle = geegle,
+    stats = team_standings, radar = radar, headline = 'Radar & Line Charts')
 
 @canpl.route('/roster', methods=['GET','POST'])
 def roster():
@@ -770,8 +829,6 @@ def roster():
 
     player_info = pd.read_csv(f'datasets/{year}/league/{year}-player-info.csv')
     roster = player_info[player_info['team'] == team][['name','image','position','number','flag','overall','link']]
-    for c,r in roster.iterrows():
-        print(r['image'])
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref = team_ref[team_ref['year'] == int(year)]
     coach = team_ref[team_ref['team'] == team][['cw','cl','cd','coach','country','image','w','l','d','year']]
@@ -829,28 +886,28 @@ def teamcompare():
         pass
     else:
         if refresh_check == 0:
-            stat_values['team1YR'] = '2020'
+            stat_values['team1YR'] = '2021'
             session['team1YR'] = stat_values['team1YR']
         elif default_values['team1YR']:
             stat_values['team1YR'] = default_values['team1YR']
         else:
-            stat_values['team1YR'] = '2020'
+            stat_values['team1YR'] = '2021'
 
     # Get the selected year for the team 2 choice
     if stat_values['team2YR']:
         if refresh_check == 0:
-            stat_values['team2YR'] = '2020'
+            stat_values['team2YR'] = '2021'
             session['team2YR'] = stat_values['team2YR']
         else:
             pass
     else:
         if refresh_check == 0:
-            stat_values['team2YR'] = '2020'
+            stat_values['team2YR'] = '2021'
             session['team2YR'] = stat_values['team2YR']
         elif default_values['team1YR']:
             stat_values['team2YR'] = default_values['team2YR']
         else:
-            stat_values['team2YR'] = '2020'
+            stat_values['team2YR'] = '2021'
 
     year1 = stat_values['team1YR']
     year2 = stat_values['team2YR']
@@ -864,16 +921,23 @@ def teamcompare():
         year2 = year_correct['Atlético Ottawa']
 
     if (default_values['team1'] == 'York United FC') & (year1 in ['2019','2020']):
-        year1 = year_correct['York United FC']
+        stat_values['team1'] = 'York9 FC'
 
     if (default_values['team2'] == 'York United FC') & (year2 in ['2019','2020']):
-        year2 = year_correct['York United FC']
+        stat_values['team2'] = 'York9 FC'
 
+    if (default_values['team1'] == 'York9 FC') & (int(year1) > 2020):
+        stat_values['team1'] = 'York United FC'
+
+    if (default_values['team2'] == 'York9 FC') & (int(year2) > 2020):
+        stat_values['team2'] = 'York United FC'
+
+    standings = pd.read_csv(f'datasets/{current_year}/league/{current_year}-regular-standings.csv')
     team_ref = pd.read_csv('datasets/teams.csv')
     team_ref1 = team_ref[team_ref['year'] == int(year1)].copy()
-    team_ref1 = cpl_main.index_reset(team_ref1)
+    team_ref1 = team_ref1.reset_index(drop=True)
     team_ref2 = team_ref[team_ref['year'] == int(year2)].copy()
-    team_ref2 = cpl_main.index_reset(team_ref2)
+    team_ref2 = team_ref2.reset_index(drop=True)
 
     team1_select_list = team_ref1.team.unique().tolist()
     team2_select_list = team_ref2.team.unique().tolist()
@@ -883,14 +947,14 @@ def teamcompare():
             team1_select_list.remove('York United FC')
         except:
             pass
-    if year1 == '2019':
-        try:
-            team1_select_list.remove('Atlético Ottawa')
-        except:
-            pass
     if year2 == '2020':
         try:
             team2_select_list.remove('York United FC')
+        except:
+            pass
+    if year1 == '2019':
+        try:
+            team1_select_list.remove('Atlético Ottawa')
         except:
             pass
     if year2 == '2019':
@@ -903,13 +967,13 @@ def teamcompare():
     duplicate = 0
     if stat_values['team1']:
         if refresh_check == 0:
-            stat_values['team1'] = team_ref1.at[0,'team']
+            stat_values['team1'] = standings.at[0,'team']
             session['team1'] = stat_values['team1']
         else:
             pass
     else:
         if refresh_check == 0:
-            stat_values['team1'] = team_ref1.at[0,'team']
+            stat_values['team1'] = standings.at[0,'team']
             session['team1'] = stat_values['team1']
         elif (default_values['team1'] != '') & (stat_values['team1YR'] != ''):
             stat_values['team1'] = default_values['team1']
@@ -930,7 +994,7 @@ def teamcompare():
             session['team2'] = stat_values['team2']
     else:
         if refresh_check == 0:
-            stat_values['team2'] = team_ref1.at[1,'team']
+            stat_values['team2'] = standings.at[1,'team']
             session['team2'] = stat_values['team2']
         elif (default_values['team2'] != '') & (stat_values['team2YR'] != ''):
             stat_values['team2'] = default_values['team2']
@@ -975,6 +1039,7 @@ def teamcompare():
             cols = [x for x in data.columns if x not in ['Goal','GoalCncd']]
             for col in cols:
                 df[col] = round(df[col]/ df[col].max() ,2)
+                df[col] = df[col].fillna(0)
             return df
 
         # compare the shapes of the dataframes - require similar length
@@ -1030,8 +1095,13 @@ def teamcompare():
     session['team2'] = team2
     session['team2YR'] = year2
 
-    colour1 = '#fff1d0'
-    colour2 = '#003b5c'
+    colour1 = '#caf0f8'#'#fff1d0'
+    colour2 = '#001219'#'#003b5c'
+
+    for x in range(len(team_lines)):
+        t = ['Goal','GoalCncd','CleanSheet','BgChnc','Chance']
+        print(t[x])
+        print(team_lines[x])
 
     return render_template('team-compare.html', geegle = geegle, headline= headline,
     team1_select_list = team1_select_list,team2_select_list = team2_select_list,
@@ -1043,7 +1113,7 @@ def teamcompare():
     team_names = [team1,team2], chart_team_colour_list = [colour1, colour2],
     team_line = team_lines[0],line_columns = line_columns,team_line_2 = team_lines[1],
     team_line_3 = team_lines[2],team_line_4 = team_lines[3],team_line_5 = team_lines[4],
-    colour1 = colour1, colour2 = colour2,colour3 = geegle[2])
+    colour1 = colour1, colour2 = colour2, colour3 = geegle[2])
 
 @canpl.route('/compare', methods=['GET','POST'])
 def compare():
@@ -1091,7 +1161,7 @@ def compare():
     stat_lines = {}
     player_info = {}
     for pos in ['defenders','forwards','keepers','midfielders']:
-        for yr in range(2019,2021):
+        for yr in range(2019,current_year+1):
             stat_lists[pos[:1]+'_'+str(yr)[2:]] = pd.read_csv(f'datasets/{yr}/playerstats/{yr}-{pos}.csv')
             stat_lines[pos[:1]+'_'+str(yr)[2:]+'_l'] = pd.read_csv(f'datasets/{yr}/playerstats/{yr}-{pos}-line.csv')
             player_info[str(yr)[2:]] = pd.read_csv(f'datasets/{yr}/league/{yr}-player-info.csv')
@@ -1105,22 +1175,23 @@ def compare():
         # if not, then select the most recent year
         get_pos = {'d':'defenders','f':'forwards','g':'keepers','m':'midfielders'}
         def confirm_year(name):
-            def check(col='name'):
-                player_info[x[2:]][player_info[x[2:]][col] == name]['display'].values[0]
-                return player_info[x[2:]][player_info[x[2:]][col] == name]['position'].values[0]
+            def check(yr):
+                for col in ['name','display']:
+                    try:
+                        return player_info[yr][player_info[yr][col] == name]['position'].values[0]
+                    except:
+                        return player_info[yr][player_info[yr][col].str.contains(name.split(' ')[-1])]['position'].values[0]
 
             y = ['2019','2020','2021']
             year_list = {}
             while y:
                 x = y.pop(-1)
+                print(f"\nSearching {x}\n")
                 try:
-                    try:
-                        p = check()
-                        year_list[x] = [x,get_pos[p]]
-                    except:
-                        p = check(col='display')
-                        year_list[x] = [x,get_pos[p]]
+                    p = check(x[2:])
+                    year_list[x] = [x,get_pos[p]]
                 except:
+                    print(f"{name} not found")
                     pass
             return year_list
 
@@ -1129,7 +1200,11 @@ def compare():
         if year in years:
             return year_list[year][1], year_list[year][0]
         else:
-            return year_list[years[0]][1], year_list[years[0]][0]
+            try:
+                return year_list[years[0]][1], year_list[years[0]][0]
+            except:
+                print(f"Trouble confirming {name}'s active years")
+                return year_list[years[0]][1], year_list[years[0]][0]
 
     def check_choice(name,position,year,n='1'):
         ## nested functions
@@ -1163,8 +1238,7 @@ def compare():
                 k = 0
             position = 'forwards'
             name = get_best_eleven(position,n=k)
-            year = '2020'
-
+            year = '2021'
         if n == '1':
             # check if user selects defender or keeper; if so switch players to only that selected position
             if (position.lower() in ['forwards','midfielders']) & (refresh_check == 1):
@@ -1226,11 +1300,15 @@ def compare():
     ###################################################################
     def get_player_information(name,year,position):
         print(f"\n{name}\n{year}\n")
-        player_stat_list = stat_lists[position[:1]+'_'+str(year)][stat_lists[position[:1]+'_'+str(year)]['name'] == name]
-        try:
-            player_stat_list['overall'].values[0]
-        except:
-            player_stat_list = stat_lists[position[:1]+'_'+str(year)][stat_lists[position[:1]+'_'+str(year)]['display'] == name]
+        for col in ['name','display']:
+            player_stat_list = stat_lists[position[:1]+'_'+str(year)][stat_lists[position[:1]+'_'+str(year)][col] == name]
+            if player_stat_list.empty:
+                player_stat_list = stat_lists[position[:1]+'_'+str(year)][stat_lists[position[:1]+'_'+str(year)][col].str.contains(name.split(' ')[-1])]
+            if player_stat_list.empty:
+                pass
+            else:
+                break
+
         check = 0
         get_pos = {'d':'defenders','f':'forwards','g':'keepers','m':'midfielders'}
         get_colour = {'Atlético Ottawa' : 'cpl-ato',
@@ -1243,52 +1321,60 @@ def compare():
                     'York United FC' : 'cpl-yor',
                     'York9 FC' : 'cpl-y9'}
 
-        def get_player_details(year,col):
-            flag = player_info[year][player_info[year][col] == name]['flag'].values[0]
-            image = player_info[year][player_info[year][col] == name]['image'].values[0]
-            print(image)
-            position = get_pos[player_info[year][player_info[year][col] == name]['position'].values[0]].lower()
-            number = player_info[year][player_info[year][col] == name]['number'].values[0]
-            team = player_info[year][player_info[year][col] == name]['team'].values[0]
-            colour = get_colour[team]
-            display = player_info[year][player_info[year][col] == name]['display'].values[0]
-            overall = player_stat_list['overall'].values[0]
-            min = player_stat_list['Min'].values[0]
-            try:
-                special1 = player_stat_list['Int'].values[0]
-            except:
+        def get_player_details(year):
+            for col in ['name','display']:
+                player = player_info[year][player_info[year][col] == name]
+                if player.empty:
+                    player = player_info[year][player_info[year][col].str.contains(name.split(' ')[-1])]
+                if player.empty:
+                    pass
+                else:
+                    break
+
+            player = player.reset_index(drop=True)
+            for c,r in player.iterrows():
+                flag = r['flag']
+                image = r['image']
+                position = get_pos[r['position']]
+                number = r['number']
+                team = r['team']
+                colour = get_colour[team]
+                display = r['display']
+                overall = player_stat_list['overall'].values[0]
+                min = player_stat_list['Min'].values[0]
                 try:
-                    special1 = player_stat_list['CleanSheet'].values[0]
+                    special1 = player_stat_list['Int'].values[0]
                 except:
-                    special1 = player_stat_list['ExpG'].values[0]
-            try:
-                special2 = player_stat_list['Clrnce'].values[0]
-            except:
+                    try:
+                        special1 = player_stat_list['CleanSheet'].values[0]
+                    except:
+                        special1 = player_stat_list['ExpG'].values[0]
                 try:
-                    special2 = player_stat_list['Saves'].values[0]
+                    special2 = player_stat_list['Clrnce'].values[0]
                 except:
-                    special2 = player_stat_list['ExpA'].values[0]
+                    try:
+                        special2 = player_stat_list['Saves'].values[0]
+                    except:
+                        special2 = player_stat_list['ExpA'].values[0]
+            print(flag,image,position,number,team,colour,display,overall,min,special1,special2)
             return flag,image,position,number,team,colour,display,overall,min,special1,special2
 
 
         player_information = {}
         try:
-            player_information['flag'],player_information['image'],player_information['position'],player_information['number'],player_information['team'],player_information['colour'],player_information['display'],player_information['overall'],player_information['min'],player_information['special1'],player_information['special2'] = get_player_details(year,'name')
+            player_information['flag'],player_information['image'],player_information['position'],player_information['number'],player_information['team'],player_information['colour'],player_information['display'],player_information['overall'],player_information['min'],player_information['special1'],player_information['special2'] = get_player_details(year)
         except:
+            # maybe the player didn't play that year, otherwise try the next year
+            if year == '20':
+                year = '19'
+            else:
+                year = '20'
             try:
-                player_information['flag'],player_information['image'],player_information['position'],player_information['number'],player_information['team'],player_information['colour'],player_information['display'],player_information['overall'],player_information['min'],player_information['special1'],player_information['special2'] = get_player_details(year,'display')
+                player_information['flag'],player_information['image'],player_information['position'],player_information['number'],player_information['team'],player_information['colour'],player_information['display'],player_information['overall'],player_information['min'],player_information['special1'],player_information['special2'] = get_player_details(year)
+                check = year
             except:
-                # maybe the player didn't play that year, otherwise try the next year
-                if year == '20':
-                    year = '19'
-                else:
-                    year = '20'
-                try:
-                    player_information['flag'],player_information['image'],player_information['position'],player_information['number'],player_information['team'],player_information['colour'],player_information['display'],player_information['overall'],player_information['min'],player_information['special1'],player_information['special2'] = get_player_details(year,'name')
-                    check = year
-                except:
-                    player_information['flag'],player_information['image'],player_information['position'],player_information['number'],player_information['team'],player_information['colour'],player_information['display'],player_information['overall'],player_information['min'],player_information['special1'],player_information['special2'] = get_player_details(year,'display')
-                    check = year
+                player_information['flag'],player_information['image'],player_information['position'],player_information['number'],player_information['team'],player_information['colour'],player_information['display'],player_information['overall'],player_information['min'],player_information['special1'],player_information['special2'] = get_player_details(year)
+                check = year
 
         if player_information['position'] in ['goal keeper','goal keepers']:
             player_information['position'] = 'keeper'
@@ -1311,15 +1397,22 @@ def compare():
             if type(year) != str:
                 year = str(year)
             string = f'{position[:1]}_{year[2:]}_l'
-            df = data[string][data[string]['name']== name]
-            try:
-                min_div = round(stat_lists[string[:4]][stat_lists[string[:4]]['name']== name]['Min'].values[0]/90,2)
-            except:
-                min_div = round(stat_lists[string[:4]][stat_lists[string[:4]]['display']== name]['Min'].values[0]/90,2)
-            if df.empty:
-                df = data[string][data[string]['name'].str.contains(name.split(' ')[-1])]
-            if df.empty:
-                df = data[string][data[string]['name'].str.contains(name.split(' ')[-2])]
+            for col in ['name','display']:
+                      df = data[string][data[string][col]== name]
+                      if df.empty:
+                          df = data[string][data[string][col].str.contains(name.split(' ')[-1])]
+                      if df.empty:
+                          pass
+                      else:
+                          break
+            for col in ['name','display']:
+                try:
+                    min_div = round(stat_lists[string[:4]][stat_lists[string[:4]][col]== name]['Min'].values[0]/90,2)
+                except:
+                    try:
+                        min_div = round(stat_lists[string[:4]][stat_lists[string[:4]][col].str.contains(name.split(' ')[-1])]['Min'].values[0]/90,2)
+                    except:
+                        pass
             return df, min_div
         else:
             print('ERROR: requires name=<player name>')
@@ -1442,8 +1535,8 @@ def compare():
     else:
         pass
 
-    colour1 = '#fff1d0'
-    colour2 = '#003b5c'
+    colour1 = '#caf0f8'#'#fff1d0'
+    colour2 = '#001219'#'#003b5c'
 
     return render_template('player-compare.html', geegle = geegle, headline= headline,
     player1_select_list = player1_select_list, player2_select_list = player2_select_list,
@@ -1500,6 +1593,9 @@ def player():
         print('ERROR')
         print(player_names_df['name'].unique())
 
+
+    print(f'{name} and {display}')
+
     year_list = player_info['year'].unique().tolist()
     active_years = []
     for yr in year_list:
@@ -1512,8 +1608,11 @@ def player():
         print(check,yr)
         if check:
             active_years.append(yr)
+
     k = year_list.index(year)
+
     print('SEARCHING YEAR: ',year)
+
     player = player_info[(player_info['name'] == name) & (player_info['year'] == year)]
     if player.empty:
         year_list_trim = year_list.copy()
@@ -1526,12 +1625,16 @@ def player():
             year = year_list_trim[1]
             player = player_info[(player_info['name'] == name) & (player_info['year'] == year_list_trim[1])]
 
+    print(f'player information \n{player}\n')
+
     team = player['team'].values[0]
+
     def AgeTest(dob):
         dobnew = tuple(map(int, dob.split('-')))
         age = relativedelta(date.today(), date(*dobnew))
         return age.years
     age = AgeTest(player['dob'].values[0])
+
     colour3 = team_colour[team]
     roster_team_info = team_ref[team_ref['team'] == team]
     roster_colour = roster_team_info.iloc[0][4]
@@ -1540,30 +1643,56 @@ def player():
     colour2 = roster_team_info.iloc[0]['colour2']
     pos = player['position'].values[0]
     position = {'d':'defenders','f':'forwards','g':'keepers','m':'midfielders'}
-    db = pd.read_csv(f'datasets/{year}/playerstats/{year}-{position.get(pos)}.csv')
-    min_divisor = round(db['Min'].values[0]/90,2)
-    db90 = pd.read_csv(f'datasets/{year}/playerstats/{year}-{position.get(pos)}90.csv')
+    selected_position = pd.read_csv(f'datasets/{year}/playerstats/{year}-{position.get(pos)}.csv')
+    print(f'ALL PLAYERS at position \n{selected_position}\n')
+
+    min_divisor = round(selected_position['Min'].values[0]/90,2)
+    selected_position_90 = pd.read_csv(f'datasets/{year}/playerstats/{year}-{position.get(pos)}90.csv')
     discipline = pd.read_csv(f'datasets/{year}/playerstats/{year}-discipline.csv')
+
+    db = selected_position[selected_position['name'] == name].reset_index(drop=True)
+    if db.empty:
+        print('\n*************EMPTY*************\n')
+        db = selected_position[selected_position['name'] == display].reset_index(drop=True)
+    print('CHECKING FOR ERRORS******************')
+    print(f'QUERIED PLAYER AT position \n{db}\n')
+
+    db90 = selected_position_90[selected_position_90['name'] == name].reset_index(drop=True)
+    if db90.empty:
+        db90 = selected_position_90[selected_position_90['name'] == display].reset_index(drop=True)
 
     def new_col(data):
         for col in data.columns:
             try:
-                data[col_check[col]] = data[col]
-                if col_check[col]:
-                    data.pop(col)
+                data = data.rename(columns={col:col_check[col]})
             except:
                 pass
+        '''temp = {}
         for col in data.columns:
             try:
                 if col in ['display','number']:
-                    temp = data.pop(col)
-                    data[col] = temp
+                    temp[col] = data.pop(col)
             except:
                 pass
+        data['display'] = temp['display']
+        data['number'] = temp['number']'''
         return data
+
+    print(f'\n THEN\n{db}\n')
+    print(f'\n{player}\n')
 
     db = new_col(db)
     db90 = new_col(db90)
+
+    # temporary fix for issue
+    for x in db.columns:
+        if x in ['shtTrg','Pfa']:
+            db.pop(x)
+
+    if db['name'].values[0] != player['name'].values[0]:
+        db.at[0,'name'] = player['name'].values[0]
+
+    print(f'\n NOW\n{db}\n')
 
     radar_chart = db.copy()
     radar_chart.pop('display')
@@ -1574,9 +1703,10 @@ def player():
     radar_chart = cpl_main.index_reset(radar_chart)
     radar_chart_cols = "'"+"', '".join(radar_chart.columns)+"'"
 
-    db = db[db['name'] == name][db.columns]
-    db90 = db90[db90['name'] == name][db90.columns]
-    discipline = discipline[discipline['name'] == name]
+    player_discipline = discipline[discipline['name'] == name]
+    if player_discipline.empty:
+        player_discipline = discipline[discipline['display'] == name]
+
 
     if db.empty:
         print('Stats Empty')
@@ -1734,6 +1864,9 @@ def player():
 
     display_year = year
 
+    print(radar_chart)
+    print(player_line)
+
     return render_template('player.html', year = year, age = age, name = details['display'], player_line_length = len(player_line)-1, player_line_end = player_line_end,
     nationality = details['nationality'], team_name = team, player_info = player, full_name = name, column_names = column_names,active_years = active_years,
     team_colour = roster_colour, crest = crest, position = position.get(pos)[:-1], number = details['number'], chart_team_colour_list = geegle,
@@ -1775,7 +1908,9 @@ def position(pos):
     check = 0
     # import the csv file and read as a pandas dataframe
     rated_position = pd.read_csv(f'datasets/{year}/playerstats/{year}-{pos}.csv')
+    rated_position = rated_position[rated_position['Min']>0]
     print(rated_position.columns)
+    print(rated_position)
     # check if the dataframe has relevant data that can be used
     # if not, load previous years data
     if rated_position.at[0,'team'] == 'tbd':
@@ -1784,9 +1919,12 @@ def position(pos):
         rated_position = pd.read_csv(f'datasets/{last_year}/playerstats/{last_year}-{pos}.csv')
     columns = rated_position.columns
 
+    #tooltip = {v:k for k,v in col_check.items()}
+
     rated_position = new_col(rated_position)
 
     return render_template('position.html', year = year, position_link = pos,
+    tooltip = tooltip,
     columns = columns,html_table = rated_position,check = check)
 
 @canpl.route('/<pos>P90', methods=['GET','POST'])
@@ -1796,6 +1934,7 @@ def position90(pos):
     check = 0
     # import the csv file and read as a pandas dataframe
     rated_position_90 = pd.read_csv(f'datasets/{year}/playerstats/{year}-{pos}90.csv')
+    rated_position_90 = rated_position_90[rated_position_90['Min']>0]
     # check if the dataframe has relevant data that can be used
     # if not, load previous years data
     if rated_position_90.at[0,'team'] == 'tbd':

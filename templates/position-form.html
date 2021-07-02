@@ -38,9 +38,9 @@
     <div class="boxs sfont" style="width:100%;">
       <a>{{ Amendment }} {{ TOP }}{{ position_link[0:1].upper() }}{{ position_link[1:] }}{{ MIN }} {{ year }}</a>
     </div>
-    <div class="form boxs">
+    <div class="form boxs {{ theme }}-dark">
       <select name="year" id="year" onchange="this.form.submit();">
-        <option value="">select year</option>
+        <option value="{{ year }}">YEAR &#9662</option>
         <option value="2021">2021</option>
         <option value="2020">2020</option>
         <option value="2019">2019</option>
@@ -56,9 +56,9 @@
       <div class="box">
         <h3 style="padding: 10px;">{{ Amendment}} {{ TOP }}{{ position_link[0:1].upper() }}{{ position_link[1:] }}{{ MIN }} {{ year }}</h3>
       </div>
-      <div class="form box">
+      <div class="form box {{ theme }}-dark">
         <select name="year" id="year" onchange="this.form.submit();">
-          <option value="">select year</option>
+          <option value="{{ year }}">YEAR &#9662</option>
           <option value="2021">2021</option>
           <option value="2020">2020</option>
           <option value="2019">2019</option>
